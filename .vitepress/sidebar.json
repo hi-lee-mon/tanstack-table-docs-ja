@@ -1,0 +1,1146 @@
+[
+  {
+    "label": "Getting Started",
+    "collapsed": false,
+    "items": [
+      {
+        "label": "Overview",
+        "to": "overview"
+      },
+      {
+        "label": "Installation",
+        "to": "installation"
+      },
+      {
+        "label": "Devtools",
+        "to": "devtools"
+      },
+      {
+        "label": "Agent Skills (TanStack Intent)",
+        "to": "agent-skills"
+      },
+      {
+        "label": "Quick Start",
+        "to": "framework/react/quick-start"
+      },
+      {
+        "label": "Migrating to V9",
+        "to": "framework/react/guide/migrating"
+      },
+      {
+        "label": "useLegacyTable Guide",
+        "to": "framework/react/guide/use-legacy-table"
+      }
+    ]
+  },
+  {
+    "label": "Core Guides",
+    "collapsed": false,
+    "items": [
+      {
+        "label": "Features",
+        "to": "guide/features"
+      },
+      {
+        "label": "Data",
+        "to": "guide/data"
+      },
+      {
+        "label": "Client-Side vs Server-Side",
+        "to": "guide/client-side-vs-server-side"
+      },
+      {
+        "label": "Column Definitions",
+        "to": "guide/column-defs"
+      },
+      {
+        "label": "Table Instance",
+        "to": "guide/tables"
+      },
+      {
+        "label": "Row Models",
+        "to": "guide/row-models"
+      },
+      {
+        "label": "Worker Row Models (Experimental)",
+        "to": "guide/worker-row-models"
+      },
+      {
+        "label": "Rows",
+        "to": "guide/rows"
+      },
+      {
+        "label": "Cells",
+        "to": "guide/cells"
+      },
+      {
+        "label": "Header Groups",
+        "to": "guide/header-groups"
+      },
+      {
+        "label": "Headers",
+        "to": "guide/headers"
+      },
+      {
+        "label": "Columns",
+        "to": "guide/columns"
+      },
+      {
+        "label": "Table and Column Meta",
+        "to": "guide/table-and-column-meta"
+      },
+      {
+        "label": "Type Helpers",
+        "to": "guide/helpers"
+      },
+      {
+        "label": "Table State",
+        "to": "framework/react/guide/table-state"
+      },
+      {
+        "label": "React Compiler",
+        "to": "framework/react/guide/react-compiler"
+      },
+      {
+        "label": "Composable Tables (createTableHook)",
+        "to": "framework/react/guide/composable-tables"
+      },
+      {
+        "label": "Table Context",
+        "to": "framework/react/guide/table-context"
+      },
+      {
+        "label": "FlexRender",
+        "to": "framework/react/guide/flex-render"
+      },
+      {
+        "label": "Custom Plugins",
+        "to": "framework/react/guide/custom-features"
+      }
+    ]
+  },
+  {
+    "label": "Feature Guides",
+    "collapsed": false,
+    "items": [
+      {
+        "label": "Cell Selection",
+        "to": "framework/react/guide/cell-selection"
+      },
+      {
+        "label": "Cell Spanning",
+        "to": "framework/react/guide/cell-spanning"
+      },
+      {
+        "label": "Column Ordering",
+        "to": "framework/react/guide/column-ordering"
+      },
+      {
+        "label": "Column Pinning",
+        "to": "framework/react/guide/column-pinning"
+      },
+      {
+        "label": "Column Sizing",
+        "to": "framework/react/guide/column-sizing"
+      },
+      {
+        "label": "Column Resizing",
+        "to": "framework/react/guide/column-resizing"
+      },
+      {
+        "label": "Column Visibility",
+        "to": "framework/react/guide/column-visibility"
+      },
+      {
+        "label": "Column Filtering",
+        "to": "framework/react/guide/column-filtering"
+      },
+      {
+        "label": "Global Filtering",
+        "to": "framework/react/guide/global-filtering"
+      },
+      {
+        "label": "Fuzzy Filtering",
+        "to": "framework/react/guide/fuzzy-filtering"
+      },
+      {
+        "label": "Faceting",
+        "to": "framework/react/guide/column-faceting"
+      },
+      {
+        "label": "Aggregation",
+        "to": "framework/react/guide/aggregation"
+      },
+      {
+        "label": "Grouping",
+        "to": "framework/react/guide/grouping"
+      },
+      {
+        "label": "Expanding",
+        "to": "framework/react/guide/expanding"
+      },
+      {
+        "label": "Pagination",
+        "to": "framework/react/guide/pagination"
+      },
+      {
+        "label": "Row Pinning",
+        "to": "framework/react/guide/row-pinning"
+      },
+      {
+        "label": "Row Selection",
+        "to": "framework/react/guide/row-selection"
+      },
+      {
+        "label": "Sorting",
+        "to": "framework/react/guide/sorting"
+      },
+      {
+        "label": "Virtualization",
+        "to": "framework/react/guide/virtualization"
+      }
+    ]
+  },
+  {
+    "label": "API Reference",
+    "collapsed": false,
+    "items": [
+      {
+        "label": "Core API Reference",
+        "to": "reference/index"
+      },
+      {
+        "label": "React API Reference",
+        "to": "framework/react/reference/index"
+      }
+    ]
+  },
+  {
+    "label": "Table API Reference",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "Table",
+        "to": "reference/index/type-aliases/Table"
+      },
+      {
+        "label": "TableOptions",
+        "to": "reference/index/type-aliases/TableOptions"
+      },
+      {
+        "label": "TableState",
+        "to": "reference/index/type-aliases/TableState"
+      },
+      {
+        "label": "TableMeta",
+        "to": "reference/index/interfaces/TableMeta"
+      },
+      {
+        "label": "TableFeature",
+        "to": "reference/index/interfaces/TableFeature"
+      },
+      {
+        "label": "TableFeatures",
+        "to": "reference/index/interfaces/TableFeatures"
+      },
+      {
+        "label": "StockFeatures",
+        "to": "reference/index/interfaces/StockFeatures"
+      },
+      {
+        "label": "CoreFeatures",
+        "to": "reference/index/interfaces/CoreFeatures"
+      },
+      {
+        "label": "BaseAtoms",
+        "to": "reference/index/type-aliases/BaseAtoms"
+      },
+      {
+        "label": "Atoms",
+        "to": "reference/index/type-aliases/Atoms"
+      },
+      {
+        "label": "ExternalAtoms",
+        "to": "reference/index/type-aliases/ExternalAtoms"
+      },
+      {
+        "label": "constructTable",
+        "to": "reference/index/functions/constructTable"
+      },
+      {
+        "label": "tableOptions",
+        "to": "reference/index/functions/tableOptions"
+      },
+      {
+        "label": "tableFeatures",
+        "to": "reference/index/functions/tableFeatures"
+      },
+      {
+        "label": "getInitialTableState",
+        "to": "reference/index/functions/getInitialTableState"
+      },
+      {
+        "label": "OnChangeFn",
+        "to": "reference/index/type-aliases/OnChangeFn"
+      },
+      {
+        "label": "Updater",
+        "to": "reference/index/type-aliases/Updater"
+      },
+      {
+        "label": "DebugOptions",
+        "to": "reference/index/type-aliases/DebugOptions"
+      },
+      {
+        "label": "useTable",
+        "to": "framework/react/reference/index/functions/useTable"
+      },
+      {
+        "label": "createTableHook",
+        "to": "framework/react/reference/index/functions/createTableHook"
+      },
+      {
+        "label": "ReactTable",
+        "to": "framework/react/reference/index/type-aliases/ReactTable"
+      },
+      {
+        "label": "AppReactTable",
+        "to": "framework/react/reference/index/type-aliases/AppReactTable"
+      },
+      {
+        "label": "CreateTableHookOptions",
+        "to": "framework/react/reference/index/type-aliases/CreateTableHookOptions"
+      },
+      {
+        "label": "Subscribe",
+        "to": "framework/react/reference/index/functions/Subscribe"
+      },
+      {
+        "label": "FlexRender",
+        "to": "framework/react/reference/index/functions/FlexRender-1"
+      },
+      {
+        "label": "flexRender",
+        "to": "framework/react/reference/index/functions/flexRender"
+      }
+    ]
+  },
+  {
+    "label": "Column API Reference",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "Column",
+        "to": "reference/index/type-aliases/Column"
+      },
+      {
+        "label": "ColumnDef",
+        "to": "reference/index/type-aliases/ColumnDef"
+      },
+      {
+        "label": "ColumnDefBase",
+        "to": "reference/index/type-aliases/ColumnDefBase"
+      },
+      {
+        "label": "AccessorColumnDef",
+        "to": "reference/index/type-aliases/AccessorColumnDef"
+      },
+      {
+        "label": "DisplayColumnDef",
+        "to": "reference/index/type-aliases/DisplayColumnDef"
+      },
+      {
+        "label": "GroupColumnDef",
+        "to": "reference/index/type-aliases/GroupColumnDef"
+      },
+      {
+        "label": "ColumnDefTemplate",
+        "to": "reference/index/type-aliases/ColumnDefTemplate"
+      },
+      {
+        "label": "ColumnHelper",
+        "to": "reference/index/interfaces/ColumnHelper"
+      },
+      {
+        "label": "ColumnMeta",
+        "to": "reference/index/interfaces/ColumnMeta"
+      },
+      {
+        "label": "createColumnHelper",
+        "to": "reference/index/functions/createColumnHelper"
+      },
+      {
+        "label": "constructColumn",
+        "to": "reference/index/functions/constructColumn"
+      },
+      {
+        "label": "AccessorFn",
+        "to": "reference/index/type-aliases/AccessorFn"
+      },
+      {
+        "label": "DeepKeys",
+        "to": "reference/index/type-aliases/DeepKeys"
+      },
+      {
+        "label": "DeepValue",
+        "to": "reference/index/type-aliases/DeepValue"
+      },
+      {
+        "label": "AppColumnHelper",
+        "to": "framework/react/reference/index/type-aliases/AppColumnHelper"
+      }
+    ]
+  },
+  {
+    "label": "Row API Reference",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "Row",
+        "to": "reference/index/type-aliases/Row"
+      },
+      {
+        "label": "RowData",
+        "to": "reference/index/type-aliases/RowData"
+      },
+      {
+        "label": "RowModel",
+        "to": "reference/index/interfaces/RowModel"
+      },
+      {
+        "label": "constructRow",
+        "to": "reference/index/functions/constructRow"
+      },
+      {
+        "label": "createCoreRowModel",
+        "to": "reference/index/functions/createCoreRowModel"
+      },
+      {
+        "label": "createFilteredRowModel",
+        "to": "reference/index/functions/createFilteredRowModel"
+      },
+      {
+        "label": "createSortedRowModel",
+        "to": "reference/index/functions/createSortedRowModel"
+      },
+      {
+        "label": "createGroupedRowModel",
+        "to": "reference/index/functions/createGroupedRowModel"
+      },
+      {
+        "label": "createExpandedRowModel",
+        "to": "reference/index/functions/createExpandedRowModel"
+      },
+      {
+        "label": "createPaginatedRowModel",
+        "to": "reference/index/functions/createPaginatedRowModel"
+      },
+      {
+        "label": "createFacetedRowModel",
+        "to": "reference/index/functions/createFacetedRowModel"
+      },
+      {
+        "label": "createFacetedMinMaxValues",
+        "to": "reference/index/functions/createFacetedMinMaxValues"
+      },
+      {
+        "label": "createFacetedUniqueValues",
+        "to": "reference/index/functions/createFacetedUniqueValues"
+      },
+      {
+        "label": "expandRows",
+        "to": "reference/index/functions/expandRows"
+      },
+      {
+        "label": "RowModelFns",
+        "to": "reference/index/type-aliases/RowModelFns"
+      },
+      {
+        "label": "CachedRowModels",
+        "to": "reference/index/type-aliases/CachedRowModels"
+      }
+    ]
+  },
+  {
+    "label": "Cell API Reference",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "Cell",
+        "to": "reference/index/type-aliases/Cell"
+      },
+      {
+        "label": "CellContext",
+        "to": "reference/index/interfaces/CellContext"
+      },
+      {
+        "label": "CellData",
+        "to": "reference/index/type-aliases/CellData"
+      },
+      {
+        "label": "constructCell",
+        "to": "reference/index/functions/constructCell"
+      },
+      {
+        "label": "AppCellContext",
+        "to": "framework/react/reference/index/type-aliases/AppCellContext"
+      }
+    ]
+  },
+  {
+    "label": "Header API Reference",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "Header",
+        "to": "reference/index/type-aliases/Header"
+      },
+      {
+        "label": "HeaderGroup",
+        "to": "reference/index/interfaces/HeaderGroup"
+      },
+      {
+        "label": "HeaderContext",
+        "to": "reference/index/interfaces/HeaderContext"
+      },
+      {
+        "label": "constructHeader",
+        "to": "reference/index/functions/constructHeader"
+      },
+      {
+        "label": "buildHeaderGroups",
+        "to": "reference/index/functions/buildHeaderGroups"
+      },
+      {
+        "label": "AppHeaderContext",
+        "to": "framework/react/reference/index/type-aliases/AppHeaderContext"
+      }
+    ]
+  },
+  {
+    "label": "Features API Reference",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "stockFeatures",
+        "to": "reference/index/variables/stockFeatures"
+      },
+      {
+        "label": "coreFeatures",
+        "to": "reference/index/variables/coreFeatures"
+      },
+      {
+        "label": "coreCellsFeature",
+        "to": "reference/index/variables/coreCellsFeature"
+      },
+      {
+        "label": "coreColumnsFeature",
+        "to": "reference/index/variables/coreColumnsFeature"
+      },
+      {
+        "label": "coreHeadersFeature",
+        "to": "reference/index/variables/coreHeadersFeature"
+      },
+      {
+        "label": "coreRowModelsFeature",
+        "to": "reference/index/variables/coreRowModelsFeature"
+      },
+      {
+        "label": "coreRowsFeature",
+        "to": "reference/index/variables/coreRowsFeature"
+      },
+      {
+        "label": "coreTablesFeature",
+        "to": "reference/index/variables/coreTablesFeature"
+      },
+      {
+        "label": "cellSpanningFeature",
+        "to": "reference/index/variables/cellSpanningFeature"
+      },
+      {
+        "label": "columnFilteringFeature",
+        "to": "reference/index/variables/columnFilteringFeature"
+      },
+      {
+        "label": "columnFacetingFeature",
+        "to": "reference/index/variables/columnFacetingFeature"
+      },
+      {
+        "label": "rowAggregationFeature",
+        "to": "reference/index/variables/rowAggregationFeature"
+      },
+      {
+        "label": "columnGroupingFeature",
+        "to": "reference/index/variables/columnGroupingFeature"
+      },
+      {
+        "label": "columnOrderingFeature",
+        "to": "reference/index/variables/columnOrderingFeature"
+      },
+      {
+        "label": "columnPinningFeature",
+        "to": "reference/index/variables/columnPinningFeature"
+      },
+      {
+        "label": "columnResizingFeature",
+        "to": "reference/index/variables/columnResizingFeature"
+      },
+      {
+        "label": "columnSizingFeature",
+        "to": "reference/index/variables/columnSizingFeature"
+      },
+      {
+        "label": "columnVisibilityFeature",
+        "to": "reference/index/variables/columnVisibilityFeature"
+      },
+      {
+        "label": "globalFilteringFeature",
+        "to": "reference/index/variables/globalFilteringFeature"
+      },
+      {
+        "label": "rowExpandingFeature",
+        "to": "reference/index/variables/rowExpandingFeature"
+      },
+      {
+        "label": "rowPaginationFeature",
+        "to": "reference/index/variables/rowPaginationFeature"
+      },
+      {
+        "label": "rowPinningFeature",
+        "to": "reference/index/variables/rowPinningFeature"
+      },
+      {
+        "label": "rowSelectionFeature",
+        "to": "reference/index/variables/rowSelectionFeature"
+      },
+      {
+        "label": "rowSortingFeature",
+        "to": "reference/index/variables/rowSortingFeature"
+      },
+      {
+        "label": "filterFns",
+        "to": "reference/index/variables/filterFns"
+      },
+      {
+        "label": "sortFns",
+        "to": "reference/index/variables/sortFns"
+      },
+      {
+        "label": "aggregationFns",
+        "to": "reference/index/variables/aggregationFns"
+      },
+      {
+        "label": "ColumnFilter",
+        "to": "reference/index/interfaces/ColumnFilter"
+      },
+      {
+        "label": "ColumnPinningState",
+        "to": "reference/index/interfaces/ColumnPinningState"
+      },
+      {
+        "label": "ColumnSort",
+        "to": "reference/index/interfaces/ColumnSort"
+      },
+      {
+        "label": "PaginationState",
+        "to": "reference/index/interfaces/PaginationState"
+      },
+      {
+        "label": "RowPinningState",
+        "to": "reference/index/interfaces/RowPinningState"
+      },
+      {
+        "label": "columnResizingState",
+        "to": "reference/index/interfaces/columnResizingState"
+      },
+      {
+        "label": "FilterFn",
+        "to": "reference/index/interfaces/FilterFn"
+      },
+      {
+        "label": "FilterFns",
+        "to": "reference/index/interfaces/FilterFns"
+      },
+      {
+        "label": "FilterMeta",
+        "to": "reference/index/interfaces/FilterMeta"
+      },
+      {
+        "label": "SortFn",
+        "to": "reference/index/interfaces/SortFn"
+      },
+      {
+        "label": "SortFns",
+        "to": "reference/index/interfaces/SortFns"
+      },
+      {
+        "label": "AggregationFns",
+        "to": "reference/index/interfaces/AggregationFns"
+      },
+      {
+        "label": "AggregationContext",
+        "to": "reference/index/interfaces/AggregationContext"
+      },
+      {
+        "label": "AggregationMergeContext",
+        "to": "reference/index/interfaces/AggregationMergeContext"
+      },
+      {
+        "label": "AggregationFnDef",
+        "to": "reference/index/interfaces/AggregationFnDef"
+      },
+      {
+        "label": "AggregationFnDescriptor",
+        "to": "reference/index/interfaces/AggregationFnDescriptor"
+      },
+      {
+        "label": "AggregationValueContext",
+        "to": "reference/index/interfaces/AggregationValueContext"
+      },
+      {
+        "label": "AggregationValueResult",
+        "to": "reference/index/interfaces/AggregationValueResult"
+      },
+      {
+        "label": "constructAggregationFn",
+        "to": "reference/index/functions/constructAggregationFn"
+      },
+      {
+        "label": "ColumnFiltersState",
+        "to": "reference/index/type-aliases/ColumnFiltersState"
+      },
+      {
+        "label": "ColumnOrderState",
+        "to": "reference/index/type-aliases/ColumnOrderState"
+      },
+      {
+        "label": "ColumnPinningPosition",
+        "to": "reference/index/type-aliases/ColumnPinningPosition"
+      },
+      {
+        "label": "ColumnResizeDirection",
+        "to": "reference/index/type-aliases/ColumnResizeDirection"
+      },
+      {
+        "label": "ColumnResizeMode",
+        "to": "reference/index/type-aliases/ColumnResizeMode"
+      },
+      {
+        "label": "ColumnSizingState",
+        "to": "reference/index/type-aliases/ColumnSizingState"
+      },
+      {
+        "label": "ColumnVisibilityState",
+        "to": "reference/index/type-aliases/ColumnVisibilityState"
+      },
+      {
+        "label": "ExpandedState",
+        "to": "reference/index/type-aliases/ExpandedState"
+      },
+      {
+        "label": "GroupingState",
+        "to": "reference/index/type-aliases/GroupingState"
+      },
+      {
+        "label": "RowPinningPosition",
+        "to": "reference/index/type-aliases/RowPinningPosition"
+      },
+      {
+        "label": "RowSelectionState",
+        "to": "reference/index/type-aliases/RowSelectionState"
+      },
+      {
+        "label": "SortDirection",
+        "to": "reference/index/type-aliases/SortDirection"
+      },
+      {
+        "label": "SortingState",
+        "to": "reference/index/type-aliases/SortingState"
+      },
+      {
+        "label": "AggregationFnOption",
+        "to": "reference/index/type-aliases/AggregationFnOption"
+      },
+      {
+        "label": "AggregationResult",
+        "to": "reference/index/type-aliases/AggregationResult"
+      },
+      {
+        "label": "FilterFnOption",
+        "to": "reference/index/type-aliases/FilterFnOption"
+      },
+      {
+        "label": "SortFnOption",
+        "to": "reference/index/type-aliases/SortFnOption"
+      },
+      {
+        "label": "BuiltInAggregationFn",
+        "to": "reference/index/type-aliases/BuiltInAggregationFn"
+      },
+      {
+        "label": "BuiltInFilterFn",
+        "to": "reference/index/type-aliases/BuiltInFilterFn"
+      },
+      {
+        "label": "BuiltInSortFn",
+        "to": "reference/index/type-aliases/BuiltInSortFn"
+      }
+    ]
+  },
+  {
+    "label": "Static Functions API Reference",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "Static Functions Overview",
+        "to": "reference/static-functions/index"
+      }
+    ]
+  },
+  {
+    "label": "Legacy API Reference",
+    "collapsed": true,
+    "items": [
+      {
+        "label": "Legacy API Overview",
+        "to": "framework/react/reference/legacy/index"
+      },
+      {
+        "label": "useLegacyTable",
+        "to": "framework/react/reference/legacy/functions/useLegacyTable"
+      },
+      {
+        "label": "legacyCreateColumnHelper",
+        "to": "framework/react/reference/legacy/functions/legacyCreateColumnHelper"
+      },
+      {
+        "label": "getCoreRowModel",
+        "to": "framework/react/reference/legacy/functions/getCoreRowModel"
+      },
+      {
+        "label": "getFilteredRowModel",
+        "to": "framework/react/reference/legacy/functions/getFilteredRowModel"
+      },
+      {
+        "label": "getSortedRowModel",
+        "to": "framework/react/reference/legacy/functions/getSortedRowModel"
+      },
+      {
+        "label": "getGroupedRowModel",
+        "to": "framework/react/reference/legacy/functions/getGroupedRowModel"
+      },
+      {
+        "label": "getExpandedRowModel",
+        "to": "framework/react/reference/legacy/functions/getExpandedRowModel"
+      },
+      {
+        "label": "getPaginationRowModel",
+        "to": "framework/react/reference/legacy/functions/getPaginationRowModel"
+      },
+      {
+        "label": "getFacetedRowModel",
+        "to": "framework/react/reference/legacy/functions/getFacetedRowModel"
+      },
+      {
+        "label": "getFacetedMinMaxValues",
+        "to": "framework/react/reference/legacy/functions/getFacetedMinMaxValues"
+      },
+      {
+        "label": "getFacetedUniqueValues",
+        "to": "framework/react/reference/legacy/functions/getFacetedUniqueValues"
+      },
+      {
+        "label": "LegacyRowModelOptions",
+        "to": "framework/react/reference/legacy/interfaces/LegacyRowModelOptions"
+      },
+      {
+        "label": "LegacyTable",
+        "to": "framework/react/reference/legacy/type-aliases/LegacyTable"
+      },
+      {
+        "label": "LegacyTableOptions",
+        "to": "framework/react/reference/legacy/type-aliases/LegacyTableOptions"
+      },
+      {
+        "label": "LegacyReactTable",
+        "to": "framework/react/reference/legacy/type-aliases/LegacyReactTable"
+      },
+      {
+        "label": "LegacyColumnDef",
+        "to": "framework/react/reference/legacy/type-aliases/LegacyColumnDef"
+      }
+    ]
+  },
+  {
+    "label": "Basic Examples",
+    "collapsed": false,
+    "items": [
+      {
+        "label": "Basic (useTable)",
+        "to": "framework/react/examples/basic-use-table"
+      },
+      {
+        "label": "Basic (useAppTable)",
+        "to": "framework/react/examples/basic-use-app-table"
+      },
+      {
+        "label": "Basic (useLegacyTable)",
+        "to": "framework/react/examples/basic-use-legacy-table"
+      },
+      {
+        "label": "Basic (External State)",
+        "to": "framework/react/examples/basic-external-state"
+      },
+      {
+        "label": "Basic (External Atoms)",
+        "to": "framework/react/examples/basic-external-atoms"
+      },
+      {
+        "label": "Basic (Subscribe)",
+        "to": "framework/react/examples/basic-subscribe"
+      },
+      {
+        "label": "Basic (Dynamic Columns)",
+        "to": "framework/react/examples/basic-dynamic-columns"
+      },
+      {
+        "label": "Header Groups",
+        "to": "framework/react/examples/header-groups"
+      }
+    ]
+  },
+  {
+    "label": "Feature Examples",
+    "collapsed": false,
+    "items": [
+      {
+        "label": "Kitchen Sink (All Features)",
+        "to": "framework/react/examples/kitchen-sink"
+      },
+      {
+        "label": "Cell Selection",
+        "to": "framework/react/examples/cell-selection"
+      },
+      {
+        "label": "Cell Spanning",
+        "to": "framework/react/examples/cell-spanning"
+      },
+      {
+        "label": "Column Filters",
+        "to": "framework/react/examples/filters"
+      },
+      {
+        "label": "Column Filters (Faceted)",
+        "to": "framework/react/examples/filters-faceted"
+      },
+      {
+        "label": "Bucketed Faceted Filters",
+        "to": "framework/react/examples/filters-faceted-bucketed"
+      },
+      {
+        "label": "Fuzzy Search Filters",
+        "to": "framework/react/examples/filters-fuzzy"
+      },
+      {
+        "label": "Column Ordering",
+        "to": "framework/react/examples/column-ordering"
+      },
+      {
+        "label": "Column Ordering (DnD)",
+        "to": "framework/react/examples/column-dnd"
+      },
+      {
+        "label": "Column Pinning",
+        "to": "framework/react/examples/column-pinning"
+      },
+      {
+        "label": "Column Pinning (Split)",
+        "to": "framework/react/examples/column-pinning-split"
+      },
+      {
+        "label": "Sticky Column Pinning",
+        "to": "framework/react/examples/column-pinning-sticky"
+      },
+      {
+        "label": "Column Sizing",
+        "to": "framework/react/examples/column-sizing"
+      },
+      {
+        "label": "Column Resizing",
+        "to": "framework/react/examples/column-resizing"
+      },
+      {
+        "label": "Performant Column Resizing",
+        "to": "framework/react/examples/column-resizing-performant"
+      },
+      {
+        "label": "Column Visibility",
+        "to": "framework/react/examples/column-visibility"
+      },
+      {
+        "label": "Expanding",
+        "to": "framework/react/examples/expanding"
+      },
+      {
+        "label": "Expanding Sub Components",
+        "to": "framework/react/examples/sub-components"
+      },
+      {
+        "label": "Grouping",
+        "to": "framework/react/examples/grouping"
+      },
+      {
+        "label": "Aggregation",
+        "to": "framework/react/examples/aggregation"
+      },
+      {
+        "label": "Grouped Aggregation",
+        "to": "framework/react/examples/grouped-aggregation"
+      },
+      {
+        "label": "Pagination",
+        "to": "framework/react/examples/pagination"
+      },
+      {
+        "label": "Row DnD",
+        "to": "framework/react/examples/row-dnd"
+      },
+      {
+        "label": "Row Pinning",
+        "to": "framework/react/examples/row-pinning"
+      },
+      {
+        "label": "Row Selection",
+        "to": "framework/react/examples/row-selection"
+      },
+      {
+        "label": "Sorting",
+        "to": "framework/react/examples/sorting"
+      }
+    ]
+  },
+  {
+    "label": "Specialized Examples",
+    "collapsed": false,
+    "items": [
+      {
+        "label": "Composable Tables (createTableHook)",
+        "to": "framework/react/examples/composable-tables"
+      },
+      {
+        "label": "Custom Plugin",
+        "to": "framework/react/examples/custom-plugin"
+      },
+      {
+        "label": "Experimental Web Workers Plugin",
+        "to": "framework/react/examples/web-worker-row-models"
+      },
+      {
+        "label": "Experimental Spreadsheet",
+        "to": "framework/react/examples/spreadsheet"
+      },
+      {
+        "label": "With TanStack Virtual - Columns",
+        "to": "framework/react/examples/virtualized-columns"
+      },
+      {
+        "label": "With TanStack Virtual - Columns (Exp)",
+        "to": "framework/react/examples/virtualized-columns-experimental"
+      },
+      {
+        "label": "With TanStack Virtual - Rows",
+        "to": "framework/react/examples/virtualized-rows"
+      },
+      {
+        "label": "With TanStack Virtual - Rows (Exp)",
+        "to": "framework/react/examples/virtualized-rows-experimental"
+      },
+      {
+        "label": "With TanStack Virtual - Infinite Scrolling",
+        "to": "framework/react/examples/virtualized-infinite-scrolling"
+      },
+      {
+        "label": "With TanStack Form",
+        "to": "framework/react/examples/with-tanstack-form"
+      },
+      {
+        "label": "With TanStack Query",
+        "to": "framework/react/examples/with-tanstack-query"
+      },
+      {
+        "label": "With TanStack Router",
+        "to": "framework/react/examples/with-tanstack-router"
+      }
+    ]
+  },
+  {
+    "label": "Component Library Examples",
+    "collapsed": false,
+    "items": [
+      {
+        "label": "Basic - Shadcn (Base UI)",
+        "to": "framework/react/examples/lib-shadcn-base"
+      },
+      {
+        "label": "Basic - Shadcn (Radix)",
+        "to": "framework/react/examples/lib-shadcn-radix"
+      },
+      {
+        "label": "Basic - React Aria",
+        "to": "framework/react/examples/lib-react-aria"
+      },
+      {
+        "label": "Basic - Hero UI",
+        "to": "framework/react/examples/lib-hero-ui"
+      },
+      {
+        "label": "Basic - Material UI",
+        "to": "framework/react/examples/lib-material-ui"
+      },
+      {
+        "label": "Basic - Mantine",
+        "to": "framework/react/examples/lib-mantine"
+      },
+      {
+        "label": "Basic - Chakra UI",
+        "to": "framework/react/examples/lib-chakra-ui"
+      },
+      {
+        "label": "Kitchen Sink - Shadcn (Base UI)",
+        "to": "framework/react/examples/kitchen-sink-shadcn-base"
+      },
+      {
+        "label": "Kitchen Sink - Shadcn (Radix)",
+        "to": "framework/react/examples/kitchen-sink-shadcn-radix"
+      },
+      {
+        "label": "Kitchen Sink - React Aria",
+        "to": "framework/react/examples/kitchen-sink-react-aria"
+      },
+      {
+        "label": "Kitchen Sink - Hero UI",
+        "to": "framework/react/examples/kitchen-sink-hero-ui"
+      },
+      {
+        "label": "Kitchen Sink - Material UI",
+        "to": "framework/react/examples/kitchen-sink-material-ui"
+      },
+      {
+        "label": "Kitchen Sink - Mantine",
+        "to": "framework/react/examples/kitchen-sink-mantine"
+      },
+      {
+        "label": "Kitchen Sink - Chakra UI",
+        "to": "framework/react/examples/kitchen-sink-chakra-ui"
+      },
+      {
+        "label": "Material React Table",
+        "to": "framework/react/examples/material-react-table"
+      },
+      {
+        "label": "Mantine React Table",
+        "to": "framework/react/examples/mantine-react-table"
+      }
+    ]
+  }
+]
