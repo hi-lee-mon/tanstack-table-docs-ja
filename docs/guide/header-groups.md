@@ -1,30 +1,30 @@
 ---
-title: Header Groups Guide
+title: ヘッダーグループガイド
 ---
 
-This quick guide will discuss the different ways you can retrieve and interact with header group objects in TanStack Table.
+この短いガイドでは、TanStack Table でヘッダーグループのオブジェクトを取得し、扱うさまざまな方法を説明します。
 
-## What are Header Groups? {#what-are-header-groups}
+## ヘッダーグループとは {#what-are-header-groups}
 
-Header Groups are simply "rows" of headers. Don't let the name confuse you, it's just that simple. The large majority of tables will only have one row of headers (a single header group), but if you define your column structure with nested columns as with the [Header Groups example](https://tanstack.com/table/latest/docs/framework/react/examples/header-groups), you can have multiple rows of headers (multiple header groups).
+ヘッダーグループは、単にヘッダーの「行」です。名前に惑わされないでください。本当にそれだけのことです。大半のテーブルではヘッダーの行は1つ（ヘッダーグループが1つ）だけです。ただし、[ヘッダーグループのサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/header-groups)のように列をネストした構造で定義すると、ヘッダーの行が複数（ヘッダーグループが複数）になることがあります。
 
-## Where to Get Header Groups From {#where-to-get-header-groups-from}
+## ヘッダーグループの取得元 {#where-to-get-header-groups-from}
 
-There are multiple `table` instance APIs you can use to retrieve header groups from the table instance. `table.getHeaderGroups` is the most common API to use, but depending on the features that you are using, you may need to use other APIs, such as `table.get[Start/Center/End]HeaderGroups` if you are using column pinning features.
+テーブルインスタンスからヘッダーグループを取得するための `table` インスタンスの API は複数あります。最もよく使うのは `table.getHeaderGroups` です。ただし、使っている機能によっては別の API が必要になることがあります。たとえば列の固定機能を使っている場合は `table.get[Start/Center/End]HeaderGroups` を使います。
 
-## Header Group Objects {#header-group-objects}
+## ヘッダーグループのオブジェクト {#header-group-objects}
 
-Header Group objects are similar to [Row](./rows) objects, though simpler since there is not as much going on in header rows as there is in the body rows.
+ヘッダーグループのオブジェクトは [Row](./rows) オブジェクトに似ていますが、より単純です。ヘッダーの行では、本体の行ほど多くのことが起こらないからです。
 
-By default, header groups only have three properties:
+デフォルトでは、ヘッダーグループが持つプロパティは次の3つだけです。
 
-- `id`: The unique identifier for the header group that is generated from its depth (index). This is useful as a key for React components.
-- `depth`: The depth of the header group, zero-indexed. Think of this as the row index amongst all header rows.
-- `headers`: An array of [Header](./headers) cell objects that belong to this header group (row).
+- `id`: ヘッダーグループの一意な識別子で、深さ（インデックス）から生成されます。React コンポーネントの key として使うのに便利です。
+- `depth`: ヘッダーグループの深さで、0 から始まります。すべてのヘッダー行の中での行番号だと考えてください。
+- `headers`: このヘッダーグループ（行）に属する [Header](./headers) セルのオブジェクトの配列です。
 
-## Access Header Cells {#access-header-cells}
+## ヘッダーセルにアクセスする {#access-header-cells}
 
-To render the header cells in a header group, you just map over the `headers` array from the header group object.
+ヘッダーグループ内のヘッダーセルを描画するには、ヘッダーグループのオブジェクトの `headers` 配列を map するだけです。
 
 ```jsx
 <thead>

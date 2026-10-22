@@ -7,14 +7,14 @@ title: LegacyHeaderGroup
 type LegacyHeaderGroup<TData> = HeaderGroup<LegacyFeatures, TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:336](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L336)
+定義元: [src/useLegacyTable.ts:336](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L336)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-Use HeaderGroup<TFeatures, TData> with useTable instead.
+代わりに useTable とあわせて HeaderGroup<TFeatures, TData> を使ってください。

@@ -1,15 +1,15 @@
 ---
-title: Table and Column Meta Guide
+title: テーブルと列のメタガイド
 ---
 
-Sometimes you need to attach your own arbitrary data or functions to a table or its columns so that they are available anywhere the `table` or `column` instances are available. That is what the `meta` options are for. TanStack Table never reads or writes `meta` itself; it is purely a place for you to pass your own context through the table.
+テーブルやその列に任意のデータや関数を独自に持たせ、`table` や `column` のインスタンスを使えるところならどこからでも使えるようにしたいことがあります。そのためにあるのが `meta` オプションです。TanStack Table 自体は `meta` を一切読み書きしません。テーブルを通じて独自のコンテキストを受け渡すための置き場所にすぎません。
 
-There are two kinds of meta:
+メタには2種類あります。
 
-- **Table meta** - The `meta` table option. Pass any object and read it back anywhere via `table.options.meta`. A classic use case is passing an `updateData` function down to editable cells.
-- **Column meta** - The `meta` property on a column definition. Read it back anywhere a column is available via `column.columnDef.meta`. A classic use case is declaring which filter UI variant a column's header should render.
+- **テーブルのメタ** - `meta` テーブルオプションです。任意のオブジェクトを渡し、`table.options.meta` を通じてどこからでも読み出せます。典型的な使い方は、編集可能なセルに `updateData` 関数を渡すことです。
+- **列のメタ** - 列定義の `meta` プロパティです。列を使えるところならどこからでも `column.columnDef.meta` で読み出せます。典型的な使い方は、列のヘッダーがどの種類のフィルター UI をレンダーするかを宣言することです。
 
-## Table Meta {#table-meta}
+## テーブルのメタ {#table-meta}
 
 ```ts
 const table = useTable({
@@ -28,7 +28,7 @@ table.options.meta?.updateData(rowIndex, columnId, newValue)
 ```
 
 
-Column meta is set on the column definition and is identical across every adapter:
+列のメタは列定義に設定します。どのアダプターでも同じです。
 
 ```ts
 const columns = columnHelper.columns([
@@ -44,11 +44,11 @@ const columns = columnHelper.columns([
 const variant = column.columnDef.meta?.filterVariant
 ```
 
-## Typing Meta Per-Table (Recommended) {#typing-meta-per-table-recommended}
+## テーブルごとにメタの型を付ける（推奨） {#typing-meta-per-table-recommended}
 
-By default, both meta types are empty objects, so to get type safety you declare their shapes yourself. New in v9, you can declare meta types **per feature set** with the type-only `tableMeta` and `columnMeta` slots in your `tableFeatures()` call, using the `metaHelper` utility.
+デフォルトでは、どちらのメタの型も空のオブジェクトです。型安全にするには、その形を自分で宣言します。v9 からは、`tableFeatures()` の呼び出しの中で型専用の `tableMeta` スロットと `columnMeta` スロットを使い、`metaHelper` ユーティリティでメタの型を**機能のセットごとに**宣言できるようになりました。
 
-First, define the shapes you want (this is the same in every framework):
+まず、必要な形を定義します（これはどのフレームワークでも同じです）。
 
 ```ts
 interface MyTableMeta {
@@ -60,7 +60,7 @@ interface MyColumnMeta {
 }
 ```
 
-Then declare them on your `features` object:
+次に、それを `features` オブジェクトに宣言します。
 
 ```ts
 import {
@@ -77,7 +77,7 @@ const features = tableFeatures({
 ```
 
 
-That's it. Everywhere this `features` object flows (`useTable`, `createColumnHelper`, `ColumnDef`, `Column`, and so on), the meta types are inferred from `typeof features` with no extra generics to pass around:
+これだけです。この `features` オブジェクトが渡る先（`useTable`、`createColumnHelper`、`ColumnDef`、`Column` など）ではどこでも、メタの型が `typeof features` から推論されます。ジェネリクスを追加で受け渡す必要はありません。
 
 ```ts
 const columnHelper = createColumnHelper<typeof features, Person>()
@@ -93,13 +93,13 @@ table.options.meta?.updateData // ✅ (rowIndex, columnId, value) => void
 column.columnDef.meta?.filterVariant // ✅ 'text' | 'range' | 'select' | undefined
 ```
 
-Unlike the v8-style declaration merging described below, this scoping is **per-table, not global**: only tables created with this `features` object get these meta types. Different tables in your app can declare entirely different meta shapes by using different `features` objects.
+後述する v8 方式の宣言のマージと違い、この方法の範囲は**グローバルではなくテーブルごと**です。この `features` オブジェクトで作ったテーブルだけが、これらのメタの型を持ちます。アプリ内の別々のテーブルで、別々の `features` オブジェクトを使えば、まったく異なるメタの形を宣言できます。
 
-### How the Type-Only Slots Work {#how-the-type-only-slots-work}
+### 型専用スロットの仕組み {#how-the-type-only-slots-work}
 
-The `tableMeta` and `columnMeta` keys are _phantom_ entries. Only their TypeScript types matter. At runtime, the value is an empty object that gets stripped from the table's registered features, so it is never treated as a real feature. The actual meta _values_ are still passed where they always were: the `meta` table option and the `meta` property on column definitions.
+`tableMeta` と `columnMeta` のキーは、_ファントム_（型の上にだけ存在する）エントリーです。意味を持つのは TypeScript の型だけです。実行時の値は空のオブジェクトで、テーブルに登録された機能からは取り除かれるため、本物の機能として扱われることはありません。実際のメタの _値_ は、これまでどおりの場所、つまり `meta` テーブルオプションと列定義の `meta` プロパティに渡します。
 
-`metaHelper<MyMeta>()` simply returns `{}` cast to your meta type. You can write the cast yourself instead:
+`metaHelper<MyMeta>()` は、`{}` をメタの型にキャストして返すだけです。キャストを自分で書いてもかまいません。
 
 ```ts
 const features = tableFeatures({
@@ -109,13 +109,13 @@ const features = tableFeatures({
 })
 ```
 
-Both forms are equivalent. Prefer `metaHelper`. It reads as type-only at a glance, and it avoids false positives from the `@typescript-eslint/no-unnecessary-type-assertion` lint rule, which flags the `{} as` form when your meta type has only optional properties (and whose auto-fix would silently erase your meta type).
+どちらの書き方も同じ意味ですが、`metaHelper` を使うことをおすすめします。ひと目で型専用だと読み取れるうえ、`@typescript-eslint/no-unnecessary-type-assertion` という lint ルールの誤検知を避けられるからです。このルールは、メタの型がオプショナルなプロパティしか持たないときに `{} as` の書き方を指摘し、自動修正を適用するとメタの型が黙って消えてしまいます。
 
-## Filter Meta (`filterMeta` Slot) {#filter-meta-filtermeta-slot}
+## フィルターのメタ（`filterMeta` スロット） {#filter-meta-filtermeta-slot}
 
-The `filterMeta` slot lets you declare the shape of arbitrary metadata that a custom filter function attaches to a row during filtering. This is most useful for filter functions that produce a by-product (such as a ranking score) that you want to read in a column's sort function or cell renderer.
+`filterMeta` スロットを使うと、カスタムのフィルター関数がフィルタリング中に行へ付け加える任意のメタデータの形を宣言できます。とくに役立つのは、フィルター関数が副産物（ランキングのスコアなど）を生み出し、それを列のソート関数やセルのレンダラーで読みたい場合です。
 
-The pattern mirrors `tableMeta` and `columnMeta`: declare your meta interface, register it with `metaHelper`, and then intersect `TableFeatures` with your meta type when annotating your filter and sort functions.
+やり方は `tableMeta` や `columnMeta` と同じです。メタのインターフェースを宣言し、`metaHelper` で登録してから、フィルター関数やソート関数に型注釈を付けるときに `TableFeatures` とメタの型を交差させます。
 
 ```ts
 import {
@@ -185,15 +185,15 @@ const features = tableFeatures({
 ```
 
 > [!NOTE]
-> the `filterFns` and `sortFns` slots above register only the functions this table uses. The full built-in registries (`filterFns`, `sortFns`, `aggregationFns` exported from the package) can still be spread into these slots, but they are deprecated because they put every built-in function in your bundle. Import individual functions such as `sortFn_alphanumeric` instead, or pass functions directly in your column definitions.
+> 上の `filterFns` スロットと `sortFns` スロットには、このテーブルで使う関数だけを登録しています。パッケージからエクスポートされている組み込みの登録一式（`filterFns`、`sortFns`、`aggregationFns`）を展開してこれらのスロットに入れることもまだできますが、すべての組み込み関数がバンドルに含まれてしまうため非推奨です。代わりに `sortFn_alphanumeric` のような個別の関数をインポートするか、列定義に関数を直接渡してください。
 
-Now `columnFiltersMeta` on every row is typed as `FuzzyFilterMeta` for tables built from this `features` object. The `filterMeta` slot is, like `tableMeta` and `columnMeta`, a phantom type-only entry. `metaHelper<FuzzyFilterMeta>()` returns `{}` at runtime and is stripped from the registered features.
+これで、この `features` オブジェクトから作ったテーブルでは、各行の `columnFiltersMeta` の型が `FuzzyFilterMeta` になります。`filterMeta` スロットも、`tableMeta` や `columnMeta` と同じく型専用のファントムエントリーです。`metaHelper<FuzzyFilterMeta>()` は実行時には `{}` を返し、登録された機能からは取り除かれます。
 
-See the [React filters-fuzzy example](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy) for a complete, runnable implementation.
+そのまま動く完全な実装は、[React の filters-fuzzy サンプル](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy) を参照してください。
 
-## Typing Meta Globally with Declaration Merging (v8 Style) {#typing-meta-globally-with-declaration-merging-v8-style}
+## 宣言のマージでメタにグローバルに型を付ける（v8 方式） {#typing-meta-globally-with-declaration-merging-v8-style}
 
-The v8 approach of extending the `TableMeta` and `ColumnMeta` interfaces with module augmentation still works in v9. The only change from v8 is the generics shape: `TFeatures` is now the first type parameter on both interfaces.
+モジュール拡張で `TableMeta` と `ColumnMeta` のインターフェースを拡張する v8 のやり方は、v9 でも使えます。v8 からの変更点はジェネリクスの形だけで、どちらのインターフェースでも `TFeatures` が最初の型パラメーターになりました。
 
 ```ts
 import type { CellData, RowData, TableFeatures } from '@tanstack/react-table'
@@ -214,10 +214,10 @@ declare module '@tanstack/react-table' {
 ```
 
 
-The trade-off with declaration merging is that it is **global**. Every table in your entire project gets the same meta types, whether or not a given table actually provides that meta. If you have many tables with different needs, the per-table slots above are a better fit.
+宣言のマージの欠点は、それが**グローバル**であることです。あるテーブルが実際にそのメタを渡しているかどうかにかかわらず、プロジェクト全体のすべてのテーブルが同じメタの型を持ちます。必要なものが異なるテーブルがたくさんある場合は、先に説明したテーブルごとのスロットのほうが適しています。
 
-The two approaches resolve with a simple precedence: if a `features` object declares a `tableMeta` or `columnMeta` slot, that slot's type is used for tables created with those features, _replacing_ (not merging with) the globally declared interface. Tables whose features declare no slot fall back to the declaration-merged interfaces.
+2つのやり方は、単純な優先順位で解決されます。`features` オブジェクトが `tableMeta` か `columnMeta` のスロットを宣言していれば、その機能で作ったテーブルにはそのスロットの型が使われ、グローバルに宣言したインターフェースは（マージされずに）_置き換えられ_ ます。機能にスロットを宣言していないテーブルは、宣言のマージで定義したインターフェースを使います。
 
-## When to Use Custom Features Instead {#when-to-use-custom-features-instead}
+## 代わりにカスタム機能を使うべきとき {#when-to-use-custom-features-instead}
 
-Meta is intentionally simple: a typed bag of values you carry through the table. If you find yourself wanting real table _options_ with defaults, new _state_, or new _APIs_ on the table instance (e.g. `table.toggleDensity()`), consider writing a [custom feature](../framework/react/guide/custom-features) instead. Custom features plug into the same `features` option, get the same `typeof features` type inference, and can declare their own options, state, and instance methods. Meta was never designed to do any of that.
+メタは意図的にシンプルにしてあります。テーブルを通じて持ち回る、型付きの値の入れ物です。デフォルト値を持つ本物のテーブル _オプション_ や、新しい _状態_、テーブルインスタンス上の新しい _API_（`table.toggleDensity()` など）がほしくなったら、代わりに [カスタム機能](../framework/react/guide/custom-features) を書くことを検討してください。カスタム機能は同じ `features` オプションに組み込まれ、同じように `typeof features` から型が推論され、独自のオプション、状態、インスタンスメソッドを宣言できます。メタは、そうしたことをするためには作られていません。

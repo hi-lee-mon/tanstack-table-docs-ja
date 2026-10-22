@@ -7,9 +7,9 @@ title: LegacyHeader
 type LegacyHeader<TData, TValue> = Header<LegacyFeatures, TData, TValue>;
 ```
 
-Defined in: [src/useLegacyTable.ts:329](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L329)
+定義元: [src/useLegacyTable.ts:329](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L329)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
@@ -19,6 +19,6 @@ Defined in: [src/useLegacyTable.ts:329](https://github.com/TanStack/table/blob/m
 
 `TValue` = `unknown`
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-Use Header<TFeatures, TData, TValue> with useTable instead.
+代わりに、useTable と Header<TFeatures, TData, TValue> を使ってください。

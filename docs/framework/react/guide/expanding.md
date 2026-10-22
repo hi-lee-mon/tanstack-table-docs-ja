@@ -1,16 +1,16 @@
 ---
-title: Expanding (React) Guide
+title: 展開（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Expanding](https://tanstack.com/table/latest/docs/framework/react/examples/expanding)
+- [展開](https://tanstack.com/table/latest/docs/framework/react/examples/expanding)
 
-### Expanding Setup {#expanding-setup}
+### 展開のセットアップ {#expanding-setup}
 
-Here's how you set up your table to use expanding features. Adding the expanding feature enables the related APIs. If you use client-side expanding, also set up `expandedRowModel` after its feature, since row model slots are type-checked.
+展開の機能を使うためのテーブルのセットアップ方法は次のとおりです。展開の機能を追加すると、関連する API が使えるようになります。クライアントサイドの展開を使う場合は、`expandedRowModel` も機能の後に設定してください。行モデルのスロットは型チェックされるためです。
 
 ```tsx
 import {
@@ -33,20 +33,20 @@ const table = useTable({
 })
 ```
 
-## Expanding Feature (React) Guide {#expanding-feature-react-guide}
+## 展開機能（React）ガイド {#expanding-feature-react-guide}
 
-Expanding is a feature that allows you to show and hide additional rows of data related to a specific row. This can be useful in cases where you have hierarchical data and you want to allow users to drill down into the data from a higher level. Or it can be useful for showing additional information related to a row.
+展開は、特定の行に関連する追加の行データを表示したり隠したりできる機能です。階層構造のデータがあり、ユーザーに上位の階層から詳細へと掘り下げてもらいたい場合に役立ちます。また、行に関連する追加情報を表示したい場合にも便利です。
 
-### Different use cases for Expanding Features {#different-use-cases-for-expanding-features}
+### 展開機能のさまざまな使い方 {#different-use-cases-for-expanding-features}
 
-There are multiple use cases for expanding features in TanStack Table that will be discussed below.
+TanStack Table の展開機能には複数の使い方があります。以下ではそれぞれを説明します。
 
-1. Expanding sub-rows (child rows, aggregate rows, etc.)
-2. Expanding custom UI (detail panels, sub-tables, etc.)
+1. サブ行（子の行、集計行など）を展開する
+2. 独自の UI（詳細パネル、サブテーブルなど）を展開する
 
-### Enable Client-Side Expanding {#enable-client-side-expanding}
+### クライアントサイドの展開を有効にする {#enable-client-side-expanding}
 
-To use the client-side expanding features, add the `rowExpandingFeature` and the `expandedRowModel` factory to your features:
+クライアントサイドの展開機能を使うには、`rowExpandingFeature` と `expandedRowModel` のファクトリーを features に追加します。
 
 ```ts
 import {
@@ -67,13 +67,13 @@ const table = useTable({
 })
 ```
 
-Expanded data can either contain table rows or any other data you want to display. We will discuss how to handle both cases in this guide.
+展開されるデータには、テーブルの行を入れることも、表示したい任意のデータを入れることもできます。このガイドでは、両方の場合の扱い方を説明します。
 
-### Table rows as expanded data {#table-rows-as-expanded-data}
+### 展開データとしてのテーブルの行 {#table-rows-as-expanded-data}
 
-Expanded rows are child rows that inherit the same column structure as their parent rows. If your data object already includes expanded row data, use the `getSubRows` function to specify these child rows. If your data object does not contain expanded row data, it can be treated as custom expanded data, which is discussed in the next section.
+展開される行は、親の行と同じ列構造を受け継ぐ子の行です。データオブジェクトに展開用の行データがすでに含まれている場合は、`getSubRows` 関数でその子の行を指定します。データオブジェクトに展開用の行データが含まれていない場合は、独自の展開データとして扱えます。これは次の節で説明します。
 
-For example, if you have a data object like this:
+たとえば、次のようなデータオブジェクトがあるとします。
 
 ```ts
 type Person = {
@@ -102,7 +102,7 @@ const data: Person[] = [
 ]
 ```
 
-Then you can use the getSubRows function to return the children array in each row as expanded rows. The table instance will now understand where to look for the sub rows on each row.
+この場合、getSubRows 関数を使って、各行の children 配列を展開される行として返せます。これでテーブルインスタンスは、各行のどこにサブ行があるかを把握できます。
 
 ```ts
 const table = useTable({
@@ -113,13 +113,13 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> You can have a complicated `getSubRows` function, but keep in mind that it will run for every row and every sub-row. This can be expensive if the function is not optimized. Async functions are not supported.
+> `getSubRows` 関数は複雑にしてもかまいません。ただし、この関数はすべての行とすべてのサブ行に対して実行される点に注意してください。関数が最適化されていないと、処理が重くなるおそれがあります。非同期関数はサポートされていません。
 
-### Custom Expanding UI {#custom-expanding-ui}
+### 独自の展開 UI {#custom-expanding-ui}
 
-In some cases, you may wish to show extra details or information, which may or may not be part of your table data object, such as expanded data for rows. This kind of expanding row UI has gone by many names over the years including "expandable rows", "detail panels", "sub-components", etc.
+場合によっては、行の展開データのように、追加の詳細や情報を表示したいことがあります。その情報はテーブルのデータオブジェクトに含まれていることも、含まれていないこともあります。こうした行を展開する UI は、これまで「展開可能な行（expandable rows）」「詳細パネル（detail panels）」「サブコンポーネント（sub-components）」など、さまざまな名前で呼ばれてきました。
 
-By default, the `row.getCanExpand()` row instance API will return false unless it finds `subRows` on a row. This can be overridden by implementing your own `getRowCanExpand` function in the table instance options.
+デフォルトでは、行インスタンスの API である `row.getCanExpand()` は、行に `subRows` がない限り false を返します。この動作は、テーブルインスタンスのオプションで独自の `getRowCanExpand` 関数を実装すると上書きできます。
 
 ```tsx
 import { Fragment } from 'react'
@@ -157,9 +157,9 @@ const table = useTable({
 //...
 ```
 
-### Expanded rows state {#expanded-rows-state}
+### 展開された行の状態 {#expanded-rows-state}
 
-If you need access to the expanded state of the rows in other parts of your application, you can own the `expanded` state slice yourself. The recommended way in v9 is an external atom passed through the `atoms` table option. Atoms preserve fine-grained subscriptions, and the expanded value can be read anywhere in your app without forcing the component that owns the table to re-render.
+アプリケーションのほかの場所で行の展開状態を参照したい場合は、`expanded` の状態のスライスを自分で管理できます。v9 で推奨される方法は、外部のアトムを `atoms` テーブルオプションで渡すことです。アトムは細かい粒度の購読を保ちます。そのため、テーブルを持つコンポーネントを再レンダーさせることなく、アプリのどこからでも展開状態の値を読み取れます。
 
 ```ts
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -178,7 +178,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.expanded` plus `onExpandedChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+あるいは、v8 スタイルの `state.expanded` と `onExpandedChange` を組み合わせるパターンも引き続きサポートされています。単純な組み込みや v8 のコードを移行する場合には便利ですが、外部のアトムに比べると購読の粒度は粗くなります。詳しい比較は[テーブルの状態ガイド](./table-state)を参照してください。
 
 ```ts
 const [expanded, setExpanded] = useState<ExpandedState>({})
@@ -193,17 +193,17 @@ const table = useTable({
 })
 ```
 
-The ExpandedState type is defined as follows:
+ExpandedState 型は次のように定義されています。
 
 ```ts
 type ExpandedState = true | Record<string, boolean>
 ```
 
-If the ExpandedState is true, it means all rows are expanded. If it's a record, only the rows whose IDs are present as keys in the record and have a value of true are expanded. For example, if the expanded state is { row1: true, row2: false }, it means the row with ID row1 is expanded and the row with ID row2 is not expanded. This state is used by the table to determine which rows are expanded and should display their subRows, if any.
+ExpandedState が true の場合は、すべての行が展開されていることを意味します。レコードの場合は、ID がレコードのキーとして存在し、値が true の行だけが展開されます。たとえば展開状態が { row1: true, row2: false } であれば、ID が row1 の行は展開され、ID が row2 の行は展開されていないことを意味します。テーブルはこの状態を使って、どの行が展開されていて、サブ行（subRows）があればそれを表示すべきかを判断します。
 
-### UI toggling handler for expanded rows {#ui-toggling-handler-for-expanded-rows}
+### 展開された行を切り替える UI のハンドラー {#ui-toggling-handler-for-expanded-rows}
 
-TanStack table will not add a toggling handler UI for expanded data to your table. You should manually add it within each row's UI to allow users to expand and collapse the row. For example, you can add a button UI within the column definition.
+TanStack Table は、展開データを切り替えるための UI のハンドラーをテーブルに追加しません。ユーザーが行を展開したり折りたたんだりできるように、各行の UI に自分で追加する必要があります。たとえば、列定義の中にボタンの UI を追加できます。
 
 ```tsx
 const columns = [
@@ -233,9 +233,9 @@ const columns = [
 ]
 ```
 
-### Expanding APIs {#expanding-apis}
+### 展開の API {#expanding-apis}
 
-Rows expose helpers for reading and toggling their expanded state:
+行には、展開状態を読み取ったり切り替えたりするためのヘルパーがあります。
 
 ```tsx
 row.getCanExpand()
@@ -245,7 +245,7 @@ row.getToggleExpandedHandler()
 row.toggleExpanded()
 ```
 
-The table instance exposes helpers for reading and toggling aggregate expanded state:
+テーブルインスタンスには、テーブル全体の展開状態を読み取ったり切り替えたりするためのヘルパーがあります。
 
 ```tsx
 table.getCanSomeRowsExpand()
@@ -257,11 +257,11 @@ table.toggleAllRowsExpanded()
 table.resetExpanded()
 ```
 
-Use `table.setExpanded` to update the expanded state directly. `table.resetExpanded()` resets to `initialState.expanded`, while `table.resetExpanded(true)` clears the expanded state.
+展開状態を直接更新するには `table.setExpanded` を使います。`table.resetExpanded()` は `initialState.expanded` に戻し、`table.resetExpanded(true)` は展開状態を空にします。
 
-### Filtering Expanded Rows {#filtering-expanded-rows}
+### 展開された行のフィルタリング {#filtering-expanded-rows}
 
-By default, filtering starts from the parent rows and moves downwards. If a parent row is excluded by the filter, all of its child rows are excluded too. You can change this with the `filterFromLeafRows` option. When it is enabled, filtering starts from the leaf (child) rows and moves upwards, so a parent row is included in the filtered results as long as at least one of its child or grandchild rows meets the filter criteria. The `maxLeafRowFilterDepth` option sets the maximum depth of child rows that the filter considers.
+デフォルトでは、フィルタリングは親の行から始まり、下の階層へと進みます。親の行がフィルターで除外されると、その子の行もすべて除外されます。この動作は `filterFromLeafRows` オプションで変更できます。有効にすると、フィルタリングは末端の（子の）行から始まり、上の階層へと進みます。そのため、子や孫の行のうち少なくとも1つがフィルターの条件を満たしていれば、親の行もフィルタリングの結果に含まれます。`maxLeafRowFilterDepth` オプションでは、フィルターが対象とする子の行の最大の深さを設定します。
 
 ```ts
 const features = tableFeatures({
@@ -282,9 +282,9 @@ const table = useTable({
 })
 ```
 
-### Paginating Expanded Rows {#paginating-expanded-rows}
+### 展開された行のページネーション {#paginating-expanded-rows}
 
-By default, expanded rows are paginated along with the rest of the table (which means expanded rows may span multiple pages). If you want to disable this behavior (which means expanded rows will always render on their parent's page. This also means more rows will be rendered than the set page size) you can use the `paginateExpandedRows` option.
+デフォルトでは、展開された行もテーブルのほかの行と一緒にページ分けされます（つまり、展開された行が複数のページにまたがることがあります）。この動作を無効にしたい場合は、`paginateExpandedRows` オプションを使います（無効にすると、展開された行は常に親と同じページに描画されます。その分、設定したページサイズより多くの行が描画されることになります）。
 
 ```ts
 const table = useTable({
@@ -294,19 +294,19 @@ const table = useTable({
 })
 ```
 
-### Pinning Expanded Rows {#pinning-expanded-rows}
+### 展開された行の固定 {#pinning-expanded-rows}
 
-Pinning expanded rows works the same way as pinning regular rows. You can pin expanded rows to the top or bottom of the table. Please refer to the [Row Pinning Guide](./row-pinning) for more information on row pinning.
+展開された行の固定は、通常の行の固定と同じように動作します。展開された行をテーブルの上端や下端に固定できます。行の固定について詳しくは、[行の固定ガイド](./row-pinning)を参照してください。
 
-### Sorting Expanded Rows {#sorting-expanded-rows}
+### 展開された行のソート {#sorting-expanded-rows}
 
-By default, expanded rows are sorted along with the rest of the table.
+デフォルトでは、展開された行もテーブルのほかの行と一緒にソートされます。
 
-### Auto Reset Expanded State {#auto-reset-expanded-state}
+### 展開状態の自動リセット {#auto-reset-expanded-state}
 
-If you are also using the grouping feature, the `expanded` state is automatically reset whenever the grouped row model recomputes, such as when the `data` or the grouping state changes. This default is automatically disabled when `manualExpanding` is `true`, but it can be overridden by explicitly assigning a boolean value to the `autoResetExpanded` table option. There is also a global `autoResetAll` table option that disables (or enables) every auto-reset behavior at once.
+グループ化の機能も使っている場合、`expanded` の状態は、グループ化された行モデルが計算し直されるたびに自動でリセットされます。たとえば `data` やグループ化の状態が変わったときです。このデフォルトの動作は `manualExpanding` が `true` のときには自動で無効になりますが、`autoResetExpanded` テーブルオプションに真偽値を明示的に指定すれば上書きできます。また、すべての自動リセットの動作をまとめて無効に（または有効に）する、グローバルな `autoResetAll` テーブルオプションもあります。
 
-A common reason to set `autoResetExpanded: false` is editing data while viewing the table (for example, inline cell editing). Every edit updates `data`, which recomputes the row models and would otherwise collapse the user's expanded rows. If you also use the pagination feature, pair it with `autoResetPageIndex: false` so the current page is kept as well.
+`autoResetExpanded: false` を設定するよくある理由は、テーブルを表示したままデータを編集する場合（たとえばセルのインライン編集）です。編集のたびに `data` が更新されて行モデルが計算し直されるため、何もしないとユーザーが展開していた行が折りたたまれてしまいます。ページネーションの機能も使っている場合は、`autoResetPageIndex: false` も組み合わせて、現在のページも保たれるようにしてください。
 
 ```ts
 const table = useTable({
@@ -317,9 +317,9 @@ const table = useTable({
 })
 ```
 
-### Manual Expanding (server-side) {#manual-expanding-server-side}
+### 手動の展開（サーバーサイド） {#manual-expanding-server-side}
 
-If you are doing server-side expansion, you can enable manual row expansion by setting the manualExpanding option to true. This means that the `getExpandedRowModel` will not be used to expand rows and you would be expected to perform the expansion in your own data model.
+サーバーサイドで展開を行う場合は、manualExpanding オプションを true に設定して、行の手動展開を有効にできます。この場合、行の展開に `getExpandedRowModel` は使われず、展開は自分のデータモデルの中で行う必要があります。
 
 ```ts
 const features = tableFeatures({ rowExpandingFeature })

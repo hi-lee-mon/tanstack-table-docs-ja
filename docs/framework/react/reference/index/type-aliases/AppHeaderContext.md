@@ -7,12 +7,12 @@ title: AppHeaderContext
 type AppHeaderContext<TFeatures, TData, TValue, THeaderComponents> = object;
 ```
 
-Defined in: [src/createTableHook.tsx:67](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L67)
+定義元: [src/createTableHook.tsx:67](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L67)
 
-Enhanced HeaderContext with pre-bound header components.
-The `header` property includes the registered headerComponents.
+ヘッダーコンポーネントがあらかじめ結び付けられた、拡張版の HeaderContext です。
+`header` プロパティには、登録した headerComponents が含まれます。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -30,7 +30,7 @@ The `header` property includes the registered headerComponents.
 
 `THeaderComponents` *extends* `Record`\<`string`, `ComponentType`\<`any`\>\>
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### column {#column}
 
@@ -38,7 +38,7 @@ The `header` property includes the registered headerComponents.
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [src/createTableHook.tsx:73](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L73)
+定義元: [src/createTableHook.tsx:73](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L73)
 
 ***
 
@@ -48,9 +48,9 @@ Defined in: [src/createTableHook.tsx:73](https://github.com/TanStack/table/blob/
 header: Header<TFeatures, TData, TValue> & THeaderComponents & object;
 ```
 
-Defined in: [src/createTableHook.tsx:74](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L74)
+定義元: [src/createTableHook.tsx:74](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L74)
 
-#### Type Declaration {#type-declaration}
+#### 型宣言 {#type-declaration}
 
 ##### FlexRender {#flexrender}
 
@@ -58,7 +58,7 @@ Defined in: [src/createTableHook.tsx:74](https://github.com/TanStack/table/blob/
 FlexRender: () => ReactNode;
 ```
 
-###### Returns {#returns}
+###### 戻り値 {#returns}
 
 `ReactNode`
 
@@ -70,4 +70,4 @@ FlexRender: () => ReactNode;
 table: Table<TFeatures, TData>;
 ```
 
-Defined in: [src/createTableHook.tsx:76](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L76)
+定義元: [src/createTableHook.tsx:76](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L76)

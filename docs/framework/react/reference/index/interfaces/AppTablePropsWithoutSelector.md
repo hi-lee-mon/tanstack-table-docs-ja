@@ -3,11 +3,11 @@ id: AppTablePropsWithoutSelector
 title: AppTablePropsWithoutSelector
 ---
 
-Defined in: [src/createTableHook.tsx:379](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L379)
+定義元: [src/createTableHook.tsx:379](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L379)
 
-Props for AppTable component - without selector
+AppTable コンポーネントの props です（selector なし）。
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### children {#children}
 
@@ -15,7 +15,7 @@ Props for AppTable component - without selector
 children: ReactNode;
 ```
 
-Defined in: [src/createTableHook.tsx:380](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L380)
+定義元: [src/createTableHook.tsx:380](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L380)
 
 ***
 
@@ -25,4 +25,4 @@ Defined in: [src/createTableHook.tsx:380](https://github.com/TanStack/table/blob
 optional selector?: undefined;
 ```
 
-Defined in: [src/createTableHook.tsx:381](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L381)
+定義元: [src/createTableHook.tsx:381](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L381)

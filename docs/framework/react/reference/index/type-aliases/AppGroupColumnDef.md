@@ -7,11 +7,11 @@ title: AppGroupColumnDef
 type AppGroupColumnDef<TFeatures, TData, TCellComponents, THeaderComponents> = Omit<GroupColumnDef<TFeatures, TData, unknown>, "cell" | "header" | "footer" | "columns"> & object;
 ```
 
-Defined in: [src/createTableHook.tsx:139](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L139)
+定義元: [src/createTableHook.tsx:139](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L139)
 
-Enhanced group column definition with pre-bound components.
+コンポーネントをあらかじめ結び付けた、拡張版のグループ列定義です。
 
-## Type Declaration {#type-declaration}
+## 型宣言 {#type-declaration}
 
 ### cell? {#cell}
 
@@ -37,7 +37,7 @@ optional footer?: AppColumnDefTemplate<AppHeaderContext<TFeatures, TData, unknow
 optional header?: AppColumnDefTemplate<AppHeaderContext<TFeatures, TData, unknown, THeaderComponents>>;
 ```
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 

@@ -7,12 +7,11 @@ title: SubscribePropsWithStore
 type SubscribePropsWithStore<TFeatures, TSelected> = object;
 ```
 
-Defined in: [src/Subscribe.ts:20](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L20)
+定義元: [src/Subscribe.ts:20](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L20)
 
-Subscribe to `table.store` (full table state). The selector receives the full
-TableState.
+`table.store`（テーブルの状態全体）を購読します。セレクターは TableState 全体を受け取ります。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -22,7 +21,7 @@ TableState.
 
 `TSelected`
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### children {#children}
 
@@ -30,7 +29,7 @@ TableState.
 children: ((state) => ReactNode) | ReactNode;
 ```
 
-Defined in: [src/Subscribe.ts:33](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L33)
+定義元: [src/Subscribe.ts:33](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L33)
 
 ***
 
@@ -40,21 +39,19 @@ Defined in: [src/Subscribe.ts:33](https://github.com/TanStack/table/blob/main/pa
 selector: (state) => TSelected;
 ```
 
-Defined in: [src/Subscribe.ts:32](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L32)
+定義元: [src/Subscribe.ts:32](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L32)
 
-Select from full table state. Re-renders when the selected value changes
-(shallow compare).
+テーブルの状態全体から値を選び出します。選んだ値が変わると（浅い比較で判定）再レンダーします。
 
-Required in store mode so you never accidentally subscribe to the whole
-store without an explicit projection.
+明示的に値を選び出さないまま、うっかりストア全体を購読してしまうことがないように、ストアモードでは必須です。
 
-#### Parameters {#parameters}
+#### パラメーター {#parameters}
 
 ##### state {#state}
 
 `TableState`\<`TFeatures`\>
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 `TSelected`
 
@@ -66,4 +63,4 @@ store without an explicit projection.
 source: SubscribeSource<TableState<TFeatures>>;
 ```
 
-Defined in: [src/Subscribe.ts:24](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L24)
+定義元: [src/Subscribe.ts:24](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L24)

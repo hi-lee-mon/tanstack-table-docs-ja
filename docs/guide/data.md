@@ -1,22 +1,22 @@
 ---
-title: Data Guide
+title: データガイド
 ---
 
-Tables start with your data. Your column definitions and rows will depend on the shape of your data. TanStack Table has some TypeScript features that will help you create the rest of your table code with a great type-safe experience. If you set up your data and types correctly, TanStack Table will be able to infer the shape of your data and enforce that your column definitions are made correctly.
+テーブルはデータから始まります。列定義と行は、データの形に左右されます。TanStack Table には、残りのテーブルのコードを型安全に、快適に書くための TypeScript の機能がいくつかあります。データと型を正しく設定すれば、TanStack Table はデータの形を推論し、列定義が正しく書かれていることを型で保証できます。
 
 ## TypeScript {#typescript}
 
-TypeScript is NOT required to use the TanStack Table packages... **_BUT_** TanStack Table is written and organized in such a way that makes the awesome TypeScript experience that you get feel like it is one of the main selling points of the library. If you are not using TypeScript, you will be missing out on a lot of great autocompletion and type-checking features that will both speed up your development time and reduce the number of bugs in your code.
+TanStack Table のパッケージを使うのに TypeScript は必須ではありません。**_しかし_**、TanStack Table は、TypeScript での優れた開発体験がライブラリの大きな売りの1つだと感じられるように書かれ、構成されています。TypeScript を使わないと、優れた自動補完や型チェックの機能の多くを逃すことになります。これらは開発時間を短縮し、コードのバグも減らしてくれます。
 
-### TypeScript Generics {#typescript-generics}
+### TypeScript のジェネリクス {#typescript-generics}
 
-Having a basic understanding of what TypeScript Generics are and how they work will help you understand this guide better, but it should be easy enough to pick up as you go. The official [TypeScript Generics Docs](https://www.typescriptlang.org/docs/handbook/2/generics.html) may be helpful for those not yet familiar with TypeScript.
+TypeScript のジェネリクスとは何か、どう動くのかを基本的に理解していると、このガイドがより分かりやすくなります。ただ、読み進めながらでも十分に身に付くはずです。TypeScript にまだ慣れていない方には、公式の [TypeScript ジェネリクスのドキュメント](https://www.typescriptlang.org/docs/handbook/2/generics.html)が役立つかもしれません。
 
-### Defining Data Types {#defining-data-types}
+### データの型を定義する {#defining-data-types}
 
-`data` is an array of objects that will be turned into the rows of your table. Each object in the array represents a row of data (under normal circumstances). If you are using TypeScript, we usually define a type for the shape of our data. This type is used as a generic type for all of the other table, column, row, and cell instances. This generic is usually referred to as `TData` throughout the rest of the TanStack Table types and APIs.
+`data` は、テーブルの行に変換されるオブジェクトの配列です。配列内の各オブジェクトは、（通常は）1行分のデータを表します。TypeScript を使う場合は、たいていデータの形を表す型を定義します。この型は、テーブル・列・行・セルの各インスタンスすべてのジェネリクスの型として使われます。TanStack Table の型や API の他の箇所では、このジェネリクスはふつう `TData` と呼ばれます。
 
-For example, if we have a table that displays a list of users in an array like this:
+たとえば、次のような配列でユーザーの一覧を表示するテーブルがあるとします。
 
 ```json
 [
@@ -39,7 +39,7 @@ For example, if we have a table that displays a list of users in an array like t
 ]
 ```
 
-Then we can define a User (TData) type like this:
+このとき、User（TData）型は次のように定義できます。
 
 ```ts
 //TData
@@ -53,7 +53,7 @@ type User = {
 }
 ```
 
-We can then define our `data` array with this type, and then TanStack Table will be able to intelligently infer lots of types for us later on in our columns, rows, cells, etc. This is because the `data` type is literally defined as the `TData` generic type. Whatever you pass to the `data` table option will become the `TData` type for the rest of the table instance. Just make sure your column definitions use the same `TData` type as the `data` type when you define them later.
+この型で `data` 配列を定義すれば、後で列・行・セルなどを扱うときに、TanStack Table が多くの型を賢く推論してくれます。`data` の型が、文字どおり `TData` ジェネリクスの型として定義されているからです。`data` テーブルオプションに渡したものが、そのテーブルインスタンス全体の `TData` 型になります。後で列定義を書くときは、`data` の型と同じ `TData` 型を使うようにしてください。
 
 ```ts
 //note: data needs a "stable" reference to prevent wasteful re-computation (more on this below)
@@ -65,11 +65,11 @@ const data = ref<Array<User>>([]) //vue
 //etc...
 ```
 
-### Deep Keyed Data {#deep-keyed-data}
+### 深いキーを持つデータ {#deep-keyed-data}
 
-If your data is not a nice flat array of objects, that's okay! Once you get around to defining your columns, there are strategies for accessing deeply nested data in your accessors.
+データがきれいでフラットなオブジェクトの配列でなくても大丈夫です。列を定義する段階で、アクセサーから深くネストしたデータにアクセスする方法があります。
 
-If your `data` looks something like this:
+`data` が次のような形だとします。
 
 ```json
 [
@@ -96,7 +96,7 @@ If your `data` looks something like this:
 ]
 ```
 
-You can define a type like this:
+型は次のように定義できます。
 
 ```ts
 type User = {
@@ -111,7 +111,7 @@ type User = {
 }
 ```
 
-And you will be able to access the data in your column definitions with either dot notation in an accessorKey or simply by using an accessorFn.
+そして、列定義では accessorKey のドット記法か、単に accessorFn を使ってデータにアクセスできます。
 
 ```ts
 const columns = [
@@ -131,16 +131,16 @@ const columns = [
 ]
 ```
 
-This is discussed in more detail in the [Column Def Guide](./column-defs).
+詳しくは[列定義ガイド](./column-defs)で説明しています。
 
 > [!NOTE]
-> The "keys" in your JSON data can usually be anything, but any periods in an `accessorKey` will be interpreted as a deep key path. If a key in your data contains a literal period, use an `accessorFn` to read it instead.
+> JSON データの「キー」はたいてい何でもかまいませんが、`accessorKey` の中のピリオドはすべて深いキーのパスとして解釈されます。データのキーにピリオドそのものが含まれる場合は、代わりに `accessorFn` で読み取ってください。
 
-### Nested Sub-Row Data {#nested-sub-row-data}
+### ネストしたサブ行のデータ {#nested-sub-row-data}
 
-If you are using expanding features, it can be common to have nested sub-rows in your data. This results in a recursive type that is a bit different.
+展開の機能を使う場合、データにネストしたサブ行が含まれるのはよくあることです。この場合、型は少し違った再帰的な型になります。
 
-So if your data looks like this:
+データが次のような形だとします。
 
 ```json
 [
@@ -166,7 +166,7 @@ So if your data looks like this:
 ]
 ```
 
-You can define a type like this:
+型は次のように定義できます。
 
 ```ts
 type User = {
@@ -176,11 +176,11 @@ type User = {
 }
 ```
 
-Where `subRows` is an optional array of `User` objects. This is discussed in more detail in the [Expanding Guide](../framework/react/guide/expanding).
+ここで `subRows` は、`User` オブジェクトの省略可能な配列です。詳しくは[展開ガイド](../framework/react/guide/expanding)で説明しています。
 
-### Data of Unknown Shape {#data-of-unknown-shape}
+### 形が分からないデータ {#data-of-unknown-shape}
 
-Sometimes you cannot write a row type at all because the shape of the data is not known ahead of time (arbitrary API responses, user-uploaded CSV files, user-configurable reports). In that case, type your rows as a generic record:
+データの形が前もって分からないため、行の型をまったく書けないこともあります（任意の API レスポンス、ユーザーがアップロードした CSV ファイル、ユーザーが設定できるレポートなど）。その場合は、行を汎用のレコードとして型付けします。
 
 ```ts
 type DynamicRow = Record<string, unknown>
@@ -188,23 +188,23 @@ type DynamicRow = Record<string, unknown>
 const data: Array<DynamicRow> = await fetchWhoKnowsWhat()
 ```
 
-You give up per-column value inference, but everything else still works. Column definitions are then generated from the data itself at runtime instead of being hard-coded. See [Dynamic Column Definitions](./column-defs#dynamic-column-definitions) in the Column Definitions Guide and the [Dynamic Columns example](https://tanstack.com/table/latest/docs/framework/react/examples/basic-dynamic-columns) (available for every framework adapter) for the full pattern, including runtime data type detection for sorting and filtering.
+列ごとの値の推論はできなくなりますが、それ以外はすべてこれまでどおり動きます。この場合、列定義はハードコードせず、実行時にデータそのものから生成します。ソートやフィルタリングのための実行時のデータ型の判定も含めた完全なパターンは、列定義ガイドの[動的な列定義](./column-defs#dynamic-column-definitions)と、[動的な列のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/basic-dynamic-columns)（すべてのフレームワークアダプター向けにあります）を参照してください。
 
-## Give Data a "Stable" Reference {#give-data-a-stable-reference}
+## データに「安定した」参照を持たせる {#give-data-a-stable-reference}
 
-The `data` and `columns` arrays that you pass to the table instance should have "stable" references to prevent wasteful re-computation and rendering bugs.
+テーブルインスタンスに渡す `data` と `columns` の配列は、「安定した」参照を持たせてください。無駄な再計算や描画のバグを防ぐためです。
 
-In v9, table state lives in TanStack Store atoms, and the table instance is only created once. Passing a new `data` or `columns` reference on every render will not, by itself, throw the table into the classic v8-style infinite re-render loop. However, the row models and column structures are memoized against the `data` and `columns` references, so an unstable reference still has real consequences:
+v9 では、テーブルの状態は TanStack Store のアトムに置かれ、テーブルインスタンスは一度しか作られません。描画のたびに新しい `data` や `columns` の参照を渡しても、それだけで v8 でおなじみの無限再レンダーループに陥ることはありません。しかし、行モデルや列の構造は `data` と `columns` の参照をもとにメモ化されているので、参照が不安定だと実際に次のような影響があります。
 
-- **Wasted re-computation.** A new `data` reference invalidates the core row model, so every row and cell object is rebuilt from scratch on every render (and any sorted, filtered, grouped, or paginated row models recompute right along with it). A new `columns` reference does the same for the column and header structures. For large datasets, this is a serious performance problem.
-- **Auto-reset render loops.** Features that automatically reset state when the rows are recalculated can still cause infinite re-render loops. For example, with client-side pagination enabled, `autoResetPageIndex` resets the page index whenever the row model recomputes. With an unstable `data` reference, that means a state update after every render, and each state update triggers another render with yet another new `data` reference.
+- **無駄な再計算。** `data` の参照が新しくなるとコア行モデルが無効になり、描画のたびにすべての行とセルのオブジェクトが一から作り直されます（ソート・フィルタリング・グループ化・ページネーションを適用した行モデルも、すべて一緒に再計算されます）。`columns` の参照が新しくなると、列とヘッダーの構造で同じことが起こります。大きなデータセットでは、深刻なパフォーマンスの問題になります。
+- **自動リセットによる描画のループ。** 行が再計算されたときに状態を自動でリセットする機能は、今でも無限再レンダーループを引き起こすことがあります。たとえば、クライアントサイドのページネーションを有効にしていると、`autoResetPageIndex` は行モデルが再計算されるたびにページ番号をリセットします。`data` の参照が不安定だと、描画のたびに状態が更新され、その更新がまた新しい `data` の参照を伴う描画を引き起こします。
 
-Either way, treat stable `data` and `columns` references as a requirement.
+いずれにしても、`data` と `columns` の参照が安定していることは必須だと考えてください。
 
 > [!NOTE]
-> When React Compiler successfully compiles a component, it can provide stable identities for values and calculations automatically. TanStack Table's examples keep the explicit patterns below so they also work without the compiler. See the [React Compiler Guide](../framework/react/guide/react-compiler) for when manual memoization can be removed.
+> React Compiler がコンポーネントのコンパイルに成功すると、値や計算に安定した同一性を自動で与えられます。TanStack Table のサンプルでは、コンパイラーがなくても動くように、以下の明示的なパターンを残しています。手動のメモ化を外せる場面については、[React Compiler ガイド](../framework/react/guide/react-compiler)を参照してください。
 
-How you do this depends on which framework adapter you are using, but in React, you should often use `React.useState`, `React.useMemo`, or similar to ensure that both the `data` and `columns` table options have stable references.
+方法は使っているフレームワークアダプターによって異なりますが、React では多くの場合、`React.useState` や `React.useMemo` などを使って、`data` と `columns` の両方のテーブルオプションが安定した参照を持つようにします。
 
 ```tsx
 const fallbackData: Array<User> = [] //✅ GOOD: stable empty fallback for when your data can be undefined (e.g. while a query loads)
@@ -235,9 +235,9 @@ export default function MyComponent() {
 }
 ```
 
-`React.useState` and `React.useMemo` are not the only ways to give your data a stable reference. You can also define your data outside of the component or use a 3rd party state management library like Redux, Zustand, or TanStack Query.
+データに安定した参照を持たせる方法は、`React.useState` と `React.useMemo` だけではありません。データをコンポーネントの外で定義したり、Redux、Zustand、TanStack Query といったサードパーティの状態管理ライブラリを使ったりすることもできます。
 
-The main thing to avoid is defining the `data` array inside the same scope as the `useTable` call. That will cause the `data` array to be redefined on every render, which forces the table to rebuild every row on every render (and can loop forever when auto-reset features are involved).
+何より避けるべきなのは、`useTable` の呼び出しと同じスコープで `data` 配列を定義することです。そうすると描画のたびに `data` 配列が定義し直され、テーブルは描画のたびにすべての行を作り直すことになります（自動リセットの機能が絡むと、無限にループすることもあります）。
 
 ```tsx
 export default function MyComponent() {
@@ -265,9 +265,9 @@ export default function MyComponent() {
 }
 ```
 
-### Memoize Data Transformations {#memoize-data-transformations}
+### データの変換をメモ化する {#memoize-data-transformations}
 
-Even if your source data already has a stable reference, transforming it inline destroys that stability. Something as simple as an inline `data.filter()` creates a brand new array on every render.
+元のデータがすでに安定した参照を持っていても、インラインで変換するとその安定性は失われます。インラインで `data.filter()` を書くだけでも、描画のたびに新しい配列が作られます。
 
 ```tsx
 export default function MyComponent() {
@@ -287,7 +287,7 @@ export default function MyComponent() {
 }
 ```
 
-Instead, always memoize your data transformations. In React, this can be done with `useMemo` or similar.
+代わりに、データの変換は必ずメモ化してください。React では `useMemo` などでメモ化できます。
 
 ```tsx
 export default function MyComponent() {
@@ -312,14 +312,14 @@ export default function MyComponent() {
 }
 ```
 
-See the [With TanStack Query example](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query) for a complete integration with fetched data.
+取得したデータとの完全な組み込み例は、[TanStack Query と組み合わせたサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query)を参照してください。
 
-## How TanStack Table Transforms Data {#how-tanstack-table-transforms-data}
+## TanStack Table がデータを変換する仕組み {#how-tanstack-table-transforms-data}
 
-Later, in other parts of these docs, you will see how TanStack Table processes the `data` that you pass to the table and generates the row and cell objects that are used to create the table. The `data` that you pass to the table is never mutated by TanStack Table, but the actual values in the rows and cells may be transformed by the accessors in your column definitions, or by other transformations performed by [row models](./row-models) like grouping or aggregation.
+このドキュメントの他の箇所では、TanStack Table がテーブルに渡された `data` をどう処理し、テーブルを作るのに使う行とセルのオブジェクトをどう生成するかを説明します。テーブルに渡した `data` を TanStack Table が書き換えることはありません。ただし、行やセルの実際の値は、列定義のアクセサーや、グループ化・集計といった[行モデル](./row-models)の変換によって変わることがあります。
 
-## How Much Data Can TanStack Table Handle? {#how-much-data-can-tanstack-table-handle}
+## TanStack Table はどれくらいのデータを扱えるか {#how-much-data-can-tanstack-table-handle}
 
-TanStack Table's client-side row models are built to handle large datasets, and the official examples include much larger stress tests. The practical limit depends on the payload, table features, rendering strategy, and target hardware, so test with representative data instead of choosing from row count alone.
+TanStack Table のクライアントサイドの行モデルは、大きなデータセットを扱えるように作られています。公式のサンプルには、もっと大規模な負荷テストも含まれています。実際の上限は、ペイロード、テーブルの機能、描画の方式、対象のハードウェアによって変わります。そのため、行数だけで決めず、実際に近いデータでテストしてください。
 
-See the [Client-Side vs Server-Side Guide](./client-side-vs-server-side) for the complete decision framework and the distinction between data processing, pagination, and virtualization.
+判断の枠組みの全体像と、データ処理・ページネーション・仮想化の違いについては、[クライアントサイドとサーバーサイドのガイド](./client-side-vs-server-side)を参照してください。

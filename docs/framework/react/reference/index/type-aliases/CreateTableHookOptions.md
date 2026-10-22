@@ -7,12 +7,12 @@ title: CreateTableHookOptions
 type CreateTableHookOptions<TFeatures, TTableComponents, TCellComponents, THeaderComponents> = Omit<TableOptions<TFeatures, any>, "columns" | "data" | "store" | "state" | "initialState"> & object;
 ```
 
-Defined in: [src/createTableHook.tsx:248](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L248)
+定義元: [src/createTableHook.tsx:248](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L248)
 
-Options for creating a table hook with pre-bound components and default table options.
-Extends all TableOptions except 'columns' | 'data' | 'store' | 'state' | 'initialState'.
+コンポーネントとテーブルオプションの既定値をあらかじめ結び付けたテーブルフックを作るためのオプションです。
+'columns' | 'data' | 'store' | 'state' | 'initialState' を除く、すべての TableOptions を継承します。
 
-## Type Declaration {#type-declaration}
+## 型宣言 {#type-declaration}
 
 ### cellComponents? {#cellcomponents}
 
@@ -20,11 +20,11 @@ Extends all TableOptions except 'columns' | 'data' | 'store' | 'state' | 'initia
 optional cellComponents?: TCellComponents;
 ```
 
-Cell-level components that need access to the cell instance.
-These are available on the cell object passed to AppCell's children.
-Use `useCellContext()` inside these components.
+セルインスタンスにアクセスする必要があるセル単位のコンポーネントです。
+AppCell の children に渡されるセルオブジェクトから使えます。
+これらのコンポーネントの中では `useCellContext()` を使ってください。
 
-#### Example {#example}
+#### 例 {#example}
 
 ```ts
 { TextCell, NumberCell, DateCell, CurrencyCell }
@@ -36,9 +36,9 @@ Use `useCellContext()` inside these components.
 optional cellContext?: Context<Cell<any, any, any>>;
 ```
 
-A custom React context for the cell instance, used inside your `cellComponents`.
+セルインスタンス用の独自の React コンテキストです。`cellComponents` の中で使います。
 
-#### See {#see}
+#### 参照 {#see}
 
 CreateTableHookOptions.tableContext
 
@@ -48,11 +48,11 @@ CreateTableHookOptions.tableContext
 optional headerComponents?: THeaderComponents;
 ```
 
-Header-level components that need access to the header instance.
-These are available on the header object passed to AppHeader/AppFooter's children.
-Use `useHeaderContext()` inside these components.
+ヘッダーインスタンスにアクセスする必要があるヘッダー単位のコンポーネントです。
+AppHeader/AppFooter の children に渡されるヘッダーオブジェクトから使えます。
+これらのコンポーネントの中では `useHeaderContext()` を使ってください。
 
-#### Example {#example-1}
+#### 例 {#example-1}
 
 ```ts
 { SortIndicator, ColumnFilter, ResizeHandle }
@@ -64,10 +64,10 @@ Use `useHeaderContext()` inside these components.
 optional headerContext?: Context<Header<any, any, any>>;
 ```
 
-A custom React context for the header instance, used inside your
-`headerComponents` (and footer components).
+ヘッダーインスタンス用の独自の React コンテキストです。
+`headerComponents`（およびフッターのコンポーネント）の中で使います。
 
-#### See {#see-1}
+#### 参照 {#see-1}
 
 CreateTableHookOptions.tableContext
 
@@ -77,11 +77,11 @@ CreateTableHookOptions.tableContext
 optional tableComponents?: TTableComponents;
 ```
 
-Table-level components that need access to the table instance.
-These are available directly on the table object returned by useAppTable.
-Use `useTableContext()` inside these components.
+テーブルインスタンスにアクセスする必要があるテーブル単位のコンポーネントです。
+useAppTable が返すテーブルオブジェクトから直接使えます。
+これらのコンポーネントの中では `useTableContext()` を使ってください。
 
-#### Example {#example-2}
+#### 例 {#example-2}
 
 ```ts
 { PaginationControls, GlobalFilter, RowCount }
@@ -93,12 +93,12 @@ Use `useTableContext()` inside these components.
 optional tableContext?: Context<ReactTable<any, any>>;
 ```
 
-A custom React context for the table instance (read with `useContext` inside
-your `tableComponents`). Optional: defaults to a shared module-scoped context.
-Only pass your own (created via `createContext`) when you need to isolate this
-table's context from other tables, e.g. when nesting one table inside another.
+テーブルインスタンス用の独自の React コンテキストです（`tableComponents` の中で
+`useContext` を使って読み取ります）。省略可能で、既定ではモジュールスコープで共有されるコンテキストを使います。
+このテーブルのコンテキストをほかのテーブルから切り離す必要があるとき（たとえばテーブルの中に別のテーブルを入れ子にするとき）にだけ、
+`createContext` で作った独自のコンテキストを渡してください。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 

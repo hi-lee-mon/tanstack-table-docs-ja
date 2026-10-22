@@ -1,16 +1,16 @@
 ---
-title: Row Pinning (React) Guide
+title: 行の固定（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Row Pinning](https://tanstack.com/table/latest/docs/framework/react/examples/row-pinning)
+- [行の固定](https://tanstack.com/table/latest/docs/framework/react/examples/row-pinning)
 
-### Row Pinning Setup {#row-pinning-setup}
+### 行の固定のセットアップ {#row-pinning-setup}
 
-Here's how you set up your table to use row pinning features. Adding the row pinning feature enables the related APIs.
+行の固定機能を使うためのテーブルのセットアップ方法を示します。行の固定機能を追加すると、関連する API が使えるようになります。
 
 ```tsx
 import {
@@ -28,18 +28,18 @@ const table = useTable({
 })
 ```
 
-## Row Pinning (React) Guide {#row-pinning-react-guide}
+## 行の固定（React）ガイド {#row-pinning-react-guide}
 
-Row pinning lets you keep selected rows in top or bottom row regions while the rest of the rows render in the center region.
+行の固定を使うと、選んだ行を上端または下端の行領域にとどめ、残りの行を中央の領域に描画できます。
 
-There are 2 table features that can reorder rows, which happen in the following order:
+行の並び順を変える可能性のあるテーブルの機能は2つあり、次の順序で適用されます。
 
-1. **Row Pinning** - If pinning, rows are split into top, center (unpinned), and bottom pinned rows.
-2. [Sorting](./sorting)
+1. **行の固定** - 固定している場合、行は上端に固定された行、中央の（固定されていない）行、下端に固定された行に分けられます。
+2. [ソート](./sorting)
 
-### Enable Row Pinning {#enable-row-pinning}
+### 行の固定を有効にする {#enable-row-pinning}
 
-To use row pinning, add `rowPinningFeature` to your features. Row pinning does not require a row model factory, so no additional slots are needed on `tableFeatures` unless your table uses other row-model features.
+行の固定を使うには、`rowPinningFeature` を features に追加します。行の固定には行モデルのファクトリーが要らないので、テーブルで行モデルを使う他の機能を使っていない限り、`tableFeatures` に追加のスロットは必要ありません。
 
 ```tsx
 import {
@@ -57,9 +57,9 @@ const table = useTable({
 })
 ```
 
-### Row Pinning State {#row-pinning-state}
+### 行の固定の状態 {#row-pinning-state}
 
-The `rowPinning` state stores row IDs in `top` and `bottom` arrays:
+`rowPinning` の状態は、行 ID を `top` と `bottom` の配列に保持します。
 
 ```tsx
 type RowPinningState = {
@@ -68,7 +68,7 @@ type RowPinningState = {
 }
 ```
 
-You can pin rows by default with `initialState.rowPinning`:
+`initialState.rowPinning` を使うと、最初から行を固定しておけます。
 
 ```tsx
 const table = useTable({
@@ -84,7 +84,7 @@ const table = useTable({
 })
 ```
 
-If you need to manage row pinning outside of the table instance, the recommended v9 approach is an external atom passed to the table's `atoms` option. External atoms give you fine-grained subscriptions anywhere in your app, and other code can read or write the pinning state without re-rendering the component that owns the table.
+行の固定をテーブルインスタンスの外で管理する必要がある場合、v9 で推奨される方法は、テーブルの `atoms` オプションに外部のアトムを渡すことです。外部のアトムを使えば、アプリのどこからでもきめ細かく購読できます。また、テーブルを持つコンポーネントを再レンダーさせずに、他のコードから固定の状態を読み書きできます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -107,7 +107,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.rowPinning` plus `onRowPinningChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+v8 と同じ `state.rowPinning` と `onRowPinningChange` を組み合わせるパターンも、引き続き使えます。単純な組み込みや v8 のコードを移行するときには便利ですが、外部のアトムほどきめ細かくはありません。詳しい比較は[テーブルの状態ガイド](./table-state)を参照してください。
 
 ```tsx
 const [rowPinning, setRowPinning] = useState<RowPinningState>({
@@ -126,7 +126,7 @@ const table = useTable({
 })
 ```
 
-Use `table.setRowPinning` to update the state directly, and `table.resetRowPinning` to reset it to `initialState.rowPinning`. Pass `true` to `resetRowPinning` to clear both pinned row arrays.
+状態を直接更新するには `table.setRowPinning` を、`initialState.rowPinning` に戻すには `table.resetRowPinning` を使います。`resetRowPinning` に `true` を渡すと、固定された行の配列が両方とも空になります。
 
 ```tsx
 table.setRowPinning({
@@ -138,9 +138,9 @@ table.resetRowPinning()
 table.resetRowPinning(true)
 ```
 
-### Pin Rows With Row APIs {#pin-rows-with-row-apis}
+### 行の API で行を固定する {#pin-rows-with-row-apis}
 
-Each row exposes APIs for checking whether it can be pinned, reading its pinned position, and changing its pinned position.
+各行には、固定できるかどうかの確認、固定位置の読み取り、固定位置の変更を行う API があります。
 
 ```tsx
 row.getCanPin()
@@ -152,7 +152,7 @@ row.pin('bottom')
 row.pin(false)
 ```
 
-You can use these APIs to build pinning controls:
+これらの API を使って、固定を操作するコントロールを作れます。
 
 ```tsx
 const columns = [
@@ -184,11 +184,11 @@ const columns = [
 ]
 ```
 
-The `row.pin` API also accepts `includeLeafRows` and `includeParentRows` flags. These can be useful when pinning grouped or expanded rows and deciding whether related parent or leaf rows should move with the row.
+`row.pin` API は `includeLeafRows` と `includeParentRows` のフラグも受け付けます。グループ化や展開をした行を固定するときに、関連する親の行や末端の行を一緒に動かすかどうかを決めるのに役立ちます。
 
-### Row Pinning Table APIs {#row-pinning-table-apis}
+### 行の固定に関するテーブルの API {#row-pinning-table-apis}
 
-Row pinning splits the current row model into 3 row lists:
+行の固定は、現在の行モデルを3つの行リストに分けます。
 
 ```tsx
 table.getTopRows()
@@ -196,7 +196,7 @@ table.getCenterRows()
 table.getBottomRows()
 ```
 
-If you render pinned rows in separate table sections, use those APIs directly:
+固定された行をテーブルの別のセクションに描画する場合は、これらの API を直接使ってください。
 
 ```tsx
 <tbody>
@@ -212,7 +212,7 @@ If you render pinned rows in separate table sections, use those APIs directly:
 </tbody>
 ```
 
-Use `table.getIsSomeRowsPinned()` to check whether any rows are pinned, or pass a position to check a specific pinned region.
+固定された行が1つでもあるかを確認するには `table.getIsSomeRowsPinned()` を使います。位置を渡せば、特定の固定領域について確認できます。
 
 ```tsx
 table.getIsSomeRowsPinned()
@@ -220,9 +220,9 @@ table.getIsSomeRowsPinned('top')
 table.getIsSomeRowsPinned('bottom')
 ```
 
-### Disable Row Pinning {#disable-row-pinning}
+### 行の固定を無効にする {#disable-row-pinning}
 
-By default, all rows can be pinned. You can disable row pinning for the whole table or decide per row with `enableRowPinning`.
+デフォルトでは、すべての行を固定できます。`enableRowPinning` を使うと、テーブル全体で行の固定を無効にしたり、行ごとに判断したりできます。
 
 ```tsx
 const table = useTable({
@@ -233,11 +233,11 @@ const table = useTable({
 })
 ```
 
-### Keep Pinned Rows {#keep-pinned-rows}
+### 固定された行を残す {#keep-pinned-rows}
 
-By default, `keepPinnedRows` is `true`, so pinned rows stay visible in their pinned region even when they would otherwise be filtered or paginated out of the center rows.
+`keepPinnedRows` はデフォルトで `true` です。そのため、固定された行は、本来ならフィルタリングやページネーションで中央の行から外れる場合でも、固定領域に表示されたままになります。
 
-Set `keepPinnedRows` to `false` if pinned rows should only render when they are present in the current filtered and paginated row model.
+固定された行を、フィルタリングとページネーションを適用した現在の行モデルに含まれているときだけ描画したい場合は、`keepPinnedRows` を `false` にしてください。
 
 ```tsx
 const table = useTable({

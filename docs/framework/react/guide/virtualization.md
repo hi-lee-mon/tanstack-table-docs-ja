@@ -1,53 +1,53 @@
 ---
-title: Virtualization (React) Guide
+title: 仮想化（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Virtualized Columns](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns)
-- [Virtualized Rows](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows)
-- [Virtualized Infinite Scrolling](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-infinite-scrolling)
-- [Virtualized Columns Experimental](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns-experimental)
-- [Virtualized Rows Experimental](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows-experimental)
+- [列の仮想化](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns)
+- [行の仮想化](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows)
+- [仮想化と無限スクロール](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-infinite-scrolling)
+- [列の仮想化（実験的）](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns-experimental)
+- [行の仮想化（実験的）](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows-experimental)
 
-### Virtualization Setup {#virtualization-setup}
+### 仮想化の準備 {#virtualization-setup}
 
-Here's how you set up your table to use virtualization with TanStack Table. Virtualization is a rendering strategy, so TanStack Table does not need a feature or row model for it.
+TanStack Table で仮想化を使うための準備は次のとおりです。仮想化は描画の戦略なので、TanStack Table 側に機能や行モデルを追加する必要はありません。
 
-Install and import the React virtualizer adapter from `@tanstack/react-virtual`. TanStack Table still owns rows, columns, and table state; the virtualizer owns scroll indexes and measurements.
-Also see the [TanStack Virtual table example](https://tanstack.com/virtual/latest/docs/framework/react/examples/table).
+`@tanstack/react-virtual` から React 用の仮想化アダプターをインストールしてインポートします。行・列・テーブルの状態は引き続き TanStack Table が持ち、スクロール位置に対応するインデックスと要素の計測は仮想化ライブラリ（virtualizer）が持ちます。
+[TanStack Virtual のテーブルのサンプル](https://tanstack.com/virtual/latest/docs/framework/react/examples/table)も参照してください。
 
-## Virtualization (React) Guide {#virtualization-react-guide}
+## 仮想化（React）ガイド {#virtualization-react-guide}
 
-The TanStack Table packages do not come with any virtualization APIs or features built in. Virtualization is a rendering strategy, not a table feature. You can use TanStack Table with any virtualization library, but the official examples use TanStack Virtual.
+TanStack Table のパッケージには、仮想化の API や機能は組み込まれていません。仮想化はテーブルの機能ではなく、描画の戦略です。TanStack Table はどの仮想化ライブラリとも組み合わせられますが、公式のサンプルでは TanStack Virtual を使っています。
 
-TanStack Table and TanStack Virtual solve different parts of the problem:
+TanStack Table と TanStack Virtual は、問題の別々の部分を受け持ちます。
 
-- TanStack Table builds the row models, columns, headers, cells, sizing, sorting, filtering, and other table state.
-- TanStack Virtual decides which item indexes should be rendered for the current scroll position.
-- Your table renderer maps those virtual indexes back to rows, headers, and cells.
+- TanStack Table は、行モデル・列・ヘッダー・セル・列幅・ソート・フィルタリングなどのテーブルの状態を組み立てます。
+- TanStack Virtual は、現在のスクロール位置で描画すべき項目のインデックスを決めます。
+- あなたが書くテーブルの描画処理は、その仮想インデックスを行・ヘッダー・セルに対応づけます。
 
-### When To Use Virtualization {#when-to-use-virtualization}
+### 仮想化を使うべき場面 {#when-to-use-virtualization}
 
-Use virtualization when your table has a very large number of rows, columns, or both. Virtualization keeps the DOM small by only rendering the items that are visible in the scroll viewport plus a small overscan buffer.
+テーブルの行数や列数（またはその両方）が非常に多い場合に仮想化を使います。仮想化では、スクロール領域に見えている項目と、少しの先読み分（overscan）だけを描画するので、DOM を小さく保てます。
 
-Virtualization is not a replacement for server-side pagination, filtering, or sorting. If the data is virtualized on the client, the data still needs to exist on the client. If your dataset is too large to load into the browser, use server-side data operations or infinite scrolling.
+仮想化は、サーバーサイドのページネーション・フィルタリング・ソートの代わりにはなりません。クライアントで仮想化する場合でも、データそのものはクライアントに存在している必要があります。データセットが大きすぎてブラウザーに読み込めない場合は、サーバーサイドのデータ操作か無限スクロールを使ってください。
 
-For small tables, normal rendering is simpler and usually preferable.
+小さなテーブルなら、通常の描画のほうが単純で、たいていはそのほうが適しています。
 
-### Install TanStack Virtual {#install-tanstack-virtual}
+### TanStack Virtual をインストールする {#install-tanstack-virtual}
 
-Install the React virtualizer adapter:
+React 用の仮想化アダプターをインストールします。
 
 ```sh
 npm install @tanstack/react-virtual
 ```
 
-The React examples use `useVirtualizer` from `@tanstack/react-virtual`. TanStack Table still owns rows, columns, headers, cells, sizing, sorting, filtering, and other table state; TanStack Virtual decides which item indexes should render for the current scroll position.
+React のサンプルでは、`@tanstack/react-virtual` の `useVirtualizer` を使っています。行・列・ヘッダー・セル・列幅・ソート・フィルタリングなどのテーブルの状態は引き続き TanStack Table が持ち、現在のスクロール位置で描画すべき項目のインデックスは TanStack Virtual が決めます。
 
-The table itself is set up like any other v9 table. Declare your features with `tableFeatures()` and create the table with `useTable`; nothing about virtualization changes the table setup.
+テーブル自体は、ほかの v9 のテーブルと同じように準備します。`tableFeatures()` で機能を宣言し、`useTable` でテーブルを作成します。仮想化のためにテーブルの準備を変える必要はありません。
 
 ```tsx
 import {
@@ -74,18 +74,18 @@ const table = useTable({
 })
 ```
 
-### The Basic Pattern {#the-basic-pattern}
+### 基本のパターン {#the-basic-pattern}
 
-Most virtualized table implementations follow the same pattern:
+仮想化したテーブルの実装は、ほとんどが同じパターンに沿っています。
 
-1. Create a fixed-height scroll container.
-2. Pass the scroll element to the virtualizer.
-3. Use `table.getRowModel().rows` or `table.getVisibleLeafColumns()` as the source list.
-4. Configure `count`, `estimateSize`, `overscan`, and optional `measureElement`.
-5. Render only virtual items.
-6. Use virtual offsets or spacer padding to preserve the full scroll geometry.
+1. 高さを固定したスクロールコンテナーを作る。
+2. スクロールする要素を virtualizer に渡す。
+3. 元になるリストとして `table.getRowModel().rows` か `table.getVisibleLeafColumns()` を使う。
+4. `count`、`estimateSize`、`overscan`、必要に応じて `measureElement` を設定する。
+5. 仮想項目だけを描画する。
+6. 仮想オフセットか余白用のパディングを使って、スクロール領域全体の大きさを保つ。
 
-Here is a compact row virtualization example:
+行の仮想化の簡潔な例を示します。
 
 ```tsx
 const rows = table.getRowModel().rows
@@ -124,33 +124,33 @@ const rowVirtualizer = useVirtualizer({
 </tbody>
 ```
 
-### Virtualized Rows {#virtualized-rows}
+### 行の仮想化 {#virtualized-rows}
 
-The [virtualized rows examples](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows) show how to render large row counts while keeping the DOM small. The examples are available for React, Solid, Svelte, Vue, Angular, and Lit.
+[行の仮想化のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows)では、DOM を小さく保ちながら大量の行を描画する方法を示しています。サンプルは React、Solid、Svelte、Vue、Angular、Lit 向けに用意されています。
 
-The core idea is that sorting, filtering, grouping, and other row-model work still comes from TanStack Table. The virtualizer reads from the final table row model:
+要点は、ソート・フィルタリング・グループ化などの行モデルの処理は、引き続き TanStack Table が担うということです。virtualizer は、テーブルの最終的な行モデルを読み取ります。
 
 ```tsx
 const rows = table.getRowModel().rows
 ```
 
-The row virtualizer is configured with `count: rows.length`, a row height estimate, the scroll container, and an overscan value. The `tbody` is given the full virtual height with `rowVirtualizer.getTotalSize()`, while each rendered row is absolutely positioned with `transform: translateY(...)`.
+行の virtualizer には、`count: rows.length`、行の高さの見積もり、スクロールコンテナー、overscan の値を設定します。`tbody` には `rowVirtualizer.getTotalSize()` で仮想領域全体の高さを与え、描画する各行は `transform: translateY(...)` で絶対配置します。
 
-The examples render cells from the current row with APIs like `row.getVisibleCells()` or `row.getAllCells()`, depending on whether the example needs visibility-aware cells or all cells.
+サンプルでは、表示状態を考慮したセルが必要か、すべてのセルが必要かに応じて、`row.getVisibleCells()` や `row.getAllCells()` などの API で現在の行のセルを描画しています。
 
-The official examples use large generated datasets, commonly tens or hundreds of thousands of rows. They also support dynamic row heights by using `measureElement` when possible. The examples skip dynamic row measurement in Firefox because Firefox can measure table border height differently.
+公式のサンプルでは、数万〜数十万行といった大規模な生成データを使っています。また、可能な場合は `measureElement` を使って行の高さの動的な変化にも対応しています。ただし Firefox ではテーブルの罫線の高さの計測結果が異なることがあるため、Firefox では行の高さの動的な計測を行いません。
 
-### Virtualized Columns {#virtualized-columns}
+### 列の仮想化 {#virtualized-columns}
 
-The [virtualized columns examples](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns) show how to render large row and column counts. The examples are available for React, Solid, Svelte, Vue, Angular, and Lit.
+[列の仮想化のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns)では、行と列の両方が大量にある場合の描画方法を示しています。サンプルは React、Solid、Svelte、Vue、Angular、Lit 向けに用意されています。
 
-Column virtualization uses the current visible column list:
+列の仮想化では、現在表示されている列のリストを使います。
 
 ```tsx
 const visibleColumns = table.getVisibleLeafColumns()
 ```
 
-The column virtualizer is configured for horizontal virtualization:
+列の virtualizer は、横方向の仮想化に設定します。
 
 ```tsx
 const columnVirtualizer = useVirtualizer({
@@ -162,7 +162,7 @@ const columnVirtualizer = useVirtualizer({
 })
 ```
 
-Column virtualization uses a different rendering strategy than row virtualization. Instead of absolutely positioning columns, the examples add fake spacer cells to the left and right:
+列の仮想化は、行の仮想化とは描画の方法が異なります。列を絶対配置する代わりに、サンプルでは左右に余白用のダミーのセルを追加しています。
 
 ```tsx
 const virtualColumns = columnVirtualizer.getVirtualItems()
@@ -172,32 +172,32 @@ const virtualPaddingRight =
   (virtualColumns[virtualColumns.length - 1]?.end ?? 0)
 ```
 
-Those spacer cells preserve the horizontal scroll width while the renderer only mounts the virtual columns. This approach keeps row rendering table-like and allows dynamic row height measurement to keep working.
+この余白用のセルが横方向のスクロール幅を保ち、実際にマウントするのは仮想列だけになります。この方法なら行の描画をテーブルらしい形のまま保てるので、行の高さの動的な計測も引き続き機能します。
 
-### Virtualized Rows And Columns Together {#virtualized-rows-and-columns-together}
+### 行と列を同時に仮想化する {#virtualized-rows-and-columns-together}
 
-The official virtualized columns examples also virtualize rows. In those examples:
+公式の列の仮想化のサンプルでは、行も仮想化しています。これらのサンプルでは次のようになっています。
 
-- The row virtualizer controls vertical positioning and total body height.
-- The column virtualizer controls horizontal header/cell rendering and left/right spacer cells.
-- `virtualRow.index` maps to `rows[virtualRow.index]`.
-- `virtualColumn.index` maps to `visibleCells[virtualColumn.index]`.
+- 行の virtualizer は、縦方向の配置と本体全体の高さを制御します。
+- 列の virtualizer は、ヘッダーやセルの横方向の描画と、左右の余白用のセルを制御します。
+- `virtualRow.index` は `rows[virtualRow.index]` に対応します。
+- `virtualColumn.index` は `visibleCells[virtualColumn.index]` に対応します。
 
-Always use virtual indexes against the same current row and column lists returned by the table. If sorting, filtering, pagination, grouping, or column visibility changes, recompute the virtualized rows and columns from the current table state.
+仮想インデックスは、必ずテーブルが返す現在の行と列のリストに対して使ってください。ソート・フィルタリング・ページネーション・グループ化・列の表示切り替えが変わったら、仮想化する行と列を現在のテーブルの状態から計算し直します。
 
-### Virtualized Infinite Scrolling {#virtualized-infinite-scrolling}
+### 仮想化と無限スクロール {#virtualized-infinite-scrolling}
 
-The [virtualized infinite scrolling examples](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-infinite-scrolling) combine row virtualization with progressive data fetching. The examples are available for React, Solid, Svelte, Vue, Angular, and Lit.
+[仮想化と無限スクロールのサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-infinite-scrolling)では、行の仮想化と段階的なデータ取得を組み合わせています。サンプルは React、Solid、Svelte、Vue、Angular、Lit 向けに用意されています。
 
-The common pattern is:
+よくあるパターンは次のとおりです。
 
-1. Fetch a page of rows.
-2. Flatten fetched pages into the table `data`.
-3. Use row virtualization over the loaded rows.
-4. Listen to scroll events on the table container.
-5. Fetch the next page when the user scrolls near the bottom.
+1. 1ページ分の行を取得する。
+2. 取得したページを平坦化して、テーブルの `data` にする。
+3. 読み込み済みの行に対して行の仮想化を使う。
+4. テーブルのコンテナーでスクロールイベントを監視する。
+5. ユーザーが末尾近くまでスクロールしたら、次のページを取得する。
 
-The React example uses TanStack Query's `useInfiniteQuery`, but the same pattern works with any data-fetching layer.
+React のサンプルでは TanStack Query の `useInfiniteQuery` を使っていますが、同じパターンはどのデータ取得の仕組みでも使えます。
 
 ```tsx
 const { scrollHeight, scrollTop, clientHeight } = scrollElement
@@ -207,19 +207,19 @@ if (scrollHeight - scrollTop - clientHeight < 500) {
 }
 ```
 
-If sorting is handled by the server, use manual sorting so the fetched data reflects the whole backend dataset rather than only the currently loaded rows. When sorting changes and the fetched dataset is replaced, scroll back to the top with `rowVirtualizer.scrollToIndex(0)`.
+ソートをサーバー側で行う場合は、手動ソートを使ってください。そうすれば、取得するデータが、現在読み込み済みの行だけでなくバックエンドのデータセット全体を反映したものになります。ソートが変わって取得済みのデータセットが置き換わったら、`rowVirtualizer.scrollToIndex(0)` で先頭までスクロールを戻します。
 
-### Dynamic Row Heights {#dynamic-row-heights}
+### 行の高さを動的にする {#dynamic-row-heights}
 
-Dynamic row heights are useful when content can wrap or expand. They are also more complex than fixed-height rows.
+行の高さを動的にすると、内容が折り返したり広がったりする場合に役立ちます。ただし、行の高さが固定の場合よりも複雑になります。
 
-Use `estimateSize` as the virtualizer's initial guess:
+`estimateSize` は、virtualizer が最初に使う見積もりの値として使います。
 
 ```tsx
 estimateSize: () => 33
 ```
 
-Then use `measureElement` to refine the actual row height after rendering:
+そのうえで、描画後に `measureElement` で実際の行の高さに合わせて補正します。
 
 ```tsx
 <tr
@@ -228,15 +228,15 @@ Then use `measureElement` to refine the actual row height after rendering:
 >
 ```
 
-Set `data-index` on each row so the virtualizer can associate measurements with the correct item. In non-React adapters, call `measureElement` through the adapter-appropriate ref, action, directive, or controller.
+各行に `data-index` を設定して、virtualizer が計測結果を正しい項目に対応づけられるようにします。React 以外のアダプターでは、そのアダプターに合った ref・アクション・ディレクティブ・コントローラーを通じて `measureElement` を呼び出してください。
 
-Overscan helps avoid blank regions while measurements settle. If every row has a known fixed height, skip dynamic measurement and use the fixed height estimate instead.
+overscan は、計測が落ち着くまでの間に空白の領域が見えるのを防ぐのに役立ちます。すべての行の高さが固定で分かっている場合は、動的な計測を行わず、固定の高さを見積もりの値として使ってください。
 
-### Sticky Headers And Semantic Table Markup {#sticky-headers-and-semantic-table-markup}
+### 固定ヘッダーとセマンティックなテーブルのマークアップ {#sticky-headers-and-semantic-table-markup}
 
-The examples still use semantic table tags, but they change table layout CSS to support virtual positioning and sticky headers.
+サンプルでは引き続きセマンティックなテーブルのタグを使っていますが、仮想的な配置と固定ヘッダーに対応するため、テーブルのレイアウトの CSS を変更しています。
 
-Dynamic row virtualization commonly requires:
+行の高さを動的にした仮想化では、一般的に次の指定が必要です。
 
 ```css
 table {
@@ -254,32 +254,32 @@ tr {
 }
 ```
 
-Rows are absolutely positioned inside a relatively positioned `tbody`, and cells use flex sizing so they can match `column.getSize()` or `cell.column.getSize()`. This is intentional. Native table layout does not work well with dynamic-height virtual rows that are positioned independently.
+行は相対配置した `tbody` の中で絶対配置し、セルは flex でサイズを決めて `column.getSize()` や `cell.column.getSize()` に合わせられるようにします。これは意図的な設計です。ブラウザー標準のテーブルレイアウトは、個別に配置される高さ可変の仮想行とうまくかみ合いません。
 
-### Performance Tips {#performance-tips}
+### パフォーマンスのヒント {#performance-tips}
 
-- Keep virtualizers near the components that render the virtualized items.
-- Avoid re-rendering the full table body on every scroll.
-- Keep row, column, and data references stable where possible.
-- Use `overscan` deliberately. More overscan reduces visible blanking, while less overscan reduces DOM nodes.
-- Avoid expensive cell renderers in very large virtualized tables.
-- Test production builds. React development mode is slower, and the React examples call this out.
-- Prefer fixed row sizes when the UI allows it.
-- For column virtualization, use `column.getSize()`, `header.getSize()`, and `cell.column.getSize()` consistently.
+- virtualizer は、仮想化した項目を描画するコンポーネントの近くに置く。
+- スクロールのたびにテーブルの本体全体を再レンダーしないようにする。
+- 行・列・データの参照は、できるだけ安定させる。
+- `overscan` は意図を持って設定する。overscan を増やすと見える空白が減り、減らすと DOM ノードが減る。
+- 非常に大きな仮想化テーブルでは、重いセルの描画処理を避ける。
+- 本番ビルドでテストする。React の開発モードは遅く、React のサンプルでもその点に触れている。
+- UI が許すなら、行のサイズを固定にする。
+- 列の仮想化では、`column.getSize()`、`header.getSize()`、`cell.column.getSize()` を一貫して使う。
 
-### Experimental React Virtualization Examples {#experimental-react-virtualization-examples}
+### React の実験的な仮想化サンプル {#experimental-react-virtualization-examples}
 
-The React examples include [Virtualized Rows Experimental](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows-experimental) and [Virtualized Columns Experimental](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns-experimental). These examples are advanced experiments for reducing React render work during scroll.
+React のサンプルには、[行の仮想化（実験的）](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows-experimental)と[列の仮想化（実験的）](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns-experimental)があります。これらは、スクロール中の React の描画処理を減らすための高度な実験です。
 
-Use the standard examples first. Reach for the experimental examples only after profiling shows that React render work during scroll is the bottleneck.
+まずは標準のサンプルを使ってください。実験的なサンプルを使うのは、プロファイリングの結果、スクロール中の React の描画処理がボトルネックだと分かった場合だけにしてください。
 
-The experimental examples use TanStack Virtual's `onChange` callback to imperatively update DOM styles instead of passing every scroll-position change through React render.
+実験的なサンプルでは、TanStack Virtual の `onChange` コールバックを使って DOM のスタイルを命令的に更新し、スクロール位置が変わるたびに React の描画を通さないようにしています。
 
-The experimental row example:
+実験的な行のサンプルでは、次のことをしています。
 
-- Keeps a `rowRefsMap` from virtual row index to DOM row element.
-- Uses `onChange` to update `rowRef.style.transform`.
-- Memoizes rows with a custom `React.memo` comparator while scrolling.
+- 仮想行のインデックスから DOM の行要素への `rowRefsMap` を保持する。
+- `onChange` で `rowRef.style.transform` を更新する。
+- スクロール中は、独自の比較関数を渡した `React.memo` で行をメモ化する。
 
 ```tsx
 onChange: (instance) => {
@@ -291,7 +291,7 @@ onChange: (instance) => {
 }
 ```
 
-The experimental column example also mutates scroll-position-only DOM styles:
+実験的な列のサンプルでも、スクロール位置だけに関わる DOM のスタイルを直接書き換えています。
 
 ```tsx
 tableContainerRef.current?.style.setProperty(
@@ -307,26 +307,26 @@ tableContainerRef.current?.style.setProperty(
 tableBodyRef.current!.style.height = `${instance.getTotalSize()}px`
 ```
 
-It updates row transforms through DOM refs and memoizes header and cell components while the column virtualizer is scrolling.
+このサンプルは DOM の ref を通じて行の transform を更新し、列の virtualizer がスクロールしている間はヘッダーとセルのコンポーネントをメモ化します。
 
-Because these examples update the DOM outside React's normal render flow, keep the imperative updates narrowly scoped to scroll-position-only styles like `transform`, body height, and spacer widths. Do not use this pattern for business state, table state, data, sorting, filtering, or cell values.
+これらのサンプルは React の通常の描画の流れの外で DOM を更新するため、命令的な更新は `transform`、本体の高さ、余白の幅といった、スクロール位置だけに関わるスタイルに限定してください。業務上の状態・テーブルの状態・データ・ソート・フィルタリング・セルの値には、このパターンを使わないでください。
 
-### Choosing An Example {#choosing-an-example}
+### サンプルの選び方 {#choosing-an-example}
 
-| Need                                     | Start with                                                                   |
+| 必要なこと                                     | 最初に見るサンプル                                                                   |
 | ---------------------------------------- | ---------------------------------------------------------------------------- |
-| Many rows, normal columns                | [Virtualized Rows](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows)                             |
-| Many columns                             | [Virtualized Columns](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns)                       |
-| Many rows and columns                    | [Virtualized Columns](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns)                       |
-| Remote data loaded as the user scrolls   | [Virtualized Infinite Scrolling](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-infinite-scrolling) |
-| React scroll performance after profiling | [Experimental React examples](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows-experimental)     |
+| 行が多く、列は普通                | [行の仮想化](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows)                             |
+| 列が多い                             | [列の仮想化](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns)                       |
+| 行も列も多い                    | [列の仮想化](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-columns)                       |
+| ユーザーのスクロールに応じてリモートのデータを読み込む   | [仮想化と無限スクロール](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-infinite-scrolling) |
+| プロファイリングを経た React のスクロール性能改善 | [React の実験的なサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/virtualized-rows-experimental)     |
 
-### Common Pitfalls {#common-pitfalls}
+### よくある落とし穴 {#common-pitfalls}
 
-- Forgetting to give the scroll container a fixed height.
-- Rendering `table.getRowModel().rows.map(...)` instead of `virtualizer.getVirtualItems().map(...)`.
-- Using virtual indexes against stale rows or columns after sorting, filtering, pagination, grouping, or column visibility changes.
-- Forgetting left and right spacer cells for horizontal virtualization.
-- Using `measureElement` when every row has a fixed height.
-- Expecting TanStack Table to provide virtualization APIs as a feature.
-- Mixing client-side virtualization with server-side sorting or filtering inconsistently.
+- スクロールコンテナーの高さを固定し忘れる。
+- `virtualizer.getVirtualItems().map(...)` ではなく `table.getRowModel().rows.map(...)` で描画してしまう。
+- ソート・フィルタリング・ページネーション・グループ化・列の表示切り替えが変わった後も、古い行や列に対して仮想インデックスを使ってしまう。
+- 横方向の仮想化で、左右の余白用のセルを忘れる。
+- すべての行の高さが固定なのに `measureElement` を使う。
+- TanStack Table が仮想化の API を機能として提供していると思い込む。
+- クライアントサイドの仮想化と、サーバーサイドのソートやフィルタリングを一貫しない形で混在させる。

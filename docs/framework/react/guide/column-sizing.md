@@ -1,16 +1,16 @@
 ---
-title: Column Sizing (React) Guide
+title: 列幅（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Column Sizing](https://tanstack.com/table/latest/docs/framework/react/examples/column-sizing)
+- [列幅](https://tanstack.com/table/latest/docs/framework/react/examples/column-sizing)
 
-### Column Sizing Setup {#column-sizing-setup}
+### 列幅のセットアップ {#column-sizing-setup}
 
-Here's how you set up your table to use column sizing features. Adding the column sizing feature enables the related APIs.
+列幅の機能を使うためのテーブルの設定方法は次のとおりです。列幅の機能を追加すると、関連する API が使えるようになります。
 
 ```tsx
 import {
@@ -28,15 +28,15 @@ const table = useTable({
 })
 ```
 
-## Column Sizing (React) Guide {#column-sizing-react-guide}
+## 列幅（React）ガイド {#column-sizing-react-guide}
 
-The column sizing feature lets you optionally set the width of each column including min and max widths.
+列幅の機能を使うと、必要に応じて各列の幅を、最小幅・最大幅も含めて設定できます。
 
-If you want users to dynamically change column widths by dragging column headers, see the [Column Resizing Guide](./column-resizing).
+ユーザーが列のヘッダーをドラッグして列幅を動的に変えられるようにしたい場合は、[列幅の変更ガイド](./column-resizing)を参照してください。
 
-### Column Widths {#column-widths}
+### 列の幅 {#column-widths}
 
-Columns by default are given the following measurement options:
+列には、デフォルトで次の寸法のオプションが設定されています。
 
 ```tsx
 export const defaultColumnSizing = {
@@ -46,7 +46,7 @@ export const defaultColumnSizing = {
 }
 ```
 
-These defaults can be overridden by both `tableOptions.defaultColumn` and individual column defs, in that order.
+これらのデフォルト値は、`tableOptions.defaultColumn` と個々の列定義の両方で上書きでき、この順に適用されます。
 
 ```tsx
 const features = tableFeatures({ columnSizingFeature })
@@ -70,23 +70,23 @@ const table = useTable({
 })
 ```
 
-The column "sizes" are stored in the table state as numbers, and are usually interpreted as pixel unit values, but you can hook up these column sizing values to your css styles however you see fit.
+列の「サイズ」はテーブルの状態に数値として保存されます。ふつうはピクセル単位の値として解釈しますが、これらの列幅の値を CSS のスタイルにどう結び付けるかは自由です。
 
-As a headless utility, table logic for column sizing is really only a collection of states that you can apply to your own layouts how you see fit (our example above implements 2 styles of this logic). You can apply these width measurements in a variety of ways:
+ヘッドレスなユーティリティなので、列幅に関するテーブルのロジックは、実のところ状態の集まりにすぎません。それを自分のレイアウトにどう当てはめるかは自由です（上のサンプルでは、このロジックを2通りのスタイルで実装しています）。これらの幅の値は、さまざまな方法で適用できます。
 
-- semantic `table` elements or any elements being displayed in a table css mode
-- `div/span` elements or any elements being displayed in a non-table css mode
-  - Block level elements with strict widths
-  - Absolutely positioned elements with strict widths
-  - Flexbox positioned elements with loose widths
-  - Grid positioned elements with loose widths
-- Really any layout mechanism that can interpolate cell widths into a table structure.
+- セマンティックな `table` 要素、または CSS の table 表示モードで表示される任意の要素
+- `div/span` 要素、または table 以外の CSS 表示モードで表示される任意の要素
+  - 幅を厳密に指定したブロックレベル要素
+  - 幅を厳密に指定した絶対配置の要素
+  - 幅をゆるく指定した Flexbox で配置する要素
+  - 幅をゆるく指定した Grid で配置する要素
+- そのほか、セルの幅をテーブルの構造に反映できるレイアウトの仕組みなら、実質的に何でもかまいません。
 
-Each of these approaches has its own tradeoffs and limitations which are usually opinions held by a UI/component library or design system, luckily not you 😉.
+どの方法にもそれぞれ長所と短所、制約があり、ふつうはそれを UI ライブラリやコンポーネントライブラリ、デザインシステムが自分の考えで決めています。幸い、あなたが決める必要はありません 😉。
 
-### Column Sizing APIs {#column-sizing-apis}
+### 列幅の API {#column-sizing-apis}
 
-Use the column and header APIs to read the calculated size and offsets for rendering. These values come from the `columnSizing` state and the column definition defaults.
+レンダーに使う、計算済みのサイズやオフセットを読み取るには、列とヘッダーの API を使います。これらの値は、`columnSizing` の状態と、列定義のデフォルト値から求められます。
 
 ```tsx
 column.getSize()
@@ -105,7 +105,7 @@ column.getAfter('end')
 column.resetSize()
 ```
 
-The table instance also exposes total size helpers. These are useful when building scroll containers, split pinned-column tables, or CSS variables for column widths.
+テーブルインスタンスには、合計サイズを求めるヘルパーもあります。スクロールコンテナーを作るとき、固定した列ごとにテーブルを分割するとき、列幅を CSS 変数にするときに便利です。
 
 ```tsx
 table.getTotalSize()
@@ -114,7 +114,7 @@ table.getCenterTotalSize()
 table.getEndTotalSize()
 ```
 
-If you need to update sizing state directly, use `table.setColumnSizing`. Use `table.resetColumnSizing` to reset to `initialState.columnSizing`, or pass `true` to reset to the feature default.
+列幅の状態を直接更新する必要がある場合は、`table.setColumnSizing` を使います。`table.resetColumnSizing` を使うと `initialState.columnSizing` にリセットされます。`true` を渡すと、機能のデフォルト値にリセットされます。
 
 ```tsx
 table.setColumnSizing({
@@ -126,9 +126,9 @@ table.resetColumnSizing()
 table.resetColumnSizing(true)
 ```
 
-### Managing Column Sizing State {#managing-column-sizing-state}
+### 列幅の状態を管理する {#managing-column-sizing-state}
 
-If you need to own the `columnSizing` state yourself (for example, to persist user-set column widths), the recommended v9 approach is an external atom passed to the table's `atoms` option. External atoms give you fine-grained subscriptions anywhere in your app, and other code can read or write the sizing state without re-rendering the component that owns the table.
+`columnSizing` の状態を自分で持ちたい場合（たとえば、ユーザーが設定した列幅を保存しておきたい場合）、v9 で推奨されるのは、外部のアトムをテーブルの `atoms` オプションに渡す方法です。外部のアトムを使うと、アプリのどこからでもきめ細かく購読できます。また、テーブルを持つコンポーネントを再レンダーさせずに、他のコードから列幅の状態を読み書きできます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -150,7 +150,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.columnSizing` plus `onColumnSizingChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+v8 と同じ、`state.columnSizing` と `onColumnSizingChange` を組み合わせるパターンも引き続き使えます。単純な連携や v8 のコードを移行するときには便利ですが、外部のアトムほどきめ細かくはありません。詳しい比較は[テーブルの状態ガイド](./table-state)を参照してください。
 
 ```tsx
 const features = tableFeatures({ columnSizingFeature })

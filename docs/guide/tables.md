@@ -1,22 +1,22 @@
 ---
-title: Table Instance Guide
+title: テーブルインスタンスガイド
 ---
 
-TanStack Table is a headless UI library. When we talk about the `table` or "table instance", we're not talking about a literal `<table>` element. Instead, we're referring to the core table object that coordinates table state and APIs. The `table` instance is created by calling your adapter's table creation function (e.g. `useTable`, `createTable`, `injectTable`, or `constructTable`).
+TanStack Table はヘッドレス UI ライブラリです。`table` や「テーブルインスタンス」と言うとき、文字どおりの `<table>` 要素を指しているわけではありません。テーブルの状態と API を取りまとめる、コアのテーブルオブジェクトを指しています。`table` インスタンスは、アダプターのテーブル作成関数（`useTable`、`createTable`、`injectTable`、`constructTable` など）を呼び出して作成します。
 
-The `table` instance returned from one of these functions is the main object that you will interact with to read and mutate the table state. It is the one place where everything happens in TanStack Table. When you get to the point where you are rendering your UI, you will use APIs from this `table` instance.
+これらの関数が返す `table` インスタンスは、テーブルの状態を読み取ったり変更したりするときに操作する中心のオブジェクトです。TanStack Table では、あらゆる処理がこの1か所で行われます。UI をレンダーする段階では、この `table` インスタンスの API を使います。
 
-## Creating a Table Instance {#creating-a-table-instance}
+## テーブルインスタンスを作成する {#creating-a-table-instance}
 
-To create a table instance, 3 `options` are required: `columns`, `data`, and `features`. The `features` option declares which table features your table uses (enabling tree-shaking, so you only bundle what you use). The core row model is included automatically; add additional row model factories as slots on the `tableFeatures()` call when you need filtering, sorting, pagination, etc. There are dozens of other table options to configure features and behavior.
+テーブルインスタンスを作成するには、`columns`、`data`、`features` の3つの `options` が必要です。`features` オプションでは、テーブルが使う機能を宣言します（これによりツリーシェイキングが効き、使うものだけがバンドルされます）。コア行モデルは自動で含まれます。フィルタリング・ソート・ページネーションなどが必要になったら、`tableFeatures()` の呼び出しにスロットとして行モデルのファクトリーを追加します。ほかにも、機能や動作を設定するテーブルオプションが何十個もあります。
 
-### Defining Data {#defining-data}
+### データを定義する {#defining-data}
 
-Define your data as an array of objects with a stable reference. `data` can come from anywhere like an API response or defined statically in your code, but it must have a stable reference to prevent infinite re-renders. If using TypeScript, the type that you give your data will be used as a `TData` generic. See the [Data Guide](./data) for more info.
+データは、参照が安定したオブジェクトの配列として定義します。`data` は API のレスポンスやコード内での静的な定義など、どこから来てもかまいません。ただし、無限に再レンダーされるのを防ぐため、参照は安定していなければなりません。TypeScript を使う場合は、データに付けた型が `TData` ジェネリクスとして使われます。詳しくは[データガイド](./data)を参照してください。
 
-### Defining Columns {#defining-columns}
+### 列を定義する {#defining-columns}
 
-Column definitions are covered in detail in the previous section in the [Column Def Guide](./column-defs). We'll note here, however, that when you define the type of your columns, you should use the same `TData` type that you used for your data.
+列定義については、前の節の[列定義ガイド](./column-defs)で詳しく説明しています。ここで1点だけ触れておくと、列の型を定義するときは、データに使ったものと同じ `TData` 型を使ってください。
 
 ```ts
 const features = tableFeatures({}) // Define which features your table uses
@@ -25,11 +25,11 @@ const columns: ColumnDef<typeof features, User>[] = [] // Pass User type as TDat
 const columnHelper = createColumnHelper<typeof features, User>() // Pass both TFeatures and TData in v9
 ```
 
-The column definitions are where we will tell TanStack Table how each column should access and/or transform row data with either an `accessorKey` or `accessorFn`. See the [Column Def Guide](./column-defs#creating-accessor-columns) for more info.
+列定義では、各列が行データをどう取り出し、どう変換するかを、`accessorKey` または `accessorFn` で TanStack Table に伝えます。詳しくは[列定義ガイド](./column-defs#creating-accessor-columns)を参照してください。
 
-### Defining Features and Row Models {#defining-features-and-row-models}
+### 機能と行モデルを定義する {#defining-features-and-row-models}
 
-This is explained in much more detail in the [Row Models Guide](./row-models). In v9, you declare which features your table uses via `features` (using `tableFeatures()`), and row model factories live as slots on that same features object. The core row model is always included automatically. For a basic table with no filtering, sorting, or pagination, pass an empty features object:
+これについては[行モデルガイド](./row-models)でずっと詳しく説明しています。v9 では、テーブルが使う機能を `features` で（`tableFeatures()` を使って）宣言します。行モデルのファクトリーは、その同じ features オブジェクトのスロットに置きます。コア行モデルは常に自動で含まれます。フィルタリング・ソート・ページネーションのない基本的なテーブルなら、空の features オブジェクトを渡します。
 
 ```ts
 import { tableFeatures, useTable } from '@tanstack/react-table'
@@ -44,26 +44,26 @@ const table = useTable({
 ```
 
 
-### Initializing the Table Instance {#initializing-the-table-instance}
+### テーブルインスタンスを初期化する {#initializing-the-table-instance}
 
-With our `features`, `columns`, and `data` defined, we can now create our basic table instance, alongside any other table options that we want to pass in.
+`features`、`columns`、`data` を定義したら、基本的なテーブルインスタンスを作成できます。渡したいほかのテーブルオプションもあわせて指定します。
 
-> **Framework note:** Each framework adapter has its own table creation function, but they all accept the same core options:
+> **フレームワークに関する注記:** テーブル作成関数はフレームワークアダプターごとに異なりますが、どれも同じコアオプションを受け取ります。
 
 ```ts
 const table = useTable({ features, columns, data })
 ```
 
 
-So what's in the `table` instance? Let's take a look at what interactions we can have with the table instance.
+では、`table` インスタンスには何が入っているのでしょうか。テーブルインスタンスでどんな操作ができるのかを見ていきましょう。
 
-## Table State {#table-state}
+## テーブルの状態 {#table-state}
 
-The table instance contains the state slices registered by its `features`. Each feature registers the state it owns. For example, the row selection feature registers `rowSelection` state, and the pagination feature registers `pagination` state. In v9, those slices are backed by TanStack Store atoms:
+テーブルインスタンスには、`features` が登録した状態のスライスが入っています。各機能は自分が受け持つ状態を登録します。たとえば、行選択の機能は `rowSelection` の状態を、ページネーションの機能は `pagination` の状態を登録します。v9 では、これらのスライスの裏側に TanStack Store のアトムがあります。
 
-- `table.baseAtoms` are the internal writable atoms.
-- `table.atoms` are the public readonly atoms for each slice.
-- `table.store` is the readonly flat store derived from `table.atoms`.
+- `table.baseAtoms` は、内部用の書き込み可能なアトムです。
+- `table.atoms` は、スライスごとの公開用の読み取り専用アトムです。
+- `table.store` は、`table.atoms` から派生した、読み取り専用のフラットなストアです。
 
 ```ts
 table.atoms.rowSelection.get() // read the current row selection state
@@ -72,17 +72,17 @@ table.setRowSelection((old) => ({ ...old })) //set the row selection state
 table.resetRowSelection() //reset the row selection state
 ```
 
-Direct reads like `table.atoms.rowSelection.get()` and `table.store.state.rowSelection` are current values. Framework adapters add their own reactive state access APIs where needed. This is covered in more detail in the Table State Guide for your framework:
+`table.atoms.rowSelection.get()` や `table.store.state.rowSelection` のように直接読み取ると、その時点の値が得られます。フレームワークアダプターは、必要に応じてリアクティブに状態を読み取る独自の API を追加しています。詳しくは、使っているフレームワークのテーブルの状態ガイドで説明しています。
 
-[Table State Guide](../framework/react/guide/table-state)
+[テーブルの状態ガイド](../framework/react/guide/table-state)
 
 
-## Table APIs {#table-apis}
+## テーブルの API {#table-apis}
 
-There are dozens of table APIs created by each feature to help you either read or mutate the table state in different ways.
+各機能が作る何十ものテーブル API を使って、テーブルの状態をさまざまな方法で読み取ったり変更したりできます。
 
-API reference docs for the core table instance and all other feature APIs can be found throughout the [Reference Docs](../reference/index).
+コアのテーブルインスタンスとほかのすべての機能の API リファレンスは、[リファレンス](../reference/index)にまとめてあります。
 
-## Table Row Models {#table-row-models}
+## テーブルの行モデル {#table-row-models}
 
-There is a special set of table instance APIs for reading rows out of the table instance called row models. TanStack Table has advanced features where the rows that are generated may be very different than the array of `data` that you originally passed in. To learn more about the different row models and how to register them, see the [Row Models Guide](./row-models).
+テーブルインスタンスの API には、テーブルインスタンスから行を読み出すための特別なものがあり、これを行モデルと呼びます。TanStack Table には高度な機能があり、生成される行が、最初に渡した `data` の配列とは大きく異なる場合があります。さまざまな行モデルと、その登録方法について詳しくは、[行モデルガイド](./row-models)を参照してください。

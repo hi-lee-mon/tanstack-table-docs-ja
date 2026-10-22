@@ -1,17 +1,17 @@
 ---
-title: Faceting (React) Guide
+title: ファセット（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Faceted Filters](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted)
-- [Bucketed Faceted Filters](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted-bucketed)
+- [ファセットフィルター](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted)
+- [バケット分けしたファセットフィルター](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted-bucketed)
 
-### Faceting Setup {#faceting-setup}
+### ファセットのセットアップ {#faceting-setup}
 
-Here's how you set up your table to use faceting features. Adding the faceting feature enables the related APIs. If you use client-side faceting, also set up `filteredRowModel` and `facetedRowModel` after their features, since row model slots are type-checked.
+ファセットの機能を使うためのテーブルのセットアップ方法は次のとおりです。ファセットの機能を追加すると、関連する API が使えるようになります。クライアントサイドのファセットを使う場合は、`filteredRowModel` と `facetedRowModel` も、それぞれの機能の後に設定してください。行モデルのスロットは型チェックされるためです。
 
 ```tsx
 import {
@@ -44,18 +44,18 @@ const table = useTable({
 })
 ```
 
-## Faceting (React) Guide {#faceting-react-guide}
+## ファセット（React）ガイド {#faceting-react-guide}
 
-### What is Faceting? {#what-is-faceting}
+### ファセットとは {#what-is-faceting}
 
-Faceting derives information that can be used to build filtering interfaces. For a given column, faceting can answer questions such as:
+ファセットは、フィルタリングの UI を組み立てるのに使える情報を導き出します。ある列について、ファセットは次のような問いに答えられます。
 
-- Which values are available?
-- How often does each value occur?
-- What is the minimum and maximum value among the available rows?
-- Which rows should be used for a custom facet calculation?
+- どの値が選択肢として残っているか
+- 各値は何回出現するか
+- 対象の行の中で、最小値と最大値はいくつか
+- 独自のファセット計算にはどの行を使えばよいか
 
-For example, an application could use faceting to render a plan filter like this:
+たとえばアプリケーションでは、ファセットを使って次のようなプランのフィルターを描画できます。
 
 ```text
 Plan
@@ -64,57 +64,57 @@ Plan
 ☐ Enterprise    9
 ```
 
-The plan names and counts are derived from the table's faceted row model. If a filter on another column changes, such as `Region = Europe`, the plan counts update to describe only the rows in that region.
+プラン名と件数は、テーブルのファセット行モデルから導き出されます。`Region = Europe` のように別の列のフィルターが変わると、プランの件数はその地域の行だけを対象にした値に更新されます。
 
-Faceting does not apply filters to the table. It provides values, counts, ranges, or rows that you can use to build a filter UI. The column filtering feature owns the filter state and determines which rows match the selected filter values.
+ファセットがテーブルにフィルターを適用することはありません。ファセットが提供するのは、フィルター UI を組み立てるための値・件数・範囲・行です。フィルターの状態を持ち、選ばれたフィルター値に一致する行を決めるのは、列フィルタリングの機能です。
 
-#### Faceting vs Row Aggregation {#faceting-vs-row-aggregation}
+#### ファセットと行の集計の違い {#faceting-vs-row-aggregation}
 
-Faceting and row aggregation both summarize data, but they serve different purposes. Faceting produces metadata for filter controls, such as available values, occurrence counts, or a numeric range. Row aggregation computes result values over a set of rows, such as a sum, average, or total, for display in footers or grouped rows.
+ファセットも行の集計もデータを要約しますが、目的が異なります。ファセットは、選べる値・出現回数・数値の範囲といった、フィルターの操作部品のためのメタデータを作ります。行の集計は、合計・平均・総計など、行の集まりから結果の値を計算し、フッターやグループ行に表示します。
 
-Faceted counts do not create aggregate rows or use a column's `aggregationFn`. A useful way to distinguish the features is:
+ファセットの件数が集計行を作ることはなく、列の `aggregationFn` も使いません。これらの機能は、次のように見分けると分かりやすくなります。
 
-- Filtering answers: Which rows remain?
-- Faceting answers: Which filtering choices remain?
-- Row aggregation answers: What summary value can be calculated from these rows?
+- フィルタリングが答えるのは「どの行が残るか」
+- ファセットが答えるのは「どのフィルターの選択肢が残るか」
+- 行の集計が答えるのは「これらの行からどんな要約値を計算できるか」
 
-### How Column Faceting Responds to Filters {#how-column-faceting-responds-to-filters}
+### 列のファセットがフィルターにどう反応するか {#how-column-faceting-responds-to-filters}
 
-A column's faceted row model includes rows that pass every applicable filter except that column's own filter. This lets a facet continue to show alternative choices while the user edits it.
+列のファセット行モデルには、その列自身のフィルターを除く、適用されているすべてのフィルターを通過した行が含まれます。これにより、ユーザーがファセットを操作している間も、ほかの選択肢を表示し続けられます。
 
-Consider a table with `Region` and `Plan` filters:
+`Region` と `Plan` のフィルターがあるテーブルで考えてみましょう。
 
-1. The user selects `Region = Europe`.
-2. The `Plan` facet applies the region filter and recalculates its plan counts.
-3. The user selects `Plan = Pro`.
-4. The table displays only European Pro rows.
-5. The `Plan` facet still calculates its choices from all European rows because it excludes its own `Plan` filter.
+1. ユーザーが `Region = Europe` を選びます。
+2. `Plan` のファセットは地域のフィルターを適用し、プランの件数を計算し直します。
+3. ユーザーが `Plan = Pro` を選びます。
+4. テーブルにはヨーロッパの Pro の行だけが表示されます。
+5. `Plan` のファセットは自身の `Plan` フィルターを除外するため、選択肢は引き続きヨーロッパのすべての行から計算されます。
 
-Other facets do apply the selected plan filter. For example, a `Status` facet would now describe only European Pro rows. This is what allows multiple facets to narrow each other.
+ほかのファセットには、選ばれたプランのフィルターが適用されます。たとえば `Status` のファセットは、ヨーロッパの Pro の行だけを対象にするようになります。この仕組みによって、複数のファセットが互いに絞り込み合えます。
 
-Client-side faceting needs both `filteredRowModel` and `facetedRowModel` to provide this behavior. Without a filtered row model, the faceted row model falls back to the pre-filtered rows, so its values will not react to other column filters.
+クライアントサイドのファセットでこの動作を実現するには、`filteredRowModel` と `facetedRowModel` の両方が必要です。フィルター済みの行モデルがないと、ファセット行モデルはフィルター適用前の行で代用するため、その値はほかの列のフィルターに反応しません。
 
-### Faceting APIs {#faceting-apis}
+### ファセットの API {#faceting-apis}
 
-Use the faceting API that matches the filter interface you are building:
+作ろうとしているフィルター UI に合ったファセットの API を使ってください。
 
-| API                               | Result                                  | Common uses                                            |
+| API                               | 結果                                  | よくある用途                                            |
 | --------------------------------- | --------------------------------------- | ------------------------------------------------------ |
-| `column.getFacetedRowModel()`     | Rows that pass the other active filters | Custom facet calculations                              |
-| `column.getFacetedUniqueValues()` | A `Map` of values to occurrence counts  | Checkboxes, select menus, and autocomplete suggestions |
-| `column.getFacetedMinMaxValues()` | A `[min, max]` tuple or `undefined`     | Number inputs and range sliders                        |
+| `column.getFacetedRowModel()`     | ほかの有効なフィルターを通過した行 | 独自のファセット計算                              |
+| `column.getFacetedUniqueValues()` | 値から出現回数への `Map`  | チェックボックス、セレクトメニュー、オートコンプリートの候補 |
+| `column.getFacetedMinMaxValues()` | `[min, max]` のタプル、または `undefined`     | 数値入力、範囲スライダー                        |
 
-The row model factories registered in `tableFeatures` enable these APIs:
+これらの API は、`tableFeatures` に登録した行モデルのファクトリーによって有効になります。
 
-- `createFacetedRowModel()` is required for client-side faceting.
-- `createFacetedUniqueValues()` is required for unique values and counts.
-- `createFacetedMinMaxValues()` is required for numeric minimum and maximum values.
+- クライアントサイドのファセットには `createFacetedRowModel()` が必要です。
+- 一意な値と件数には `createFacetedUniqueValues()` が必要です。
+- 数値の最小値と最大値には `createFacetedMinMaxValues()` が必要です。
 
-Register only the factories your table uses. The complete setup near the top of this guide registers all three.
+テーブルで使うファクトリーだけを登録してください。このガイドの冒頭にあるセットアップの全体例では、3つすべてを登録しています。
 
-### Unique Values and Counts {#unique-values-and-counts}
+### 一意な値と件数 {#unique-values-and-counts}
 
-`column.getFacetedUniqueValues()` returns a `Map` whose keys are facet values and whose values are occurrence counts. You can turn that map into a sorted list for an autocomplete or select control:
+`column.getFacetedUniqueValues()` は、キーがファセット値、値が出現回数の `Map` を返します。この Map をソート済みの配列に変換すれば、オートコンプリートやセレクトの操作部品に使えます。
 
 ```ts
 const suggestions = Array.from(column.getFacetedUniqueValues().entries())
@@ -122,7 +122,7 @@ const suggestions = Array.from(column.getFacetedUniqueValues().entries())
   .slice(0, 5_000)
 ```
 
-Each entry contains both the value and its count:
+各要素には、値とその件数の両方が含まれます。
 
 ```tsx
 return (
@@ -136,7 +136,7 @@ return (
 )
 ```
 
-For a scalar column, each row normally contributes one value, so the occurrence count is also a row count. A row can contribute more than one facet value by defining the column's `getUniqueValues` option. In that case, the counts describe occurrences and their total can be greater than the number of rows.
+スカラー値の列では通常、1つの行が1つの値を返すため、出現回数はそのまま行数にもなります。列の `getUniqueValues` オプションを定義すると、1つの行から複数のファセット値を返せます。その場合、件数は出現回数を表し、その合計は行数より大きくなることがあります。
 
 ```tsx
 columnHelper.accessor('tags', {
@@ -145,11 +145,11 @@ columnHelper.accessor('tags', {
 })
 ```
 
-If you want each count to represent rows, make sure `getUniqueValues` returns each value no more than once per row.
+件数を行数として扱いたい場合は、`getUniqueValues` が1つの行につき同じ値を2回以上返さないようにしてください。
 
-### Reactive Facet Controls in React {#reactive-facet-controls-in-react}
+### React でのリアクティブなファセットの操作部品 {#reactive-facet-controls-in-react}
 
-Facet values are often read inside a filter component that receives a stable `column` object. Subscribe that component to the filter state so it updates when another facet changes. `table.Subscribe` keeps the subscription local to the component that renders the facet controls.
+ファセット値は、参照が変わらない `column` オブジェクトを受け取るフィルターコンポーネントの中で読み取ることがよくあります。そのコンポーネントがフィルターの状態を購読するようにして、ほかのファセットが変わったときに更新されるようにしてください。`table.Subscribe` を使うと、購読をファセットの操作部品を描画するコンポーネントの中だけに閉じ込められます。
 
 ```tsx
 function FacetOptions({ table, column }) {
@@ -174,11 +174,11 @@ function FacetOptions({ table, column }) {
 }
 ```
 
-The filter function for the column still determines how the selected values match rows. See the [Column Filtering Guide](./column-filtering) for filter functions and filter state, or the [Faceted Filters example](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted) for a complete implementation.
+選ばれた値がどの行に一致するかを決めるのは、引き続きその列のフィルター関数です。フィルター関数とフィルターの状態については[列フィルタリングガイド](./column-filtering)を、完全な実装例については[ファセットフィルターのサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted)を参照してください。
 
-### Minimum and Maximum Values {#minimum-and-maximum-values}
+### 最小値と最大値 {#minimum-and-maximum-values}
 
-`column.getFacetedMinMaxValues()` returns the numeric range available after applying the other active filters. It returns `undefined` when there are no numeric values.
+`column.getFacetedMinMaxValues()` は、ほかの有効なフィルターを適用した後に残る数値の範囲を返します。数値が1つもない場合は `undefined` を返します。
 
 ```tsx
 const [min, max] = column.getFacetedMinMaxValues() ?? [0, 1]
@@ -194,11 +194,11 @@ return (
 )
 ```
 
-The minimum and maximum describe the values that are available to the filter UI. Your column's filter function determines how a selected value or range filters rows.
+最小値と最大値は、フィルター UI で選べる値の範囲を表します。選ばれた値や範囲で行をどう絞り込むかは、列のフィルター関数が決めます。
 
-### Bucketed Faceting for Continuous Values {#bucketed-faceting-for-continuous-values}
+### 連続値のためのバケット分けしたファセット {#bucketed-faceting-for-continuous-values}
 
-Raw unique values are not always useful. Dates, file sizes, durations, prices, and measurements can produce hundreds or thousands of distinct values. These columns are often easier to filter when their values are placed into meaningful buckets:
+生の一意な値が常に役立つとは限りません。日付・ファイルサイズ・所要時間・価格・計測値などは、異なる値が数百、数千と生じることがあります。こうした列は、値を意味のある区分（バケット）に振り分けたほうがフィルターしやすくなります。
 
 ```text
 Last login
@@ -209,7 +209,7 @@ Last login
 ☐ Older
 ```
 
-You can use the column's `getUniqueValues` option to return a bucket key for faceting while keeping the original accessor value for rendering and other table features.
+列の `getUniqueValues` オプションを使うと、ファセット用にはバケットのキーを返しつつ、描画やほかのテーブル機能には元のアクセサーの値を使い続けられます。
 
 ```tsx
 type StorageBucket =
@@ -237,28 +237,28 @@ columnHelper.accessor('storageBytes', {
 })
 ```
 
-Faceting and filtering should use the same bucket definitions so the displayed counts match the rows selected by each bucket. The column keeps its raw numeric value, so there is no need to create a hidden derived column only for faceting. See the [Bucketed Faceted Filters example](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted-bucketed) for complete date and storage bucket filters.
+ファセットとフィルタリングには、同じバケットの定義を使ってください。そうすれば、表示される件数と、各バケットで選ばれる行が一致します。列は生の数値を保持したままなので、ファセットのためだけに非表示の派生列を作る必要はありません。日付と容量のバケットフィルターの完全な実装は、[バケット分けしたファセットフィルターのサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted-bucketed)を参照してください。
 
-### Client-Side Faceting and Performance {#client-side-faceting-and-performance}
+### クライアントサイドのファセットとパフォーマンス {#client-side-faceting-and-performance}
 
-The built-in client-side faceting row models are memoized. They recalculate when their input rows or relevant filter state changes. The cost still depends on the number of rows, columns, and unique values in the table.
+組み込みのクライアントサイドのファセット行モデルはメモ化されています。入力となる行や関係するフィルターの状態が変わったときに計算し直されます。それでも、計算コストはテーブルの行数・列数・一意な値の数に左右されます。
 
-For columns with many unique values, consider these options:
+一意な値が多い列では、次の方法を検討してください。
 
-- Render only the first or most relevant values instead of every map entry.
-- Let users search the available values before rendering a long list.
-- Bucket continuous or high-cardinality values into useful ranges.
-- Move faceting to the server when the complete dataset is not available in the browser.
+- Map のすべての要素ではなく、先頭の値や関連性の高い値だけを描画する
+- 長い一覧を描画する前に、ユーザーが選べる値を検索できるようにする
+- 連続値や種類の多い値を、役に立つ範囲のバケットに振り分ける
+- データセット全体がブラウザーにない場合は、ファセットをサーバーに移す
 
-Avoid sorting or converting a large facet map repeatedly in unrelated components. Derive and render facet options close to the component that subscribes to the relevant filter state.
+大きなファセットの Map を、無関係なコンポーネントで何度もソートしたり変換したりするのは避けてください。ファセットの選択肢は、関係するフィルターの状態を購読するコンポーネントの近くで導き出し、描画してください。
 
-### Custom Server-Side Faceting {#custom-server-side-faceting}
+### サーバーサイドの独自ファセット {#custom-server-side-faceting}
 
-When filtering is performed on the server, the rows loaded into the browser may not contain enough information to calculate complete facet values or counts. In that case, calculate the facets on the server and provide custom `facetedUniqueValues` and `facetedMinMaxValues` factories.
+フィルタリングをサーバーで行う場合、ブラウザーに読み込まれた行だけでは、完全なファセット値や件数を計算するのに情報が足りないことがあります。その場合は、サーバーでファセットを計算し、独自の `facetedUniqueValues` と `facetedMinMaxValues` のファクトリーを渡してください。
 
-Each factory receives the table and a column ID, then returns a function that resolves the faceted result. The regular column APIs will return the server-provided values.
+各ファクトリーはテーブルと列 ID を受け取り、ファセットの結果を返す関数を返します。通常の列の API は、サーバーから提供された値を返すようになります。
 
-Factories are resolved once per table and column, but the function each factory returns runs on every read; the table does not cache its result. Read live values inside that returned function (from a signal, store, or `table.options.meta`) so updated server facets show up immediately, and memoize inside the factory if the calculation is expensive.
+ファクトリーはテーブルと列ごとに一度だけ解決されますが、各ファクトリーが返す関数は読み取りのたびに実行されます。テーブルはその結果をキャッシュしません。返す関数の中で（シグナル・ストア・`table.options.meta` から）最新の値を読み取るようにすれば、更新されたサーバーのファセットがすぐに反映されます。計算が重い場合は、ファクトリーの中でメモ化してください。
 
 ```ts
 const facetingQuery = useQuery()
@@ -284,15 +284,15 @@ const table = useTable({
 })
 ```
 
-To match the built-in column faceting behavior, a server query for one column should apply the other active filters but exclude that column's own filter. This keeps alternative choices available in the current facet while allowing facets to narrow each other.
+組み込みの列のファセットと同じ動作にするには、ある列のためのサーバーへのクエリで、ほかの有効なフィルターは適用し、その列自身のフィルターは除外してください。こうすると、現在のファセットではほかの選択肢を選べるまま、ファセット同士で互いに絞り込めます。
 
-You can also fetch facet values and pass them directly to your filter components without using the TanStack Table faceting APIs.
+TanStack Table のファセットの API を使わずに、ファセット値を取得してフィルターコンポーネントに直接渡すこともできます。
 
-### Global Faceting {#global-faceting}
+### グローバルファセット {#global-faceting}
 
-Global faceting derives values across every leaf column that can participate in global filtering. It is useful for autocomplete suggestions or other metadata associated with a global filter. The global faceted row model applies active column filters and excludes the global filter itself.
+グローバルファセットは、グローバルフィルタリングの対象になり得るすべての末端の列から値を導き出します。オートコンプリートの候補や、グローバルフィルターに関連するその他のメタデータに役立ちます。グローバルのファセット行モデルは、有効な列フィルターを適用し、グローバルフィルター自体は除外します。
 
-If the table uses global filtering, register `globalFilteringFeature` so the row filtering pipeline evaluates the global filter. The same faceting factories used by column faceting also power these table APIs:
+テーブルでグローバルフィルタリングを使う場合は、`globalFilteringFeature` を登録して、行のフィルタリング処理でグローバルフィルターが評価されるようにしてください。列のファセットで使うのと同じファセットのファクトリーが、次のテーブルの API も支えています。
 
 ```ts
 const globalFacetedRows = table.getGlobalFacetedRowModel().flatRows
@@ -302,7 +302,7 @@ const suggestions = Array.from(table.getGlobalFacetedUniqueValues().entries())
 const [min, max] = table.getGlobalFacetedMinMaxValues() ?? [0, 1]
 ```
 
-Custom faceting factories receive the internal `__global__` column ID for global requests. You can branch on that ID when the server returns separate column and global facet results:
+独自のファセットのファクトリーは、グローバルの要求に対して内部用の列 ID `__global__` を受け取ります。サーバーが列とグローバルで別々のファセット結果を返す場合は、この ID で処理を分けられます。
 
 ```ts
 const features = tableFeatures({

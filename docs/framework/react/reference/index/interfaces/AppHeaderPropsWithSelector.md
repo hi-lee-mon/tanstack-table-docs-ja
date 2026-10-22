@@ -3,11 +3,11 @@ id: AppHeaderPropsWithSelector
 title: AppHeaderPropsWithSelector
 ---
 
-Defined in: [src/createTableHook.tsx:451](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L451)
+定義元: [src/createTableHook.tsx:451](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L451)
 
-Props for AppHeader/AppFooter component - with selector
+AppHeader/AppFooter コンポーネントの props（セレクターあり）です。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -29,7 +29,7 @@ Props for AppHeader/AppFooter component - with selector
 
 `TSelected`
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### children {#children}
 
@@ -37,9 +37,9 @@ Props for AppHeader/AppFooter component - with selector
 children: (header, state) => ReactNode;
 ```
 
-Defined in: [src/createTableHook.tsx:459](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L459)
+定義元: [src/createTableHook.tsx:459](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L459)
 
-#### Parameters {#parameters}
+#### パラメーター {#parameters}
 
 ##### header {#header}
 
@@ -49,7 +49,7 @@ Defined in: [src/createTableHook.tsx:459](https://github.com/TanStack/table/blob
 
 `TSelected`
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 `ReactNode`
 
@@ -61,7 +61,7 @@ Defined in: [src/createTableHook.tsx:459](https://github.com/TanStack/table/blob
 header: Header<TFeatures, TData, TValue>;
 ```
 
-Defined in: [src/createTableHook.tsx:458](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L458)
+定義元: [src/createTableHook.tsx:458](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L458)
 
 ***
 
@@ -71,14 +71,14 @@ Defined in: [src/createTableHook.tsx:458](https://github.com/TanStack/table/blob
 selector: (state) => TSelected;
 ```
 
-Defined in: [src/createTableHook.tsx:464](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L464)
+定義元: [src/createTableHook.tsx:464](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L464)
 
-#### Parameters {#parameters-1}
+#### パラメーター {#parameters-1}
 
 ##### state {#state-1}
 
 `TableState`\<`TFeatures`\>
 
-#### Returns {#returns-1}
+#### 戻り値 {#returns-1}
 
 `TSelected`

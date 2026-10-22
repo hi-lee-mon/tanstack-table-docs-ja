@@ -7,11 +7,11 @@ title: AppDisplayColumnDef
 type AppDisplayColumnDef<TFeatures, TData, TCellComponents, THeaderComponents> = Omit<DisplayColumnDef<TFeatures, TData, unknown>, "cell" | "header" | "footer"> & object;
 ```
 
-Defined in: [src/createTableHook.tsx:116](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L116)
+定義元: [src/createTableHook.tsx:116](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L116)
 
-Enhanced display column definition with pre-bound components.
+コンポーネントがあらかじめ結び付けられた、拡張版の表示用列定義です。
 
-## Type Declaration {#type-declaration}
+## 型宣言 {#type-declaration}
 
 ### cell? {#cell}
 
@@ -31,7 +31,7 @@ optional footer?: AppColumnDefTemplate<AppHeaderContext<TFeatures, TData, unknow
 optional header?: AppColumnDefTemplate<AppHeaderContext<TFeatures, TData, unknown, THeaderComponents>>;
 ```
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 

@@ -3,11 +3,11 @@ id: AppHeaderComponent
 title: AppHeaderComponent
 ---
 
-Defined in: [src/createTableHook.tsx:497](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L497)
+定義元: [src/createTableHook.tsx:497](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L497)
 
-Component type for AppHeader/AppFooter - wraps a header and provides header context with optional Subscribe
+AppHeader/AppFooter のコンポーネント型です。ヘッダーをラップし、ヘッダーのコンテキストを提供します。Subscribe は任意で使えます。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -21,43 +21,43 @@ Component type for AppHeader/AppFooter - wraps a header and provides header cont
 
 `THeaderComponents` *extends* `Record`\<`string`, `ComponentType`\<`any`\>\>
 
-## Call Signature {#call-signature}
+## 呼び出しシグネチャ {#call-signature}
 
 ```ts
 AppHeaderComponent<TValue>(props): ReactNode;
 ```
 
-Defined in: [src/createTableHook.tsx:502](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L502)
+定義元: [src/createTableHook.tsx:502](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L502)
 
-Component type for AppHeader/AppFooter - wraps a header and provides header context with optional Subscribe
+AppHeader/AppFooter のコンポーネント型です。ヘッダーをラップし、ヘッダーのコンテキストを提供します。Subscribe は任意で使えます。
 
-### Type Parameters {#type-parameters-1}
+### 型パラメーター {#type-parameters-1}
 
 #### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-### Parameters {#parameters}
+### パラメーター {#parameters}
 
 #### props {#props}
 
 [`AppHeaderPropsWithoutSelector`](AppHeaderPropsWithoutSelector.md)\<`TFeatures`, `TData`, `TValue`, `THeaderComponents`\>
 
-### Returns {#returns}
+### 戻り値 {#returns}
 
 `ReactNode`
 
-## Call Signature {#call-signature-1}
+## 呼び出しシグネチャ {#call-signature-1}
 
 ```ts
 AppHeaderComponent<TValue, TSelected>(props): ReactNode;
 ```
 
-Defined in: [src/createTableHook.tsx:510](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L510)
+定義元: [src/createTableHook.tsx:510](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L510)
 
-Component type for AppHeader/AppFooter - wraps a header and provides header context with optional Subscribe
+AppHeader/AppFooter のコンポーネント型です。ヘッダーをラップし、ヘッダーのコンテキストを提供します。Subscribe は任意で使えます。
 
-### Type Parameters {#type-parameters-2}
+### 型パラメーター {#type-parameters-2}
 
 #### TValue {#tvalue-1}
 
@@ -67,12 +67,12 @@ Component type for AppHeader/AppFooter - wraps a header and provides header cont
 
 `TSelected` = `unknown`
 
-### Parameters {#parameters-1}
+### パラメーター {#parameters-1}
 
 #### props {#props-1}
 
 [`AppHeaderPropsWithSelector`](AppHeaderPropsWithSelector.md)\<`TFeatures`, `TData`, `TValue`, `THeaderComponents`, `TSelected`\>
 
-### Returns {#returns-1}
+### 戻り値 {#returns-1}
 
 `ReactNode`

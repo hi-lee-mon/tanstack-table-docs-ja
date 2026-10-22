@@ -7,17 +7,17 @@ title: FacetedUniqueValuesFactory
 type FacetedUniqueValuesFactory<TData> = (table, columnId) => () => Map<any, number>;
 ```
 
-Defined in: [src/useLegacyTable.ts:200](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L200)
+定義元: [src/useLegacyTable.ts:200](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L200)
 
-Faceted unique values factory function type from v8 API
+v8 API のファセットの一意な値を作るファクトリー関数の型です。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Parameters {#parameters}
+## パラメーター {#parameters}
 
 ### table {#table}
 
@@ -27,6 +27,6 @@ Faceted unique values factory function type from v8 API
 
 `string`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 () => `Map`\<`any`, `number`\>

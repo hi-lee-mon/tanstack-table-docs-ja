@@ -1,16 +1,16 @@
 ---
-title: Pagination (React) Guide
+title: ページネーション（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Pagination](https://tanstack.com/table/latest/docs/framework/react/examples/pagination)
+- [ページネーション](https://tanstack.com/table/latest/docs/framework/react/examples/pagination)
 
-### Pagination Setup {#pagination-setup}
+### ページネーションのセットアップ {#pagination-setup}
 
-Here's how you set up your table to use pagination features. Adding the pagination feature enables the related APIs. If you use client-side pagination, also set up `paginatedRowModel` after its feature, since row model slots are type-checked.
+ページネーションの機能を使うためのテーブルのセットアップ方法は次のとおりです。ページネーションの機能を追加すると、関連する API が使えるようになります。クライアントサイドでページネーションする場合は、その機能の後ろに `paginatedRowModel` も設定してください。行モデルのスロットは型チェックされるためです。
 
 ```tsx
 import {
@@ -33,29 +33,29 @@ const table = useTable({
 })
 ```
 
-## Pagination (React) Guide {#pagination-react-guide}
+## ページネーション（React）ガイド {#pagination-react-guide}
 
-TanStack Table has great support for both client-side and server-side pagination. This guide will walk you through the different ways to implement pagination in your table.
+TanStack Table は、クライアントサイドとサーバーサイドのどちらのページネーションも十分にサポートしています。このガイドでは、テーブルにページネーションを実装するさまざまな方法を順に説明します。
 
-### Client-Side Pagination {#client-side-pagination}
+### クライアントサイドのページネーション {#client-side-pagination}
 
-Using client-side pagination means that the `data` that you fetch will contain **_ALL_** of the rows for the table, and the table instance will handle pagination logic in the front-end.
+クライアントサイドのページネーションを使うとは、取得する `data` にテーブルの行が**_すべて_**含まれ、テーブルインスタンスがフロントエンドでページネーションの処理を行うということです。
 
-#### Should You Use Client-Side Pagination? {#should-you-use-client-side-pagination}
+#### クライアントサイドのページネーションを使うべきか {#should-you-use-client-side-pagination}
 
-Client-side pagination is usually the simplest option when the browser can fetch and retain the complete dataset. Use server-side pagination when the full dataset would be too expensive to query, transfer, or store in the browser.
+ブラウザーがデータセット全体を取得して保持できるなら、たいていはクライアントサイドのページネーションがいちばん簡単です。データセット全体の問い合わせ・転送・ブラウザーでの保持にコストがかかりすぎる場合は、サーバーサイドのページネーションを使います。
 
-Row count alone does not decide the boundary. See the [Client-Side vs Server-Side Guide](../../../guide/client-side-vs-server-side) for the full decision framework, performance factors, and guidance for keeping filtering and sorting consistent with pagination.
+行数だけで境目が決まるわけではありません。判断の枠組み全体、パフォーマンスの要因、フィルタリングやソートをページネーションと整合させる方法については、[クライアントサイドとサーバーサイドのガイド](../../../guide/client-side-vs-server-side)を参照してください。
 
-#### Should You Use Virtualization Instead? {#should-you-use-virtualization-instead}
+#### 代わりに仮想化を使うべきか {#should-you-use-virtualization-instead}
 
-Virtualization (or windowing) reduces rendering work by mounting only the visible rows, but the virtualized data still exists in the browser. It can complement client-side or server-side pagination, but it does not replace server-side processing when the complete dataset is too large to load.
+仮想化（ウィンドウイングとも呼ばれます）は、見えている行だけをマウントすることでレンダーの負荷を減らします。ただし、仮想化したデータはブラウザー内に存在したままです。クライアントサイドやサーバーサイドのページネーションを補うことはできますが、データセット全体が大きすぎて読み込めない場合に、サーバーサイドでの処理の代わりになるものではありません。
 
-See the [Client-Side vs Server-Side Guide](../../../guide/client-side-vs-server-side#rendering-is-a-separate-decision) for that distinction, or [TanStack Virtual](https://tanstack.com/virtual/latest) for virtualization APIs.
+この違いについては[クライアントサイドとサーバーサイドのガイド](../../../guide/client-side-vs-server-side#rendering-is-a-separate-decision)を、仮想化の API については [TanStack Virtual](https://tanstack.com/virtual/latest) を参照してください。
 
-#### Pagination Row Model {#pagination-row-model}
+#### ページネーション行モデル {#pagination-row-model}
 
-If you want to take advantage of the built-in client-side pagination in TanStack Table, add the `rowPaginationFeature` and the `paginatedRowModel` factory to your features:
+TanStack Table に組み込まれたクライアントサイドのページネーションを使いたい場合は、`rowPaginationFeature` と `paginatedRowModel` のファクトリーを features に追加します。
 
 ```tsx
 import {
@@ -77,15 +77,15 @@ const table = useTable({
 })
 ```
 
-### Manual Server-Side Pagination {#manual-server-side-pagination}
+### 手動のサーバーサイドのページネーション {#manual-server-side-pagination}
 
-If you decide that you need to use server-side pagination, here is how you can implement it.
+サーバーサイドのページネーションを使うと決めた場合は、次のように実装できます。
 
-No pagination row model is needed for server-side pagination, but if you have provided it for other tables that do need it in a shared component, you can still turn off the client-side pagination by setting the `manualPagination` option to `true`. Setting the `manualPagination` option to `true` will tell the table instance to use the `table.getPrePaginatedRowModel` row model under the hood, and it will make the table instance assume that the `data` that you pass in is already paginated.
+サーバーサイドのページネーションには、ページネーション行モデルは必要ありません。ただし、共有コンポーネントの中で、行モデルを必要とするほかのテーブルのためにそれを渡している場合でも、`manualPagination` オプションを `true` にすればクライアントサイドのページネーションを無効にできます。`manualPagination` を `true` にすると、テーブルインスタンスは内部で `table.getPrePaginatedRowModel` の行モデルを使うようになり、渡された `data` がすでにページ分割済みであるとみなします。
 
-#### Page Count and Row Count {#page-count-and-row-count}
+#### ページ数と行数 {#page-count-and-row-count}
 
-The table instance will have no way of knowing how many rows/pages there are in total in your back-end unless you tell it. Provide either the `rowCount` or `pageCount` table option to let the table instance know how many pages there are in total. If you provide a `rowCount`, the table instance will calculate the `pageCount` internally from `rowCount` and `pageSize`. Otherwise, you can directly provide the `pageCount` if you already have it. If you don't know the page count, pass `-1` for `pageCount`. In that case, `getCanNextPage()` returns `true` because the table cannot detect the end, `getCanPreviousPage()` depends on the current `pageIndex`, and `getCanLastPage()` returns `false` because no finite last page is known.
+バックエンドに全部で何行・何ページあるかは、教えない限りテーブルインスタンスには分かりません。テーブルオプションの `rowCount` か `pageCount` のどちらかを渡して、全部で何ページあるかをテーブルインスタンスに伝えてください。`rowCount` を渡した場合、テーブルインスタンスは `rowCount` と `pageSize` から内部で `pageCount` を計算します。`pageCount` がすでに分かっているなら、直接渡してもかまいません。ページ数が分からない場合は、`pageCount` に `-1` を渡します。このとき、テーブルは終端を検出できないため `getCanNextPage()` は `true` を返し、`getCanPreviousPage()` は現在の `pageIndex` によって決まり、有限の最終ページが分からないため `getCanLastPage()` は `false` を返します。
 
 ```tsx
 import {
@@ -107,15 +107,15 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> Setting the `manualPagination` option to `true` will make the table instance assume that the `data` that you pass in is already paginated.
+> `manualPagination` オプションを `true` にすると、テーブルインスタンスは渡された `data` がすでにページ分割済みであるとみなします。
 
-#### Using TanStack Query {#using-tanstack-query}
+#### TanStack Query を使う {#using-tanstack-query}
 
-TanStack Query can own the request lifecycle while TanStack Table owns the controlled pagination state. See the complete [With TanStack Query example](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query), which includes both patterns below.
+リクエストのライフサイクルは TanStack Query に任せ、制御されたページネーションの状態は TanStack Table が受け持つ、という分担ができます。下の2つのパターンをどちらも含む完全なサンプルとして、[TanStack Query との組み合わせのサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query)を参照してください。
 
-##### Page-Index Pagination with `useQuery` {#page-index-pagination-with-usequery}
+##### `useQuery` を使ったページ番号方式のページネーション {#page-index-pagination-with-usequery}
 
-Include the pagination state in the query key, return the requested rows plus a total `rowCount`, and pass both to the table:
+ページネーションの状態をクエリキーに含め、要求された行と合計の `rowCount` を返し、その両方をテーブルに渡します。
 
 ```tsx
 const dataQuery = useQuery({
@@ -140,11 +140,11 @@ const table = useTable(
 )
 ```
 
-This supports page counts, page-number navigation, and `lastPage()` because the total row count is known.
+合計の行数が分かっているので、ページ数の表示、ページ番号による移動、`lastPage()` が使えます。
 
-##### Cursor-Based Pagination with `useInfiniteQuery` {#cursor-based-pagination-with-useinfinitequery}
+##### `useInfiniteQuery` を使ったカーソル方式のページネーション {#cursor-based-pagination-with-useinfinitequery}
 
-A cursor API usually returns the current rows, an opaque `nextCursor`, and whether another page exists. The cursor can be the last row ID when IDs are unique and the server's ordering is stable:
+カーソル方式の API は通常、現在の行、中身を解釈しない前提の `nextCursor`、次のページがあるかどうかを返します。ID が一意で、サーバー側の並び順が安定しているなら、最後の行の ID をカーソルにできます。
 
 ```tsx
 const dataQuery = useInfiniteQuery({
@@ -193,20 +193,20 @@ async function goToNextPage() {
 }
 ```
 
-Use `canNextPage` for the Next button because `getCanNextPage()` cannot know when a `pageCount` of `-1` has reached the end. Previously fetched pages remain available for backward navigation. A cursor API has no known last page, so `getCanLastPage()` returns `false` and the Last button should stay disabled. Reset `pageIndex` to `0` whenever sorting, filtering, or page size changes so the new query starts from its initial cursor.
+「次へ」ボタンには `canNextPage` を使ってください。`pageCount` が `-1` のとき、`getCanNextPage()` は終端に達したかどうかを判断できないためです。取得済みのページは残るので、前のページに戻れます。カーソル方式の API では最終ページが分からないため、`getCanLastPage()` は `false` を返します。「最後へ」ボタンは無効のままにしておきましょう。ソート・フィルタリング・ページサイズが変わったら、新しいクエリが最初のカーソルから始まるように、`pageIndex` を `0` に戻してください。
 
-### Pagination State {#pagination-state}
+### ページネーションの状態 {#pagination-state}
 
-Whether or not you are using client-side or manual server-side pagination, you can use the built-in `pagination` state and APIs.
+クライアントサイドのページネーションと手動のサーバーサイドのページネーションのどちらを使っていても、組み込みの `pagination` の状態と API を使えます。
 
-The `pagination` state is an object that contains the following properties:
+`pagination` の状態は、次のプロパティを持つオブジェクトです。
 
-- `pageIndex`: The current page index (zero-based).
-- `pageSize`: The current page size.
+- `pageIndex`: 現在のページ番号（0 始まり）。
+- `pageSize`: 現在のページサイズ。
 
-For reactive reads that should re-render your UI, use `table.state.pagination`. In event handlers, you can read the current snapshot with `table.atoms.pagination.get()`, but this read does not subscribe the component to future changes.
+UI の再レンダーにつなげたいリアクティブな読み取りには、`table.state.pagination` を使います。イベントハンドラーの中では `table.atoms.pagination.get()` で現在のスナップショットを読み取れますが、この読み取りでは、コンポーネントがその後の変更を購読することにはなりません。
 
-If you need access to the `pagination` state outside of the table (a server-side query key is the most common case), you can own the slice yourself. The recommended way in v9 is an external atom passed through the `atoms` table option. Atoms preserve fine-grained subscriptions, and the pagination value can be used in a query key without forcing the component that owns the table to re-render.
+テーブルの外で `pagination` の状態にアクセスする必要がある場合（よくあるのはサーバーサイドのクエリキーです）は、そのスライスを自分で管理できます。v9 で推奨する方法は、テーブルオプション `atoms` で外部のアトムを渡すことです。アトムを使うと細かい粒度の購読が保たれ、テーブルを持つコンポーネントを再レンダーさせることなく、ページネーションの値をクエリキーに使えます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -238,7 +238,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.pagination` plus `onPaginationChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+あるいは、v8 スタイルの `state.pagination` と `onPaginationChange` を組み合わせるパターンも引き続き使えます。単純な連携や v8 のコードを移行するときには便利ですが、外部のアトムに比べると粒度が粗くなります。詳しい比較は[テーブルの状態ガイド](./table-state)を参照してください。
 
 ```tsx
 const [pagination, setPagination] = useState<PaginationState>({
@@ -257,7 +257,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, if you have no need for managing the `pagination` state in your own scope, but you need to set different initial values for the `pageIndex` and `pageSize`, you can use the `initialState` option.
+また、`pagination` の状態を自分のスコープで管理する必要はないものの、`pageIndex` と `pageSize` に別の初期値を設定したい場合は、`initialState` オプションを使えます。
 
 ```tsx
 const table = useTable({
@@ -274,18 +274,18 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> Do NOT provide the `pagination` slice in more than one of the `atoms`, `state`, and `initialState` options. Controlled values (`atoms` or `state`) will overwrite `initialState`. Only use one of them.
+> `pagination` のスライスを、`atoms`・`state`・`initialState` の複数のオプションに**渡さないでください**。制御された値（`atoms` または `state`）が `initialState` を上書きします。どれか1つだけを使ってください。
 
-### Pagination Options {#pagination-options}
+### ページネーションのオプション {#pagination-options}
 
-Besides the `manualPagination`, `pageCount`, and `rowCount` options which are useful for manual server-side pagination (and discussed [above](#manual-server-side-pagination)), there is one other table option that is useful to understand.
+手動のサーバーサイドのページネーションで役立つ `manualPagination`・`pageCount`・`rowCount` の各オプション（[前述](#manual-server-side-pagination)）のほかに、知っておくと役立つテーブルオプションがもう1つあります。
 
-#### Auto Reset Page Index {#auto-reset-page-index}
+#### ページ番号の自動リセット {#auto-reset-page-index}
 
-By default, `pageIndex` is reset to `0` whenever the client-side row models recompute, such as when the `data` is updated, filters change, sorting changes, or grouping changes. This behavior is automatically disabled when `manualPagination` is `true`, but it can be overridden by explicitly assigning a boolean value to the `autoResetPageIndex` table option. There is also a global `autoResetAll` table option that disables (or enables) every auto-reset behavior at once.
+初期設定では、`data` の更新、フィルターの変更、ソートの変更、グループ化の変更などでクライアントサイドの行モデルが再計算されるたびに、`pageIndex` が `0` に戻ります。この動作は `manualPagination` が `true` のときは自動的に無効になりますが、テーブルオプション `autoResetPageIndex` に真偽値を明示的に指定すれば上書きできます。すべての自動リセットをまとめて無効（または有効）にする、全体用のテーブルオプション `autoResetAll` もあります。
 
 > [!NOTE]
-> Automatic resets run only when an included client-side row model that triggers them recomputes. If a manual server-side table omits the filtered, sorted, grouped, or other relevant row model, changing that controlled state does not trigger a page-index reset, even when `autoResetPageIndex` or `autoResetAll` is `true`. Reset `pageIndex` yourself in the corresponding change handler.
+> 自動リセットが実行されるのは、リセットのきっかけになるクライアントサイドの行モデルが含まれていて、それが再計算されたときだけです。手動のサーバーサイドのテーブルで、フィルタリング・ソート・グループ化などの該当する行モデルを省いている場合、その制御された状態を変えてもページ番号はリセットされません。`autoResetPageIndex` や `autoResetAll` が `true` でも同じです。対応する変更ハンドラーの中で、`pageIndex` を自分でリセットしてください。
 
 ```tsx
 const table = useTable({
@@ -297,32 +297,32 @@ const table = useTable({
 })
 ```
 
-A common reason to set `autoResetPageIndex: false` is editing data while viewing the table (for example, inline cell editing). Every edit updates `data`, which recomputes the row models and would otherwise snap the user back to the first page. Setting the option to a static `false` keeps the current page when the row model recomputes. If you also use the expanding feature, pair it with `autoResetExpanded: false` so expanded rows do not collapse on edits.
+`autoResetPageIndex: false` を設定するよくある理由は、テーブルを表示したままデータを編集するケース（セルのインライン編集など）です。編集のたびに `data` が更新されて行モデルが再計算されるため、そのままではユーザーが最初のページに引き戻されてしまいます。このオプションを固定値の `false` にしておけば、行モデルが再計算されても現在のページが保たれます。展開の機能も使っている場合は、編集で展開した行が折りたたまれないように、`autoResetExpanded: false` も併せて設定してください。
 
-Be aware, however, that if you turn off `autoResetPageIndex`, you may need to add some logic to handle resetting the `pageIndex` yourself to avoid showing empty pages.
+ただし、`autoResetPageIndex` を無効にした場合は、空のページが表示されないように、`pageIndex` を自分でリセットする処理を追加する必要があるかもしれません。
 
-### Pagination APIs {#pagination-apis}
+### ページネーションの API {#pagination-apis}
 
-There are several pagination table instance APIs that are useful for hooking up your pagination UI components.
+テーブルインスタンスには、ページネーションの UI コンポーネントをつなぎ込むのに役立つ API がいくつかあります。
 
-#### Pagination Button APIs {#pagination-button-apis}
+#### ページネーションのボタン用 API {#pagination-button-apis}
 
-- `getCanPreviousPage`: Useful for disabling the "previous page" button when on the first page.
-- `getCanNextPage`: Useful for disabling the "next page" button when there are no more pages.
-- `getCanLastPage`: Useful for disabling the "last page" button when no finite last page is known.
-- `previousPage`: Useful for going to the previous page. (Button click handler)
-- `nextPage`: Useful for going to the next page. (Button click handler)
-- `firstPage`: Useful for going to the first page. (Button click handler)
-- `lastPage`: Useful for going to the last page. (Button click handler)
-- `setPageIndex`: Useful for a "go to page" input.
-- `resetPageIndex`: Useful for resetting the table state to the original page index.
-- `setPageSize`: Useful for a "page size" input/select.
-- `resetPageSize`: Useful for resetting the table state to the original page size.
-- `setPagination`: Useful for setting all of the pagination state at once.
-- `resetPagination`: Useful for resetting the table state to the original pagination state.
+- `getCanPreviousPage`: 最初のページにいるときに「前のページ」ボタンを無効にするのに使います。
+- `getCanNextPage`: これ以上ページがないときに「次のページ」ボタンを無効にするのに使います。
+- `getCanLastPage`: 有限の最終ページが分からないときに「最後のページ」ボタンを無効にするのに使います。
+- `previousPage`: 前のページに移動するのに使います。（ボタンのクリックハンドラー）
+- `nextPage`: 次のページに移動するのに使います。（ボタンのクリックハンドラー）
+- `firstPage`: 最初のページに移動するのに使います。（ボタンのクリックハンドラー）
+- `lastPage`: 最後のページに移動するのに使います。（ボタンのクリックハンドラー）
+- `setPageIndex`: 「指定ページへ移動」の入力欄に使います。
+- `resetPageIndex`: テーブルの状態を元のページ番号に戻すのに使います。
+- `setPageSize`: 「ページサイズ」の入力欄やセレクトボックスに使います。
+- `resetPageSize`: テーブルの状態を元のページサイズに戻すのに使います。
+- `setPagination`: ページネーションの状態をまとめて設定するのに使います。
+- `resetPagination`: テーブルの状態を元のページネーションの状態に戻すのに使います。
 
 > [!NOTE]
-> These pagination APIs are available when using `rowPaginationFeature`.
+> これらのページネーションの API は、`rowPaginationFeature` を使っているときに利用できます。
 
 ```tsx
 <Button
@@ -363,7 +363,7 @@ There are several pagination table instance APIs that are useful for hooking up 
 </select>
 ```
 
-#### Pagination Info APIs {#pagination-info-apis}
+#### ページネーションの情報用 API {#pagination-info-apis}
 
-- `getPageCount`: Useful for showing the total number of pages.
-- `getRowCount`: Useful for showing the total number of rows.
+- `getPageCount`: 総ページ数を表示するのに使います。
+- `getRowCount`: 総行数を表示するのに使います。

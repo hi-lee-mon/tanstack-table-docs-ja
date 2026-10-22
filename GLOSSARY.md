@@ -82,6 +82,10 @@ title: 用語集
 | type helper | 型ヘルパー | |
 | type parameter / generic | 型パラメーター / ジェネリクス | |
 | devtools | Devtools | |
+| composable tables | 組み立て可能なテーブル | `createTableHook` で作るテーブル |
+| examples（サンプルアプリへのリンク一覧） | サンプル | コード例を指すときは「例」 |
+| state slice | 状態スライス | |
+| prop drilling | props のバケツリレー（prop drilling） | |
 
 ## TypeDoc の定型句
 
@@ -101,3 +105,5 @@ React API リファレンス（`docs/framework/react/reference/**`）に出て�
 | Remarks | 備考 |
 | Extends / Extended by | 継承元 / 継承先 |
 | Functions / Interfaces / Type Aliases / Variables | 関数 / インターフェース / 型エイリアス / 変数 |
+| See | 参照 |
+| Modules | モジュール |

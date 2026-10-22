@@ -1,18 +1,18 @@
 ---
-title: Column Pinning (React) Guide
+title: 列の固定（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+実装をすぐに見たい場合は、次の React のサンプルを参照してください。
 
-- [Column Pinning](https://tanstack.com/table/latest/docs/framework/react/examples/column-pinning)
-- [Column Pinning Split](https://tanstack.com/table/latest/docs/framework/react/examples/column-pinning-split)
-- [Sticky Column Pinning](https://tanstack.com/table/latest/docs/framework/react/examples/column-pinning-sticky)
+- [列の固定](https://tanstack.com/table/latest/docs/framework/react/examples/column-pinning)
+- [テーブルを分割する列の固定](https://tanstack.com/table/latest/docs/framework/react/examples/column-pinning-split)
+- [sticky による列の固定](https://tanstack.com/table/latest/docs/framework/react/examples/column-pinning-sticky)
 
-### Column Pinning Setup {#column-pinning-setup}
+### 列の固定のセットアップ {#column-pinning-setup}
 
-Here's how you set up your table to use column pinning features. Adding the column pinning feature enables the related APIs.
+列の固定の機能を使うためのテーブルのセットアップ方法は次のとおりです。列の固定の機能を追加すると、関連する API が使えるようになります。
 
 ```tsx
 import {
@@ -30,27 +30,27 @@ const table = useTable({
 })
 ```
 
-## Column Pinning (React) Guide {#column-pinning-react-guide}
+## 列の固定（React）ガイド {#column-pinning-react-guide}
 
-TanStack Table offers state and APIs helpful for implementing column pinning features in your table UI. You can implement column pinning in multiple ways. You can either split pinned columns into their own separate tables, or you can keep all columns in the same table, but use the pinning state to order the columns correctly and use sticky CSS to pin the columns to the start or end.
+TanStack Table には、テーブルの UI で列の固定を実装するのに役立つ状態と API があります。列の固定は複数の方法で実装できます。固定した列をそれぞれ別のテーブルに分ける方法もあれば、すべての列を同じテーブルに置いたまま、固定の状態に従って列を正しい順に並べ、sticky な CSS で列を先頭または末尾に固定する方法もあります。
 
-`start` and `end` are logical pinning regions. In LTR languages/layouts, `start` usually corresponds to left and `end` to right. In RTL languages/layouts, `start` usually corresponds to right and `end` to left.
+`start` と `end` は論理的な固定領域です。LTR（左から右に書く）の言語やレイアウトでは、通常 `start` が左、`end` が右に当たります。RTL（右から左に書く）の言語やレイアウトでは、通常 `start` が右、`end` が左に当たります。
 
-### How Column Pinning Affects Column Order {#how-column-pinning-affects-column-order}
+### 列の固定が列の順序に与える影響 {#how-column-pinning-affects-column-order}
 
-There are 3 table features that can reorder columns, which happen in the following order:
+列を並べ替える可能性のあるテーブルの機能は3つあり、次の順に適用されます。
 
-1. **Column Pinning** - If pinning, columns are split into start, center (unpinned), and end pinned columns.
-2. Manual [Column Ordering](./column-ordering) - A manually specified column order is applied.
-3. [Grouping](./grouping) - If grouping is enabled, a grouping state is active, and `tableOptions.groupedColumnMode` is set to `'reorder' | 'remove'`, then the grouped columns are reordered to the start of the column flow.
+1. **列の固定** - 固定している場合、列は先頭に固定された列、中央（固定されていない）の列、末尾に固定された列に分けられます。
+2. 手動の[列の並べ替え](./column-ordering) - 手動で指定した列の順序が適用されます。
+3. [グループ化](./grouping) - グループ化が有効で、グループ化の状態がアクティブであり、かつ `tableOptions.groupedColumnMode` が `'reorder' | 'remove'` に設定されている場合、グループ化された列が列の並びの先頭に移動します。
 
-The only way to change the order of the pinned columns is in the `columnPinning.start` and `columnPinning.end` state itself. `columnOrder` state will only affect the order of the unpinned ("center") columns.
+固定された列の順序を変える方法は、`columnPinning.start` と `columnPinning.end` の状態そのものを変えることだけです。`columnOrder` の状態は、固定されていない（「中央」の）列の順序にしか影響しません。
 
-### Column Pinning State {#column-pinning-state}
+### 列の固定の状態 {#column-pinning-state}
 
-Managing the `columnPinning` state is optional, and usually not necessary unless you are adding persistent state features. TanStack Table will already keep track of the column pinning state for you. Manage the `columnPinning` state just like any other table state if you need to.
+`columnPinning` の状態を自分で管理するかどうかは任意です。状態を永続化する機能を追加するのでなければ、通常は必要ありません。TanStack Table は、列の固定の状態をすでに追跡しています。必要であれば、`columnPinning` の状態もほかのテーブルの状態と同じように管理してください。
 
-In v9, the recommended way to own a state slice is with an external atom passed to the table's `atoms` option. External atoms give you fine-grained subscriptions anywhere in your app, and other code can read or write the pinning state without re-rendering the component that owns the table.
+v9 で状態の一部（スライス）を自分で持つ場合に推奨される方法は、外部のアトムをテーブルの `atoms` オプションに渡すことです。外部のアトムを使うと、アプリのどこからでも細かい単位で購読できます。また、テーブルを持つコンポーネントを再レンダーさせずに、ほかのコードから固定の状態を読み書きできます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -80,7 +80,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.columnPinning` plus `onColumnPinningChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+v8 と同じ `state.columnPinning` と `onColumnPinningChange` を組み合わせるパターンも、引き続き使えます。単純な統合や v8 のコードを移行するときには便利ですが、外部のアトムほど細かい単位では購読できません。詳しい比較は[テーブルの状態のガイド](./table-state)を参照してください。
 
 ```tsx
 const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({
@@ -100,9 +100,9 @@ const table = useTable({
 })
 ```
 
-### Pin Columns by Default {#pin-columns-by-default}
+### 列をデフォルトで固定する {#pin-columns-by-default}
 
-A very common use case is to pin some columns by default. You can do this by either initializing the `columnPinning` state with the pinned columnIds, or by using the `initialState` table option:
+よくあるのが、一部の列を最初から固定しておきたいという場面です。これは、固定する列の columnId で `columnPinning` の状態を初期化するか、テーブルオプションの `initialState` を使うことで実現できます。
 
 ```tsx
 const table = useTable({
@@ -119,23 +119,23 @@ const table = useTable({
 })
 ```
 
-### Useful Column Pinning APIs {#useful-column-pinning-apis}
+### 列の固定に役立つ API {#useful-column-pinning-apis}
 
 > [!NOTE]
-> These APIs are available when using `columnPinningFeature`.
+> これらの API は、`columnPinningFeature` を使っているときに利用できます。
 
-There are a handful of useful Column API methods to help you implement column pinning features:
+列の固定を実装するのに役立つ Column API のメソッドがいくつかあります。
 
-- `column.getCanPin`: Use to determine if a column can be pinned.
-- `column.pin`: Use to pin a column to the start or end. Or use to unpin a column.
-- `column.getIsPinned`: Use to determine where a column is pinned.
-- `column.getPinnedIndex`: Use to read the column's index within its pinned column group.
-- `column.getStart`: Use to provide the correct `start` CSS value for a pinned column.
-- `column.getAfter`: Use to provide the correct `end` CSS value for a pinned column.
-- `column.getIsLastColumn`: Use to determine if a column is the last column in its pinned group. Useful for adding a box-shadow.
-- `column.getIsFirstColumn`: Use to determine if a column is the first column in its pinned group. Useful for adding a box-shadow.
+- `column.getCanPin`: 列を固定できるかどうかを判定します。
+- `column.pin`: 列を先頭または末尾に固定します。固定の解除にも使います。
+- `column.getIsPinned`: 列がどこに固定されているかを判定します。
+- `column.getPinnedIndex`: 固定された列グループの中での、その列のインデックスを読み取ります。
+- `column.getStart`: 固定された列に設定する正しい `start` の CSS 値を得ます。
+- `column.getAfter`: 固定された列に設定する正しい `end` の CSS 値を得ます。
+- `column.getIsLastColumn`: 列が固定されたグループの最後の列かどうかを判定します。box-shadow を付けるときに便利です。
+- `column.getIsFirstColumn`: 列が固定されたグループの最初の列かどうかを判定します。box-shadow を付けるときに便利です。
 
-Use `table.setColumnPinning` to update the pinning state directly. Use `table.resetColumnPinning` to reset to `initialState.columnPinning`, or pass `true` to clear both pinned column arrays.
+固定の状態を直接更新するには `table.setColumnPinning` を使います。`table.resetColumnPinning` を使うと `initialState.columnPinning` に戻せます。`true` を渡すと、固定された列の配列を両方とも空にします。
 
 ```tsx
 table.setColumnPinning({
@@ -147,7 +147,7 @@ table.resetColumnPinning()
 table.resetColumnPinning(true)
 ```
 
-The table instance exposes pinned column and header helpers for each region:
+テーブルインスタンスには、領域ごとに固定された列とヘッダーを取得するヘルパーがあります。
 
 ```tsx
 table.getStartLeafColumns()
@@ -175,7 +175,7 @@ table.getCenterLeafHeaders()
 table.getEndLeafHeaders()
 ```
 
-You can also request pinned leaf columns by region with `table.getPinnedLeafColumns(position)` and visible pinned leaf columns with `table.getPinnedVisibleLeafColumns(position)`.
+`table.getPinnedLeafColumns(position)` で固定された末端の列を、`table.getPinnedVisibleLeafColumns(position)` で表示中の固定された末端の列を、領域を指定して取得することもできます。
 
 ```tsx
 table.getPinnedLeafColumns('start')
@@ -187,10 +187,10 @@ table.getPinnedVisibleLeafColumns('center')
 table.getPinnedVisibleLeafColumns('end')
 ```
 
-Use `table.getIsSomeColumnsPinned()` to check if any columns are pinned, or pass `'start'` or `'end'` to check one pinned side.
+固定された列があるかどうかは `table.getIsSomeColumnsPinned()` で確認できます。`'start'` または `'end'` を渡すと、片側だけを確認できます。
 
-### Split Table Column Pinning {#split-table-column-pinning}
+### テーブルを分割する列の固定 {#split-table-column-pinning}
 
-If you are just using sticky CSS to pin columns, you can for the most part, just render the table as you normally would with the `table.getHeaderGroups` and `row.getVisibleCells` methods.
+sticky な CSS で列を固定するだけなら、ほとんどの場合は `table.getHeaderGroups` と `row.getVisibleCells` メソッドを使って、いつもどおりにテーブルを描画すれば十分です。
 
-However, if you are splitting up pinned columns into their own separate tables, you can make use of the `table.getStartHeaderGroups`, `table.getCenterHeaderGroups`, `table.getEndHeaderGroups`, `row.getStartVisibleCells`, `row.getCenterVisibleCells`, and `row.getEndVisibleCells` methods to only render the columns that are relevant to the current table.
+一方、固定した列をそれぞれ別のテーブルに分ける場合は、`table.getStartHeaderGroups`、`table.getCenterHeaderGroups`、`table.getEndHeaderGroups`、`row.getStartVisibleCells`、`row.getCenterVisibleCells`、`row.getEndVisibleCells` の各メソッドを使って、そのテーブルに関係する列だけを描画できます。

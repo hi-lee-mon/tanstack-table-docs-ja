@@ -3,12 +3,12 @@ id: TableHookContexts
 title: TableHookContexts
 ---
 
-Defined in: [src/createTableHookContexts.tsx:17](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L17)
+定義元: [src/createTableHookContexts.tsx:17](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L17)
 
-The object returned by [createTableHookContexts](../functions/createTableHookContexts.md): three scoped React
-contexts plus matching context hooks.
+[createTableHookContexts](../functions/createTableHookContexts.md) が返すオブジェクトです。スコープを限定した 3 つの React
+コンテキストと、それぞれに対応するコンテキストのフックを持ちます。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -18,7 +18,7 @@ contexts plus matching context hooks.
 
 `TData` *extends* `RowData`
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### cellContext {#cellcontext}
 
@@ -26,7 +26,7 @@ contexts plus matching context hooks.
 cellContext: Context<Cell<any, any, any>>;
 ```
 
-Defined in: [src/createTableHookContexts.tsx:22](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L22)
+定義元: [src/createTableHookContexts.tsx:22](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L22)
 
 ***
 
@@ -36,7 +36,7 @@ Defined in: [src/createTableHookContexts.tsx:22](https://github.com/TanStack/tab
 headerContext: Context<Header<any, any, any>>;
 ```
 
-Defined in: [src/createTableHookContexts.tsx:23](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L23)
+定義元: [src/createTableHookContexts.tsx:23](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L23)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [src/createTableHookContexts.tsx:23](https://github.com/TanStack/tab
 tableContext: Context<ReactTable<any, any>>;
 ```
 
-Defined in: [src/createTableHookContexts.tsx:21](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L21)
+定義元: [src/createTableHookContexts.tsx:21](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L21)
 
 ***
 
@@ -56,15 +56,15 @@ Defined in: [src/createTableHookContexts.tsx:21](https://github.com/TanStack/tab
 useCellContext: <TValue>() => Cell<TFeatures, any, TValue>;
 ```
 
-Defined in: [src/createTableHookContexts.tsx:28](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L28)
+定義元: [src/createTableHookContexts.tsx:28](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L28)
 
-#### Type Parameters {#type-parameters-1}
+#### 型パラメーター {#type-parameters-1}
 
 ##### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 `Cell`\<`TFeatures`, `any`, `TValue`\>
 
@@ -76,15 +76,15 @@ Defined in: [src/createTableHookContexts.tsx:28](https://github.com/TanStack/tab
 useHeaderContext: <TValue>() => Header<TFeatures, any, TValue>;
 ```
 
-Defined in: [src/createTableHookContexts.tsx:33](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L33)
+定義元: [src/createTableHookContexts.tsx:33](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L33)
 
-#### Type Parameters {#type-parameters-2}
+#### 型パラメーター {#type-parameters-2}
 
 ##### TValue {#tvalue-1}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Returns {#returns-1}
+#### 戻り値 {#returns-1}
 
 `Header`\<`TFeatures`, `any`, `TValue`\>
 
@@ -96,14 +96,14 @@ Defined in: [src/createTableHookContexts.tsx:33](https://github.com/TanStack/tab
 useTableContext: <TTableData>() => ReactTable<TFeatures, TTableData>;
 ```
 
-Defined in: [src/createTableHookContexts.tsx:24](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L24)
+定義元: [src/createTableHookContexts.tsx:24](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L24)
 
-#### Type Parameters {#type-parameters-3}
+#### 型パラメーター {#type-parameters-3}
 
 ##### TTableData {#ttabledata}
 
 `TTableData` *extends* `RowData` = `TData`
 
-#### Returns {#returns-2}
+#### 戻り値 {#returns-2}
 
 [`ReactTable`](../type-aliases/ReactTable.md)\<`TFeatures`, `TTableData`\>

@@ -7,11 +7,11 @@ title: AppReactTable
 type AppReactTable<TFeatures, TData, TSelected, TTableComponents, TCellComponents, THeaderComponents> = ReactTable<TFeatures, TData, TSelected> & NoInfer<TTableComponents> & object;
 ```
 
-Defined in: [src/createTableHook.tsx:532](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L532)
+定義元: [src/createTableHook.tsx:532](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L532)
 
-Extended table API returned by useAppTable with all App wrapper components
+useAppTable が返す、App ラッパーコンポーネントをすべて備えた拡張テーブル API です。
 
-## Type Declaration {#type-declaration}
+## 型宣言 {#type-declaration}
 
 ### AppCell {#appcell}
 
@@ -19,10 +19,10 @@ Extended table API returned by useAppTable with all App wrapper components
 AppCell: AppCellComponent<TFeatures, TData, NoInfer<TCellComponents>>;
 ```
 
-Wraps a cell and provides cell context with pre-bound cellComponents.
-Optionally accepts a selector for Subscribe functionality.
+セルをラップし、cellComponents をあらかじめ結び付けたセルのコンテキストを提供します。
+Subscribe の機能を使うための selector を任意で受け取れます。
 
-#### Example {#example}
+#### 例 {#example}
 
 ```tsx
 // Without selector
@@ -42,10 +42,10 @@ Optionally accepts a selector for Subscribe functionality.
 AppFooter: AppHeaderComponent<TFeatures, TData, NoInfer<THeaderComponents>>;
 ```
 
-Wraps a footer and provides header context with pre-bound headerComponents.
-Optionally accepts a selector for Subscribe functionality.
+フッターをラップし、headerComponents をあらかじめ結び付けたヘッダーのコンテキストを提供します。
+Subscribe の機能を使うための selector を任意で受け取れます。
 
-#### Example {#example-1}
+#### 例 {#example-1}
 
 ```tsx
 <table.AppFooter header={footer}>
@@ -59,10 +59,10 @@ Optionally accepts a selector for Subscribe functionality.
 AppHeader: AppHeaderComponent<TFeatures, TData, NoInfer<THeaderComponents>>;
 ```
 
-Wraps a header and provides header context with pre-bound headerComponents.
-Optionally accepts a selector for Subscribe functionality.
+ヘッダーをラップし、headerComponents をあらかじめ結び付けたヘッダーのコンテキストを提供します。
+Subscribe の機能を使うための selector を任意で受け取れます。
 
-#### Example {#example-2}
+#### 例 {#example-2}
 
 ```tsx
 // Without selector
@@ -82,9 +82,9 @@ Optionally accepts a selector for Subscribe functionality.
 AppTable: AppTableComponent<TFeatures>;
 ```
 
-Root wrapper component that provides table context with optional Subscribe.
+テーブルのコンテキストを提供するルートのラッパーコンポーネントです。Subscribe を任意で使えます。
 
-#### Example {#example-3}
+#### 例 {#example-3}
 
 ```tsx
 // Without selector - children is ReactNode
@@ -98,7 +98,7 @@ Root wrapper component that provides table context with optional Subscribe.
 </table.AppTable>
 ```
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 

@@ -1,26 +1,26 @@
 ---
-title: Rows Guide
+title: 行のガイド
 ---
 
-This quick guide will discuss the different ways you can retrieve and interact with row objects in TanStack Table.
+この短いガイドでは、TanStack Table で行オブジェクトを取得し、操作するさまざまな方法を説明します。
 
-## Where to Get Rows From {#where-to-get-rows-from}
+## 行の取得元 {#where-to-get-rows-from}
 
-There are multiple `table` instance APIs you can use to retrieve rows from the table instance.
+テーブルインスタンスから行を取得するために使える `table` インスタンスの API は複数あります。
 
 ### table.getRow {#tablegetrow}
 
-If you need to access a specific row by its `id`, you can use the `table.getRow` table instance API.
+特定の行に `id` でアクセスする必要がある場合は、テーブルインスタンスの API である `table.getRow` を使えます。
 
 ```js
 const row = table.getRow(rowId)
 ```
 
-### Row Models {#row-models}
+### 行モデル {#row-models}
 
-The `table` instance generates `row` objects and stores them in useful arrays called ["Row Models"](./row-models). This is discussed in much more detail in the [Row Models Guide](./row-models), but here are the most common ways you may access the row models.
+`table` インスタンスは `row` オブジェクトを生成し、[「行モデル」](./row-models)と呼ばれる便利な配列に格納します。詳しくは[行モデルのガイド](./row-models)で説明していますが、ここでは行モデルにアクセスするよくある方法を紹介します。
 
-#### Render Rows {#render-rows}
+#### 行を描画する {#render-rows}
 
 ```jsx
 <tbody>
@@ -30,19 +30,19 @@ The `table` instance generates `row` objects and stores them in useful arrays ca
 </tbody>
 ```
 
-#### Get Selected Rows {#get-selected-rows}
+#### 選択された行を取得する {#get-selected-rows}
 
 ```js
 const selectedRows = table.getSelectedRowModel().rows
 ```
 
-## Row Objects {#row-objects}
+## 行オブジェクト {#row-objects}
 
-Every row object contains row data and many APIs to either interact with the table state or extract cells from the row based on the state of the table.
+どの行オブジェクトにも、行のデータと多くの API が含まれています。これらの API を使うと、テーブルの状態を操作したり、テーブルの状態に応じて行からセルを取り出したりできます。
 
-### Row IDs {#row-ids}
+### 行 ID {#row-ids}
 
-Every row object has an `id` property that makes it unique within the table instance. By default the `row.id` is the same as the `row.index` that is created in the row model. However, it can be useful to override each row's `id` with a unique identifier from the row's data. You can use the `getRowId` table option to do this.
+どの行オブジェクトにも、テーブルインスタンス内で一意になる `id` プロパティがあります。既定では、`row.id` は行モデルの中で作られる `row.index` と同じです。ただし、各行の `id` を行のデータに含まれる一意の識別子で上書きしたほうが便利な場合もあります。これには `getRowId` テーブルオプションを使います。
 
 ```js
 const table = useTable({
@@ -54,11 +54,11 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> In some features like grouping and expanding, the `row.id` will have an additional string appended to it.
+> グループ化や展開などの一部の機能では、`row.id` の末尾に文字列が追加されます。
 
-### Row Numbers and Display Indexes {#row-numbers-and-display-indexes}
+### 行番号と表示上のインデックス {#row-numbers-and-display-indexes}
 
-When displaying a row-number column, use `row.getDisplayIndex()` instead of `row.index`. The display index follows the table's current logical display order, including filtering, grouping, sorting, and expansion. `row.index` is the row's position within its parent array when the row is created, so it does not change to reflect the current display pipeline.
+行番号の列を表示するときは、`row.index` ではなく `row.getDisplayIndex()` を使ってください。表示上のインデックスは、フィルタリング、グループ化、ソート、展開を反映した、テーブルの現在の論理的な表示順に従います。`row.index` は、行が作られたときの親の配列の中での位置です。そのため、現在の表示までの処理の流れを反映して変わることはありません。
 
 ```js
 const rowNumberColumn = columnHelper.display({
@@ -71,13 +71,13 @@ const rowNumberColumn = columnHelper.display({
 })
 ```
 
-`row.getDisplayIndex()` returns a zero-based index before pagination, or `-1` when the row is not present in the current display order.
+`row.getDisplayIndex()` は、ページネーション前の 0 始まりのインデックスを返します。行が現在の表示順に含まれていない場合は `-1` を返します。
 
-> Never read `row._displayIndexCache` directly. It is an internal implementation cache that can be stale until display order is recomputed. `row.getDisplayIndex()` refreshes and validates the cached position before returning it.
+> `row._displayIndexCache` は決して直接読まないでください。これは内部実装用のキャッシュで、表示順が再計算されるまでは古い値のままになっていることがあります。`row.getDisplayIndex()` は、キャッシュされた位置を更新して検証してから返します。
 
-### Access Row Values {#access-row-values}
+### 行の値にアクセスする {#access-row-values}
 
-The recommended way to access data values from a row is to use either the `row.getValue` or `row.renderValue` APIs. Using either of these APIs will cache the results of the accessor functions and keep rendering efficient. The only difference between the two is that `row.renderValue` will return either the value or the `renderFallbackValue` if the value is undefined, whereas `row.getValue` will return the value or `undefined` if the value is undefined.
+行のデータの値にアクセスするには、`row.getValue` か `row.renderValue` の API を使う方法をおすすめします。どちらの API を使っても、アクセサー関数の結果がキャッシュされ、描画の効率が保たれます。両者の違いは1つだけです。値が undefined のとき、`row.renderValue` は `renderFallbackValue` を返し、`row.getValue` は `undefined` を返します。
 
 ```js
 // Access data from any of the columns
@@ -86,27 +86,27 @@ const renderedLastName = row.renderValue('lastName') // render the value from th
 ```
 
 > [!NOTE]
-> `cell.getValue` and `cell.renderValue` are shortcuts for the `row.getValue` and `row.renderValue` APIs, respectively.
+> `cell.getValue` と `cell.renderValue` は、それぞれ `row.getValue` と `row.renderValue` の API のショートカットです。
 
-### Access Original Row Data {#access-original-row-data}
+### 元の行データにアクセスする {#access-original-row-data}
 
-For every row object, you can access the original corresponding `data` that was passed to the table instance via the `row.original` property. None of the data in the `row.original` will have been modified by the accessors in your column definitions, so if you were doing any sort of data transformations in your accessors, those will not be reflected in the `row.original` object.
+どの行オブジェクトでも、`row.original` プロパティを通じて、テーブルインスタンスに渡された元の対応する `data` にアクセスできます。`row.original` のデータは、列定義のアクセサーによって一切変更されていません。そのため、アクセサーで何らかのデータ変換をしていても、その変換は `row.original` オブジェクトには反映されません。
 
 ```js
 // Access any data from the original row
 const firstName = row.original.firstName // { firstName: 'John', lastName: 'Doe' }
 ```
 
-## Sub Rows {#sub-rows}
+## サブ行 {#sub-rows}
 
-If you are using either grouping or expanding features, your rows may contain sub-rows or parent row references. This is discussed in much more detail in the [Expanding Guide](../framework/react/guide/expanding), but here is a quick overview of useful properties and methods for working with sub-rows.
+グループ化か展開の機能を使っている場合、行にはサブ行や親の行への参照が含まれることがあります。詳しくは[展開のガイド](../framework/react/guide/expanding)で説明していますが、ここではサブ行を扱うときに役立つプロパティとメソッドを簡単に紹介します。
 
-- `row.subRows`: An array of sub-rows for the row.
-- `row.depth`: The depth of the row (if nested or grouped) relative to the root row array. 0 for root level rows, 1 for child rows, 2 for grandchild rows, etc.
-- `row.parentId`: The unique ID of the parent row for the row (The row that contains this row in its subRows array).
-- `row.getParentRow`: Returns the parent row for the row, if it exists.
-- `table.getMaxSubRowDepth()`: Returns the deepest structural depth in the core row model. The result is memoized until the core row model changes.
+- `row.subRows`: その行のサブ行の配列です。
+- `row.depth`: ルートの行の配列を基準にした、その行の深さです（入れ子やグループ化されている場合）。ルートの行は 0、子の行は 1、孫の行は 2、というように続きます。
+- `row.parentId`: その行の親の行（自身の subRows 配列にこの行を含む行）の一意な ID です。
+- `row.getParentRow`: 親の行があれば、それを返します。
+- `table.getMaxSubRowDepth()`: コア行モデルの中で、構造上もっとも深い深さを返します。結果は、コア行モデルが変わるまでメモ化されます。
 
-## More Row APIs {#more-row-apis}
+## そのほかの行の API {#more-row-apis}
 
-Depending on the features that you are using for your table, there are dozens more useful APIs for interacting with rows. See each feature's respective API docs or guide for more information.
+テーブルで使っている機能によっては、行を操作するための便利な API がほかにも数十あります。詳しくは、各機能の API ドキュメントやガイドを参照してください。

@@ -9,13 +9,13 @@ type SubscribePropsWithSource<TSourceValue, TSelected> =
 | SubscribePropsWithSourceWithSelector<TSourceValue, TSelected>;
 ```
 
-Defined in: [src/Subscribe.ts:62](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L62)
+定義元: [src/Subscribe.ts:62](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L62)
 
-Subscribe to a single source — atom or store (identity or projected). Prefer
-[SubscribePropsWithSourceIdentity](SubscribePropsWithSourceIdentity.md) or [SubscribePropsWithSourceWithSelector](SubscribePropsWithSourceWithSelector.md)
-for clearer inference when `selector` is omitted.
+単一の source（アトムまたはストア）を購読します（そのまま受け取るか、射影して受け取るか）。`selector` を省略する場合に
+型推論を分かりやすくするには、[SubscribePropsWithSourceIdentity](SubscribePropsWithSourceIdentity.md) か [SubscribePropsWithSourceWithSelector](SubscribePropsWithSourceWithSelector.md)
+を使ってください。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TSourceValue {#tsourcevalue}
 

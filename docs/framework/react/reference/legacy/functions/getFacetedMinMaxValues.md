@@ -7,21 +7,20 @@ title: getFacetedMinMaxValues
 function getFacetedMinMaxValues<TData>(): FacetedMinMaxValuesFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:127](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L127)
+定義元: [src/useLegacyTable.ts:127](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L127)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 [`FacetedMinMaxValuesFactory`](../type-aliases/FacetedMinMaxValuesFactory.md)\<`TData`\>
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-Use `createFacetedMinMaxValues()` with the new `useTable` hook instead.
+代わりに、新しい `useTable` フックと `createFacetedMinMaxValues()` を使ってください。
 
-This is a stub function for v8 API compatibility with `useLegacyTable`.
-It acts as a marker to enable the faceted min/max values.
+これは、`useLegacyTable` で v8 の API との互換性を保つためのスタブ関数です。ファセットの最小値・最大値を有効にする目印として働きます。

@@ -7,21 +7,21 @@ title: getCoreRowModel
 function getCoreRowModel<TData>(): RowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:151](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L151)
+定義元: [src/useLegacyTable.ts:151](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L151)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 [`RowModelFactory`](../type-aliases/RowModelFactory.md)\<`TData`\>
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-The core row model is always created automatically in v9.
+v9 では、コア行モデルは常に自動で作成されます。
 
-This is a stub function for v8 API compatibility with `useLegacyTable`.
-It does nothing - the core row model is always available.
+これは `useLegacyTable` で v8 の API との互換性を保つためのスタブ関数です。
+何も行いません。コア行モデルは常に利用できます。

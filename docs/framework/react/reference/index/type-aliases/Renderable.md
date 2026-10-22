@@ -7,9 +7,9 @@ title: Renderable
 type Renderable<TProps> = ReactNode | ComponentType<TProps>;
 ```
 
-Defined in: [src/FlexRender.tsx:11](https://github.com/TanStack/table/blob/main/packages/react-table/src/FlexRender.tsx#L11)
+定義元: [src/FlexRender.tsx:11](https://github.com/TanStack/table/blob/main/packages/react-table/src/FlexRender.tsx#L11)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TProps {#tprops}
 

@@ -3,27 +3,27 @@ title: Devtools
 id: devtools
 ---
 
-TanStack Table provides framework-specific devtools adapters that plug into the [TanStack Devtools](https://tanstack.com/devtools) multi-panel UI.
+TanStack Table は、フレームワークごとの Devtools アダプターを提供しています。これらは [TanStack Devtools](https://tanstack.com/devtools) の複数パネル UI に組み込んで使います。
 
-The table devtools let you inspect registered table instances, switch between multiple tables, and inspect features, state, options, rows, and columns in real time.
+テーブルの Devtools を使うと、登録したテーブルインスタンスを調べたり、複数のテーブルを切り替えたり、機能・状態・オプション・行・列をリアルタイムに確認したりできます。
 
 > [!NOTE]
-> By default, the framework adapters only include the live devtools in development mode. In production builds they export no-op implementations unless you opt into the `/production` entrypoints.
+> 初期設定では、フレームワークアダプターが実際に動く Devtools を含めるのは開発モードのときだけです。本番ビルドでは何もしない実装（no-op）をエクスポートします。ただし、`/production` エントリーポイントを明示的に選んだ場合は別です。
 
-## Installation {#installation}
+## インストール {#installation}
 
-Install the TanStack Devtools host package and the Table adapter for your framework.
+TanStack Devtools のホストパッケージと、使っているフレームワーク向けの Table アダプターをインストールします。
 
 ```sh
 npm install @tanstack/react-devtools @tanstack/react-table-devtools
 ```
 
 
-Octane, Lit, Svelte, Alpine, and vanilla do not currently ship dedicated table devtools adapters.
+Octane、Lit、Svelte、Alpine、vanilla には、現時点でテーブル専用の Devtools アダプターがありません。
 
-## The Required `key` Table Option {#the-required-key-table-option}
+## 必須のテーブルオプション `key` {#the-required-key-table-option}
 
-The devtools identify each table by the `key` table option. Registration requires it. If you register a table without a `key`, the devtools log an error (`Missing table key. Add a 'key' option to your table to use devtools.`) and skip the table entirely.
+Devtools は、テーブルオプション `key` で各テーブルを識別します。登録には `key` が必須です。`key` を指定せずにテーブルを登録すると、Devtools はエラー（`Missing table key. Add a 'key' option to your table to use devtools.`）をログに出し、そのテーブルを丸ごとスキップします。
 
 ```ts
 const table = useTable({
@@ -34,19 +34,19 @@ const table = useTable({
 })
 ```
 
-The `key` is also the label shown in the devtools panel selector, so give each table a unique, descriptive key.
+`key` は Devtools パネルのセレクターに表示されるラベルにもなります。テーブルごとに、重複せず内容が分かる key を付けてください。
 
-## Setup Pattern {#setup-pattern}
+## セットアップの手順 {#setup-pattern}
 
-The recommended setup has three parts:
+推奨するセットアップは次の3つです。
 
-1. Give each table a unique `key` option
-2. Mount `TanStackDevtools` at the app root with `tableDevtoolsPlugin()`
-3. Register each table with `useTanStackTableDevtools(table)` (or `injectTanStackTableDevtools` in Angular) immediately after creating it
+1. 各テーブルに重複しない `key` オプションを付ける
+2. アプリのルートに `tableDevtoolsPlugin()` を渡した `TanStackDevtools` をマウントする
+3. 各テーブルを作成した直後に、`useTanStackTableDevtools(table)`（Angular では `injectTanStackTableDevtools`）で登録する
 
-If you register multiple tables, the Table panel shows a selector so you can switch between them.
+複数のテーブルを登録すると、Table パネルにセレクターが表示され、テーブルを切り替えられます。
 
-## Setup {#setup}
+## セットアップ {#setup}
 
 ```tsx
 import React from 'react'
@@ -77,21 +77,21 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
 )
 ```
 
-See the [React row-selection example](https://tanstack.com/table/latest/docs/framework/react/examples/row-selection).
+[React の行選択のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/row-selection)も参照してください。
 
 
-## Disabling Registration {#disabling-registration}
+## 登録を無効にする {#disabling-registration}
 
-Each registration function accepts an `enabled` option if you want to conditionally register a table:
+どの登録関数も `enabled` オプションを受け取ります。条件に応じてテーブルを登録したいときに使います。
 
 ```ts
 useTanStackTableDevtools(table, { enabled: false })
 ```
 
 
-## Production Builds {#production-builds}
+## 本番ビルド {#production-builds}
 
-If you need the live devtools in production, import from the `/production` entrypoint for your framework package:
+本番環境でも実際に動く Devtools が必要な場合は、使っているフレームワークパッケージの `/production` エントリーポイントからインポートします。
 
 ```tsx
 import {

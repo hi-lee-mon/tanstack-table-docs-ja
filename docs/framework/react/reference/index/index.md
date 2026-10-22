@@ -3,7 +3,7 @@ id: index
 title: index
 ---
 
-## Interfaces {#interfaces}
+## インターフェース {#interfaces}
 
 - [AppCellComponent](interfaces/AppCellComponent.md)
 - [AppCellPropsWithoutSelector](interfaces/AppCellPropsWithoutSelector.md)
@@ -17,7 +17,7 @@ title: index
 - [CreateTableHookResult](interfaces/CreateTableHookResult.md)
 - [TableHookContexts](interfaces/TableHookContexts.md)
 
-## Type Aliases {#type-aliases}
+## 型エイリアス {#type-aliases}
 
 - [AppCellContext](type-aliases/AppCellContext.md)
 - [AppColumnDefBase](type-aliases/AppColumnDefBase.md)
@@ -38,7 +38,7 @@ title: index
 - [SubscribePropsWithStore](type-aliases/SubscribePropsWithStore.md)
 - [SubscribeSource](type-aliases/SubscribeSource.md)
 
-## Functions {#functions}
+## 関数 {#functions}
 
 - [createTableHook](functions/createTableHook.md)
 - [createTableHookContexts](functions/createTableHookContexts.md)

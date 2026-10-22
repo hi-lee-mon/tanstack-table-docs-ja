@@ -1,17 +1,17 @@
 ---
-title: Column Ordering (React) Guide
+title: 列の並べ替え（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Column Ordering](https://tanstack.com/table/latest/docs/framework/react/examples/column-ordering)
-- [Column DnD](https://tanstack.com/table/latest/docs/framework/react/examples/column-dnd)
+- [列の並べ替え](https://tanstack.com/table/latest/docs/framework/react/examples/column-ordering)
+- [列のドラッグ＆ドロップ](https://tanstack.com/table/latest/docs/framework/react/examples/column-dnd)
 
-### Column Ordering Setup {#column-ordering-setup}
+### 列の並べ替えのセットアップ {#column-ordering-setup}
 
-Here's how you set up your table to use column ordering features. Adding the column ordering feature enables the related APIs.
+列の並べ替え機能を使うためのテーブルの設定方法は次のとおりです。列の並べ替え機能を追加すると、関連する API が使えるようになります。
 
 ```tsx
 import {
@@ -29,28 +29,28 @@ const table = useTable({
 })
 ```
 
-## Column Ordering (React) Guide {#column-ordering-react-guide}
+## 列の並べ替え（React）ガイド {#column-ordering-react-guide}
 
-By default, columns are ordered in the order they are defined in the `columns` array. However, you can manually specify the column order using the `columnOrder` state. Other features like column pinning and grouping can also affect the column order.
+既定では、列は `columns` 配列に定義した順に並びます。ただし、`columnOrder` 状態を使えば列の順序を手動で指定できます。列の固定やグループ化といったほかの機能も、列の順序に影響することがあります。
 
-### What Affects Column Order {#what-affects-column-order}
+### 列の順序に影響するもの {#what-affects-column-order}
 
-There are 3 table features that can reorder columns, which happen in the following order:
+列の順序を変えうるテーブルの機能は3つあり、次の順に適用されます。
 
-1. [Column Pinning](./column-pinning) - If pinning, columns are split into start, center (unpinned), and end pinned columns.
-2. Manual **Column Ordering** - A manually specified column order is applied.
-3. [Grouping](./grouping) - If grouping is enabled, a grouping state is active, and `tableOptions.groupedColumnMode` is set to `'reorder' | 'remove'`, then the grouped columns are reordered to the start of the column flow.
+1. [列の固定](./column-pinning) - 固定している場合、列は先頭に固定された列、中央（固定されていない列）、末尾に固定された列に分けられます。
+2. 手動の**列の並べ替え** - 手動で指定した列の順序が適用されます。
+3. [グループ化](./grouping) - グループ化が有効で、グループ化の状態が有効になっており、かつ `tableOptions.groupedColumnMode` が `'reorder' | 'remove'` に設定されている場合、グループ化された列が列の並びの先頭に移動します。
 
 > [!NOTE]
-> `columnOrder` state will only affect unpinned columns if used in conjunction with column pinning.
+> 列の固定と併用している場合、`columnOrder` 状態は固定されていない列にだけ影響します。
 
-### Column Order State {#column-order-state}
+### 列の順序の状態 {#column-order-state}
 
-If you don't provide a `columnOrder` state, TanStack Table will just use the order of the columns in the `columns` array. However, you can provide an array of string column ids to the `columnOrder` state to specify the order of the columns.
+`columnOrder` 状態を指定しなければ、TanStack Table は `columns` 配列での列の順序をそのまま使います。列の順序を指定したい場合は、文字列の列 ID の配列を `columnOrder` 状態に渡します。
 
-#### Default Column Order {#default-column-order}
+#### 列の順序の既定値 {#default-column-order}
 
-If all you need to do is specify the initial column order, you can just specify the `columnOrder` state in the `initialState` table option.
+列の最初の順序を指定するだけでよければ、テーブルオプション `initialState` に `columnOrder` 状態を指定するだけで済みます。
 
 ```tsx
 const features = tableFeatures({ columnOrderingFeature })
@@ -66,13 +66,13 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> If you are using the `state` table option to also specify the `columnOrder` state, the `initialState` will have no effect. Only specify particular states in either `initialState` or `state`, not both.
+> テーブルオプション `state` でも `columnOrder` 状態を指定している場合、`initialState` は効果を持ちません。個々の状態は `initialState` か `state` のどちらか一方だけで指定し、両方には指定しないでください。
 
-#### Managing Column Order State {#managing-column-order-state}
+#### 列の順序の状態を管理する {#managing-column-order-state}
 
-If you need to dynamically change the column order, or set the column order after the table has been initialized, you can manage the `columnOrder` state just like any other table state.
+列の順序を動的に変えたい場合や、テーブルの初期化後に列の順序を設定したい場合は、ほかのテーブルの状態と同じように `columnOrder` 状態を管理できます。
 
-In v9, the recommended way to own a state slice is with an external atom passed to the table's `atoms` option. External atoms give you fine-grained subscriptions anywhere in your app, and other code can read or write the column order without re-rendering the component that owns the table.
+v9 では、状態の一部を自分で持つ方法として、テーブルの `atoms` オプションに外部のアトムを渡すやり方を推奨しています。外部のアトムを使うと、アプリのどこからでも細かい単位で購読できます。また、テーブルを持つコンポーネントを再レンダーさせることなく、ほかのコードから列の順序を読み書きできます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -103,7 +103,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.columnOrder` plus `onColumnOrderChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+v8 と同じように `state.columnOrder` と `onColumnOrderChange` を組み合わせるパターンも、引き続き使えます。単純な連携や v8 のコードを移行するときには便利ですが、外部のアトムほど細かい単位では購読できません。詳しい比較は [テーブルの状態ガイド](./table-state) を参照してください。
 
 ```tsx
 const features = tableFeatures({ columnOrderingFeature })
@@ -126,9 +126,9 @@ const table = useTable({
 })
 ```
 
-### Reordering Columns {#reordering-columns}
+### 列を並べ替える {#reordering-columns}
 
-If the table has UI that allows the user to reorder columns, hook the drop event of your drag-and-drop solution up to `table.setColumnOrder`. The official [Column DnD example](https://tanstack.com/table/latest/docs/framework/react/examples/column-dnd) does this with DnD Kit's `arrayMove` utility:
+ユーザーが列を並べ替えられる UI がテーブルにある場合は、使っているドラッグ＆ドロップの仕組みのドロップイベントを `table.setColumnOrder` につなぎます。公式の [列のドラッグ＆ドロップのサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/column-dnd) では、DnD Kit の `arrayMove` ユーティリティを使ってこれを実現しています。
 
 ```tsx
 import { arrayMove } from '@dnd-kit/sortable'
@@ -147,11 +147,11 @@ function handleDragEnd(event: DragEndEvent) {
 }
 ```
 
-`table.setColumnOrder` works the same whether the table manages the `columnOrder` state internally, you control it with `state` + `onColumnOrderChange`, or you own it with an external atom.
+`table.setColumnOrder` は、`columnOrder` 状態をテーブルが内部で管理している場合でも、`state` と `onColumnOrderChange` で制御している場合でも、外部のアトムで自分で持っている場合でも、同じように動きます。
 
-### Column Ordering APIs {#column-ordering-apis}
+### 列の並べ替えの API {#column-ordering-apis}
 
-Use `table.setColumnOrder` to update the column order state directly. Use `table.resetColumnOrder` to reset the order to `initialState.columnOrder`, or pass `true` to clear the order state.
+列の順序の状態を直接更新するには `table.setColumnOrder` を使います。`table.resetColumnOrder` を使うと順序を `initialState.columnOrder` に戻せます。`true` を渡すと順序の状態を空にします。
 
 ```tsx
 table.setColumnOrder(['lastName', 'firstName', 'age'])
@@ -159,7 +159,7 @@ table.resetColumnOrder()
 table.resetColumnOrder(true)
 ```
 
-Columns expose helpers for reading their current position after column pinning, manual ordering, and grouping have been applied.
+列には、列の固定・手動の並べ替え・グループ化を適用したあとの現在の位置を読み取るヘルパーがあります。
 
 ```tsx
 column.getIndex()
@@ -171,14 +171,14 @@ column.getIsFirstColumn()
 column.getIsLastColumn()
 ```
 
-These helpers are useful for styling column boundaries or building drag-and-drop targets that need to know the current rendered order.
+これらのヘルパーは、列の境界にスタイルを付けるときや、現在描画されている順序を知る必要があるドラッグ＆ドロップのターゲットを作るときに役立ちます。
 
-#### Drag and Drop Column Reordering Suggestions (React) {#drag-and-drop-column-reordering-suggestions-react}
+#### ドラッグ＆ドロップによる列の並べ替えのおすすめ（React） {#drag-and-drop-column-reordering-suggestions-react}
 
-TanStack Table is not opinionated about which drag-and-drop solution you use. Here are a few suggestions:
+TanStack Table は、どのドラッグ＆ドロップの仕組みを使うかについて特定の方針を持っていません。いくつかおすすめを挙げます。
 
-1. Use [DnD Kit](https://dndkit.com/) if you want a library. It is what the official [Column DnD](https://tanstack.com/table/latest/docs/framework/react/examples/column-dnd) and [Row DnD](https://tanstack.com/table/latest/docs/framework/react/examples/row-dnd) examples use (the `@dnd-kit/core`, `@dnd-kit/sortable`, `@dnd-kit/modifiers`, and `@dnd-kit/utilities` packages). It is modular, works with React Strict Mode, and plays well with semantic `<table>` markup.
+1. ライブラリを使いたい場合は [DnD Kit](https://dndkit.com/) を使ってください。公式の [列のドラッグ＆ドロップ](https://tanstack.com/table/latest/docs/framework/react/examples/column-dnd) と [行のドラッグ＆ドロップ](https://tanstack.com/table/latest/docs/framework/react/examples/row-dnd) のサンプルもこれを使っています（`@dnd-kit/core`、`@dnd-kit/sortable`、`@dnd-kit/modifiers`、`@dnd-kit/utilities` パッケージ）。モジュール化されており、React の Strict Mode でも動作し、セマンティックな `<table>` マークアップともうまく組み合わせられます。
 
-2. Consider native browser drag events (`onDragStart`, `onDragEnter`, `onDragEnd`) with your own state if you want zero dependencies. This can be very lightweight, but you will need to do extra work for proper touch support on mobile. [Material React Table](https://www.material-react-table.com/docs/examples/column-ordering) implements TanStack Table column ordering this way with no DnD dependencies, and its source code is a good reference.
+2. 依存関係をまったく増やしたくない場合は、ブラウザーネイティブのドラッグイベント（`onDragStart`、`onDragEnter`、`onDragEnd`）と自前の状態を組み合わせる方法を検討してください。とても軽量にできますが、モバイルでタッチ操作にきちんと対応するには追加の作業が必要です。[Material React Table](https://www.material-react-table.com/docs/examples/column-ordering) は、DnD ライブラリに依存せずにこの方法で TanStack Table の列の並べ替えを実装しており、そのソースコードはよい参考になります。
 
-3. If you evaluate other DnD libraries, check their maintenance status, React version compatibility (especially with Strict Mode), bundle size, and how well they handle `<table>` markup before committing. Older libraries such as `react-dnd` and `react-beautiful-dnd` are no longer actively developed; Atlassian's [Pragmatic drag and drop](https://atlassian.design/components/pragmatic-drag-and-drop/about) is the actively maintained successor to `react-beautiful-dnd` if you prefer that family of APIs.
+3. ほかの DnD ライブラリを検討する場合は、採用を決める前に、保守の状況、React のバージョンとの互換性（とくに Strict Mode）、バンドルサイズ、`<table>` マークアップをどの程度うまく扱えるかを確認してください。`react-dnd` や `react-beautiful-dnd` といった古いライブラリは、もう活発には開発されていません。その系統の API を好む場合は、Atlassian の [Pragmatic drag and drop](https://atlassian.design/components/pragmatic-drag-and-drop/about) が `react-beautiful-dnd` の後継として活発に保守されています。

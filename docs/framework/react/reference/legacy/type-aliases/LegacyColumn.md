@@ -7,9 +7,9 @@ title: LegacyColumn
 type LegacyColumn<TData, TValue> = Column<LegacyFeatures, TData, TValue>;
 ```
 
-Defined in: [src/useLegacyTable.ts:312](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L312)
+定義元: [src/useLegacyTable.ts:312](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L312)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
@@ -19,6 +19,6 @@ Defined in: [src/useLegacyTable.ts:312](https://github.com/TanStack/table/blob/m
 
 `TValue` = `unknown`
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-Use Column<TFeatures, TData, TValue> with useTable instead.
+代わりに、useTable と組み合わせて Column<TFeatures, TData, TValue> を使ってください。

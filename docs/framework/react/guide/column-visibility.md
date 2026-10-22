@@ -1,16 +1,16 @@
 ---
-title: Column Visibility (React) Guide
+title: 列の表示切り替え（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React の例を参照してください。
 
-- [Column Visibility](https://tanstack.com/table/latest/docs/framework/react/examples/column-visibility)
+- [列の表示切り替え](https://tanstack.com/table/latest/docs/framework/react/examples/column-visibility)
 
-### Column Visibility Setup {#column-visibility-setup}
+### 列の表示切り替えの準備 {#column-visibility-setup}
 
-Here's how you set up your table to use column visibility features. Adding the column visibility feature enables the related APIs.
+列の表示切り替え機能を使えるようにテーブルを準備する方法は次のとおりです。列の表示切り替え機能を追加すると、関連する API が有効になります。
 
 ```tsx
 import {
@@ -28,15 +28,15 @@ const table = useTable({
 })
 ```
 
-## Column Visibility (React) Guide {#column-visibility-react-guide}
+## 列の表示切り替え（React）ガイド {#column-visibility-react-guide}
 
-The column visibility feature allows table columns to be hidden or shown dynamically. In v9, add `columnVisibilityFeature` to your `features` to enable this. There is a dedicated `columnVisibility` state and APIs for managing column visibility dynamically.
+列の表示切り替え機能を使うと、テーブルの列を動的に隠したり表示したりできます。v9 でこの機能を有効にするには、`features` に `columnVisibilityFeature` を追加します。列の表示状態を動的に管理するための専用の `columnVisibility` 状態と API が用意されています。
 
-### Column Visibility State {#column-visibility-state}
+### 列の表示状態 {#column-visibility-state}
 
-The `columnVisibility` state is a map of column IDs to boolean values. A column will be hidden if its ID is present in the map and the value is `false`. If the column ID is not present in the map, or the value is `true`, the column will be shown.
+`columnVisibility` 状態は、列 ID を真偽値に対応付けるマップです。マップに列 ID があり、その値が `false` の列は非表示になります。マップに列 ID がない場合や、値が `true` の場合は、その列は表示されます。
 
-If you need to own the `columnVisibility` state yourself (for example, to persist user preferences), the recommended v9 approach is an external atom passed to the table's `atoms` option. External atoms give you fine-grained subscriptions anywhere in your app, and other code can read or write the visibility state without re-rendering the component that owns the table.
+`columnVisibility` 状態を自分で管理する必要がある場合（たとえば、ユーザーの設定を保存しておきたい場合）、v9 で推奨される方法は、外部のアトムをテーブルの `atoms` オプションに渡すことです。外部アトムを使うと、アプリのどこからでもきめ細かく購読できます。また、テーブルを持つコンポーネントを再レンダーせずに、ほかのコードから表示状態を読み書きできます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -66,7 +66,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.columnVisibility` plus `onColumnVisibilityChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+v8 と同じ `state.columnVisibility` と `onColumnVisibilityChange` を組み合わせる書き方も、引き続き使えます。簡単な連携や v8 のコードを移行するときには便利ですが、外部アトムに比べると購読の粒度は粗くなります。詳しい比較は[テーブルの状態ガイド](./table-state)を参照してください。
 
 ```tsx
 const features = tableFeatures({ columnVisibilityFeature })
@@ -90,10 +90,10 @@ const table = useTable({
 })
 ```
 
-Alternatively, if you don't need to manage the column visibility state outside of the table, you can still set the initial default column visibility state using the `initialState` option.
+また、列の表示状態をテーブルの外で管理する必要がなければ、`initialState` オプションで列の表示状態の初期値だけを設定することもできます。
 
 > [!NOTE]
-> If `columnVisibility` is provided to both `initialState` and `state`, the `state` initialization will take precedence and `initialState` will be ignored. Do not provide `columnVisibility` to both `initialState` and `state`, only one or the other.
+> `columnVisibility` を `initialState` と `state` の両方に渡した場合は、`state` による初期化が優先され、`initialState` は無視されます。`columnVisibility` は `initialState` と `state` のどちらか一方にだけ渡してください。
 
 ```tsx
 const features = tableFeatures({ columnVisibilityFeature })
@@ -112,9 +112,9 @@ const table = useTable({
 })
 ```
 
-### Disable Hiding Columns {#disable-hiding-columns}
+### 列を隠せないようにする {#disable-hiding-columns}
 
-By default, all columns can be hidden or shown. If you want to prevent certain columns from being hidden, you set the `enableHiding` column option to `false` for those columns.
+デフォルトでは、すべての列を隠したり表示したりできます。特定の列を隠せないようにしたい場合は、その列の `enableHiding` 列オプションを `false` に設定します。
 
 ```tsx
 const columns = [
@@ -130,14 +130,14 @@ const columns = [
 ]
 ```
 
-### Column Visibility Toggle APIs {#column-visibility-toggle-apis}
+### 列の表示を切り替える API {#column-visibility-toggle-apis}
 
-There are several column API methods that are useful for rendering column visibility toggles in the UI.
+UI に列の表示切り替えのトグルを描画するときに役立つ、列の API メソッドがいくつかあります。
 
-- `column.getCanHide` - Useful for disabling the visibility toggle for a column that has `enableHiding` set to `false`.
-- `column.getIsVisible` - Useful for setting the initial state of the visibility toggle.
-- `column.toggleVisibility` - Useful for toggling the visibility of a column.
-- `column.getToggleVisibilityHandler` - Shortcut for hooking up the `column.toggleVisibility` method to a UI event handler.
+- `column.getCanHide` - `enableHiding` が `false` に設定された列の表示切り替えトグルを無効にするときに使います。
+- `column.getIsVisible` - 表示切り替えトグルの初期状態を設定するときに使います。
+- `column.toggleVisibility` - 列の表示・非表示を切り替えるときに使います。
+- `column.getToggleVisibilityHandler` - `column.toggleVisibility` メソッドを UI のイベントハンドラーにつなぐためのショートカットです。
 
 ```tsx
 const columnLabels: Record<string, string> = {
@@ -161,18 +161,18 @@ const columnLabels: Record<string, string> = {
 ```
 
 > [!NOTE]
-> `column.columnDef.header` is a header render template. It can be a
-> string, JSX, or a function that needs a header context and should be rendered
-> with `flexRender` when you are rendering actual table headers. A column
-> visibility menu is usually rendering columns rather than header objects, and a
-> hidden column may not have an active header context. For visibility toggles,
-> prefer a stable text label such as a custom map of labels keyed by column ID,
-> typed `columnDef.meta` (for example `column.columnDef.meta.label`), or
-> `column.id`.
+> `column.columnDef.header` はヘッダーを描画するためのテンプレートです。
+> 文字列や JSX のほか、ヘッダーコンテキストを必要とする関数のこともあり、
+> 実際のテーブルヘッダーを描画するときは `flexRender` で描画します。
+> 一方、列の表示切り替えメニューで描画するのはふつうヘッダーオブジェクトではなく列です。
+> また、非表示の列には有効なヘッダーコンテキストがないこともあります。
+> そのため表示切り替えのトグルには、列 ID をキーにした独自のラベルのマップ、
+> 型を付けた `columnDef.meta`（たとえば `column.columnDef.meta.label`）、
+> `column.id` など、変わらないテキストのラベルを使うことをおすすめします。
 
-### Column Visibility Aware Table APIs {#column-visibility-aware-table-apis}
+### 列の表示状態を考慮するテーブル API {#column-visibility-aware-table-apis}
 
-When you render your header, body, and footer cells, there are a lot of API options available. You may see APIs like `table.getAllLeafColumns` and `row.getAllCells`, but if you use these APIs, they will not take column visibility into account. Instead, you need to use the "visible" variants of these APIs, such as `table.getVisibleLeafColumns` and `row.getVisibleCells`.
+ヘッダー・本体・フッターのセルを描画するときに使える API はたくさんあります。`table.getAllLeafColumns` や `row.getAllCells` といった API もありますが、これらは列の表示状態を考慮しません。代わりに、`table.getVisibleLeafColumns` や `row.getVisibleCells` のような「visible」付きの API を使う必要があります。
 
 ```tsx
 <table>
@@ -195,4 +195,4 @@ When you render your header, body, and footer cells, there are a lot of API opti
 </table>
 ```
 
-If you are using the Header Group APIs, they will already take column visibility into account.
+ヘッダーグループの API を使っている場合は、もともと列の表示状態が考慮されています。

@@ -71,7 +71,7 @@ const ITEM_LABELS: Record<string, string> = {
   'Type Helpers': '型ヘルパー',
   'Table State': 'テーブルの状態',
   'React Compiler': 'React Compiler',
-  'Composable Tables (createTableHook)': '組み立て式テーブル（createTableHook）',
+  'Composable Tables (createTableHook)': '組み立て可能なテーブル（createTableHook）',
   'Table Context': 'テーブルコンテキスト',
   FlexRender: 'FlexRender',
   'Custom Plugins': 'カスタムプラグイン',

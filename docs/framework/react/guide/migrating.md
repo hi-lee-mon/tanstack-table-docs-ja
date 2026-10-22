@@ -1,72 +1,72 @@
 ---
-title: Migrating to TanStack Table V9 (React)
+title: TanStack Table V9 への移行（React）
 ---
 
-## What's New in TanStack Table V9 {#whats-new-in-tanstack-table-v9}
+## TanStack Table V9 の新機能 {#whats-new-in-tanstack-table-v9}
 
-TanStack Table V9 delivers major performance improvements, hundreds of bug fixes, new and refreshed features, and optional helpers for composing and managing tables. Despite the scale of the release, the headless model, core table logic, column definitions, and rendering patterns remain familiar. Here are the key changes:
+TanStack Table V9 では、性能が大きく向上し、数百件のバグが修正され、機能の追加と刷新が行われ、テーブルを組み立てて管理するための任意のヘルパーも加わりました。大規模なリリースですが、ヘッドレスという考え方、テーブルの中核となるロジック、列定義、描画のパターンはこれまでとほとんど変わりません。主な変更点は次のとおりです。
 
-### 1. Better Performance {#1-better-performance}
+### 1. 性能の向上 {#1-better-performance}
 
-- **Lower memory usage**: The core architecture now shares more behavior across table objects, with some large-table scenarios seeing up to 90% memory savings.
-- **Faster client-side row models**: Sorting, filtering, and aggregation paths have improved algorithms and memoization, with many scenarios seeing up to 40-70% speed improvements.
-- **Better column resizing performance**: The same architectural and memoization work also speeds up column resizing.
+- **メモリ使用量の削減**: 中核のアーキテクチャが、テーブルを構成するオブジェクト間でより多くの振る舞いを共有するようになりました。大きなテーブルでは、メモリを最大 90% 削減できる場合があります。
+- **クライアントサイドの行モデルの高速化**: ソート、フィルタリング、集計の処理でアルゴリズムとメモ化が改善され、多くの場面で 40〜70% ほど速くなっています。
+- **列幅の変更の高速化**: 同じアーキテクチャとメモ化の改善によって、列幅の変更も速くなりました。
 
-### 2. State Management Overhaul (Backward Compatible) {#2-state-management-overhaul-backward-compatible}
+### 2. 状態管理の刷新（後方互換あり） {#2-state-management-overhaul-backward-compatible}
 
-- **React Compiler compatibility**: The state system is built on [TanStack Store](https://tanstack.com/store), so the table now works correctly under the React Compiler. See the [React Compiler Guide](./react-compiler).
-- **Fine-grained subscriptions**: State slices can be read independently through `table.atoms`, `table.store`, `table.state`, selectors, or `table.Subscribe`.
-- **External state or atoms**: You can still use `state` plus `on[State]Change`, or own individual slices with writable atoms via the new `atoms` option.
+- **React Compiler への対応**: 状態の仕組みが [TanStack Store](https://tanstack.com/store) の上に作られたため、React Compiler の下でもテーブルが正しく動くようになりました。[React Compiler ガイド](./react-compiler)を参照してください。
+- **きめ細かな購読**: 状態の各スライスを、`table.atoms`、`table.store`、`table.state`、セレクター、`table.Subscribe` を通じて個別に読み取れます。
+- **外部の状態やアトム**: これまでどおり `state` と `on[State]Change` を使うこともできますし、新しい `atoms` オプションで書き込み可能なアトムを渡し、スライスごとに状態を自分で持つこともできます。
 
-### 3. Type-Safety Improvements {#3-type-safety-improvements}
+### 3. 型安全性の向上 {#3-type-safety-improvements}
 
-- **New and revamped type helpers**: There are helpers for defining columns, custom filters, sorts, aggregations, column and table meta, shared table options and components, and more!
-- **Per-table meta types**: `tableMeta`, `columnMeta`, and `filterMeta` slots let you type meta for a specific table instead of globally augmenting shared interfaces. **No more global declaration merging required!**
-- **Feature-gated APIs**: APIs only exist when their feature is registered, and `tableFeatures()` validates feature prerequisites at the type level.
+- **新しい型ヘルパーと刷新された型ヘルパー**: 列の定義、カスタムのフィルター・ソート・集計、列とテーブルの meta、共有するテーブルオプションやコンポーネントなどを定義するためのヘルパーがそろっています。
+- **テーブルごとの meta 型**: `tableMeta`、`columnMeta`、`filterMeta` のスロットを使うと、共有のインターフェースをグローバルに拡張しなくても、特定のテーブルだけに meta の型を付けられます。**グローバルな宣言のマージ（declaration merging）はもう必要ありません！**
+- **機能に応じて現れる API**: API は対応する機能を登録したときにだけ存在します。また、`tableFeatures()` は機能同士の前提条件を型のレベルで検査します。
 
-### 4. Tree Shaking and Extensibility {#4-tree-shaking-and-extensibility}
+### 4. ツリーシェイキングと拡張性 {#4-tree-shaking-and-extensibility}
 
-- **Import only the features you use**: Tables that only need sorting do not ship filtering, pagination, or other unused feature code. Start with 5kb of bundled JS and only bundle the features you need.
-- **Tree-shakeable row models and functions**: Row model factories and `filterFns` / `sortFns` / `aggregationFns` now live on `tableFeatures()`, so unused processing code can be dropped.
-- **Custom features use the same system**: Your own feature plugins can register state, options, and APIs alongside the built-in features. See the [Custom Features Guide](./custom-features.md).
+- **使う機能だけをインポートする**: ソートだけが必要なテーブルには、フィルタリングやページネーションなど使わない機能のコードが含まれません。バンドルされる JS は 5kb から始まり、必要な機能の分だけが加わります。
+- **ツリーシェイク可能な行モデルと関数**: 行モデルのファクトリーと `filterFns` / `sortFns` / `aggregationFns` は `tableFeatures()` に置くようになったため、使わない処理のコードを取り除けます。
+- **カスタム機能も同じ仕組みで動く**: 自作の機能プラグインでも、組み込みの機能と同じように状態、オプション、API を登録できます。[カスタム機能ガイド](./custom-features.md)を参照してください。
 
-### 5. Composability {#5-composability}
+### 5. 組み立てやすさ {#5-composability}
 
-- `tableOptions`: Compose reusable table configuration, including features, row models, and default options.
-- `createTableHook`: Create custom table hooks with pre-bound features and components when you need a reusable app-level table pattern. See the [composable-tables (createTableHook) guide](./composable-tables.md).
+- `tableOptions`: 機能、行モデル、デフォルトのオプションを含む、再利用できるテーブル設定を組み立てます。
+- `createTableHook`: アプリ全体で使い回すテーブルのパターンが必要なときに、機能とコンポーネントをあらかじめ結び付けたカスタムのテーブルフックを作ります。[composable-tables（createTableHook）ガイド](./composable-tables.md)を参照してください。
 
-### 6. New and Refreshed Features {#6-new-and-refreshed-features}
+### 6. 新しい機能と刷新された機能 {#6-new-and-refreshed-features}
 
-- **New Features**
-  - **Cell Selection**: `cellSelectionFeature` adds spreadsheet-style rectangular cell range selection, with drag, Shift-extend, and multiple disjoint ranges. See the [Cell Selection Guide](./cell-selection.md).
-  - **Cell Spanning**: `cellSpanningFeature` merges body cells across rows and columns (`spanRows` / `spanColumns`, with span-aware cell selection), and header groups now compute `header.rowSpan` so shallow columns can span header rows. See the [Cell Spanning Guide](./cell-spanning.md).
-- **Refreshed Features**
-  - **More capable features**: Aggregation, Row Selection, Column Pinning, and Column Resizing have all been made more feature rich (multiple aggregation definitions per column, Shift range selection, logical `start`/`end` pinning, and more).
-  - **New core APIs**: New table and row APIs (like `table.getMaxSubRowDepth()`, `row.getDisplayIndex()`) round out the core feature set.
+- **新しい機能**
+  - **セル選択**: `cellSelectionFeature` は、スプレッドシートのような長方形のセル範囲選択を追加します。ドラッグでの選択、Shift による範囲の拡張、離れた複数の範囲の選択に対応しています。[セル選択ガイド](./cell-selection.md)を参照してください。
+  - **セル結合**: `cellSpanningFeature` は、本体のセルを行や列をまたいで結合します（`spanRows` / `spanColumns`。結合を考慮したセル選択にも対応）。また、ヘッダーグループが `header.rowSpan` を計算するようになったため、階層の浅い列が複数のヘッダー行にまたがれるようになりました。[セル結合ガイド](./cell-spanning.md)を参照してください。
+- **刷新された機能**
+  - **より高機能に**: 集計、行選択、列の固定、列幅の変更は、いずれもできることが増えました（1つの列に複数の集計定義を持てる、Shift による範囲選択、論理的な `start`/`end` による固定など）。
+  - **新しいコア API**: `table.getMaxSubRowDepth()` や `row.getDisplayIndex()` といった新しいテーブル API と行 API が加わり、コア機能がより充実しました。
 
-### 7. Modern Builds {#7-modern-builds}
+### 7. モダンなビルド {#7-modern-builds}
 
-- **ESM-only**: UMD and CJS builds have been dropped. Packages ship as modern ESM.
-- **TypeScript target `ES2022`**: Compiled output now targets ES2022.
-- **Smaller install size**: Published packages no longer ship `src` or source maps, which reduces install footprint.
+- **ESM のみ**: UMD と CJS のビルドは廃止されました。パッケージはモダンな ESM として配布されます。
+- **TypeScript のターゲットは `ES2022`**: コンパイル結果は ES2022 を対象にするようになりました。
+- **インストールサイズの縮小**: 公開パッケージに `src` やソースマップを含めなくなったため、インストール時の容量が減りました。
 
-### The Good News: Most Upgrades Are Opt-in {#the-good-news-most-upgrades-are-opt-in}
+### うれしい知らせ: ほとんどのアップグレードはオプトイン {#the-good-news-most-upgrades-are-opt-in}
 
-While Table V9 is a significant upgrade, **you don't have to adopt everything at once**:
+Table V9 は大きなアップグレードですが、**すべてを一度に取り入れる必要はありません**。
 
-- **Don't want to optimize renders yet?** Do nothing special. The default selector selects all registered state, so rendering works like Table V8.
-- **Don't want to think about tree-shaking?** Import `stockFeatures` to include all features, just like Table V8.
-- **Table markup is largely unchanged.** How you render `<table>`, `<thead>`, `<tr>`, `<td>`, etc. remains the same.
+- **描画の最適化はまだしたくない？** 特別なことは何もしなくてかまいません。デフォルトのセレクターは登録されたすべての状態を選択するので、描画は Table V8 と同じように動きます。
+- **ツリーシェイキングのことは考えたくない？** `stockFeatures` をインポートすれば、Table V8 と同じようにすべての機能が含まれます。
+- **テーブルのマークアップはほとんど変わりません。** `<table>`、`<thead>`、`<tr>`、`<td>` などの描画方法はこれまでと同じです。
 
-The main change is **how you define a table** with the `useTable` hook, specifically the new `features` option and where row model factories are registered.
+主な変更は、`useTable` フックで**テーブルをどう定義するか**です。具体的には、新しい `features` オプションと、行モデルのファクトリーを登録する場所が変わりました。
 
 ---
 
-## Quick Legacy Migration {#quick-legacy-migration}
+## レガシー API による手早い移行 {#quick-legacy-migration}
 
-Need to migrate incrementally? We are providing a temporary shortcut with the `useLegacyTable` hook. It accepts the Table V8-style API while using Table V9 under the hood. **This is deprecated** and intended only as a temporary migration aid. It includes all features by default, so your bundle will be even larger than it was with Table V8.
+少しずつ移行したい場合のために、`useLegacyTable` フックという一時的な近道を用意しています。このフックは Table V8 形式の API を受け付けつつ、内部では Table V9 を使います。**これは非推奨**で、移行を一時的に助けるためだけのものです。デフォルトですべての機能を含むため、バンドルは Table V8 のときよりもさらに大きくなります。
 
-Legacy APIs live in a separate export. Import core utilities from `@tanstack/react-table` and legacy-specific APIs from `@tanstack/react-table/legacy`:
+レガシー API は別のエクスポートにまとめられています。中核のユーティリティは `@tanstack/react-table` から、レガシー専用の API は `@tanstack/react-table/legacy` からインポートしてください。
 
 ```tsx
 import { flexRender } from '@tanstack/react-table'
@@ -80,17 +80,17 @@ import {
 } from '@tanstack/react-table/legacy'
 ```
 
-See the [useLegacyTable Guide](./use-legacy-table.md) for full documentation, examples, and type helpers.
+詳しい説明、サンプル、型ヘルパーについては [useLegacyTable ガイド](./use-legacy-table.md)を参照してください。
 
 ---
 
-The rest of this guide focuses on migrating to the full Table V9 API and taking advantage of its features.
+このガイドの残りでは、Table V9 の API へ完全に移行し、その機能を活かす方法を扱います。
 
-## Core Breaking Changes {#core-breaking-changes}
+## 中核の破壊的変更 {#core-breaking-changes}
 
-### Hook Rename {#hook-rename}
+### フックの名前の変更 {#hook-rename}
 
-The number one change: `useReactTable` is now `useTable`, consistent with hook naming across all TanStack libraries:
+いちばん大きな変更は、`useReactTable` が `useTable` になったことです。これで TanStack のすべてのライブラリとフックの命名がそろいました。
 
 ```tsx
 // Table V8
@@ -102,11 +102,11 @@ import { useTable } from '@tanstack/react-table'
 const table = useTable(options)
 ```
 
-### New Required `features` Table Option {#new-required-features-table-option}
+### 必須になった新しいテーブルオプション `features` {#new-required-features-table-option}
 
-In Table V9, you must explicitly declare which features your table uses. Features, Row Models, and Row Model processing "Fns" are defined on the new `features` table option.
+Table V9 では、テーブルが使う機能を明示的に宣言する必要があります。機能、行モデル、行モデルで使う処理関数（"Fns"）は、新しいテーブルオプション `features` に定義します。
 
-In Table V8, all features were bundled and included in the `useReactTable` hook. In Table V9, you import only what you need.
+Table V8 では、すべての機能がバンドルされ、`useReactTable` フックに含まれていました。Table V9 では、必要なものだけをインポートします。
 
 ```tsx
 // Table V8
@@ -149,9 +149,9 @@ const table = useTable({
 })
 ```
 
-#### Shortcut: Use `stockFeatures` for Table V8-like Behavior {#shortcut-use-stockfeatures-for-table-v8-like-behavior}
+#### 近道: `stockFeatures` で Table V8 と同じ振る舞いにする {#shortcut-use-stockfeatures-for-table-v8-like-behavior}
 
-If you want all features without having to think about it (like Table V8), import `stockFeatures`:
+（Table V8 のように）何も考えずにすべての機能を使いたい場合は、`stockFeatures` をインポートします。
 
 ```tsx
 import { useTable, stockFeatures } from '@tanstack/react-table'
@@ -163,35 +163,35 @@ const table = useTable({
 })
 ```
 
-#### Available Features {#available-features}
+#### 利用できる機能 {#available-features}
 
-| Feature           | Import Name               |
+| 機能              | インポート名              |
 | ----------------- | ------------------------- |
-| Column Faceting   | `columnFacetingFeature`   |
-| Column Filtering  | `columnFilteringFeature`  |
-| Column Grouping   | `columnGroupingFeature`   |
-| Column Ordering   | `columnOrderingFeature`   |
-| Column Pinning    | `columnPinningFeature`    |
-| Column Resizing   | `columnResizingFeature`   |
-| Column Sizing     | `columnSizingFeature`     |
-| Column Visibility | `columnVisibilityFeature` |
-| Global Filtering  | `globalFilteringFeature`  |
-| Row Aggregation   | `rowAggregationFeature`   |
-| Row Expanding     | `rowExpandingFeature`     |
-| Row Pagination    | `rowPaginationFeature`    |
-| Row Pinning       | `rowPinningFeature`       |
-| Row Selection     | `rowSelectionFeature`     |
-| Row Sorting       | `rowSortingFeature`       |
+| 列のファセット    | `columnFacetingFeature`   |
+| 列フィルタリング  | `columnFilteringFeature`  |
+| 列のグループ化    | `columnGroupingFeature`   |
+| 列の並べ替え      | `columnOrderingFeature`   |
+| 列の固定          | `columnPinningFeature`    |
+| 列幅の変更        | `columnResizingFeature`   |
+| 列幅              | `columnSizingFeature`     |
+| 列の表示切り替え  | `columnVisibilityFeature` |
+| グローバルフィルタリング | `globalFilteringFeature`  |
+| 行の集計          | `rowAggregationFeature`   |
+| 行の展開          | `rowExpandingFeature`     |
+| 行のページネーション | `rowPaginationFeature`    |
+| 行の固定          | `rowPinningFeature`       |
+| 行選択            | `rowSelectionFeature`     |
+| 行のソート        | `rowSortingFeature`       |
 
-### Row Model Factories {#row-model-factories}
+### 行モデルのファクトリー {#row-model-factories}
 
-Row models are the functions that process your data (filtering, sorting, pagination, etc.). In Table V9, row model factories live on the `tableFeatures({})` call rather than a separate table option. The processing function registries (`filterFns`, `sortFns`, `aggregationFns`) are also registered on features. This enables better tree-shaking: you only bundle the row model code and filter/sort/aggregation functions you actually register.
+行モデルは、データを処理する（フィルタリング、ソート、ページネーションなど）関数です。Table V9 では、行モデルのファクトリーを独立したテーブルオプションではなく、`tableFeatures({})` の呼び出しの中に置きます。処理関数のレジストリ（`filterFns`、`sortFns`、`aggregationFns`）も features に登録します。こうすることでツリーシェイキングが効きやすくなり、実際に登録した行モデルのコードと、フィルター・ソート・集計の関数だけがバンドルされます。
 
-Row model slots are type-checked, so each row model must be specified after its associated feature in the same `tableFeatures` call.
+行モデルのスロットは型で検査されます。そのため、各行モデルは同じ `tableFeatures` の呼び出しの中で、対応する機能より後に指定する必要があります。
 
-| Table V8 Option            | Table V9 `tableFeatures` Slot | Table V9 Factory Function     |
+| Table V8 のオプション      | Table V9 の `tableFeatures` スロット | Table V9 のファクトリー関数   |
 | -------------------------- | ----------------------------- | ----------------------------- |
-| `getCoreRowModel()`        | (automatic)                   | Not needed, always included   |
+| `getCoreRowModel()`        | （自動）                      | 不要。常に含まれる            |
 | `getFilteredRowModel()`    | `filteredRowModel`            | `createFilteredRowModel()`    |
 | `getSortedRowModel()`      | `sortedRowModel`              | `createSortedRowModel()`      |
 | `getPaginationRowModel()`  | `paginatedRowModel`           | `createPaginatedRowModel()`   |
@@ -234,9 +234,9 @@ const table = useTable({
 })
 ```
 
-#### Prefer Individual Fn Imports Over Full Registries {#prefer-individual-fn-imports-over-full-registries}
+#### レジストリ全体よりも関数を個別にインポートする {#prefer-individual-fn-imports-over-full-registries}
 
-The `filterFns`, `sortFns`, and `aggregationFns` registry exports are now deprecated in favor of importing individual `filterFn_*`, `sortFn_*`, and `aggregationFn_*` functions and registering only the ones you use (or passing functions directly in column definitions with no registration at all). The full registries still work, but spreading them puts every built-in function in your bundle. String names, including the default `'auto'`, only resolve functions you have registered.
+レジストリとしてエクスポートされている `filterFns`、`sortFns`、`aggregationFns` は非推奨になりました。代わりに、`filterFn_*`、`sortFn_*`、`aggregationFn_*` の関数を個別にインポートし、使うものだけを登録してください（あるいは、登録せずに列定義へ関数を直接渡すこともできます）。レジストリ全体も引き続き使えますが、展開して渡すと組み込みの関数がすべてバンドルに入ります。文字列で指定する名前（デフォルトの `'auto'` を含む）は、登録済みの関数にしか解決されません。
 
 ```tsx
 // Before: registers every built-in function
@@ -262,9 +262,9 @@ const features = tableFeatures({
 })
 ```
 
-### Instance Methods Must Be Called on Their Instance {#instance-methods-must-be-called-on-their-instance}
+### インスタンスのメソッドはそのインスタンスから呼び出す {#instance-methods-must-be-called-on-their-instance}
 
-In Table V9, methods on rows, cells, columns, headers, and similar table objects are shared on the object's prototype instead of being created as arrow functions on each object. This improves memory usage, but it means destructuring those methods loses the `this` context they need to operate on the instance.
+Table V9 では、行、セル、列、ヘッダーなどのテーブルオブジェクトのメソッドは、オブジェクトごとにアロー関数として作られるのではなく、オブジェクトのプロトタイプで共有されます。これによりメモリ使用量は改善しますが、メソッドを分割代入で取り出すと、インスタンスを操作するのに必要な `this` のコンテキストが失われます。
 
 ```tsx
 // Table V8 - worked because getValue closed over the row object
@@ -275,32 +275,32 @@ const value = getValue('name')
 const value = row.getValue('name')
 ```
 
-This applies to row, cell, column, header, and related instance APIs, but not to the table instance itself. Audit code that destructures methods from table objects or passes them around as bare callbacks. Prefer calling them through the original object, for example `row.getValue('name')`, `cell.getContext()`, `column.getCanSort()`, or `header.getContext()`.
+これは行、セル、列、ヘッダーと、それに関連するインスタンスの API に当てはまります。テーブルインスタンスそのものは対象外です。テーブルオブジェクトからメソッドを分割代入で取り出しているコードや、メソッドを単独のコールバックとして受け渡しているコードを見直してください。`row.getValue('name')`、`cell.getContext()`、`column.getCanSort()`、`header.getContext()` のように、元のオブジェクトを通して呼び出すのがおすすめです。
 
-Because these methods now live on the prototype, they also do not appear as own properties in `Object.keys(instance)`, object spread, or `JSON.stringify`. A shallow clone like `{ ...row }` copies row data but does not copy row methods. The methods are still callable normally because JavaScript looks them up through the prototype chain.
+また、これらのメソッドはプロトタイプに置かれるようになったため、`Object.keys(instance)`、オブジェクトのスプレッド構文、`JSON.stringify` では自身のプロパティとして現れません。`{ ...row }` のような浅いコピーでは、行のデータはコピーされますが、行のメソッドはコピーされません。それでも、JavaScript がプロトタイプチェーンをたどってメソッドを探すため、通常どおり呼び出せます。
 
 ---
 
-## State Management Changes {#state-management-changes}
+## 状態管理の変更 {#state-management-changes}
 
-Table V9's state system is built on [TanStack Store](https://tanstack.com/store) and exposes three read surfaces on the table instance:
+Table V9 の状態の仕組みは [TanStack Store](https://tanstack.com/store) の上に作られており、テーブルインスタンスには状態を読み取る窓口が3つあります。
 
-| Surface               | Type                                                                                                             | When to use                                                                                                                                                                           |
+| 窓口                  | 型                                                                                                               | 使いどころ                                                                                                                                                                            |
 | --------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `table.state`         | `TSelected` (full registered table state by default, or the shape returned from your custom `useTable` selector) | The most ergonomic read surface inside a component rendered by `useTable`.                                                                                                            |
-| `table.store`         | `ReadonlyStore<TableState>`                                                                                      | A flat, framework-agnostic store of the entire table state. Use `table.store.state` for one-off reads, or pair with `useSelector` / `table.Subscribe` for fine-grained subscriptions. |
-| `table.atoms.<slice>` | `ReadonlyAtom<TableState[slice]>`                                                                                | A per-slice readonly atom. Subscribe to a single slice (e.g. `table.atoms.sorting`) when you want the narrowest possible re-render surface.                                           |
+| `table.state`         | `TSelected`（デフォルトでは登録されたテーブルの状態すべて。カスタムの `useTable` セレクターを渡した場合はその戻り値の形） | `useTable` で描画するコンポーネントの中では、これがいちばん扱いやすい窓口です。                                                                                                      |
+| `table.store`         | `ReadonlyStore<TableState>`                                                                                      | テーブルの状態全体を、フレームワークに依存しないフラットなストアとして持ちます。一度だけ読むなら `table.store.state` を使い、きめ細かく購読するなら `useSelector` / `table.Subscribe` と組み合わせます。 |
+| `table.atoms.<slice>` | `ReadonlyAtom<TableState[slice]>`                                                                                | スライスごとの読み取り専用アトムです。再レンダーの範囲をできるだけ狭くしたいときは、1つのスライス（例: `table.atoms.sorting`）だけを購読します。                                     |
 
-Writable counterparts (mostly internal):
+書き込みのための対応物（ほとんどは内部用）:
 
-| Surface                   | Type                         | When to use                                                                                                                                    |
+| 窓口                      | 型                           | 使いどころ                                                                                                                                     |
 | ------------------------- | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `table.baseAtoms.<slice>` | `Atom<TableState[slice]>`    | The library's internal write target. You generally don't touch these directly; use `table.setSorting(...)`, `table.setPagination(...)`, etc.   |
-| `options.atoms`           | `Partial<{ [slice]: Atom }>` | Pass in your own writable atom for any slice to take ownership of that state externally. See [External Atoms](#external-atoms-advanced) below. |
+| `table.baseAtoms.<slice>` | `Atom<TableState[slice]>`    | ライブラリ内部の書き込み先です。通常は直接触らず、`table.setSorting(...)` や `table.setPagination(...)` などを使います。                       |
+| `options.atoms`           | `Partial<{ [slice]: Atom }>` | 任意のスライスに自分の書き込み可能なアトムを渡すと、その状態を外部で管理できます。後述の[外部アトム](#external-atoms-advanced)を参照してください。 |
 
-### Accessing State {#accessing-state}
+### 状態へのアクセス {#accessing-state}
 
-In Table V8, you accessed state via `table.getState()`. In Table V9, state is accessed differently:
+Table V8 では `table.getState()` で状態にアクセスしていました。Table V9 ではアクセスの仕方が変わります。
 
 ```tsx
 // Table V8
@@ -331,11 +331,11 @@ const { sorting, pagination } = selectedTable.state
 const sorting = table.atoms.sorting.get()
 ```
 
-#### onStateChange Table Option Removed {#onstatechange-table-option-removed}
+#### テーブルオプション onStateChange の削除 {#onstatechange-table-option-removed}
 
-The `onStateChange` table option was removed in Table V9, although individual `on[State]Change` handlers are still available for specific state slices.
+Table V9 ではテーブルオプション `onStateChange` が削除されました。ただし、状態のスライスごとの `on[State]Change` ハンドラーは引き続き使えます。
 
-If you want to lift or listen to any state change, you can set up a subscription to the `table.store`:
+どの状態の変化でも引き上げたり監視したりしたい場合は、`table.store` を購読します。
 
 ```tsx
 const unsubscribe = table.store.subscribe((state) => {
@@ -343,9 +343,9 @@ const unsubscribe = table.store.subscribe((state) => {
 })
 ```
 
-### Optimized Rendering with `table.Subscribe` {#optimized-rendering-with-tablesubscribe}
+### `table.Subscribe` による描画の最適化 {#optimized-rendering-with-tablesubscribe}
 
-The biggest state management improvement is `table.Subscribe`, which enables fine-grained reactivity:
+状態管理でいちばん大きな改善は `table.Subscribe` です。これによって、きめ細かなリアクティビティが実現します。
 
 ```tsx
 function MyTable() {
@@ -377,9 +377,9 @@ function MyTable() {
 }
 ```
 
-### Default: Table V8-Style Full State Subscription {#default-table-v8-style-full-state-subscription}
+### デフォルト: Table V8 と同じく状態全体を購読する {#default-table-v8-style-full-state-subscription}
 
-The default selector already gives Table V8-style behavior where the component re-renders on any registered table state change:
+デフォルトのセレクターのままでも、Table V8 と同じ振る舞いになります。つまり、登録されたテーブルの状態のどれかが変わると、コンポーネントが再レンダーされます。
 
 ```tsx
 const table = useTable({
@@ -392,11 +392,11 @@ const table = useTable({
 const { sorting, pagination, columnFilters } = table.state
 ```
 
-Passing `(state) => state` is equivalent to the default and is no longer necessary. Pass a custom selector when you want `table.state` to contain only specific slices, or pass `() => null` and use `table.Subscribe` lower in the tree when the parent should not re-render for table state changes.
+`(state) => state` を渡すのはデフォルトと同じなので、もう必要ありません。`table.state` に特定のスライスだけを入れたいときはカスタムのセレクターを渡します。テーブルの状態が変わっても親を再レンダーさせたくないときは、`() => null` を渡し、ツリーの下のほうで `table.Subscribe` を使います。
 
-### Controlled State {#controlled-state}
+### 制御された状態 {#controlled-state}
 
-The Table V8-style `state` + `on[State]Change` controlled state patterns still work and remain convenient for simple integrations. For new Table V9 code, prefer owning state slices with external atoms (see [External Atoms](#external-atoms-advanced) below), which give you fine-grained subscriptions without mirroring state through React:
+Table V8 形式の `state` + `on[State]Change` による制御された状態のパターンは引き続き使え、単純な組み込みでは今でも手軽です。ただし、Table V9 で新しく書くコードでは、外部アトムで状態のスライスを持つ方法（後述の[外部アトム](#external-atoms-advanced)を参照）をおすすめします。React を経由して状態を写し取らなくても、きめ細かく購読できるからです。
 
 ```tsx
 const [sorting, setSorting] = useState<SortingState>([])
@@ -418,9 +418,9 @@ const table = useTable({
 })
 ```
 
-### Per-Slice Atom Subscriptions {#per-slice-atom-subscriptions}
+### スライスごとのアトムの購読 {#per-slice-atom-subscriptions}
 
-Because each state slice is backed by its own atom, you can subscribe a component to a single slice without re-rendering on any other state change. Use `useSelector` from `@tanstack/react-store` with `table.atoms.<slice>`:
+状態の各スライスはそれぞれ専用のアトムに支えられているため、コンポーネントに1つのスライスだけを購読させ、他の状態が変わっても再レンダーしないようにできます。`@tanstack/react-store` の `useSelector` を `table.atoms.<slice>` と組み合わせて使います。
 
 ```tsx
 import { useSelector } from '@tanstack/react-store'
@@ -433,13 +433,13 @@ function PaginationFooter({ table }) {
 }
 ```
 
-This is the narrowest subscription surface available. Compared to `table.Subscribe`, which selects from the full `table.store.state`, reading a per-slice atom skips even constructing the full state snapshot on change.
+これが最も範囲の狭い購読方法です。`table.Subscribe` は `table.store.state` 全体から選択しますが、スライスごとのアトムを読む場合は、変更時に状態全体のスナップショットを組み立てる処理すら省けます。
 
-> **When to reach for** `table.atoms` **vs.** `table.Subscribe`**:** Both give you fine-grained re-renders. `table.Subscribe` is nicer when you want to project multiple slices into a single rendered block. `table.atoms.<slice>` is nicer when a component only cares about one slice, or when you're passing a subscription source to non-table code.
+> `table.atoms` **と** `table.Subscribe` **の使い分け:** どちらも再レンダーをきめ細かくできます。複数のスライスを1つの描画ブロックにまとめて渡したいときは `table.Subscribe` が便利です。コンポーネントが1つのスライスにしか関心がないときや、テーブル以外のコードに購読元を渡すときは `table.atoms.<slice>` が便利です。
 
-### External Atoms (Advanced) {#external-atoms-advanced}
+### 外部アトム（応用） {#external-atoms-advanced}
 
-For advanced patterns (sharing a slice across tables, integrating with atom-based libraries, or wiring a slice up to persistence), Table V9 lets you **own individual state slices yourself** by passing writable atoms via the new `atoms` option. See the [Basic External Atoms example](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-atoms).
+応用的なパターン（複数のテーブルでスライスを共有する、アトムベースのライブラリと連携する、スライスを永続化の仕組みにつなぐなど）のために、Table V9 では新しい `atoms` オプションで書き込み可能なアトムを渡し、**状態のスライスを個別に自分で持つ**ことができます。[Basic External Atoms のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-atoms)を参照してください。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -486,41 +486,41 @@ function MyTable({ data, columns }) {
 }
 ```
 
-#### How External Atoms Interact with `state` and `on*Change` {#how-external-atoms-interact-with-state-and-onchange}
+#### 外部アトムと `state`・`on*Change` の関係 {#how-external-atoms-interact-with-state-and-onchange}
 
-When you register an external atom for a slice:
+あるスライスに外部アトムを登録すると、次のように動きます。
 
-- **Reads**: The derived `table.atoms[slice]` and `table.store.state[slice]` both read from your external atom.
-- **Writes**: Library writes (e.g. `table.setSorting(...)`, `column.toggleSorting()`) go directly to your external atom's `set()`. You do **not** need a corresponding `onSortingChange` handler; owning the atom is the subscription.
-- **Precedence**: If you pass both `options.atoms[key]` and `options.state[key]`, the atom wins. If you pass neither, Table V9 falls back to its internal `baseAtoms[key]` (Table V8-style self-managed state).
-- **Reset**: `table.reset()` does **not** clear external atoms. You own them, so you decide when to reset. Call `myAtom.set(defaultValue)` yourself if needed.
+- **読み取り**: 派生した `table.atoms[slice]` も `table.store.state[slice]` も、あなたの外部アトムから読み取ります。
+- **書き込み**: ライブラリによる書き込み（例: `table.setSorting(...)`、`column.toggleSorting()`）は、外部アトムの `set()` に直接届きます。対応する `onSortingChange` ハンドラーは**必要ありません**。アトムを持っていること自体が購読になるからです。
+- **優先順位**: `options.atoms[key]` と `options.state[key]` の両方を渡した場合は、アトムが優先されます。どちらも渡さない場合、Table V9 は内部の `baseAtoms[key]`（Table V8 と同じく、テーブル自身が管理する状態）を使います。
+- **リセット**: `table.reset()` は外部アトムを**クリアしません**。アトムを持っているのはあなたなので、いつリセットするかもあなたが決めます。必要なら `myAtom.set(defaultValue)` を自分で呼んでください。
 
-#### When to Choose External Atoms vs. Controlled State {#when-to-choose-external-atoms-vs-controlled-state}
+#### 外部アトムと制御された状態の選び方 {#when-to-choose-external-atoms-vs-controlled-state}
 
-| Pattern                                                 | Use when                                                                                                                                                      |
+| パターン                                                | 使いどころ                                                                                                                                                    |
 | ------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Internal state (no `state`, no `atoms`)                 | Simplest path; the table manages everything.                                                                                                                  |
-| `state` + `on*Change` (Table V8-style controlled state) | You want your framework's idiomatic state (React `useState`, signals, etc.) to own the slice.                                                                 |
-| `atoms` option                                          | You want atom-based ergonomics (cross-component subscriptions, `useSelector`, `useAtom`) without the overhead of mirroring between React state and the table. |
+| 内部の状態（`state` も `atoms` も渡さない）             | いちばん簡単な方法です。テーブルがすべてを管理します。                                                                                                        |
+| `state` + `on*Change`（Table V8 形式の制御された状態）  | フレームワークで一般的な状態（React の `useState`、シグナルなど）にスライスを持たせたいとき。                                                                 |
+| `atoms` オプション                                      | React の状態とテーブルの間で状態を写し合う手間をかけずに、アトムベースの使い勝手（コンポーネントをまたいだ購読、`useSelector`、`useAtom`）を得たいとき。      |
 
 ---
 
-## Feature-by-Feature Breaking Changes {#feature-by-feature-breaking-changes}
+## 機能ごとの破壊的変更 {#feature-by-feature-breaking-changes}
 
-### Sorting {#sorting}
+### ソート {#sorting}
 
-Sorting-related APIs have been renamed for consistency:
+ソート関連の API は、一貫性を持たせるために名前が変わりました。
 
 | Table V8                          | Table V9                 |
 | --------------------------------- | ------------------------ |
-| `sortingFn` (column def option)   | `sortFn`                 |
+| `sortingFn`（列定義のオプション） | `sortFn`                 |
 | `column.getSortingFn()`           | `column.getSortFn()`     |
 | `column.getAutoSortingFn()`       | `column.getAutoSortFn()` |
-| `SortingFn` type                  | `SortFn` type            |
-| `SortingFns` interface            | `SortFns` interface      |
-| `sortingFns` (built-in functions) | `sortFns`                |
+| `SortingFn` 型                    | `SortFn` 型              |
+| `SortingFns` インターフェース     | `SortFns` インターフェース |
+| `sortingFns`（組み込み関数）      | `sortFns`                |
 
-Update your column definitions:
+列定義を次のように更新してください。
 
 ```tsx
 // Table V8
@@ -540,9 +540,9 @@ const columns = [
 ]
 ```
 
-### Column Pinning {#column-pinning}
+### 列の固定 {#column-pinning}
 
-V9 changes column pinning to use logical `start`/`end` terminology instead of the physical `left`/`right` terminology used in V8. In LTR languages/layouts, `start` usually corresponds to left and `end` to right; in RTL languages/layouts, `start` usually corresponds to right and `end` to left. There are no deprecated aliases.
+V9 では、列の固定で使う用語が、V8 の物理的な `left`/`right` から論理的な `start`/`end` に変わりました。左から右へ書く（LTR）言語やレイアウトでは、通常 `start` が左、`end` が右に当たります。右から左へ書く（RTL）言語やレイアウトでは、通常 `start` が右、`end` が左に当たります。非推奨の別名は用意されていません。
 
 | V8                                   | V9                                   |
 | ------------------------------------ | ------------------------------------ |
@@ -567,9 +567,9 @@ V9 changes column pinning to use logical `start`/`end` terminology instead of th
 | `column.getIndex('left')`            | `column.getIndex('start')`           |
 | `column.getIndex('right')`           | `column.getIndex('end')`             |
 
-This rename is about logical table regions, not automatic DOM direction handling. For sticky column pinning, prefer CSS logical properties like `insetInlineStart` and `insetInlineEnd`. The `columnResizeDirection` table option is unchanged.
+この名前の変更は、テーブルの論理的な領域を表すためのものです。DOM の書字方向を自動で扱うわけではありません。sticky による列の固定では、`insetInlineStart` や `insetInlineEnd` のような CSS の論理プロパティを使うのがおすすめです。テーブルオプション `columnResizeDirection` は変わっていません。
 
-The `enablePinning` option has also been split into separate options:
+また、`enablePinning` オプションは別々のオプションに分かれました。
 
 ```tsx
 // Table V8
@@ -580,18 +580,18 @@ enableColumnPinning: true
 enableRowPinning: true
 ```
 
-### Column Sizing vs. Column Resizing Split {#column-sizing-vs-column-resizing-split}
+### 列幅と列幅の変更の分離 {#column-sizing-vs-column-resizing-split}
 
-In Table V8, column sizing and resizing were combined in a single feature. In Table V9, they've been split into separate features for better tree-shaking.
+Table V8 では、列幅と列幅の変更が1つの機能にまとまっていました。Table V9 では、ツリーシェイキングを効きやすくするために別々の機能に分かれています。
 
 | Table V8                          | Table V9                                        |
 | --------------------------------- | ----------------------------------------------- |
-| `ColumnSizing` (combined feature) | `columnSizingFeature` + `columnResizingFeature` |
-| `columnSizingInfo` state          | `columnResizing` state                          |
+| `ColumnSizing`（まとまった機能）  | `columnSizingFeature` + `columnResizingFeature` |
+| `columnSizingInfo` 状態           | `columnResizing` 状態                           |
 | `setColumnSizingInfo()`           | `setColumnResizing()`                           |
-| `onColumnSizingInfoChange` option | `onColumnResizingChange` option                 |
+| `onColumnSizingInfoChange` オプション | `onColumnResizingChange` オプション         |
 
-If you only need column sizing (fixed widths) without interactive resizing, you can import just `columnSizingFeature`. If you need drag-to-resize functionality, import both:
+ユーザー操作による列幅の変更は不要で、列幅（固定の幅）だけが必要なら、`columnSizingFeature` だけをインポートすれば済みます。ドラッグで列幅を変える機能が必要なら、両方をインポートします。
 
 ```tsx
 import {
@@ -605,9 +605,9 @@ const features = tableFeatures({
 })
 ```
 
-### Grouping and Aggregation {#grouping-and-aggregation}
+### グループ化と集計 {#grouping-and-aggregation}
 
-Aggregation is now its own feature, independent from column grouping. `stockFeatures` still includes both, so tables using it need no feature-registration change. If you declare features explicitly, add `rowAggregationFeature` whenever columns use `aggregationFn`, `aggregatedCell`, `getAggregationValue`, or `cell.getIsAggregated`. Add `columnGroupingFeature` and `groupedRowModel` only when you also group rows.
+集計は列のグループ化から独立した、単独の機能になりました。`stockFeatures` には引き続き両方が含まれているので、これを使っているテーブルでは機能の登録を変える必要はありません。機能を明示的に宣言している場合は、列で `aggregationFn`、`aggregatedCell`、`getAggregationValue`、`cell.getIsAggregated` のいずれかを使うなら `rowAggregationFeature` を追加してください。`columnGroupingFeature` と `groupedRowModel` は、行のグループ化もするときだけ追加します。
 
 ```ts
 const features = tableFeatures({
@@ -618,7 +618,7 @@ const features = tableFeatures({
 })
 ```
 
-Custom aggregation callables have changed to context-based definitions:
+カスタムの集計関数は、呼び出し可能な関数から、コンテキストを受け取る定義の形に変わりました。
 
 ```ts
 // Table V8/earlier V9 betas
@@ -632,9 +632,9 @@ const total = constructAggregationFn({
 })
 ```
 
-The old per-function choice between `childRows` and `leafRows` is replaced by a single depth-selected `context.rows`, controlled by the `maxAggregationDepth` column option. The default (`0`) preserves V8's direct-child grouped aggregation; use `Infinity` to aggregate terminal leaf rows.
+以前は関数ごとに `childRows` と `leafRows` のどちらを使うかを選んでいましたが、これは深さに応じて選ばれる1つの `context.rows` に置き換わりました。深さは列のオプション `maxAggregationDepth` で制御します。デフォルト（`0`）では、V8 と同じく直下の子のグループを集計します。末端の行を集計するには `Infinity` を指定します。
 
-`column.getAggregationValue()` now takes a single options object instead of positional arguments:
+`column.getAggregationValue()` は、位置で指定する引数ではなく、1つのオプションオブジェクトを受け取るようになりました。
 
 ```ts
 // Table V8/earlier V9 betas
@@ -644,48 +644,48 @@ column.getAggregationValue(rows, maxDepth)
 column.getAggregationValue({ rows, maxDepth })
 ```
 
-`column.getAggregationFn()` is now `column.getAggregationFns()` because a column can run multiple definitions, and the old callable `AggregationFn`/`CreatedAggregationFn` types are replaced by `AggregationFnDef`.
+1つの列で複数の定義を実行できるようになったため、`column.getAggregationFn()` は `column.getAggregationFns()` になりました。また、呼び出し可能な関数を表していた従来の `AggregationFn`/`CreatedAggregationFn` 型は、`AggregationFnDef` に置き換わりました。
 
-See the [Grouping Guide](./grouping) and the [Aggregation Guide](./aggregation) for full documentation of the new capabilities.
+新しい機能の詳しい説明は、[グループ化ガイド](./grouping)と[集計ガイド](./aggregation)を参照してください。
 
-### Row Selection {#row-selection}
+### 行選択 {#row-selection}
 
 > [!WARNING]
-> **Minor breaking change:** `row.getToggleSelectedHandler()` now enables inclusive Shift range selection by default when `rowSelectionFeature` is enabled. Existing checkboxes or rows wired through this handler establish an anchor on an ordinary interaction and select or deselect the current display-order range on a Shift interaction. Direct `row.toggleSelected()` calls are unchanged.
+> **小さな破壊的変更:** `rowSelectionFeature` が有効な場合、`row.getToggleSelectedHandler()` はデフォルトで、両端を含む Shift による範囲選択を有効にするようになりました。このハンドラーにつないだ既存のチェックボックスや行は、通常の操作で起点（アンカー）を設定し、Shift を押しながらの操作で、現在の表示順での範囲を選択または選択解除します。`row.toggleSelected()` を直接呼ぶ場合の動きは変わりません。
 >
-> Set `enableRowRangeSelection: false` to preserve the previous non-range handler behavior. The handler must receive an event that exposes Shift directly or through `nativeEvent`; see [Shift Range Selection](./row-selection.md#shift-range-selection).
+> 以前の、範囲選択をしないハンドラーの動きを保ちたい場合は、`enableRowRangeSelection: false` を設定してください。ハンドラーには、Shift の状態を直接、または `nativeEvent` を通じて参照できるイベントを渡す必要があります。[Shift による範囲選択](./row-selection.md#shift-range-selection)を参照してください。
 
-The "some rows selected" checks were simplified to mean "at least one row is selected":
+「一部の行が選択されている」かどうかの判定は、「少なくとも1行が選択されている」という意味に単純化されました。
 
 | API                                 | Table V8                                            | Table V9                                      |
 | ----------------------------------- | --------------------------------------------------- | --------------------------------------------- |
-| `table.getIsSomeRowsSelected()`     | `true` when some but not all rows are selected      | `true` when at least one row is selected      |
-| `table.getIsSomePageRowsSelected()` | `true` when some but not all page rows are selected | `true` when at least one page row is selected |
+| `table.getIsSomeRowsSelected()`     | 一部の行が選択され、かつ全行は選択されていないときに `true` | 少なくとも1行が選択されているときに `true` |
+| `table.getIsSomePageRowsSelected()` | ページ内の一部の行が選択され、かつページ内の全行は選択されていないときに `true` | ページ内で少なくとも1行が選択されているときに `true` |
 
-In Table V8 these returned `false` once every row was selected; in Table V9 they stay `true`. If you use them to drive an indeterminate "select all" checkbox, gate the indeterminate state on the matching all-selected check so it clears at full selection:
+Table V8 では、すべての行が選択されると `false` を返していました。Table V9 では `true` のままです。これらを使って「すべて選択」チェックボックスの中間状態（indeterminate）を切り替えている場合は、対応する「すべて選択済み」の判定と組み合わせ、全選択になったら中間状態が解除されるようにしてください。
 
 `getIsSomeRowsSelected() && !getIsAllRowsSelected()`
 
-### Row and Internal API Changes {#row-and-internal-api-changes}
+### 行 API と内部 API の変更 {#row-and-internal-api-changes}
 
-Some row APIs have changed from private to public:
+一部の行 API は、非公開から公開に変わりました。
 
 | Table V8                                 | Table V9                               |
 | ---------------------------------------- | -------------------------------------- |
-| `row._getAllCellsByColumnId()` (private) | `row.getAllCellsByColumnId()` (public) |
+| `row._getAllCellsByColumnId()`（非公開） | `row.getAllCellsByColumnId()`（公開）  |
 
-All other internal APIs prefixed with `_` have been removed. If you were using any of these, use their public equivalents:
+`_` で始まるそれ以外の内部 API は、すべて削除されました。これらを使っていた場合は、対応する公開 API を使ってください。
 
-- Removed: `table._getPinnedRows()`
-- Removed: `table._getFacetedRowModel()`
-- Removed: `table._getFacetedMinMaxValues()`
-- Removed: `table._getFacetedUniqueValues()`
+- 削除: `table._getPinnedRows()`
+- 削除: `table._getFacetedRowModel()`
+- 削除: `table._getFacetedMinMaxValues()`
+- 削除: `table._getFacetedUniqueValues()`
 
 ---
 
-## Column Helper Changes {#column-helper-changes}
+## 列ヘルパーの変更 {#column-helper-changes}
 
-The `createColumnHelper` function now requires a `TFeatures` type parameter in addition to `TData`:
+`createColumnHelper` 関数は、`TData` に加えて `TFeatures` 型パラメーターも必要になりました。
 
 ```tsx
 // Table V8
@@ -704,9 +704,9 @@ const features = tableFeatures({ rowSortingFeature })
 const columnHelper = createColumnHelper<typeof features, Person>()
 ```
 
-### New `columns()` Helper Method {#new-columns-helper-method}
+### 新しいヘルパーメソッド `columns()` {#new-columns-helper-method}
 
-Table V9 adds a `columns()` helper for better type inference when wrapping column arrays. In Table V8, `TValue` wasn't always type-safe, especially with group columns, where nested column types could be lost or widened. The `columns()` helper uses variadic tuple types to preserve each column's individual `TValue` type, so `info.getValue()` and cell renderers stay correctly typed throughout nested structures:
+Table V9 では、列の配列を包んで型推論を改善する `columns()` ヘルパーが加わりました。Table V8 では `TValue` が常に型安全とは限らず、特にグループ列では、入れ子になった列の型が失われたり広がったりすることがありました。`columns()` ヘルパーは可変長タプル型を使って列ごとの `TValue` 型を保つため、入れ子の構造全体を通して `info.getValue()` やセルの描画関数に正しい型が付きます。
 
 ```tsx
 const columnHelper = createColumnHelper<typeof features, Person>()
@@ -732,11 +732,11 @@ const columns = columnHelper.columns([
 
 ---
 
-## Rendering Changes {#rendering-changes}
+## 描画の変更 {#rendering-changes}
 
-### `flexRender` Function {#flexrender-function}
+### `flexRender` 関数 {#flexrender-function}
 
-The `flexRender` function still exists and works the same way:
+`flexRender` 関数は引き続き存在し、これまでと同じように動きます。
 
 ```tsx
 import { flexRender } from '@tanstack/react-table'
@@ -746,9 +746,9 @@ flexRender(cell.column.columnDef.cell, cell.getContext())
 flexRender(header.column.columnDef.header, header.getContext())
 ```
 
-### New `FlexRender` and `<table.FlexRender />` Component {#new-flexrender-and-tableflexrender--component}
+### 新しい `FlexRender` コンポーネントと `<table.FlexRender />` コンポーネント {#new-flexrender-and-tableflexrender--component}
 
-Table V9 adds a cleaner component-based approach attached to the table instance:
+Table V9 では、テーブルインスタンスに付いた、より簡潔なコンポーネントベースの方法が加わりました。
 
 ```tsx
 const table = useTable({ /* ... */ })
@@ -767,15 +767,15 @@ import { FlexRender } from '@tanstack/react-table'
 <FlexRender footer={footer} />
 ```
 
-This should be way more convenient than the old `flexRender` function!
+従来の `flexRender` 関数よりも、ずっと使いやすくなっているはずです！
 
 ---
 
-## The `tableOptions()` Utility {#the-tableoptions-utility}
+## ユーティリティ `tableOptions()` {#the-tableoptions-utility}
 
-The `tableOptions()` helper provides type-safe composition of table options. It's useful for creating reusable partial configurations that can be spread into your table setup.
+`tableOptions()` ヘルパーを使うと、テーブルオプションを型安全に組み立てられます。テーブルの設定にスプレッド構文で展開できる、再利用可能な部分的な設定を作るのに便利です。
 
-### Basic Usage {#basic-usage}
+### 基本的な使い方 {#basic-usage}
 
 ```tsx
 import {
@@ -800,9 +800,9 @@ const table = useTable({
 })
 ```
 
-### Composing Partial Options {#composing-partial-options}
+### 部分的なオプションを組み合わせる {#composing-partial-options}
 
-`tableOptions()` lets you omit required fields (like `data`, `columns`, or `features`) when creating partial configurations:
+`tableOptions()` を使えば、部分的な設定を作るときに必須のフィールド（`data`、`columns`、`features` など）を省略できます。
 
 ```tsx
 // Row model factories and fns registries are registered on the features object
@@ -840,9 +840,9 @@ const table = useTable({
 })
 ```
 
-### Using with `createTableHook` {#using-with-createtablehook}
+### `createTableHook` と組み合わせる {#using-with-createtablehook}
 
-`tableOptions()` pairs well with `createTableHook` for building composable table factories:
+`tableOptions()` は、組み立て可能なテーブルのファクトリーを作る `createTableHook` と相性がよいです。
 
 ```tsx
 const features = tableFeatures({
@@ -860,11 +860,11 @@ const { useAppTable } = createTableHook(sharedOptions)
 
 ---
 
-## `createTableHook`: Composable Table Patterns {#createtablehook-composable-table-patterns}
+## `createTableHook`: 組み立て可能なテーブルのパターン {#createtablehook-composable-table-patterns}
 
-**This is an advanced, optional feature.** You don't need to use `createTableHook`; `useTable` is sufficient for most use cases. If you're familiar with [TanStack Form](https://tanstack.com/form)'s `createFormHook`, `createTableHook` works almost the same way: it creates a custom hook with pre-bound configuration that you can reuse across many tables.
+**これは応用的で、使うかどうかは任意の機能です。** `createTableHook` を使う必要はなく、ほとんどの用途では `useTable` で十分です。[TanStack Form](https://tanstack.com/form) の `createFormHook` を知っているなら、`createTableHook` もほぼ同じように動きます。設定をあらかじめ結び付けたカスタムフックを作り、それを多くのテーブルで使い回せます。
 
-For applications with multiple tables sharing the same configuration, `createTableHook` lets you define features (including row model factories), and reusable components once:
+同じ設定を共有するテーブルが複数あるアプリケーションでは、`createTableHook` を使うと、機能（行モデルのファクトリーを含む）と再利用するコンポーネントを一度だけ定義すれば済みます。
 
 ```tsx
 // hooks/table.ts
@@ -915,7 +915,7 @@ export const {
 })
 ```
 
-### Using `useAppTable` {#using-useapptable}
+### `useAppTable` を使う {#using-useapptable}
 
 ```tsx
 // features/users.tsx
@@ -978,9 +978,9 @@ function UsersTable({ data }: { data: Person[] }) {
 }
 ```
 
-### Context Hooks for Components {#context-hooks-for-components}
+### コンポーネント向けのコンテキストフック {#context-hooks-for-components}
 
-Components registered via `createTableHook` can access their context:
+`createTableHook` で登録したコンポーネントは、自分のコンテキストにアクセスできます。
 
 ```tsx
 // components/SortIndicator.tsx
@@ -1024,11 +1024,11 @@ export function PaginationControls() {
 
 ---
 
-## TypeScript Changes Summary {#typescript-changes-summary}
+## TypeScript の変更のまとめ {#typescript-changes-summary}
 
-### Type Generics {#type-generics}
+### 型のジェネリクス {#type-generics}
 
-Most types now require a `TFeatures` parameter:
+ほとんどの型で `TFeatures` パラメーターが必要になりました。
 
 ```tsx
 // Table V8
@@ -1046,9 +1046,9 @@ type Row<TFeatures, TData>
 type Cell<TFeatures, TData, TValue>
 ```
 
-### Using `typeof features` {#using-typeof-features}
+### `typeof features` を使う {#using-typeof-features}
 
-The easiest way to get the `TFeatures` type is with `typeof`:
+`TFeatures` 型を得るいちばん簡単な方法は `typeof` を使うことです。
 
 ```tsx
 const features = tableFeatures({
@@ -1066,9 +1066,9 @@ function Filter({ column }: { column: Column<typeof features, Person, unknown> }
 }
 ```
 
-### Using `StockFeatures` {#using-stockfeatures}
+### `StockFeatures` を使う {#using-stockfeatures}
 
-If using `stockFeatures` with `useTable`, use the `StockFeatures` type:
+`useTable` で `stockFeatures` を使う場合は、`StockFeatures` 型を使います。
 
 ```tsx
 import type { StockFeatures, ColumnDef } from '@tanstack/react-table'
@@ -1076,11 +1076,11 @@ import type { StockFeatures, ColumnDef } from '@tanstack/react-table'
 const columns: ColumnDef<StockFeatures, Person>[] = [...]
 ```
 
-### `TableMeta`/`ColumnMeta` Typing Changes {#tablemetacolumnmeta-typing-changes}
+### `TableMeta`/`ColumnMeta` の型付けの変更 {#tablemetacolumnmeta-typing-changes}
 
-No more declaration merging required! (Although it still works if you want to keep using it)
+宣言のマージはもう必要ありません！（使い続けたい場合は、引き続き使えます）
 
-Global declaration merging to extend `TableMeta` or `ColumnMeta` works exactly like it did in Table V8. The only change you need to make is updating the generics shape: both interfaces now take `TFeatures` as the first type parameter.
+`TableMeta` や `ColumnMeta` を拡張するためのグローバルな宣言のマージは、Table V8 とまったく同じように動きます。必要な変更はジェネリクスの形を更新することだけです。どちらのインターフェースも、最初の型パラメーターとして `TFeatures` を受け取るようになりました。
 
 ```tsx
 // Table V8
@@ -1098,9 +1098,9 @@ declare module '@tanstack/react-table' {
 }
 ```
 
-That's all that's required if you want to keep declaring meta types globally.
+meta の型をこれまでどおりグローバルに宣言し続けたい場合は、これだけで済みます。
 
-Optionally, Table V9 also adds a new way to declare meta types **per-table** without declaration merging. You can use type-only `tableMeta`/`columnMeta` slots on the `features` option, which only affect tables created with that `features` object:
+さらに Table V9 では、宣言のマージを使わずに meta の型を**テーブルごとに**宣言する新しい方法も選べます。`features` オプションで型専用の `tableMeta`/`columnMeta` スロットを使うと、その `features` オブジェクトで作ったテーブルにだけ影響します。
 
 ```tsx
 const features = tableFeatures({
@@ -1109,11 +1109,11 @@ const features = tableFeatures({
 })
 ```
 
-See the new [Table and Column Meta Guide](../../../guide/table-and-column-meta) for full details on both approaches.
+両方の方法について詳しくは、新しい[テーブルと列の meta ガイド](../../../guide/table-and-column-meta)を参照してください。
 
-### `FilterFns`/`SortFns`/`AggregationFns`/`FilterMeta` Augmentation Replaced by Registry Slots {#filterfnssortfnsaggregationfnsfiltermeta-augmentation-replaced-by-registry-slots}
+### `FilterFns`/`SortFns`/`AggregationFns`/`FilterMeta` の拡張はレジストリのスロットに置き換え {#filterfnssortfnsaggregationfnsfiltermeta-augmentation-replaced-by-registry-slots}
 
-In Table V8, making a custom function usable as a string reference (like `filterFn: 'fuzzy'`) required `declare module` augmentation of the `FilterFns` interface, and typing filter meta required augmenting `FilterMeta`. In Table V9, registering the function in the matching registry slot does both jobs with no global augmentation:
+Table V8 では、カスタム関数を文字列で参照できるようにする（`filterFn: 'fuzzy'` のように）には、`declare module` で `FilterFns` インターフェースを拡張する必要がありました。フィルターの meta に型を付けるには、`FilterMeta` の拡張も必要でした。Table V9 では、対応するレジストリのスロットに関数を登録するだけで、グローバルな拡張なしにその両方を済ませられます。
 
 ```tsx
 // Table V8
@@ -1142,11 +1142,11 @@ const features = tableFeatures({
 columnHelper.accessor('name', { filterFn: 'fuzzy' })
 ```
 
-The same pattern applies to `sortFns` (for `sortFn` string values) and `aggregationFns` (for `aggregationFn` string values). See the [Fuzzy Filtering Guide](./fuzzy-filtering.md) for a complete example.
+同じパターンは、`sortFns`（`sortFn` の文字列値用）と `aggregationFns`（`aggregationFn` の文字列値用）にも当てはまります。完全な例は[あいまい検索フィルターガイド](./fuzzy-filtering.md)を参照してください。
 
-### `RowData` Type Restriction {#rowdata-type-restriction}
+### `RowData` 型の制限 {#rowdata-type-restriction}
 
-The `RowData` type is now more restrictive:
+`RowData` 型の制約が厳しくなりました。
 
 ```tsx
 // Table V8 - very permissive
@@ -1156,45 +1156,45 @@ type RowData = unknown
 type RowData = Record<string, any> | Array<any>
 ```
 
-This change improves type safety. If you were passing unusual data types, ensure your data conforms to `Record<string, any>` or `Array<any>`.
+この変更で型安全性が高まります。珍しいデータ型を渡していた場合は、データが `Record<string, any>` または `Array<any>` に合っているか確認してください。
 
 ---
 
-## Migration Checklist {#migration-checklist}
+## 移行チェックリスト {#migration-checklist}
 
-- [ ] Update import: `useReactTable` → `useTable`
-- [ ] Define `features` using `tableFeatures()` (or use `stockFeatures`)
-- [ ] Migrate `get*RowModel()` options to `tableFeatures` slots (e.g. `filteredRowModel: createFilteredRowModel()`)
-- [ ] Register `filterFns` / `sortFns` / `aggregationFns` registries as slots on `tableFeatures` (row model factories no longer take arguments)
-- [ ] Replace destructured row/cell/column/header methods with calls on the instance (for example, `row.getValue('name')`)
-- [ ] Rename `sortingFn` → `sortFn` in column definitions
-- [ ] Update column pinning to `start`/`end` terminology (`columnPinning.start`, `column.pin('end')`, `getStart*`/`getEnd*` APIs)
-- [ ] Replace `enablePinning` with `enableColumnPinning`/`enableRowPinning` if used
-- [ ] Rename `columnSizingInfo` state → `columnResizing` (and related options)
-- [ ] Convert custom aggregation callables to `constructAggregationFn({ aggregate, merge? })` definitions
-- [ ] Update state access: `table.getState()` → `table.store.state` or `table.state`
-- [ ] Update TypeScript types to include `TFeatures` generic
-- [ ] Update `createColumnHelper<TData>()` → `createColumnHelper<TFeatures, TData>()`
-- [ ] If you use `TableMeta`/`ColumnMeta` declaration merging, add the `TFeatures` generic to your augmentations (optionally, switch to the per-table `tableMeta`/`columnMeta` feature slots)
-- [ ] Replace `declare module` augmentation of `FilterFns`/`SortFns`/`AggregationFns` with registry-slot registration, and `FilterMeta` augmentation with the `filterMeta` slot
-- [ ] (Optional) Add `table.Subscribe` for render optimizations
-- [ ] (Optional) Subscribe to individual slices via `table.atoms.<slice>` + `useSelector` for the narrowest re-renders
-- [ ] (Optional) Pass writable atoms via the new `atoms` option to own specific state slices externally
-- [ ] (Optional) Use `tableOptions()` for composable configurations
-- [ ] (Optional) Migrate to `createTableHook` for reusable table patterns
+- [ ] インポートを更新する: `useReactTable` → `useTable`
+- [ ] `tableFeatures()` で `features` を定義する（または `stockFeatures` を使う）
+- [ ] `get*RowModel()` オプションを `tableFeatures` のスロットに移す（例: `filteredRowModel: createFilteredRowModel()`）
+- [ ] `filterFns` / `sortFns` / `aggregationFns` のレジストリを `tableFeatures` のスロットとして登録する（行モデルのファクトリーは引数を取らなくなった）
+- [ ] 分割代入で取り出した行・セル・列・ヘッダーのメソッドを、インスタンスからの呼び出しに置き換える（例: `row.getValue('name')`）
+- [ ] 列定義の `sortingFn` を `sortFn` に名前変更する
+- [ ] 列の固定を `start`/`end` の用語に更新する（`columnPinning.start`、`column.pin('end')`、`getStart*`/`getEnd*` の API）
+- [ ] `enablePinning` を使っている場合は、`enableColumnPinning`/`enableRowPinning` に置き換える
+- [ ] 状態 `columnSizingInfo` を `columnResizing` に名前変更する（関連するオプションも）
+- [ ] 呼び出し可能なカスタム集計関数を、`constructAggregationFn({ aggregate, merge? })` による定義に変換する
+- [ ] 状態へのアクセスを更新する: `table.getState()` → `table.store.state` または `table.state`
+- [ ] TypeScript の型に `TFeatures` ジェネリクスを加える
+- [ ] `createColumnHelper<TData>()` を `createColumnHelper<TFeatures, TData>()` に更新する
+- [ ] `TableMeta`/`ColumnMeta` の宣言のマージを使っている場合は、拡張に `TFeatures` ジェネリクスを加える（テーブルごとの `tableMeta`/`columnMeta` の機能スロットに切り替えてもよい）
+- [ ] `FilterFns`/`SortFns`/`AggregationFns` の `declare module` による拡張をレジストリのスロットへの登録に、`FilterMeta` の拡張を `filterMeta` スロットに置き換える
+- [ ] （任意）描画を最適化するために `table.Subscribe` を加える
+- [ ] （任意）再レンダーを最小限にするために、`table.atoms.<slice>` + `useSelector` で個々のスライスを購読する
+- [ ] （任意）新しい `atoms` オプションで書き込み可能なアトムを渡し、特定の状態のスライスを外部で管理する
+- [ ] （任意）組み立て可能な設定のために `tableOptions()` を使う
+- [ ] （任意）再利用できるテーブルのパターンのために `createTableHook` に移行する
 
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Check out these examples to see Table V9 patterns in action:
+Table V9 のパターンが実際に動く様子は、次のサンプルで確認できます。
 
-- [Basic useTable](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-table) - Simple table with the new `useTable` hook
-- [Basic useLegacyTable](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-legacy-table) - Migration example using `useLegacyTable`
-- [Basic useAppTable](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-app-table) - Using `createTableHook`
-- [Basic External State](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-state) - Classic `state` + `on*Change` controlled state
-- [Basic External Atoms](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-atoms) - Owning state slices with `useCreateAtom` + the `atoms` option
-- [Filters](https://tanstack.com/table/latest/docs/framework/react/examples/filters) - Filtering with the new API
-- [Sorting](https://tanstack.com/table/latest/docs/framework/react/examples/sorting) - Sorting with the new API
-- [Composable Tables](https://tanstack.com/table/latest/docs/framework/react/examples/composable-tables) - Advanced `createTableHook` patterns
-- [Kitchen Sink](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink) - An example combining all features
+- [Basic useTable](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-table) - 新しい `useTable` フックを使ったシンプルなテーブル
+- [Basic useLegacyTable](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-legacy-table) - `useLegacyTable` を使った移行の例
+- [Basic useAppTable](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-app-table) - `createTableHook` の使用例
+- [Basic External State](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-state) - 従来どおりの `state` + `on*Change` による制御された状態
+- [Basic External Atoms](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-atoms) - `useCreateAtom` と `atoms` オプションで状態のスライスを持つ例
+- [Filters](https://tanstack.com/table/latest/docs/framework/react/examples/filters) - 新しい API によるフィルタリング
+- [Sorting](https://tanstack.com/table/latest/docs/framework/react/examples/sorting) - 新しい API によるソート
+- [組み立て可能なテーブル](https://tanstack.com/table/latest/docs/framework/react/examples/composable-tables) - `createTableHook` の応用パターン
+- [Kitchen Sink](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink) - すべての機能を組み合わせた例

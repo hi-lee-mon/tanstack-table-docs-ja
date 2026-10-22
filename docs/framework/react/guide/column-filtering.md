@@ -1,19 +1,19 @@
 ---
-title: Column Filtering (React) Guide
+title: 列フィルタリング（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Column Filters](https://tanstack.com/table/latest/docs/framework/react/examples/filters)
-- [Faceted Filters](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted)
-- [Bucketed Faceted Filters](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted-bucketed)
-- [Fuzzy Search](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy)
+- [列フィルター](https://tanstack.com/table/latest/docs/framework/react/examples/filters)
+- [ファセットフィルター](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted)
+- [バケット分けしたファセットフィルター](https://tanstack.com/table/latest/docs/framework/react/examples/filters-faceted-bucketed)
+- [あいまい検索](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy)
 
-### Column Filtering Setup {#column-filtering-setup}
+### 列フィルタリングのセットアップ {#column-filtering-setup}
 
-Here's how you set up your table to use column filtering features. Adding the column filtering feature enables the related APIs. If you use client-side filtering, also set up `filteredRowModel` after its feature, since row model slots are type-checked.
+列フィルタリングの機能を使うためのテーブルのセットアップ方法は次のとおりです。列フィルタリングの機能を追加すると、関連する API が使えるようになります。クライアントサイドでフィルタリングする場合は、その機能の後ろに `filteredRowModel` も設定してください。行モデルのスロットは型チェックの対象になるためです。
 
 ```tsx
 import {
@@ -43,29 +43,29 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> The `filterFns` registry above lists only the built-in filter functions this table uses. Spreading the entire built-in `filterFns` registry (`filterFns: { ...filterFns }`) still works, but it puts every built-in filter function in your bundle. Register just the functions you use, or pass a function directly to the `filterFn` column option with no registration at all.
+> 上の `filterFns` レジストリには、このテーブルで使う組み込みのフィルター関数だけを並べています。組み込みの `filterFns` レジストリ全体を展開する書き方（`filterFns: { ...filterFns }`）も引き続き使えますが、組み込みのフィルター関数がすべてバンドルに含まれてしまいます。使う関数だけを登録するか、登録せずに関数を `filterFn` 列オプションへ直接渡してください。
 
-## Column Filtering (React) Guide {#column-filtering-react-guide}
+## 列フィルタリング（React）ガイド {#column-filtering-react-guide}
 
-Filtering comes in 2 flavors: Column Filtering and Global Filtering.
+フィルタリングには、列フィルタリングとグローバルフィルタリングの 2 種類があります。
 
-This guide will focus on column filtering, which is a filter that is applied to a single column's accessor value.
+このガイドでは列フィルタリングを扱います。列フィルタリングは、1 つの列のアクセサーの値に対して適用するフィルターです。
 
-TanStack table supports both client-side and manual server-side filtering. This guide will go over how to implement and customize both, and help you decide which one is best for your use-case.
+TanStack Table は、クライアントサイドのフィルタリングと、手動のサーバーサイドのフィルタリングの両方に対応しています。このガイドでは、両方の実装方法とカスタマイズ方法を説明し、ユースケースに合うのはどちらかを判断する手助けをします。
 
-### Client-Side vs Server-Side Filtering {#client-side-vs-server-side-filtering}
+### クライアントサイドとサーバーサイドのフィルタリング {#client-side-vs-server-side-filtering}
 
-Filtering should operate over the same dataset as sorting and pagination. Use client-side filtering when the browser has the complete dataset; use server-side filtering when it has only a page or another subset, unless filtering just the loaded rows is intentional.
+フィルタリングは、ソートやページネーションと同じデータセットに対して行うべきです。ブラウザーがデータセット全体を持っているならクライアントサイドのフィルタリングを使います。1 ページ分などデータの一部しか持っていないなら、読み込み済みの行だけをフィルタリングするのが意図どおりである場合を除き、サーバーサイドのフィルタリングを使います。
 
-See the [Client-Side vs Server-Side Guide](../../../guide/client-side-vs-server-side) for the full decision framework, performance factors, and guidance for combining data operations.
+判断の枠組み全体、パフォーマンスに関わる要素、データ操作を組み合わせるときの指針については、[クライアントサイドとサーバーサイドのガイド](../../../guide/client-side-vs-server-side)を参照してください。
 
-The client-side filtered row model also invokes the page-index auto-reset hook when column filtering inputs change. Whether the page index resets depends on the `autoResetPageIndex`, `autoResetAll`, and `manualPagination` options. If filtering is manual and this row model is omitted or bypassed, a column filter state change does not invoke that hook, so reset server-side pagination in the filter change handler when needed.
+クライアントサイドのフィルター済み行モデルは、列フィルタリングの入力が変わったときに、ページ番号を自動リセットするフックも呼び出します。ページ番号が実際にリセットされるかどうかは、`autoResetPageIndex`、`autoResetAll`、`manualPagination` の各オプションで決まります。フィルタリングを手動で行い、この行モデルを省略するか迂回している場合は、列フィルターの状態が変わってもこのフックは呼ばれません。必要に応じて、フィルターの変更ハンドラーの中でサーバーサイドのページネーションをリセットしてください。
 
-### Manual Server-Side Filtering {#manual-server-side-filtering}
+### 手動のサーバーサイドフィルタリング {#manual-server-side-filtering}
 
-If you have decided that you need to implement server-side filtering instead of using the built-in client-side filtering, here's how you do that.
+組み込みのクライアントサイドのフィルタリングではなく、サーバーサイドのフィルタリングを実装する必要があると判断した場合の方法は次のとおりです。
 
-No `filteredRowModel` is needed for manual server-side filtering. Instead, the `data` that you pass to the table should already be filtered. However, if you have added a `filteredRowModel` to the features object, you can tell the table to skip it by setting the `manualFiltering` option to `true`.
+手動のサーバーサイドフィルタリングでは `filteredRowModel` は不要です。その代わり、テーブルに渡す `data` をあらかじめフィルタリングしておきます。ただし、features オブジェクトに `filteredRowModel` を追加済みの場合は、`manualFiltering` オプションを `true` にすると、テーブルにその行モデルを使わせないようにできます。
 
 ```tsx
 const features = tableFeatures({ columnFilteringFeature })
@@ -79,11 +79,11 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> When using manual filtering, many of the options that are discussed in the rest of this guide will have no effect. When `manualFiltering` is set to `true`, the table instance will not apply any filtering logic to the rows that are passed to it. Instead, it will assume that the rows are already filtered and will use the `data` that you pass to it as-is.
+> 手動フィルタリングを使う場合、このガイドの以降で説明するオプションの多くは効果がありません。`manualFiltering` を `true` にすると、テーブルインスタンスは渡された行にフィルタリングの処理を一切適用しません。行はすでにフィルタリング済みだとみなし、渡された `data` をそのまま使います。
 
-### Client-Side Filtering {#client-side-filtering}
+### クライアントサイドのフィルタリング {#client-side-filtering}
 
-If you are using the built-in client-side filtering features, add the `columnFilteringFeature` and the `filteredRowModel` factory to your features. Import `createFilteredRowModel` and the filter functions you need from TanStack Table:
+組み込みのクライアントサイドのフィルタリング機能を使う場合は、`columnFilteringFeature` と `filteredRowModel` のファクトリーを features に追加します。TanStack Table から `createFilteredRowModel` と、必要なフィルター関数をインポートしてください。
 
 ```tsx
 import {
@@ -111,11 +111,11 @@ const table = useTable({
 })
 ```
 
-### Column Filter State {#column-filter-state}
+### 列フィルターの状態 {#column-filter-state}
 
-Whether or not you use client-side or server-side filtering, you can take advantage of the built-in column filter state management that TanStack Table provides. There are many table and column APIs to mutate and interact with the filter state and retrieve the column filter state.
+クライアントサイドとサーバーサイドのどちらのフィルタリングを使う場合でも、TanStack Table が提供する列フィルターの状態管理を活用できます。フィルターの状態を変更・操作したり、列フィルターの状態を取得したりするためのテーブル API や列 API が数多く用意されています。
 
-The column filtering state is defined as an array of objects with the following shape:
+列フィルタリングの状態は、次の形のオブジェクトの配列として定義されています。
 
 ```ts
 interface ColumnFilter {
@@ -125,11 +125,11 @@ interface ColumnFilter {
 type ColumnFiltersState = ColumnFilter[]
 ```
 
-Since the column filter state is an array of objects, you can have multiple column filters applied at once.
+列フィルターの状態はオブジェクトの配列なので、複数の列フィルターを同時に適用できます。
 
-#### Accessing Column Filter State {#accessing-column-filter-state}
+#### 列フィルターの状態を読み取る {#accessing-column-filter-state}
 
-For reactive reads that should re-render your UI, use `table.state.columnFilters` (selected by the `useTable` selector) or `table.Subscribe`. In event handlers or other non-render code, you can read the current snapshot with `table.atoms.columnFilters.get()`, but this read does not subscribe the component to future changes.
+UI の再レンダーにつなげたいリアクティブな読み取りには、`table.state.columnFilters`（`useTable` のセレクターで選んだもの）か `table.Subscribe` を使います。イベントハンドラーなど、レンダー以外のコードでは `table.atoms.columnFilters.get()` で現在のスナップショットを読み取れます。ただし、この読み取りではコンポーネントが以降の変更を購読しません。
 
 ```tsx
 const table = useTable({
@@ -143,11 +143,11 @@ table.state.columnFilters // reactive read in render
 table.atoms.columnFilters.get() // snapshot read in event handlers
 ```
 
-However, if you need access to the column filter state outside of the table, you can "control" the column filter state like down below.
+テーブルの外から列フィルターの状態にアクセスしたい場合は、次に説明するように列フィルターの状態を「制御」できます。
 
-### Controlled Column Filter State {#controlled-column-filter-state}
+### 制御された列フィルターの状態 {#controlled-column-filter-state}
 
-If you need easy access to the column filter state in other parts of your application, you can own the column filter state slice yourself. The recommended way in v9 is an external atom passed through the `atoms` table option. Atoms preserve fine-grained subscriptions, and the filter values can be used elsewhere (such as in a query key for server-side filtering) without forcing the component that owns the table to re-render.
+アプリケーションの他の場所から列フィルターの状態に手軽にアクセスしたい場合は、列フィルターの状態スライスを自分で持つことができます。v9 で推奨される方法は、外部のアトムを `atoms` テーブルオプションで渡すことです。アトムなら細かい粒度の購読が保たれるため、テーブルを持つコンポーネントを再レンダーさせることなく、フィルターの値を別の場所（サーバーサイドフィルタリングのクエリーキーなど）で使えます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -168,7 +168,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.columnFilters` plus `onColumnFiltersChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+v8 スタイルの `state.columnFilters` と `onColumnFiltersChange` を組み合わせるパターンも、引き続き使えます。単純な連携や v8 のコードを移行するときには便利ですが、外部のアトムに比べると購読の粒度は粗くなります。詳しい比較は[テーブルの状態のガイド](./table-state)を参照してください。
 
 ```tsx
 const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
@@ -185,9 +185,9 @@ const table = useTable({
 })
 ```
 
-#### Initial Column Filter State {#initial-column-filter-state}
+#### 列フィルターの初期状態 {#initial-column-filter-state}
 
-If you do not need to control the column filter state in your own state management or scope, but you still want to set an initial column filter state, you can use the `initialState` table option instead of `state`.
+列フィルターの状態を自前の状態管理やスコープで制御する必要はないものの、列フィルターの初期状態は設定したい場合は、`state` の代わりに `initialState` テーブルオプションを使えます。
 
 ```tsx
 const table = useTable({
@@ -207,41 +207,41 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> Do not use both `initialState.columnFilters` and `state.columnFilters` at the same time, as the controlled `state.columnFilters` value will override the `initialState.columnFilters`.
+> `initialState.columnFilters` と `state.columnFilters` を同時に使わないでください。制御された `state.columnFilters` の値が `initialState.columnFilters` を上書きします。
 
-### FilterFns {#filterfns}
+### フィルター関数（FilterFns） {#filterfns}
 
-Each column can have its own unique filtering logic. Choose from any of the filter functions that are provided by TanStack Table, or create your own.
+列ごとに独自のフィルタリングの処理を持たせられます。TanStack Table が提供するフィルター関数から選ぶことも、自分で作ることもできます。
 
-By default there are 18 built-in filter functions to choose from:
+デフォルトで、次の 18 個の組み込みフィルター関数から選べます。
 
-- `includesString` - Case-insensitive string inclusion
-- `includesStringSensitive` - Case-sensitive string inclusion
-- `startsWith` - Case-insensitive string prefix match
-- `endsWith` - Case-insensitive string suffix match
-- `equalsString` - Case-insensitive string equality
-- `equalsStringSensitive` - Case-sensitive string equality
-- `equals` - Strict equality `===`
-- `weakEquals` - Weak equality `==`
-- `empty` - The row's value is nullish or whitespace-only (the filter value is an on/off flag)
-- `notEmpty` - The row's value is not nullish or whitespace-only (the filter value is an on/off flag)
-- `arrIncludes` - The row's array (or string) value includes at least one of the filter values
-- `arrIncludesAll` - The row's array value includes every filter value
-- `arrIncludesSome` - The row's array value includes at least one of the filter values
-- `arrHas` - The row's scalar value equals at least one of the filter values
-- `inNumberRange` - Inclusive `[min, max]` number range (endpoints normalized and swapped if reversed)
-- `inDateRange` - Inclusive `[min, max]` date range accepting `Date` objects, timestamps, or date strings (blank endpoints are open-ended)
-- `between` - Exclusive min/max range (blank endpoints are open-ended)
-- `betweenInclusive` - Inclusive min/max range (blank endpoints are open-ended)
+- `includesString` - 大文字と小文字を区別しない文字列の部分一致
+- `includesStringSensitive` - 大文字と小文字を区別する文字列の部分一致
+- `startsWith` - 大文字と小文字を区別しない文字列の前方一致
+- `endsWith` - 大文字と小文字を区別しない文字列の後方一致
+- `equalsString` - 大文字と小文字を区別しない文字列の完全一致
+- `equalsStringSensitive` - 大文字と小文字を区別する文字列の完全一致
+- `equals` - 厳密等価 `===`
+- `weakEquals` - 緩い等価 `==`
+- `empty` - 行の値が nullish か、空白文字だけである（フィルター値はオン・オフのフラグ）
+- `notEmpty` - 行の値が nullish でも空白文字だけでもない（フィルター値はオン・オフのフラグ）
+- `arrIncludes` - 行の配列（または文字列）の値が、フィルター値のうち少なくとも 1 つを含む
+- `arrIncludesAll` - 行の配列の値が、フィルター値をすべて含む
+- `arrIncludesSome` - 行の配列の値が、フィルター値のうち少なくとも 1 つを含む
+- `arrHas` - 行のスカラー値が、フィルター値のうち少なくとも 1 つと等しい
+- `inNumberRange` - 両端を含む `[min, max]` の数値範囲（両端は正規化され、逆順なら入れ替えられる）
+- `inDateRange` - 両端を含む `[min, max]` の日付範囲。`Date` オブジェクト、タイムスタンプ、日付文字列を受け付ける（空の端は上限・下限なしとして扱う）
+- `between` - 両端を含まない min/max の範囲（空の端は上限・下限なしとして扱う）
+- `betweenInclusive` - 両端を含む min/max の範囲（空の端は上限・下限なしとして扱う）
 
-You can also define your own custom filter functions, either inline as the `filterFn` column option, or by name in the `filterFns` registry slot on `tableFeatures`.
+独自のカスタムフィルター関数も定義できます。`filterFn` 列オプションにインラインで書くか、`tableFeatures` の `filterFns` レジストリスロットに名前付きで登録します。
 
-#### Custom Filter Functions {#custom-filter-functions}
+#### カスタムフィルター関数 {#custom-filter-functions}
 
 > [!NOTE]
-> These filter functions only run during client-side filtering.
+> これらのフィルター関数は、クライアントサイドのフィルタリングでのみ実行されます。
 
-Whether you register a custom filter function in the `filterFns` slot on `tableFeatures` or pass it directly as a `filterFn` column option, it should have the following signature:
+カスタムフィルター関数を `tableFeatures` の `filterFns` スロットに登録する場合も、`filterFn` 列オプションに直接渡す場合も、シグネチャは次のようにします。
 
 ```ts
 const myCustomFilterFn: FilterFn<typeof features, MyData> = (
@@ -252,13 +252,13 @@ const myCustomFilterFn: FilterFn<typeof features, MyData> = (
 ): boolean => ...
 ```
 
-Every filter function receives:
+フィルター関数はどれも次のものを受け取ります。
 
-- The row to filter
-- The columnId to use to retrieve the row's value
-- The filter value
+- フィルタリング対象の行
+- 行の値を取り出すための columnId
+- フィルター値
 
-and should return `true` if the row should be included in the filtered rows, and `false` if it should be removed.
+そして、行をフィルター後の行に含めるなら `true`、取り除くなら `false` を返します。
 
 ```tsx
 const myCustomFilterFn: FilterFn<typeof features, MyData> = (
@@ -313,19 +313,19 @@ const table = useTable({
 })
 ```
 
-> **TypeScript Note:** For `filterFn: 'myCustomFilterFn'` string references to typecheck, register the function in the `filterFns` slot on `tableFeatures` (as shown above). Alternatively, skip the registry entirely by passing the function directly to the `filterFn` column option. See the [Fuzzy Search example](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy) for a complete registration example.
+> **TypeScript に関する注意:** `filterFn: 'myCustomFilterFn'` のような文字列での参照を型チェックに通すには、（上の例のように）関数を `tableFeatures` の `filterFns` スロットに登録してください。あるいは、関数を `filterFn` 列オプションに直接渡せば、レジストリを使わずに済みます。登録の完全な例は [あいまい検索のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy)を参照してください。
 
-##### Customize Filter Function Behavior {#customize-filter-function-behavior}
+##### フィルター関数の動作をカスタマイズする {#customize-filter-function-behavior}
 
-You can attach a few other properties to filter functions to customize their behavior:
+フィルター関数にいくつかのプロパティを付け加えて、動作をカスタマイズできます。
 
-- `filterFn.resolveFilterValue` - This optional "hanging" method on any given `filterFn` allows the filter function to transform/sanitize/format the filter value before it is passed to the filter function. The table applies it once per filter (not once per row), so it is also the right place for expensive preparation work.
+- `filterFn.resolveFilterValue` - 任意の `filterFn` に付け加えられる、省略可能な「ぶら下げ」メソッドです。フィルター値をフィルター関数に渡す前に、変換・サニタイズ・整形できます。テーブルはこのメソッドを（行ごとではなく）フィルターごとに 1 回だけ適用するので、コストの高い前処理を置く場所としても適しています。
 
-- `filterFn.resolveDataValue` - This optional "hanging" method normalizes each row's value before it is compared against the filter value. It is honored by every filter function built with the `constructFilterFn` helper, which includes all built-in filter functions.
+- `filterFn.resolveDataValue` - 省略可能な「ぶら下げ」メソッドで、各行の値をフィルター値と比較する前に正規化します。`constructFilterFn` ヘルパーで作ったフィルター関数はすべてこのメソッドを尊重します。組み込みのフィルター関数もすべてこのヘルパーで作られています。
 
-- `filterFn.autoRemove` - This optional "hanging" method on any given `filterFn` is passed a filter value and expected to return `true` if the filter value should be removed from the filter state. e.g. Some boolean-style filters may want to remove the filter value from the table state if the filter value is set to `false`. When provided, this test is authoritative: values it keeps stay in filter state even when they are empty strings, which the default heuristic would otherwise remove. An `undefined` filter value always clears the filter regardless.
+- `filterFn.autoRemove` - 任意の `filterFn` に付け加えられる、省略可能な「ぶら下げ」メソッドです。フィルター値を受け取り、そのフィルター値をフィルターの状態から取り除くべきなら `true` を返します。たとえば、真偽値のようなフィルターでは、フィルター値が `false` になったらテーブルの状態からフィルター値を取り除きたい場合があります。このメソッドを指定すると、その判定が最優先されます。このメソッドが残すと判定した値は、デフォルトの判定では取り除かれるはずの空文字列であっても、フィルターの状態に残ります。なお、フィルター値が `undefined` の場合は、常にフィルターが解除されます。
 
-The `constructFilterFn` helper builds a filter function from a value-level comparator plus those optional resolvers:
+`constructFilterFn` ヘルパーは、値どうしを比較する関数と、上で説明した省略可能なリゾルバーから、フィルター関数を組み立てます。
 
 ```tsx
 const startsWithFilterFn = constructFilterFn({
@@ -341,7 +341,7 @@ const startsWithFilterFn = constructFilterFn({
 })
 ```
 
-Keeping the comparison in `filter` and the normalization in the resolvers pays off when you need a variant of an existing filter function. The definition is attached to the returned function, so you can spread any filter function built with `constructFilterFn` and override only what differs. For example, a version of `includesString` that also ignores diacritics (so a search for "eric" matches "Éric"):
+比較を `filter` に、正規化をリゾルバーに分けておくと、既存のフィルター関数の変種が欲しくなったときに役立ちます。定義は返された関数に付いているので、`constructFilterFn` で作ったフィルター関数ならどれでも展開して、違う部分だけを上書きできます。たとえば、ダイアクリティカルマークも無視する `includesString`（"eric" で検索すると "Éric" にも一致する）は次のように書けます。
 
 ```tsx
 const normalize = (value: unknown) =>
@@ -357,20 +357,20 @@ const includesStringIgnoreDiacritics = constructFilterFn({
 })
 ```
 
-Register the variant by name in the `filterFns` registry or pass it directly to the `filterFn` column option, just like any other custom filter function.
+この変種は、他のカスタムフィルター関数と同じように、`filterFns` レジストリに名前付きで登録するか、`filterFn` 列オプションに直接渡して使います。
 
 > [!NOTE]
-> The table applies `resolveFilterValue` once per filter before any rows are tested. If you ever call a filter function directly (outside of a table), resolve the filter value yourself: `myFilterFn(row, columnId, myFilterFn.resolveFilterValue?.(rawValue) ?? rawValue)`.
+> テーブルは、行の判定を始める前に、フィルターごとに 1 回 `resolveFilterValue` を適用します。フィルター関数を（テーブルの外で）直接呼び出す場合は、フィルター値を自分で解決してください: `myFilterFn(row, columnId, myFilterFn.resolveFilterValue?.(rawValue) ?? rawValue)`。
 
-### Customize Column Filtering {#customize-column-filtering}
+### 列フィルタリングをカスタマイズする {#customize-column-filtering}
 
-There are a lot of table and column options that you can use to further customize the column filtering behavior.
+列フィルタリングの動作をさらにカスタマイズするためのテーブルオプションや列オプションが、数多く用意されています。
 
-#### Disable Column Filtering {#disable-column-filtering}
+#### 列フィルタリングを無効にする {#disable-column-filtering}
 
-By default, column filtering is enabled for all columns. You can disable the column filtering for all columns or for specific columns by using the `enableColumnFilters` table option or the `enableColumnFilter` column option. You can also turn off both column and global filtering by setting the `enableFilters` table option to `false`.
+デフォルトでは、すべての列で列フィルタリングが有効です。`enableColumnFilters` テーブルオプションや `enableColumnFilter` 列オプションを使うと、すべての列または特定の列で列フィルタリングを無効にできます。また、`enableFilters` テーブルオプションを `false` にすると、列フィルタリングとグローバルフィルタリングの両方を無効にできます。
 
-Disabling column filtering for a column will cause the `column.getCanFilter` API to return `false` for that column.
+ある列で列フィルタリングを無効にすると、その列の `column.getCanFilter` API は `false` を返します。
 
 ```tsx
 const columns = [
@@ -390,15 +390,15 @@ const table = useTable({
 })
 ```
 
-#### Filtering Sub-Rows (Expanding) {#filtering-sub-rows-expanding}
+#### サブ行のフィルタリング（展開） {#filtering-sub-rows-expanding}
 
-There are a few additional table options to customize the behavior of column filtering when using features like expanding, grouping, and aggregation.
+展開、グループ化、集計などの機能を使うときに、列フィルタリングの動作をカスタマイズするためのテーブルオプションがいくつか追加で用意されています。
 
-##### Filter From Leaf Rows {#filter-from-leaf-rows}
+##### 末端の行からフィルタリングする {#filter-from-leaf-rows}
 
-By default, filtering is done from parent rows down, so if a parent row is filtered out, all of its child sub-rows will be filtered out as well. Depending on your use-case, this may be the desired behavior if you only want the user to be searching through the top-level rows, and not the sub-rows. This is also the most performant option.
+デフォルトでは、フィルタリングは親の行から下に向かって行われます。そのため、親の行がフィルターで除外されると、その子のサブ行もすべて除外されます。ユーザーにサブ行ではなく最上位の行だけを検索させたい場合は、ユースケースによってはこれが望ましい動作です。また、これが最もパフォーマンスの良い選択肢でもあります。
 
-However, if you want to allow sub-rows to be filtered and searched through, regardless of whether the parent row is filtered out, you can set the `filterFromLeafRows` table option to `true`. Setting this option to `true` will cause filtering to be done from leaf rows up, which means parent rows will be included so long as one of their child or grand-child rows is also included.
+一方、親の行が除外されるかどうかに関係なく、サブ行もフィルタリング・検索の対象にしたい場合は、`filterFromLeafRows` テーブルオプションを `true` にします。このオプションを `true` にすると、フィルタリングは末端の行から上に向かって行われます。つまり、子や孫の行のうち 1 つでも残っていれば、その親の行も残ります。
 
 ```tsx
 const features = tableFeatures({
@@ -420,11 +420,11 @@ const table = useTable({
 })
 ```
 
-##### Max Leaf Row Filter Depth {#max-leaf-row-filter-depth}
+##### 末端の行をフィルタリングする最大の深さ {#max-leaf-row-filter-depth}
 
-By default, filtering is done for all rows in a tree, no matter if they are root level parent rows or the child leaf rows of a parent row. Setting the `maxLeafRowFilterDepth` table option to `0` will cause filtering to only be applied to the root level parent rows, with all sub-rows remaining unfiltered. Similarly, setting this option to `1` will cause filtering to only be applied to child leaf rows 1 level deep, and so on.
+デフォルトでは、ツリー内のすべての行がフィルタリングの対象になります。ルートレベルの親の行か、親の行の子である末端の行かは問いません。`maxLeafRowFilterDepth` テーブルオプションを `0` にすると、フィルタリングはルートレベルの親の行にだけ適用され、サブ行はすべてフィルタリングされないまま残ります。同様に、このオプションを `1` にすると、フィルタリングは 1 階層下までの子の行にだけ適用されます。それ以降も同じです。
 
-Use `maxLeafRowFilterDepth: 0` if you want to preserve a parent row's sub-rows from being filtered out while the parent row is passing the filter.
+親の行がフィルターを通過しているあいだ、そのサブ行がフィルターで除外されないようにしたい場合は、`maxLeafRowFilterDepth: 0` を使います。
 
 ```tsx
 const features = tableFeatures({
@@ -446,19 +446,19 @@ const table = useTable({
 })
 ```
 
-### Column Filter APIs {#column-filter-apis}
+### 列フィルターの API {#column-filter-apis}
 
-There are a lot of Column and Table APIs that you can use to interact with the column filter state and hook up to your UI components. Here is a list of the available APIs and their most common use-cases:
+列フィルターの状態を操作したり、UI コンポーネントにつないだりするための列 API とテーブル API が数多く用意されています。使える API と、よくある使い道の一覧は次のとおりです。
 
-- `table.setColumnFilters` - Overwrite the entire column filter state with a new state.
-- `table.resetColumnFilters` - Useful for a "clear all/reset filters" button.
+- `table.setColumnFilters` - 列フィルターの状態全体を新しい状態で上書きします。
+- `table.resetColumnFilters` - 「すべてクリア／フィルターをリセット」ボタンに便利です。
 
-- **`column.getFilterValue`** - Useful for getting the default initial filter value for an input, or even directly providing the filter value to a filter input.
-- **`column.setFilterValue`** - Useful for connecting filter inputs to their `onChange` or `onBlur` handlers.
+- **`column.getFilterValue`** - 入力欄のデフォルトの初期フィルター値を取得するときや、フィルター入力欄にフィルター値を直接渡すときに便利です。
+- **`column.setFilterValue`** - フィルター入力欄を `onChange` や `onBlur` ハンドラーにつなぐときに便利です。
 
-- `column.getCanFilter` - Useful for disabling/enabling filter inputs.
-- `column.getIsFiltered` - Useful for displaying a visual indicator that a column is currently being filtered.
-- `column.getFilterIndex` - Useful for displaying in what order the current filter is being applied.
+- `column.getCanFilter` - フィルター入力欄の有効・無効を切り替えるときに便利です。
+- `column.getIsFiltered` - 列が現在フィルタリングされていることを示す目印を表示するときに便利です。
+- `column.getFilterIndex` - 現在のフィルターが何番目に適用されているかを表示するときに便利です。
 
-- `column.getAutoFilterFn` - Used internally to find the default filter function for a column if none is specified.
-- `column.getFilterFn` - Useful for displaying which filter mode or function is currently being used.
+- `column.getAutoFilterFn` - フィルター関数が指定されていない列のデフォルトのフィルター関数を見つけるために、内部で使われます。
+- `column.getFilterFn` - 現在使われているフィルターモードやフィルター関数を表示するときに便利です。

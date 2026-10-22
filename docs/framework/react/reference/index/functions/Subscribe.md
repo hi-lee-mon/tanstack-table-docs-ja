@@ -3,38 +3,37 @@ id: Subscribe
 title: Subscribe
 ---
 
-## Call Signature {#call-signature}
+## 呼び出しシグネチャ {#call-signature}
 
 ```ts
 function Subscribe<TSourceValue>(props): ReactNode | Promise<ReactNode>;
 ```
 
-Defined in: [src/Subscribe.ts:122](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L122)
+定義元: [src/Subscribe.ts:122](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L122)
 
-A React component that allows you to subscribe to the table state.
+テーブルの状態を購読できる React コンポーネントです。
 
-This is useful for opting into state re-renders for specific parts of the table state.
+テーブルの状態のうち特定の部分だけを対象に、状態変化による再レンダーをオプトインしたいときに便利です。
 
-For `table.Subscribe` from `useTable`, prefer that API — it uses overloads so JSX
-contextual typing works. This standalone component uses a union `props` type.
+`useTable` から得られる `table.Subscribe` を使える場合は、そちらを優先してください。`table.Subscribe` はオーバーロードを使っているため、JSX の文脈的型付けが効きます。このスタンドアロンのコンポーネントは、`props` に共用体型を使っています。
 
-### Type Parameters {#type-parameters}
+### 型パラメーター {#type-parameters}
 
 #### TSourceValue {#tsourcevalue}
 
 `TSourceValue`
 
-### Parameters {#parameters}
+### パラメーター {#parameters}
 
 #### props {#props}
 
 [`SubscribePropsWithSourceIdentity`](../type-aliases/SubscribePropsWithSourceIdentity.md)\<`TSourceValue`\>
 
-### Returns {#returns}
+### 戻り値 {#returns}
 
 `ReactNode` \| `Promise`\<`ReactNode`\>
 
-### Examples {#examples}
+### 例 {#examples}
 
 ```tsx
 // As a standalone component — full store
@@ -71,22 +70,21 @@ contextual typing works. This standalone component uses a union `props` type.
 </table.Subscribe>
 ```
 
-## Call Signature {#call-signature-1}
+## 呼び出しシグネチャ {#call-signature-1}
 
 ```ts
 function Subscribe<TSourceValue, TSelected>(props): ReactNode | Promise<ReactNode>;
 ```
 
-Defined in: [src/Subscribe.ts:125](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L125)
+定義元: [src/Subscribe.ts:125](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L125)
 
-A React component that allows you to subscribe to the table state.
+テーブルの状態を購読できる React コンポーネントです。
 
-This is useful for opting into state re-renders for specific parts of the table state.
+テーブルの状態のうち特定の部分だけを対象に、状態変化による再レンダーをオプトインしたいときに便利です。
 
-For `table.Subscribe` from `useTable`, prefer that API — it uses overloads so JSX
-contextual typing works. This standalone component uses a union `props` type.
+`useTable` から得られる `table.Subscribe` を使える場合は、そちらを優先してください。`table.Subscribe` はオーバーロードを使っているため、JSX の文脈的型付けが効きます。このスタンドアロンのコンポーネントは、`props` に共用体型を使っています。
 
-### Type Parameters {#type-parameters-1}
+### 型パラメーター {#type-parameters-1}
 
 #### TSourceValue {#tsourcevalue-1}
 
@@ -96,17 +94,17 @@ contextual typing works. This standalone component uses a union `props` type.
 
 `TSelected`
 
-### Parameters {#parameters-1}
+### パラメーター {#parameters-1}
 
 #### props {#props-1}
 
 [`SubscribePropsWithSourceWithSelector`](../type-aliases/SubscribePropsWithSourceWithSelector.md)\<`TSourceValue`, `TSelected`\>
 
-### Returns {#returns-1}
+### 戻り値 {#returns-1}
 
 `ReactNode` \| `Promise`\<`ReactNode`\>
 
-### Examples {#examples-1}
+### 例 {#examples-1}
 
 ```tsx
 // As a standalone component — full store
@@ -143,22 +141,21 @@ contextual typing works. This standalone component uses a union `props` type.
 </table.Subscribe>
 ```
 
-## Call Signature {#call-signature-2}
+## 呼び出しシグネチャ {#call-signature-2}
 
 ```ts
 function Subscribe<TFeatures, TSelected>(props): ReactNode | Promise<ReactNode>;
 ```
 
-Defined in: [src/Subscribe.ts:128](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L128)
+定義元: [src/Subscribe.ts:128](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L128)
 
-A React component that allows you to subscribe to the table state.
+テーブルの状態を購読できる React コンポーネントです。
 
-This is useful for opting into state re-renders for specific parts of the table state.
+テーブルの状態のうち特定の部分だけを対象に、状態変化による再レンダーをオプトインしたいときに便利です。
 
-For `table.Subscribe` from `useTable`, prefer that API — it uses overloads so JSX
-contextual typing works. This standalone component uses a union `props` type.
+`useTable` から得られる `table.Subscribe` を使える場合は、そちらを優先してください。`table.Subscribe` はオーバーロードを使っているため、JSX の文脈的型付けが効きます。このスタンドアロンのコンポーネントは、`props` に共用体型を使っています。
 
-### Type Parameters {#type-parameters-2}
+### 型パラメーター {#type-parameters-2}
 
 #### TFeatures {#tfeatures}
 
@@ -168,17 +165,17 @@ contextual typing works. This standalone component uses a union `props` type.
 
 `TSelected`
 
-### Parameters {#parameters-2}
+### パラメーター {#parameters-2}
 
 #### props {#props-2}
 
 [`SubscribePropsWithStore`](../type-aliases/SubscribePropsWithStore.md)\<`TFeatures`, `TSelected`\>
 
-### Returns {#returns-2}
+### 戻り値 {#returns-2}
 
 `ReactNode` \| `Promise`\<`ReactNode`\>
 
-### Examples {#examples-2}
+### 例 {#examples-2}
 
 ```tsx
 // As a standalone component — full store

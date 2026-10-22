@@ -1,19 +1,19 @@
 ---
-title: Composable Tables (createTableHook) Guide
+title: 組み立て可能なテーブル（createTableHook）ガイド
 ---
 
-`createTableHook` creates an app-specific table factory. Use it to define shared features, row models, and default table options once, then create each React table with the columns and data that are unique to that table.
+`createTableHook` は、アプリ専用のテーブルファクトリーを作成します。共有する機能・行モデル・テーブルオプションの既定値を一度だけ定義しておき、個々の React テーブルは、そのテーブル固有の列とデータだけで作成できます。
 
-The same API can also register reusable table, cell, and header components, but component registration is optional. Start with shared options and features first; add reusable components only when your app needs standardized table UI pieces.
+同じ API で、再利用できるテーブル・セル・ヘッダーのコンポーネントを登録することもできますが、コンポーネントの登録は任意です。まずは共有するオプションと機能から始めてください。再利用できるコンポーネントは、アプリでテーブル UI の部品を統一したくなったときにだけ追加すれば十分です。
 
-## Examples {#examples}
+## サンプル {#examples}
 
-- [Basic useAppTable](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-app-table) - Minimal `createTableHook` setup.
-- [Composable Tables](https://tanstack.com/table/latest/docs/framework/react/examples/composable-tables) - Richer Users and Products tables sharing `src/hooks/table.ts` and reusable components.
+- [基本的な useAppTable](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-app-table) - `createTableHook` の最小構成のセットアップ。
+- [組み立て可能なテーブル](https://tanstack.com/table/latest/docs/framework/react/examples/composable-tables) - `src/hooks/table.ts` と再利用できるコンポーネントを共有する、より機能の多い Users テーブルと Products テーブル。
 
-## Start With Shared Features and Options {#start-with-shared-features-and-options}
+## 共有する機能とオプションから始める {#start-with-shared-features-and-options}
 
-Create one app table hook and put the feature set, row models, and shared defaults there. This example makes sorting available to every table created by `useAppTable`.
+アプリ用のテーブルフックを1つ作り、そこに機能のセット・行モデル・共有の既定値をまとめます。この例では、`useAppTable` で作るすべてのテーブルでソートが使えるようにしています。
 
 ```tsx
 import {
@@ -37,11 +37,11 @@ const { useAppTable, createAppColumnHelper } = createTableHook({
 })
 ```
 
-Options passed to `createTableHook` become defaults for every table created by `useAppTable`. The `features` option is also bound to the returned column helper, so column definitions know that sorting APIs are available.
+`createTableHook` に渡したオプションは、`useAppTable` で作るすべてのテーブルの既定値になります。`features` オプションは戻り値の列ヘルパーにも結び付けられるので、列定義の側でもソートの API が使えることが型として分かります。
 
-## Create App Columns {#create-app-columns}
+## アプリ用の列を作成する {#create-app-columns}
 
-Create one column helper per row type. The helper is already bound to your app's feature set, so each table does not need to thread `typeof features` through its column definitions.
+行の型ごとに列ヘルパーを1つ作成します。ヘルパーはすでにアプリの機能のセットに結び付いているので、各テーブルの列定義で `typeof features` を引き回す必要はありません。
 
 ```tsx
 type Person = {
@@ -71,9 +71,9 @@ const columns = columnHelper.columns([
 ])
 ```
 
-## Create A Table {#create-a-table}
+## テーブルを作成する {#create-a-table}
 
-Create each table with `useAppTable`. The call site provides table-specific inputs such as `columns` and `data`; shared features and defaults come from the hook.
+各テーブルは `useAppTable` で作成します。`columns` や `data` などテーブル固有の入力は呼び出し側で渡し、共有の機能と既定値はフックから提供されます。
 
 ```tsx
 function UsersTable({ data }: { data: Person[] }) {
@@ -90,9 +90,9 @@ function UsersTable({ data }: { data: Person[] }) {
 }
 ```
 
-## Render With The Normal Table APIs {#render-with-the-normal-table-apis}
+## 通常のテーブル API でレンダーする {#render-with-the-normal-table-apis}
 
-You can render the table with the same table instance APIs used by a standalone `useTable` table. This simple path does not require `AppTable`, `AppCell`, `AppHeader`, or registered components.
+単体の `useTable` で作ったテーブルと同じテーブルインスタンスの API で、テーブルをレンダーできます。この簡単な方法なら、`AppTable`、`AppCell`、`AppHeader` や、登録したコンポーネントは必要ありません。
 
 ```tsx
 return (
@@ -128,9 +128,9 @@ return (
 )
 ```
 
-## Override Shared Defaults Per Table {#override-shared-defaults-per-table}
+## 共有の既定値をテーブルごとに上書きする {#override-shared-defaults-per-table}
 
-Options passed to `useAppTable` override defaults from `createTableHook`. Use this for the few tables that need different behavior without creating a separate app hook.
+`useAppTable` に渡したオプションは、`createTableHook` の既定値を上書きします。別のアプリ用フックを作らずに、一部のテーブルだけ動作を変えたいときに使います。
 
 ```tsx
 const table = useAppTable(
@@ -144,13 +144,13 @@ const table = useAppTable(
 )
 ```
 
-## Optional: Reusable Components {#optional-reusable-components}
+## 任意: 再利用できるコンポーネント {#optional-reusable-components}
 
-The richer composable-tables example also uses `createTableHook` as a component registry. Use this when several tables should share the same toolbar controls, cell renderers, header renderers, or footer renderers.
+より機能の多い composable-tables のサンプルでは、`createTableHook` をコンポーネントの登録先（レジストリ）としても使っています。複数のテーブルで、同じツールバーの操作部品、セルの描画部品、ヘッダーの描画部品、フッターの描画部品を共有したいときに使います。
 
-### Component Registry Setup {#component-registry-setup}
+### コンポーネントレジストリのセットアップ {#component-registry-setup}
 
-The composable tables example keeps the shared configuration in `src/hooks/table.ts`.
+組み立て可能なテーブルのサンプルでは、共有の設定を `src/hooks/table.ts` に置いています。
 
 ```tsx
 import {
@@ -230,22 +230,22 @@ export const {
 })
 ```
 
-### Returned Helpers {#returned-helpers}
+### 返されるヘルパー {#returned-helpers}
 
-| Helper                  | Purpose                                                                                                    |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------- |
-| `useAppTable`           | Creates a table with shared features (including row model factories), defaults, and registered components. |
-| `createAppColumnHelper` | Creates column helpers with `TFeatures` and registered component types already bound.                      |
-| `useTableContext`       | Reads the current table inside registered table components.                                                |
-| `useCellContext`        | Reads the current cell inside registered cell components.                                                  |
-| `useHeaderContext`      | Reads the current header/footer inside registered header components.                                       |
+| ヘルパー | 用途 |
+| --- | --- |
+| `useAppTable` | 共有の機能（行モデルのファクトリーを含む）・既定値・登録したコンポーネントを備えたテーブルを作成します。 |
+| `createAppColumnHelper` | `TFeatures` と登録したコンポーネントの型があらかじめ結び付いた列ヘルパーを作成します。 |
+| `useTableContext` | 登録したテーブルコンポーネントの中で、現在のテーブルを読み取ります。 |
+| `useCellContext` | 登録したセルコンポーネントの中で、現在のセルを読み取ります。 |
+| `useHeaderContext` | 登録したヘッダーコンポーネントの中で、現在のヘッダー・フッターを読み取ります。 |
 
 > [!IMPORTANT]
-> Import `useTableContext`, `useCellContext`, and `useHeaderContext` from the same module where you called `createTableHook` (as shown above). Those hooks are typed with your `TFeatures` and your registered component maps, so values like `table.PaginationControls`, `cell.TextCell`, and `header.SortIndicator` are typed. See the [Table Context guide](./table-context) for details and for the scoped-context escape hatch.
+> `useTableContext`、`useCellContext`、`useHeaderContext` は、（上の例のように）`createTableHook` を呼び出したのと同じモジュールからインポートしてください。これらのフックには `TFeatures` と登録したコンポーネントのマップに基づく型が付いているので、`table.PaginationControls`、`cell.TextCell`、`header.SortIndicator` などの値にも型が付きます。詳しい説明と、スコープ付きコンテキストという抜け道（escape hatch）については、[テーブルコンテキストガイド](./table-context)を参照してください。
 
-### Component Columns {#component-columns}
+### コンポーネントを使う列 {#component-columns}
 
-Create one column helper per row type. Since the helper is already bound to the app table setup, column definitions can reference registered cell and header components directly.
+行の型ごとに列ヘルパーを1つ作成します。ヘルパーはすでにアプリのテーブル設定に結び付いているので、列定義から、登録したセルやヘッダーのコンポーネントを直接参照できます。
 
 ```tsx
 const personColumnHelper = createAppColumnHelper<Person>()
@@ -273,11 +273,11 @@ const columns = useMemo(
 )
 ```
 
-Registered cell components use `useCellContext()` internally, and registered header/footer components use `useHeaderContext()`.
+登録したセルコンポーネントは内部で `useCellContext()` を使い、登録したヘッダー・フッターのコンポーネントは `useHeaderContext()` を使います。
 
-### Component Table Rendering {#component-table-rendering}
+### コンポーネントを使ったテーブルのレンダー {#component-table-rendering}
 
-Create each table with `useAppTable`. You pass table-specific options like `key`, `columns`, and `data`; the shared `features`, `getRowId`, and component registries come from the hook.
+各テーブルは `useAppTable` で作成します。`key`、`columns`、`data` などテーブル固有のオプションを渡すと、共有の `features`、`getRowId`、コンポーネントのレジストリはフックから提供されます。
 
 ```tsx
 const table = useAppTable(
@@ -291,7 +291,7 @@ const table = useAppTable(
 )
 ```
 
-The returned table includes `AppTable`, `AppHeader`, `AppCell`, and `AppFooter` wrappers. The example uses `AppTable` with a selector so rendering can subscribe to the state slices used by that table.
+返されるテーブルには、ラッパーとして `AppTable`、`AppHeader`、`AppCell`、`AppFooter` が含まれます。このサンプルでは `AppTable` にセレクターを渡し、そのテーブルが使う状態のスライスをレンダー側で購読できるようにしています。
 
 ```tsx
 <table.AppTable
@@ -347,14 +347,14 @@ The returned table includes `AppTable`, `AppHeader`, `AppCell`, and `AppFooter` 
 </table.AppTable>
 ```
 
-### Reusing The Component Registry {#reusing-the-component-registry}
+### コンポーネントレジストリを再利用する {#reusing-the-component-registry}
 
-The example creates both `personColumnHelper` and `productColumnHelper` from the same `createAppColumnHelper`, then renders Users and Products tables with the same `useAppTable` factory. Each table owns its data and columns, while the app hook owns table infrastructure and component conventions.
+このサンプルでは、同じ `createAppColumnHelper` から `personColumnHelper` と `productColumnHelper` の両方を作成し、同じ `useAppTable` ファクトリーで Users テーブルと Products テーブルをレンダーしています。データと列は各テーブルが持ち、テーブルの土台とコンポーネントの決まりごとはアプリ用フックが持ちます。
 
-### Scoped Contexts {#scoped-contexts}
+### スコープ付きコンテキスト {#scoped-contexts}
 
-Registered components read the current table, cell, or header from React context. By default `createTableHook` wires this up for you with a shared context, and you do not need to think about it. If you nest different table setups and need their contexts isolated, create a scoped context with `createTableHookContexts` and pass it into `createTableHook`. See the [Table Context guide](./table-context) for the full explanation and examples.
+登録したコンポーネントは、現在のテーブル・セル・ヘッダーを React のコンテキストから読み取ります。初期設定では `createTableHook` が共有のコンテキストでこれをつないでくれるので、意識する必要はありません。異なるテーブル設定を入れ子にしていて、それぞれのコンテキストを分離する必要がある場合は、`createTableHookContexts` でスコープ付きコンテキストを作成し、`createTableHook` に渡してください。詳しい説明とサンプルは[テーブルコンテキストガイド](./table-context)を参照してください。
 
-## When To Use This Pattern {#when-to-use-this-pattern}
+## このパターンを使う場面 {#when-to-use-this-pattern}
 
-Use `createTableHook` when multiple tables should share features, row models, default options, or conventions. Use the standalone `useTable` API for a one-off table. Add the component registry only when the app wants standardized reusable table UI pieces.
+複数のテーブルで機能・行モデル・オプションの既定値・決まりごとを共有したい場合は、`createTableHook` を使います。1回きりのテーブルなら、単体の `useTable` API を使います。コンポーネントのレジストリは、アプリで再利用できるテーブル UI の部品を統一したい場合にだけ追加してください。

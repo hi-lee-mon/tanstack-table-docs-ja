@@ -3,12 +3,12 @@ id: legacy
 title: legacy
 ---
 
-## Interfaces {#interfaces}
+## インターフェース {#interfaces}
 
 - [LegacyFeatures](interfaces/LegacyFeatures.md)
 - [LegacyRowModelOptions](interfaces/LegacyRowModelOptions.md)
 
-## Type Aliases {#type-aliases}
+## 型エイリアス {#type-aliases}
 
 - [FacetedMinMaxValuesFactory](type-aliases/FacetedMinMaxValuesFactory.md)
 - [FacetedRowModelFactory](type-aliases/FacetedRowModelFactory.md)
@@ -24,7 +24,7 @@ title: legacy
 - [~~LegacyTableOptions~~](type-aliases/LegacyTableOptions.md)
 - [RowModelFactory](type-aliases/RowModelFactory.md)
 
-## Functions {#functions}
+## 関数 {#functions}
 
 - [~~getCoreRowModel~~](functions/getCoreRowModel.md)
 - [~~getExpandedRowModel~~](functions/getExpandedRowModel.md)

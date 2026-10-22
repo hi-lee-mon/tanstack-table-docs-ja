@@ -16,12 +16,12 @@ function FlexRender<TFeatures, TData, TValue>(props):
   | undefined;
 ```
 
-Defined in: [src/FlexRender.tsx:97](https://github.com/TanStack/table/blob/main/packages/react-table/src/FlexRender.tsx#L97)
+定義元: [src/FlexRender.tsx:97](https://github.com/TanStack/table/blob/main/packages/react-table/src/FlexRender.tsx#L97)
 
-Simplified component wrapper of `flexRender`. Use this utility component to render headers, cells, or footers with custom markup.
-Only one prop (`cell`, `header`, or `footer`) may be passed.
+`flexRender` を簡単に使えるようにしたコンポーネントのラッパーです。ヘッダー・セル・フッターを独自のマークアップで描画するときに、このユーティリティコンポーネントを使います。
+渡せる props は1つ（`cell`、`header`、`footer` のいずれか）だけです。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -35,13 +35,13 @@ Only one prop (`cell`, `header`, or `footer`) may be passed.
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters {#parameters}
+## パラメーター {#parameters}
 
 ### props {#props}
 
 [`FlexRenderProps`](../type-aliases/FlexRenderProps.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
   \| `string`
   \| `number`
@@ -53,7 +53,7 @@ Only one prop (`cell`, `header`, or `footer`) may be passed.
   \| `null`
   \| `undefined`
 
-## Example {#example}
+## 例 {#example}
 
 ```tsx
 <FlexRender cell={cell} />
@@ -61,7 +61,7 @@ Only one prop (`cell`, `header`, or `footer`) may be passed.
 <FlexRender footer={footer} />
 ```
 
-This replaces calling `flexRender` directly like this:
+これは、次のように `flexRender` を直接呼び出す代わりになります。
 ```tsx
 flexRender(cell.column.columnDef.cell, cell.getContext())
 flexRender(header.column.columnDef.header, header.getContext())

@@ -3,11 +3,11 @@ id: AppHeaderPropsWithoutSelector
 title: AppHeaderPropsWithoutSelector
 ---
 
-Defined in: [src/createTableHook.tsx:434](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L434)
+定義元: [src/createTableHook.tsx:434](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L434)
 
-Props for AppHeader/AppFooter component - without selector
+AppHeader/AppFooter コンポーネントの props です（selector なし）。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -25,7 +25,7 @@ Props for AppHeader/AppFooter component - without selector
 
 `THeaderComponents` *extends* `Record`\<`string`, `ComponentType`\<`any`\>\>
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### children {#children}
 
@@ -33,15 +33,15 @@ Props for AppHeader/AppFooter component - without selector
 children: (header) => ReactNode;
 ```
 
-Defined in: [src/createTableHook.tsx:441](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L441)
+定義元: [src/createTableHook.tsx:441](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L441)
 
-#### Parameters {#parameters}
+#### パラメーター {#parameters}
 
 ##### header {#header}
 
 `Header_Core`\<`TFeatures`, `TData`, `TValue`\> & `ExtractFeatureMapTypes`\<`TFeatures`, `Header_FeatureMap`\> & `THeaderComponents` & `object`
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 `ReactNode`
 
@@ -53,7 +53,7 @@ Defined in: [src/createTableHook.tsx:441](https://github.com/TanStack/table/blob
 header: Header<TFeatures, TData, TValue>;
 ```
 
-Defined in: [src/createTableHook.tsx:440](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L440)
+定義元: [src/createTableHook.tsx:440](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L440)
 
 ***
 
@@ -63,4 +63,4 @@ Defined in: [src/createTableHook.tsx:440](https://github.com/TanStack/table/blob
 optional selector?: undefined;
 ```
 
-Defined in: [src/createTableHook.tsx:445](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L445)
+定義元: [src/createTableHook.tsx:445](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L445)

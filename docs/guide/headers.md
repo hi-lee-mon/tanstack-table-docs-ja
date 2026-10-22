@@ -1,18 +1,18 @@
 ---
-title: Headers Guide
+title: ヘッダーガイド
 ---
 
-This quick guide will discuss the different ways you can retrieve and interact with `header` objects in TanStack Table.
+このガイドでは、TanStack Table で `header` オブジェクトを取得する方法と、それを操作するさまざまな方法を簡単に説明します。
 
-Headers are the equivalent of cells, but meant for the `<thead>` section of the table instead of the `<tbody>` section.
+ヘッダーはセルに相当するものですが、テーブルの `<tbody>` 部分ではなく `<thead>` 部分で使います。
 
-## Where to Get Headers From {#where-to-get-headers-from}
+## ヘッダーの取得元 {#where-to-get-headers-from}
 
-Headers come from [Header Groups](./header-groups), which are the equivalent of rows, but meant for the `<thead>` section of the table instead of the `<tbody>` section.
+ヘッダーは [ヘッダーグループ](./header-groups) から取得します。ヘッダーグループは行に相当するもので、テーブルの `<tbody>` 部分ではなく `<thead>` 部分で使います。
 
-### HeaderGroup Headers {#headergroup-headers}
+### HeaderGroup のヘッダー {#headergroup-headers}
 
-If you are in a header group, the headers are stored as an array in the `headerGroup.headers` property. Usually you will just map over this array to render your headers.
+ヘッダーグループの中では、ヘッダーは `headerGroup.headers` プロパティに配列として格納されています。通常は、この配列を map してヘッダーをレンダーするだけです。
 
 ```jsx
 <thead>
@@ -34,45 +34,45 @@ If you are in a header group, the headers are stored as an array in the `headerG
 </thead>
 ```
 
-### Header Table Instance APIs {#header-table-instance-apis}
+### ヘッダー用のテーブルインスタンス API {#header-table-instance-apis}
 
-There are multiple `table` instance APIs that you can use to retrieve a list of headers depending on the features that you are using. The most common API you might use is `table.getFlatHeaders`, which will return a flat list of all headers in the table, but there are at least a dozen other APIs that are useful in tandem with the column visibility and column pinning features. APIs like `table.getStartLeafHeaders` or `table.getEndFlatHeaders` could be useful depending on your use case.
+使っている機能に応じて、ヘッダーの一覧を取得するための `table` インスタンス API がいくつかあります。もっともよく使うのは `table.getFlatHeaders` で、テーブル内のすべてのヘッダーを平坦な一覧で返します。ほかにも、列の表示切り替えや列の固定の機能と組み合わせて使うと便利な API が少なくとも十数個あります。用途によっては、`table.getStartLeafHeaders` や `table.getEndFlatHeaders` のような API が役に立つでしょう。
 
-## Header Objects {#header-objects}
+## ヘッダーオブジェクト {#header-objects}
 
-Header objects are similar to [Cell](./cells) objects, but meant for the `<thead>` section of the table instead of the `<tbody>` section. Every header object can be associated with a `<th>` or similar cell element in your UI. There are a few properties and methods on `header` objects that you can use to interact with the table state and extract cell values from the table based on the state of the table.
+ヘッダーオブジェクトは [セル](./cells) オブジェクトに似ていますが、テーブルの `<tbody>` 部分ではなく `<thead>` 部分で使います。ヘッダーオブジェクトはそれぞれ、UI 上の `<th>` などのセル要素に対応させることができます。`header` オブジェクトには、テーブルの状態を操作したり、テーブルの状態に基づいてセルの値を取り出したりするためのプロパティとメソッドがいくつかあります。
 
-### Header IDs {#header-ids}
+### ヘッダー ID {#header-ids}
 
-Every header object has an `id` property that makes it unique within the table instance. Usually you only need this `id` as a unique identifier for React keys or if you are following the [performant column resizing example](https://tanstack.com/table/latest/docs/framework/react/examples/column-resizing-performant).
+ヘッダーオブジェクトにはすべて `id` プロパティがあり、テーブルインスタンスの中で一意になります。通常この `id` が必要になるのは、React の key に使う一意な識別子としてか、[パフォーマンス重視の列幅変更のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/column-resizing-performant) にならう場合くらいです。
 
-For simple headers with no advanced nested or grouped headers logic, the `header.id` will be the same as its parent `column.id`. However, if the header is part of a group column or a placeholder cell, it will have a more complicated id that is constructed from the header family, depth/header row index, column id, and header group id.
+入れ子やグループ化といった高度なヘッダーのロジックを持たない単純なヘッダーでは、`header.id` は親の `column.id` と同じになります。ただし、ヘッダーがグループ列やプレースホルダーセルの一部である場合は、ヘッダーファミリー、深さ（ヘッダー行の番号）、列 ID、ヘッダーグループ ID から組み立てられた、より複雑な id になります。
 
-### Nested Grouped Headers Properties {#nested-grouped-headers-properties}
+### 入れ子・グループ化されたヘッダーのプロパティ {#nested-grouped-headers-properties}
 
-There are a few properties on `header` objects that are only useful if the header is part of a nested or grouped header structure. These properties include:
+`header` オブジェクトには、ヘッダーが入れ子やグループ化されたヘッダー構造の一部である場合にだけ役立つプロパティがいくつかあります。次のようなものです。
 
-- `colSpan`: The number of columns that the header should span. This is useful for rendering the `colSpan` attribute on the `<th>` element.
-- `rowSpan`: The number of rows that the header should span when merging header cells vertically. A leaf column that is shallower than the deepest leaf column produces a chain of placeholder headers above its real header. The placeholder at the top of the chain reports the chain's full span, and every header it covers (including the real leaf header in the bottom row) reports 0. This is useful for rendering the `rowSpan` attribute on the `<th>` element. See [Header Row Spanning](#header-row-spanning) below.
-- `depth`: The header group "row index" that the header belongs to.
-- `isPlaceholder`: A boolean flag that is true if the header is a placeholder header. Placeholder headers fill the rows above a shallow leaf column's real header so that every header row accounts for every visible column. Render them as empty cells to keep the header grid aligned, or use `header.rowSpan` to merge each placeholder chain into one vertically spanning header cell.
-- `placeholderId`: The unique identifier for the placeholder header.
-- `subHeaders`: The array of sub/child headers that belong to this header. Will be empty if the header is a leaf header.
+- `colSpan`: ヘッダーがまたぐ列の数です。`<th>` 要素の `colSpan` 属性をレンダーするときに使えます。
+- `rowSpan`: ヘッダーセルを縦方向に結合するときに、ヘッダーがまたぐ行の数です。一番深い末端の列よりも浅い末端の列では、本来のヘッダーの上にプレースホルダーヘッダーが連なります。その連なりの一番上にあるプレースホルダーが連なり全体の行数を返し、それに覆われるヘッダー（最下行にある本来の末端のヘッダーも含む）はすべて 0 を返します。`<th>` 要素の `rowSpan` 属性をレンダーするときに使えます。後述の [ヘッダー行の結合](#header-row-spanning) を参照してください。
+- `depth`: ヘッダーが属するヘッダーグループの「行番号」です。
+- `isPlaceholder`: ヘッダーがプレースホルダーヘッダーなら true になる真偽値のフラグです。プレースホルダーヘッダーは、浅い末端の列の本来のヘッダーより上の行を埋め、どのヘッダー行にもすべての表示中の列が揃うようにします。空のセルとしてレンダーしてヘッダーの格子をそろえるか、`header.rowSpan` を使ってプレースホルダーの連なりを縦にまたがる1つのヘッダーセルに結合してください。
+- `placeholderId`: プレースホルダーヘッダーの一意な識別子です。
+- `subHeaders`: このヘッダーに属するサブヘッダー（子ヘッダー）の配列です。ヘッダーが末端のヘッダーの場合は空になります。
 
 > [!NOTE]
-> `header.index` refers to its index within the header group (row of headers), i.e. its position from left to right. It is not the same as `header.depth`, which refers to the header group "row index".
+> `header.index` は、ヘッダーグループ（ヘッダーの行）の中でのインデックス、つまり左から何番目かを指します。ヘッダーグループの「行番号」を指す `header.depth` とは別物です。
 
-### Header Parent Objects {#header-parent-objects}
+### ヘッダーの親オブジェクト {#header-parent-objects}
 
-Every header stores a reference to its parent [column](./columns) object and its parent [header group](./header-groups) object.
+各ヘッダーは、親の [列](./columns) オブジェクトと親の [ヘッダーグループ](./header-groups) オブジェクトへの参照を持っています。
 
-## More Header APIs {#more-header-apis}
+## そのほかのヘッダー API {#more-header-apis}
 
-Headers have a few more useful APIs attached to them that are useful for interacting with the table state. Most of them relate to the column sizing and resizing features. See the [Column Sizing Guide](../framework/react/guide/column-sizing) and [Column Resizing Guide](../framework/react/guide/column-resizing) for more information.
+ヘッダーには、テーブルの状態を操作するのに便利な API がほかにもいくつか付いています。その多くは列幅と列幅の変更の機能に関するものです。詳しくは [列幅ガイド](../framework/react/guide/column-sizing) と [列幅の変更ガイド](../framework/react/guide/column-resizing) を参照してください。
 
-## Header Rendering {#header-rendering}
+## ヘッダーのレンダー {#header-rendering}
 
-Since the `header` column option you defined can be either a string, JSX, or a function returning either of those, the best way to render the headers is to use the `flexRender` utility from your adapter, which will handle all of those cases for you.
+定義した `header` 列オプションは、文字列、JSX、またはそのどちらかを返す関数のいずれかになりうるので、ヘッダーをレンダーするにはアダプターが提供する `flexRender` ユーティリティを使うのが最善です。これらのケースをすべて処理してくれます。
 
 ```jsx
 {
@@ -85,9 +85,9 @@ Since the `header` column option you defined can be either a string, JSX, or a f
 }
 ```
 
-### Header Row Spanning {#header-row-spanning}
+### ヘッダー行の結合 {#header-row-spanning}
 
-If your column tree is uneven (some leaf columns are nested deeper than others), each shallow leaf column produces a chain of placeholder headers above its real header. The placeholder at the top of the chain reports the chain's full `rowSpan`, and every header it covers reports a `rowSpan` of 0. To merge those header cells vertically, skip headers with a `rowSpan` of 0 and render everything else with the `rowSpan` attribute. Note that this replaces the usual `header.isPlaceholder` check. The spanning placeholder renders its column's header content instead of an empty cell.
+列のツリーが不揃いな場合（一部の末端の列がほかより深く入れ子になっている場合）、浅い末端の列ではそれぞれ、本来のヘッダーの上にプレースホルダーヘッダーが連なります。その連なりの一番上にあるプレースホルダーが連なり全体の `rowSpan` を返し、それに覆われるヘッダーはすべて `rowSpan` として 0 を返します。これらのヘッダーセルを縦に結合するには、`rowSpan` が 0 のヘッダーを飛ばし、それ以外を `rowSpan` 属性付きでレンダーします。このやり方は、通常の `header.isPlaceholder` のチェックの代わりになる点に注意してください。結合するプレースホルダーは、空のセルではなく、その列のヘッダーの内容をレンダーします。
 
 ```jsx
 {
@@ -102,6 +102,6 @@ If your column tree is uneven (some leaf columns are nested deeper than others),
 ```
 
 > [!NOTE]
-> This recipe is for the `<thead>` section only. Footer groups render the header rows in reverse order, which puts a spanning placeholder below the cells it would need to cover, so keep the `header.isPlaceholder` empty-cell pattern in the `<tfoot>` section.
+> この方法は `<thead>` 部分専用です。フッターグループはヘッダー行を逆順にレンダーするため、結合するプレースホルダーが、覆うべきセルの下に来てしまいます。`<tfoot>` 部分では、`header.isPlaceholder` で空のセルを出すやり方をそのまま使ってください。
 
-The body-cell equivalent of this convention lives in the optional `cellSpanningFeature`. See the [Cell Spanning Guide](../framework/react/guide/cell-spanning).
+本体のセルで同じ考え方を使いたい場合は、オプションの `cellSpanningFeature` があります。[セル結合ガイド](../framework/react/guide/cell-spanning) を参照してください。

@@ -7,21 +7,20 @@ title: getExpandedRowModel
 function getExpandedRowModel<TData>(): RowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:91](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L91)
+定義元: [src/useLegacyTable.ts:91](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L91)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 [`RowModelFactory`](../type-aliases/RowModelFactory.md)\<`TData`\>
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-Use `createExpandedRowModel()` with the new `useTable` hook instead.
+代わりに、新しい `useTable` フックで `createExpandedRowModel()` を使ってください。
 
-This is a stub function for v8 API compatibility with `useLegacyTable`.
-It acts as a marker to enable the expanded row model.
+これは `useLegacyTable` で v8 の API との互換性を保つためのスタブ関数です。展開済みの行モデルを有効にする目印として働きます。

@@ -7,19 +7,17 @@ title: SubscribePropsWithSourceIdentity
 type SubscribePropsWithSourceIdentity<TSourceValue> = object;
 ```
 
-Defined in: [src/Subscribe.ts:41](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L41)
+定義元: [src/Subscribe.ts:41](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L41)
 
-Subscribe to the full value of a source (e.g. `table.atoms.rowSelection` or
-`table.optionsStore`). Omitting `selector` is equivalent to the identity
-selector — children receive `TSourceValue`.
+ソース（`table.atoms.rowSelection` や `table.optionsStore` など）の値全体を購読します。`selector` を省略すると、値をそのまま返す恒等セレクターを指定したのと同じになり、children は `TSourceValue` を受け取ります。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TSourceValue {#tsourcevalue}
 
 `TSourceValue`
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### children {#children}
 
@@ -27,7 +25,7 @@ selector — children receive `TSourceValue`.
 children: ((state) => ReactNode) | ReactNode;
 ```
 
-Defined in: [src/Subscribe.ts:44](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L44)
+定義元: [src/Subscribe.ts:44](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L44)
 
 ***
 
@@ -37,7 +35,7 @@ Defined in: [src/Subscribe.ts:44](https://github.com/TanStack/table/blob/main/pa
 optional selector?: undefined;
 ```
 
-Defined in: [src/Subscribe.ts:43](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L43)
+定義元: [src/Subscribe.ts:43](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L43)
 
 ***
 
@@ -47,4 +45,4 @@ Defined in: [src/Subscribe.ts:43](https://github.com/TanStack/table/blob/main/pa
 source: SubscribeSource<TSourceValue>;
 ```
 
-Defined in: [src/Subscribe.ts:42](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L42)
+定義元: [src/Subscribe.ts:42](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L42)

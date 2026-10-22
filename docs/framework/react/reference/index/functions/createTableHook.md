@@ -7,18 +7,18 @@ title: createTableHook
 function createTableHook<TFeatures, TTableComponents, TCellComponents, THeaderComponents>(__namedParameters): CreateTableHookResult<TFeatures, TTableComponents, TCellComponents, THeaderComponents>;
 ```
 
-Defined in: [src/createTableHook.tsx:692](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L692)
+定義元: [src/createTableHook.tsx:692](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L692)
 
-Creates a custom table hook with pre-bound components for composition.
+コンポーネントを組み合わせて使うための、コンポーネントがあらかじめ結び付けられたカスタムテーブルフックを作成します。
 
-This is the table equivalent of TanStack Form's `createFormHook`. It allows you to:
-- Define features, row models, and default options once, shared across all tables
-- Register reusable table, cell, and header components
-- Access table/cell/header instances via context in those components
-- Get a `useAppTable` hook that returns an extended table with App wrapper components
-- Get a `createAppColumnHelper` function pre-bound to your features
+TanStack Form の `createFormHook` に相当するテーブル版です。次のことができます。
+- 機能・行モデル・デフォルトのオプションを一度だけ定義し、すべてのテーブルで共有する
+- 再利用できるテーブル・セル・ヘッダーのコンポーネントを登録する
+- 登録したコンポーネントの中から、コンテキスト経由でテーブル・セル・ヘッダーのインスタンスにアクセスする
+- App ラッパーコンポーネントを備えた拡張テーブルを返す `useAppTable` フックを得る
+- 機能があらかじめ結び付けられた `createAppColumnHelper` 関数を得る
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -36,17 +36,17 @@ This is the table equivalent of TanStack Form's `createFormHook`. It allows you 
 
 `THeaderComponents` *extends* `Record`\<`string`, `ComponentType`\<`any`\>\>
 
-## Parameters {#parameters}
+## パラメーター {#parameters}
 
 ### \_\_namedParameters {#namedparameters}
 
 [`CreateTableHookOptions`](../type-aliases/CreateTableHookOptions.md)\<`TFeatures`, `TTableComponents`, `TCellComponents`, `THeaderComponents`\>
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 [`CreateTableHookResult`](../interfaces/CreateTableHookResult.md)\<`TFeatures`, `TTableComponents`, `TCellComponents`, `THeaderComponents`\>
 
-## Example {#example}
+## 例 {#example}
 
 ```tsx
 // hooks/table.ts

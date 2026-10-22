@@ -1,47 +1,47 @@
 ---
-title: Table State (React) Guide
+title: テーブルの状態（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these examples:
+すぐに実装を見たい場合は、次の例を参照してください。
 
-- [Basic useTable](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-table)
-- [Basic External Atoms](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-atoms)
-- [Basic External State](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-state)
-- [Basic Subscribe](https://tanstack.com/table/latest/docs/framework/react/examples/basic-subscribe)
-- [With TanStack Query](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query)
+- [useTable の基本例](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-table)
+- [外部アトムの基本例](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-atoms)
+- [外部の状態の基本例](https://tanstack.com/table/latest/docs/framework/react/examples/basic-external-state)
+- [Subscribe の基本例](https://tanstack.com/table/latest/docs/framework/react/examples/basic-subscribe)
+- [TanStack Query との併用例](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query)
 
-## Table State (React) Guide {#table-state-react-guide}
+## テーブルの状態（React）ガイド {#table-state-react-guide}
 
-> **If you boil TanStack Table down to one sentence: TanStack Table is a large state-management coordinator for table states.**
+> **TanStack Table をひと言で表すなら、「テーブルの状態を取りまとめる大きな状態管理の調整役」です。**
 
-Understanding this guide is fundamental to understanding how TanStack Table works and how to interact with it for the best results.
+このガイドの内容は、TanStack Table がどう動くのか、そしてどう扱えば最良の結果が得られるのかを理解するための基礎になります。
 
-### Do you need to Manage External State? {#do-you-need-to-manage-external-state}
+### 外部で状態を管理する必要はあるか {#do-you-need-to-manage-external-state}
 
-You usually do NOT need to manage table state yourself. If you pass nothing to `initialState`, `atoms`, `state`, or any of the `on[State]Change` table options, TanStack Table will manage its own state internally.
+通常、テーブルの状態を自分で管理する必要は**ありません**。`initialState`、`atoms`、`state`、または `on[State]Change` 系のテーブルオプションに何も渡さなければ、TanStack Table は状態を内部で管理します。
 
-There will be situations where you need to customize how you interact with the internal table state, or even hoist it up to your own scopes. TanStack Table lets you read, subscribe to, or own the state slices that matter to your app. This guide explains how table state works in React, how to read it, and when to use external atoms or external state.
+ただし、内部のテーブルの状態の扱い方をカスタマイズしたい場面や、状態を自分のスコープに引き上げたい場面もあります。TanStack Table では、アプリにとって重要な状態の一部（スライス）を読み取ったり、購読したり、自分で所有したりできます。このガイドでは、React でテーブルの状態がどう動くか、どう読み取るか、そして外部アトムや外部の状態をいつ使うべきかを説明します。
 
-### State in v9 {#state-in-v9}
+### v9 における状態 {#state-in-v9}
 
-TanStack Table v9 overhauled state management around TanStack Store. TanStack Store uses the `alien-signals` implementation and supports performant derived state. For TanStack Table, this means the table can derive a full state store from independent state atoms and React can subscribe to only the pieces of table state that a component actually needs.
+TanStack Table v9 では、状態管理を TanStack Store を中心に作り直しました。TanStack Store は `alien-signals` の実装を使っており、派生した状態を高いパフォーマンスで扱えます。TanStack Table にとってこれは、独立した状態のアトムからテーブルの状態全体のストアを派生させられること、そして React のコンポーネントが実際に必要とするテーブルの状態の一部だけを購読できることを意味します。
 
-A table instance has a few state surfaces:
+テーブルインスタンスには、状態に関わる窓口がいくつかあります。
 
-- `table.baseAtoms` are the internal writable atoms created from the resolved initial state.
-- `table.atoms` are readonly derived atoms exposed per registered state slice.
-- `table.store` is a readonly flat TanStack Store derived by putting all of the registered `table.atoms` together.
-- `table.state` is React-only selected state. It is the value returned from the selector passed as the second argument to `useTable`.
+- `table.baseAtoms` は、解決済みの初期状態から作られる、内部の書き込み可能なアトムです。
+- `table.atoms` は、登録された状態スライスごとに公開される、読み取り専用の派生アトムです。
+- `table.store` は、登録されたすべての `table.atoms` をまとめて派生させた、読み取り専用でフラットな TanStack Store です。
+- `table.state` は React 専用の、選択された状態です。`useTable` の第2引数に渡したセレクターが返す値が入ります。
 
-The important change from previous versions is that table state is now atomic. React can subscribe to all selected state, a selected subset of state, or a single atom such as `table.atoms.rowSelection`.
+以前のバージョンからの重要な変更点は、テーブルの状態がアトム単位になったことです。React では、選択した状態全体、選択した状態の一部、あるいは `table.atoms.rowSelection` のような単一のアトムを購読できます。
 
-### Feature-based State {#feature-based-state}
+### 機能に基づく状態 {#feature-based-state}
 
-State slices are only created for the features that are registered in `features`. This keeps TanStack Table tree-shakeable and gives TypeScript more accurate state inference.
+状態スライスは、`features` に登録された機能の分だけ作られます。これにより TanStack Table はツリーシェイク可能になり、TypeScript による状態の型推論もより正確になります。
 
-For example, if `features` includes `rowPaginationFeature`, TypeScript exposes pagination state APIs and `table.atoms.pagination`. If `features` does not include `rowPaginationFeature`, `pagination` should not be available in `table.atoms`, `table.store.state`, `table.state`, `initialState`, `state`, or `atoms`.
+たとえば `features` に `rowPaginationFeature` が含まれていれば、TypeScript はページネーションの状態に関する API と `table.atoms.pagination` を公開します。`features` に `rowPaginationFeature` が含まれていなければ、`pagination` は `table.atoms`、`table.store.state`、`table.state`、`initialState`、`state`、`atoms` のいずれでも使えないはずです。
 
 ```tsx
 const features = tableFeatures({
@@ -64,40 +64,40 @@ table.atoms.sorting.get()
 // table.atoms.rowSelection // TypeScript error unless rowSelectionFeature is registered
 ```
 
-The same feature-based typing applies to built-in features and custom feature-provided state.
+この機能に基づく型付けは、組み込みの機能にも、カスタム機能が提供する状態にも同じように適用されます。
 
-### Accessing Table State {#accessing-table-state}
+### テーブルの状態にアクセスする {#accessing-table-state}
 
-There are two different questions when reading table state:
+テーブルの状態を読み取るときには、次の2つの問いを区別します。
 
-- Do you only need the current value?
-- Or should this React component re-render when that value changes?
+- 現在の値だけが必要なのか。
+- それとも、その値が変わったときにこの React コンポーネントを再レンダーすべきなのか。
 
-Use a direct atom or store read for the current value. Use a selector subscription for reactive rendering.
+現在の値が欲しいだけなら、アトムやストアを直接読み取ります。リアクティブに描画したいなら、セレクターによる購読を使います。
 
-#### Reading State Without Subscribing {#reading-state-without-subscribing}
+#### 購読せずに状態を読み取る {#reading-state-without-subscribing}
 
-The simplest and most performant way to read a current state value is to read the matching atom:
+現在の状態の値を読み取るいちばん簡単で高速な方法は、対応するアトムを読み取ることです。
 
 ```tsx
 const pagination = table.atoms.pagination.get()
 const sorting = table.atoms.sorting.get()
 ```
 
-You can also read the current flat store snapshot:
+フラットなストアの現在のスナップショットを読み取ることもできます。
 
 ```tsx
 const tableState = table.store.state
 const pagination = table.store.state.pagination
 ```
 
-These reads are not React subscriptions. Calling `table.atoms.pagination.get()` or `table.store.state.pagination` during render reads the current value, but future changes will not automatically re-render that component unless something else causes a render. If the UI needs to stay reactive to table state changes, use `useTable` state selection, `table.Subscribe`, or even a `useSelector` hook from TanStack Store.
+これらの読み取りは React の購読ではありません。レンダー中に `table.atoms.pagination.get()` や `table.store.state.pagination` を呼ぶと現在の値は読み取れますが、その後に値が変わっても、ほかの何かがレンダーを引き起こさない限り、そのコンポーネントは自動では再レンダーされません。UI をテーブルの状態の変化にリアクティブに追従させたい場合は、`useTable` による状態の選択、`table.Subscribe`、あるいは TanStack Store の `useSelector` フックを使ってください。
 
-#### Reading Reactive State with useTable {#reading-reactive-state-with-usetable}
+#### useTable でリアクティブな状態を読み取る {#reading-reactive-state-with-usetable}
 
-The second argument to `useTable` is a TanStack Store selector. By default, the selector effectively selects all registered table state, so `table.state` contains the full state and the component re-renders when any selected state changes.
+`useTable` の第2引数は TanStack Store のセレクターです。デフォルトのセレクターは、実質的に登録済みのテーブルの状態をすべて選択します。そのため `table.state` には状態全体が入り、選択された状態のどれかが変わるとコンポーネントが再レンダーされます。
 
-You can pass your own selector to make `table.state` contain only the reactive state values that you want to cause re-renders. The React adapter compares selected values shallowly. The default selector selects all registered table state.
+独自のセレクターを渡せば、`table.state` に入るのを、再レンダーのきっかけにしたいリアクティブな状態の値だけに絞れます。React アダプターは選択された値を浅く比較します。デフォルトのセレクターは、登録済みのテーブルの状態をすべて選択します。
 
 ```tsx
 const table = useTable(
@@ -114,7 +114,7 @@ const table = useTable(
 table.state.pagination
 ```
 
-For large tables, you can also opt the parent table component out of table-state re-renders and subscribe lower in the tree:
+大きなテーブルでは、親のテーブルコンポーネントをテーブルの状態による再レンダーから外し、ツリーのより下の階層で購読することもできます。
 
 ```tsx
 const table = useTable(
@@ -127,13 +127,13 @@ const table = useTable(
 )
 ```
 
-With this pattern, the parent component will not re-render for table state changes. Put reactive reads inside `table.Subscribe` where the UI actually needs them.
+このパターンでは、親コンポーネントはテーブルの状態が変わっても再レンダーされません。リアクティブな読み取りは、UI が実際にそれを必要とする場所で `table.Subscribe` の中に置いてください。
 
-#### Optimizing Re-renders with Selectors and table.Subscribe {#optimizing-re-renders-with-selectors-and-tablesubscribe}
+#### セレクターと table.Subscribe で再レンダーを最適化する {#optimizing-re-renders-with-selectors-and-tablesubscribe}
 
-Use `table.Subscribe` when you want table-state re-renders to happen at a specific place in the React tree. This is useful for large or expensive tables, but it is usually something to reach for after the default `useTable` selector becomes a visible performance issue.
+テーブルの状態による再レンダーを React ツリーの特定の場所で起こしたいときは、`table.Subscribe` を使います。大きなテーブルや描画コストの高いテーブルで役立ちますが、通常はデフォルトの `useTable` セレクターで目に見えるパフォーマンスの問題が出てから手を伸ばすものです。
 
-Without a `source` prop, `table.Subscribe` subscribes to `table.store` and requires a selector. With a `source` prop, it can subscribe directly to one atom or store, such as `table.atoms.rowSelection`.
+`source` プロパティを渡さない場合、`table.Subscribe` は `table.store` を購読し、セレクターが必須になります。`source` プロパティを渡すと、`table.atoms.rowSelection` のような単一のアトムやストアを直接購読できます。
 
 ```tsx
 const table = useTable(
@@ -164,7 +164,7 @@ return (
 )
 ```
 
-You can also subscribe directly to a single atom and select one value from it:
+単一のアトムを直接購読し、そこから1つの値を選択することもできます。
 
 ```tsx
 <table.Subscribe
@@ -181,17 +181,17 @@ You can also subscribe directly to a single atom and select one value from it:
 </table.Subscribe>
 ```
 
-Advanced subscription patterns require understanding which table APIs depend on which state slices. For example, a row model may depend on filtering, sorting, and pagination, while one row selection checkbox may only need one row's selection value. Start with the default selector, then optimize with selectors and `table.Subscribe` where render cost matters.
+高度な購読パターンを使うには、どのテーブル API がどの状態スライスに依存しているかを理解しておく必要があります。たとえば、行モデルはフィルタリング・ソート・ページネーションに依存することがありますが、行選択のチェックボックス1つは、その行の選択状態の値だけがあれば足りるかもしれません。まずはデフォルトのセレクターから始め、描画コストが問題になる箇所でセレクターと `table.Subscribe` を使って最適化してください。
 
-#### Subscribe for React Compiler Compatibility {#subscribe-for-react-compiler-compatibility}
+#### React Compiler との互換性のための Subscribe {#subscribe-for-react-compiler-compatibility}
 
-TanStack Table v9 is compatible with React Compiler, but nested components can still hide reactive state reads behind stable `column`, `row`, `cell`, or `header` objects. The dedicated [React Compiler Guide](./react-compiler) explains what changed from v8, when compiler users can remove manual memoization, how dependency arrays are affected, and where to use `table.Subscribe` or standalone `Subscribe` so those nested components stay reactive.
+TanStack Table v9 は React Compiler と互換性があります。ただし、入れ子になったコンポーネントでは、参照が変わらない `column`・`row`・`cell`・`header` オブジェクトの陰に、リアクティブな状態の読み取りが隠れてしまうことがあります。専用の [React Compiler ガイド](./react-compiler)では、v8 から何が変わったか、コンパイラを使う場合にいつ手動のメモ化を外せるか、依存配列がどう影響を受けるか、そして入れ子のコンポーネントをリアクティブに保つために `table.Subscribe` やスタンドアロンの `Subscribe` をどこで使うかを説明しています。
 
-### Setting Table State {#setting-table-state}
+### テーブルの状態を設定する {#setting-table-state}
 
-You should almost never need to set table state directly. TanStack Table features expose dedicated APIs for interacting with their state, and those APIs are the safest way to make changes because they preserve the feature's own rules and related updates.
+テーブルの状態を直接設定する必要は、ほぼありません。TanStack Table の各機能は、それぞれの状態を操作するための専用 API を公開しています。これらの API は機能自身のルールや関連する更新を守ってくれるため、変更を加えるいちばん安全な方法です。
 
-For example, use pagination APIs instead of mutating pagination state yourself:
+たとえば、ページネーションの状態を自分で書き換える代わりに、ページネーションの API を使います。
 
 ```tsx
 table.nextPage()
@@ -200,11 +200,11 @@ table.setPageIndex(0)
 table.setPageSize(25)
 ```
 
-The same idea applies across features. Use APIs like `table.setSorting(...)`, `table.setColumnFilters(...)`, `column.toggleVisibility()`, or `row.toggleSelected()` instead of manually editing the underlying state object.
+ほかの機能でも考え方は同じです。内部の状態オブジェクトを手で編集する代わりに、`table.setSorting(...)`、`table.setColumnFilters(...)`、`column.toggleVisibility()`、`row.toggleSelected()` のような API を使ってください。
 
-If you only care about setting starting values, use `initialState`. If you want to reset a state slice back to its initial value, use that feature's reset API.
+開始時の値を設定したいだけなら、`initialState` を使います。状態スライスを初期値に戻したいなら、その機能のリセット API を使います。
 
-If you really do need to write a state slice directly, the low-level write surface for internally owned state is the matching base atom:
+どうしても状態スライスを直接書き換える必要がある場合、内部で所有されている状態に対する低レベルの書き込み口は、対応するベースアトムです。
 
 ```tsx
 table.baseAtoms.pagination.set((old) => ({
@@ -213,13 +213,13 @@ table.baseAtoms.pagination.set((old) => ({
 }))
 ```
 
-Direct base atom writes should be rare. If a slice is owned by an external atom passed through `atoms`, write to that external atom instead; `table.atoms.pagination` will read from the external atom, not the internal base atom.
+ベースアトムへの直接の書き込みは、めったに行うべきではありません。スライスを `atoms` で渡した外部アトムが所有している場合は、代わりにその外部アトムに書き込んでください。`table.atoms.pagination` が読み取るのは外部アトムであり、内部のベースアトムではありません。
 
-### Custom Initial State {#custom-initial-state}
+### 初期状態をカスタマイズする {#custom-initial-state}
 
-If you only need to customize the starting value for some table state, use `initialState`. You still do not need to manage that state yourself.
+一部のテーブルの状態について開始時の値だけを変えたいなら、`initialState` を使います。この場合も、その状態を自分で管理する必要はありません。
 
-`initialState` only applies to registered state slices. It is used to create the table's initial state and is also used by reset APIs such as `table.resetSorting()` or `table.resetPagination()`. Changing the `initialState` object later does not reset table state.
+`initialState` が適用されるのは、登録済みの状態スライスだけです。テーブルの初期状態を作るのに使われるほか、`table.resetSorting()` や `table.resetPagination()` といったリセット API でも使われます。後から `initialState` オブジェクトを変更しても、テーブルの状態はリセットされません。
 
 ```tsx
 const table = useTable({
@@ -242,11 +242,11 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> Do not provide the same state slice in multiple ownership places unless you intentionally want one to win. For a slice like `pagination`, prefer exactly one of `initialState.pagination`, `atoms.pagination`, or `state.pagination` as the source of truth. External atoms take precedence over external `state`; external `state` syncs into the table's internal base atom.
+> 意図的にどちらかを優先させたい場合を除き、同じ状態スライスを複数の所有場所で指定しないでください。たとえば `pagination` のようなスライスなら、`initialState.pagination`、`atoms.pagination`、`state.pagination` のうちちょうど1つを信頼できる唯一の情報源にしてください。外部アトムは外部の `state` より優先されます。外部の `state` は、テーブル内部のベースアトムへ同期されます。
 
-#### Resetting to Initial State {#resetting-to-initial-state}
+#### 初期状態にリセットする {#resetting-to-initial-state}
 
-Feature reset APIs reset to `table.initialState` by default. Many reset APIs also accept `true` to reset to that feature's blank/default state instead:
+機能ごとのリセット API は、デフォルトでは `table.initialState` に戻します。多くのリセット API は `true` も受け付け、その場合はその機能の空の状態（デフォルトの状態）に戻します。
 
 ```tsx
 table.resetSorting()
@@ -254,17 +254,17 @@ table.resetPagination()
 table.resetPagination(true)
 ```
 
-Slice reset APIs like `resetPagination()` update through that feature's state updater and can update an externally owned atom. The core `table.reset()` API resets the internal base atoms, so do not use it as the primary way to reset state that is owned by external atoms.
+`resetPagination()` のようなスライス単位のリセット API は、その機能の状態アップデーターを通して更新するため、外部で所有されているアトムも更新できます。一方、コアの `table.reset()` API は内部のベースアトムをリセットします。そのため、外部アトムが所有する状態をリセットする主な手段としては使わないでください。
 
-### Controlled State {#controlled-state}
+### 制御された状態 {#controlled-state}
 
-If you need easy access to table state in other parts of your application, you can control individual state slices. In v9, external atoms are the recommended way to do this because they preserve the atomic state model and let React subscribe to exactly the slices it needs.
+アプリケーションの別の場所からテーブルの状態に手軽にアクセスしたい場合は、個々の状態スライスを制御できます。v9 では、外部アトムを使う方法が推奨されています。外部アトムならアトム単位の状態モデルが保たれ、React は必要なスライスだけを正確に購読できるからです。
 
-#### External Atoms {#external-atoms}
+#### 外部アトム {#external-atoms}
 
-Use external atoms when the app should own one or more table state slices. Create stable writable atoms with `useCreateAtom` from TanStack Store, pass them to the table's `atoms` option, and subscribe to them with `useSelector` anywhere else in your app.
+アプリがテーブルの状態スライスを1つ以上所有すべき場合は、外部アトムを使います。TanStack Store の `useCreateAtom` で参照が変わらない書き込み可能なアトムを作り、テーブルの `atoms` オプションに渡します。アプリのほかの場所では、`useSelector` でそのアトムを購読します。
 
-This is especially useful for server-side data fetching. Pagination, sorting, or filters often belong in a query key, and external atoms let the app and the table share those values without lifting the entire table state through React state.
+これは、サーバーサイドでデータを取得する場合にとくに役立ちます。ページネーション・ソート・フィルターはクエリキーに含めることが多く、外部アトムを使えば、テーブルの状態全体を React の状態として引き上げなくても、アプリとテーブルでそれらの値を共有できます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -307,13 +307,13 @@ function App() {
 }
 ```
 
-When using the `atoms` option for a slice, you do not need to add the matching `on[State]Change` option. For example, if you pass `atoms.pagination`, table pagination APIs update that atom directly.
+あるスライスに `atoms` オプションを使う場合、対応する `on[State]Change` オプションを追加する必要はありません。たとえば `atoms.pagination` を渡すと、テーブルのページネーション API はそのアトムを直接更新します。
 
-#### External State {#external-state}
+#### 外部の状態 {#external-state}
 
-The classic `state` plus `on[State]Change` pattern is still supported. This can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. React state updates re-render the owner component, and that render cannot be avoided by the `useTable` selector in the same way atom subscriptions can be placed lower in the tree.
+従来の `state` と `on[State]Change` を組み合わせるパターンも引き続き使えます。単純な連携や v8 のコードを移行するときには便利ですが、外部アトムほど細かい単位では制御できません。React の状態を更新すると、それを所有するコンポーネントが再レンダーされます。アトムの購読ならツリーのより下の階層に置けますが、この再レンダーは `useTable` のセレクターで同じように避けることはできません。
 
-To control a slice with external state, pass both the state value and the matching callback:
+外部の状態でスライスを制御するには、状態の値と対応するコールバックの両方を渡します。
 
 ```tsx
 const [sorting, setSorting] = React.useState<SortingState>([])
@@ -335,13 +335,13 @@ const table = useTable({
 })
 ```
 
-The v8-style `onStateChange` option (a single global state callback) is gone in v9. It is not supported by `useTable` or `useLegacyTable`. Use per-slice `on[State]Change` callbacks paired with `state.<slice>`, or external atoms via the `atoms` option. If you truly need to observe every state change, subscribe to `table.store` directly.
+v8 形式の `onStateChange` オプション（状態全体に対する単一のコールバック）は、v9 でなくなりました。`useTable` でも `useLegacyTable` でもサポートされていません。スライスごとの `on[State]Change` コールバックを `state.<slice>` と組み合わせて使うか、`atoms` オプションで外部アトムを使ってください。どうしてもすべての状態変化を監視したい場合は、`table.store` を直接購読してください。
 
-##### On State Change Callbacks {#on-state-change-callbacks}
+##### 状態変化のコールバック {#on-state-change-callbacks}
 
-The `on[State]Change` callbacks are useful when you are controlling a matching slice through the `state` option. They work like React state setters: an updater can be a raw value or a function that receives the previous value and returns the next value.
+`on[State]Change` コールバックは、対応するスライスを `state` オプションで制御しているときに役立ちます。これらは React の状態のセッターと同じように動きます。アップデーターは生の値でも、前の値を受け取って次の値を返す関数でもかまいません。
 
-If you provide an `on[State]Change` callback, also provide the corresponding value in `state`. For example, `onSortingChange` should be paired with `state.sorting`.
+`on[State]Change` コールバックを指定する場合は、対応する値も `state` に指定してください。たとえば `onSortingChange` は `state.sorting` と組み合わせます。
 
 ```tsx
 const [sorting, setSorting] = React.useState<SortingState>([])
@@ -357,7 +357,7 @@ const table = useTable({
 })
 ```
 
-If you need to add logic inside a callback, check whether the incoming updater is a function or a value:
+コールバックの中に処理を加えたい場合は、渡されたアップデーターが関数なのか値なのかを確認します。
 
 ```tsx
 const [pagination, setPagination] = React.useState<PaginationState>({
@@ -384,9 +384,9 @@ const table = useTable({
 })
 ```
 
-### State Types {#state-types}
+### 状態の型 {#state-types}
 
-Most complex states in TanStack Table have their own TypeScript types that you can import and use. This is useful for React state, external atoms, and helper functions that work with table state.
+TanStack Table の複雑な状態の多くには、インポートして使える専用の TypeScript の型があります。React の状態、外部アトム、テーブルの状態を扱うヘルパー関数などで役立ちます。
 
 ```tsx
 import {
@@ -405,7 +405,7 @@ const [sorting, setSorting] = React.useState<SortingState>([
 ])
 ```
 
-`TableState<typeof features>` is inferred from the features registered on that table:
+`TableState<typeof features>` は、そのテーブルに登録された機能から推論されます。
 
 ```tsx
 const features = tableFeatures({
@@ -416,4 +416,4 @@ const features = tableFeatures({
 type MyTableState = TableState<typeof features>
 ```
 
-Prefer feature-specific state types like `SortingState`, `PaginationState`, or `RowSelectionState` when you are creating local state or external atoms for one slice.
+1つのスライスのためにローカルの状態や外部アトムを作るときは、`SortingState`、`PaginationState`、`RowSelectionState` のような機能ごとの状態の型を使うことをおすすめします。

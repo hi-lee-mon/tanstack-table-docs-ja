@@ -1,17 +1,17 @@
 ---
-title: Column Resizing (React) Guide
+title: 列幅の変更（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Column Resizing](https://tanstack.com/table/latest/docs/framework/react/examples/column-resizing)
-- [Performant Column Resizing](https://tanstack.com/table/latest/docs/framework/react/examples/column-resizing-performant)
+- [列幅の変更](https://tanstack.com/table/latest/docs/framework/react/examples/column-resizing)
+- [高速な列幅の変更](https://tanstack.com/table/latest/docs/framework/react/examples/column-resizing-performant)
 
-### Column Resizing Setup {#column-resizing-setup}
+### 列幅の変更のセットアップ {#column-resizing-setup}
 
-Here's how you set up your table to use column resizing features. Column resizing depends on column sizing, so add `columnSizingFeature` before `columnResizingFeature`. Adding the column resizing feature enables the related APIs.
+列幅の変更の機能を使うためのテーブルのセットアップ方法は次のとおりです。列幅の変更は列幅の機能に依存しているので、`columnResizingFeature` より前に `columnSizingFeature` を追加してください。列幅の変更の機能を追加すると、関連する API が使えるようになります。
 
 ```tsx
 import {
@@ -33,15 +33,15 @@ const table = useTable({
 })
 ```
 
-## Column Resizing (React) Guide {#column-resizing-react-guide}
+## 列幅の変更（React）ガイド {#column-resizing-react-guide}
 
-TanStack Table provides built-in column resizing state and APIs for implementing column resizing in your table UI with a variety of options for UX and performance.
+TanStack Table には、テーブルの UI に列幅の変更を実装するための組み込みの状態と API が用意されています。UX やパフォーマンスに合わせて選べるオプションもさまざまです。
 
-Column resizing builds on column sizing. If you only need to define starting, minimum, or maximum widths, see the [Column Sizing Guide](./column-sizing).
+列幅の変更は、列幅の機能の上に成り立っています。初期の幅や最小・最大の幅を決めたいだけなら、[列幅のガイド](./column-sizing)を参照してください。
 
-### Enable Column Resizing {#enable-column-resizing}
+### 列幅の変更を有効にする {#enable-column-resizing}
 
-To use column resizing, add `columnSizingFeature` and then `columnResizingFeature` to your features. The `column.getCanResize()` API will return `true` by default for all columns, but you can either disable column resizing for all columns with the `enableColumnResizing` table option, or disable column resizing on a per-column basis with the `enableResizing` column option.
+列幅の変更を使うには、`columnSizingFeature` と、その後ろに `columnResizingFeature` を features に追加します。`column.getCanResize()` API はデフォルトですべての列で `true` を返します。`enableColumnResizing` テーブルオプションですべての列の列幅の変更を無効にすることも、`enableResizing` 列オプションで列ごとに無効にすることもできます。
 
 ```tsx
 import {
@@ -72,15 +72,15 @@ const table = useTable({
 })
 ```
 
-### Column Resize Mode {#column-resize-mode}
+### 列幅の変更モード {#column-resize-mode}
 
-By default, the column resize mode is set to `"onEnd"`. This means that the `column.getSize()` API will not return the new column size until the user has finished resizing (dragging) the column. Usually a small UI indicator will be displayed while the user is resizing the column.
+デフォルトでは、列幅の変更モードは `"onEnd"` に設定されています。この場合、ユーザーが列幅の変更（ドラッグ）を終えるまで、`column.getSize()` API は新しい列幅を返しません。ユーザーが列幅を変更しているあいだは、たいてい小さな目印を UI に表示します。
 
-In the React TanStack Table adapter, where achieving 60 fps column resizing renders can be difficult depending on the complexity of your table or web page, the `"onEnd"` column resize mode can be a good default option to avoid stuttering or lagging while the user resizes columns. That is not to say that you cannot achieve 60 fps column resizing renders while using TanStack React Table, but you may have to do some extra memoization or other performance optimizations to achieve this.
+React 版の TanStack Table アダプターでは、テーブルやページの複雑さによっては、列幅の変更を 60 fps で描画するのが難しい場合があります。そのため、ユーザーが列幅を変更するときのカクつきや遅れを避けるには、`"onEnd"` モードがデフォルトとして適しています。TanStack React Table で列幅の変更を 60 fps で描画できないわけではありませんが、そのためには追加のメモ化などのパフォーマンス最適化が必要になることがあります。
 
-> Advanced column resizing performance tips will be discussed [down below](#advanced-column-resizing-performance).
+> 列幅の変更のパフォーマンスに関する高度なヒントは、[後述](#advanced-column-resizing-performance)します。
 
-If you want to change the column resize mode to `"onChange"` for immediate column resizing renders, you can do so with the `columnResizeMode` table option.
+列幅の変更をすぐに描画に反映させるために、列幅の変更モードを `"onChange"` に変えたい場合は、`columnResizeMode` テーブルオプションを使います。
 
 ```tsx
 const table = useTable({
@@ -89,9 +89,9 @@ const table = useTable({
 })
 ```
 
-### Column Resize Direction {#column-resize-direction}
+### 列幅の変更の方向 {#column-resize-direction}
 
-By default, TanStack Table assumes that the table markup is laid out in a left-to-right direction. For right-to-left layouts, you may need to change the column resize direction to `"rtl"`.
+デフォルトでは、TanStack Table はテーブルのマークアップが左から右に並ぶことを前提にしています。右から左に並ぶレイアウトでは、列幅の変更の方向を `"rtl"` に変える必要がある場合があります。
 
 ```tsx
 const table = useTable({
@@ -100,13 +100,13 @@ const table = useTable({
 })
 ```
 
-### Connect Column Resizing APIs to UI {#connect-column-resizing-apis-to-ui}
+### 列幅の変更の API を UI につなぐ {#connect-column-resizing-apis-to-ui}
 
-There are a few really handy APIs that you can use to hook up your column resizing drag interactions to your UI.
+列幅の変更のドラッグ操作を UI につなぐのに役立つ API がいくつかあります。
 
-#### Column Size APIs {#column-size-apis}
+#### 列幅の API {#column-size-apis}
 
-To apply the size of a column to the column head cells, data cells, or footer cells, you can use the following APIs:
+列幅をヘッダーのセル、データのセル、フッターのセルに適用するには、次の API を使えます。
 
 ```ts
 header.getSize()
@@ -114,7 +114,7 @@ column.getSize()
 cell.column.getSize()
 ```
 
-How you apply these size styles to your markup is up to you, but it is pretty common to use either CSS variables or inline styles to apply the column sizes.
+これらの幅をマークアップにどう適用するかは自由ですが、CSS 変数かインラインスタイルで列幅を適用するのが一般的です。
 
 ```tsx
 <th
@@ -124,11 +124,11 @@ How you apply these size styles to your markup is up to you, but it is pretty co
 >
 ```
 
-Though, as discussed in the [advanced column resizing performance section](#advanced-column-resizing-performance), you may want to consider using CSS variables to apply column sizes to your markup.
+ただし、[列幅の変更のパフォーマンスに関する高度な節](#advanced-column-resizing-performance)で説明するように、列幅をマークアップに適用するには CSS 変数を使うことも検討するとよいでしょう。
 
-#### Column Resize APIs {#column-resize-apis}
+#### 列幅を変更する API {#column-resize-apis}
 
-TanStack Table provides a pre-built event handler to make your drag interactions easy to implement. These event handlers are just convenience functions that call other internal APIs to update the column sizing state and re-render the table. Use `header.getResizeHandler()` to connect to your column resize drag interactions, for both mouse and touch events.
+TanStack Table には、ドラッグ操作を簡単に実装するための、あらかじめ用意されたイベントハンドラーがあります。このイベントハンドラーは、内部の別の API を呼び出して列幅の状態を更新し、テーブルを再レンダーするための便利関数にすぎません。マウスとタッチの両方のイベントで、列幅の変更のドラッグ操作には `header.getResizeHandler()` をつなぎます。
 
 ```tsx
 <ColumnResizeHandle
@@ -137,9 +137,9 @@ TanStack Table provides a pre-built event handler to make your drag interactions
 />
 ```
 
-#### Column Resize Indicator with Column Resizing State {#column-resize-indicator-with-column-resizing-state}
+#### 列幅の変更の状態を使った目印 {#column-resize-indicator-with-column-resizing-state}
 
-TanStack Table keeps track of a `columnResizing` state object that you can use to render a column resize indicator UI.
+TanStack Table は `columnResizing` という状態オブジェクトを管理しています。これを使って、列幅の変更中を示す目印の UI を描画できます。
 
 ```tsx
 <ColumnResizeIndicator
@@ -151,7 +151,7 @@ TanStack Table keeps track of a `columnResizing` state object that you can use t
 />
 ```
 
-The `columnResizing` state stores transient drag information:
+`columnResizing` の状態には、ドラッグ中だけの一時的な情報が入ります。
 
 ```tsx
 type columnResizingState = {
@@ -164,7 +164,7 @@ type columnResizingState = {
 }
 ```
 
-You rarely need to manage this transient drag state yourself, but if you do, the recommended v9 approach is an external atom passed to the table's `atoms` option. External atoms give you fine-grained subscriptions anywhere in your app, and other code can observe the resize state without re-rendering the component that owns the table.
+このドラッグ中の一時的な状態を自分で管理する必要はほとんどありません。管理する場合、v9 で推奨される方法は、外部のアトムをテーブルの `atoms` オプションに渡すことです。外部のアトムなら、アプリのどこでも細かい粒度で購読でき、テーブルを持つコンポーネントを再レンダーさせずに、他のコードから列幅の変更の状態を観察できます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -191,7 +191,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.columnResizing` plus `onColumnResizingChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+v8 スタイルの `state.columnResizing` と `onColumnResizingChange` を組み合わせるパターンも、引き続き使えます。単純な連携や v8 のコードを移行するときには便利ですが、外部のアトムに比べると購読の粒度は粗くなります。詳しい比較は[テーブルの状態のガイド](./table-state)を参照してください。
 
 ```tsx
 const [columnResizing, setColumnResizing] = useState<columnResizingState>({
@@ -214,9 +214,9 @@ const table = useTable({
 })
 ```
 
-### Column Resizing APIs {#column-resizing-apis}
+### 列幅の変更の API {#column-resizing-apis}
 
-Use `header.getResizeHandler()` to connect mouse or touch events to the resizing logic. Use `column.getCanResize()` to decide whether to render a resize handle, and `column.getIsResizing()` to render active resizing UI.
+マウスやタッチのイベントを列幅の変更の処理につなぐには、`header.getResizeHandler()` を使います。列幅を変更するハンドルを描画するかどうかの判断には `column.getCanResize()` を、列幅の変更中の UI を描画するには `column.getIsResizing()` を使います。
 
 ```tsx
 header.getResizeHandler()
@@ -224,7 +224,7 @@ column.getCanResize()
 column.getIsResizing()
 ```
 
-The table instance exposes APIs for the transient resize state through `table.setColumnResizing`.
+テーブルインスタンスは、列幅の変更中の一時的な状態を扱う API を `table.setColumnResizing` として公開しています。
 
 ```tsx
 table.setColumnResizing((old) => ({
@@ -236,14 +236,14 @@ table.resetHeaderSizeInfo()
 table.resetHeaderSizeInfo(true)
 ```
 
-### Advanced Column Resizing Performance {#advanced-column-resizing-performance}
+### 列幅の変更のパフォーマンスに関する高度な話題 {#advanced-column-resizing-performance}
 
-If you are creating large or complex tables with React, an `"onChange"` resize can re-render the whole table on every drag frame, which degrades performance. The [performant column resizing example](https://tanstack.com/table/latest/docs/framework/react/examples/column-resizing-performant) shows how to keep a drag off React's render path entirely, so even a table with expensive cells stays smooth.
+React で大きなテーブルや複雑なテーブルを作る場合、`"onChange"` モードで列幅を変更すると、ドラッグのフレームごとにテーブル全体が再レンダーされ、パフォーマンスが落ちることがあります。[高速な列幅の変更のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/column-resizing-performant)では、ドラッグを React のレンダーの経路から完全に切り離す方法を示しています。この方法なら、描画コストの高いセルを持つテーブルでも滑らかに動きます。
 
-The idea is to stop treating column widths as React state during a drag:
+考え方は、ドラッグ中は列幅を React の状態として扱わないことです。
 
-1. **Subscribe the table component to no resize state.** Pass a selector that returns a constant (the example uses `() => ({})`) so state changes never re-render the component that owns the table.
-2. **Write column widths as CSS variables imperatively.** In a `useLayoutEffect`, subscribe to `table.atoms.columnSizing` and set `--header-<id>-size` and `--col-<id>-size` variables directly on the `<table>` element. Cells reference them with `width: calc(var(--col-firstName-size) * 1px)`, so the browser applies new widths with zero React work per frame. (The core resize handler already coalesces pointer events to one update per animation frame.)
-3. **Isolate the few things that must react into `table.Subscribe` islands.** The active resizer's highlight and any live state readout each subscribe to just the slice they need, so a drag re-renders only those small islands, not the table body.
+1. **テーブルのコンポーネントには、列幅の変更の状態を一切購読させません。** 定数を返すセレクター（例では `() => ({})`）を渡し、状態が変わってもテーブルを持つコンポーネントが再レンダーされないようにします。
+2. **列幅は CSS 変数として命令的に書き込みます。** `useLayoutEffect` の中で `table.atoms.columnSizing` を購読し、`<table>` 要素に `--header-<id>-size` と `--col-<id>-size` の変数を直接設定します。セルは `width: calc(var(--col-firstName-size) * 1px)` のようにこれらの変数を参照するので、ブラウザーはフレームごとに React の処理をまったく挟まずに新しい幅を適用します。（コアの列幅変更ハンドラーは、すでにポインターイベントをアニメーションフレームごとに 1 回の更新にまとめています。）
+3. **反応する必要のある少数の部分だけを、`table.Subscribe` の小さな島として切り出します。** 操作中のリサイザーのハイライトや、状態をリアルタイムに表示する部分は、それぞれ必要なスライスだけを購読します。そのため、ドラッグしても再レンダーされるのはそれらの小さな島だけで、テーブルの本体は再レンダーされません。
 
-This replaces the older "memoize the table body while resizing" approach. Because the body no longer subscribes to resize state, it does not need to be memoized; it only re-renders when your data changes.
+この方法は、以前の「列幅の変更中はテーブルの本体をメモ化する」という方法に代わるものです。本体は列幅の変更の状態を購読しなくなったので、メモ化する必要はありません。本体が再レンダーされるのは、データが変わったときだけです。

@@ -3,9 +3,9 @@ id: CreateTableHookResult
 title: CreateTableHookResult
 ---
 
-Defined in: [src/createTableHook.tsx:298](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L298)
+定義元: [src/createTableHook.tsx:298](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L298)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -23,7 +23,7 @@ Defined in: [src/createTableHook.tsx:298](https://github.com/TanStack/table/blob
 
 `THeaderComponents` *extends* `Record`\<`string`, `ComponentType`\<`any`\>\>
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### appFeatures {#appfeatures}
 
@@ -31,9 +31,9 @@ Defined in: [src/createTableHook.tsx:298](https://github.com/TanStack/table/blob
 appFeatures: TFeatures;
 ```
 
-Defined in: [src/createTableHook.tsx:305](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L305)
+定義元: [src/createTableHook.tsx:305](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L305)
 
-The features object that was passed to `createTableHook`.
+`createTableHook` に渡された features オブジェクトです。
 
 ***
 
@@ -43,18 +43,17 @@ The features object that was passed to `createTableHook`.
 createAppColumnHelper: <TData>() => AppColumnHelper<TFeatures, TData, TCellComponents, THeaderComponents>;
 ```
 
-Defined in: [src/createTableHook.tsx:310](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L310)
+定義元: [src/createTableHook.tsx:310](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L310)
 
-A column helper pre-bound to `TFeatures` and the registered components, so
-the cell/header/footer render props expose the bound components.
+`TFeatures` と登録済みのコンポーネントがあらかじめ結び付けられた列ヘルパーです。そのため、cell・header・footer のレンダー props から、結び付けられたコンポーネントを使えます。
 
-#### Type Parameters {#type-parameters-1}
+#### 型パラメーター {#type-parameters-1}
 
 ##### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 [`AppColumnHelper`](../type-aliases/AppColumnHelper.md)\<`TFeatures`, `TData`, `TCellComponents`, `THeaderComponents`\>
 
@@ -66,12 +65,11 @@ the cell/header/footer render props expose the bound components.
 useAppTable: <TData, TSelected>(tableOptions, selector?) => AppReactTable<TFeatures, TData, TSelected, TTableComponents, TCellComponents, THeaderComponents>;
 ```
 
-Defined in: [src/createTableHook.tsx:320](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L320)
+定義元: [src/createTableHook.tsx:320](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L320)
 
-Creates a table with the `App*` wrapper components and registered
-`tableComponents` attached. `TData` is inferred from the `data` option.
+`App*` ラッパーコンポーネントと、登録済みの `tableComponents` が付いたテーブルを作ります。`TData` は `data` オプションから推論されます。
 
-#### Type Parameters {#type-parameters-2}
+#### 型パラメーター {#type-parameters-2}
 
 ##### TData {#tdata-1}
 
@@ -81,7 +79,7 @@ Creates a table with the `App*` wrapper components and registered
 
 `TSelected` = `TableState`\<`TFeatures`\>
 
-#### Parameters {#parameters}
+#### パラメーター {#parameters}
 
 ##### tableOptions {#tableoptions}
 
@@ -91,7 +89,7 @@ Creates a table with the `App*` wrapper components and registered
 
 (`state`) => `TSelected`
 
-#### Returns {#returns-1}
+#### 戻り値 {#returns-1}
 
 [`AppReactTable`](../type-aliases/AppReactTable.md)\<`TFeatures`, `TData`, `TSelected`, `TTableComponents`, `TCellComponents`, `THeaderComponents`\>
 
@@ -103,18 +101,17 @@ Creates a table with the `App*` wrapper components and registered
 useCellContext: <TValue>() => Cell_Core<TFeatures, any, TValue> & ExtractFeatureMapTypes<TFeatures, Cell_FeatureMap> & TCellComponents & object;
 ```
 
-Defined in: [src/createTableHook.tsx:357](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L357)
+定義元: [src/createTableHook.tsx:357](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L357)
 
-Reads the cell provided by the nearest `<table.AppCell>`, extended with your
-`cellComponents` and a context-bound `FlexRender`.
+最も近い `<table.AppCell>` が提供するセルを読み取ります。このセルは、登録した `cellComponents` と、コンテキストに結び付いた `FlexRender` で拡張されています。
 
-#### Type Parameters {#type-parameters-3}
+#### 型パラメーター {#type-parameters-3}
 
 ##### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Returns {#returns-2}
+#### 戻り値 {#returns-2}
 
 `Cell_Core`\<`TFeatures`, `any`, `TValue`\> & `ExtractFeatureMapTypes`\<`TFeatures`, `Cell_FeatureMap`\> & `TCellComponents` & `object`
 
@@ -126,19 +123,17 @@ Reads the cell provided by the nearest `<table.AppCell>`, extended with your
 useHeaderContext: <TValue>() => Header_Core<TFeatures, any, TValue> & ExtractFeatureMapTypes<TFeatures, Header_FeatureMap> & THeaderComponents & object;
 ```
 
-Defined in: [src/createTableHook.tsx:368](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L368)
+定義元: [src/createTableHook.tsx:368](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L368)
 
-Reads the header provided by the nearest `<table.AppHeader>` /
-`<table.AppFooter>`, extended with your `headerComponents` and a
-context-bound `FlexRender`.
+最も近い `<table.AppHeader>` または `<table.AppFooter>` が提供するヘッダーを読み取ります。このヘッダーは、登録した `headerComponents` と、コンテキストに結び付いた `FlexRender` で拡張されています。
 
-#### Type Parameters {#type-parameters-4}
+#### 型パラメーター {#type-parameters-4}
 
 ##### TValue {#tvalue-1}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Returns {#returns-3}
+#### 戻り値 {#returns-3}
 
 `Header_Core`\<`TFeatures`, `any`, `TValue`\> & `ExtractFeatureMapTypes`\<`TFeatures`, `Header_FeatureMap`\> & `THeaderComponents` & `object`
 
@@ -150,19 +145,13 @@ context-bound `FlexRender`.
 useTableContext: <TData, TSelected>() => AppReactTable<TFeatures, TData, TSelected, TTableComponents, TCellComponents, THeaderComponents>;
 ```
 
-Defined in: [src/createTableHook.tsx:342](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L342)
+定義元: [src/createTableHook.tsx:342](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L342)
 
-Reads the table provided by the nearest `<table.AppTable>`. This is the same
-extended instance `useAppTable` returns, so the `App*` components and your
-`tableComponents` are available on it.
+最も近い `<table.AppTable>` が提供するテーブルを読み取ります。これは `useAppTable` が返すのと同じ拡張済みのインスタンスなので、`App*` コンポーネントと登録した `tableComponents` を使えます。
 
-Pass `TSelected` to match the selector you gave `useAppTable`, so
-`table.state` is typed as the selected slice. It cannot be inferred
-automatically (React context does not carry the provider's generics), so it
-defaults to the full table state, which is correct for the common case of
-`useAppTable` without a selector.
+`useAppTable` に渡したセレクターに合わせて `TSelected` を指定すると、`table.state` の型が選択した部分（スライス）になります。この型は自動では推論できません（React のコンテキストはプロバイダーのジェネリクスを引き継がないため）。そのため、デフォルトはテーブルの状態全体になります。セレクターなしで `useAppTable` を使うよくあるケースでは、これで正しい型になります。
 
-#### Type Parameters {#type-parameters-5}
+#### 型パラメーター {#type-parameters-5}
 
 ##### TData {#tdata-2}
 
@@ -172,6 +161,6 @@ defaults to the full table state, which is correct for the common case of
 
 `TSelected` = `TableState`\<`TFeatures`\>
 
-#### Returns {#returns-4}
+#### 戻り値 {#returns-4}
 
 [`AppReactTable`](../type-aliases/AppReactTable.md)\<`TFeatures`, `TData`, `TSelected`, `TTableComponents`, `TCellComponents`, `THeaderComponents`\>

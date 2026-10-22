@@ -1,5 +1,5 @@
 ---
-title: Agent Skills (TanStack Intent)
+title: エージェントスキル（TanStack Intent）
 id: agent-skills
 description: "Use TanStack Intent to wire TanStack Table's bundled Agent Skills into Claude Code, Cursor, GitHub Copilot, Codex, and other AI coding assistants."
 keywords:
@@ -15,60 +15,60 @@ keywords:
   - AGENTS.md
 ---
 
-You're building with TanStack Table and using an AI coding agent such as Claude Code, Cursor, GitHub Copilot, or Codex. The agent keeps suggesting v8 APIs such as `useReactTable`, configures row models without explicit features, or renders with adapter patterns that no longer match v9. By the end of this guide, your agent will load TanStack Table's bundled skills automatically whenever you work on table code, and those skills will stay in sync with whichever TanStack Table version your project installs.
+あなたは TanStack Table を使って開発していて、Claude Code、Cursor、GitHub Copilot、Codex といった AI コーディングエージェントも使っているとします。ところがエージェントは `useReactTable` のような v8 の API を提案し続けたり、機能を明示せずに行モデルを設定したり、v9 にはもう合わないアダプターのパターンで描画したりします。このガイドを終えるころには、テーブルのコードを書くたびにエージェントが TanStack Table に同梱されたスキルを自動で読み込むようになります。しかもそのスキルは、プロジェクトにインストールした TanStack Table のバージョンと常にそろった状態に保たれます。
 
-## What are Agent Skills? {#what-are-agent-skills}
+## エージェントスキルとは {#what-are-agent-skills}
 
-Agent Skills are markdown documents (`SKILL.md`) that ship inside npm packages and tell AI coding agents how to use a library correctly: which functions to use, which patterns to avoid, and when to reach for a particular feature. The format is an open standard supported by Claude Code, Cursor, GitHub Copilot, Codex, and others.
+エージェントスキル（Agent Skills）は、npm パッケージに同梱される Markdown 文書（`SKILL.md`）です。AI コーディングエージェントに対して、ライブラリの正しい使い方を伝えます。どの関数を使うべきか、どのパターンを避けるべきか、特定の機能をいつ使うべきか、といった内容です。この形式はオープンな標準で、Claude Code、Cursor、GitHub Copilot、Codex などが対応しています。
 
-TanStack Table publishes skills inside its packages so the guidance travels with `npm update` instead of being pinned in a model's training data or copied into an agent configuration file manually.
+TanStack Table はパッケージの中にスキルを入れて公開しています。そのため、ガイダンスはモデルの学習データに固定されたり、エージェントの設定ファイルへ手作業でコピーされたりするのではなく、`npm update` と一緒に最新の状態へ更新されます。
 
-## Skills Shipped by TanStack Table {#skills-shipped-by-tanstack-table}
+## TanStack Table に同梱されているスキル {#skills-shipped-by-tanstack-table}
 
-The skills available to your agent depend on which packages your project installs:
+エージェントが使えるスキルは、プロジェクトにどのパッケージをインストールしているかで決まります。
 
-| Package                                                    | Skills                                                                         | What they teach                                                                                                                                                                  |
-| ---------------------------------------------------------- | ------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `@tanstack/table-core`                                     | `core`, `table-features`, `table-state`, `custom-features`, `migrate-v8-to-v9` | Core architecture, feature registration, shared state ownership, plugin authoring, and migration. Each optional feature has an on-demand reference linked from `table-features`. |
-| `@tanstack/<framework>-table`                              | `getting-started`, `table-state`, and migration where supported                | Framework setup, rendering, and reactive state. References cover reusable app hooks, advanced reactivity, and maintained Query/Virtual integrations.                             |
-| `@tanstack/table-devtools` and framework devtools adapters | `devtools`                                                                     | Registering table instances and inspecting features, state, options, rows, and columns                                                                                           |
-| `@tanstack/match-sorter-utils`                             | `fuzzy-ranking`                                                                | Fuzzy filtering, ranking metadata, and rank-aware sorting                                                                                                                        |
+| パッケージ | スキル | 教える内容 |
+| --- | --- | --- |
+| `@tanstack/table-core` | `core`, `table-features`, `table-state`, `custom-features`, `migrate-v8-to-v9` | コアのアーキテクチャ、機能の登録、共有する状態をどこが持つか、プラグインの作り方、移行。オプションの各機能には、`table-features` からリンクされた、必要なときに読むリファレンスがあります。 |
+| `@tanstack/<framework>-table` | `getting-started`、`table-state`、対応している場合は移行 | フレームワークでのセットアップ、描画、リアクティブな状態。リファレンスでは、再利用できるアプリ用フック、高度なリアクティビティ、保守されている Query/Virtual との統合を扱います。 |
+| `@tanstack/table-devtools` とフレームワーク向け Devtools アダプター | `devtools` | テーブルインスタンスの登録と、機能・状態・オプション・行・列の確認 |
+| `@tanstack/match-sorter-utils` | `fuzzy-ranking` | あいまい検索フィルター、ランキングのメタデータ、ランクを考慮したソート |
 
-Each skill lives under `node_modules/<package>/skills/<skill-name>/SKILL.md` once the package is installed. Its `references/` directory contains guidance for specific tasks. For example, row selection lives in `@tanstack/table-core/skills/table-features/references/row-selection.md`.
+パッケージをインストールすると、各スキルは `node_modules/<package>/skills/<skill-name>/SKILL.md` に置かれます。その `references/` ディレクトリには、個別の作業向けのガイダンスが入っています。たとえば行選択のガイダンスは `@tanstack/table-core/skills/table-features/references/row-selection.md` にあります。
 
-The entry point tells the agent when to read each reference. A sorting change loads the sorting guidance; selection, resizing, and other unrelated feature references stay unloaded. Framework state skills load the shared state model and then explain their own reactive reads and updates.
+エントリーポイントは、各リファレンスをいつ読むべきかをエージェントに伝えます。ソートを変更するときはソートのガイダンスを読み込み、行選択や列幅の変更など関係のない機能のリファレンスは読み込みません。フレームワークの状態スキルは、まず共有の状態モデルを読み込み、そのうえでそのフレームワーク固有のリアクティブな読み取りと更新の方法を説明します。
 
-Intent lists entry points and loads one requested `SKILL.md` at a time. The agent follows its prerequisite instructions and reads relevant references. A React project with core installed has eight Table entry points. Devtools and other installed libraries add their own entries.
+Intent はエントリーポイントを一覧にし、要求された `SKILL.md` を1つずつ読み込みます。エージェントは、そこに書かれた前提の指示に従い、関係するリファレンスを読みます。core をインストールした React プロジェクトでは、Table のエントリーポイントが8つあります。Devtools やほかにインストールしたライブラリは、それぞれ独自のエントリーを追加します。
 
-## Step 1: Install TanStack Table {#step-1-install-tanstack-table}
+## ステップ1: TanStack Table をインストールする {#step-1-install-tanstack-table}
 
-If you haven't already, install the adapter for your framework. See [Installation](./installation) for the full package list.
+まだの場合は、使っているフレームワーク用のアダプターをインストールします。パッケージの一覧は [インストール](./installation) を参照してください。
 
 ```bash
 pnpm add @tanstack/react-table
 ```
 
-Framework adapters install `@tanstack/table-core` as a dependency, so both the framework-specific and core skills are available to the installer.
+フレームワーク用のアダプターは `@tanstack/table-core` を依存関係としてインストールします。そのため、インストーラーからはフレームワーク固有のスキルとコアのスキルの両方が使えます。
 
-## Step 2: Run `intent install` {#step-2-run-intent-install}
+## ステップ2: `intent install` を実行する {#step-2-run-intent-install}
 
-From the root of your project, run:
+プロジェクトのルートで次を実行します。
 
 ```bash
 npx @tanstack/intent@latest install
 ```
 
-The CLI writes lightweight skill-loading guidance into your agent's config file. That guidance tells the agent to discover skills from the packages installed in your project and load the most relevant one before it starts a substantial task.
+CLI は、スキルを読み込むための軽量なガイダンスをエージェントの設定ファイルに書き込みます。このガイダンスは、プロジェクトにインストールされたパッケージからスキルを見つけ、ある程度の規模の作業を始める前にいちばん関係の深いスキルを読み込むよう、エージェントに指示します。
 
-By default the guidance lands in `AGENTS.md`. The CLI can also update:
+既定では、ガイダンスは `AGENTS.md` に書き込まれます。CLI は次のファイルも更新できます。
 
-- `CLAUDE.md` for Claude Code
-- `.cursorrules` for Cursor
-- `.github/copilot-instructions.md` for GitHub Copilot
+- Claude Code 用の `CLAUDE.md`
+- Cursor 用の `.cursorrules`
+- GitHub Copilot 用の `.github/copilot-instructions.md`
 
-## Step 3: Review the Generated Guidance {#step-3-review-the-generated-guidance}
+## ステップ3: 生成されたガイダンスを確認する {#step-3-review-the-generated-guidance}
 
-The install command appends (or creates) an `intent-skills` block that looks like this:
+install コマンドは、次のような `intent-skills` ブロックを追記します（ファイルがなければ作成します）。
 
 ```markdown
 <!-- intent-skills:start -->
@@ -86,9 +86,9 @@ Before editing files for a substantial task:
 <!-- intent-skills:end -->
 ```
 
-Keep the block near the top of the config file so your agent sees it before task-specific instructions.
+このブロックは設定ファイルの先頭近くに置いてください。そうすれば、エージェントは作業固有の指示より先にこのブロックを目にします。
 
-You can inspect and load Table skills yourself with the same commands:
+同じコマンドを使えば、Table のスキルを自分で確認したり読み込んだりできます。
 
 ```bash
 npx @tanstack/intent@latest list
@@ -96,56 +96,56 @@ npx @tanstack/intent@latest load @tanstack/react-table#getting-started
 npx @tanstack/intent@latest load @tanstack/table-core#table-features
 ```
 
-For sorting, follow the loaded entry point's link to `references/sorting.md`. The load command resolves relative Markdown links to the installed package, including when your package manager uses nested dependency paths.
+ソートについては、読み込んだエントリーポイントにある `references/sorting.md` へのリンクをたどります。load コマンドは Markdown の相対リンクを、インストール済みのパッケージを基準に解決します。パッケージマネージャーが依存関係を入れ子のパスに置いている場合も同様です。
 
-If you prefer explicit task-to-skill entries, run `npx @tanstack/intent@latest install --map`. Mapping mode scans your installed intent-enabled packages and writes compact `id`, `run`, and `for` entries into the managed block.
+作業とスキルの対応を明示したい場合は、`npx @tanstack/intent@latest install --map` を実行します。マッピングモードでは、インストール済みの Intent 対応パッケージを調べ、`id`、`run`、`for` からなる簡潔なエントリーを管理対象のブロックに書き込みます。
 
-## Step 4: Confirm It's Wired Up {#step-4-confirm-its-wired-up}
+## ステップ4: 連携できているか確かめる {#step-4-confirm-its-wired-up}
 
-Open a fresh session in your coding agent and ask it to build something with TanStack Table, for example: _"Build a sortable, paginated React table with TanStack Table v9."_
+コーディングエージェントで新しいセッションを開き、TanStack Table を使って何か作るよう頼んでみてください。たとえば「_TanStack Table v9 で、ソートとページネーションができる React のテーブルを作って_」のように頼みます。
 
-You should see:
+次のようになっていれば連携できています。
 
-- The agent uses `useTable()` instead of the v8 `useReactTable()` API.
-- Features and row-model slots are declared explicitly with `tableFeatures()`.
-- Static data, columns, and features keep stable references.
-- The adapter's current rendering APIs are used instead of copied v8 rendering patterns.
-- Table owns the headless model and state while your application owns markup, styles, interactions, and accessibility.
+- エージェントが v8 の `useReactTable()` API ではなく `useTable()` を使う。
+- 機能と行モデルのスロットが `tableFeatures()` で明示的に宣言されている。
+- 静的なデータ、列、機能が安定した参照を保っている。
+- v8 の描画パターンをコピーするのではなく、アダプターの現行の描画 API を使っている。
+- ヘッドレスなモデルと状態は Table が受け持ち、マークアップ、スタイル、操作、アクセシビリティはアプリケーション側が受け持っている。
 
-If the agent still falls back to v8 patterns, reopen its config file and confirm the `intent-skills` block is present. You can also run `intent list` to confirm that the installed Table packages are detected and `intent load` to inspect the matching guidance directly.
+それでもエージェントが v8 のパターンに戻ってしまう場合は、設定ファイルを開き直して `intent-skills` ブロックがあるか確認してください。また、`intent list` を実行してインストール済みの Table パッケージが検出されているか確かめたり、`intent load` で該当するガイダンスを直接確認したりすることもできます。
 
-## Keeping Skills Current {#keeping-skills-current}
+## スキルを最新に保つ {#keeping-skills-current}
 
-Skills are versioned with each package. When you update your TanStack Table packages, the `SKILL.md` files under `node_modules` update with them. No CLI rerun is needed. If you use explicit mappings, rerun `npx @tanstack/intent@latest install --map` after adding another intent-enabled package, such as a Table devtools adapter, or when you want to refresh the mappings.
+スキルはパッケージごとにバージョン管理されています。TanStack Table のパッケージを更新すると、`node_modules` 配下の `SKILL.md` ファイルも一緒に更新されます。CLI を再実行する必要はありません。明示的なマッピングを使っている場合は、Table の Devtools アダプターなど別の Intent 対応パッケージを追加したあとや、マッピングを更新したいときに、`npx @tanstack/intent@latest install --map` を再実行してください。
 
-### Update older skill mappings {#update-older-skill-mappings}
+### 古いスキルのマッピングを更新する {#update-older-skill-mappings}
 
-The progressive-disclosure layout replaces individual feature and composition skill IDs with references. If your agent configuration contains the old IDs, update them as follows:
+情報を段階的に開示する構成（progressive disclosure）になったことで、機能ごと・組み合わせ方ごとに分かれていたスキル ID は、リファレンスに置き換えられました。エージェントの設定に古い ID が残っている場合は、次のように更新してください。
 
-| Old skill ID                                                                            | Replacement entry point and reference                                        |
-| --------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `@tanstack/table-core#sorting`, `#row-selection`, and the other optional feature skills | `@tanstack/table-core#table-features`, then the matching feature reference   |
-| `@tanstack/table-core#client-vs-server`                                                 | `@tanstack/table-core#table-features`, then `references/client-vs-server.md` |
-| `@tanstack/table-core#typescript` or `#api-not-found`                                   | `@tanstack/table-core#core`, then the matching reference                     |
-| `@tanstack/<framework>-table#create-table-hook`                                         | The adapter's `getting-started`, then `references/create-table-hook.md`      |
-| `@tanstack/<framework>-table#with-tanstack-query` or `#with-tanstack-virtual`           | The adapter's `getting-started`, then the matching integration reference     |
+| 古いスキル ID | 置き換え先のエントリーポイントとリファレンス |
+| --- | --- |
+| `@tanstack/table-core#sorting`、`#row-selection`、その他のオプション機能のスキル | `@tanstack/table-core#table-features`、次に該当する機能のリファレンス |
+| `@tanstack/table-core#client-vs-server` | `@tanstack/table-core#table-features`、次に `references/client-vs-server.md` |
+| `@tanstack/table-core#typescript` または `#api-not-found` | `@tanstack/table-core#core`、次に該当するリファレンス |
+| `@tanstack/<framework>-table#create-table-hook` | アダプターの `getting-started`、次に `references/create-table-hook.md` |
+| `@tanstack/<framework>-table#with-tanstack-query` または `#with-tanstack-virtual` | アダプターの `getting-started`、次に該当する統合のリファレンス |
 
-If `package.json#intent.skills` allows individual old skill IDs, run `npx @tanstack/intent@latest install --review` to select their replacements and the prerequisites they need. Package-level permissions include new entry points automatically. Regenerate explicit mappings with `npx @tanstack/intent@latest install --map` after updating permissions. Direct file pointers to moved skills also need their new paths.
+`package.json#intent.skills` で古いスキル ID を個別に許可している場合は、`npx @tanstack/intent@latest install --review` を実行し、置き換え先と、それに必要な前提のスキルを選んでください。パッケージ単位で許可している場合は、新しいエントリーポイントが自動的に含まれます。許可を更新したあとは、`npx @tanstack/intent@latest install --map` で明示的なマッピングを作り直してください。移動したスキルのファイルを直接指している場合も、新しいパスに直す必要があります。
 
-Core state guidance is available as `@tanstack/table-core#table-state`. Adapter state and migration skill IDs remain available. Migration skills retain a complete audit checklist and link to detailed mappings for the APIs your project uses.
+コアの状態についてのガイダンスは `@tanstack/table-core#table-state` として提供されています。アダプターの状態スキルと移行スキルの ID は、引き続き使えます。移行スキルには確認用のチェックリストがすべて残っており、プロジェクトで使っている API の詳しい対応表へのリンクもあります。
 
-## Using Skills Without the CLI {#using-skills-without-the-cli}
+## CLI を使わずにスキルを使う {#using-skills-without-the-cli}
 
-If you'd rather wire skills in yourself, reference them directly from `node_modules` in any agent config file. The minimum your agent needs is a pointer to the relevant file:
+スキルを自分で組み込みたい場合は、任意のエージェント設定ファイルから `node_modules` 内のスキルを直接参照します。最低限必要なのは、該当するファイルへの参照だけです。
 
 ```markdown
 When working on TanStack React Table code, read and follow:
 node_modules/@tanstack/react-table/skills/getting-started/SKILL.md
 ```
 
-The CLI is recommended because it discovers installed packages automatically and stays consistent with the Agent Skills standard, but the underlying file paths are stable.
+CLI の利用をおすすめします。インストール済みのパッケージを自動で見つけ、エージェントスキルの標準とも整合が取れるからです。とはいえ、その下にあるファイルのパス自体は変わらないので、直接参照しても問題ありません。
 
-## Learn More {#learn-more}
+## さらに学ぶ {#learn-more}
 
-- [TanStack Intent documentation](https://tanstack.com/intent/latest/docs/overview), the CLI's full reference, including `scaffold`, `validate`, and CI setup for library maintainers.
-- [Agent Skills registry](https://tanstack.com/intent/registry), where you can browse other intent-enabled packages.
+- [TanStack Intent のドキュメント](https://tanstack.com/intent/latest/docs/overview): CLI の完全なリファレンスです。`scaffold`、`validate`、ライブラリのメンテナー向けの CI 設定も載っています。
+- [エージェントスキルのレジストリ](https://tanstack.com/intent/registry): ほかの Intent 対応パッケージを探せます。

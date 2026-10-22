@@ -7,17 +7,17 @@ title: FacetedRowModelFactory
 type FacetedRowModelFactory<TData> = (table, columnId) => () => RowModel<LegacyFeatures, TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:184](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L184)
+定義元: [src/useLegacyTable.ts:184](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L184)
 
-Faceted row model factory function type from v8 API
+v8 API のファセット行モデルファクトリー関数の型です。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Parameters {#parameters}
+## パラメーター {#parameters}
 
 ### table {#table}
 
@@ -27,6 +27,6 @@ Faceted row model factory function type from v8 API
 
 `string`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 () => `RowModel`\<[`LegacyFeatures`](../interfaces/LegacyFeatures.md), `TData`\>

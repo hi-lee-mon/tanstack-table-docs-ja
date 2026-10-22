@@ -1,18 +1,18 @@
 ---
-title: Quick Start
+title: クイックスタート
 ---
 
-TanStack Table is a headless table library. It manages your table's state and logic (sorting, filtering, pagination, selection, and more) while you keep 100% control over the markup and styles. This page gets you from install to a rendering React table, then shows how to layer on your first feature.
+TanStack Table はヘッドレスなテーブルライブラリです。テーブルの状態とロジック（ソート、フィルタリング、ページネーション、選択など）を管理し、マークアップとスタイルは 100% あなたの手に委ねます。このページでは、インストールから React のテーブルを描画するところまでを進め、そのうえで最初の機能を追加する方法を紹介します。
 
-## Installation {#installation}
+## インストール {#installation}
 
 ```bash
 npm install @tanstack/react-table
 ```
 
-## Your First Table {#your-first-table}
+## 最初のテーブル {#your-first-table}
 
-The component below is complete. Paste it into a React app and you will see a working table.
+次のコンポーネントはこれだけで完結しています。React アプリに貼り付ければ、動くテーブルが表示されます。
 
 ```tsx
 import { tableFeatures, useTable } from '@tanstack/react-table'
@@ -95,18 +95,18 @@ export function PersonTable() {
 }
 ```
 
-A few things to note:
+いくつか補足します。
 
-- `tableFeatures({})` declares which optional features the table uses. Registering only what you need keeps bundles small and gives TypeScript accurate types for the table instance.
-- The core row model is always included automatically. Feature row models (sorting, filtering, pagination) are registered as slots on the features object when you need them.
-- `table.FlexRender` renders the `header`, `cell`, and `footer` definitions from your columns, whether they are plain values or React components.
-- The `key` option is optional unless you use the [TanStack Table Devtools](../../devtools). The devtools identify tables by `key`, and you register a table by calling `useTanStackTableDevtools(table)` from `@tanstack/react-table-devtools`.
+- `tableFeatures({})` は、テーブルが使う省略可能な機能を宣言します。必要なものだけを登録すれば、バンドルを小さく保てるうえ、TypeScript がテーブルインスタンスに正確な型を付けられます。
+- コア行モデルは常に自動で含まれます。機能ごとの行モデル（ソート、フィルタリング、ページネーション）は、必要になったときに features オブジェクトのスロットとして登録します。
+- `table.FlexRender` は、列に定義した `header`、`cell`、`footer` を描画します。定義がただの値でも React コンポーネントでもかまいません。
+- `key` オプションは、[TanStack Table Devtools](../../devtools) を使わないかぎり省略できます。Devtools は `key` でテーブルを識別します。テーブルを登録するには、`@tanstack/react-table-devtools` の `useTanStackTableDevtools(table)` を呼び出します。
 
-See the full [Basic useTable example](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-table) for a runnable version with more columns and a footer.
+列やフッターを増やした実行可能なバージョンは、[Basic useTable のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-table)の全体を参照してください。
 
-## Add a Feature: Sorting {#add-a-feature-sorting}
+## 機能を追加する: ソート {#add-a-feature-sorting}
 
-Features are opt-in in v9. To make columns sortable, register `rowSortingFeature` and the sorted row model in `tableFeatures`, then wire the header click handler.
+v9 では、機能はオプトイン（明示的に有効にする）方式です。列をソートできるようにするには、`tableFeatures` に `rowSortingFeature` とソート済み行モデルを登録し、ヘッダーのクリックハンドラーをつなぎます。
 
 ```tsx
 import {
@@ -165,15 +165,15 @@ export function PersonTable() {
 }
 ```
 
-Clicking a header now toggles between ascending, descending, and unsorted. Every other feature follows this same pattern: register the feature and its row model factory (if it has one) in `tableFeatures`, then use the APIs it adds to the table, columns, and rows. See the [Sorting Guide](./guide/sorting) and the [Sorting example](https://tanstack.com/table/latest/docs/framework/react/examples/sorting) for custom sort functions, multi-sorting, and per-column options.
+これで、ヘッダーをクリックするたびに昇順、降順、ソートなしが切り替わります。他の機能もすべて同じパターンです。`tableFeatures` に機能と、（あれば）その行モデルのファクトリーを登録し、機能がテーブル・列・行に追加する API を使います。カスタムのソート関数、複数列でのソート、列ごとのオプションについては、[ソートのガイド](./guide/sorting)と [ソートのサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/sorting)を参照してください。
 
-## Where to Go Next {#where-to-go-next}
+## 次に読むもの {#where-to-go-next}
 
-**Table state.** In v9, table state is backed by TanStack Store atoms. You usually do not need to manage it yourself. Set `initialState` for starting values and call feature APIs like `table.setSorting(...)` or `table.nextPage()`. When your app should own a state slice, or you want fine-grained subscriptions, read the [Table State Guide](./guide/table-state). It is the foundational guide for everything else.
+**テーブルの状態。** v9 では、テーブルの状態は TanStack Store のアトムで管理されています。たいていは自分で管理する必要はありません。開始時の値は `initialState` で設定し、`table.setSorting(...)` や `table.nextPage()` のような機能の API を呼び出します。状態スライスをアプリ側で持ちたい場合や、細かい粒度で購読したい場合は、[テーブルの状態のガイド](./guide/table-state)を読んでください。他のすべての土台になるガイドです。
 
-**Feature guides.** Each feature has its own guide, such as [Column Filtering](./guide/column-filtering), [Pagination](./guide/pagination), [Row Selection](./guide/row-selection), and [Column Visibility](./guide/column-visibility).
+**機能ごとのガイド。** 機能ごとにガイドがあります。たとえば[列フィルタリング](./guide/column-filtering)、[ページネーション](./guide/pagination)、[行選択](./guide/row-selection)、[列の表示切り替え](./guide/column-visibility)などです。
 
-**Composable tables.** When multiple tables in your app share features, row models, and component conventions, define them once with `createTableHook`:
+**組み立て可能なテーブル。** アプリ内の複数のテーブルで機能、行モデル、コンポーネントの約束事を共有する場合は、`createTableHook` で一度だけ定義します。
 
 ```tsx
 const features = tableFeatures({
@@ -185,6 +185,6 @@ const features = tableFeatures({
 const { useAppTable, createAppColumnHelper } = createTableHook({ features })
 ```
 
-See the [Composable Tables Guide](./guide/composable-tables) for the full pattern, including pre-bound cell and header components.
+事前に紐付けたセルやヘッダーのコンポーネントを含むパターン全体は、[組み立て可能なテーブルのガイド](./guide/composable-tables)を参照してください。
 
-**Examples.** Browse the runnable [React examples](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-table), from basic tables to feature demos, to see intended usage end to end.
+**例。** 基本的なテーブルから機能のデモまで、実行可能な [React のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-table)を眺めると、想定されている使い方を最初から最後まで確認できます。

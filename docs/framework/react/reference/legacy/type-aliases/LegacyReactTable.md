@@ -7,11 +7,11 @@ title: LegacyReactTable
 type LegacyReactTable<TData> = ReactTable<LegacyFeatures, TData, TableState<LegacyFeatures>> & object;
 ```
 
-Defined in: [src/useLegacyTable.ts:290](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L290)
+定義元: [src/useLegacyTable.ts:290](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L290)
 
-Legacy table instance type that includes the v8-style `getState()` method.
+v8 スタイルの `getState()` メソッドを含む、レガシーなテーブルインスタンスの型です。
 
-## Type Declaration {#type-declaration}
+## 型宣言 {#type-declaration}
 
 ### ~~getState~~ {#getstate}
 
@@ -19,15 +19,15 @@ Legacy table instance type that includes the v8-style `getState()` method.
 getState: () => TableState<LegacyFeatures>;
 ```
 
-Returns the current table state.
+現在のテーブルの状態を返します。
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 `TableState`\<[`LegacyFeatures`](../interfaces/LegacyFeatures.md)\>
 
-#### Deprecated {#deprecated}
+#### 非推奨 {#deprecated}
 
-In v9, access state directly via `table.state` or use `table.state` for the full state.
+v9 では、`table.state` で状態に直接アクセスするか、状態全体が必要なら `table.state` を使ってください。
 
 ### ~~setState~~ {#setstate}
 
@@ -35,28 +35,28 @@ In v9, access state directly via `table.state` or use `table.state` for the full
 setState: (state) => void;
 ```
 
-Sets the current table state.
+現在のテーブルの状態を設定します。
 
-#### Parameters {#parameters}
+#### パラメーター {#parameters}
 
 ##### state {#state}
 
 `TableState`\<[`LegacyFeatures`](../interfaces/LegacyFeatures.md)\>
 
-#### Returns {#returns-1}
+#### 戻り値 {#returns-1}
 
 `void`
 
-#### Deprecated {#deprecated-1}
+#### 非推奨 {#deprecated-1}
 
-In v9, access state directly via `table.baseAtoms`
+v9 では、`table.baseAtoms` で状態に直接アクセスしてください。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Deprecated {#deprecated-2}
+## 非推奨 {#deprecated-2}
 
-Use `useTable` with explicit state selection instead.
+代わりに、状態を明示的に選択する形で `useTable` を使ってください。

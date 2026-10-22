@@ -1,16 +1,16 @@
 ---
-title: Row Selection (React) Guide
+title: 行選択（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Row Selection](https://tanstack.com/table/latest/docs/framework/react/examples/row-selection)
+- [行選択](https://tanstack.com/table/latest/docs/framework/react/examples/row-selection)
 
-### Row Selection Setup {#row-selection-setup}
+### 行選択のセットアップ {#row-selection-setup}
 
-Here's how you set up your table to use row selection features. Adding the row selection feature enables the related APIs.
+行選択の機能を使うためのテーブルのセットアップ方法を示します。行選択の機能を追加すると、関連する API が使えるようになります。
 
 ```tsx
 import {
@@ -28,18 +28,18 @@ const table = useTable({
 })
 ```
 
-## Row Selection (React) Guide {#row-selection-react-guide}
+## 行選択（React）ガイド {#row-selection-react-guide}
 
-The row selection feature keeps track of which rows are selected and allows you to toggle the selection of rows in a myriad of ways. Let's take a look at some common use cases.
+行選択の機能は、どの行が選択されているかを追跡し、さまざまな方法で行の選択を切り替えられるようにします。よくある使い方を見ていきましょう。
 
-### Access Row Selection State {#access-row-selection-state}
+### 行選択の状態にアクセスする {#access-row-selection-state}
 
-The table instance already manages the row selection state for you. You can access the row selection state or the selected rows from a few APIs.
+行選択の状態は、テーブルインスタンスがすでに管理しています。行選択の状態や選択された行には、いくつかの API からアクセスできます。
 
-- `table.state.rowSelection` - returns the row selection state reactively (selected by the `useTable` selector)
-- `getSelectedRowModel()` - returns selected rows
-- `getFilteredSelectedRowModel()` - returns selected rows after filtering
-- `getGroupedSelectedRowModel()` - returns selected rows after grouping and sorting
+- `table.state.rowSelection` - 行選択の状態をリアクティブに返します（`useTable` のセレクターで選ばれます）
+- `getSelectedRowModel()` - 選択された行を返します
+- `getFilteredSelectedRowModel()` - フィルタリング後の選択された行を返します
+- `getGroupedSelectedRowModel()` - グループ化とソートの後の選択された行を返します
 
 ```ts
 console.log(table.state.rowSelection) //get the row selection state - { 1: true, 2: false, etc... }
@@ -48,14 +48,14 @@ console.log(table.getFilteredSelectedRowModel().rows) //get filtered client-side
 console.log(table.getGroupedSelectedRowModel().rows) //get grouped client-side selected rows
 ```
 
-In event handlers or other non-render code, you can also read the current snapshot with `table.atoms.rowSelection.get()`. This read does not subscribe a component to future changes, so prefer `table.state.rowSelection` (or `table.Subscribe`) in render positions.
+イベントハンドラーなど描画以外のコードでは、`table.atoms.rowSelection.get()` で現在のスナップショットを読むこともできます。この読み取りでは、コンポーネントはその後の変更を購読しません。描画する箇所では `table.state.rowSelection`（または `table.Subscribe`）を使ってください。
 
 > [!NOTE]
-> If you are using `manualPagination`, be aware that the `getSelectedRowModel` API will only return selected rows on the current page because table row models can only generate rows based on the `data` that is passed in. Row selection state, however, can contain row ids that are not present in the `data` array just fine.
+> `manualPagination` を使っている場合、`getSelectedRowModel` API は現在のページの選択された行しか返さないことに注意してください。テーブルの行モデルは、渡された `data` をもとにしか行を生成できないからです。一方、行選択の状態には、`data` 配列にない行の ID が含まれていても問題ありません。
 
-### Manage Row Selection State {#manage-row-selection-state}
+### 行選択の状態を管理する {#manage-row-selection-state}
 
-If you need easy access to the selected row ids in other parts of your application (for example, to make API calls with them), you can own the row selection state slice yourself. The recommended way in v9 is an external atom passed through the `atoms` table option. Atoms preserve fine-grained subscriptions, and the selection value can be read anywhere in your app without forcing the component that owns the table to re-render.
+アプリの別の場所から選択された行の ID を手軽に使いたい場合（たとえば、それを使って API を呼び出す場合）は、行選択の状態を自分で持つことができます。v9 で推奨される方法は、テーブルの `atoms` オプションに外部のアトムを渡すことです。アトムを使えばきめ細かな購読が保たれ、テーブルを持つコンポーネントを再レンダーさせずに、アプリのどこからでも選択の値を読めます。
 
 ```ts
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -82,7 +82,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.rowSelection` plus `onRowSelectionChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+v8 と同じ `state.rowSelection` と `onRowSelectionChange` を組み合わせるパターンも、引き続き使えます。単純な組み込みや v8 のコードを移行するときには便利ですが、外部のアトムほどきめ細かくはありません。詳しい比較は[テーブルの状態ガイド](./table-state)を参照してください。
 
 ```ts
 const [rowSelection, setRowSelection] = useState<RowSelectionState>({})
@@ -97,9 +97,9 @@ const table = useTable({
 })
 ```
 
-### Useful Row Ids {#useful-row-ids}
+### 役に立つ行 ID {#useful-row-ids}
 
-By default, the row id for each row is simply the `row.index`. If you are using row selection features, you most likely want to use a more useful row identifier, since the row selection state is keyed by row id. You can use the `getRowId` table option to specify a function that returns a unique row id for each row.
+デフォルトでは、各行の行 ID は単に `row.index` です。行選択の機能を使うなら、もっと意味のある行の識別子を使いたくなるはずです。行選択の状態は行 ID をキーにしているからです。`getRowId` テーブルオプションに、各行の一意な行 ID を返す関数を指定できます。
 
 ```ts
 const table = useTable({
@@ -109,7 +109,7 @@ const table = useTable({
 })
 ```
 
-Now as rows are selected, the row selection state will look something like this:
+こうすると、行を選択したときの行選択の状態は、次のようになります。
 
 ```json
 {
@@ -119,7 +119,7 @@ Now as rows are selected, the row selection state will look something like this:
 }
 ```
 
-instead of this:
+次のような形にはなりません。
 
 ```json
 {
@@ -129,9 +129,9 @@ instead of this:
 }
 ```
 
-### Enable Row Selection Conditionally {#enable-row-selection-conditionally}
+### 条件付きで行選択を有効にする {#enable-row-selection-conditionally}
 
-Row selection is enabled by default for all rows. To either enable row selection conditionally for certain rows or disable row selection for all rows, you can use the `enableRowSelection` table option which accepts either a boolean or a function for more granular control.
+行選択は、デフォルトですべての行で有効です。特定の行だけで行選択を有効にしたり、すべての行で無効にしたりするには、`enableRowSelection` テーブルオプションを使います。このオプションには真偽値か、より細かく制御するための関数を渡せます。
 
 ```ts
 const table = useTable({
@@ -140,13 +140,13 @@ const table = useTable({
 })
 ```
 
-To enforce whether a row is selectable or not in your UI, you can use the `row.getCanSelect()` API for your checkboxes or other selection UI.
+行を選択できるかどうかを UI に反映させるには、チェックボックスなどの選択 UI で `row.getCanSelect()` API を使います。
 
-### Single Row Selection {#single-row-selection}
+### 単一行の選択 {#single-row-selection}
 
-By default, the table allows multiple rows to be selected at once. If, however, you only want to allow a single row to be selected at once, you can set the `enableMultiRowSelection` table option to `false` to disable multi-row selection, or pass in a function to disable multi-row selection conditionally for a row's sub-rows.
+デフォルトでは、テーブルは複数の行を同時に選択できます。一度に1行だけ選択できるようにしたい場合は、`enableMultiRowSelection` テーブルオプションを `false` にして複数行の選択を無効にします。関数を渡して、ある行のサブ行について条件付きで複数行の選択を無効にすることもできます。
 
-This is useful for making tables that have radio buttons instead of checkboxes.
+これは、チェックボックスの代わりにラジオボタンを使うテーブルを作るときに便利です。
 
 ```ts
 const table = useTable({
@@ -156,9 +156,9 @@ const table = useTable({
 })
 ```
 
-### Sub-Row Selection {#sub-row-selection}
+### サブ行の選択 {#sub-row-selection}
 
-By default, selecting a parent row will select all of its sub-rows. If you want to disable auto sub-row selection, you can set the `enableSubRowSelection` table option to `false` to disable sub-row selection, or pass in a function to disable sub-row selection conditionally for a row's sub-rows.
+デフォルトでは、親の行を選択するとそのサブ行もすべて選択されます。サブ行の自動選択を無効にしたい場合は、`enableSubRowSelection` テーブルオプションを `false` にします。関数を渡して、ある行のサブ行について条件付きでサブ行の選択を無効にすることもできます。
 
 ```ts
 const table = useTable({
@@ -168,9 +168,9 @@ const table = useTable({
 })
 ```
 
-Sub-row selection also applies to the select-all APIs. When a parent row blocks sub-row selection, `table.toggleAllRowsSelected()` and `table.toggleAllPageRowsSelected()` skip that parent's descendants, and `table.getIsAllRowsSelected()` and `table.getIsAllPageRowsSelected()` ignore those descendants when deciding whether everything is selected.
+サブ行の選択は、すべて選択する API にも適用されます。親の行がサブ行の選択を禁止している場合、`table.toggleAllRowsSelected()` と `table.toggleAllPageRowsSelected()` はその親の子孫を飛ばします。また、`table.getIsAllRowsSelected()` と `table.getIsAllPageRowsSelected()` は、すべてが選択されているかを判断するときに、それらの子孫を無視します。
 
-Selecting a parent row writes the parent id and its selectable descendant ids into the row selection state. Deselecting a child afterwards does not remove the parent id by default, since some tables treat the state ids as literal selections. Pass the `deselectParents` option to the toggle APIs to remove ancestor ids whenever a row is deselected:
+親の行を選択すると、親の ID と、選択できる子孫の ID が行選択の状態に書き込まれます。その後で子を選択解除しても、デフォルトでは親の ID は削除されません。状態の ID を文字どおりの選択として扱うテーブルもあるからです。行が選択解除されるたびに祖先の ID を削除するには、切り替え用の API に `deselectParents` オプションを渡してください。
 
 ```ts
 row.getToggleSelectedHandler({ deselectParents: true })
@@ -178,13 +178,13 @@ row.getToggleSelectedHandler({ deselectParents: true })
 row.toggleSelected(false, { deselectParents: true })
 ```
 
-### Shift Range Selection {#shift-range-selection}
+### Shift による範囲選択 {#shift-range-selection}
 
-`row.getToggleSelectedHandler()` supports Shift range selection by default. After an ordinary selectable-row interaction establishes an anchor, Shift-selecting another row selects or deselects the inclusive interval between them. The clicked checkbox's resulting checked value controls the whole range, and the clicked endpoint becomes the anchor for the next Shift interaction.
+`row.getToggleSelectedHandler()` は、デフォルトで Shift による範囲選択に対応しています。選択できる行を通常どおり操作すると、そこが起点（アンカー）になります。その後で別の行を Shift を押しながら選択すると、2つの行の間（両端を含む）がまとめて選択または選択解除されます。範囲全体の状態は、クリックしたチェックボックスの結果のチェック状態で決まり、クリックした端の行が次の Shift 操作の起点になります。
 
-The handler recognizes Shift when the event exposes either `event.shiftKey` or `event.nativeEvent.shiftKey`. You can disable range behavior or replace event detection:
+ハンドラーは、イベントに `event.shiftKey` か `event.nativeEvent.shiftKey` があれば Shift として認識します。範囲選択の動作を無効にしたり、イベントの判定方法を差し替えたりもできます。
 
-React checkbox `onChange` events expose the underlying click through `nativeEvent`, so the handler receives the Shift modifier in the examples below.
+React のチェックボックスの `onChange` イベントは、元になったクリックを `nativeEvent` として公開しています。そのため、次の例ではハンドラーが Shift 修飾キーを受け取れます。
 
 ```ts
 const table = useTable({
@@ -197,9 +197,9 @@ const table = useTable({
 })
 ```
 
-Range selection follows the table's current logical display order, including filtering, grouping, sorting, and expansion. With client-side pagination, ranges can cross pages because the complete pre-pagination order is used. With manual/server pagination, only rows loaded in the current `data` can participate.
+範囲選択は、フィルタリング、グループ化、ソート、展開を含めた、テーブルの現在の論理的な表示順に従います。クライアントサイドのページネーションでは、ページネーション前の完全な並び順を使うので、範囲がページをまたぐこともあります。手動（サーバーサイド）のページネーションでは、現在の `data` に読み込まれている行だけが対象になります。
 
-By default, a parent encountered in a range recursively toggles its selectable descendants when sub-row selection is enabled. Pass `selectChildren: false` when only rows explicitly present in the display-order interval should change:
+デフォルトでは、サブ行の選択が有効なとき、範囲内にある親の行は、選択できる子孫を再帰的に切り替えます。表示順の範囲内に実際に存在する行だけを変更したい場合は、`selectChildren: false` を渡してください。
 
 ```tsx
 <Checkbox
@@ -208,21 +208,21 @@ By default, a parent encountered in a range recursively toggles its selectable d
 />
 ```
 
-The interaction anchor is preserved across sorting, filtering, grouping, expansion, pagination, and data updates while its row id remains in the display order. If filtering or data replacement removes the anchor, the next Shift interaction falls back to an ordinary row toggle and establishes a new anchor. `resetRowSelection`, either select-all API, and `table.reset()` clear the anchor. Direct calls to `row.toggleSelected()` or `table.setRowSelection()`, and external controlled-state changes, do not establish or move it.
+起点は、その行 ID が表示順に残っている限り、ソート、フィルタリング、グループ化、展開、ページネーション、データの更新をまたいで保持されます。フィルタリングやデータの差し替えで起点の行がなくなった場合、次の Shift 操作は通常の行の切り替えとして扱われ、そこが新しい起点になります。`resetRowSelection`、すべて選択するいずれかの API、`table.reset()` は起点をクリアします。`row.toggleSelected()` や `table.setRowSelection()` の直接呼び出しと、外部の制御された状態の変更は、起点を設定も移動もしません。
 
-### Render Row Selection UI {#render-row-selection-ui}
+### 行選択の UI を描画する {#render-row-selection-ui}
 
-TanStack table does not dictate how you should render your row selection UI. You can use checkboxes, radio buttons, or simply hook up click events to the row itself. The table instance provides a few APIs to help you render your row selection UI.
+TanStack Table は、行選択の UI をどう描画するかを決めません。チェックボックスでもラジオボタンでも、行そのものにクリックイベントを結び付けるだけでもかまいません。テーブルインスタンスには、行選択の UI を描画するのに役立つ API がいくつかあります。
 
-#### Connect Row Selection APIs to Checkbox Inputs {#connect-row-selection-apis-to-checkbox-inputs}
+#### 行選択の API をチェックボックスの入力につなぐ {#connect-row-selection-apis-to-checkbox-inputs}
 
-TanStack Table provides some handler functions that you can connect directly to your checkbox inputs to make it easy to toggle row selection. These functions automatically call other internal APIs to update the row selection state and re-render the table.
+TanStack Table には、チェックボックスの入力に直接つないで行選択を簡単に切り替えられるハンドラー関数があります。これらの関数は、他の内部 API を自動的に呼び出して行選択の状態を更新し、テーブルを再レンダーします。
 
-Use the `row.getToggleSelectedHandler()` API to connect to your checkbox inputs to toggle the selection of a row.
+行の選択を切り替えるチェックボックスの入力には、`row.getToggleSelectedHandler()` API をつなぎます。
 
-Use the `table.getToggleAllRowsSelectedHandler()` or `table.getToggleAllPageRowsSelectedHandler` APIs to connect to your "select all" checkbox input to toggle the selection of all rows.
+すべての行の選択を切り替える「すべて選択」のチェックボックスの入力には、`table.getToggleAllRowsSelectedHandler()` または `table.getToggleAllPageRowsSelectedHandler` API をつなぎます。
 
-If you need more granular control over these function handlers, you can always just use the `row.toggleSelected()` or `table.toggleAllRowsSelected()` APIs directly. Or you can even just call the `table.setRowSelection()` API to directly set the row selection state just as you would with any other state updater. These handler functions are just a convenience.
+これらのハンドラー関数よりも細かく制御したい場合は、いつでも `row.toggleSelected()` や `table.toggleAllRowsSelected()` API を直接使えます。他の状態のアップデーターと同じように、`table.setRowSelection()` API を呼んで行選択の状態を直接設定することもできます。ハンドラー関数は便利のために用意されているだけです。
 
 ```tsx
 const columns = [
@@ -252,11 +252,11 @@ const columns = [
 ```
 
 > [!NOTE]
-> The `getCanSelectSubRows()` and `getIsAllSubRowsSelected()` clauses on the row checkbox only matter for tables with sub-rows. With flat data, `row.getIsSelected()` alone is enough. See the expanding example for the full pattern, including the `deselectParents` option for pruning stale parent ids when children are deselected.
+> 行のチェックボックスにある `getCanSelectSubRows()` と `getIsAllSubRowsSelected()` の条件が意味を持つのは、サブ行のあるテーブルだけです。フラットなデータなら `row.getIsSelected()` だけで十分です。子が選択解除されたときに古い親の ID を取り除く `deselectParents` オプションも含めた完全なパターンは、展開のサンプルを参照してください。
 
-#### Connect Row Selection APIs to UI {#connect-row-selection-apis-to-ui}
+#### 行選択の API を UI につなぐ {#connect-row-selection-apis-to-ui}
 
-If you want a simpler row selection UI, you can just hook up click events to the row itself. The `row.getToggleSelectedHandler()` API is also useful for this use case.
+もっと単純な行選択の UI にしたい場合は、行そのものにクリックイベントを結び付けるだけでもかまいません。この使い方でも `row.getToggleSelectedHandler()` API が役立ちます。
 
 ```tsx
 <tbody>

@@ -7,9 +7,9 @@ title: ReactTable
 type ReactTable<TFeatures, TData, TSelected> = Omit<Table<TFeatures, TData>, "store"> & object;
 ```
 
-Defined in: [src/useTable.ts:29](https://github.com/TanStack/table/blob/main/packages/react-table/src/useTable.ts#L29)
+定義元: [src/useTable.ts:29](https://github.com/TanStack/table/blob/main/packages/react-table/src/useTable.ts#L29)
 
-## Type Declaration {#type-declaration}
+## 型宣言 {#type-declaration}
 
 ### FlexRender {#flexrender}
 
@@ -17,26 +17,26 @@ Defined in: [src/useTable.ts:29](https://github.com/TanStack/table/blob/main/pac
 FlexRender: <TValue>(props) => ReactNode;
 ```
 
-A React component that renders headers, cells, or footers with custom markup.
-Use this utility component instead of manually calling flexRender.
+ヘッダー、セル、フッターを独自のマークアップで描画する React コンポーネントです。
+flexRender を手動で呼び出す代わりに、このユーティリティコンポーネントを使ってください。
 
-#### Type Parameters {#type-parameters}
+#### 型パラメーター {#type-parameters}
 
 ##### TValue {#tvalue}
 
 `TValue` *extends* `CellData` = `CellData`
 
-#### Parameters {#parameters}
+#### パラメーター {#parameters}
 
 ##### props {#props}
 
 [`FlexRenderProps`](FlexRenderProps.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 `ReactNode`
 
-#### Example {#example}
+#### 例 {#example}
 
 ```tsx
 <table.FlexRender cell={cell} />
@@ -44,7 +44,7 @@ Use this utility component instead of manually calling flexRender.
 <table.FlexRender footer={footer} />
 ```
 
-This replaces calling `flexRender` directly like this:
+これは、次のように `flexRender` を直接呼び出す書き方に代わるものです。
 ```tsx
 flexRender(cell.column.columnDef.cell, cell.getContext())
 flexRender(header.column.columnDef.header, header.getContext())
@@ -57,11 +57,11 @@ flexRender(footer.column.columnDef.footer, footer.getContext())
 readonly state: Readonly<TSelected>;
 ```
 
-The selected state of the table. This state may not match the structure of
-the full table state because it is selected by the selector function that
-you pass as the 2nd argument to `useTable`.
+テーブルの状態のうち、選択された部分です。この状態は、`useTable` の第 2 引数に渡した
+セレクター関数で選択されたものなので、テーブルの状態全体と
+構造が一致しないことがあります。
 
-#### Example {#example-1}
+#### 例 {#example-1}
 
 ```ts
 const table = useTable(options, (state) => ({ globalFilter: state.globalFilter })) // only globalFilter is part of the selected state
@@ -75,13 +75,13 @@ console.log(table.state.globalFilter)
 readonly store: Table<TFeatures, TData>["store"];
 ```
 
-#### Deprecated {#deprecated}
+#### 非推奨 {#deprecated}
 
-Prefer `table.state` for render reads,
-`table.atoms.<slice>.get()` for slice snapshots, or
-`table.Subscribe` / `useSelector(table.store, selector)` for explicit
-subscriptions. `table.store.state` is a current-value snapshot and is easy
-to misuse in render code.
+レンダー中の読み取りには `table.state` を、
+スライスのスナップショットには `table.atoms.<slice>.get()` を、
+明示的な購読には `table.Subscribe` / `useSelector(table.store, selector)` を使ってください。
+`table.store.state` は現在の値のスナップショットなので、
+レンダーのコードで誤用しやすいです。
 
 ### Subscribe {#subscribe}
 
@@ -93,28 +93,28 @@ Subscribe: {
 };
 ```
 
-Overloads (not a single union) so `selector` callbacks get correct contextual
-types in JSX; a union of two `selector` signatures degrades to implicit `any`.
+（1 つのユニオン型ではなく）オーバーロードにしているのは、JSX の中で `selector` のコールバックに
+正しい文脈上の型を付けるためです。2 つの `selector` シグネチャのユニオン型にすると、暗黙の `any` に退化してしまいます。
 
-Source **without** `selector` is a separate overload so children receive `TSourceValue`
-(identity projection). If `selector` were optional on one overload, `TSubSelected`
-would default to `unknown` instead of inferring from the source.
+`selector` **なし**で source を指定する場合を別のオーバーロードにしているのは、children が `TSourceValue` を
+（恒等射影として）受け取れるようにするためです。1 つのオーバーロードで `selector` を省略可能にすると、`TSubSelected` は
+source から推論されず、デフォルトの `unknown` になってしまいます。
 
-The **source** overloads are listed first so `TSourceValue` is inferred from `source`.
+`TSourceValue` が `source` から推論されるように、**source** を取るオーバーロードを先に並べています。
 
-#### Call Signature {#call-signature}
+#### 呼び出しシグネチャ {#call-signature}
 
 ```ts
 <TSourceValue>(props): ReactNode | Promise<ReactNode>;
 ```
 
-##### Type Parameters {#type-parameters-1}
+##### 型パラメーター {#type-parameters-1}
 
 ###### TSourceValue {#tsourcevalue}
 
 `TSourceValue`
 
-##### Parameters {#parameters-1}
+##### パラメーター {#parameters-1}
 
 ###### props {#props-1}
 
@@ -130,17 +130,17 @@ The **source** overloads are listed first so `TSourceValue` is inferred from `so
 
 [`SubscribeSource`](SubscribeSource.md)\<`TSourceValue`\>
 
-##### Returns {#returns-1}
+##### 戻り値 {#returns-1}
 
 `ReactNode` \| `Promise`\<`ReactNode`\>
 
-#### Call Signature {#call-signature-1}
+#### 呼び出しシグネチャ {#call-signature-1}
 
 ```ts
 <TSourceValue, TSubSelected>(props): ReactNode | Promise<ReactNode>;
 ```
 
-##### Type Parameters {#type-parameters-2}
+##### 型パラメーター {#type-parameters-2}
 
 ###### TSourceValue {#tsourcevalue-1}
 
@@ -150,7 +150,7 @@ The **source** overloads are listed first so `TSourceValue` is inferred from `so
 
 `TSubSelected`
 
-##### Parameters {#parameters-2}
+##### パラメーター {#parameters-2}
 
 ###### props {#props-2}
 
@@ -166,33 +166,33 @@ The **source** overloads are listed first so `TSourceValue` is inferred from `so
 
 [`SubscribeSource`](SubscribeSource.md)\<`TSourceValue`\>
 
-##### Returns {#returns-2}
+##### 戻り値 {#returns-2}
 
 `ReactNode` \| `Promise`\<`ReactNode`\>
 
-#### Call Signature {#call-signature-2}
+#### 呼び出しシグネチャ {#call-signature-2}
 
 ```ts
 <TSubSelected>(props): ReactNode | Promise<ReactNode>;
 ```
 
-##### Type Parameters {#type-parameters-3}
+##### 型パラメーター {#type-parameters-3}
 
 ###### TSubSelected {#tsubselected-1}
 
 `TSubSelected`
 
-##### Parameters {#parameters-3}
+##### パラメーター {#parameters-3}
 
 ###### props {#props-3}
 
 `Omit`\<[`SubscribePropsWithStore`](SubscribePropsWithStore.md)\<`TFeatures`, `TSubSelected`\>, `"source"`\>
 
-##### Returns {#returns-3}
+##### 戻り値 {#returns-3}
 
 `ReactNode` \| `Promise`\<`ReactNode`\>
 
-## Type Parameters {#type-parameters-4}
+## 型パラメーター {#type-parameters-4}
 
 ### TFeatures {#tfeatures}
 

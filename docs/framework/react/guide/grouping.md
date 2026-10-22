@@ -1,19 +1,19 @@
 ---
-title: Grouping (React) Guide
+title: グループ化（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Grouping](https://tanstack.com/table/latest/docs/framework/react/examples/grouping)
+- [グループ化](https://tanstack.com/table/latest/docs/framework/react/examples/grouping)
 
 > [!NOTE]
-> `columnGroupingFeature` and `rowAggregationFeature` are now separate features. Register either one independently, or register both when grouped rows should also calculate aggregate values. See the [Aggregation Guide](./aggregation) for aggregation setup.
+> `columnGroupingFeature` と `rowAggregationFeature` は、別々の機能になりました。どちらか一方だけを登録することも、グループ化した行で集計値も計算したい場合は両方を登録することもできます。集計の設定については[集計ガイド](./aggregation)を参照してください。
 
-### Grouping Setup {#grouping-setup}
+### グループ化のセットアップ {#grouping-setup}
 
-Here's how you set up your table to use grouping features. Adding the grouping feature enables the related APIs. If you use client-side grouping, also set up `groupedRowModel` after its feature, since row model slots are type-checked.
+グループ化の機能を使うためのテーブルのセットアップ方法は次のとおりです。グループ化の機能を追加すると、関連する API が使えるようになります。クライアントサイドでグループ化する場合は、その機能の後ろに `groupedRowModel` も設定してください。行モデルのスロットは型チェックされるためです。
 
 ```tsx
 import {
@@ -36,27 +36,27 @@ const table = useTable({
 })
 ```
 
-## Grouping (React) Guide {#grouping-react-guide}
+## グループ化（React）ガイド {#grouping-react-guide}
 
-Grouping in TanStack table is a feature that applies to columns and allows you to categorize and organize the table rows based on specific columns. This can be useful in cases where you have a large amount of data and you want to group them together based on certain criteria.
+TanStack Table のグループ化は列に適用する機能で、特定の列をもとにテーブルの行を分類・整理できます。大量のデータがあり、それを何らかの基準でまとめたい場合に便利です。
 
-Grouping can also affect column order. There are 3 table features that can reorder columns, which happen in the following order:
+グループ化は列の順序にも影響します。列を並べ替えうるテーブルの機能は3つあり、次の順に適用されます。
 
-1. [Column Pinning](./column-pinning) - If pinning, columns are split into start, center (unpinned), and end pinned columns.
-2. Manual [Column Ordering](./column-ordering) - A manually specified column order is applied.
-3. **Grouping** - If grouping is enabled, a grouping state is active, and `tableOptions.groupedColumnMode` is set to `'reorder' | 'remove'`, then the grouped columns are reordered to the start of the column flow.
+1. [列の固定](./column-pinning) - 固定している場合、列は先頭に固定された列、中央（固定されていない列）、末尾に固定された列に分かれます。
+2. 手動の[列の並べ替え](./column-ordering) - 手動で指定した列の順序が適用されます。
+3. **グループ化** - グループ化が有効で、グループ化の状態が設定されていて、`tableOptions.groupedColumnMode` が `'reorder' | 'remove'` の場合、グループ化した列が列の並びの先頭に移動します。
 
-### Client-Side vs Server-Side Grouping {#client-side-vs-server-side-grouping}
+### クライアントサイドとサーバーサイドのグループ化 {#client-side-vs-server-side-grouping}
 
-Grouping should operate over the complete dataset when its groups are meant to describe all rows. Use client-side grouping when the browser has the complete dataset. Use manual server-side grouping when the server returns only a page or another subset, or when the server needs to perform grouping and aggregation.
+グループがすべての行を表すべきときは、グループ化はデータセット全体を対象にする必要があります。ブラウザーがデータセット全体を持っている場合は、クライアントサイドのグループ化を使います。サーバーが1ページ分などの一部のデータしか返さない場合や、グループ化と集計をサーバーで行う必要がある場合は、手動のサーバーサイドのグループ化を使います。
 
-See the [Client-Side vs Server-Side Guide](../../../guide/client-side-vs-server-side) for the full decision framework, performance factors, and guidance for combining data operations.
+判断の枠組み全体、パフォーマンスの要因、データ操作を組み合わせる際の指針については、[クライアントサイドとサーバーサイドのガイド](../../../guide/client-side-vs-server-side)を参照してください。
 
-The client-side grouped row model invokes the page-index and expanded-state auto-reset hooks when its inputs change. Whether those states reset depends on the `autoResetPageIndex`, `autoResetExpanded`, `autoResetAll`, `manualPagination`, and `manualExpanding` options. If grouping is manual and this row model is omitted or bypassed, a grouping state change does not invoke those hooks, so reset dependent server-side state in the grouping change handler when needed.
+クライアントサイドのグループ化行モデルは、入力が変わるとページ番号と展開状態の自動リセット用フックを呼び出します。それらの状態が実際にリセットされるかどうかは、`autoResetPageIndex`、`autoResetExpanded`、`autoResetAll`、`manualPagination`、`manualExpanding` の各オプションで決まります。グループ化を手動で行い、この行モデルを省略または迂回している場合、グループ化の状態が変わってもこれらのフックは呼ばれません。必要に応じて、グループ化の変更ハンドラーの中で、依存するサーバーサイドの状態をリセットしてください。
 
-### Client-Side Grouping {#client-side-grouping}
+### クライアントサイドのグループ化 {#client-side-grouping}
 
-To use the grouping feature, add the `columnGroupingFeature` and the `groupedRowModel` factory to your features. The grouped row model is responsible for grouping the rows based on the grouping state.
+グループ化の機能を使うには、`columnGroupingFeature` と `groupedRowModel` のファクトリーを features に追加します。グループ化行モデルは、グループ化の状態に基づいて行をグループ化する役割を担います。
 
 ```tsx
 import {
@@ -77,8 +77,8 @@ const table = useTable({
 })
 ```
 
-When grouping state is active, the table will add matching rows as subRows to the grouped row. The grouped row will be added to the table rows at the same index as the first matching row. The matching rows will be removed from the table rows.
-To allow the user to expand and collapse the grouped rows, you can use the expanding feature.
+グループ化の状態が設定されていると、テーブルは該当する行を、グループ化した行の subRows として追加します。グループ化した行は、最初に該当した行と同じ位置でテーブルの行に追加されます。該当した行そのものは、テーブルの行から取り除かれます。
+ユーザーがグループ化した行を展開・折りたためるようにするには、展開の機能を使います。
 
 ```tsx
 const features = tableFeatures({
@@ -94,21 +94,21 @@ const table = useTable({
 })
 ```
 
-### Grouping state {#grouping-state}
+### グループ化の状態 {#grouping-state}
 
-The grouping state is an array of strings, where each string is the ID of a column to group by. The order of the strings in the array determines the order of the grouping. For example, if the grouping state is ['column1', 'column2'], then the table will first group by column1, and then within each group, it will group by column2. You can control the grouping state using the setGrouping function:
+グループ化の状態は文字列の配列で、各文字列はグループ化に使う列の ID です。配列内の文字列の順序が、グループ化の順序になります。たとえばグループ化の状態が ['column1', 'column2'] なら、テーブルはまず column1 でグループ化し、次に各グループの中で column2 でグループ化します。グループ化の状態は setGrouping 関数で操作できます。
 
 ```tsx
 table.setGrouping(['column1', 'column2'])
 ```
 
-You can also reset the grouping state to its initial state using the resetGrouping function:
+resetGrouping 関数を使うと、グループ化の状態を初期状態に戻すこともできます。
 
 ```tsx
 table.resetGrouping()
 ```
 
-By default, when a column is grouped, it is moved to the start of the table. You can control this behavior using the groupedColumnMode option. If you set it to 'reorder', then the grouped columns will be moved to the start of the table. If you set it to 'remove', then the grouped columns will be removed from the table. If you set it to false, then the grouped columns will not be moved or removed.
+初期設定では、列をグループ化するとその列はテーブルの先頭に移動します。この動作は groupedColumnMode オプションで変えられます。'reorder' にすると、グループ化した列はテーブルの先頭に移動します。'remove' にすると、グループ化した列はテーブルから取り除かれます。false にすると、グループ化した列は移動も削除もされません。
 
 ```tsx
 const table = useTable({
@@ -118,9 +118,9 @@ const table = useTable({
 })
 ```
 
-### Manual Grouping {#manual-grouping}
+### 手動のグループ化 {#manual-grouping}
 
-If you are doing server-side grouping, you can enable manual grouping using the manualGrouping option. When this option is set to true, the table will not automatically group rows using getGroupedRowModel() and instead will expect you to group the rows before passing them to the table.
+サーバーサイドでグループ化する場合は、manualGrouping オプションで手動のグループ化を有効にできます。このオプションを true にすると、テーブルは getGroupedRowModel() で行を自動的にグループ化しなくなります。代わりに、テーブルに渡す前に行をグループ化しておくことが求められます。
 
 ```tsx
 const features = tableFeatures({ columnGroupingFeature })
@@ -133,11 +133,11 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> There are not currently many known easy ways to do server-side grouping with TanStack Table. You will need to do lots of custom cell rendering to make this work.
+> 現時点では、TanStack Table でサーバーサイドのグループ化を手軽に実現する方法はあまり知られていません。実現するには、セルの独自レンダリングを数多く書く必要があります。
 
-### Controlled Grouping State {#controlled-grouping-state}
+### 制御されたグループ化の状態 {#controlled-grouping-state}
 
-If you need access to the grouping state in other parts of your application, you can own the `grouping` state slice yourself. The recommended way in v9 is an external atom passed through the `atoms` table option. Atoms preserve fine-grained subscriptions, and the grouping value can be read anywhere in your app (such as in a query key for server-side grouping) without forcing the component that owns the table to re-render.
+アプリケーションのほかの場所でグループ化の状態にアクセスする必要がある場合は、`grouping` の状態スライスを自分で管理できます。v9 で推奨する方法は、テーブルオプション `atoms` で外部のアトムを渡すことです。アトムを使うと細かい粒度の購読が保たれ、テーブルを持つコンポーネントを再レンダーさせることなく、アプリのどこからでも（サーバーサイドのグループ化に使うクエリキーの中などで）グループ化の値を読み取れます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -157,7 +157,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.grouping` plus `onGroupingChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+あるいは、v8 スタイルの `state.grouping` と `onGroupingChange` を組み合わせるパターンも引き続き使えます。単純な連携や v8 のコードを移行するときには便利ですが、外部のアトムに比べると粒度が粗くなります。詳しい比較は[テーブルの状態ガイド](./table-state)を参照してください。
 
 ```tsx
 const [grouping, setGrouping] = useState<GroupingState>([])
@@ -172,9 +172,9 @@ const table = useTable({
 })
 ```
 
-### Grouping APIs {#grouping-apis}
+### グループ化の API {#grouping-apis}
 
-Columns expose grouping APIs for toggling grouping and building grouping UI:
+列は、グループ化の切り替えやグループ化の UI 作成に使う API を公開しています。
 
 ```tsx
 column.toggleGrouping()
@@ -184,7 +184,7 @@ column.getIsGrouped()
 column.getGroupedIndex()
 ```
 
-Rows expose grouping helpers for grouped row rendering:
+行は、グループ化した行のレンダーに使うヘルパーを公開しています。
 
 ```tsx
 row.getIsGrouped()
@@ -193,18 +193,18 @@ row.groupingColumnId
 row.groupingValue
 ```
 
-Cells expose grouping and placeholder helpers:
+セルは、グループ化とプレースホルダーに関するヘルパーを公開しています。
 
 ```tsx
 cell.getIsGrouped()
 cell.getIsPlaceholder()
 ```
 
-The table instance exposes grouped and pre-grouped row models:
+テーブルインスタンスは、グループ化後とグループ化前の行モデルを公開しています。
 
 ```tsx
 table.getGroupedRowModel()
 table.getPreGroupedRowModel()
 ```
 
-Use `table.setGrouping` and `table.resetGrouping` to update the grouping state directly.
+グループ化の状態を直接更新するには、`table.setGrouping` と `table.resetGrouping` を使います。

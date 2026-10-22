@@ -22,12 +22,12 @@ type FlexRenderProps<TFeatures, TData, TValue> =
 };
 ```
 
-Defined in: [src/FlexRender.tsx:63](https://github.com/TanStack/table/blob/main/packages/react-table/src/FlexRender.tsx#L63)
+定義元: [src/FlexRender.tsx:63](https://github.com/TanStack/table/blob/main/packages/react-table/src/FlexRender.tsx#L63)
 
-Simplified component wrapper of `flexRender`. Use this utility component to render headers, cells, or footers with custom markup.
-Only one prop (`cell`, `header`, or `footer`) may be passed.
+`flexRender` を簡単に使えるようにしたコンポーネントのラッパーです。このユーティリティコンポーネントを使うと、ヘッダー、セル、フッターを独自のマークアップで描画できます。
+渡せる props は 1 つ（`cell`、`header`、`footer` のいずれか）だけです。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -41,7 +41,7 @@ Only one prop (`cell`, `header`, or `footer`) may be passed.
 
 `TValue` *extends* `CellData` = `CellData`
 
-## Examples {#examples}
+## 例 {#examples}
 
 ```ts
 <FlexRender cell={cell} />

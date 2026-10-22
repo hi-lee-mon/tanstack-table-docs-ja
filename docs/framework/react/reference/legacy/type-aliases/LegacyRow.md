@@ -7,14 +7,14 @@ title: LegacyRow
 type LegacyRow<TData> = Row<LegacyFeatures, TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:319](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L319)
+定義元: [src/useLegacyTable.ts:319](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L319)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-Use Row<TFeatures, TData> with useTable instead.
+代わりに、useTable と Row<TFeatures, TData> を使ってください。

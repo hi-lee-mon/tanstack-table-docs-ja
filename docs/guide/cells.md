@@ -1,22 +1,22 @@
 ---
-title: Cells Guide
+title: セルガイド
 ---
 
-This quick guide will discuss the different ways you can retrieve and interact with `cell` objects in TanStack Table.
+このガイドでは、TanStack Table で `cell` オブジェクトを取得する方法と、それを操作するさまざまな方法を簡単に説明します。
 
-## Where to Get Cells From {#where-to-get-cells-from}
+## セルの取得元 {#where-to-get-cells-from}
 
-Cells come from [Rows](./rows). Enough said, right?
+セルは [行](./rows) から取得します。説明するまでもありませんね。
 
-There are multiple `row` instance APIs you can use to retrieve the appropriate cells from a row depending on which features you are using. Most commonly, you will use the `row.getAllCells` or `row.getVisibleCells` APIs (if you are using column visibility features), but there are a handful of other similar APIs that you can use.
+使っている機能に応じて、行から適切なセルを取得するための `row` インスタンス API がいくつかあります。よく使うのは `row.getAllCells` か `row.getVisibleCells`（列の表示切り替え機能を使っている場合）ですが、ほかにも似た API がいくつかあります。
 
-## Cell Objects {#cell-objects}
+## セルオブジェクト {#cell-objects}
 
-Every cell object can be associated with a `<td>` or similar cell element in your UI. There are a few properties and methods on `cell` objects that you can use to interact with the table state and extract cell values from the table based on the state of the table.
+セルオブジェクトはそれぞれ、UI 上の `<td>` などのセル要素に対応させることができます。`cell` オブジェクトには、テーブルの状態を操作したり、テーブルの状態に基づいてセルの値を取り出したりするためのプロパティとメソッドがいくつかあります。
 
-### Cell IDs {#cell-ids}
+### セル ID {#cell-ids}
 
-Every cell object has an `id` property that makes it unique within the table instance. Each `cell.id` is constructed simply as a union of its parent row and column IDs separated by an underscore.
+セルオブジェクトにはすべて `id` プロパティがあり、テーブルインスタンスの中で一意になります。`cell.id` は、親の行の ID と列の ID をアンダースコアでつないだだけのものです。
 
 ```js
 {
@@ -24,18 +24,18 @@ Every cell object has an `id` property that makes it unique within the table ins
 }
 ```
 
-During grouping or aggregation features, the `cell.id` will have an additional string appended to it.
+グループ化や集計の機能を使っている場合は、`cell.id` の末尾にさらに文字列が付け加えられます。
 
-### Cell Parent Objects {#cell-parent-objects}
+### セルの親オブジェクト {#cell-parent-objects}
 
-Every cell stores a reference to its parent [row](./rows) and [column](./columns) objects.
+各セルは、親の [行](./rows) オブジェクトと [列](./columns) オブジェクトへの参照を持っています。
 
-### Access Cell Values {#access-cell-values}
+### セルの値にアクセスする {#access-cell-values}
 
-The recommended way to access data values from a cell is to use either the `cell.getValue` or `cell.renderValue` APIs. Using either of these APIs will cache the results of the accessor functions and keep rendering efficient. The only difference between the two is that `cell.renderValue` will return either the value or the `renderFallbackValue` if the value is undefined, whereas `cell.getValue` will return the value or `undefined` if the value is undefined.
+セルからデータの値を取り出すには、`cell.getValue` か `cell.renderValue` のどちらかの API を使うのが推奨の方法です。どちらを使っても、アクセサー関数の結果がキャッシュされ、効率よくレンダーできます。2つの違いは1点だけです。値が undefined のとき、`cell.renderValue` は `renderFallbackValue` を返し、`cell.getValue` は `undefined` を返します。
 
 > [!NOTE]
-> The `cell.getValue` and `cell.renderValue` APIs are shortcuts for the `row.getValue` and `row.renderValue` APIs, respectively.
+> `cell.getValue` と `cell.renderValue` は、それぞれ `row.getValue` と `row.renderValue` のショートカットです。
 
 ```js
 // Access the value for this cell's own column
@@ -43,26 +43,26 @@ const value = cell.getValue() // read the cell value
 const renderedValue = cell.renderValue() // read the cell value, falling back to `renderFallbackValue`
 ```
 
-These APIs take no arguments. They are bound to the cell's own column. If you need to read a different column's value from within a cell, use the parent row instead, e.g. `cell.row.getValue('someColumnId')`.
+これらの API は引数を取らず、セル自身の列に結び付いています。セルの中から別の列の値を読みたい場合は、`cell.row.getValue('someColumnId')` のように親の行を使ってください。
 
-### Access Other Row Data from Any Cell {#access-other-row-data-from-any-cell}
+### どのセルからでも行のほかのデータにアクセスする {#access-other-row-data-from-any-cell}
 
-Since every cell object is associated with its parent row, you can access any data from the original row that you are using in your table using `cell.row.original`.
+セルオブジェクトはどれも親の行に結び付いているので、`cell.row.original` を使えば、テーブルで使っている元の行データのどの値にもアクセスできます。
 
 ```js
 // Even if we are in the scope of a different cell, we can still access the original row data
 const firstName = cell.row.original.firstName // { firstName: 'John', lastName: 'Doe' }
 ```
 
-## More Cell APIs {#more-cell-apis}
+## そのほかのセル API {#more-cell-apis}
 
-Depending on the features that you are using for your table, there are dozens more useful APIs for interacting with cells. See each feature's respective API docs or guide for more information.
+テーブルで使っている機能によっては、セルを操作するための便利な API がほかにも数十個あります。詳しくは、各機能の API ドキュメントやガイドを参照してください。
 
-## Cell Rendering {#cell-rendering}
+## セルのレンダー {#cell-rendering}
 
-You can just use the `cell.renderValue` or `cell.getValue` APIs to render the cells of your table. However, these APIs will only spit out the raw cell values (from accessor functions). If you are using the `cell: () => JSX` column definition options, you will want to use the `flexRender` API utility from your adapter.
+`cell.renderValue` や `cell.getValue` の API をそのまま使って、テーブルのセルをレンダーすることもできます。ただし、これらの API が出力するのは（アクセサー関数から得た）セルの生の値だけです。列定義で `cell: () => JSX` のオプションを使っている場合は、アダプターが提供する `flexRender` ユーティリティを使うとよいでしょう。
 
-The `flexRender` API renders the cell correctly with any extra markup or JSX and calls the callback function with the correct parameters.
+`flexRender` は、追加のマークアップや JSX を含むセルを正しくレンダーし、コールバック関数を正しい引数で呼び出します。
 
 ```jsx
 import { flexRender } from '@tanstack/react-table'
@@ -84,6 +84,6 @@ const columns = [
 </tr>
 ```
 
-### Cell Spanning {#cell-spanning}
+### セル結合 {#cell-spanning}
 
-When the optional `cellSpanningFeature` is registered, adjacent cells can merge into one rendered cell. A cell reporting a span of `0` is covered by another cell's span and must be skipped instead of rendered. See the [Cell Spanning Guide](../framework/react/guide/cell-spanning) for the full rendering pattern.
+オプションの `cellSpanningFeature` を登録すると、隣り合うセルを1つのセルに結合してレンダーできます。結合幅として `0` を返すセルは別のセルの結合範囲に覆われているので、レンダーせずに飛ばす必要があります。レンダーのやり方の全体は [セル結合ガイド](../framework/react/guide/cell-spanning) を参照してください。

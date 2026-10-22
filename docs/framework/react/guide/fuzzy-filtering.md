@@ -1,16 +1,16 @@
 ---
-title: Fuzzy Filtering (React) Guide
+title: あいまい検索フィルター（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React の例を参照してください。
 
-- [Fuzzy Search](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy)
+- [あいまい検索](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy)
 
-### Fuzzy Filtering Setup {#fuzzy-filtering-setup}
+### あいまい検索フィルターの準備 {#fuzzy-filtering-setup}
 
-Here's how you set up your table to use fuzzy filtering features. Adding the fuzzy filtering feature enables the related APIs. If you use client-side fuzzy filtering and sorting, also set up `filteredRowModel` and `sortedRowModel` after their features, since row model slots are type-checked.
+あいまい検索フィルターの機能を使えるようにテーブルを準備する方法は次のとおりです。あいまい検索フィルターの機能を追加すると、関連する API が有効になります。クライアントサイドであいまい検索フィルターとソートを行う場合は、それぞれの機能のあとに `filteredRowModel` と `sortedRowModel` も設定してください。行モデルのスロットは型チェックされるためです。
 
 ```tsx
 import {
@@ -45,25 +45,25 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> The `filterFns` and `sortFns` registries above list only the custom `fuzzy` functions this guide uses. Spreading the entire built-in registries (`filterFns: { ...filterFns, fuzzy: fuzzyFilter }`) still works, but it puts every built-in function in your bundle. Register just the functions you use, or pass functions directly to the `filterFn` and `sortFn` column options with no registration.
+> 上の `filterFns` と `sortFns` のレジストリには、このガイドで使う独自の `fuzzy` 関数だけを登録しています。組み込みのレジストリをまるごと展開する書き方（`filterFns: { ...filterFns, fuzzy: fuzzyFilter }`）も使えますが、組み込みの関数がすべてバンドルに含まれてしまいます。使う関数だけを登録するか、登録せずに列オプションの `filterFn` や `sortFn` に関数を直接渡してください。
 
-## Fuzzy Filtering (React) Guide {#fuzzy-filtering-react-guide}
+## あいまい検索フィルター（React）ガイド {#fuzzy-filtering-react-guide}
 
-Fuzzy filtering is a technique that allows you to filter data based on approximate matches. This can be useful when you want to search for data that is similar to a given value, rather than an exact match.
+あいまい検索フィルターは、おおよそ一致するかどうかでデータを絞り込む手法です。完全に一致するデータではなく、指定した値に似たデータを探したいときに役立ちます。
 
-You can implement client-side fuzzy filtering by defining a custom filter function. This function should take in the row, columnId, and filter value, and return a boolean indicating whether the row should be included in the filtered data.
+クライアントサイドのあいまい検索フィルターは、独自のフィルター関数を定義すれば実装できます。この関数は行・列 ID（columnId）・フィルター値を受け取り、その行を絞り込み後のデータに含めるかどうかを真偽値で返します。
 
-Fuzzy filtering is mostly used with global filtering, but you can also apply it to individual columns. We will discuss how to implement fuzzy filtering for both cases.
+あいまい検索フィルターはおもにグローバルフィルターと組み合わせて使いますが、個々の列に適用することもできます。ここでは、両方の場合の実装方法を説明します。
 
 > [!NOTE]
-> You will need to install the `@tanstack/match-sorter-utils` library to use fuzzy filtering.
-> TanStack Match Sorter Utils is a fork of [match-sorter](https://github.com/kentcdodds/match-sorter) by Kent C. Dodds. It was forked to work better with TanStack Table's row by row filtering approach.
+> あいまい検索フィルターを使うには、`@tanstack/match-sorter-utils` ライブラリをインストールする必要があります。
+> TanStack Match Sorter Utils は、Kent C. Dodds 氏による [match-sorter](https://github.com/kentcdodds/match-sorter) のフォークです。TanStack Table の行ごとにフィルタリングする方式とうまく連携できるように、フォークされました。
 
-Using the match-sorter libraries is optional, but the TanStack Match Sorter Utils library provides a great way to both fuzzy filter and sort by the rank information it returns, so that rows can be sorted by their closest matches to the search query.
+match-sorter 系のライブラリを使うかどうかは任意です。ただ、TanStack Match Sorter Utils ライブラリを使うと、あいまい検索フィルターに加えて、ライブラリが返す順位の情報を使ったソートもうまく行えます。これにより、検索クエリに最も近い行から順に並べられます。
 
-### Defining a Custom Fuzzy Filter Function {#defining-a-custom-fuzzy-filter-function}
+### 独自のあいまい検索フィルター関数を定義する {#defining-a-custom-fuzzy-filter-function}
 
-Here's an example of a custom fuzzy filter function. First, define the filter meta shape and a features type that includes it:
+独自のあいまい検索フィルター関数の例を示します。まず、フィルターのメタ情報の形と、それを含む機能の型を定義します。
 
 ```typescript
 import { rankItem } from '@tanstack/match-sorter-utils'
@@ -94,9 +94,9 @@ const fuzzyFilter: FilterFn<FuzzyFeatures, RowData> = (
 }
 ```
 
-In this function, we're using the `rankItem` function from the `@tanstack/match-sorter-utils` library to rank the item. We then store the ranking information in the filter meta of the row (the `addMeta` callback is optional, so call it with optional chaining), and return whether the item passed the ranking criteria.
+この関数では、`@tanstack/match-sorter-utils` ライブラリの `rankItem` 関数で項目の順位を求めています。次に、その順位の情報を行のフィルターのメタ情報に保存し（`addMeta` コールバックは省略可能なので、オプショナルチェーンで呼び出します）、項目が順位の基準を満たしたかどうかを返します。
 
-To reference this filter function by the string name `'fuzzy'` and type the stored filter meta, register both in the `tableFeatures` call using the `filterFns` and `filterMeta` slots:
+このフィルター関数を文字列の名前 `'fuzzy'` で参照し、保存するフィルターのメタ情報に型を付けるには、`tableFeatures` の呼び出しで `filterFns` スロットと `filterMeta` スロットの両方に登録します。
 
 ```typescript
 import { tableFeatures, metaHelper } from '@tanstack/react-table'
@@ -113,11 +113,11 @@ const features = tableFeatures({
 })
 ```
 
-No `declare module` augmentation is needed. The `filterFns` and `filterMeta` slots are scoped to this features object and only affect tables created with it.
+`declare module` による型の拡張は必要ありません。`filterFns` スロットと `filterMeta` スロットはこの features オブジェクトの中だけで有効で、このオブジェクトで作成したテーブルにしか影響しません。
 
-### Using Fuzzy Filtering with Global Filtering {#using-fuzzy-filtering-with-global-filtering}
+### あいまい検索フィルターをグローバルフィルターで使う {#using-fuzzy-filtering-with-global-filtering}
 
-To use fuzzy filtering with global filtering, register the fuzzy filter function in the `filterFns` slot on `tableFeatures` and reference it in the `globalFilterFn` option of the table:
+あいまい検索フィルターをグローバルフィルターで使うには、`tableFeatures` の `filterFns` スロットにあいまい検索フィルター関数を登録し、テーブルの `globalFilterFn` オプションでそれを参照します。
 
 ```typescript
 import {
@@ -150,9 +150,9 @@ const table = useTable({
 })
 ```
 
-### Using Fuzzy Filtering with Column Filtering {#using-fuzzy-filtering-with-column-filtering}
+### あいまい検索フィルターを列フィルターで使う {#using-fuzzy-filtering-with-column-filtering}
 
-To use fuzzy filtering with column filtering, register your fuzzy filter function in the `filterFns` slot on `tableFeatures` (as shown above). You can then specify the fuzzy filter by name in the `filterFn` option of the column definition:
+あいまい検索フィルターを列フィルターで使うには、（上で示したように）`tableFeatures` の `filterFns` スロットにあいまい検索フィルター関数を登録します。そのうえで、列定義の `filterFn` オプションにあいまい検索フィルターを名前で指定します。
 
 ```typescript
 const column = [
@@ -167,11 +167,11 @@ const column = [
 ]
 ```
 
-In this example, we're applying the fuzzy filter to a column that combines the firstName and lastName fields of the data.
+この例では、データの firstName フィールドと lastName フィールドを結合した列に、あいまい検索フィルターを適用しています。
 
-#### Sorting with Fuzzy Filtering {#sorting-with-fuzzy-filtering}
+#### あいまい検索フィルターと組み合わせたソート {#sorting-with-fuzzy-filtering}
 
-When using fuzzy filtering with column filtering, you might also want to sort the data based on the ranking information. You can do this by defining a custom sorting function:
+あいまい検索フィルターを列フィルターで使うときは、順位の情報にもとづいてデータをソートしたくなることもあるでしょう。その場合は、独自のソート関数を定義します。
 
 ```typescript
 import { compareItems } from '@tanstack/match-sorter-utils'
@@ -194,9 +194,9 @@ const fuzzySort: SortFn<FuzzyFeatures, Person> = (rowA, rowB, columnId) => {
 }
 ```
 
-In this function, we're comparing the ranking information of the two rows. If the ranks are equal, we fall back to alphanumeric sorting.
+この関数では、2つの行の順位の情報を比較しています。順位が同じ場合は、英数字順のソートにフォールバックします。
 
-Register `fuzzySort` in the `sortFns` slot on `tableFeatures` (as shown in the setup section above) and reference it by name in the column definition:
+（上の準備の節で示したように）`tableFeatures` の `sortFns` スロットに `fuzzySort` を登録し、列定義で名前で参照します。
 
 ```typescript
 {
@@ -209,4 +209,4 @@ Register `fuzzySort` in the `sortFns` slot on `tableFeatures` (as shown in the s
 }
 ```
 
-You can also pass `fuzzySort` directly as a function to the `sortFn` column option instead of a string reference, which skips the registration step.
+文字列で参照する代わりに、列オプションの `sortFn` に `fuzzySort` を関数として直接渡すこともできます。この場合、登録の手順は不要です。

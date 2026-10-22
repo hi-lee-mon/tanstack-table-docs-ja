@@ -10,9 +10,9 @@ type SubscribeProps<TFeatures, TSelected, TSourceValue> =
 | SubscribePropsWithSourceWithSelector<TSourceValue, TSelected>;
 ```
 
-Defined in: [src/Subscribe.ts:66](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L66)
+定義元: [src/Subscribe.ts:66](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L66)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 

@@ -1,38 +1,38 @@
 ---
-title: Column Definitions Guide
+title: 列定義ガイド
 ---
 
 > [!NOTE]
-> This guide is about setting up column definitions for your table and NOT about the actual [`column`](./columns) objects that are generated within the table instance.
+> このガイドで扱うのは、テーブルの列定義を設定する方法です。テーブルインスタンスの中で生成される実際の [`column`](./columns) オブジェクトについてのガイドでは**ありません**。
 
-Column defs are the single most important part of building a table. They are responsible for:
+列定義は、テーブルを作るうえで最も重要な部分です。列定義は次のことを担います。
 
-- Building the underlying data model that will be used for everything including sorting, filtering, grouping, etc.
-- Formatting the data model into what will be displayed in the table
-- Creating [header groups](../reference/index/interfaces/HeaderGroup_Core), [headers](../reference/index/interfaces/Header_Core) and footers
-- Creating columns for display-only purposes, e.g. action buttons, checkboxes, expanders, sparklines, etc.
+- ソート・フィルタリング・グループ化など、あらゆる処理で使われるもとのデータモデルを組み立てる
+- データモデルを、テーブルに表示する形に整える
+- [ヘッダーグループ](../reference/index/interfaces/HeaderGroup_Core)・[ヘッダー](../reference/index/interfaces/Header_Core)・フッターを作る
+- 操作ボタン・チェックボックス・展開ボタン・スパークラインなど、表示だけを目的とした列を作る
 
-## Column Def Types {#column-def-types}
+## 列定義の種類 {#column-def-types}
 
-The following "types" of column defs aren't actually TypeScript types, but more so a way to talk about and describe overall categories of column defs:
+ここで挙げる列定義の「種類」は、実際の TypeScript の型ではありません。列定義をおおまかに分類して説明するための呼び方です。
 
-- `Accessor Columns`
-  - Accessor columns have an underlying data model which means they can be sorted, filtered, grouped, etc.
-- `Display Columns`
-  - Display columns do **not** have a data model which means they cannot be sorted, filtered, etc, but they can be used to display arbitrary content in the table, e.g. a row actions button, checkbox, expander, etc.
-- `Grouping Columns`
-  - Group columns do **not** have a data model so they too cannot be sorted, filtered, etc, and are used to group other columns together. It's common to define a header or footer for a column group.
+- `Accessor Columns`（アクセサー列）
+  - アクセサー列はもとになるデータモデルを持つので、ソート・フィルタリング・グループ化などができます。
+- `Display Columns`（表示列）
+  - 表示列はデータモデルを**持たない**ので、ソートやフィルタリングなどはできません。その代わり、行の操作ボタン・チェックボックス・展開ボタンなど、任意のコンテンツをテーブルに表示するのに使えます。
+- `Grouping Columns`（グループ列）
+  - グループ列もデータモデルを**持たない**ので、ソートやフィルタリングなどはできません。ほかの列をひとまとめにするために使います。列グループにはヘッダーやフッターを定義するのが一般的です。
 
-## Column Helpers {#column-helpers}
+## 列ヘルパー {#column-helpers}
 
-While column defs are just plain objects at the end of the day, a `createColumnHelper` function is exposed from the table core which, when called with your features type and row type, returns a utility for creating different column definition types with the highest type-safety possible.
+列定義は結局のところただのオブジェクトですが、テーブルのコアからは `createColumnHelper` 関数が公開されています。機能の型と行の型を指定してこの関数を呼び出すと、さまざまな種類の列定義を、できるかぎり高い型安全性で作れるユーティリティが返されます。
 
-In v9, `createColumnHelper` requires two type parameters: `TFeatures` (from your `features` object) and `TData` (your row type). Use `typeof features` to get the features type.
+v9 の `createColumnHelper` には、2つの型パラメーターが必要です。`features` オブジェクトから得る `TFeatures` と、行の型である `TData` です。機能の型は `typeof features` で取得します。
 
 > [!NOTE]
-> If you use the `createTableHook` factory, it returns a `createAppColumnHelper` that is already bound to your features type, so you only pass `TData`. See the [Composable Tables Guide](../framework/react/guide/composable-tables).
+> `createTableHook` ファクトリーを使う場合は、機能の型があらかじめ結び付けられた `createAppColumnHelper` が返されるので、渡すのは `TData` だけで済みます。[コンポーザブルなテーブルのガイド](../framework/react/guide/composable-tables)を参照してください。
 
-Here's an example of creating and using a column helper:
+列ヘルパーを作成して使う例を示します。
 
 ```tsx
 // Define your row shape
@@ -110,19 +110,19 @@ const defaultColumns = columnHelper.columns([
 ])
 ```
 
-## Creating Accessor Columns {#creating-accessor-columns}
+## アクセサー列を作る {#creating-accessor-columns}
 
-Accessor columns are unique in that they must be configured to extract primitive values for each item in your `data` array.
+アクセサー列には、`data` 配列の各要素からプリミティブな値を取り出すように設定しなければならない、という独特の特徴があります。
 
-There are 3 ways to do this:
+これには3つの方法があります。
 
-- If your items are `objects`, use an object-key that corresponds to the value you want to extract.
-- If your items are nested `arrays`, use an array index that corresponds to the value you want to extract.
-- Use an accessor function that returns the value you want to extract.
+- 要素が `objects` の場合は、取り出したい値に対応するオブジェクトのキーを使います。
+- 要素が入れ子の `arrays` の場合は、取り出したい値に対応する配列のインデックスを使います。
+- 取り出したい値を返すアクセサー関数を使います。
 
-### Object Keys {#object-keys}
+### オブジェクトのキー {#object-keys}
 
-If each of your items is an object with the following shape:
+各要素が次の形のオブジェクトだとします。
 
 ```tsx
 type Person = {
@@ -135,7 +135,7 @@ type Person = {
 }
 ```
 
-You could extract the `firstName` value like so:
+`firstName` の値は次のように取り出せます。
 
 ```tsx
 
@@ -148,9 +148,9 @@ columnHelper.accessor('firstName')
 }
 ```
 
-### Deep Keys {#deep-keys}
+### 深いキー {#deep-keys}
 
-If each of your items is an object with the following shape:
+各要素が次の形のオブジェクトだとします。
 
 ```tsx
 type Person = {
@@ -165,7 +165,7 @@ type Person = {
 }
 ```
 
-You could extract the `first` value like so:
+`first` の値は次のように取り出せます。
 
 ```tsx
 columnHelper.accessor('name.first', {
@@ -180,15 +180,15 @@ columnHelper.accessor('name.first', {
 }
 ```
 
-### Array Indices {#array-indices}
+### 配列のインデックス {#array-indices}
 
-If each of your items is an array with the following shape:
+各要素が次の形の配列だとします。
 
 ```tsx
 type Sales = [Date, number]
 ```
 
-You could extract the `number` value like so:
+`number` の値は次のように取り出せます。
 
 ```tsx
 columnHelper.accessor(row => row[1], {
@@ -203,11 +203,11 @@ columnHelper.accessor(row => row[1], {
 ```
 
 > [!NOTE]
-> When using `accessorKey` with array data, the key must be a string (e.g. `'1'`, not the number `1`).
+> 配列のデータで `accessorKey` を使う場合、キーは文字列にする必要があります（数値の `1` ではなく `'1'` のように書きます）。
 
-### Accessor Functions {#accessor-functions}
+### アクセサー関数 {#accessor-functions}
 
-If each of your items is an object with the following shape:
+各要素が次の形のオブジェクトだとします。
 
 ```tsx
 type Person = {
@@ -220,7 +220,7 @@ type Person = {
 }
 ```
 
-You could extract a computed full-name value like so:
+計算したフルネームの値は、次のように取り出せます。
 
 ```tsx
 columnHelper.accessor(row => `${row.firstName} ${row.lastName}`, {
@@ -235,27 +235,27 @@ columnHelper.accessor(row => `${row.firstName} ${row.lastName}`, {
 }
 ```
 
-> 🧠 Remember, the accessed value is what is used to sort, filter, etc. so you'll want to make sure your accessor function returns a primitive value that can be manipulated in a meaningful way. If you return a non-primitive value like an object or array, you will need the appropriate filter/sort/grouping functions to manipulate them, or even supply your own! 😬
+> 🧠 アクセサーで取り出した値は、ソートやフィルタリングなどに使われることを覚えておいてください。そのため、アクセサー関数は意味のある形で扱えるプリミティブな値を返すようにしましょう。オブジェクトや配列のようなプリミティブでない値を返す場合は、それを扱える適切なフィルター・ソート・グループ化の関数が必要になります。場合によっては自分で用意しなければなりません。😬
 
-## Unique Column IDs {#unique-column-ids}
+## 一意な列 ID {#unique-column-ids}
 
-Columns are uniquely identified with 3 strategies:
+列は、次の3つの方法で一意に識別されます。
 
-- If defining an accessor column with an object key or array index, the same will be used to uniquely identify the column.
-  - Any periods (`.`) in an object key will be replaced by underscores (`_`).
-- If defining an accessor column with an accessor function
-  - The column's `id` property will be used to uniquely identify the column OR
-  - If a primitive `string` header is supplied, that header string will be used to uniquely identify the column
+- オブジェクトのキーか配列のインデックスでアクセサー列を定義した場合は、そのキーやインデックスが列の識別に使われます。
+  - オブジェクトのキーに含まれるピリオド（`.`）は、アンダースコア（`_`）に置き換えられます。
+- アクセサー関数でアクセサー列を定義した場合は、次のどちらかで識別されます。
+  - 列の `id` プロパティが列の識別に使われます。または、
+  - プリミティブな `string` のヘッダーを指定した場合は、そのヘッダーの文字列が列の識別に使われます。
 
-> 🧠 An easy way to remember: If you define a column with an accessor function, either provide a string header or provide a unique `id` property.
+> 🧠 覚え方は簡単です。アクセサー関数で列を定義するなら、文字列のヘッダーか、一意な `id` プロパティのどちらかを指定してください。
 
-## Dynamic Column Definitions {#dynamic-column-definitions}
+## 動的な列定義 {#dynamic-column-definitions}
 
-Column definitions do not have to be hard-coded. When the shape of your data is not known ahead of time (arbitrary API responses, user-uploaded CSV files, user-configurable reports), you can generate the column definitions from the data itself at runtime.
+列定義はハードコードする必要はありません。データの形が事前に分からない場合（任意の API レスポンス、ユーザーがアップロードした CSV ファイル、ユーザーが設定できるレポートなど）は、実行時にデータそのものから列定義を生成できます。
 
-> 🧠 Naming note: accessor functions create computed ("derived") values within a known row shape, like the `fullName` example above. Dynamic column definitions generate the column set itself when the row shape is unknown. The two techniques are complementary.
+> 🧠 用語についての注意: アクセサー関数は、上の `fullName` の例のように、形が分かっている行の中で計算した（「派生した」）値を作ります。一方、動的な列定義は、行の形が分からないときに列の集合そのものを生成します。この2つの手法は互いに補い合う関係にあります。
 
-Since there is no static row type to infer from, type your rows as a generic record and build plain column def objects. The column helper offers no benefit here because there is no known shape for it to infer against:
+推論のもとになる静的な行の型がないので、行の型は汎用的なレコードにして、ただのオブジェクトとして列定義を組み立てます。推論の対象となる既知の形がないので、ここでは列ヘルパーを使う利点はありません。
 
 ```tsx
 type DynamicRow = Record<string, unknown>
@@ -269,27 +269,27 @@ const columns: Array<ColumnDef<typeof features, DynamicRow>> = data.length
   : []
 ```
 
-Two things to keep in mind:
+注意点が2つあります。
 
-- **Stable identity.** Rebuild the columns array only when the data actually changes (for example, `useMemo` keyed on `data` in React, or a `computed`/memo in other frameworks). Recreating column defs on every render forces the table to reprocess all of its columns.
-- **Runtime type detection.** Since values are typed `unknown`, inspect a sample value per key to choose type-appropriate options: a `sortFn` and `filterFn` suited to numbers, dates, or booleans, and a matching filter UI. The registered function names described below make this a simple switch on the detected type.
+- **参照を安定させる。** 列の配列は、データが実際に変わったときだけ作り直してください（たとえば React では `data` をキーにした `useMemo`、ほかのフレームワークでは `computed` やメモ化を使います）。レンダーのたびに列定義を作り直すと、テーブルはすべての列を処理し直すことになります。
+- **実行時に型を判定する。** 値の型は `unknown` なので、キーごとにサンプルの値を調べて、型に合ったオプションを選びます。数値・日付・真偽値に適した `sortFn` と `filterFn`、そしてそれに合ったフィルターの UI です。後述するように関数を登録した名前で指定できるので、判定した型による単純な分岐で済みます。
 
-See the [Dynamic Columns example](https://tanstack.com/table/latest/docs/framework/react/examples/basic-dynamic-columns) (available for every framework adapter) for a complete implementation with data type detection, per-type sort and filter functions, and per-type filter components powered by column faceting.
+データ型の判定、型ごとのソート関数とフィルター関数、列のファセットを使った型ごとのフィルターコンポーネントまで含めた完全な実装は、[動的な列のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/basic-dynamic-columns)（すべてのフレームワークアダプターで用意されています）を参照してください。
 
-## Column Formatting & Rendering {#column-formatting--rendering}
+## 列の整形と描画 {#column-formatting--rendering}
 
-By default, column cells will display their data model value as a string. You can override this behavior by providing custom rendering implementations. Each implementation is provided with relevant information about the cell, header or footer and returns something your framework adapter can render e.g. JSX/Components/strings/etc. This will depend on which adapter you are using.
+デフォルトでは、列のセルにはデータモデルの値が文字列として表示されます。この動作は、独自の描画処理を指定して上書きできます。それぞれの描画処理には、セル・ヘッダー・フッターに関する情報が渡されます。描画処理は、JSX・コンポーネント・文字列など、フレームワークアダプターが描画できるものを返します。何を返せるかは、使っているアダプターによって異なります。
 
-There are a couple of formatters available to you:
+使える整形用の関数（フォーマッター）は次のとおりです。
 
-- `cell`: Used for formatting cells.
-- `aggregatedCell`: Used for formatting cells when aggregated.
-- `header`: Used for formatting headers.
-- `footer`: Used for formatting footers.
+- `cell`: セルの整形に使います。
+- `aggregatedCell`: 集計されたセルの整形に使います。
+- `header`: ヘッダーの整形に使います。
+- `footer`: フッターの整形に使います。
 
-### Cell Formatting {#cell-formatting}
+### セルの整形 {#cell-formatting}
 
-You can provide a custom cell formatter by passing a function to the `cell` property and using the `props.getValue()` function to access your cell's value:
+`cell` プロパティに関数を渡すと、独自のセルのフォーマッターを指定できます。セルの値には `props.getValue()` 関数でアクセスします。
 
 ```tsx
 columnHelper.accessor('firstName', {
@@ -297,7 +297,7 @@ columnHelper.accessor('firstName', {
 })
 ```
 
-Cell formatters are also provided the `row` and `table` objects, so you can customize the cell formatting beyond just the cell value. The example below provides `firstName` as the accessor, but also displays a prefixed user ID located on the original row object:
+セルのフォーマッターには `row` オブジェクトと `table` オブジェクトも渡されるので、セルの値以外の情報も使ってセルの表示を整えられます。次の例では、アクセサーに `firstName` を指定しつつ、元の行オブジェクトにあるユーザー ID を先頭に付けて表示しています。
 
 ```tsx
 columnHelper.accessor('firstName', {
@@ -307,17 +307,17 @@ columnHelper.accessor('firstName', {
 })
 ```
 
-### Aggregated Cell Formatting {#aggregated-cell-formatting}
+### 集計されたセルの整形 {#aggregated-cell-formatting}
 
-Aggregated cells render in place of regular cells when rows are grouped. This is discussed in more detail in the [Grouping Guide](../framework/react/guide/grouping), which is available for every framework adapter.
+行がグループ化されているときは、通常のセルの代わりに集計されたセルが描画されます。詳しくは、すべてのフレームワークアダプター向けに用意されている[グループ化ガイド](../framework/react/guide/grouping)で説明しています。
 
-### Header & Footer Formatting {#header--footer-formatting}
+### ヘッダーとフッターの整形 {#header--footer-formatting}
 
-Headers and footers do not have access to row data, but still use the same concepts for displaying custom content.
+ヘッダーとフッターからは行のデータにアクセスできませんが、独自のコンテンツを表示する考え方は同じです。
 
-## Feature Options on Column Defs {#feature-options-on-column-defs}
+## 列定義での機能のオプション {#feature-options-on-column-defs}
 
-Beyond accessors and formatters, column defs carry per-column options for whichever features your table has enabled. Common examples include `sortFn`, `filterFn`, `aggregationFn`, and enable flags such as `enableSorting` or `enableColumnFilter`.
+列定義には、アクセサーとフォーマッターのほかに、テーブルで有効にしている機能ごとの列単位のオプションも指定できます。よく使うものには、`sortFn`・`filterFn`・`aggregationFn` や、`enableSorting`・`enableColumnFilter` といった有効化のフラグがあります。
 
 ```tsx
 columnHelper.accessor('age', {
@@ -327,8 +327,8 @@ columnHelper.accessor('age', {
 })
 ```
 
-In v9, the string names you can pass to these options are typed from the function registries you include in `tableFeatures` (such as `sortFns`, `filterFns`, and `aggregationFns`). Passing a name that is not in the registry is a type error. Custom functions can be provided inline or registered under your own names. See the [Type Helpers Guide](./helpers) for how registries shape these types, and each feature guide for the full set of available options.
+v9 では、これらのオプションに渡せる文字列の名前は、`tableFeatures` に含めた関数のレジストリ（`sortFns`・`filterFns`・`aggregationFns` など）から型付けされます。レジストリにない名前を渡すと型エラーになります。独自の関数は、その場で直接渡すことも、自分で決めた名前で登録することもできます。レジストリによってこれらの型がどう決まるかは[型ヘルパーガイド](./helpers)を、使えるオプションの一覧はそれぞれの機能のガイドを参照してください。
 
-## Column Meta {#column-meta}
+## 列のメタ情報 {#column-meta}
 
-Column defs also accept a `meta` property for attaching your own arbitrary, strongly-typed data to a column (for example, a filter variant or a detected data type). See the [Table and Column Meta Guide](./table-and-column-meta) for details on typing it with `metaHelper`.
+列定義には `meta` プロパティも指定できます。これを使うと、任意のデータを強い型付きで列に付けられます（たとえば、フィルターの種類や判定したデータ型など）。`metaHelper` で型を付ける方法について詳しくは、[テーブルと列のメタ情報ガイド](./table-and-column-meta)を参照してください。

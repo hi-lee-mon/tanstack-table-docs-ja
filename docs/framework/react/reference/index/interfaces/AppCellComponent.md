@@ -3,11 +3,11 @@ id: AppCellComponent
 title: AppCellComponent
 ---
 
-Defined in: [src/createTableHook.tsx:470](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L470)
+定義元: [src/createTableHook.tsx:470](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L470)
 
-Component type for AppCell - wraps a cell and provides cell context with optional Subscribe
+AppCell のコンポーネント型です。セルをラップし、セルのコンテキストを提供します。Subscribe も任意で使えます。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -21,43 +21,43 @@ Component type for AppCell - wraps a cell and provides cell context with optiona
 
 `TCellComponents` *extends* `Record`\<`string`, `ComponentType`\<`any`\>\>
 
-## Call Signature {#call-signature}
+## 呼び出しシグネチャ {#call-signature}
 
 ```ts
 AppCellComponent<TValue>(props): ReactNode;
 ```
 
-Defined in: [src/createTableHook.tsx:475](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L475)
+定義元: [src/createTableHook.tsx:475](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L475)
 
-Component type for AppCell - wraps a cell and provides cell context with optional Subscribe
+AppCell のコンポーネント型です。セルをラップし、セルのコンテキストを提供します。Subscribe も任意で使えます。
 
-### Type Parameters {#type-parameters-1}
+### 型パラメーター {#type-parameters-1}
 
 #### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-### Parameters {#parameters}
+### パラメーター {#parameters}
 
 #### props {#props}
 
 [`AppCellPropsWithoutSelector`](AppCellPropsWithoutSelector.md)\<`TFeatures`, `TData`, `TValue`, `TCellComponents`\>
 
-### Returns {#returns}
+### 戻り値 {#returns}
 
 `ReactNode`
 
-## Call Signature {#call-signature-1}
+## 呼び出しシグネチャ {#call-signature-1}
 
 ```ts
 AppCellComponent<TValue, TSelected>(props): ReactNode;
 ```
 
-Defined in: [src/createTableHook.tsx:483](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L483)
+定義元: [src/createTableHook.tsx:483](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L483)
 
-Component type for AppCell - wraps a cell and provides cell context with optional Subscribe
+AppCell のコンポーネント型です。セルをラップし、セルのコンテキストを提供します。Subscribe も任意で使えます。
 
-### Type Parameters {#type-parameters-2}
+### 型パラメーター {#type-parameters-2}
 
 #### TValue {#tvalue-1}
 
@@ -67,12 +67,12 @@ Component type for AppCell - wraps a cell and provides cell context with optiona
 
 `TSelected` = `unknown`
 
-### Parameters {#parameters-1}
+### パラメーター {#parameters-1}
 
 #### props {#props-1}
 
 [`AppCellPropsWithSelector`](AppCellPropsWithSelector.md)\<`TFeatures`, `TData`, `TValue`, `TCellComponents`, `TSelected`\>
 
-### Returns {#returns-1}
+### 戻り値 {#returns-1}
 
 `ReactNode`

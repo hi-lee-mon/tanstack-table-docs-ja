@@ -7,12 +7,12 @@ title: AppCellContext
 type AppCellContext<TFeatures, TData, TValue, TCellComponents> = object;
 ```
 
-Defined in: [src/createTableHook.tsx:48](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L48)
+定義元: [src/createTableHook.tsx:48](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L48)
 
-Enhanced CellContext with pre-bound cell components.
-The `cell` property includes the registered cellComponents.
+セルコンポーネントをあらかじめバインドした、拡張版の CellContext です。
+`cell` プロパティには、登録した cellComponents が含まれます。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -30,7 +30,7 @@ The `cell` property includes the registered cellComponents.
 
 `TCellComponents` *extends* `Record`\<`string`, `ComponentType`\<`any`\>\>
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### cell {#cell}
 
@@ -38,9 +38,9 @@ The `cell` property includes the registered cellComponents.
 cell: Cell<TFeatures, TData, TValue> & TCellComponents & object;
 ```
 
-Defined in: [src/createTableHook.tsx:54](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L54)
+定義元: [src/createTableHook.tsx:54](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L54)
 
-#### Type Declaration {#type-declaration}
+#### 型宣言 {#type-declaration}
 
 ##### FlexRender {#flexrender}
 
@@ -48,7 +48,7 @@ Defined in: [src/createTableHook.tsx:54](https://github.com/TanStack/table/blob/
 FlexRender: () => ReactNode;
 ```
 
-###### Returns {#returns}
+###### 戻り値 {#returns}
 
 `ReactNode`
 
@@ -60,7 +60,7 @@ FlexRender: () => ReactNode;
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [src/createTableHook.tsx:56](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L56)
+定義元: [src/createTableHook.tsx:56](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L56)
 
 ***
 
@@ -70,7 +70,7 @@ Defined in: [src/createTableHook.tsx:56](https://github.com/TanStack/table/blob/
 getValue: CellContext<TFeatures, TData, TValue>["getValue"];
 ```
 
-Defined in: [src/createTableHook.tsx:57](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L57)
+定義元: [src/createTableHook.tsx:57](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L57)
 
 ***
 
@@ -80,7 +80,7 @@ Defined in: [src/createTableHook.tsx:57](https://github.com/TanStack/table/blob/
 renderValue: CellContext<TFeatures, TData, TValue>["renderValue"];
 ```
 
-Defined in: [src/createTableHook.tsx:58](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L58)
+定義元: [src/createTableHook.tsx:58](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L58)
 
 ***
 
@@ -90,7 +90,7 @@ Defined in: [src/createTableHook.tsx:58](https://github.com/TanStack/table/blob/
 row: Row<TFeatures, TData>;
 ```
 
-Defined in: [src/createTableHook.tsx:59](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L59)
+定義元: [src/createTableHook.tsx:59](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L59)
 
 ***
 
@@ -100,4 +100,4 @@ Defined in: [src/createTableHook.tsx:59](https://github.com/TanStack/table/blob/
 table: Table<TFeatures, TData>;
 ```
 
-Defined in: [src/createTableHook.tsx:60](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L60)
+定義元: [src/createTableHook.tsx:60](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L60)

@@ -1,20 +1,17 @@
 ---
-title: Aggregation (React) Guide
+title: 集計（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-- [Aggregation](https://tanstack.com/table/latest/docs/framework/react/examples/aggregation)
-- [Grouped Aggregation](https://tanstack.com/table/latest/docs/framework/react/examples/grouped-aggregation)
+- [集計](https://tanstack.com/table/latest/docs/framework/react/examples/aggregation)
+- [グループ化した集計](https://tanstack.com/table/latest/docs/framework/react/examples/grouped-aggregation)
 
-Aggregation is independent from column grouping. Register `rowAggregationFeature`
-whenever columns calculate totals or aggregated values. Add
-`columnGroupingFeature` separately only when the table also groups rows.
+集計は列のグループ化とは独立した機能です。列で合計や集計値を計算するときは、必ず `rowAggregationFeature` を登録してください。`columnGroupingFeature` は、テーブルで行もグループ化する場合にだけ別途追加します。
 
-## Aggregation Setup {#aggregation-setup}
+## 集計のセットアップ {#aggregation-setup}
 
-Register only the built-in functions referenced by name. Passing a definition
-directly to a column does not require a registry entry.
+登録するのは、名前で参照する組み込み関数だけで構いません。定義を列に直接渡す場合は、レジストリへの登録は不要です。
 
 ```tsx
 import {
@@ -44,19 +41,13 @@ const table = useTable({
 })
 ```
 
-The aggregation feature does not require a grouped row model. This makes grand
-totals and custom row-subset totals available in otherwise ordinary tables.
+集計機能はグループ化された行モデルを必要としません。そのため、グループ化をしない普通のテーブルでも、総計や、行の一部を対象にした独自の合計を出せます。
 
-The full `aggregationFns` registry remains available for compatibility, but it
-bundles every built-in. Tables using `stockFeatures` already include
-`rowAggregationFeature`; they still need the definitions that named column
-options should resolve to.
+すべての組み込み関数を含む `aggregationFns` レジストリも互換性のために引き続き使えますが、組み込み関数がすべてバンドルされます。`stockFeatures` を使うテーブルにはすでに `rowAggregationFeature` が含まれています。ただし、列オプションで名前を指定する場合は、その名前に対応する定義を登録する必要があります。
 
-## Column Aggregations {#column-aggregations}
+## 列の集計 {#column-aggregations}
 
-A column accepts one aggregation or an array. A single entry returns a scalar;
-multiple entries return an object keyed by the aggregation name or descriptor
-`id`.
+列には集計を1つ、または配列で複数指定できます。1つだけ指定するとスカラー値を返します。複数指定すると、集計名または記述子（descriptor）の `id` をキーとするオブジェクトを返します。
 
 ```ts
 columnHelper.accessor('amount', {
@@ -68,15 +59,11 @@ columnHelper.accessor('score', {
 })
 ```
 
-String values remain backward-compatible. Use descriptors when a result needs
-a stable custom key or options.
+文字列による指定はこれまでどおり使えます。結果に安定した独自のキーやオプションが必要な場合は、記述子を使ってください。
 
-A scalar `aggregationFn` can be a registered name, `'auto'`, or an inline
-definition. Every entry in an aggregation array needs a unique stable id.
-Duplicate ids, missing descriptor ids, and unregistered names warn in
-development and preserve the affected key with an `undefined` value.
+スカラーの `aggregationFn` には、登録済みの名前、`'auto'`、またはインラインの定義を指定できます。集計の配列では、各要素に一意で安定した id が必要です。id の重複、記述子の id の欠落、未登録の名前があると、開発時に警告が出ます。該当するキーは残り、値は `undefined` になります。
 
-Multiple aggregations can be read with a typed result:
+複数の集計結果は、型を指定して読み取れます。
 
 ```ts
 const scoreColumn = columnHelper.accessor('score', {
@@ -93,17 +80,15 @@ const scoreColumn = columnHelper.accessor('score', {
 })
 ```
 
-## Grand Totals and Row Subsets {#grand-totals-and-row-subsets}
+## 総計と行の一部の集計 {#grand-totals-and-row-subsets}
 
-Call `column.getAggregationValue()` without arguments to aggregate the default
-pre-grouped row model. Filtering is included; grouping, sorting, expansion, and
-pagination do not change that default total.
+`column.getAggregationValue()` を引数なしで呼ぶと、デフォルトの「グループ化前の行モデル」を集計します。フィルタリングは反映されますが、グループ化・ソート・展開・ページネーションはこのデフォルトの合計を変えません。
 
 ```ts
 footer: ({ column }) => column.getAggregationValue<number>().toLocaleString()
 ```
 
-Pass one options object with rows from any row model to choose a different set:
+別の行の集合を対象にするには、任意の行モデルの行を含むオプションオブジェクトを1つ渡します。
 
 ```ts
 column.getAggregationValue({ rows: table.getCoreRowModel().rows })
@@ -113,19 +98,11 @@ column.getAggregationValue({ rows: table.getCoreRowModel().rows.slice(0, 3) })
 column.getAggregationValue({ rows: table.getCoreRowModel().rows, maxDepth: 1 })
 ```
 
-Depth is relative to the supplied row array. `0` selects those roots, `1`
-selects their direct sub-rows, and so on. Selection returns a unique frontier:
-a branch that ends before the maximum depth contributes its deepest available
-row. `Infinity` selects terminal rows.
+深さは、渡した行の配列を基準にした相対値です。`0` はそれらのルート行を、`1` はその直下のサブ行を選びます。以降も同様です。選択の結果は、重複のない「最前線（frontier）」になります。つまり、最大の深さに届く前に終わる枝からは、その枝で最も深い行が使われます。`Infinity` を指定すると末端の行を選びます。
 
-Configure `maxAggregationDepth` on the column for cached default calls (it
-defaults to `0`), or pass `maxDepth` in the options object as an explicit
-override. Every aggregation configured on the column receives the same
-selected rows. Explicit row calls are recomputed each time; the default call is
-cached against its row model, depth, registry, and column aggregation option.
+キャッシュされるデフォルトの呼び出しの深さは、列の `maxAggregationDepth` で設定します（デフォルトは `0`）。明示的に上書きしたい場合は、オプションオブジェクトで `maxDepth` を渡します。列に設定したすべての集計は、同じ選択された行を受け取ります。行を明示的に渡した呼び出しは毎回再計算されます。デフォルトの呼び出しは、行モデル・深さ・レジストリ・列の集計オプションに基づいてキャッシュされます。
 
-`table.getMaxSubRowDepth()` returns the deepest structural depth in the core
-row model. To stop one level before the deepest sub-row frontier:
+`table.getMaxSubRowDepth()` は、コア行モデルの構造上の最大の深さを返します。サブ行の最前線のうち最も深いものより1段手前で止めるには、次のようにします。
 
 ```ts
 const maxDepth = Math.max(0, table.getMaxSubRowDepth() - 1)
@@ -135,11 +112,9 @@ column.getAggregationValue({
 })
 ```
 
-## Grouped Aggregation {#grouped-aggregation}
+## グループ化した集計 {#grouped-aggregation}
 
-Grouped aggregation composes two independent features. Register both, add the
-grouped row-model slot, and configure aggregation functions on the columns that
-should produce grouped values.
+グループ化した集計は、2つの独立した機能を組み合わせて実現します。両方を登録し、グループ化された行モデルのスロットを追加したうえで、グループごとの値を出したい列に集計関数を設定します。
 
 ```ts
 const features = tableFeatures({
@@ -156,17 +131,11 @@ columnHelper.accessor('visits', {
 })
 ```
 
-The `aggregatedCell` column option renders aggregate values on synthetic
-grouped rows. Use `cell.getIsAggregated()` to identify a grouped aggregate
-cell. Footer rendering uses the adapter's normal footer renderer. Grouping-only
-tables do not expose `cell.getIsAggregated()`; it belongs to
-`rowAggregationFeature`.
+列オプション `aggregatedCell` は、グループ化によって生成された合成の行に集計値を描画します。グループの集計セルかどうかは `cell.getIsAggregated()` で判定します。フッターの描画には、アダプターの通常のフッターレンダラーを使います。グループ化だけを使うテーブルでは `cell.getIsAggregated()` は公開されません。このメソッドは `rowAggregationFeature` に属しているためです。
 
-## Custom Aggregation Definitions {#custom-aggregation-definitions}
+## 独自の集計定義 {#custom-aggregation-definitions}
 
-Custom aggregations are context-based definitions. `rows` contains the unique
-frontier selected at `maxDepth`, and `getValue(row)` reads the current column's
-value.
+独自の集計は、コンテキストを受け取る形の定義です。`rows` には `maxDepth` で選ばれた重複のない最前線が入り、`getValue(row)` で現在の列の値を読み取れます。
 
 ```ts
 const joined = constructAggregationFn<any, any, string, string>({
@@ -178,12 +147,7 @@ const joined = constructAggregationFn<any, any, string, string>({
 })
 ```
 
-The context also includes `column`, `columnId`, `maxDepth`, and `table`. During
-grouped aggregation it includes `groupingRow` and `subRows`; root and
-caller-supplied-row aggregation omit those properties. The grouping depth is
-`groupingRow.depth`. `subRows` contains the immediate rows at that grouping
-level, so an aggregation can explicitly choose immediate sub-rows instead of
-the depth-selected `rows`:
+コンテキストには `column`、`columnId`、`maxDepth`、`table` も含まれます。グループ化した集計の最中は、さらに `groupingRow` と `subRows` も含まれます。ルートの集計や、呼び出し側が行を渡した集計では、これらのプロパティは含まれません。グループ化の深さは `groupingRow.depth` です。`subRows` にはそのグループ化レベルの直下の行が入るため、深さで選ばれた `rows` の代わりに、直下のサブ行を明示的に使う集計も書けます。
 
 ```ts
 const subRowCount = constructAggregationFn<any, any, unknown, number>({
@@ -191,14 +155,9 @@ const subRowCount = constructAggregationFn<any, any, unknown, number>({
 })
 ```
 
-At the terminal grouping level, `subRows` contains direct data rows. At a
-nested level, it contains the immediate synthetic sub-row groups. All built-in
-aggregation definitions consume the same depth-selected `rows`; `subRows`
-remains available when a custom definition intentionally needs the grouping
-row's immediate structural children.
+最も末端のグループ化レベルでは、`subRows` には直下のデータ行が入ります。入れ子になったレベルでは、直下の合成サブ行グループが入ります。組み込みの集計定義はすべて、深さで選ばれた同じ `rows` を使います。`subRows` は、独自の定義でグループ行の直下の構造上の子を意図して使いたいときのために用意されています。
 
-For a result that can be combined more efficiently from already-computed
-sub-row results, provide a `merge` function:
+計算済みのサブ行の結果を組み合わせたほうが効率よく求められる結果には、`merge` 関数を指定します。
 
 ```ts
 const sum = constructAggregationFn<any, any, unknown, number>({
@@ -212,16 +171,11 @@ const sum = constructAggregationFn<any, any, unknown, number>({
 })
 ```
 
-For `merge`, `subRowResults[i]` is the aggregation result previously computed
-for `subRows[i]`. Without `merge`, nested grouping calls `aggregate` with both
-the group's depth-selected `rows` and its immediate `subRows`. This
-context-based form replaces the previous callable aggregation signature and its
-`fromRows` and `resolveDataValue` properties while preserving access to both
-row sets.
+`merge` では、`subRowResults[i]` は `subRows[i]` について先に計算された集計結果です。`merge` がない場合、入れ子のグループ化では、グループの深さで選ばれた `rows` と直下の `subRows` の両方を渡して `aggregate` を呼びます。このコンテキストを受け取る形は、以前の呼び出し可能な集計シグネチャと、その `fromRows` と `resolveDataValue` プロパティを置き換えるものです。両方の行の集合には引き続きアクセスできます。
 
-## Providing Server or External Values {#providing-server-or-external-values}
+## サーバーや外部から値を渡す {#providing-server-or-external-values}
 
-A column can handle aggregation-value requests before local calculation:
+列は、ローカルで計算する前に集計値の要求を処理できます。
 
 ```ts
 const amountColumn = columnHelper.accessor('amount', {
@@ -233,37 +187,23 @@ const amountColumn = columnHelper.accessor('amount', {
 })
 ```
 
-Returning `{ value }` marks the request as handled, including
-`{ value: undefined }`. Returning `undefined` uses the local fallback. Put the
-same provider on `defaultColumn` to share it across columns.
+`{ value }` を返すと、その要求は処理済みとみなされます。`{ value: undefined }` を返した場合も同じです。`undefined` を返すと、ローカルでの計算にフォールバックします。同じプロバイダーを `defaultColumn` に設定すると、すべての列で共有できます。
 
-Set `manualAggregation: true` to disable the local fallback for
-`column.getAggregationValue()`. This is separate from `manualGrouping`, which
-controls whether the grouped row model runs. See the
-[Client-Side vs Server-Side Guide](../../../guide/client-side-vs-server-side)
-for guidance on choosing where the full data pipeline should run.
+`manualAggregation: true` を設定すると、`column.getAggregationValue()` のローカルでのフォールバックが無効になります。これは、グループ化された行モデルを実行するかどうかを制御する `manualGrouping` とは別の設定です。データ処理の流れ全体をどこで実行するかの選び方は、[クライアントサイドとサーバーサイドのガイド](../../../guide/client-side-vs-server-side)を参照してください。
 
-## Built-in Definitions {#built-in-definitions}
+## 組み込みの定義 {#built-in-definitions}
 
-- `sum`: sums numeric values; non-numbers contribute zero.
-- `count`: counts rows.
-- `min` / `max`: find numeric or Date bounds.
-- `extent`: returns `[min, max]`; an empty input returns
-  `[undefined, undefined]`.
-- `mean`: averages numeric and number-like non-null values.
-- `median`: requires every row value to be a number.
-- `unique` / `uniqueCount`: use JavaScript `Set` semantics.
-- `first` / `last`: return the positional value, including a nullish value.
+- `sum`: 数値を合計します。数値以外は0として扱います。
+- `count`: 行数を数えます。
+- `min` / `max`: 数値または Date の最小値・最大値を求めます。
+- `extent`: `[min, max]` を返します。入力が空の場合は `[undefined, undefined]` を返します。
+- `mean`: null でない数値、および数値として扱える値の平均を求めます。
+- `median`: すべての行の値が数値である必要があります。
+- `unique` / `uniqueCount`: JavaScript の `Set` の仕様に従います。
+- `first` / `last`: 位置に応じた値を返します。null や undefined の値もそのまま返します。
 
-`aggregationFn: 'auto'` inspects the first core row value. Numbers resolve to a
-registered `sum`, Dates resolve to a registered `extent`, and other values do
-not resolve an aggregation.
+`aggregationFn: 'auto'` は、コア行の最初の値を調べます。数値なら登録済みの `sum`、Date なら登録済みの `extent` に解決され、それ以外の値では集計は解決されません。
 
-## Web Workers {#web-workers}
+## Web Worker {#web-workers}
 
-Worker-backed grouped row models eagerly compute explicitly configured grouped
-aggregates in the worker. `column.getAggregationValue()` still executes its
-final total on the main thread over the selected row model. Aggregation results
-crossing the worker boundary must be structured-cloneable. See the
-[Worker Row Models Guide](../../../guide/worker-row-models) for setup and
-limitations.
+Worker で処理するグループ化された行モデルは、明示的に設定されたグループの集計を Worker 内で先に計算します。一方、`column.getAggregationValue()` の最終的な合計は、選択された行モデルに対してメインスレッドで実行されます。Worker の境界をまたぐ集計結果は、構造化複製（structured clone）できる値である必要があります。セットアップ方法と制限については、[Worker 行モデルのガイド](../../../guide/worker-row-models)を参照してください。

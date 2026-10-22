@@ -1,32 +1,32 @@
 ---
-title: Custom Features (React) Guide
+title: カスタム機能（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+実装をすぐに見たい場合は、次の React のサンプルを参照してください。
 
-- [Custom Plugin](https://tanstack.com/table/latest/docs/framework/react/examples/custom-plugin)
+- [カスタムプラグイン](https://tanstack.com/table/latest/docs/framework/react/examples/custom-plugin)
 
-## Custom Features (React) Guide {#custom-features-react-guide}
+## カスタム機能（React）ガイド {#custom-features-react-guide}
 
-In this guide, we'll cover how to extend TanStack Table with custom features, and along the way, we'll learn more about how the TanStack Table v9 codebase is structured and how it works.
+このガイドでは、TanStack Table を独自の機能で拡張する方法を説明します。その過程で、TanStack Table v9 のコードベースがどのような構成で、どう動いているのかもあわせて見ていきます。
 
-### TanStack Table Strives to be Lean {#tanstack-table-strives-to-be-lean}
+### TanStack Table は軽量であることを目指している {#tanstack-table-strives-to-be-lean}
 
-TanStack Table has a core set of features that are built into the library such as sorting, filtering, pagination, etc. We've received a lot of requests and sometimes even some well thought out PRs to add even more features to the library. While we are always open to improving the library, we also want to make sure that TanStack Table remains a lean library that does not include too much bloat and code that is unlikely to be used in most use cases. Not every PR can, or should, be accepted into the core library, even if it does solve a real problem. This can be frustrating to developers when TanStack Table solves 90% of their use case, but they need a little bit more control.
+TanStack Table には、ソート、フィルタリング、ページネーションなど、ライブラリに組み込まれたコア機能があります。これまで、さらに多くの機能を追加してほしいという要望を数多く受け取ってきました。よく考えられた PR をもらうこともあります。ライブラリの改善にはいつでも前向きですが、同時に TanStack Table を、ほとんどのユースケースで使われそうにないコードで膨らませず、軽量なライブラリのままにしておきたいとも考えています。実際の問題を解決する PR であっても、すべてをコアライブラリに取り込めるわけではなく、取り込むべきでもありません。TanStack Table でユースケースの9割は解決できるのに、あと少しだけ制御したいという開発者にとっては、もどかしいことかもしれません。
 
-TanStack Table has always been built in a way that allows it to be highly extensible (at least since v7). The `table` instance that is returned from whichever framework adapter that you are using (`createTable`, `useTable`, etc) is a plain JavaScript object that can have extra properties or APIs added to it. It has always been possible to use composition to add custom logic, state, and APIs to the table instance. Libraries like [Material React Table](https://github.com/KevinVandy/material-react-table/blob/v2/packages/material-react-table/src/hooks/useMRT_TableInstance.ts) have simply created custom wrapper hooks around the `useTable` hook to extend the table instance with custom functionality.
+TanStack Table は、（少なくとも v7 以降は）高い拡張性を持つように作られてきました。使っているフレームワークのアダプター（`createTable`、`useTable` など）から返される `table` インスタンスは、プロパティや API を追加できる普通の JavaScript オブジェクトです。コンポジションを使って、独自のロジック、状態、API をテーブルインスタンスに追加することは以前から可能でした。[Material React Table](https://github.com/KevinVandy/material-react-table/blob/v2/packages/material-react-table/src/hooks/useMRT_TableInstance.ts) などのライブラリは、`useTable` フックを包む独自のラッパーフックを作るだけで、テーブルインスタンスに独自の機能を追加しています。
 
-In v9, TanStack Table uses the `features` option (via `tableFeatures()`) to declare which features your table uses. This enables tree-shaking: you only bundle the code for the features you need. You can add custom features to the table instance in exactly the same way as the built-in features.
+v9 の TanStack Table では、`features` オプション（`tableFeatures()` で作成）で、テーブルが使う機能を宣言します。これによりツリーシェイキングが効き、必要な機能のコードだけがバンドルされます。カスタム機能も、組み込みの機能とまったく同じ方法でテーブルインスタンスに追加できます。
 
-> In v9, features are opt-in. Use `tableFeatures({ ... })` to declare which features your table uses, including custom features.
+> v9 では、機能はオプトイン（明示的に有効にする）方式です。カスタム機能も含め、テーブルが使う機能は `tableFeatures({ ... })` で宣言してください。
 
-### How TanStack Table Features Work {#how-tanstack-table-features-work}
+### TanStack Table の機能の仕組み {#how-tanstack-table-features-work}
 
-TanStack Table's source code is arguably somewhat simple (at least we think so). All code for each feature is split up into its own object/file with instantiation methods to create initial state, default table and column options, and API methods that can be added to the `table`, `header`, `column`, `row`, and `cell` instances.
+TanStack Table のソースコードは、比較的シンプルだと言えるでしょう（少なくとも私たちはそう考えています）。各機能のコードはすべて、それぞれ独立したオブジェクト（ファイル）に分かれています。そこには、初期状態やデフォルトのテーブル・列のオプションを作るための初期化メソッドと、`table`、`header`、`column`、`row`、`cell` の各インスタンスに追加できる API メソッドが含まれています。
 
-All of the functionality of a feature object can be described with the `TableFeature` type that is exported from TanStack Table. This type is a TypeScript interface that describes the shape of a feature object needed to create a feature.
+機能オブジェクトが持てるものは、すべて TanStack Table からエクスポートされている `TableFeature` 型で表せます。この型は、機能を作るのに必要な機能オブジェクトの形を表す TypeScript のインターフェースです。
 
 ```ts
 export interface TableFeature {
@@ -118,87 +118,87 @@ export interface TableFeature {
 }
 ```
 
-This might be a bit confusing, so let's break down what each of these methods does:
+少しわかりにくいかもしれないので、それぞれのメソッドが何をするのかを順に見ていきましょう。
 
-#### Default Options and Initial State {#default-options-and-initial-state}
+#### デフォルトのオプションと初期状態 {#default-options-and-initial-state}
 
 <br />
 
 ##### getDefaultTableOptions {#getdefaulttableoptions}
 
-The `getDefaultTableOptions` method in a table feature is responsible for setting the default table options for that feature. For example, in the [Column Resizing](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.ts) feature, the `getDefaultTableOptions` method sets the default `columnResizeMode` option with a default value of `"onEnd"`.
+テーブル機能の `getDefaultTableOptions` メソッドは、その機能のデフォルトのテーブルオプションを設定します。たとえば [Column Resizing](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.ts) 機能では、`getDefaultTableOptions` メソッドが `columnResizeMode` オプションのデフォルト値を `"onEnd"` に設定しています。
 
 <br />
 
 ##### getDefaultColumnDef {#getdefaultcolumndef}
 
-The `getDefaultColumnDef` method in a table feature is responsible for setting the default column options for that feature. For example, in the [Sorting](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.ts) feature, the `getDefaultColumnDef` method sets the default `sortUndefined` column option with a default value of `1`.
+テーブル機能の `getDefaultColumnDef` メソッドは、その機能のデフォルトの列オプションを設定します。たとえば [Sorting](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.ts) 機能では、`getDefaultColumnDef` メソッドが列オプション `sortUndefined` のデフォルト値を `1` に設定しています。
 
 <br />
 
 ##### getInitialState {#getinitialstate}
 
-The `getInitialState` method in a table feature is responsible for setting the default state for that feature. For example, in the [Pagination](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.ts) feature, the `getInitialState` method sets the default `pageSize` state with a value of `10` and the default `pageIndex` state with a value of `0`.
+テーブル機能の `getInitialState` メソッドは、その機能のデフォルトの状態を設定します。たとえば [Pagination](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.ts) 機能では、`getInitialState` メソッドが `pageSize` の状態のデフォルト値を `10` に、`pageIndex` の状態のデフォルト値を `0` に設定しています。
 
-#### API Creators {#api-creators}
+#### API を作るメソッド {#api-creators}
 
 <br />
 
-##### initTableInstanceData and resetTableInstanceData {#inittableinstancedata-and-resettableinstancedata}
+##### initTableInstanceData と resetTableInstanceData {#inittableinstancedata-and-resettableinstancedata}
 
-Use `initTableInstanceData` for mutable, non-reactive data that belongs to one table instance, such as an interaction anchor or an imperative cache. It runs once after table options, state atoms, and the store have been created. Features are processed in a single pass in registration order; each feature's initialization hook runs just before that feature's `constructTableAPIs` hook, so hooks may rely on data and APIs from features registered earlier.
+`initTableInstanceData` は、1つのテーブルインスタンスに属する、変更可能でリアクティブでないデータに使います。たとえば、操作の起点（アンカー）や命令的に扱うキャッシュなどです。このメソッドは、テーブルオプション、状態のアトム、ストアが作られたあとに一度だけ実行されます。機能は登録順に1回の走査で処理され、各機能の初期化フックは、その機能の `constructTableAPIs` フックの直前に実行されます。そのため、フックの中では先に登録された機能のデータや API を前提にできます。
 
-Use `resetTableInstanceData` to clear that transient data when `table.reset()` runs. Reset hooks run after internally owned table state atoms have been restored to `table.initialState`. They do not reset table state slices or externally controlled state, and `table.reset()` does not rerun `initTableInstanceData`.
+`resetTableInstanceData` は、`table.reset()` が実行されたときに、その一時的なデータを消去するために使います。リセットのフックは、テーブルが内部で持つ状態のアトムが `table.initialState` に戻されたあとに実行されます。テーブルの状態のスライスや外部で制御される状態はリセットしません。また、`table.reset()` で `initTableInstanceData` が再実行されることはありません。
 
-Keep API assignment in `constructTableAPIs`; initialization and reset hooks are for data owned by the feature.
+API の割り当ては `constructTableAPIs` で行ってください。初期化とリセットのフックは、機能が持つデータのためのものです。
 
 <br />
 
 ##### constructTableAPIs {#constructtableapis}
 
-The `constructTableAPIs` method in a table feature is exclusively responsible for adding methods to the `table` instance. It runs after all feature-owned table instance data has been initialized. For example, in the [Row Selection](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.ts) feature, the `constructTableAPIs` method adds many table instance API methods such as `toggleAllRowsSelected`, `getIsAllRowsSelected`, `getIsSomeRowsSelected`, etc. So then, when you call `table.toggleAllRowsSelected()`, you are calling a method that was added to the table instance by the `rowSelectionFeature` feature.
+テーブル機能の `constructTableAPIs` メソッドは、`table` インスタンスにメソッドを追加することだけを担当します。このメソッドは、機能が持つテーブルインスタンスのデータがすべて初期化されたあとに実行されます。たとえば [Row Selection](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.ts) 機能では、`constructTableAPIs` メソッドが `toggleAllRowsSelected`、`getIsAllRowsSelected`、`getIsSomeRowsSelected` など、多くのテーブルインスタンスの API メソッドを追加しています。つまり、`table.toggleAllRowsSelected()` を呼ぶときは、`rowSelectionFeature` 機能がテーブルインスタンスに追加したメソッドを呼んでいることになります。
 
 <br />
 
-##### assignHeaderPrototype and initHeaderInstanceData {#assignheaderprototype-and-initheaderinstancedata}
+##### assignHeaderPrototype と initHeaderInstanceData {#assignheaderprototype-and-initheaderinstancedata}
 
-The `assignHeaderPrototype` method in a table feature is responsible for adding methods to the shared `header` prototype. For example, the [Column Sizing](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.ts) feature adds header instance API methods such as `getStart`. So then, when you call `header.getStart()`, you are calling a method that was added by the column sizing feature. The `initHeaderInstanceData` method is available for per-header instance data or caches that cannot live on the shared prototype. It runs during header construction, before sub-headers are populated and before the header is linked to its header group. Headers are reconstructed whenever header groups recompute, so it reruns on every rebuild.
+テーブル機能の `assignHeaderPrototype` メソッドは、共有される `header` のプロトタイプにメソッドを追加します。たとえば [Column Sizing](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.ts) 機能は、`getStart` などのヘッダーインスタンスの API メソッドを追加しています。つまり、`header.getStart()` を呼ぶときは、列幅の機能が追加したメソッドを呼んでいることになります。`initHeaderInstanceData` メソッドは、共有のプロトタイプには置けない、ヘッダーごとのインスタンスデータやキャッシュのために使えます。このメソッドはヘッダーの構築中、サブヘッダーが設定される前、かつヘッダーがヘッダーグループに結び付けられる前に実行されます。ヘッダーはヘッダーグループが再計算されるたびに作り直されるため、作り直しのたびに再実行されます。
 
 <br />
 
 ##### initHeaderGroupInstanceData {#initheadergroupinstancedata}
 
-The `initHeaderGroupInstanceData` method is available for per-header-group instance data. Header groups have no shared prototype, so this is their only per-instance extension point. It runs after a header group's `depth`, `id`, and fully populated `headers` array have been assigned, and reruns whenever header groups are rebuilt.
+`initHeaderGroupInstanceData` メソッドは、ヘッダーグループごとのインスタンスデータのために使えます。ヘッダーグループには共有のプロトタイプがないため、インスタンスごとに拡張できるのはこのメソッドだけです。このメソッドは、ヘッダーグループの `depth`、`id`、要素がすべてそろった `headers` 配列が割り当てられたあとに実行され、ヘッダーグループが作り直されるたびに再実行されます。
 
 <br />
 
-##### assignColumnPrototype and initColumnInstanceData {#assigncolumnprototype-and-initcolumninstancedata}
+##### assignColumnPrototype と initColumnInstanceData {#assigncolumnprototype-and-initcolumninstancedata}
 
-The `assignColumnPrototype` method in a table feature is responsible for adding methods to the shared `column` prototype. For example, the [Sorting](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.ts) feature adds column instance API methods such as `getNextSortingOrder`, `toggleSorting`, etc. So then, when you call `column.toggleSorting()`, you are calling a method that was added by the row sorting feature. The `initColumnInstanceData` method is available for per-column instance data or caches that cannot live on the shared prototype. For example, the [Aggregation](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.ts) feature uses it to set up a per-column aggregation cache.
-
-<br />
-
-##### assignRowPrototype and initRowInstanceData {#assignrowprototype-and-initrowinstancedata}
-
-The `assignRowPrototype` method in a table feature is responsible for adding methods to the shared `row` prototype. The `initRowInstanceData` method is available for per-row instance data or caches that cannot live on the shared prototype. For example, the [Row Selection](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.ts) feature adds row instance API methods such as `toggleSelected` and `getIsSelected`.
+テーブル機能の `assignColumnPrototype` メソッドは、共有される `column` のプロトタイプにメソッドを追加します。たとえば [Sorting](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.ts) 機能は、`getNextSortingOrder`、`toggleSorting` などの列インスタンスの API メソッドを追加しています。つまり、`column.toggleSorting()` を呼ぶときは、行のソート機能が追加したメソッドを呼んでいることになります。`initColumnInstanceData` メソッドは、共有のプロトタイプには置けない、列ごとのインスタンスデータやキャッシュのために使えます。たとえば [Aggregation](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.ts) 機能は、このメソッドで列ごとの集計キャッシュを用意しています。
 
 <br />
 
-##### assignCellPrototype and initCellInstanceData {#assigncellprototype-and-initcellinstancedata}
+##### assignRowPrototype と initRowInstanceData {#assignrowprototype-and-initrowinstancedata}
 
-The `assignCellPrototype` method in a table feature is responsible for adding methods to the shared `cell` prototype. For example, Column Grouping adds `getIsGrouped` and `getIsPlaceholder`, while Aggregation adds `getIsAggregated`. The `initCellInstanceData` method is available for per-cell instance data or caches that cannot live on the shared prototype. Cells are constructed lazily on first access per row/column pair and cached, so it runs once per cell instance.
+テーブル機能の `assignRowPrototype` メソッドは、共有される `row` のプロトタイプにメソッドを追加します。`initRowInstanceData` メソッドは、共有のプロトタイプには置けない、行ごとのインスタンスデータやキャッシュのために使えます。たとえば [Row Selection](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.ts) 機能は、`toggleSelected` や `getIsSelected` などの行インスタンスの API メソッドを追加しています。
 
-### Adding a Custom Feature {#adding-a-custom-feature}
+<br />
 
-Let's walk through making a custom table feature for a hypothetical use case. Let's say we want to add a feature to the table instance that allows the user to change the "density" (padding of cells) of the table.
+##### assignCellPrototype と initCellInstanceData {#assigncellprototype-and-initcellinstancedata}
 
-Check out the full [custom-plugin](https://tanstack.com/table/latest/docs/framework/react/examples/custom-plugin) example to see the full implementation, but here's an in-depth look at the steps to create a custom feature.
+テーブル機能の `assignCellPrototype` メソッドは、共有される `cell` のプロトタイプにメソッドを追加します。たとえば、列のグループ化の機能は `getIsGrouped` と `getIsPlaceholder` を、集計の機能は `getIsAggregated` を追加しています。`initCellInstanceData` メソッドは、共有のプロトタイプには置けない、セルごとのインスタンスデータやキャッシュのために使えます。セルは行と列の組み合わせごとに初めてアクセスされたときに遅延して作られ、キャッシュされます。そのため、このメソッドはセルのインスタンスごとに一度だけ実行されます。
 
-#### Step 1: Set up TypeScript Types {#step-1-set-up-typescript-types}
+### カスタム機能を追加する {#adding-a-custom-feature}
 
-Assuming you want the same full type-safety that the built-in features in TanStack Table have, let's set up all of the TypeScript types for our new feature. We'll create types for new table options, state, and table instance API methods.
+仮のユースケースを例に、カスタムのテーブル機能を作ってみましょう。ここでは、テーブルの「密度」（セルのパディング）をユーザーが変えられる機能をテーブルインスタンスに追加したいとします。
 
-These types are following the naming convention used internally within TanStack Table, but you can name them whatever you want. We are not adding these types to TanStack Table yet, but we'll do that in the next step.
+完全な実装は [custom-plugin](https://tanstack.com/table/latest/docs/framework/react/examples/custom-plugin) のサンプルを参照してください。ここでは、カスタム機能を作る手順を詳しく見ていきます。
+
+#### ステップ1: TypeScript の型を用意する {#step-1-set-up-typescript-types}
+
+TanStack Table の組み込みの機能と同じ完全な型安全性がほしいと仮定して、新しい機能のための TypeScript の型をすべて用意しましょう。新しいテーブルオプション、状態、テーブルインスタンスの API メソッドの型を作ります。
+
+これらの型の名前は TanStack Table の内部で使われている命名規則に従っていますが、好きな名前を付けて構いません。この時点ではまだ TanStack Table に型を追加していません。追加は次のステップで行います。
 
 ```ts
 // define types for our new feature's custom state
@@ -220,9 +220,9 @@ export interface Table_Density {
 }
 ```
 
-#### Step 2: Add the Feature to TanStack Table's Feature Maps {#step-2-add-the-feature-to-tanstack-tables-feature-maps}
+#### ステップ2: TanStack Table の機能マップに機能を追加する {#step-2-add-the-feature-to-tanstack-tables-feature-maps}
 
-TanStack Table uses the keys passed to `tableFeatures({ ... })` to infer which feature state, options, and APIs exist on a table. To make a custom feature key type-safe, add it to the exported `Plugins`, `TableState_FeatureMap`, `TableOptions_FeatureMap`, and `Table_FeatureMap` interfaces with declaration merging.
+TanStack Table は、`tableFeatures({ ... })` に渡されたキーをもとに、テーブルにどの機能の状態・オプション・API があるかを推論します。カスタム機能のキーを型安全にするには、宣言のマージ（declaration merging）を使って、エクスポートされている `Plugins`、`TableState_FeatureMap`、`TableOptions_FeatureMap`、`Table_FeatureMap` の各インターフェースにキーを追加します。
 
 ```ts
 declare module '@tanstack/react-table' {
@@ -250,13 +250,13 @@ declare module '@tanstack/react-table' {
 }
 ```
 
-Once the feature is registered this way, TypeScript can infer the feature's state, options, and APIs only on tables whose `features` include `densityPlugin`.
+この方法で機能を登録すると、TypeScript は `features` に `densityPlugin` を含むテーブルに限って、その機能の状態・オプション・API を推論できるようになります。
 
-#### Step 3: Create the Feature Object {#step-3-create-the-feature-object}
+#### ステップ3: 機能オブジェクトを作る {#step-3-create-the-feature-object}
 
-With all of that TypeScript setup out of the way, we can now create the feature object for our new feature. This is where we define all of the methods that will be added to the table instance.
+TypeScript の準備が済んだので、新しい機能の機能オブジェクトを作りましょう。ここで、テーブルインスタンスに追加するすべてのメソッドを定義します。
 
-Use the `TableFeature` type to ensure that you are creating the feature object correctly. If the TypeScript types are set up correctly, you should have no TypeScript errors when you create the feature object with the new state, options, and instance APIs.
+機能オブジェクトを正しく作れているかを確かめるために、`TableFeature` 型を使ってください。TypeScript の型が正しく用意できていれば、新しい状態・オプション・インスタンス API を持つ機能オブジェクトを作っても、TypeScript のエラーは出ないはずです。
 
 ```ts
 export const densityPlugin: TableFeature = {
@@ -319,9 +319,9 @@ export const densityPlugin: TableFeature = {
 }
 ```
 
-#### Step 4: Add the Feature to the Table {#step-4-add-the-feature-to-the-table}
+#### ステップ4: テーブルに機能を追加する {#step-4-add-the-feature-to-the-table}
 
-Now that we have our feature object, we can add it to the table instance by including it in the `tableFeatures()` call and passing the result to the `features` option when we create the table instance.
+機能オブジェクトができたら、それを `tableFeatures()` の呼び出しに含め、その結果をテーブルインスタンスを作るときに `features` オプションに渡します。これで機能がテーブルインスタンスに追加されます。
 
 ```ts
 const features = tableFeatures({ densityPlugin })
@@ -334,9 +334,9 @@ const table = useTable({
 })
 ```
 
-#### Step 5: Use the Feature in Your Application {#step-5-use-the-feature-in-your-application}
+#### ステップ5: アプリケーションで機能を使う {#step-5-use-the-feature-in-your-application}
 
-Now that the feature is added to the table instance, you can use the new instance APIs, options, and state in your application. The [custom-plugin example](https://tanstack.com/table/latest/docs/framework/react/examples/custom-plugin) controls the `density` state with `React.useState` and the new `onDensityChange` option:
+機能がテーブルインスタンスに追加されたので、新しいインスタンス API、オプション、状態をアプリケーションで使えます。[custom-plugin のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/custom-plugin)では、`React.useState` と新しい `onDensityChange` オプションで `density` の状態を制御しています。
 
 ```tsx
 const features = tableFeatures({ densityPlugin })
@@ -368,6 +368,6 @@ return (
 )
 ```
 
-#### Do We Have to Do It This Way? {#do-we-have-to-do-it-this-way}
+#### 必ずこの方法で作る必要があるのか {#do-we-have-to-do-it-this-way}
 
-This is just a new way to integrate custom code alongside the built-in features in TanStack Table. In our example up above, we could have just as easily stored the `density` state in a `React.useState`, defined our own `toggleDensity` handler wherever, and just used it in our code separately from the table instance. Building table features alongside TanStack Table instead of deeply integrating them into the table instance is still a perfectly valid way to build custom features. Depending on your use case, this may or may not be the cleanest way to extend TanStack Table with custom features.
+これは、TanStack Table の組み込みの機能と並べて独自のコードを統合するための新しい方法の1つにすぎません。上の例でも、`density` の状態を `React.useState` に保存し、`toggleDensity` のハンドラーを好きな場所に定義して、テーブルインスタンスとは別にコードの中で使うこともできました。テーブルインスタンスに深く統合せずに、TanStack Table と並べてテーブルの機能を作るのも、カスタム機能を作るうえでまったく問題のない方法です。ユースケースによっては、この方法が TanStack Table をカスタム機能で拡張する最もすっきりした方法になるとは限りません。

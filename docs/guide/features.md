@@ -1,20 +1,20 @@
 ---
-title: Features Guide
+title: 機能ガイド
 ---
 
-## Why the `features` Option Is Required {#why-the-features-option-is-required}
+## `features` オプションが必須である理由 {#why-the-features-option-is-required}
 
-TanStack Table v9 requires a `features` option so that every table explicitly declares the capabilities it uses. In previous versions, we were cautious about expanding TanStack Table because every new capability risked adding code for all users, even when only a small percentage of applications needed it. That constraint helped keep the library small, but it also limited how much existing features could grow and how many new features we could offer.
+TanStack Table v9 では、各テーブルが使う機能を明示的に宣言するために、`features` オプションが必須です。以前のバージョンでは、TanStack Table の機能を増やすことに慎重でした。新しい機能を1つ足すたびに、それを必要とするアプリケーションがごく一部であっても、すべてのユーザーのコードが増えるおそれがあったからです。この制約はライブラリを小さく保つのに役立ちましたが、既存の機能をどこまで拡張できるか、新しい機能をどれだけ提供できるかを制限してもいました。
 
-The v9 plugin architecture removes that constraint. Each feature can now grow in capability, and TanStack Table can offer more features without including all of their code in every application. The total potential bundle size increased from about 14 kB in v8 to about 25 kB in v9, but most users should receive a smaller bundle when they register only the features they need. An application that uses roughly half of TanStack Table's available capabilities no longer has to ship the other half.
+v9 のプラグインアーキテクチャは、この制約を取り除きます。各機能はそれぞれ拡張できるようになり、TanStack Table はすべてのコードをあらゆるアプリケーションに含めることなく、より多くの機能を提供できます。全機能を含めた場合のバンドルサイズは v8 の約 14 kB から v9 では約 25 kB に増えましたが、必要な機能だけを登録すれば、ほとんどのユーザーはより小さなバンドルで済むはずです。TanStack Table の機能をおよそ半分使うアプリケーションなら、残りの半分を配布する必要はもうありません。
 
-TanStack Table v9 is a headless, tree-shakable library built around a plugin architecture. A table always includes the small set of core features needed to create tables, columns, headers, rows, and cells. Other capabilities, including sorting, filtering, pagination, selection, and sizing, are opt-in.
+TanStack Table v9 は、プラグインアーキテクチャを土台にした、ヘッドレスでツリーシェイク可能なライブラリです。テーブルには、テーブル・列・ヘッダー・行・セルを作るのに必要な少数のコア機能が常に含まれます。ソート・フィルタリング・ページネーション・選択・列幅などのその他の機能は、オプトイン（明示的に有効にする）方式です。
 
-Each feature contributes its own state, options, defaults, lifecycle hooks, and APIs to the table and its related objects. The feature object you register also controls the TypeScript surface: APIs for an omitted feature do not appear on the table, columns, rows, headers, or cells.
+各機能は、それぞれの状態・オプション・デフォルト値・ライフサイクルフック・API を、テーブルとその関連オブジェクトに追加します。登録した機能オブジェクトは、TypeScript の型にも反映されます。登録していない機能の API は、テーブル・列・行・ヘッダー・セルに現れません。
 
-## Choose your features with `tableFeatures` {#choose-your-features-with-tablefeatures}
+## `tableFeatures` で機能を選ぶ {#choose-your-features-with-tablefeatures}
 
-Every table declares its static feature set with `tableFeatures()`. A table that only needs core behavior uses an empty feature object:
+どのテーブルも、静的な機能の組み合わせを `tableFeatures()` で宣言します。コアの動作だけが必要なテーブルでは、空の機能オブジェクトを使います。
 
 ```ts
 import { tableFeatures, useTable } from '@tanstack/react-table'
@@ -32,7 +32,7 @@ function Table() {
 }
 ```
 
-Import and register only the optional features that table needs:
+そのテーブルに必要なオプションの機能だけをインポートして登録します。
 
 ```ts
 import {
@@ -50,15 +50,15 @@ const features = tableFeatures({
 })
 ```
 
-Define the feature object outside the component when possible. It is static configuration, and keeping it stable avoids rebuilding table structures and gives shared column definitions and helpers one reusable `typeof features` type.
+機能オブジェクトは、できるだけコンポーネントの外で定義してください。これは静的な設定です。参照を安定させておけば、テーブルの構造を作り直さずに済みます。また、共有する列定義やヘルパーが、再利用できる1つの `typeof features` 型を使えるようになります。
 
-`tableFeatures()` also validates relationships between slots. For example, a `sortedRowModel` requires `rowSortingFeature`, while `globalFilteringFeature` requires `columnFilteringFeature`. Missing prerequisites produce a type error that names the required feature.
+`tableFeatures()` は、スロット同士の関係も検証します。たとえば、`sortedRowModel` には `rowSortingFeature` が必要で、`globalFilteringFeature` には `columnFilteringFeature` が必要です。前提となる機能が足りないと、必要な機能の名前を示す型エラーになります。
 
-## Features, Row Models, and Functions Are Separate {#features-row-models-and-functions-are-separate}
+## 機能・行モデル・関数はそれぞれ別のもの {#features-row-models-and-functions-are-separate}
 
-A feature adds state and APIs, but it does not perform client-side data processing by itself. Client-side row models are optional. Add the corresponding row-model factory only when TanStack Table should process the data in the browser. If your server performs that work, keep the feature for its state and APIs, and omit the client-side row model.
+機能は状態と API を追加しますが、それだけではクライアントサイドのデータ処理を行いません。クライアントサイドの行モデルは任意です。TanStack Table にブラウザーでデータを処理させたい場合にだけ、対応する行モデルのファクトリーを追加します。その処理をサーバーが行う場合は、状態と API のために機能は残し、クライアントサイドの行モデルは省きます。
 
-The following example enables client-side filtering, sorting, and pagination:
+次の例では、クライアントサイドのフィルタリング・ソート・ページネーションを有効にしています。
 
 ```ts
 import {
@@ -85,19 +85,19 @@ const features = tableFeatures({
 })
 ```
 
-The pieces have distinct jobs:
+それぞれの部品には、別々の役割があります。
 
-- Feature objects provide state, options, event handlers, and instance APIs.
-- Row models perform client-side filtering, grouping, sorting, expansion, pagination, and faceting.
-- Function registries provide named filter, sort, and aggregation implementations.
+- 機能オブジェクトは、状態・オプション・イベントハンドラー・インスタンスの API を提供します。
+- 行モデルは、クライアントサイドのフィルタリング・グループ化・ソート・展開・ページネーション・ファセットを行います。
+- 関数のレジストリは、名前付きのフィルター・ソート・集計の実装を提供します。
 
-Register only the functions you use. Importing individual functions preserves tree-shaking; spreading a complete built-in function registry includes every implementation in that registry. A function passed directly to a column option does not need to be registered by name.
+使う関数だけを登録してください。関数を個別にインポートすれば、ツリーシェイキングが効きます。組み込みの関数レジストリ全体を展開すると、そのレジストリのすべての実装が含まれます。列のオプションに直接渡した関数は、名前で登録する必要はありません。
 
-For server-side processing, keep the feature for its state and APIs, omit the client-side row model, and configure the matching `manual*` option where applicable. See the [Row Models Guide](./row-models) and [Client-Side vs Server-Side Guide](./client-side-vs-server-side) for those data-flow choices.
+サーバーサイドで処理する場合は、状態と API のために機能は残し、クライアントサイドの行モデルは省いて、該当する場合は対応する `manual*` オプションを設定します。こうしたデータの流れの選び方については、[行モデルガイド](./row-models)と[クライアントサイドとサーバーサイドのガイド](./client-side-vs-server-side)を参照してください。
 
-## Using Every Stock Feature {#using-every-stock-feature}
+## すべての標準機能を使う {#using-every-stock-feature}
 
-`stockFeatures` is the complete collection of optional features. It is convenient for prototypes, shared compatibility layers, or tables that genuinely use most features:
+`stockFeatures` は、オプションの機能をすべてまとめたものです。プロトタイプや共有の互換レイヤー、実際にほとんどの機能を使うテーブルで便利です。
 
 ```ts
 import { stockFeatures, tableFeatures } from '@tanstack/react-table'
@@ -107,28 +107,28 @@ const features = tableFeatures({
 })
 ```
 
-Because this imports the complete collection, it includes all stock feature code. Prefer individual feature imports when bundle size and tree-shaking matter. `stockFeatures` also does not add client-side row models or function registries; add those separately when needed.
+これはまとめて全部をインポートするので、すべての標準機能のコードが含まれます。バンドルサイズやツリーシェイキングが重要な場合は、機能を個別にインポートしてください。また、`stockFeatures` はクライアントサイドの行モデルや関数のレジストリを追加しません。必要な場合は別途追加してください。
 
-## Stock Features {#stock-features}
+## 標準機能 {#stock-features}
 
-- `cellSelectionFeature`: [Cell Selection](../framework/react/guide/cell-selection) adds cell-range selection state and APIs.
-- `cellSpanningFeature`: [Cell Spanning](../framework/react/guide/cell-spanning) lets cells span rows or columns.
-- `columnFacetingFeature`: [Faceting](../framework/react/guide/column-faceting) derives unique values, ranges, and counts for filtering UIs.
-- `columnFilteringFeature`: [Column Filtering](../framework/react/guide/column-filtering) filters individual columns and provides column-filter state.
-- `columnGroupingFeature`: [Grouping](../framework/react/guide/grouping) groups rows by column values.
-- `columnOrderingFeature`: [Column Ordering](../framework/react/guide/column-ordering) controls the order of columns.
-- `columnPinningFeature`: [Column Pinning](../framework/react/guide/column-pinning) pins columns to the left or right side of a table.
-- `columnResizingFeature`: [Column Resizing](../framework/react/guide/column-resizing) adds resize interactions and builds on column sizing.
-- `columnSizingFeature`: [Column Sizing](../framework/react/guide/column-sizing) stores and exposes column width information.
-- `columnVisibilityFeature`: [Column Visibility](../framework/react/guide/column-visibility) shows and hides columns.
-- `globalFilteringFeature`: [Global Filtering](../framework/react/guide/global-filtering) filters rows across multiple columns and builds on column filtering.
-- `rowAggregationFeature`: [Aggregation](../framework/react/guide/aggregation) calculates totals and other aggregate values over row sets.
-- `rowExpandingFeature`: [Expanding](../framework/react/guide/expanding) controls expanded rows and visible sub-rows.
-- `rowPaginationFeature`: [Pagination](../framework/react/guide/pagination) provides page state, navigation APIs, and optional client-side pagination.
-- `rowPinningFeature`: [Row Pinning](../framework/react/guide/row-pinning) pins rows to the top or bottom of the table.
-- `rowSelectionFeature`: [Row Selection](../framework/react/guide/row-selection) manages selected-row state and APIs.
-- `rowSortingFeature`: [Sorting](../framework/react/guide/sorting) manages sort state and optional client-side row ordering.
+- `cellSelectionFeature`: [セル選択](../framework/react/guide/cell-selection) は、セル範囲の選択状態と API を追加します。
+- `cellSpanningFeature`: [セル結合](../framework/react/guide/cell-spanning) は、セルが複数の行や列にまたがれるようにします。
+- `columnFacetingFeature`: [ファセット](../framework/react/guide/column-faceting) は、フィルタリング UI のために一意な値・範囲・件数を導き出します。
+- `columnFilteringFeature`: [列フィルタリング](../framework/react/guide/column-filtering) は、列ごとにフィルタリングし、列フィルターの状態を提供します。
+- `columnGroupingFeature`: [グループ化](../framework/react/guide/grouping) は、列の値で行をグループ化します。
+- `columnOrderingFeature`: [列の並べ替え](../framework/react/guide/column-ordering) は、列の順序を制御します。
+- `columnPinningFeature`: [列の固定](../framework/react/guide/column-pinning) は、列をテーブルの左端または右端に固定します。
+- `columnResizingFeature`: [列幅の変更](../framework/react/guide/column-resizing) は、列幅を変える操作を追加します。列幅の機能を土台にしています。
+- `columnSizingFeature`: [列幅](../framework/react/guide/column-sizing) は、列の幅の情報を保持して公開します。
+- `columnVisibilityFeature`: [列の表示切り替え](../framework/react/guide/column-visibility) は、列を表示したり隠したりします。
+- `globalFilteringFeature`: [グローバルフィルタリング](../framework/react/guide/global-filtering) は、複数の列にまたがって行をフィルタリングします。列フィルタリングの機能を土台にしています。
+- `rowAggregationFeature`: [集計](../framework/react/guide/aggregation) は、行の集まりに対して合計などの集計値を計算します。
+- `rowExpandingFeature`: [展開](../framework/react/guide/expanding) は、展開された行と表示されるサブ行を制御します。
+- `rowPaginationFeature`: [ページネーション](../framework/react/guide/pagination) は、ページの状態、ページ移動の API、任意のクライアントサイドのページネーションを提供します。
+- `rowPinningFeature`: [行の固定](../framework/react/guide/row-pinning) は、行をテーブルの上端または下端に固定します。
+- `rowSelectionFeature`: [行選択](../framework/react/guide/row-selection) は、選択された行の状態と API を管理します。
+- `rowSortingFeature`: [ソート](../framework/react/guide/sorting) は、ソートの状態と、任意のクライアントサイドでの行の並べ替えを管理します。
 
-These are the features included by `stockFeatures`. Fuzzy filtering is a filtering recipe built from the filtering and sorting features, while virtualization is provided by TanStack Virtual rather than a Table feature.
+これらが `stockFeatures` に含まれる機能です。あいまい検索フィルターは、フィルタリングとソートの機能を組み合わせて作るレシピです。また、仮想化はテーブルの機能ではなく、TanStack Virtual が提供します。
 
-To build and type your own plugin, see the framework-specific [Custom Plugins guide](../framework/react/guide/custom-features).
+独自のプラグインを作って型を付ける方法は、フレームワークごとの[カスタムプラグインのガイド](../framework/react/guide/custom-features)を参照してください。

@@ -7,12 +7,12 @@ title: AppColumnHelper
 type AppColumnHelper<TFeatures, TData, TCellComponents, THeaderComponents> = object;
 ```
 
-Defined in: [src/createTableHook.tsx:168](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L168)
+定義元: [src/createTableHook.tsx:168](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L168)
 
-Enhanced column helper with pre-bound components in cell/header/footer contexts.
-This enables TypeScript to know about the registered components when defining columns.
+セル・ヘッダー・フッターのコンテキストにコンポーネントをあらかじめ結び付けた、拡張版の列ヘルパーです。
+これにより、列を定義するときに、登録済みのコンポーネントを TypeScript が認識できます。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -30,7 +30,7 @@ This enables TypeScript to know about the registered components when defining co
 
 `THeaderComponents` *extends* `Record`\<`string`, `ComponentType`\<`any`\>\>
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### accessor {#accessor}
 
@@ -38,12 +38,12 @@ This enables TypeScript to know about the registered components when defining co
 accessor: <TAccessor, TValue>(accessor, column) => TAccessor extends AccessorFn<TData> ? AccessorFnColumnDef<TFeatures, TData, TValue> : AccessorKeyColumnDef<TFeatures, TData, TValue>;
 ```
 
-Defined in: [src/createTableHook.tsx:178](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L178)
+定義元: [src/createTableHook.tsx:178](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L178)
 
-Creates a data column definition with an accessor key or function.
-The cell, header, and footer contexts include pre-bound components.
+アクセサーのキーまたは関数を使って、データ列の列定義を作成します。
+セル・ヘッダー・フッターのコンテキストには、あらかじめ結び付けたコンポーネントが含まれます。
 
-#### Type Parameters {#type-parameters-1}
+#### 型パラメーター {#type-parameters-1}
 
 ##### TAccessor {#taccessor}
 
@@ -53,7 +53,7 @@ The cell, header, and footer contexts include pre-bound components.
 
 `TValue` *extends* `TAccessor` *extends* `AccessorFn`\<`TData`, infer TReturn\> ? `TReturn` : `TAccessor` *extends* `DeepKeys`\<`TData`\> ? `DeepValue`\<`TData`, `TAccessor`\> : `never`
 
-#### Parameters {#parameters}
+#### パラメーター {#parameters}
 
 ##### accessor {#accessor-1}
 
@@ -63,7 +63,7 @@ The cell, header, and footer contexts include pre-bound components.
 
 `TAccessor` *extends* `AccessorFn`\<`TData`\> ? [`AppColumnDefBase`](AppColumnDefBase.md)\<`TFeatures`, `TData`, `TValue`, `TCellComponents`, `THeaderComponents`\> & `object` : [`AppColumnDefBase`](AppColumnDefBase.md)\<`TFeatures`, `TData`, `TValue`, `TCellComponents`, `THeaderComponents`\>
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 `TAccessor` *extends* `AccessorFn`\<`TData`\> ? `AccessorFnColumnDef`\<`TFeatures`, `TData`, `TValue`\> : `AccessorKeyColumnDef`\<`TFeatures`, `TData`, `TValue`\>
 
@@ -75,23 +75,23 @@ The cell, header, and footer contexts include pre-bound components.
 columns: <TColumns>(columns) => ColumnDef<TFeatures, TData, any>[] & [...TColumns];
 ```
 
-Defined in: [src/createTableHook.tsx:209](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L209)
+定義元: [src/createTableHook.tsx:209](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L209)
 
-Wraps an array of column definitions to preserve each column's individual TValue type.
+列定義の配列をラップして、各列がそれぞれ持つ TValue 型を保ちます。
 
-#### Type Parameters {#type-parameters-2}
+#### 型パラメーター {#type-parameters-2}
 
 ##### TColumns {#tcolumns}
 
 `TColumns` *extends* `ReadonlyArray`\<`ColumnDef`\<`TFeatures`, `TData`, `any`\>\>
 
-#### Parameters {#parameters-1}
+#### パラメーター {#parameters-1}
 
 ##### columns {#columns-1}
 
 \[`...TColumns`\]
 
-#### Returns {#returns-1}
+#### 戻り値 {#returns-1}
 
 `ColumnDef`\<`TFeatures`, `TData`, `any`\>[] & \[`...TColumns`\]
 
@@ -103,18 +103,18 @@ Wraps an array of column definitions to preserve each column's individual TValue
 display: (column) => DisplayColumnDef<TFeatures, TData, unknown>;
 ```
 
-Defined in: [src/createTableHook.tsx:217](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L217)
+定義元: [src/createTableHook.tsx:217](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L217)
 
-Creates a display column definition for non-data columns.
-The cell, header, and footer contexts include pre-bound components.
+データを持たない列のための、表示用の列定義を作成します。
+セル・ヘッダー・フッターのコンテキストには、あらかじめ結び付けたコンポーネントが含まれます。
 
-#### Parameters {#parameters-2}
+#### パラメーター {#parameters-2}
 
 ##### column {#column-1}
 
 [`AppDisplayColumnDef`](AppDisplayColumnDef.md)\<`TFeatures`, `TData`, `TCellComponents`, `THeaderComponents`\>
 
-#### Returns {#returns-2}
+#### 戻り値 {#returns-2}
 
 `DisplayColumnDef`\<`TFeatures`, `TData`, `unknown`\>
 
@@ -126,17 +126,17 @@ The cell, header, and footer contexts include pre-bound components.
 group: (column) => GroupColumnDef<TFeatures, TData, unknown>;
 ```
 
-Defined in: [src/createTableHook.tsx:230](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L230)
+定義元: [src/createTableHook.tsx:230](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L230)
 
-Creates a group column definition with nested child columns.
-The cell, header, and footer contexts include pre-bound components.
+子の列を入れ子にした、グループ列の列定義を作成します。
+セル・ヘッダー・フッターのコンテキストには、あらかじめ結び付けたコンポーネントが含まれます。
 
-#### Parameters {#parameters-3}
+#### パラメーター {#parameters-3}
 
 ##### column {#column-2}
 
 [`AppGroupColumnDef`](AppGroupColumnDef.md)\<`TFeatures`, `TData`, `TCellComponents`, `THeaderComponents`\>
 
-#### Returns {#returns-3}
+#### 戻り値 {#returns-3}
 
 `GroupColumnDef`\<`TFeatures`, `TData`, `unknown`\>

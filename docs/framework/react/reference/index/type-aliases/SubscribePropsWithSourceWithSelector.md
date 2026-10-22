@@ -7,12 +7,12 @@ title: SubscribePropsWithSourceWithSelector
 type SubscribePropsWithSourceWithSelector<TSourceValue, TSelected> = object;
 ```
 
-Defined in: [src/Subscribe.ts:51](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L51)
+定義元: [src/Subscribe.ts:51](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L51)
 
-Subscribe to a projected value from a source (atom or store). The selector
-receives the source value; children receive the projected `TSelected`.
+ソース（アトムまたはストア）から射影した値を購読します。selector はソースの値を受け取り、
+children は射影された `TSelected` を受け取ります。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TSourceValue {#tsourcevalue}
 
@@ -22,7 +22,7 @@ receives the source value; children receive the projected `TSelected`.
 
 `TSelected`
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### children {#children}
 
@@ -30,7 +30,7 @@ receives the source value; children receive the projected `TSelected`.
 children: ((state) => ReactNode) | ReactNode;
 ```
 
-Defined in: [src/Subscribe.ts:54](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L54)
+定義元: [src/Subscribe.ts:54](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L54)
 
 ***
 
@@ -40,15 +40,15 @@ Defined in: [src/Subscribe.ts:54](https://github.com/TanStack/table/blob/main/pa
 selector: (state) => TSelected;
 ```
 
-Defined in: [src/Subscribe.ts:53](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L53)
+定義元: [src/Subscribe.ts:53](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L53)
 
-#### Parameters {#parameters}
+#### パラメーター {#parameters}
 
 ##### state {#state}
 
 `TSourceValue`
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 `TSelected`
 
@@ -60,4 +60,4 @@ Defined in: [src/Subscribe.ts:53](https://github.com/TanStack/table/blob/main/pa
 source: SubscribeSource<TSourceValue>;
 ```
 
-Defined in: [src/Subscribe.ts:52](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L52)
+定義元: [src/Subscribe.ts:52](https://github.com/TanStack/table/blob/main/packages/react-table/src/Subscribe.ts#L52)

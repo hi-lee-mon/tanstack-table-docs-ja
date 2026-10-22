@@ -1,22 +1,22 @@
 ---
-title: Helpers Guide
+title: ヘルパーガイド
 ---
 
-TanStack Table exposes a few small helper functions for authoring table configuration with better TypeScript inference. They do not add behavior by themselves. Instead, they help TypeScript preserve the relationship between your feature set, row type, column definitions, table options, and named function registries.
+TanStack Table には、TypeScript の型推論を効かせながらテーブルの設定を書くための、小さなヘルパー関数がいくつか用意されています。ヘルパー自体が動作を追加するわけではありません。機能の組み合わせ・行の型・列定義・テーブルオプション・名前付きの関数レジストリの間の関係を、TypeScript が保てるようにするためのものです。
 
-The most common helpers are:
+よく使うヘルパーは次のとおりです。
 
-- `tableFeatures` - defines the static feature set and feature-related slots for a table
-- `tableOptions` - preserves inference when composing reusable table options
-- `createColumnHelper` - creates strongly typed column definitions
+- `tableFeatures` - テーブルの静的な機能の組み合わせと、機能に関係するスロットを定義します
+- `tableOptions` - 再利用できるテーブルオプションを組み立てるときに型推論を保ちます
+- `createColumnHelper` - 厳密に型付けされた列定義を作成します
 
-These helpers are exported from every framework adapter and from `@tanstack/table-core`.
+これらのヘルパーは、すべてのフレームワークのアダプターと `@tanstack/table-core` からエクスポートされています。
 
 ## `tableFeatures` {#tablefeatures}
 
-Use `tableFeatures()` to declare which features a table uses. Features are opt-in in v9, so the object you pass to this helper determines which feature APIs and state slices exist on the table, columns, rows, headers, and cells.
+テーブルで使う機能を宣言するには `tableFeatures()` を使います。v9 では機能はオプトイン（明示的に有効にする）方式です。そのため、このヘルパーに渡すオブジェクトによって、テーブル・列・行・ヘッダー・セルにどの機能の API と状態のスライスが存在するかが決まります。
 
-For a basic table that only needs core behavior, pass an empty object:
+コアの動作だけが必要な基本的なテーブルでは、空のオブジェクトを渡します。
 
 ```ts
 import { tableFeatures } from '@tanstack/react-table'
@@ -24,7 +24,7 @@ import { tableFeatures } from '@tanstack/react-table'
 const features = tableFeatures({})
 ```
 
-Add feature objects and row model factories when your table needs extra behavior:
+テーブルに追加の動作が必要な場合は、機能のオブジェクトと行モデルのファクトリーを追加します。
 
 ```ts
 import {
@@ -49,20 +49,20 @@ const features = tableFeatures({
 ```
 
 > [!NOTE]
-> the full built-in registries (`filterFns`, `sortFns`, `aggregationFns`) can still be spread into these slots, but they are deprecated because they put every built-in function in your bundle. Register only the functions you use under their conventional string keys, or pass functions directly to the `filterFn`, `sortFn`, and `aggregationFn` column options with no registration at all. String keys, including the default `'auto'`, only resolve functions that are registered.
+> 組み込みのレジストリ全体（`filterFns`、`sortFns`、`aggregationFns`）を、これらのスロットにスプレッドで展開することも引き続きできます。ただし、組み込みの関数がすべてバンドルに含まれてしまうため、非推奨です。使う関数だけを慣例的な文字列キーで登録するか、登録はせずに列オプションの `filterFn`、`sortFn`、`aggregationFn` に関数を直接渡してください。文字列キー（デフォルトの `'auto'` を含む）で解決されるのは、登録済みの関数だけです。
 
-Keep `features` stable. In most apps, define it outside your component or in shared table setup code. Since `typeof features` is used throughout the table's types, stable features also make it easier to reuse column helpers, column definitions, and shared options.
+`features` は参照が変わらないようにしてください。たいていのアプリでは、コンポーネントの外か、共有のテーブル設定のコードで定義します。`typeof features` はテーブルの型のあちこちで使われるため、features が変わらなければ、列ヘルパー・列定義・共有オプションも再利用しやすくなります。
 
-### What goes in `tableFeatures` {#what-goes-in-tablefeatures}
+### `tableFeatures` に入れるもの {#what-goes-in-tablefeatures}
 
-`tableFeatures()` is the static configuration point for things that are stitched into a table before it is created:
+`tableFeatures()` は、テーブルが作成される前に組み込まれるものを静的に設定する場所です。
 
-- Feature objects such as `rowSortingFeature`, `columnFilteringFeature`, or custom features
-- Row model factories such as `createSortedRowModel()` and `createFilteredRowModel()`
-- Function registries such as `filterFns`, `sortFns`, and `aggregationFns`
-- Type-only slots such as `tableMeta` and `columnMeta`, usually declared with `metaHelper`
+- `rowSortingFeature`、`columnFilteringFeature`、独自の機能などの機能オブジェクト
+- `createSortedRowModel()` や `createFilteredRowModel()` などの行モデルのファクトリー
+- `filterFns`、`sortFns`、`aggregationFns` などの関数レジストリ
+- `tableMeta` や `columnMeta` などの型専用のスロット（通常は `metaHelper` で宣言します）
 
-`metaHelper()` is useful when declaring type-only meta slots in `tableFeatures()`. It is equivalent to writing `{} as MyMeta`, but makes the intent clearer and avoids lint rules accidentally removing the type assertion:
+`metaHelper()` は、`tableFeatures()` で型専用の meta スロットを宣言するときに便利です。`{} as MyMeta` と書くのと同じですが、意図がより明確になり、lint ルールによって型アサーションが誤って取り除かれることも防げます。
 
 ```ts
 import {
@@ -86,9 +86,9 @@ const features = tableFeatures({
 })
 ```
 
-For more detail on `tableMeta`, `columnMeta`, and `metaHelper`, see the [Table and Column Meta Guide](./table-and-column-meta).
+`tableMeta`、`columnMeta`、`metaHelper` について詳しくは、[テーブルと列の meta ガイド](./table-and-column-meta)を参照してください。
 
-Function registry keys become valid string references in table and column options:
+関数レジストリのキーは、テーブルや列のオプションで参照できる有効な文字列になります。
 
 ```ts
 import {
@@ -121,13 +121,13 @@ const columns = columnHelper.columns([
 ])
 ```
 
-For more detail on row model slots and function registries, see the [Row Models Guide](./row-models).
+行モデルのスロットと関数レジストリについて詳しくは、[行モデルガイド](./row-models)を参照してください。
 
 ## `tableOptions` {#tableoptions}
 
-Use `tableOptions()` when you want to compose reusable table option objects while keeping TanStack Table's generic inference intact. The helper returns the same object at runtime; its value is in the TypeScript overloads.
+TanStack Table のジェネリクスの型推論を保ったまま、再利用できるテーブルオプションのオブジェクトを組み立てたい場合は `tableOptions()` を使います。このヘルパーは実行時には受け取ったオブジェクトをそのまま返します。価値があるのは TypeScript のオーバーロードの部分です。
 
-This is useful for shared defaults:
+共有のデフォルト値に役立ちます。
 
 ```ts
 import { tableFeatures, tableOptions, useTable } from '@tanstack/react-table'
@@ -150,7 +150,7 @@ const table = useTable({
 })
 ```
 
-It is also useful when a wrapper or table factory supplies required options later. For example, a reusable option fragment can omit `data`, `columns`, or `features` and still keep the remaining table option types connected to the same feature set and row type:
+ラッパーやテーブルのファクトリーが必須のオプションを後から渡す場合にも役立ちます。たとえば、再利用するオプションの断片では `data`、`columns`、`features` を省略しても、残りのテーブルオプションの型を同じ機能の組み合わせと行の型に結び付けたままにできます。
 
 ```ts
 import {
@@ -186,18 +186,18 @@ const table = useTable({
 })
 ```
 
-Use `tableOptions()` for reusable configuration. For one-off table setup, passing the object directly to your adapter's table creation function is usually enough.
+`tableOptions()` は再利用する設定に使ってください。その場限りのテーブルのセットアップであれば、通常はアダプターのテーブル作成関数にオブジェクトを直接渡すだけで十分です。
 
 ## `createColumnHelper` {#createcolumnhelper}
 
-`createColumnHelper()` creates a small set of utilities for authoring column definitions:
+`createColumnHelper()` は、列定義を書くための小さなユーティリティ群を作成します。
 
-- `accessor` creates data columns from an accessor key or accessor function
-- `display` creates display-only columns such as actions or selection controls
-- `group` creates parent columns that contain nested columns
-- `columns` wraps arrays of column definitions to preserve each column's individual value type
+- `accessor` は、アクセサーのキーまたはアクセサー関数からデータ列を作成します
+- `display` は、操作ボタンや選択用の操作部品など、表示専用の列を作成します
+- `group` は、入れ子の列を含む親の列を作成します
+- `columns` は列定義の配列をラップし、各列の値の型を個別に保ちます
 
-The helper is typed by both your feature set and row type:
+このヘルパーは、機能の組み合わせと行の型の両方で型付けされます。
 
 ```ts
 import { createColumnHelper, tableFeatures } from '@tanstack/react-table'
@@ -226,14 +226,14 @@ const columns = columnHelper.columns([
 ])
 ```
 
-At runtime, the column helper only returns column definition objects. Its main purpose is to infer accessor values, feature-specific column options, and nested column arrays more precisely than plain object literals can in some TypeScript scenarios.
+実行時には、列ヘルパーは列定義のオブジェクトを返すだけです。主な目的は、アクセサーの値・機能ごとの列オプション・入れ子の列の配列を、場面によっては素のオブジェクトリテラルよりも正確に TypeScript で推論させることです。
 
-Column definitions have their own guide with the full details on accessor columns, display columns, grouping columns, IDs, and rendering. See the [Column Defs Guide](./column-defs).
+列定義には専用のガイドがあり、アクセサー列・表示列・グループ列・ID・描画について詳しく説明しています。[列定義ガイド](./column-defs)を参照してください。
 
-## When to Use Each Helper {#when-to-use-each-helper}
+## 各ヘルパーを使う場面 {#when-to-use-each-helper}
 
-Use `tableFeatures()` for every v9 table. Even an empty `tableFeatures({})` call clearly declares that the table only uses core features.
+`tableFeatures()` は v9 のすべてのテーブルで使ってください。空の `tableFeatures({})` の呼び出しでも、そのテーブルがコア機能だけを使うことをはっきり宣言できます。
 
-Use `tableOptions()` when options are shared, composed, or supplied in multiple steps. Skip it when the options object is only passed directly to `useTable`, `createTable`, `injectTable`, `TableController`, or `constructTable`.
+`tableOptions()` は、オプションを共有したり、組み合わせたり、複数の段階で渡したりする場合に使います。オプションのオブジェクトを `useTable`、`createTable`、`injectTable`、`TableController`、`constructTable` に直接渡すだけなら不要です。
 
-Use `createColumnHelper()` when you want strong column inference, especially for accessor values, custom feature options, and nested column groups. Plain `ColumnDef` objects are still valid when they are easier for your use case.
+`createColumnHelper()` は、列の型推論を強く効かせたい場合、特にアクセサーの値・独自機能のオプション・入れ子の列グループで使います。用途によっては素の `ColumnDef` オブジェクトのほうが扱いやすいこともあり、その場合はそれを使ってもかまいません。

@@ -7,11 +7,11 @@ title: AppColumnDefTemplate
 type AppColumnDefTemplate<TProps> = string | ((props) => any);
 ```
 
-Defined in: [src/createTableHook.tsx:86](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L86)
+定義元: [src/createTableHook.tsx:86](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L86)
 
-Template type for column definitions that can be a string or a function.
+列定義で使うテンプレートの型です。文字列か関数を指定できます。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TProps {#tprops}
 

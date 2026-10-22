@@ -7,21 +7,20 @@ title: getFilteredRowModel
 function getFilteredRowModel<TData>(): RowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:55](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L55)
+定義元: [src/useLegacyTable.ts:55](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L55)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 [`RowModelFactory`](../type-aliases/RowModelFactory.md)\<`TData`\>
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-Use `createFilteredRowModel()` in the `filteredRowModel` feature slot with the new `useTable` hook instead.
+代わりに、新しい `useTable` フックで、`features` の `filteredRowModel` スロットに `createFilteredRowModel()` を指定してください。
 
-This is a stub function for v8 API compatibility with `useLegacyTable`.
-It acts as a marker to enable the filtered row model.
+これは `useLegacyTable` で v8 の API との互換性を保つためのスタブ関数です。フィルタリング済みの行モデルを有効にする目印として働きます。

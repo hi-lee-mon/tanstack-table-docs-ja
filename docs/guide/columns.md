@@ -1,67 +1,67 @@
 ---
-title: Columns Guide
+title: 列ガイド
 ---
 
 > [!NOTE]
-> This guide is about the actual `column` objects that are generated within the table instance and NOT about setting up the [column definitions](./column-defs) for your table.
+> このガイドで扱うのは、テーブルインスタンスの中で生成される実際の `column` オブジェクトです。テーブルの[列定義](./column-defs)を設定する方法については扱いません。
 
-This quick guide will discuss the different ways you can retrieve and interact with `column` objects in TanStack Table.
+この短いガイドでは、TanStack Table で `column` オブジェクトを取得して操作するさまざまな方法を説明します。
 
-## Where to Get Columns From {#where-to-get-columns-from}
+## 列をどこから取得するか {#where-to-get-columns-from}
 
-You can find the `column` objects in many places. They are often attached to other objects like headers and cells, and they are also available from several `table` instance APIs.
+`column` オブジェクトはさまざまな場所で見つかります。ヘッダーやセルといった他のオブジェクトに付いていることが多く、`table` インスタンスのいくつかの API からも取得できます。
 
-### Header and Cell Objects {#header-and-cell-objects}
+### ヘッダーオブジェクトとセルオブジェクト {#header-and-cell-objects}
 
-Before you reach for one of the `table` instance APIs, consider if you actually need to retrieve either [headers](./headers) or [cells](./cells) instead of `columns`. If you are rendering out the markup for your table, you will most likely want to reach for the APIs that return headers or cells instead of columns. The column objects themselves are not really meant to render out the headers or cells, but the `header` and `cell` objects will contain references to these `column` objects from which they can derive the necessary information to render their UI.
+`table` インスタンスの API に手を伸ばす前に、本当に必要なのは `columns` ではなく[ヘッダー](./headers)や[セル](./cells)ではないかを考えてください。テーブルのマークアップを描画しているなら、列ではなくヘッダーやセルを返す API を使いたい場面がほとんどでしょう。列オブジェクト自体は、ヘッダーやセルを描画するためのものではありません。`header` オブジェクトと `cell` オブジェクトがこれらの `column` オブジェクトへの参照を持っており、そこから UI の描画に必要な情報を導き出します。
 
 ```js
 const column = cell.column // get column from cell
 const column = header.column // get column from header
 ```
 
-### Column Table Instance APIs {#column-table-instance-apis}
+### 列を取得する table インスタンスの API {#column-table-instance-apis}
 
-There are dozens of `table` instance APIs you can use to retrieve columns from the table instance. Which APIs you will use will depend entirely on which features you are using in your table and your use-case.
+テーブルインスタンスから列を取得するのに使える `table` インスタンスの API は、何十個もあります。どの API を使うかは、テーブルでどの機能を使っているか、そしてユースケースによって決まります。
 
-#### Get Column {#get-column}
+#### 列を1つ取得する {#get-column}
 
-If you need to just get a single column by its ID, you can use the `table.getColumn` API.
+ID を指定して列を1つ取得したいだけなら、`table.getColumn` API を使えます。
 
 ```js
 const column = table.getColumn('firstName')
 ```
 
-#### Get Columns {#get-columns}
+#### 列をまとめて取得する {#get-columns}
 
-The simplest column API is `table.getAllColumns`, which will return a list of all columns in the table. There are dozens of other column APIs that are affected by other features and the state of the table that come alongside this API though. `table.getAllFlatColumns`, `table.getAllLeafColumns`, `table.getCenterLeafColumns`, `table.getStartVisibleLeafColumns` are just some examples of other column APIs that you might use in tandem with the column visibility or column pinning features.
+いちばん単純な列の API は `table.getAllColumns` で、テーブル内のすべての列のリストを返します。ただし、この API と並んで、他の機能やテーブルの状態の影響を受ける列の API が何十個もあります。`table.getAllFlatColumns`、`table.getAllLeafColumns`、`table.getCenterLeafColumns`、`table.getStartVisibleLeafColumns` は、列の表示切り替えや列の固定の機能と組み合わせて使うことがある列の API のほんの一例です。
 
-## Column Objects {#column-objects}
+## 列オブジェクト {#column-objects}
 
-Column objects are not actually meant to be used to render out the table UI directly, so they are not associated 1-to-1 with any `<th>` or `<td>` elements in your table, but they contain a lot of useful properties and methods that you can use to interact with the table state.
+列オブジェクトは、テーブルの UI を直接描画するためのものではありません。そのため、テーブル内の `<th>` 要素や `<td>` 要素と1対1で対応しているわけではありません。それでも、テーブルの状態を操作するのに使える便利なプロパティやメソッドを数多く持っています。
 
-### Column IDs {#column-ids}
+### 列 ID {#column-ids}
 
-Every column must have a unique `id` defined in its associated [Column Definition](./column-defs). Usually, you define this `id` yourself, or it is derived from the `accessorKey` or `header` properties in the column definition.
+すべての列は、対応する[列定義](./column-defs)で定義された一意の `id` を持たなければなりません。通常、この `id` は自分で定義するか、列定義の `accessorKey` プロパティや `header` プロパティから導き出されます。
 
 ### ColumnDef {#columndef}
 
-A reference to the original `columnDef` object that was used to create the column is always available on the column object.
+列オブジェクトからは、その列の作成に使われた元の `columnDef` オブジェクトへの参照を常に参照できます。
 
-### Nested Grouped Columns Properties {#nested-grouped-columns-properties}
+### 入れ子・グループ化された列のプロパティ {#nested-grouped-columns-properties}
 
-There are a few properties on `column` objects that are only useful if the column is part of a nested or grouped column structure. These properties include:
+`column` オブジェクトのプロパティの中には、その列が入れ子になった列構造やグループ化された列構造の一部である場合にだけ役立つものがいくつかあります。次のようなプロパティです。
 
-- `columns`: An array of child columns that belong to a group column.
-- `depth`: The header group "row index" that the column group belongs to.
-- `parent`: The parent column of the column. If the column is a top-level column, this will be `undefined`.
+- `columns`: グループ列に属する子の列の配列です。
+- `depth`: その列グループが属するヘッダーグループの「行番号」です。
+- `parent`: その列の親の列です。最上位の列の場合は `undefined` になります。
 
-## More Column APIs {#more-column-apis}
+## その他の列の API {#more-column-apis}
 
-There are dozens of Column APIs that you can use to interact with the table state and extract cell values from the table based on the state of the table. See each feature's column API documentation for more information.
+テーブルの状態を操作したり、テーブルの状態に基づいてテーブルからセルの値を取り出したりするのに使える列の API は、何十個もあります。詳しくは、各機能の列の API のドキュメントを参照してください。
 
-## Column Rendering {#column-rendering}
+## 列の描画 {#column-rendering}
 
-Don't necessarily use `column` objects to render `headers` or `cells` directly. Instead, use the [`header`](./headers) and [`cell`](./cells) objects, as discussed above.
+`headers` や `cells` を描画するのに、必ずしも `column` オブジェクトを直接使う必要はありません。上で説明したとおり、代わりに [`header`](./headers) オブジェクトと [`cell`](./cells) オブジェクトを使ってください。
 
-But if you are just rendering a list of columns somewhere else in your UI for something like a column visibility menu or something similar, you can just map over a columns array and render out the UI as you normally would.
+ただし、列の表示切り替えメニューのようなものとして、UI のどこか別の場所に列の一覧を描画したいだけなら、列の配列を map して、いつもどおりに UI を描画すれば十分です。

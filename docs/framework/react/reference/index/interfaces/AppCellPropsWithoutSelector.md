@@ -3,11 +3,11 @@ id: AppCellPropsWithoutSelector
 title: AppCellPropsWithoutSelector
 ---
 
-Defined in: [src/createTableHook.tsx:398](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L398)
+定義元: [src/createTableHook.tsx:398](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L398)
 
-Props for AppCell component - without selector
+AppCell コンポーネントの props です（selector なし）。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -25,7 +25,7 @@ Props for AppCell component - without selector
 
 `TCellComponents` *extends* `Record`\<`string`, `ComponentType`\<`any`\>\>
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### cell {#cell}
 
@@ -33,7 +33,7 @@ Props for AppCell component - without selector
 cell: Cell<TFeatures, TData, TValue>;
 ```
 
-Defined in: [src/createTableHook.tsx:404](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L404)
+定義元: [src/createTableHook.tsx:404](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L404)
 
 ***
 
@@ -43,15 +43,15 @@ Defined in: [src/createTableHook.tsx:404](https://github.com/TanStack/table/blob
 children: (cell) => ReactNode;
 ```
 
-Defined in: [src/createTableHook.tsx:405](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L405)
+定義元: [src/createTableHook.tsx:405](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L405)
 
-#### Parameters {#parameters}
+#### パラメーター {#parameters}
 
 ##### cell {#cell-1}
 
 `Cell_Core`\<`TFeatures`, `TData`, `TValue`\> & `ExtractFeatureMapTypes`\<`TFeatures`, `Cell_FeatureMap`\> & `TCellComponents` & `object`
 
-#### Returns {#returns}
+#### 戻り値 {#returns}
 
 `ReactNode`
 
@@ -63,4 +63,4 @@ Defined in: [src/createTableHook.tsx:405](https://github.com/TanStack/table/blob
 optional selector?: undefined;
 ```
 
-Defined in: [src/createTableHook.tsx:409](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L409)
+定義元: [src/createTableHook.tsx:409](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHook.tsx#L409)

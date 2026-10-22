@@ -1,24 +1,24 @@
 ---
-title: Worker Row Models Guide (Experimental)
+title: Worker 行モデルガイド（実験的）
 ---
 
-> ⚠️ **Experimental.** The `experimental-worker-plugin` entry point is a proof of concept shipped for feedback. Its API may change or be removed in any release, and it is intentionally excluded from the stable API surface. It is probably only suitable for extreme use cases: as a rough starting point, do not reach for it unless you are processing **100,000+ rows on the client**. Most tables at that scale are better served by server-side processing (`manual*` options), pagination, and virtualization first.
+> ⚠️ **実験的な機能です。** `experimental-worker-plugin` エントリーポイントは、フィードバックを集めるために公開している概念実証です。API はどのリリースでも変更・削除される可能性があり、意図的に安定版の API からは外しています。おそらく、極端なユースケースにしか向きません。おおまかな目安として、**クライアントで 100,000 行以上**を処理するのでなければ、使わないでください。その規模のテーブルの多くは、まずサーバーサイドでの処理（`manual*` オプション）、ページネーション、仮想化で対応したほうがうまくいきます。
 
-## What It Does {#what-it-does}
+## 何をするのか {#what-it-does}
 
-The worker plugin moves the expensive row model stages (filtering, grouping with aggregation, and sorting) into a dedicated Web Worker, so heavy recomputation never blocks the main thread. Your table code stays almost identical to a normal table: no `manual*` flags and no `postMessage` calls. The worker runs a headless "shadow table" with the real row model pipeline, and posts back compact results (transferable index permutations, or serialized row trees when grouping is active). While a recomputation is in flight the table keeps rendering its previous rows, then updates when the result lands.
+Worker プラグインは、行モデルの中でも重い処理の段階（フィルタリング、集計付きのグループ化、ソート）を専用の Web Worker に移します。そのため、重い再計算がメインスレッドをブロックすることはありません。テーブルのコードは通常のテーブルとほぼ同じままで、`manual*` フラグも `postMessage` の呼び出しも要りません。Worker の中では、本物の行モデルのパイプラインを持つヘッドレスな「シャドウテーブル」が動き、結果をコンパクトな形で返します（transferable なインデックスの並び、またはグループ化が有効なときはシリアライズした行ツリー）。再計算の途中でもテーブルは直前の行をレンダーし続け、結果が届いた時点で更新されます。
 
-## When To Consider It {#when-to-consider-it}
+## 検討すべき場面 {#when-to-consider-it}
 
-- The full dataset lives on the client (local-first apps, offline caches, analytics grids) and cannot be processed on a server.
-- Row count times comparator cost exceeds a frame budget: roughly 100k+ rows for basic sorts, or fewer with expensive custom filter/sort functions.
-- The UI must stay interactive during recomputation (filter-as-you-type, virtualized scrolling, animations).
+- データセット全体がクライアントにあり（ローカルファーストのアプリ、オフラインキャッシュ、分析用のグリッドなど）、サーバーでは処理できない。
+- 行数と比較関数のコストを掛け合わせると、1フレームの予算を超える。基本的なソートならおよそ 10 万行以上、重いカスタムのフィルター関数やソート関数ならそれより少ない行数が目安です。
+- 再計算の間も UI が操作できる状態でなければならない（入力しながらのフィルター、仮想化したスクロール、アニメーションなど）。
 
-If your data is server-paginated, or client-side processing finishes in a few milliseconds, this plugin only adds complexity.
+データをサーバー側でページネーションしている場合や、クライアントサイドの処理が数ミリ秒で終わる場合は、このプラグインは複雑さを増やすだけです。
 
-## Quick Start {#quick-start}
+## クイックスタート {#quick-start}
 
-Three pieces are required. First, a shared module that both threads import. Everything in it must be thread-portable: `accessorKey` columns (or accessors defined in the module), functions from the `sortFns`/`filterFns`/`aggregationFns` registries, and no closures over app state.
+必要なものは3つです。1つ目は、両方のスレッドが import する共有モジュールです。この中のものはすべて、スレッドをまたいで持ち運べなければなりません。使えるのは `accessorKey` の列（またはこのモジュール内で定義したアクセサー）と、`sortFns`/`filterFns`/`aggregationFns` のレジストリにある関数です。アプリの状態を閉じ込めたクロージャーは使えません。
 
 ```ts
 // tableConfig.ts (imported by BOTH the app and the worker)
@@ -55,7 +55,7 @@ export const columns = columnHelper.columns([
 ])
 ```
 
-Second, a worker entry file. This is the entire worker:
+2つ目は、Worker のエントリーファイルです。Worker 側のコードはこれで全部です。
 
 ```ts
 // table.worker.ts
@@ -65,7 +65,7 @@ import { columns, sharedFeatures } from './tableConfig'
 initTableWorker({ features: sharedFeatures, columns })
 ```
 
-Third, swap the offloaded stages for worker-backed ones in your app. The `new Worker(new URL(...))` expression must live in your code so your bundler can discover and bundle the worker file:
+3つ目に、アプリ側で、Worker に任せる段階を Worker で動くものに差し替えます。`new Worker(new URL(...))` の式は自分のコードの中に書く必要があります。そうしないと、バンドラーが Worker のファイルを見つけてバンドルできません。
 
 ```ts
 // App.tsx
@@ -92,26 +92,26 @@ const features: typeof sharedFeatures = {
 const table = useTable({ features, columns, data })
 ```
 
-Read `table.state.workerRowModels.isPending` for a loading indicator; `lastComputeMs` and `lastRoundTripMs` on the same slice expose timings. When results arrive, re-renders flow through the standard table state mechanism.
+ローディング表示には `table.state.workerRowModels.isPending` を読みます。同じ状態には `lastComputeMs` と `lastRoundTripMs` もあり、所要時間を確認できます。結果が届くと、通常のテーブルの状態の仕組みを通じて再レンダーされます。
 
-The plugin entry is available from every framework adapter (`@tanstack/react-table/experimental-worker-plugin`, `@tanstack/octane-table/experimental-worker-plugin`, `@tanstack/vue-table/experimental-worker-plugin`, and so on) as well as `@tanstack/table-core/experimental-worker-plugin`, and it is fully tree-shakable: apps that never import it ship none of it.
+このプラグインのエントリーは、すべてのフレームワークアダプター（`@tanstack/react-table/experimental-worker-plugin`、`@tanstack/octane-table/experimental-worker-plugin`、`@tanstack/vue-table/experimental-worker-plugin` など）と `@tanstack/table-core/experimental-worker-plugin` から利用できます。また、完全にツリーシェイク可能なので、import しないアプリにはまったく含まれません。
 
-## Offloadable Stages and Composition {#offloadable-stages-and-composition}
+## Worker に任せられる段階と組み合わせ方 {#offloadable-stages-and-composition}
 
-`createWorkerRowModel(tableWorker, stage)` accepts `'filtered'`, `'grouped'`, `'sorted'`, or `'expanded'`. All stages on a table share one worker and one round trip per state change, and stages whose inputs did not change are skipped entirely.
+`createWorkerRowModel(tableWorker, stage)` には `'filtered'`、`'grouped'`、`'sorted'`、`'expanded'` のいずれかを渡せます。1つのテーブルのすべての段階は1つの Worker を共有し、状態が変わるたびのやり取りも1往復で済みます。入力が変わっていない段階は丸ごとスキップされます。
 
-Offloaded stages must form a contiguous prefix of the pipeline (filtered, then grouped, then sorted, then expanded). Offloading `filtered` alone is fine because downstream sync stages consume it normally, but offloading `sorted` while filtering runs on the main thread would silently bypass the filter. A dev-mode warning fires on mismatches. In practice: never offload `expanded` (it changes on every toggle), and keep pagination on the main thread (it only slices the current page).
+Worker に任せる段階は、パイプラインの先頭から途切れずに並んでいなければなりません（filtered、grouped、sorted、expanded の順）。`filtered` だけを任せるのは問題ありません。後続の同期的な段階が、その結果を通常どおり受け取るからです。しかし、フィルタリングをメインスレッドで動かしたまま `sorted` を任せると、フィルターが黙って素通りされてしまいます。このような食い違いがあると、開発モードで警告が出ます。実際には、`expanded` は決して任せないでください（開閉のたびに変わるためです）。また、ページネーションはメインスレッドに残してください（現在のページを切り出すだけだからです）。
 
-## Constraints and Behavior {#constraints-and-behavior}
+## 制約と挙動 {#constraints-and-behavior}
 
-- **Flat source data only** for now (no `getSubRows`).
-- **Table options that affect processing** (a custom `globalFilterFn`, for example) must be passed to `initTableWorker` in the shared config, not just to your table hook.
-- **Grouping aggregates** require both `rowAggregationFeature` and `columnGroupingFeature` in the shared feature set. They are computed eagerly in the worker, but only for columns with an explicit `aggregationFn` or `aggregatedCell`; group-row `getValue()` for other columns returns `undefined`.
-- **Multiple aggregation results** are transferred as keyed objects. Custom aggregation results must be supported by the browser's structured-clone algorithm.
-- **Grand totals and caller-selected row totals** from `column.getAggregationValue(options?)` run on the main thread. The worker currently offloads row-model stages, not arbitrary aggregation requests.
-- **SSR** works out of the box: on the server (no `Worker` global) the table renders unprocessed rows, and the client takes over after hydration.
-- **If the worker fails** to load or throws, the plugin logs an error, keeps the last results on screen, and stops updating; un-resulted stages fall back to their pre-stage models.
-- **Nothing terminates the worker automatically** yet. `tableWorker.terminate()` exists as a manual escape hatch and self-heals on the next read.
-- Row selection, expansion, and pagination are main-thread state and unaffected by the plugin. Selection over very large groups still scales with row count on the main thread.
+- 今のところ、**平坦な元データのみ**に対応しています（`getSubRows` は使えません）。
+- **処理に影響するテーブルのオプション**（たとえば独自の `globalFilterFn`）は、テーブルのフックに渡すだけでなく、共有の設定として `initTableWorker` にも渡す必要があります。
+- **グループの集計**を使うには、共有の機能セットに `rowAggregationFeature` と `columnGroupingFeature` の両方が必要です。集計は Worker の中で先行して計算されますが、対象は `aggregationFn` または `aggregatedCell` を明示的に指定した列だけです。それ以外の列では、グループ行の `getValue()` は `undefined` を返します。
+- **複数の集計結果**は、キー付きのオブジェクトとして受け渡されます。カスタムの集計結果は、ブラウザーの構造化複製アルゴリズム（structured clone）が扱える値でなければなりません。
+- `column.getAggregationValue(options?)` による**総計と、呼び出し側が選んだ行の合計**は、メインスレッドで計算されます。現在の Worker が引き受けるのは行モデルの段階であり、任意の集計リクエストではありません。
+- **SSR** は追加の設定なしで動きます。サーバー上（`Worker` グローバルがない環境）では、テーブルは未処理の行をレンダーし、ハイドレーション後にクライアントが処理を引き継ぎます。
+- **Worker が失敗した場合**（読み込めない、または例外を投げた場合）、プラグインはエラーをログに出し、直前の結果を画面に残したまま更新を止めます。結果がまだ出ていない段階は、その段階の手前のモデルにフォールバックします。
+- 今のところ、**Worker を自動で終了させる仕組みはありません**。手動の抜け道（escape hatch）として `tableWorker.terminate()` があり、次に読み取るときに自動で復旧します。
+- 行選択、展開、ページネーションはメインスレッドの状態であり、このプラグインの影響を受けません。非常に大きなグループに対する選択は、引き続きメインスレッド上で行数に比例してコストが増えます。
 
-See the [Web Worker Row Models example](https://tanstack.com/table/latest/docs/framework/react/examples/web-worker-row-models) for a complete SSR app with sorting, filtering, grouping with aggregates, and row selection.
+ソート、フィルタリング、集計付きのグループ化、行選択を備えた完全な SSR アプリについては、[Web Worker 行モデルのサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/web-worker-row-models)を参照してください。

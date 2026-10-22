@@ -7,33 +7,33 @@ title: useLegacyTable
 function useLegacyTable<TData>(options): LegacyReactTable<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:405](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L405)
+定義元: [src/useLegacyTable.ts:405](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L405)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Parameters {#parameters}
+## パラメーター {#parameters}
 
 ### options {#options}
 
 [`LegacyTableOptions`](../type-aliases/LegacyTableOptions.md)\<`TData`\>
 
-Legacy v8-style table options
+v8 形式のレガシーなテーブルオプション
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 [`LegacyReactTable`](../type-aliases/LegacyReactTable.md)\<`TData`\>
 
-A table instance with the full state subscribed and a `getState()` method
+状態全体を購読し、`getState()` メソッドを備えたテーブルインスタンス
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-This hook is provided as a compatibility layer for migrating from TanStack Table v8.
+このフックは、TanStack Table v8 から移行するための互換レイヤーとして提供されています。
 
-Use the new `useTable` hook instead with an explicit `features` option:
+代わりに、新しい `useTable` フックを使い、`features` オプションを明示的に指定してください。
 
 ```tsx
 // New v9 API
@@ -55,8 +55,8 @@ const table = useTable({
 })
 ```
 
-Key differences from v8:
-- Features are tree-shakeable - only import what you use
-- Row models and fn registries are explicitly passed on the `features` option
-- Use `table.Subscribe` for fine-grained re-renders
-- State is accessed via `table.state` after selecting with the 2nd argument
+v8 からの主な違いは次のとおりです。
+- 機能はツリーシェイク可能です。使うものだけをインポートします
+- 行モデルと関数のレジストリは、`features` オプションで明示的に渡します
+- 細かい単位で再レンダーしたいときは `table.Subscribe` を使います
+- 状態には、第2引数で選択したうえで `table.state` からアクセスします

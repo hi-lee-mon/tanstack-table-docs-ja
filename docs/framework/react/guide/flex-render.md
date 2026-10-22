@@ -1,12 +1,12 @@
 ---
-title: FlexRender (React) Guide
+title: FlexRender（React）ガイド
 ---
 
-Column definitions can contain plain React nodes or renderer components for `header`, `cell`, `footer`, and `aggregatedCell`. Use TanStack Table's rendering utilities so each value is interpreted correctly and receives its typed table context.
+列定義の `header`、`cell`、`footer`、`aggregatedCell` には、素の React ノードもレンダラーコンポーネントも書けます。TanStack Table のレンダリング用ユーティリティを使えば、それぞれの値が正しく解釈され、型の付いたテーブルのコンテキストも受け取れます。
 
-## `FlexRender` vs `flexRender` {#flexrender-vs-flexrender}
+## `FlexRender` と `flexRender` の違い {#flexrender-vs-flexrender}
 
-`FlexRender` is the recommended component wrapper. Give it exactly one table object: `cell`, `header`, or `footer`. It then selects the correct column definition and context:
+おすすめはコンポーネントのラッパーである `FlexRender` です。`cell`、`header`、`footer` のうち、テーブルのオブジェクトをちょうど1つだけ渡してください。すると、対応する列定義とコンテキストを `FlexRender` が選びます。
 
 ```tsx
 {
@@ -34,7 +34,7 @@ Column definitions can contain plain React nodes or renderer components for `hea
 }
 ```
 
-The adapter attaches `FlexRender` to the table instance, and you can also import it directly:
+アダプターは `FlexRender` をテーブルインスタンスに付けています。直接インポートして使うこともできます。
 
 ```tsx
 import { FlexRender } from '@tanstack/react-table'
@@ -42,9 +42,9 @@ import { FlexRender } from '@tanstack/react-table'
 const footerContent = <FlexRender footer={header} />
 ```
 
-For cells, `FlexRender` renders `aggregatedCell` when the cell is aggregated, falls back to `cell` when no aggregated renderer exists, and renders nothing for grouping placeholder cells.
+セルの場合、`FlexRender` は次のように振る舞います。セルが集計されていれば `aggregatedCell` を描画し、集計用のレンダラーがなければ `cell` で代用します。グループ化のプレースホルダーセルには何も描画しません。
 
-`flexRender` is the lower-level function. Use it when you already have a renderable value and its props:
+`flexRender` はより低レベルな関数です。描画できる値とその props がすでに手元にあるときに使います。
 
 ```tsx
 import { flexRender } from '@tanstack/react-table'
@@ -52,11 +52,11 @@ import { flexRender } from '@tanstack/react-table'
 flexRender(cell.column.columnDef.cell, cell.getContext())
 ```
 
-It distinguishes React components, including class components, `memo`, and `forwardRef`, from already-created React nodes. It does not select `cell` versus `aggregatedCell` or suppress grouping placeholders. The `FlexRender` wrapper handles those table-specific decisions.
+`flexRender` は、React コンポーネント（クラスコンポーネント、`memo`、`forwardRef` を含む）と、作成済みの React ノードを区別します。ただし、`cell` と `aggregatedCell` のどちらを使うかは選ばず、グループ化のプレースホルダーも抑止しません。こうしたテーブル固有の判断は `FlexRender` ラッパーが受け持ちます。
 
-## Column Renderer Components {#column-renderer-components}
+## 列のレンダラーコンポーネント {#column-renderer-components}
 
-Renderer functions are treated as React components and receive the appropriate context as props:
+レンダラー関数は React コンポーネントとして扱われ、適切なコンテキストを props として受け取ります。
 
 ```tsx
 const columns = columnHelper.columns([
@@ -67,6 +67,6 @@ const columns = columnHelper.columns([
 ])
 ```
 
-Use `cell.getValue()` or `cell.renderValue()` when you only need the accessor value. Use `FlexRender` when rendering the column definition, because it supports static nodes and component renderers and passes the full context.
+アクセサーの値だけが必要なら、`cell.getValue()` か `cell.renderValue()` を使ってください。列定義を描画するときは `FlexRender` を使います。`FlexRender` は静的なノードにもコンポーネントのレンダラーにも対応し、コンテキストをすべて渡すからです。
 
-Placeholder headers are a layout decision and are not automatically suppressed. Check `header.isPlaceholder` unless the placeholder intentionally supplies content for a spanning header. Footer groups contain `Header` objects too, so pass each footer header through the `footer` prop.
+プレースホルダーのヘッダーをどう扱うかはレイアウトの判断なので、自動では抑止されません。複数列にまたがるヘッダーのためにプレースホルダーへ意図して中身を入れる場合を除き、`header.isPlaceholder` を確認してください。フッターグループにも `Header` オブジェクトが入っているので、フッターの各ヘッダーは `footer` プロパティに渡します。

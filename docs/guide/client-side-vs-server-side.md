@@ -1,110 +1,110 @@
 ---
-title: Client-Side vs Server-Side Guide
+title: クライアントサイドとサーバーサイドのガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-- [With TanStack Query](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query)
+- [TanStack Query との組み合わせ](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query)
 
 
 > [!IMPORTANT]
-> TanStack Table supports both client-side and server-side row processing!
+> TanStack Table は、クライアントサイドとサーバーサイドのどちらの行処理にも対応しています。
 
-More accurately, TanStack Table lets you bring your own backend or other manual approach to processing data for features such as filtering, grouping, sorting, expanding, aggregating, faceting, and pagination.
+もう少し正確に言うと、TanStack Table では、フィルタリング、グループ化、ソート、展開、集計、ファセット、ページネーションといった機能のデータ処理を、自前のバックエンドやそのほかの手動の方法で行えます。
 
-TanStack Table can filter, group, sort, expand, aggregate, facet, and paginate rows in the browser through client-side [row model](./row-models) processing. It can also just manage the state for those features while your server performs the actual data processing. The right approach depends on how much data the browser receives, how expensive that data is to transfer and process, and the experience you want to provide.
+TanStack Table は、クライアントサイドの[行モデル](./row-models)による処理で、ブラウザー上で行のフィルタリング、グループ化、ソート、展開、集計、ファセット、ページネーションを行えます。また、実際のデータ処理はサーバーに任せ、それらの機能の状態の管理だけを受け持つこともできます。どちらが適しているかは、ブラウザーが受け取るデータの量、そのデータの転送と処理にかかるコスト、提供したい体験によって決まります。
 
-Whichever option you choose, you pretty much have to choose just one or the other. You can't really mix and match client-side and server-side row processing for different features. This guide covers that shared decision. The individual feature guides explain the options and row models for implementing each feature.
+どちらを選ぶにしても、基本的にはどちらか一方に決める必要があります。機能ごとにクライアントサイドとサーバーサイドの行処理を混ぜて使うことは、実際にはほぼできません。このガイドでは、すべての機能に共通するこの判断について説明します。各機能を実装するためのオプションや行モデルは、機能ごとのガイドで説明しています。
 
-## Start With the Simplest Approach That Fits {#start-with-the-simplest-approach-that-fits}
+## 要件に合ういちばん単純な方法から始める {#start-with-the-simplest-approach-that-fits}
 
-Client-side processing is usually the simplest approach. This is where you let TanStack Table do that processing for you. Fetch the complete dataset for the table, pass it to TanStack Table, and enable the row models you need. Filtering, sorting, and pagination can then update immediately without another request.
+通常、いちばん単純なのはクライアントサイドでの処理です。これは、処理を TanStack Table に任せる方法です。テーブル用のデータセットを丸ごと取得して TanStack Table に渡し、必要な行モデルを有効にします。そうすれば、フィルタリング、ソート、ページネーションは、追加のリクエストなしですぐに反映されます。
 
-You might be tempted to rule out client-side processing based on what you think is a large dataset, but tables with just a few thousand rows are often practical in the browser. TanStack Table examples stress-test much larger datasets. In fact, we stress-test all TanStack Table features with 1 million rows client-side and expect usable performance. Actual performance depends on the number of columns, the size and shape of each row, the work performed by accessors and feature functions, and the devices your users have. Test with representative data and target hardware.
+データセットが大きいと思うと、クライアントサイドでの処理を候補から外したくなるかもしれません。しかし、数千行程度のテーブルなら、ブラウザーで十分に扱えることがよくあります。TanStack Table のサンプルでは、もっと大きなデータセットで負荷試験をしています。実際、TanStack Table のすべての機能は、クライアントサイドの 100 万行で負荷試験をしており、実用的な性能が出ることを想定しています。実際の性能は、列の数、各行の大きさと形、アクセサーや機能の関数が行う処理の量、ユーザーが使う端末によって変わります。実際に近いデータと、想定する端末で試してください。
 
-Older versions of TanStack Table used to start running into memory issues at about 1 million rows, but thanks to our [Object Prototypes Refactor](https://tanstack.com//blog/tanstack-table-v9-memory-performance) we can now claim to support up to 15 million rows client-side with ease. Is loading 15 million rows practical for your use-case? Probably not! But we hope you know that TanStack Table should give you headroom for many client-side rows.
+以前のバージョンの TanStack Table では、100 万行あたりでメモリの問題が出始めていました。しかし[オブジェクトのプロトタイプを使うリファクタリング](https://tanstack.com//blog/tanstack-table-v9-memory-performance)によって、今ではクライアントサイドで最大 1500 万行まで余裕をもって扱えると言えるようになりました。あなたのユースケースで 1500 万行を読み込むのが現実的でしょうか。おそらく違うでしょう。それでも、TanStack Table がクライアントサイドで多くの行を扱う余力を持っていることは知っておいてください。
 
-Server-side processing is usually a better fit when:
+通常、次のような場合はサーバーサイドでの処理のほうが適しています。
 
-- fetching the complete dataset would be slow, expensive, or memory-intensive;
-- the browser only receives a page or another subset of the rows;
-- queries, permissions, or business rules must be enforced by the backend;
-- data changes frequently enough that downloading it all would become stale; or
-- the backend can perform indexed searching, sorting, grouping, or aggregation more efficiently.
+- データセットを丸ごと取得すると、時間やコストがかかりすぎる、またはメモリを大量に使う。
+- ブラウザーが受け取るのは、1ページ分などの行の一部だけである。
+- クエリ、権限、ビジネスルールをバックエンドで強制する必要がある。
+- データの更新が頻繁で、全件をダウンロードしてもすぐに古くなってしまう。
+- バックエンドのほうが、インデックスを使った検索、ソート、グループ化、集計を効率よく行える。
 
-When evaluating the tradeoff, measure:
+トレードオフを評価するときは、次のことを測ってください。
 
-1. How long and how much it costs the server to query the complete dataset.
-2. The transferred payload size, not only the number of rows.
-3. Browser memory usage and the time spent computing row models.
-4. The interaction cost of waiting for a request after each state change.
+1. サーバーがデータセット全体を問い合わせるのにかかる時間とコスト。
+2. 行数だけでなく、転送されるペイロードのサイズ。
+3. ブラウザーのメモリ使用量と、行モデルの計算にかかる時間。
+4. 状態が変わるたびにリクエストを待つことによる、操作上のコスト。
 
-If both approaches fit today, starting on the client keeps the data flow smaller. Owning the relevant table state makes it easier to move processing to the server later.
+今の時点でどちらの方法も使えるなら、クライアントサイドから始めるとデータの流れを小さく保てます。関係するテーブルの状態を自分で持っておけば、あとで処理をサーバーに移すのも簡単になります。
 
-## Keep Dataset-Wide Operations Consistent {#keep-dataset-wide-operations-consistent}
+## データセット全体にかかる操作の一貫性を保つ {#keep-dataset-wide-operations-consistent}
 
-Filtering, grouping, sorting, and pagination usually describe one pipeline over the same dataset. If the server sends only part of that dataset, a client-side operation can only process the loaded rows.
+フィルタリング、グループ化、ソート、ページネーションは、通常、同じデータセットに対する1つの処理の流れ（パイプライン）を表しています。サーバーがデータセットの一部しか送らない場合、クライアントサイドの操作は読み込まれた行だけしか処理できません。
 
-For example, client-side sorting after server-side pagination sorts the current page, not every matching row. Client-side filtering after server-side pagination can hide rows on the current page without finding matches on other pages. These results are usually misleading.
+たとえば、サーバーサイドでページネーションしたあとにクライアントサイドでソートすると、条件に合うすべての行ではなく、現在のページだけがソートされます。サーバーサイドでページネーションしたあとにクライアントサイドでフィルタリングすると、現在のページの行は隠せても、ほかのページにある一致する行は見つけられません。こうした結果は、たいてい誤解を招きます。
 
-As a rule, when the server owns pagination, it should also own any filtering, grouping, sorting, or aggregation that must apply to the full result set. Mixing approaches is valid when the smaller scope is intentional. For example, you might rank the rows within each server-provided group. Make that scope clear in the UI.
+原則として、サーバーがページネーションを受け持つなら、結果全体に適用すべきフィルタリング、グループ化、ソート、集計もサーバーが受け持つべきです。対象範囲が狭くなることを意図している場合は、両方を混ぜても問題ありません。たとえば、サーバーから渡された各グループの中で行に順位を付ける、といった場合です。その場合は、対象範囲を UI で明確に示してください。
 
-Facets need the same consideration. Facet counts calculated from a server-provided page describe only that page. Calculate facets on the server when they need to represent the full filtered dataset.
+ファセットにも同じ配慮が必要です。サーバーから渡された1ページ分のデータから計算したファセットの件数は、そのページのことしか表していません。フィルタリング後のデータセット全体を表す必要がある場合は、ファセットをサーバーで計算してください。
 
-## What "Manual" Means {#what-manual-means}
+## 「手動（manual）」の意味 {#what-manual-means}
 
-TanStack Table calls server-side data processing "manual" because the table does not perform that transformation. A `manual*` option does not fetch or transform data. It tells the table to use the data you provide as already processed for that feature.
+TanStack Table では、サーバーサイドでのデータ処理を「手動（manual）」と呼びます。テーブル自身がその変換を行わないからです。`manual*` オプションは、データの取得も変換もしません。その機能については、渡されたデータを処理済みのものとして使うよう、テーブルに伝えるだけです。
 
-| Operation                   | Manual option       | Client-side row model or implementation |
+| 操作                        | 手動オプション      | クライアントサイドの行モデルまたは実装  |
 | --------------------------- | ------------------- | --------------------------------------- |
-| Column and global filtering | `manualFiltering`   | `filteredRowModel`                      |
-| Grouping                    | `manualGrouping`    | `groupedRowModel`                       |
-| Aggregation values          | `manualAggregation` | `aggregationFn` local fallback          |
-| Sorting                     | `manualSorting`     | `sortedRowModel`                        |
-| Expanding                   | `manualExpanding`   | `expandedRowModel`                      |
-| Pagination                  | `manualPagination`  | `paginatedRowModel`                     |
+| 列フィルターとグローバルフィルター | `manualFiltering`   | `filteredRowModel`                      |
+| グループ化                  | `manualGrouping`    | `groupedRowModel`                       |
+| 集計値                      | `manualAggregation` | `aggregationFn` によるローカルでのフォールバック |
+| ソート                      | `manualSorting`     | `sortedRowModel`                        |
+| 展開                        | `manualExpanding`   | `expandedRowModel`                      |
+| ページネーション            | `manualPagination`  | `paginatedRowModel`                     |
 
-Faceting also supports server-provided results, but it uses custom factories rather than a `manual*` option. See the [Aggregation](../framework/react/guide/aggregation) and [Faceting](../framework/react/guide/column-faceting#custom-server-side-faceting) guides for those feature-specific details.
+ファセットもサーバーから渡された結果に対応していますが、`manual*` オプションではなく独自のファクトリーを使います。機能ごとの詳細は、[集計](../framework/react/guide/aggregation)と[ファセット](../framework/react/guide/column-faceting#custom-server-side-faceting)のガイドを参照してください。
 
-You can omit an unused client-side row model. If a shared table configuration includes one, its matching `manual*` option tells the table to bypass it. The feature itself can remain enabled so the table still supplies its state and APIs.
+使わないクライアントサイドの行モデルは省略できます。共有のテーブル設定に行モデルが含まれている場合は、対応する `manual*` オプションを指定すると、テーブルはその行モデルを使わずに処理を飛ばします。機能自体は有効のままにしておけるので、テーブルはその機能の状態と API を引き続き提供します。
 
-## A Typical Server-Side Data Flow {#a-typical-server-side-data-flow}
+## サーバーサイドでの典型的なデータの流れ {#a-typical-server-side-data-flow}
 
-With server-side processing, you write the filtering, grouping, sorting, aggregation, and pagination logic in the backend language, SQL query layer, database API, or service architecture that fits your application.
+サーバーサイドで処理する場合、フィルタリング、グループ化、ソート、集計、ページネーションのロジックは、アプリケーションに合ったバックエンドの言語、SQL のクエリ層、データベースの API、サービスの構成の中で書きます。
 
-TanStack Table also does not fetch data. Your application is responsible for sending the table state to the backend and providing the returned rows to the table. You can use any data-fetching solution you prefer. [TanStack Query](https://tanstack.com/query/latest) is an excellent companion when you want declarative fetching, caching, loading states, and request lifecycle management, and it composes naturally with controlled TanStack Table state.
+TanStack Table はデータの取得も行いません。テーブルの状態をバックエンドに送り、返ってきた行をテーブルに渡すのはアプリケーションの役目です。データ取得の方法は好きなものを使えます。宣言的なデータ取得、キャッシュ、読み込み中の状態、リクエストのライフサイクル管理がほしい場合は、[TanStack Query](https://tanstack.com/query/latest) がとてもよい相棒になります。TanStack Query は、制御された TanStack Table の状態と自然に組み合わせられます。
 
-For server-side processing:
+サーバーサイドで処理する手順は次のとおりです。
 
-1. Own the relevant filter, grouping, sorting, and pagination state so your data-fetching code can read it.
-2. Include every server-owned state value in the request or query key.
-3. Enable the matching `manual*` options.
-4. Pass the processed rows returned by the server to `data`.
-5. For manual pagination, also provide `rowCount` or `pageCount` when known.
-6. Reset or validate the page index when filters, grouping, sorting, or page size change.
-7. Keep previous results or show loading state deliberately, and prevent slower stale responses from replacing newer results.
+1. データ取得のコードから読めるように、関係するフィルター、グループ化、ソート、ページネーションの状態を自分で持つ。
+2. サーバーが受け持つ状態の値を、すべてリクエストまたはクエリキーに含める。
+3. 対応する `manual*` オプションを有効にする。
+4. サーバーから返された処理済みの行を `data` に渡す。
+5. 手動でページネーションする場合は、わかっていれば `rowCount` か `pageCount` も渡す。
+6. フィルター、グループ化、ソート、ページサイズが変わったときは、ページ番号をリセットするか、妥当な値か確認する。
+7. 前回の結果を残しておくか、読み込み中の状態を表示するかを意図して決める。また、遅れて返ってきた古いレスポンスが新しい結果を上書きしないようにする。
 
-`manualPagination` disables `autoResetPageIndex` by default.
+`manualPagination` を指定すると、既定で `autoResetPageIndex` が無効になります。
 
-More generally, auto-reset side effects run when a row model that invokes them recomputes. Client-side filtering, grouping, and sorting row models normally invoke page-index resets after their related state changes. In a fully manual server-side configuration that omits those row models, controlled state changes do not run their reset hooks. Reset dependent state in the corresponding change callbacks instead, as shown below. Core data changes can still trigger some auto-reset behaviors when returned data is processed.
+より一般的に言うと、自動リセットの副作用は、それを呼び出す行モデルが再計算されたときに実行されます。クライアントサイドのフィルタリング、グループ化、ソートの行モデルは、関係する状態が変わったあと、通常はページ番号のリセットを呼び出します。それらの行モデルを省略した完全に手動のサーバーサイド構成では、制御された状態が変わってもリセットのフックは実行されません。代わりに、下の例のように、対応する変更コールバックの中で依存する状態をリセットしてください。なお、返されたデータが処理されるとき、コアのデータの変更によって一部の自動リセットが起きることはあります。
 
-The table continues to manage state and expose event handlers; your application connects that state to its data-fetching layer. See the framework-specific Table State guide and the With TanStack Query example for complete patterns:
+テーブルは引き続き状態を管理し、イベントハンドラーを提供します。その状態をデータ取得の層とつなぐのはアプリケーションです。完全なパターンは、フレームワークごとのテーブルの状態ガイドと、TanStack Query と組み合わせたサンプルを参照してください。
 
-- [Table State](../framework/react/guide/table-state)
-- [With TanStack Query](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query)
+- [テーブルの状態](../framework/react/guide/table-state)
+- [TanStack Query との組み合わせ](https://tanstack.com/table/latest/docs/framework/react/examples/with-tanstack-query)
 
 
-Use a stable backend identifier with `getRowId` when selection, expansion, or other row state must survive requests. Page-relative row indexes do not identify the same record reliably across server responses.
+行選択、展開、そのほかの行の状態をリクエストをまたいで保持する必要がある場合は、`getRowId` にバックエンドの安定した識別子を使ってください。ページ内での相対的な行のインデックスでは、サーバーのレスポンスをまたいで同じレコードを確実に識別できません。
 
-### Why No Built-In Server Row Models {#why-no-built-in-server-row-models}
+### サーバー用の行モデルが組み込まれていない理由 {#why-no-built-in-server-row-models}
 
-TanStack Table is a synchronous table state manager. Its client-side row models synchronously transform data that is already in memory, while its state and APIs describe the filtering, sorting, and pagination the user wants. Fetching data and running backend queries happen outside of the table.
+TanStack Table は、同期的に動くテーブルの状態管理ライブラリです。クライアントサイドの行モデルは、すでにメモリ上にあるデータを同期的に変換します。一方、状態と API は、ユーザーが求めているフィルタリング、ソート、ページネーションを表します。データの取得やバックエンドでのクエリの実行は、テーブルの外で行われます。
 
-There are countless valid ways to design a backend and the contract between a frontend and backend: REST query parameters, GraphQL inputs, RPC calls, SQL builders, database SDKs, streaming responses, and more. A built-in server row model would have to impose opinions about those choices. TanStack Table deliberately leaves that boundary to your application so it can work with any backend stack or API design.
+バックエンドの設計や、フロントエンドとバックエンドのあいだの取り決め（コントラクト）には、正しいやり方が無数にあります。REST のクエリパラメーター、GraphQL の入力、RPC 呼び出し、SQL ビルダー、データベースの SDK、ストリーミングのレスポンスなどです。サーバー用の行モデルを組み込むと、こうした選択について特定の考え方を押し付けることになります。TanStack Table は、どんなバックエンドの技術スタックや API 設計とも組み合わせられるように、この境界をあえてアプリケーションに任せています。
 
-In practice, [TanStack Query](https://tanstack.com/query/latest) is the client-side coordinator for server-side row processing. Your own fetching layer can fill the same role. It observes the controlled table state, sends that state through your API contract, caches the result, and gives the returned rows back to the table. For example, a React integration can pass every server-owned state value to both the query key and query function:
+実際には、サーバーサイドの行処理をクライアント側で取りまとめる役割を [TanStack Query](https://tanstack.com/query/latest) が担います。自前のデータ取得層で同じ役割を果たすこともできます。この層は、制御されたテーブルの状態を監視し、その状態を API のコントラクトに従って送信し、結果をキャッシュし、返ってきた行をテーブルに戻します。たとえば React と組み合わせる場合は、サーバーが受け持つ状態の値をすべて、クエリキーとクエリ関数の両方に渡せます。
 
-#### Page-Index Pagination with `useQuery` {#page-index-pagination-with-usequery}
+#### `useQuery` を使ったページ番号によるページネーション {#page-index-pagination-with-usequery}
 
 ```tsx
 const features = tableFeatures({
@@ -155,13 +155,13 @@ const table = useTable(
 )
 ```
 
-Here, `fetchPeople` defines your application's frontend-backend contract. The backend remains responsible for applying the operations in the correct order and returning the requested rows plus the total filtered `rowCount`.
+ここでは、`fetchPeople` がアプリケーションのフロントエンドとバックエンドのあいだのコントラクトを定義しています。操作を正しい順序で適用し、要求された行と、フィルタリング後の総件数 `rowCount` を返すのは、引き続きバックエンドの役目です。
 
-#### Cursor-Based Pagination with `useInfiniteQuery` {#cursor-based-pagination-with-useinfinitequery}
+#### `useInfiniteQuery` を使ったカーソルによるページネーション {#cursor-based-pagination-with-useinfinitequery}
 
-Cursor pagination is a useful alternative when calculating a total row count or supporting arbitrary page jumps would be expensive. Instead of accepting a page index, the backend accepts a cursor and returns the current rows, a `nextCursor`, and whether another page exists. A production cursor is often opaque; a stable last-row ID can also work when IDs are unique and the backend ordering is deterministic.
+総行数の計算や、任意のページへのジャンプに対応するのが高くつく場合は、カーソルによるページネーションが便利な代替手段になります。バックエンドはページ番号の代わりにカーソルを受け取り、現在の行、`nextCursor`、次のページがあるかどうかを返します。本番環境のカーソルは中身の意味を持たない値であることが多いですが、ID が一意でバックエンドの並び順が決定的なら、最後の行の安定した ID をカーソルとして使うこともできます。
 
-TanStack Query's `useInfiniteQuery` caches the cursor chain. TanStack Table can use `pagination.pageIndex` to select one of those cached pages while the application fetches a new page only when the user advances beyond the cache:
+TanStack Query の `useInfiniteQuery` は、カーソルのつながりをキャッシュします。TanStack Table は `pagination.pageIndex` を使って、キャッシュされたページのうち1つを選べます。アプリケーションは、ユーザーがキャッシュより先に進んだときだけ新しいページを取得します。
 
 ```tsx
 const dataQuery = useInfiniteQuery({
@@ -218,21 +218,21 @@ async function goToNextPage() {
 }
 ```
 
-Use `canNextPage` for the Next button. With `pageCount: -1`, the table's `getCanNextPage()` cannot know when the server has reached the end. Previously fetched pages can still be revisited without another request. Because the total is unknown, there is no finite page for `lastPage()` to target, so `getCanLastPage()` returns `false`. Reset `pageIndex` to `0` when sorting, filtering, or page size changes so the new query starts from its initial cursor.
+「次へ」ボタンには `canNextPage` を使ってください。`pageCount: -1` の場合、テーブルの `getCanNextPage()` では、サーバーが最後まで到達したかどうかがわかりません。一度取得したページは、追加のリクエストなしで再表示できます。総数がわからないので `lastPage()` が移動先にできる有限のページはなく、`getCanLastPage()` は `false` を返します。ソート、フィルタリング、ページサイズが変わったときは、新しいクエリが最初のカーソルから始まるように `pageIndex` を `0` にリセットしてください。
 
-## Rendering Is a Separate Decision {#rendering-is-a-separate-decision}
+## 描画は別の判断 {#rendering-is-a-separate-decision}
 
-Data processing and rendering solve different problems:
+データの処理と描画は、別々の問題を解決します。
 
-- Pagination limits how many rows appear at once and can be performed on either the client or server.
-- Virtualization renders only the visible portion of the rows already loaded in the browser.
+- ページネーションは、一度に表示する行の数を制限します。クライアントとサーバーのどちらでも行えます。
+- 仮想化は、ブラウザーにすでに読み込まれた行のうち、見えている部分だけを描画します。
 
-Virtualization can make a large client-side dataset inexpensive to render, but it does not reduce the amount of data fetched or the work needed to filter and sort that dataset. If the complete dataset is too large to load, use server-side operations or incremental fetching; then add virtualization if the loaded result is still large enough to make rendering expensive.
+仮想化を使えば、クライアントサイドの大きなデータセットでも低いコストで描画できます。しかし、取得するデータの量や、そのデータセットをフィルタリング・ソートする処理の量は減りません。データセット全体が大きすぎて読み込めない場合は、サーバーサイドでの操作か、少しずつ取得する方法を使ってください。そのうえで、読み込んだ結果がまだ大きく描画のコストが高いなら、仮想化を加えます。
 
-## Choosing an Approach {#choosing-an-approach}
+## 方法を選ぶ {#choosing-an-approach}
 
-Use client-side processing when the browser can reasonably fetch and retain the complete dataset and immediate local interactions are valuable. Use server-side processing when the complete dataset should not or cannot be loaded, or when the backend must define the authoritative result.
+ブラウザーがデータセット全体を無理なく取得して保持でき、ローカルですぐに反応する操作に価値がある場合は、クライアントサイドでの処理を使ってください。データセット全体を読み込むべきでない、または読み込めない場合や、正となる結果をバックエンドが決める必要がある場合は、サーバーサイドでの処理を使ってください。
 
-Choosing server-side processing means bringing your own implementation. TanStack Table supplies the state and APIs that describe what the user wants, but your backend code or SQL must process that state, and your data-fetching code must transport the request and response. No TanStack Table server-side model or built-in fetching layer is involved. This separation keeps TanStack Table compatible with any backend. TanStack Query is an optional companion when you want help managing the fetching and caching layer.
+サーバーサイドでの処理を選ぶということは、実装を自分で用意するということです。TanStack Table はユーザーが求めていることを表す状態と API を提供しますが、その状態を処理するのはバックエンドのコードや SQL であり、リクエストとレスポンスを運ぶのはデータ取得のコードです。TanStack Table のサーバーサイドのモデルや、組み込みのデータ取得層は関わりません。この分離によって、TanStack Table はどんなバックエンドとも組み合わせられます。データ取得とキャッシュの層の管理に助けがほしい場合は、TanStack Query を任意で組み合わせられます。
 
-Whichever approach you choose, test the full pipeline with realistic data. Network transfer, browser memory, row-model computation, DOM rendering, and backend query cost are separate bottlenecks, and the best boundary is the one that keeps all of them acceptable for your users.
+どちらの方法を選ぶ場合も、現実的なデータで処理の流れ全体を試してください。ネットワークでの転送、ブラウザーのメモリ、行モデルの計算、DOM の描画、バックエンドのクエリのコストは、それぞれ別のボトルネックです。最適な境界は、そのすべてをユーザーにとって許容できる範囲に収められるものです。

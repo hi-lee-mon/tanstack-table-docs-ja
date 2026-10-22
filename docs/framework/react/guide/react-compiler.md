@@ -1,35 +1,35 @@
 ---
-title: React Compiler Guide
+title: React Compiler ガイド
 ---
 
 > [!IMPORTANT]
-> **TanStack Table V9 is the first version of TanStack Table that is compatible with the React Compiler.**
+> **TanStack Table V9 は、React Compiler に対応した最初の TanStack Table のバージョンです。**
 
-The [React Compiler](https://react.dev/learn/react-compiler/introduction) automatically memoizes React components and values created during render. In Table V9, components that call `useTable` can be compiled normally. You also usually do not need `useMemo` or `useCallback` just to keep the values passed to `useTable` stable.
+[React Compiler](https://react.dev/learn/react-compiler/introduction) は、React コンポーネントと、レンダー中に作られる値を自動でメモ化します。Table V9 では、`useTable` を呼び出すコンポーネントもふつうにコンパイルできます。また、`useTable` に渡す値を安定させるためだけに `useMemo` や `useCallback` を使う必要も、たいていはありません。
 
-Most Table V9 code does not need any compiler-specific handling. The main exception is a nested component whose only props are stable Table objects, such as a core `table`, `row`, `cell`, `column`, or `header`. A method on one of these objects can return a new value even when the object itself has not changed. The compiler may then skip the nested component because its props have not changed. In that case, the component needs a `Subscribe` boundary for the state it reads.
+Table V9 のコードのほとんどは、コンパイラー向けの特別な対応を必要としません。おもな例外は、props として受け取るのが安定した Table のオブジェクト（コアの `table`・`row`・`cell`・`column`・`header` など）だけの、入れ子のコンポーネントです。これらのオブジェクトのメソッドは、オブジェクト自体が変わっていなくても新しい値を返すことがあります。一方コンパイラーは、props が変わっていないことを理由に、その入れ子のコンポーネントの再レンダーを省くことがあります。このような場合は、コンポーネントが読み取る状態について `Subscribe` の境界が必要になります。
 
-## Is the React Compiler Worth It for Tables? {#is-the-react-compiler-worth-it-for-tables}
+## テーブルのために React Compiler を使う価値はあるか {#is-the-react-compiler-worth-it-for-tables}
 
-We maintain [a dedicated benchmark](https://github.com/KevinVandy/tanstack-table-benchmarks) that builds the same Table V9 example with the React Compiler enabled and disabled. It compares a table whose owner component subscribes to all table state with a table that uses `Subscribe` for smaller, targeted updates. Every interaction must also produce the expected DOM result before its timing is accepted.
+私たちは、同じ Table V9 のサンプルを React Compiler の有効・無効の両方でビルドする[専用のベンチマーク](https://github.com/KevinVandy/tanstack-table-benchmarks)を管理しています。このベンチマークでは、テーブルを持つコンポーネントがテーブルの状態をすべて購読する場合と、`Subscribe` を使って小さく的を絞って更新する場合を比べています。また、各操作の計測値は、操作ごとに期待どおりの DOM の結果になったことを確かめてから採用しています。
 
-The reference run used 10,000 source rows, 100 rendered rows, 4x CPU throttling, two warmups, and 20 alternating-order samples. The results are median interaction-to-layout-effect commit times in milliseconds:
+基準となる計測は、元データ 10,000 行、描画する行 100 行、CPU を 4 倍に低速化、ウォームアップ 2 回、順序を交互に入れ替えたサンプル 20 回という条件で行いました。結果は、操作してからレイアウトエフェクトがコミットされるまでの時間の中央値（ミリ秒）です。
 
-| Update                  | Broad owner: off → on |              Fine-grained: off → on |
-| ----------------------- | --------------------: | ----------------------------------: |
-| Unrelated parent update |    3.75 → 0.50 (-87%) |                  3.50 → 0.50 (-86%) |
-| Select one row          |    4.00 → 1.30 (-68%) | 0.90 → 0.95 (effectively unchanged) |
-| Sort                    |    8.35 → 7.40 (-11%) |                   8.00 → 7.35 (-8%) |
-| Paginate                |     8.30 → 8.35 (+1%) |                   8.00 → 8.35 (+4%) |
-| Replace all data        |     8.10 → 8.55 (+6%) |                   8.30 → 8.50 (+2%) |
+| 更新                    | 全体を購読: 無効 → 有効 |         きめ細かい購読: 無効 → 有効 |
+| ----------------------- | ----------------------: | ----------------------------------: |
+| 無関係な親の更新        |      3.75 → 0.50 (-87%) |                  3.50 → 0.50 (-86%) |
+| 1 行を選択              |      4.00 → 1.30 (-68%) |      0.90 → 0.95（実質的に変化なし） |
+| ソート                  |      8.35 → 7.40 (-11%) |                   8.00 → 7.35 (-8%) |
+| ページ送り              |       8.30 → 8.35 (+1%) |                   8.00 → 8.35 (+4%) |
+| データをすべて置き換え  |       8.10 → 8.55 (+6%) |                   8.30 → 8.50 (+2%) |
 
-Our results do not show a reason to enable the React Compiler only for a data grid. Most table operations changed by a small amount, and `Subscribe` already kept fine-grained updates fast. The largest improvement came from preventing unrelated parent renders from cascading through the table. Choose whether to use the compiler based on the needs of the whole application. Table V9 supports it, although nested table components may need the explicit subscriptions described below.
+この結果からは、データグリッドのためだけに React Compiler を有効にする理由は見当たりません。テーブルの操作の多くはわずかしか変わらず、きめ細かい更新はもともと `Subscribe` によって高速でした。最も大きく改善したのは、無関係な親のレンダーがテーブルまで連鎖するのを防いだ点です。コンパイラーを使うかどうかは、アプリケーション全体の必要に応じて決めてください。Table V9 はコンパイラーに対応していますが、入れ子のテーブルコンポーネントでは、以下で説明する明示的な購読が必要になることがあります。
 
-## Can I Remove useMemo and useCallback? {#can-i-remove-usememo-and-usecallback}
+## useMemo と useCallback は削除できるか {#can-i-remove-usememo-and-usecallback}
 
-If the React Compiler successfully compiles the component, you can usually remove memoization that exists only to keep arrays, objects, derived data, or callbacks stable for `useTable`. You also do not need `React.memo` only to prevent an unchanged child from rendering.
+React Compiler がコンポーネントをうまくコンパイルできていれば、`useTable` に渡す配列・オブジェクト・派生データ・コールバックを安定させるためだけのメモ化は、たいてい削除できます。変化のない子コンポーネントのレンダーを防ぐためだけに `React.memo` を使う必要もありません。
 
-With the compiler, this component does not need to memoize `columns` or `visiblePeople` manually:
+コンパイラーを使う場合、次のコンポーネントでは `columns` や `visiblePeople` を手動でメモ化する必要はありません。
 
 ```tsx
 function PeopleTable({ people, showInactive }) {
@@ -56,7 +56,7 @@ function PeopleTable({ people, showInactive }) {
 }
 ```
 
-Without the compiler, write those values with stable references:
+コンパイラーを使わない場合は、これらの値の参照が安定するように書きます。
 
 ```tsx
 const columns = useMemo(
@@ -76,29 +76,29 @@ const visiblePeople = useMemo(
 )
 ```
 
-Stable `data` and `columns` references still matter. Table uses their identities to decide when to rebuild columns and row models. Without the compiler or manual memoization, creating new references on every render can cause unnecessary recalculation or automatic state resets.
+`data` と `columns` の参照が安定していることは、引き続き重要です。Table は、これらの同一性をもとに、列や行モデルを作り直すタイミングを判断します。コンパイラーも手動のメモ化も使わずにレンダーのたびに新しい参照を作ると、不要な再計算や、状態の意図しない自動リセットが起きることがあります。
 
-Do not remove existing memoization without checking why it is there. Keep it when the code must also run without the compiler, another API requires a specific identity, the compiler skips the component, or profiling shows that the memoization helps.
+既存のメモ化は、なぜそこにあるのかを確かめずに削除しないでください。コードをコンパイラーなしでも動かす必要がある場合、別の API が特定の同一性を必要とする場合、コンパイラーがそのコンポーネントをコンパイルしない場合、プロファイリングでメモ化が効果を上げていると分かった場合は、メモ化を残してください。
 
-### Why the Docs Still Use Manual Memoization {#why-the-docs-still-use-manual-memoization}
+### ドキュメントで手動のメモ化を使い続けている理由 {#why-the-docs-still-use-manual-memoization}
 
-All TanStack Table React examples run through the React Compiler, but the examples and snippets still use conventional React patterns such as `useMemo`, `useCallback`, and module-scope constants. This keeps the same code correct and useful for applications that do not use the compiler. If your component is compiled, that manual memoization is not an additional Table V9 requirement.
+TanStack Table の React のサンプルはすべて React Compiler を通して動かしていますが、サンプルやコード片では今も `useMemo`・`useCallback`・モジュールスコープの定数といった従来の React の書き方を使っています。こうしておけば、コンパイラーを使わないアプリケーションでも、同じコードが正しく動き、役に立つからです。コンポーネントがコンパイルされるなら、その手動のメモ化は Table V9 が追加で求めるものではありません。
 
-### Dependency Arrays Still Matter {#dependency-arrays-still-matter}
+### 依存配列は引き続き重要 {#dependency-arrays-still-matter}
 
-The React Compiler does not fix dependency arrays that you write yourself. Any `useEffect`, `useMemo`, or `useCallback` that remains must include all of its reactive dependencies. Follow the [`exhaustive-deps` lint](https://react.dev/reference/eslint-plugin-react-hooks/lints/exhaustive-deps) to avoid stale closures.
+React Compiler は、自分で書いた依存配列までは直してくれません。残した `useEffect`・`useMemo`・`useCallback` には、リアクティブな依存値をすべて含める必要があります。古いクロージャーを参照してしまわないように、[`exhaustive-deps` のリントルール](https://react.dev/reference/eslint-plugin-react-hooks/lints/exhaustive-deps)に従ってください。
 
-## Passing Table Objects to Nested Components {#passing-table-objects-to-nested-components}
+## Table のオブジェクトを入れ子のコンポーネントに渡す {#passing-table-objects-to-nested-components}
 
-Table V9 keeps the core table instance and its `column`, `row`, `cell`, and `header` objects stable. This is normally useful, but it means a compiled child can receive the same prop object before and after table state changes.
+Table V9 では、コアのテーブルインスタンスと、その `column`・`row`・`cell`・`header` オブジェクトの参照が変わりません。ふだんはこれが役に立ちますが、コンパイルされた子コンポーネントは、テーブルの状態が変わる前と後で同じ props のオブジェクトを受け取ることになります。
 
-For example, imagine a table body renders a selection control like this:
+たとえば、テーブルの本体が次のように選択用のコントロールを描画しているとします。
 
 ```tsx
 <SelectionCell row={row} />
 ```
 
-The child reads the selection state from the `row` object:
+子コンポーネントは、`row` オブジェクトから選択状態を読み取ります。
 
 ```tsx
 function SelectionCell({ row }: { row: Row<typeof features, Person> }) {
@@ -112,25 +112,25 @@ function SelectionCell({ row }: { row: Row<typeof features, Person> }) {
 }
 ```
 
-Selecting the row does not replace the `row` object. Because the `row` prop is unchanged, the compiler may reuse the previous render of `SelectionCell`. If that happens, `row.getIsSelected()` is not called again and the checkbox becomes stale.
+行を選択しても、`row` オブジェクトは置き換わりません。`row` の props が変わらないため、コンパイラーは `SelectionCell` の前回のレンダー結果を再利用することがあります。そうなると `row.getIsSelected()` が再び呼ばれず、チェックボックスの表示が古いままになります。
 
-The same problem can occur whenever one of these method results changes without changing the object passed as a prop:
+props として渡すオブジェクトが変わらないまま、次のようなメソッドの結果が変わる場合には、いつでも同じ問題が起こりえます。
 
-- `column.getIsPinned()` and `column.getIsSorted()`
-- `row.getIsSelected()` and `row.getIsExpanded()`
-- `cell.getIsAggregated()` and `cell.getValue()`
+- `column.getIsPinned()` と `column.getIsSorted()`
+- `row.getIsSelected()` と `row.getIsExpanded()`
+- `cell.getIsAggregated()` と `cell.getValue()`
 - `header.column.getCanSort()`
 
-The value returned directly by `useTable` behaves differently from the core table object used by rows, cells, columns, and render contexts:
+`useTable` が直接返す値は、行・セル・列・レンダーコンテキストが使うコアのテーブルオブジェクトとは振る舞いが異なります。
 
-- The React-facing value returned by `useTable` changes when its options or the state selected by that Hook change.
-- The core table at `row.table`, `cell.table`, or `column.table` keeps the same reference.
+- `useTable` が返す React 向けの値は、オプションが変わったとき、またはそのフックで選択した状態が変わったときに変化します。
+- `row.table`・`cell.table`・`column.table` にあるコアのテーブルは、同じ参照のままです。
 
-By default, `useTable` selects all registered table state. JSX rendered directly in that component will normally update without another subscription. A separate subscription is needed when a nested component receives only stable Table objects and reads changing state through their methods. It is also needed when the `useTable` selector leaves out state used by the rendered UI. Passing `() => null` as the selector intentionally leaves out all table state.
+デフォルトでは、`useTable` は登録されたテーブルの状態をすべて選択します。そのため、そのコンポーネントで直接描画する JSX は、ほかに購読しなくてもふつうは更新されます。別に購読が必要になるのは、入れ子のコンポーネントが安定した Table のオブジェクトだけを受け取り、変化する状態をそのメソッド経由で読み取る場合です。また、`useTable` のセレクターが、描画する UI で使う状態を含んでいない場合にも必要です。セレクターとして `() => null` を渡すと、意図的にテーブルの状態をすべて除外することになります。
 
-## Subscribe Inside the Component That Reads the State {#subscribe-inside-the-component-that-reads-the-state}
+## 状態を読み取るコンポーネントの中で購読する {#subscribe-inside-the-component-that-reads-the-state}
 
-Place `table.Subscribe` or the standalone `Subscribe` component inside the nested component that reads table state. For the selection example, subscribe to the selected row's value and render from that value:
+テーブルの状態を読み取る入れ子のコンポーネントの中に、`table.Subscribe` か単体の `Subscribe` コンポーネントを置きます。選択の例では、その行の選択値を購読し、その値をもとに描画します。
 
 ```tsx
 import { Subscribe } from '@tanstack/react-table'
@@ -153,17 +153,17 @@ function SelectionCell({ row }: { row: Row<typeof features, Person> }) {
 }
 ```
 
-The subscription now tells React when this checkbox needs to update, even though the `row` prop remains the same.
+これで、`row` の props が同じままでも、このチェックボックスを更新すべきときに購読が React に知らせてくれます。
 
-Do not put `Subscribe` around `<SelectionCell row={row} />` and then ignore the selected value. The child would still receive the same `row` prop, so the compiler could still reuse it. Keep the subscription inside the child, or pass the selected value to the child as a prop and render from that prop.
+`<SelectionCell row={row} />` を `Subscribe` で囲んだうえで、選択値を使わないという書き方はしないでください。子コンポーネントは同じ `row` の props を受け取ったままなので、コンパイラーはやはりそれを再利用できてしまいます。購読は子コンポーネントの中に置くか、選択値を props として子コンポーネントに渡し、その props をもとに描画してください。
 
-The same applies to `useSelector`. Use the selected value in the component's output or pass it to a child. Calling `useSelector` only to force a render does not guarantee that the compiler will call a method on a stable Table object again.
+`useSelector` についても同じです。選択した値はコンポーネントの出力で使うか、子コンポーネントに渡してください。レンダーを強制するためだけに `useSelector` を呼んでも、コンパイラーが安定した Table のオブジェクトのメソッドを再び呼び出すとは限りません。
 
-### Choose the Narrowest Subscription That Stays Correct {#choose-the-narrowest-subscription-that-stays-correct}
+### 正しさを保てる範囲で最も狭く購読する {#choose-the-narrowest-subscription-that-stays-correct}
 
-Subscribe to the smallest piece of state that can change the rendered result. The selection example only needs `rowSelection[row.id]`, so changes to other rows do not need to update that checkbox.
+描画結果を変えうる、最小限の状態を購読してください。選択の例で必要なのは `rowSelection[row.id]` だけなので、ほかの行が変わってもそのチェックボックスを更新する必要はありません。
 
-If a component depends on several state slices, subscribe to `table.store` and return all of those slices from the selector. Keep the state-dependent Table calls inside the `Subscribe` render function:
+コンポーネントが複数の状態の断片に依存する場合は、`table.store` を購読し、セレクターからそれらの断片をすべて返します。状態に依存する Table の呼び出しは、`Subscribe` のレンダー関数の中に置いてください。
 
 ```tsx
 function TableBody({ table }) {
@@ -190,23 +190,23 @@ function TableBody({ table }) {
 }
 ```
 
-The selector must include every state slice that can change the result of `table.getRowModel()` for this table. That may include filtering, sorting, grouping, expansion, or pagination, depending on the features in use.
+セレクターには、このテーブルの `table.getRowModel()` の結果を変えうる状態の断片をすべて含める必要があります。使っている機能によっては、フィルタリング・ソート・グループ化・展開・ページネーションなどが含まれます。
 
-State is not the only input to `table.getRowModel()`. Replacing `data` from outside the table, such as a `setState` call, a query refetch, or a WebSocket message, does not change any state slice, so a `Subscribe` selector cannot detect it. When the body reads the table from `useTableContext()` inside `<table.AppTable>`, `AppTable` provides a new table value whenever the owner of `useAppTable` renders with new options, so the body updates without extra wiring. When you pass `table` as a prop through components that the compiler may skip, also pass `data` (or the rows you render) as a prop so the body renders again when the data changes.
+`table.getRowModel()` への入力は状態だけではありません。`setState` の呼び出し、クエリの再取得、WebSocket のメッセージなどによってテーブルの外から `data` を置き換えても、状態の断片はどれも変わらないため、`Subscribe` のセレクターでは検知できません。本体が `<table.AppTable>` の中で `useTableContext()` からテーブルを読み取る場合は、`useAppTable` を持つコンポーネントが新しいオプションでレンダーされるたびに `AppTable` が新しいテーブルの値を提供するので、追加の配線なしで本体が更新されます。コンパイラーが再レンダーを省きうるコンポーネントを経由して `table` を props で渡す場合は、`data`（または描画する行）も props として渡し、データが変わったときに本体が再びレンダーされるようにしてください。
 
-Use `table.Subscribe` when `table` is the React-facing value returned by `useTable`. In a cell or header render context, `table` is the core Table instead. Import the standalone `Subscribe` component and pass `table.store` or one of the values in `table.atoms` as its source.
+`table` が `useTable` の返す React 向けの値であれば、`table.Subscribe` を使います。セルやヘッダーのレンダーコンテキストでは、`table` はコアの Table です。この場合は単体の `Subscribe` コンポーネントをインポートし、source に `table.store` か `table.atoms` の値のいずれかを渡してください。
 
-Do not add a subscription to every cell by default. Add one when a nested component reads state that is not represented by its props, or when profiling shows that moving an update lower in the tree would help.
+デフォルトですべてのセルに購読を追加することはしないでください。入れ子のコンポーネントが props に表れていない状態を読み取る場合や、プロファイリングで更新をツリーの下のほうへ移すと効果があると分かった場合に追加します。
 
-See the [Table State Guide](./table-state#optimizing-re-renders-with-selectors-and-tablesubscribe) for the complete state and selector model. The [Basic Subscribe](https://tanstack.com/table/latest/docs/framework/react/examples/basic-subscribe) and [Kitchen Sink](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink) examples show these patterns in complete tables.
+状態とセレクターの仕組みの全体像は、[テーブルの状態ガイド](./table-state#optimizing-re-renders-with-selectors-and-tablesubscribe)を参照してください。[Basic Subscribe](https://tanstack.com/table/latest/docs/framework/react/examples/basic-subscribe) と [Kitchen Sink](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink) のサンプルでは、これらの書き方を完全なテーブルで示しています。
 
-## Why Table V8 Needed use no memo {#why-table-v8-needed-use-no-memo}
+## Table V8 で use no memo が必要だった理由 {#why-table-v8-needed-use-no-memo}
 
-Table V8's `useReactTable` returned the same table object while changing values stored inside it. This pattern is sometimes called **interior mutability**. A method such as `table.getRowModel()` could return new rows even though the `table` object itself had not changed.
+Table V8 の `useReactTable` は、内部に保持する値を変えながらも、同じテーブルオブジェクトを返していました。このパターンは **内部可変性**（interior mutability）と呼ばれることがあります。`table` オブジェクト自体は変わっていなくても、`table.getRowModel()` のようなメソッドが新しい行を返すことがありました。
 
-The React Compiler could cache a method call or child component based on that stable table reference. When the values inside the table changed, React could then reuse an old result and leave the UI stale. React's [`incompatible-library` lint documentation](https://react.dev/reference/eslint-plugin-react-hooks/lints/incompatible-library) lists Table V8's `useReactTable` API as an example of this problem.
+React Compiler は、その安定したテーブルの参照をもとに、メソッドの呼び出しや子コンポーネントをキャッシュすることがありました。そのため、テーブル内部の値が変わっても、React が古い結果を再利用して UI が古いままになることがありました。React の [`incompatible-library` リントルールのドキュメント](https://react.dev/reference/eslint-plugin-react-hooks/lints/incompatible-library)では、この問題の例として Table V8 の `useReactTable` API が挙げられています。
 
-The workaround was to keep the component out of the compiler:
+回避策は、そのコンポーネントをコンパイラーの対象から外すことでした。
 
 ```tsx
 function PeopleTable() {
@@ -222,6 +222,6 @@ function PeopleTable() {
 }
 ```
 
-Newer compiler tooling may recognize `useReactTable` and skip the component automatically. Either way, that component cannot benefit from compiler optimization.
+新しいコンパイラーのツールでは、`useReactTable` を認識して、そのコンポーネントを自動でコンパイル対象から外すこともあります。いずれにしても、そのコンポーネントはコンパイラーの最適化の恩恵を受けられません。
 
-Table V9 changed the React integration. `useTable` returns a React-facing value that updates with its selected state, and TanStack Store provides explicit subscriptions for nested components that read from the stable core table.
+Table V9 では React との連携の仕組みが変わりました。`useTable` は選択した状態に合わせて更新される React 向けの値を返し、安定したコアのテーブルから値を読み取る入れ子のコンポーネントのために、TanStack Store が明示的な購読の仕組みを提供します。

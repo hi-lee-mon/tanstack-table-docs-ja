@@ -3,19 +3,19 @@ id: LegacyFeatures
 title: LegacyFeatures
 ---
 
-Defined in: [src/useLegacyTable.ts:168](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L168)
+定義元: [src/useLegacyTable.ts:168](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L168)
 
-Feature set registered by `useLegacyTable`.
+`useLegacyTable` が登録する機能のセットです。
 
-Extends the stock features with the built-in filter, sort, and aggregation
-registries so column definitions accept the v8 string identifiers such as
-`'mean'` and `'includesString'`.
+標準機能に、組み込みのフィルター・ソート・集計のレジストリを加えたものです。
+これにより、列定義で `'mean'` や `'includesString'` のような
+v8 の文字列の識別子を指定できます。
 
-## Extends {#extends}
+## 継承元 {#extends}
 
 - `StockFeatures`
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### aggregationFns {#aggregationfns}
 
@@ -23,7 +23,7 @@ registries so column definitions accept the v8 string identifiers such as
 aggregationFns: object;
 ```
 
-Defined in: [src/useLegacyTable.ts:169](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L169)
+定義元: [src/useLegacyTable.ts:169](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L169)
 
 #### range {#range}
 
@@ -39,7 +39,7 @@ range: AggregationFnDef<TableFeatures, RowData, unknown, number>;
 filterFns: object;
 ```
 
-Defined in: [src/useLegacyTable.ts:170](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L170)
+定義元: [src/useLegacyTable.ts:170](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L170)
 
 #### startsWithLetter {#startswithletter}
 
@@ -55,7 +55,7 @@ startsWithLetter: FilterFn<TableFeatures, RowData>;
 sortFns: object;
 ```
 
-Defined in: [src/useLegacyTable.ts:171](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L171)
+定義元: [src/useLegacyTable.ts:171](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L171)
 
 #### byNameLength {#bynamelength}
 

@@ -1,8 +1,8 @@
 ---
-title: Row Models Guide
+title: 行モデルガイド
 ---
 
-If you take a look at the most basic example of TanStack Table, you'll see a code snippet like this:
+TanStack Table のいちばん基本的な例を見ると、次のようなコードがあります。
 
 ```ts
 import { tableFeatures, useTable } from '@tanstack/react-table'
@@ -18,31 +18,31 @@ function Component() {
 }
 ```
 
-In v9, row model factories live on the features object created by `tableFeatures()`. The core row model is always included automatically. You only add the row models you need for filtering, sorting, pagination, etc. This keeps your bundle small, since you only import and use the code for the features you enable.
+v9 では、行モデルのファクトリーは `tableFeatures()` で作る features オブジェクトの上に置きます。コア行モデルは常に自動で含まれます。追加するのは、フィルタリング・ソート・ページネーションなどに必要な行モデルだけです。有効にした機能のコードだけをインポートして使うので、バンドルを小さく保てます。
 
-## What are Row Models? {#what-are-row-models}
+## 行モデルとは {#what-are-row-models}
 
-Row models run under the hood of TanStack Table to transform your original data in useful ways that are needed for data grid features like filtering, sorting, grouping, expanding, and pagination. The rows that get generated and are rendered on screen won't necessarily be a 1:1 mapping of the original data that you passed to the table. They may be sorted, filtered, paginated, etc.
+行モデルは TanStack Table の内部で動き、フィルタリング・ソート・グループ化・展開・ページネーションといったデータグリッドの機能に必要な形へ、元のデータを変換します。生成されて画面に描画される行は、テーブルに渡した元のデータと必ずしも1対1で対応するわけではありません。ソート・フィルタリング・ページネーションなどが適用されていることがあります。
 
-## Configuring Row Models {#configuring-row-models}
+## 行モデルを設定する {#configuring-row-models}
 
-You should only add the row models that you need. Pass the row model factories as slots directly inside your `tableFeatures()` call alongside your feature objects:
+追加する行モデルは、必要なものだけにしてください。行モデルのファクトリーは、機能オブジェクトと並べて、`tableFeatures()` の呼び出しの中にスロットとして直接渡します。
 
-| Slot Key              | Factory Function              | Purpose                            |
-| --------------------- | ----------------------------- | ---------------------------------- |
-| (automatic)           | (none)                        | Core row model (always included)   |
-| `filteredRowModel`    | `createFilteredRowModel()`    | Filtering (column + global)        |
-| `sortedRowModel`      | `createSortedRowModel()`      | Sorting                            |
-| `paginatedRowModel`   | `createPaginatedRowModel()`   | Pagination                         |
-| `expandedRowModel`    | `createExpandedRowModel()`    | Row expanding                      |
-| `groupedRowModel`     | `createGroupedRowModel()`     | Grouping; aggregation when enabled |
-| `facetedRowModel`     | `createFacetedRowModel()`     | Faceted filtering                  |
-| `facetedMinMaxValues` | `createFacetedMinMaxValues()` | Min/max for faceted filters        |
-| `facetedUniqueValues` | `createFacetedUniqueValues()` | Unique values for faceted filters  |
+| スロットのキー        | ファクトリー関数              | 用途                                       |
+| --------------------- | ----------------------------- | ------------------------------------------ |
+| （自動）              | （なし）                      | コア行モデル（常に含まれる）               |
+| `filteredRowModel`    | `createFilteredRowModel()`    | フィルタリング（列フィルター＋グローバルフィルター） |
+| `sortedRowModel`      | `createSortedRowModel()`      | ソート                                     |
+| `paginatedRowModel`   | `createPaginatedRowModel()`   | ページネーション                           |
+| `expandedRowModel`    | `createExpandedRowModel()`    | 行の展開                                   |
+| `groupedRowModel`     | `createGroupedRowModel()`     | グループ化（有効にした場合は集計も）       |
+| `facetedRowModel`     | `createFacetedRowModel()`     | ファセットによるフィルタリング             |
+| `facetedMinMaxValues` | `createFacetedMinMaxValues()` | ファセットフィルター用の最小値・最大値     |
+| `facetedUniqueValues` | `createFacetedUniqueValues()` | ファセットフィルター用の一意な値           |
 
-The factory functions no longer accept `filterFns`, `sortFns`, or `aggregationFns` as arguments. Those function maps are registered as their own named slots on the features object (see [Function Registries](#function-registries) below).
+ファクトリー関数は、もう `filterFns`・`sortFns`・`aggregationFns` を引数として受け取りません。これらの関数マップは、features オブジェクトにそれぞれ名前付きのスロットとして登録します（後述の[関数のレジストリ](#function-registries)を参照してください）。
 
-You must also add the corresponding feature objects to `tableFeatures()` for each row model you use. For example:
+使う行モデルごとに、対応する機能オブジェクトも `tableFeatures()` に追加する必要があります。たとえば次のようにします。
 
 ```ts
 import {
@@ -78,11 +78,11 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> the full built-in registries (`filterFns`, `sortFns`, `aggregationFns`) can still be spread into these slots, but they are deprecated because they pull every built-in function into your bundle. Register only the functions you use under their conventional string keys, or pass functions directly to the `filterFn`, `sortFn`, and `aggregationFn` column options with no registration at all. String keys, including the default `'auto'`, only resolve functions that are registered.
+> 組み込みのレジストリ全体（`filterFns`・`sortFns`・`aggregationFns`）を、これらのスロットにスプレッドで展開して渡すこともまだできます。ただし、組み込みの関数がすべてバンドルに含まれてしまうため非推奨です。使う関数だけを慣例の文字列キーで登録するか、`filterFn`・`sortFn`・`aggregationFn` の列オプションに関数を直接渡して登録自体を省いてください。文字列キー（デフォルトの `'auto'` を含む）で解決されるのは、登録済みの関数だけです。
 
-## Function Registries {#function-registries}
+## 関数のレジストリ {#function-registries}
 
-`tableFeatures()` accepts three named registry slots: `filterFns`, `sortFns`, and `aggregationFns`. Each slot is an object whose keys become valid, fully type-safe string values for `filterFn`, `sortFn`, `globalFilterFn`, and `aggregationFn` in your column definitions and table options. You only pay for the functions you register.
+`tableFeatures()` は、`filterFns`・`sortFns`・`aggregationFns` という3つの名前付きのレジストリのスロットを受け付けます。各スロットはオブジェクトで、そのキーが列定義やテーブルオプションの `filterFn`・`sortFn`・`globalFilterFn`・`aggregationFn` に指定できる、完全に型安全な文字列値になります。コストがかかるのは、登録した関数の分だけです。
 
 ```ts
 import {
@@ -113,68 +113,68 @@ const columnHelper = createColumnHelper<typeof features, Person>()
 columnHelper.accessor('name', { filterFn: 'fuzzy' })
 ```
 
-The same pattern applies for sorting and grouping:
+ソートとグループ化でも同じパターンが使えます。
 
-- `sortFns: { myCustomSort }` makes `'myCustomSort'` valid for `sortFn` in column defs.
-- `aggregationFns: { myAgg }` makes `'myAgg'` valid for `aggregationFn` in column defs.
+- `sortFns: { myCustomSort }` とすると、列定義の `sortFn` に `'myCustomSort'` を指定できるようになります。
+- `aggregationFns: { myAgg }` とすると、列定義の `aggregationFn` に `'myAgg'` を指定できるようになります。
 
-To use built-in functions by string name, import them individually (`filterFn_includesString`, `sortFn_alphanumeric`, `aggregationFn_sum`, and so on) and register them under their conventional keys, e.g. `filterFns: { includesString: filterFn_includesString }`. If a column option accepts a function directly, you can also skip registration entirely and pass the imported function as the `filterFn`, `sortFn`, or `aggregationFn` value.
+組み込みの関数を文字列の名前で使うには、関数を個別にインポートし（`filterFn_includesString`、`sortFn_alphanumeric`、`aggregationFn_sum` など）、慣例のキーで登録します。たとえば `filterFns: { includesString: filterFn_includesString }` のようにします。列オプションが関数を直接受け付ける場合は、登録をすべて省き、インポートした関数をそのまま `filterFn`・`sortFn`・`aggregationFn` の値として渡すこともできます。
 
-## Customize/Fork Row Models {#customizefork-row-models}
+## 行モデルをカスタマイズ・フォークする {#customizefork-row-models}
 
-You don't have to use the exact row models that are provided by TanStack Table. If you need some advanced customization for certain row models, feel free to copy the [source code](https://github.com/TanStack/table/tree/main/packages/table-core/src/features) for the row model you want to customize and modify it to your needs. Each row model factory lives alongside its feature (e.g. `row-sorting/createSortedRowModel.ts`), and the core row model lives in [`core/row-models`](https://github.com/TanStack/table/tree/main/packages/table-core/src/core/row-models).
+TanStack Table が提供する行モデルをそのまま使う必要はありません。特定の行モデルを高度にカスタマイズしたい場合は、カスタマイズしたい行モデルの[ソースコード](https://github.com/TanStack/table/tree/main/packages/table-core/src/features)を遠慮なくコピーし、必要に合わせて書き換えてください。各行モデルのファクトリーは対応する機能と同じ場所にあり（例: `row-sorting/createSortedRowModel.ts`）、コア行モデルは [`core/row-models`](https://github.com/TanStack/table/tree/main/packages/table-core/src/core/row-models) にあります。
 
-## Using Row Models {#using-row-models}
+## 行モデルを使う {#using-row-models}
 
-Once your table instance has been created, you can access all of the row models that you may need directly from the table instance. There are even more derived row models available apart from the ones that you may have imported.
+テーブルインスタンスを作成したら、必要な行モデルにはすべてテーブルインスタンスから直接アクセスできます。自分でインポートした行モデル以外にも、さらに多くの派生した行モデルが用意されています。
 
-For normal rendering use cases, you will probably only need to use the `table.getRowModel()` method, as this row model will use all/any of the other row models depending on which features you have enabled or disabled. All of the other row models are available for you to "dig into" some of the underlying data transformations that are happening in the table.
+通常の描画であれば、おそらく `table.getRowModel()` メソッドだけで足ります。この行モデルは、どの機能を有効・無効にしているかに応じて、他の行モデルをすべて、あるいは必要なものだけ使うからです。その他の行モデルはすべて、テーブル内で行われているデータ変換を「掘り下げて」調べたいときに使えます。
 
-## Available Row Models on Table Instance {#available-row-models-on-table-instance}
+## テーブルインスタンスで使える行モデル {#available-row-models-on-table-instance}
 
-- **`getRowModel`** - This is the main row model that you should use for rendering your table rows markup. It will use all of the other row models to generate the final row model that you will use to render your table rows.
+- **`getRowModel`** - テーブルの行のマークアップを描画するのに使うべき、メインの行モデルです。他のすべての行モデルを使って、テーブルの行の描画に使う最終的な行モデルを生成します。
 
-- `getCoreRowModel` - returns a basic row model that is just a 1:1 mapping of the original data passed to the table.
+- `getCoreRowModel` - テーブルに渡された元のデータを1対1で写しただけの、基本的な行モデルを返します。
 
-- `getFilteredRowModel` - returns a row model that accounts for column filtering and global filtering.
-- `getPreFilteredRowModel` - returns a row model before column filtering and global filtering are applied.
+- `getFilteredRowModel` - 列フィルタリングとグローバルフィルタリングを反映した行モデルを返します。
+- `getPreFilteredRowModel` - 列フィルタリングとグローバルフィルタリングを適用する前の行モデルを返します。
 
-- `getGroupedRowModel` - returns a row model that applies grouping and creates sub-rows. When `rowAggregationFeature` is also registered, configured aggregate values are computed for those grouped rows.
-- `getPreGroupedRowModel` - returns the row model before grouping. Its root rows are the default row set used by `column.getAggregationValue()` for grand totals; `maxAggregationDepth` can select a deeper frontier.
+- `getGroupedRowModel` - グループ化を適用し、サブ行を作成した行モデルを返します。`rowAggregationFeature` も登録されている場合は、それらのグループ化された行について、設定された集計値が計算されます。
+- `getPreGroupedRowModel` - グループ化する前の行モデルを返します。そのルートの行は、総計を求める `column.getAggregationValue()` がデフォルトで使う行の集合です。`maxAggregationDepth` を使えば、より深い階層を対象にできます。
 
-- `getSortedRowModel` - returns a row model that has had sorting applied to it.
-- `getPreSortedRowModel` - returns a row model before sorting is applied (rows are in original order).
+- `getSortedRowModel` - ソートを適用した行モデルを返します。
+- `getPreSortedRowModel` - ソートを適用する前の行モデルを返します（行は元の順序のままです）。
 
-- `getExpandedRowModel` - returns a row model that accounts for expanded/hidden sub-rows.
-- `getPreExpandedRowModel` - returns a row model that only includes root level rows with no expanded sub-rows included. Still includes sorting.
+- `getExpandedRowModel` - サブ行の展開・非表示を反映した行モデルを返します。
+- `getPreExpandedRowModel` - ルート階層の行だけを含み、展開されたサブ行を含まない行モデルを返します。ソートは反映されたままです。
 
-- `getPaginatedRowModel` - returns a row model that only includes the rows that should be displayed on the current page based on the pagination state.
-- `getPrePaginatedRowModel` - returns a row model without pagination applied (includes all rows).
+- `getPaginatedRowModel` - ページネーションの状態に基づき、現在のページに表示すべき行だけを含む行モデルを返します。
+- `getPrePaginatedRowModel` - ページネーションを適用していない行モデルを返します（すべての行を含みます）。
 
-- `getSelectedRowModel` - returns a row model of all selected rows (but only based on the data that was passed to the table). Runs after getCoreRowModel.
-- `getPreSelectedRowModel` - returns a row model before row selection is applied (Just returns getCoreRowModel).
-- `getGroupedSelectedRowModel` - returns a row model of selected rows after grouping. Runs after getSortedRowModel, which runs after getGroupedRowModel, which runs after getFilteredRowModel.
-- `getFilteredSelectedRowModel` - returns a row model of selected rows after column filtering and global filtering. Runs after getFilteredRowModel.
+- `getSelectedRowModel` - 選択されたすべての行の行モデルを返します（ただし、テーブルに渡されたデータだけに基づきます）。getCoreRowModel の後に実行されます。
+- `getPreSelectedRowModel` - 行選択を適用する前の行モデルを返します（getCoreRowModel をそのまま返すだけです）。
+- `getGroupedSelectedRowModel` - グループ化した後の、選択された行の行モデルを返します。getSortedRowModel の後に実行されます。getSortedRowModel は getGroupedRowModel の後に、getGroupedRowModel は getFilteredRowModel の後に実行されます。
+- `getFilteredSelectedRowModel` - 列フィルタリングとグローバルフィルタリングを適用した後の、選択された行の行モデルを返します。getFilteredRowModel の後に実行されます。
 
-## The Order of Row Model Execution {#the-order-of-row-model-execution}
+## 行モデルの実行順序 {#the-order-of-row-model-execution}
 
-Knowing how TanStack Table processes rows internally can help you gain a better understanding of what is happening under the hood, and help you debug any issues you may encounter.
+TanStack Table が内部で行をどう処理しているかを知っておくと、裏で何が起きているかをよりよく理解でき、問題に遭遇したときのデバッグにも役立ちます。
 
-Internally, this is the order in which each of the row models are applied to the data, if their respective features are enabled:
+内部では、それぞれの機能が有効になっている場合、次の順序で各行モデルがデータに適用されます。
 
 `getCoreRowModel` -> `getFilteredRowModel` -> `getGroupedRowModel` -> `getSortedRowModel` -> `getExpandedRowModel` -> `getPaginatedRowModel` -> `getRowModel`
 
-If in any case the respective feature is disabled or turned off with a `"manual*"` table option, the `getPre*RowModel` will be used instead in that step of the process.
+対応する機能が無効になっている場合や、`"manual*"` 系のテーブルオプションでオフにされている場合は、その段階では代わりに `getPre*RowModel` が使われます。
 
-As you can see above, first the data is filtered, then grouped, then sorted, then expanded, and then finally paginated as the final step.
+上のとおり、データはまずフィルタリングされ、次にグループ化、ソート、展開され、最後の段階としてページネーションが適用されます。
 
-## Row Model Data Structure {#row-model-data-structure}
+## 行モデルのデータ構造 {#row-model-data-structure}
 
-Each row model will provide you the rows in 3 different useful formats:
+各行モデルは、行を3つの便利な形式で提供します。
 
-1. `rows` - An array of rows.
-2. `flatRows` - An array of rows, but all sub-rows are flattened into the top level.
-3. `rowsById` - An object of rows, where each row is keyed by its `id`. This is useful for quickly looking up rows by their `id` with better performance.
+1. `rows` - 行の配列です。
+2. `flatRows` - 行の配列ですが、すべてのサブ行が最上位に平坦化されています。
+3. `rowsById` - 行のオブジェクトで、各行がその `id` をキーとして格納されています。`id` を使って行を高速に検索したいときに便利です。
 
 ```ts
 console.log(table.getRowModel().rows) // array of rows

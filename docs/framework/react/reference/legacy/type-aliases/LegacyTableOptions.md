@@ -7,19 +7,19 @@ title: LegacyTableOptions
 type LegacyTableOptions<TData> = Omit<TableOptions<LegacyFeatures, TData>, "features"> & LegacyRowModelOptions<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:279](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L279)
+定義元: [src/useLegacyTable.ts:279](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L279)
 
-Legacy v8-style table options that work with useLegacyTable.
+useLegacyTable で使う、v8 スタイルのレガシーなテーブルオプションです。
 
-This type omits `features` and instead accepts the v8-style
-`get*RowModel` function options.
+この型は `features` を除外し、代わりに v8 スタイルの
+`get*RowModel` 関数のオプションを受け取ります。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-This is a compatibility layer for migrating from v8. Use `useTable` with an explicit `features` option instead.
+これは v8 から移行するための互換レイヤーです。代わりに、`features` オプションを明示的に指定して `useTable` を使ってください。

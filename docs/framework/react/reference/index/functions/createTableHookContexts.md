@@ -7,29 +7,15 @@ title: createTableHookContexts
 function createTableHookContexts<TFeatures, TData>(): TableHookContexts<TFeatures, TData>;
 ```
 
-Defined in: [src/createTableHookContexts.tsx:83](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L83)
+定義元: [src/createTableHookContexts.tsx:83](https://github.com/TanStack/table/blob/main/packages/react-table/src/createTableHookContexts.tsx#L83)
 
-Creates a fresh, scoped set of table/cell/header contexts (plus matching
-context hooks) that you can pass into [createTableHook](createTableHook.md). This mirrors
-TanStack Form's `createFormHookContexts`.
+[createTableHook](createTableHook.md) に渡せる、スコープを限定したテーブル・セル・ヘッダーのコンテキスト（と、それぞれに対応するコンテキストのフック）を新しく1組作ります。TanStack Form の `createFormHookContexts` にならった API です。
 
-You usually do NOT need this: by default `createTableHook` wires its
-`AppTable`/`AppCell`/`AppHeader` providers to a shared module-scoped context,
-and you read it with the `useTableContext`/`useCellContext`/`useHeaderContext`
-hooks returned from `createTableHook`. Reach for `createTableHookContexts`
-when you need an *isolated* context, e.g. when nesting one table inside
-another and a consumer would otherwise read the wrong (nearest) provider.
+通常、これを使う必要は**ありません**。`createTableHook` はデフォルトで、`AppTable`・`AppCell`・`AppHeader` の各プロバイダーを、モジュールスコープで共有されるコンテキストに結び付けます。そのコンテキストは、`createTableHook` が返す `useTableContext`・`useCellContext`・`useHeaderContext` フックで読み取れます。`createTableHookContexts` を使うのは、*分離された*コンテキストが必要なときです。たとえば、テーブルの中に別のテーブルを入れ子にすると、そのままでは利用側が誤った（最も近い）プロバイダーを読み取ってしまう場合があります。
 
-Type-safety note: the hooks returned here are typed with `TFeatures` only.
-They do NOT know the component maps you register in `createTableHook`
-(`tableComponents`/`cellComponents`/`headerComponents`), because those are
-defined later. For the richest types (the `App*` components and your
-registered components attached), prefer the `use*Context` hooks returned from
-your `createTableHook` call. The hooks here are the escape hatch for reading
-context from a module that does not / cannot import the `createTableHook`
-result.
+型安全性についての注意: ここで返されるフックの型は `TFeatures` だけをもとにしています。`createTableHook` で登録するコンポーネントのマップ（`tableComponents`・`cellComponents`・`headerComponents`）はあとから定義されるため、これらのフックはそれを**知りません**。最も詳しい型（`App*` コンポーネントと登録したコンポーネントが付いた型）がほしい場合は、`createTableHook` の呼び出しが返す `use*Context` フックを使ってください。ここで作るフックは、`createTableHook` の結果をインポートしない、またはできないモジュールからコンテキストを読み取るための抜け道（escape hatch）です。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TFeatures {#tfeatures}
 
@@ -39,11 +25,11 @@ result.
 
 `TData` *extends* `RowData` = `RowData`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 [`TableHookContexts`](../interfaces/TableHookContexts.md)\<`TFeatures`, `TData`\>
 
-## Example {#example}
+## 例 {#example}
 
 ```tsx
 // scoped-table-context.ts

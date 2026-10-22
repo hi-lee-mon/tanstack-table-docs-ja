@@ -7,21 +7,21 @@ title: getFacetedRowModel
 function getFacetedRowModel<TData>(): FacetedRowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:115](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L115)
+定義元: [src/useLegacyTable.ts:115](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L115)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 [`FacetedRowModelFactory`](../type-aliases/FacetedRowModelFactory.md)\<`TData`\>
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-Use `createFacetedRowModel()` with the new `useTable` hook instead.
+代わりに、新しい `useTable` フックと `createFacetedRowModel()` を使ってください。
 
-This is a stub function for v8 API compatibility with `useLegacyTable`.
-It acts as a marker to enable the faceted row model.
+これは `useLegacyTable` で v8 の API との互換性を保つためのスタブ関数です。
+ファセット行モデルを有効にする目印として働きます。

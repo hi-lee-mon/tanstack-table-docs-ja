@@ -7,21 +7,21 @@ title: legacyCreateColumnHelper
 function legacyCreateColumnHelper<TData>(): ColumnHelper<LegacyFeatures, TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:360](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L360)
+定義元: [src/useLegacyTable.ts:360](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L360)
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 `ColumnHelper`\<[`LegacyFeatures`](../interfaces/LegacyFeatures.md), `TData`\>
 
-## Deprecated {#deprecated}
+## 非推奨 {#deprecated}
 
-Use `createColumnHelper<TFeatures, TData>()` with useTable instead.
+代わりに、useTable とあわせて `createColumnHelper<TFeatures, TData>()` を使ってください。
 
-A column helper with LegacyFeatures pre-bound for use with useLegacyTable.
-Only requires TData—no need to specify TFeatures.
+useLegacyTable で使うための、LegacyFeatures があらかじめ結び付けられた列ヘルパーです。
+必要なのは TData だけで、TFeatures を指定する必要はありません。

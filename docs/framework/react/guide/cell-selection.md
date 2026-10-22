@@ -1,16 +1,16 @@
 ---
-title: Cell Selection (React) Guide
+title: セル選択（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Cell Selection](https://tanstack.com/table/latest/docs/framework/react/examples/cell-selection)
+- [セル選択](https://tanstack.com/table/latest/docs/framework/react/examples/cell-selection)
 
-### Cell Selection Setup {#cell-selection-setup}
+### セル選択のセットアップ {#cell-selection-setup}
 
-Here's how you set up your table to use cell selection features. Adding the cell selection feature enables the related APIs.
+セル選択の機能を使うためのテーブルの設定方法は次のとおりです。セル選択の機能を追加すると、関連する API が使えるようになります。
 
 ```tsx
 import {
@@ -28,22 +28,22 @@ const table = useTable({
 })
 ```
 
-## Cell Selection (React) Guide {#cell-selection-react-guide}
+## セル選択（React）ガイド {#cell-selection-react-guide}
 
 > [!NOTE]
-> When the optional [cell spanning](./cell-spanning) feature is registered, selection rectangles expand to fully enclose any merged cell they touch, so a merge is always entirely selected or entirely unselected.
+> オプションの[セル結合](./cell-spanning)機能を登録している場合、選択範囲の長方形は、触れている結合セルを丸ごと囲むように広がります。そのため、結合セルは常に全体が選択されるか、全体が選択されないかのどちらかになります。
 
-The cell selection feature keeps track of spreadsheet-style rectangular selections. A user can click a cell, drag across a block of cells, Shift-click to extend, and Ctrl/Cmd-drag to add or subtract a rectangle based on whether the starting cell is selected. Let's take a look at some common use cases.
+セル選択の機能は、スプレッドシートのような長方形の選択範囲を管理します。ユーザーはセルをクリックしたり、セルのまとまりをドラッグしたりして選択できます。Shift キーを押しながらクリックすると範囲を広げられ、Ctrl/Cmd キーを押しながらドラッグすると、開始したセルが選択済みかどうかに応じて長方形を追加または除外できます。よくあるユースケースをいくつか見ていきましょう。
 
-### Access Cell Selection State {#access-cell-selection-state}
+### セル選択の状態を読み取る {#access-cell-selection-state}
 
-The table instance already manages the cell selection state for you. You can access the selection or values derived from it through a few APIs.
+セル選択の状態は、テーブルインスタンスがあらかじめ管理しています。選択範囲や、そこから派生した値は、いくつかの API で読み取れます。
 
-- `table.state.cellSelection` - returns the cell selection state reactively (selected by the `useTable` selector)
-- `getSelectedCellCount()` - returns how many cells are selected
-- `getSelectedCellIds()` - returns the ids of every selected cell
-- `getCellSelectionRowIds()` / `getCellSelectionColumnIds()` - returns the rows and columns the selection touches
-- `getSelectedCellRangesData()` - returns each final positive selection region's values as a row-major grid
+- `table.state.cellSelection` - セル選択の状態をリアクティブに返します（`useTable` のセレクターで選択されたもの）
+- `getSelectedCellCount()` - 選択されているセルの数を返します
+- `getSelectedCellIds()` - 選択されているすべてのセルの ID を返します
+- `getCellSelectionRowIds()` / `getCellSelectionColumnIds()` - 選択範囲にかかっている行と列を返します
+- `getSelectedCellRangesData()` - 最終的に選択されている各領域の値を、行優先のグリッドとして返します
 
 ```ts
 console.log(table.state.cellSelection) //get the cell selection state
@@ -52,13 +52,13 @@ console.log(table.getSelectedCellIds()) //['0_firstName', '0_lastName', '1_first
 console.log(table.getSelectedCellRangesData()) //[[['Tanner', 'Linsley'], ['Kevin', 'Vandy']]]
 ```
 
-In event handlers or other non-render code, you can also read the current snapshot with `table.atoms.cellSelection.get()`. This read does not subscribe a component to future changes, so prefer `table.state.cellSelection` (or `table.Subscribe`) in render positions.
+イベントハンドラーなど、レンダー以外のコードでは、`table.atoms.cellSelection.get()` で現在のスナップショットを読むこともできます。この読み取りではコンポーネントが以降の変更を購読しないため、レンダーの中では `table.state.cellSelection`（または `table.Subscribe`）を使ってください。
 
-The expansion APIs (`getSelectedCellIds`, `getSelectedCellRangesData`) are memoized and pull-based. They cost nothing unless you actually call them, so a table that only highlights cells never pays to enumerate a large selection.
+範囲を個々のセルに展開する API（`getSelectedCellIds`、`getSelectedCellRangesData`）はメモ化されており、呼ばれたときにだけ計算します。実際に呼ばない限りコストはかからないので、セルをハイライトするだけのテーブルが、大きな選択範囲を列挙するためのコストを払うことはありません。
 
-### Cell Selection State Shape {#cell-selection-state-shape}
+### セル選択の状態の形 {#cell-selection-state-shape}
 
-`CellSelectionState` is an ordered array of range operations, each stored as its two defining corners:
+`CellSelectionState` は、範囲に対する操作を順番に並べた配列です。各範囲は、それを決める2つの角として保存されます。
 
 ```ts
 type CellSelectionRange = {
@@ -72,13 +72,13 @@ type CellSelectionRange = {
 type CellSelectionState = Array<CellSelectionRange>
 ```
 
-The `anchor` corner is where the selection started and stays put. The `focus` corner is the one that moves while dragging or Shift-extending. Storing both corners, rather than a normalized min/max rectangle, is what makes Shift-extend and "collapse back to the active cell" possible.
+`anchor` の角は選択を始めた位置で、動きません。`focus` の角は、ドラッグ中や Shift で範囲を広げるときに動く側の角です。最小値・最大値で正規化した長方形ではなく両方の角を保存しているからこそ、Shift での範囲拡張や「アクティブセルだけの選択に戻す」操作が実現できます。
 
-Ranges are applied in order. An omitted `operation` is an inclusion for backward compatibility; an `exclude` range subtracts its rectangle from the selection produced so far. This compact operation log means a "select all except these cells" interaction does not build a map with one entry per selected cell.
+範囲は順番に適用されます。`operation` を省略した範囲は、後方互換性のために「含める」として扱われます。`exclude` の範囲は、それまでに作られた選択範囲からその長方形を差し引きます。このようにコンパクトな操作の記録として持つことで、「これらのセル以外をすべて選択する」といった操作でも、選択したセル1つにつき1エントリのマップを作らずに済みます。
 
-### Manage Cell Selection State {#manage-cell-selection-state}
+### セル選択の状態を管理する {#manage-cell-selection-state}
 
-If you need access to the selection elsewhere in your application, you can own the state slice yourself. The recommended way in v9 is an external atom passed through the `atoms` table option.
+アプリケーションの他の場所から選択範囲にアクセスしたい場合は、この状態を自分で持つこともできます。v9 で推奨されるのは、外部のアトムをテーブルの `atoms` オプションに渡す方法です。
 
 ```tsx
 import { useCreateAtom } from '@tanstack/react-store'
@@ -101,7 +101,7 @@ const table = useTable({
 })
 ```
 
-The classic controlled-state pattern also works:
+従来の、制御された状態のパターンも使えます。
 
 ```tsx
 const [cellSelection, setCellSelection] = useState<CellSelectionState>([])
@@ -116,11 +116,11 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> a drag emits one change per cell boundary the pointer crosses, so `onCellSelectionChange` fires repeatedly during a drag. If you are syncing selection to a server or a URL, debounce it or commit on `mouseup`.
+> ドラッグでは、ポインターがセルの境界を1つ越えるたびに変更が1回発生します。そのため、ドラッグ中は `onCellSelectionChange` が何度も呼ばれます。選択範囲をサーバーや URL と同期する場合は、デバウンスするか、`mouseup` のタイミングで確定させてください。
 
-### Useful Row Ids {#useful-row-ids}
+### 意味のある行 ID を使う {#useful-row-ids}
 
-Cell selection is keyed by row id and column id, so a meaningful row id matters here for the same reason it does with row selection. Use the `getRowId` table option to key selection by something stable from your data.
+セル選択は行 ID と列 ID をキーにしています。そのため、行選択と同じ理由で、意味のある行 ID を使うことが重要です。`getRowId` テーブルオプションを使って、データの中の安定した値を選択のキーにしてください。
 
 ```ts
 const table = useTable({
@@ -130,9 +130,9 @@ const table = useTable({
 })
 ```
 
-### Enable Cell Selection Conditionally {#enable-cell-selection-conditionally}
+### 条件付きでセル選択を有効にする {#enable-cell-selection-conditionally}
 
-Cell selection is enabled by default for every cell. Use the `enableCellSelection` table option to turn it off entirely, or pass a function for per-cell control.
+セル選択は、デフォルトですべてのセルで有効です。`enableCellSelection` テーブルオプションを使うと、完全に無効にできます。関数を渡せば、セルごとに制御できます。
 
 ```ts
 const table = useTable({
@@ -141,7 +141,7 @@ const table = useTable({
 })
 ```
 
-A column def can also opt out, which is the common case for checkbox or action columns. A column-level `false` wins over the table option.
+列定義の側で選択の対象から外すこともできます。チェックボックスの列や操作ボタンの列では、これがよく使われます。列で `false` を指定すると、テーブルオプションより優先されます。
 
 ```ts
 columnHelper.accessor('actions', {
@@ -149,14 +149,14 @@ columnHelper.accessor('actions', {
 })
 ```
 
-A cell that cannot be selected is skipped even when a rectangle is drawn straight through it, and `moveCellSelection` steps over its column rather than landing on it. Use `cell.getCanSelect()` to decide whether to attach selection handlers in your UI.
+選択できないセルは、長方形がそのセルをまたいで描かれた場合でも飛ばされます。また、`moveCellSelection` はそのセルの列に止まらず、飛び越えて移動します。UI に選択用のハンドラーを付けるかどうかは、`cell.getCanSelect()` で判断してください。
 
-### Mouse Interactions {#mouse-interactions}
+### マウス操作 {#mouse-interactions}
 
-Two cell handlers drive every mouse interaction:
+マウス操作はすべて、2つのセルハンドラーで動きます。
 
-- `cell.getSelectionStartHandler()` - bind to `onMouseDown`
-- `cell.getSelectionExtendHandler()` - bind to `onMouseEnter`
+- `cell.getSelectionStartHandler()` - `onMouseDown` に割り当てる
+- `cell.getSelectionExtendHandler()` - `onMouseEnter` に割り当てる
 
 ```tsx
 <td
@@ -167,17 +167,17 @@ Two cell handlers drive every mouse interaction:
 </td>
 ```
 
-You do not need to handle `mouseup` yourself. The start handler attaches its own document-level `mouseup` listener and removes it when the drag ends, so releasing the pointer outside the table still finishes the drag correctly. If your table renders into another document, such as an iframe or a popout window, pass that document in: `cell.getSelectionStartHandler(myDocument)`.
+`mouseup` を自分で扱う必要はありません。開始ハンドラーがドキュメント全体に `mouseup` リスナーを付け、ドラッグが終わると外します。そのため、テーブルの外でポインターを離しても、ドラッグは正しく終了します。テーブルを別のドキュメント（iframe やポップアウトしたウィンドウなど）にレンダーしている場合は、そのドキュメントを `cell.getSelectionStartHandler(myDocument)` のように渡してください。
 
-#### Drag Selection {#drag-selection}
+#### ドラッグでの選択 {#drag-selection}
 
-Pressing down on a cell starts a new single-cell range, and every cell the pointer then enters moves that range's focus corner. Set `enableCellSelectionDrag: false` to require explicit clicks instead.
+セルを押し下げると、そのセル1つだけの新しい範囲が始まります。その後ポインターが入ったセルに合わせて、その範囲のフォーカスの角が動きます。ドラッグではなく明示的なクリックで選ばせたい場合は、`enableCellSelectionDrag: false` を設定してください。
 
-#### Shift Range Selection {#shift-range-selection}
+#### Shift での範囲選択 {#shift-range-selection}
 
-Shift-clicking moves the active range's focus corner to the clicked cell, keeping its anchor fixed. The active cell therefore stays where the selection started, matching spreadsheet behavior.
+Shift キーを押しながらクリックすると、アクティブな範囲のアンカーの角は固定したまま、フォーカスの角がクリックしたセルに移ります。そのため、アクティブセルは選択を始めた位置にとどまり、スプレッドシートと同じ動きになります。
 
-The handler recognizes Shift when the event exposes either `event.shiftKey` or `event.nativeEvent.shiftKey`. You can disable range behavior or replace the detection:
+ハンドラーは、イベントに `event.shiftKey` か `event.nativeEvent.shiftKey` のどちらかがあれば、Shift が押されていると判断します。範囲選択の動作を無効にしたり、判定方法を差し替えたりできます。
 
 ```ts
 const table = useTable({
@@ -190,24 +190,24 @@ const table = useTable({
 })
 ```
 
-#### Multiple Ranges {#multiple-ranges}
+#### 複数の範囲 {#multiple-ranges}
 
-Ctrl-clicking or Cmd-clicking an unselected cell adds a new inclusive rectangle. Starting the same modified interaction on a selected cell adds an exclusion instead, so clicking removes that cell and dragging subtracts the whole rectangle. Whether the drag includes or excludes is fixed when it starts; shrinking an exclusion drag restores cells that leave its rectangle. Set `enableMultiCellRangeSelection: false` to disable both behaviors, or override `isMultiCellRangeSelectionEvent` to change the modifier.
+選択されていないセルを Ctrl キーまたは Cmd キーを押しながらクリックすると、含める長方形が新しく追加されます。同じ修飾キーを押したまま選択済みのセルから操作を始めると、代わりに除外の範囲が追加されます。クリックならそのセルが選択から外れ、ドラッグなら長方形全体が差し引かれます。ドラッグが「含める」か「除外する」かはドラッグの開始時に決まります。除外のドラッグを縮めると、長方形から外れたセルは元の状態に戻ります。両方の動作を無効にするには `enableMultiCellRangeSelection: false` を設定します。修飾キーを変えるには `isMultiCellRangeSelectionEvent` を上書きします。
 
-#### Programmatic Range Operations {#programmatic-range-operations}
+#### プログラムからの範囲操作 {#programmatic-range-operations}
 
-`table.selectCellRange(range)` replaces the current selection. Pass `{ mode: 'include' }` to append an inclusion or `{ mode: 'exclude' }` to append an exclusion. The older `{ additive: true }` option remains as a deprecated alias for include mode; `mode` wins if both options are supplied. `table.getCellSelectionBounds()` resolves the operation log into deterministic, disjoint positive rectangles.
+`table.selectCellRange(range)` は、現在の選択範囲を置き換えます。`{ mode: 'include' }` を渡すと含める範囲を、`{ mode: 'exclude' }` を渡すと除外する範囲を末尾に追加します。以前からある `{ additive: true }` オプションは、include モードの非推奨の別名として残っています。両方を指定した場合は `mode` が優先されます。`table.getCellSelectionBounds()` は、操作の記録を解決し、常に同じ結果になる、互いに重ならない「含める」長方形の集まりにします。
 
-### Render Cell Selection UI {#render-cell-selection-ui}
+### セル選択の UI をレンダーする {#render-cell-selection-ui}
 
-TanStack Table does not dictate how you render selected cells. These cell APIs give you everything you need:
+選択されたセルをどう描画するかを、TanStack Table が決めることはありません。必要な情報は、次のセルの API ですべて得られます。
 
-- `cell.getIsSelected()` - whether this cell falls inside any range
-- `cell.getIsFocused()` - whether this is the active cell (an excluded anchor can be focused without being selected)
-- `cell.getSelectionEdges()` - which sides sit on the selection boundary
-- `cell.getTabIndex()` - `0` for the focused cell and `-1` otherwise, for roving tabindex
+- `cell.getIsSelected()` - このセルがいずれかの範囲に含まれているかどうか
+- `cell.getIsFocused()` - このセルがアクティブセルかどうか（除外されたアンカーは、選択されていなくてもフォーカスされることがあります）
+- `cell.getSelectionEdges()` - どの辺が選択範囲の境界に接しているか
+- `cell.getTabIndex()` - ロービング tabindex のための値。フォーカスされたセルでは `0`、それ以外では `-1`
 
-`getSelectionEdges()` returns `{ top, right, bottom, left }`, where a side is `true` when the neighboring cell in that direction is not itself selected. That is what lets you draw a single continuous outline around a selection, including around a union of separate rectangles, without every cell inspecting its neighbors.
+`getSelectionEdges()` は `{ top, right, bottom, left }` を返します。各辺は、その方向の隣のセルが選択されていないときに `true` になります。これを使えば、各セルが隣のセルを調べなくても、選択範囲のまわりに1本の連続した枠線を描けます。離れた複数の長方形を合わせた範囲でも同じです。
 
 ```tsx
 function getCellClassName(cell) {
@@ -233,19 +233,19 @@ function getCellClassName(cell) {
 ```
 
 > [!TIP]
-> draw the outline with `box-shadow: inset ...` rather than `border`. On a `border-collapse` table a thicker border widens the shared grid line, which makes rows change height as cells become selected. A box-shadow never affects layout.
+> 枠線は `border` ではなく `box-shadow: inset ...` で描いてください。`border-collapse` のテーブルで border を太くすると、隣のセルと共有している罫線が太くなり、セルが選択されるたびに行の高さが変わってしまいます。box-shadow はレイアウトに影響しません。
 
-### Keyboard Navigation {#keyboard-navigation}
+### キーボード操作 {#keyboard-navigation}
 
-Cell selection ships no keyboard handling of its own. Instead it exposes imperative APIs so a dedicated library, such as [TanStack Hotkeys](https://tanstack.com/hotkeys), can drive it:
+セル選択の機能自体には、キーボード操作の処理は含まれていません。代わりに、命令的に呼び出せる API を公開しているので、[TanStack Hotkeys](https://tanstack.com/hotkeys) のような専用のライブラリから操作できます。
 
-- `table.moveCellSelection(direction)` - collapse the selection to a single cell one step away
-- `table.extendCellSelection(direction)` - move the active range's focus corner, keeping its anchor
-- `table.setFocusedCell(rowId, columnId)` - collapse the selection to one specific cell
-- `table.selectAllCells()` - select every selectable cell
-- `table.resetCellSelection(true)` - clear the selection
+- `table.moveCellSelection(direction)` - 1つ隣のセルだけを選択した状態にする
+- `table.extendCellSelection(direction)` - アンカーの角は固定したまま、アクティブな範囲のフォーカスの角を動かす
+- `table.setFocusedCell(rowId, columnId)` - 指定した1つのセルだけを選択した状態にする
+- `table.selectAllCells()` - 選択できるすべてのセルを選択する
+- `table.resetCellSelection(true)` - 選択を解除する
 
-`direction` is `'up'`, `'down'`, `'left'`, or `'right'`.
+`direction` は `'up'`、`'down'`、`'left'`、`'right'` のいずれかです。
 
 ```tsx
 import { useHotkeys } from '@tanstack/react-hotkeys'
@@ -269,11 +269,11 @@ useHotkeys(
 )
 ```
 
-Scope the hotkeys to the grid element rather than the document, or arrow keys and Escape will hijack inputs elsewhere on the page.
+ホットキーの対象はドキュメント全体ではなく、グリッドの要素に限定してください。そうしないと、矢印キーや Escape キーが、ページ内の他の入力欄の操作まで横取りしてしまいます。
 
-### Copying a Selection {#copying-a-selection}
+### 選択範囲をコピーする {#copying-a-selection}
 
-`getSelectedCellRangesData()` returns raw values indexed as `[regionIndex][rowIndex][columnIndex]`. A region is one of the final disjoint positive rectangles after all include and exclude operations are applied, so it does not necessarily correspond one-to-one with stored state. Turning that into clipboard text is left to your application, because the delimiter, the representation of `null`, and any quoting rules are decisions only you can make.
+`getSelectedCellRangesData()` は、`[regionIndex][rowIndex][columnIndex]` の順でインデックスを付けた生の値を返します。領域（region）とは、すべての「含める」「除外する」操作を適用したあとに残る、互いに重ならない長方形の1つ1つです。そのため、保存されている状態と1対1に対応するとは限りません。これをクリップボード用のテキストに変換する処理は、アプリケーションに任されています。区切り文字、`null` の表し方、引用符の付け方は、あなたにしか決められないからです。
 
 ```ts
 function escapeTsvValue(value: unknown) {
@@ -300,16 +300,16 @@ function toTsv(ranges: Array<Array<Array<unknown>>>) {
 navigator.clipboard.writeText(toTsv(table.getSelectedCellRangesData()))
 ```
 
-### How Ranges Survive Table Changes {#how-ranges-survive-table-changes}
+### テーブルが変わったときの範囲の扱い {#how-ranges-survive-table-changes}
 
-Ranges store row and column ids, not positions, so they follow their corner cells rather than screen coordinates.
+範囲は位置ではなく行 ID と列 ID を保存しているので、画面上の座標ではなく、角のセルそのものに追従します。
 
-- **Sorting, filtering, and column reordering** keep the corners pinned and recompute what sits between them. A range from "row A to row B" still runs from A to B after a sort, even though different rows now fall in between.
-- **Column pinning** is accounted for in render order, so a rectangle stays visually contiguous when a column is pinned.
-- **Hiding a column** that a corner sits on makes the range inert. Nothing renders as selected, but the range stays in state and comes back when the column is shown again.
-- **Pagination** resolves against the pre-pagination order, so a range can span pages and lights up correctly on whichever page you are viewing.
+- **ソート、フィルタリング、列の並べ替え**では、角は固定されたまま、その間に何があるかが再計算されます。「行 A から行 B まで」の範囲は、ソートで間に入る行が変わっても、A から B までのままです。
+- **列の固定**はレンダーの順序に反映されるので、列を固定しても長方形は見た目のうえで連続したままです。
+- 角のある列を**非表示にする**と、その範囲は効力を失います。何も選択されているようには描画されませんが、範囲は状態に残り、列を再び表示すると元に戻ります。
+- **ページネーション**では、ページに分ける前の順序に対して範囲が解決されます。そのため、範囲は複数のページにまたがることができ、どのページを見ていても正しくハイライトされます。
 
-Because a reorder can widen a selection onto columns the user never picked, some applications prefer to clear the selection whenever the column layout changes. That is a userland decision, and one `useEffect` away:
+並べ替えによって、ユーザーが選んでいない列まで選択範囲が広がることがあります。そのため、列のレイアウトが変わったら選択を解除したいアプリケーションもあるでしょう。これはライブラリの利用者が決めることで、`useEffect` を1つ書けば実現できます。
 
 ```tsx
 const isFirstLayout = useRef(true)
@@ -327,11 +327,11 @@ useEffect(() => {
 ])
 ```
 
-### Resetting Cell Selection {#resetting-cell-selection}
+### セル選択をリセットする {#resetting-cell-selection}
 
-`table.resetCellSelection()` restores `initialState.cellSelection`. Pass `true` to ignore initial state and clear the selection entirely.
+`table.resetCellSelection()` は `initialState.cellSelection` に戻します。`true` を渡すと、初期状態を無視して選択を完全に解除します。
 
-The selection also resets automatically whenever `data` changes, because new data can invalidate the row ids a range points at, or silently re-select cells if the new data happens to reuse ids. Turn that off with `autoResetCellSelection: false`, and note that `autoResetAll` overrides it.
+また、`data` が変わるたびに、選択は自動でリセットされます。新しいデータでは、範囲が指している行 ID が無効になるかもしれず、新しいデータがたまたま同じ ID を使っていれば、意図せずセルが選択し直されるかもしれないからです。この動作は `autoResetCellSelection: false` で無効にできます。ただし、`autoResetAll` はこの設定より優先されることに注意してください。
 
 ```ts
 const table = useTable({
@@ -340,13 +340,13 @@ const table = useTable({
 })
 ```
 
-### Performance with table.Subscribe {#performance-with-tablesubscribe}
+### table.Subscribe でパフォーマンスを上げる {#performance-with-tablesubscribe}
 
-Cell selection is the feature most likely to make a large table feel slow, because a drag updates state on every cell boundary the pointer crosses. On a table with a thousand rows and a dozen columns, a naive setup re-renders twelve thousand cells per update.
+セル選択は、大きなテーブルを重く感じさせる原因になりやすい機能です。ドラッグ中は、ポインターがセルの境界を越えるたびに状態が更新されるからです。1,000 行・12 列のテーブルで素朴に実装すると、更新のたびに 12,000 個のセルが再レンダーされます。
 
-The per-cell reads themselves are cheap. `cell.getIsSelected()` resolves the cell's row and column index and compares them against a memoized cache of the selection's bounds, which is a handful of integer comparisons. The expensive part is React reconciling every cell in the table.
+セルごとの読み取り自体は軽い処理です。`cell.getIsSelected()` は、セルの行と列のインデックスを求め、選択範囲の境界をメモ化したキャッシュと比べるだけで、整数の比較が数回あるにすぎません。コストが大きいのは、React がテーブル内のすべてのセルを差分照合（reconcile）する部分です。
 
-`table.Subscribe` is the tool for this, and **where you put it is what matters**. The obvious placement is around the whole `<tbody>`:
+これには `table.Subscribe` を使います。そして、**どこに置くかが肝心です**。すぐに思いつくのは、`<tbody>` 全体を囲む置き方です。
 
 ```tsx
 {
@@ -363,7 +363,7 @@ The per-cell reads themselves are cheap. `cell.getIsSelected()` resolves the cel
 </table.Subscribe>
 ```
 
-That works, but it re-renders the entire table body on every drag update. Instead, put a subscription on each row with a selector that returns only what changes that row's appearance. `Subscribe` uses `useSelector` under the hood, so a row whose selected value is unchanged does not re-render:
+これでも動きますが、ドラッグで更新されるたびにテーブルの本体全体が再レンダーされます。代わりに、行ごとに購読を置き、その行の見た目を変えるものだけを返すセレクターを渡しましょう。`Subscribe` は内部で `useSelector` を使っているので、セレクターが返す値が変わらない行は再レンダーされません。
 
 ```tsx
 <tbody>
@@ -394,7 +394,7 @@ That works, but it re-renders the entire table body on every drag update. Instea
 </tbody>
 ```
 
-The selector needs to encode everything that changes how a row draws: whether its own cells fall inside a range, whether the rows immediately above and below do (that is what decides its top and bottom edges), and whether it owns the focused cell.
+セレクターは、行の描画を変えるものをすべて表現する必要があります。具体的には、その行のセルが範囲に含まれるかどうか、すぐ上とすぐ下の行が範囲に含まれるかどうか（これで上辺と下辺の枠線が決まります）、そしてその行がフォーカスされたセルを持っているかどうかです。
 
 ```ts
 function rowSelectionKey(ranges, bounds, rowIndex, rowId) {
@@ -420,12 +420,12 @@ function rowSelectionKey(ranges, bounds, rowIndex, rowId) {
 }
 ```
 
-`table.getCellSelectionBounds()` is memoized, so it computes once per selection change no matter how many rows call it. Rows in the middle of a growing range produce an unchanged key, so extending a drag downward only re-renders the two rows at the moving boundary instead of all of them. On a thousand-row table this took a drag from roughly thirty-five milliseconds per update down to around ten.
+`table.getCellSelectionBounds()` はメモ化されているので、何行から呼ばれても、選択が変わるたびに1回しか計算されません。広がっていく範囲の途中にある行はキーが変わらないため、ドラッグを下に伸ばしても、再レンダーされるのは動いている境界にある2行だけで、全行ではありません。1,000 行のテーブルでは、これによってドラッグの更新1回あたりの時間が約 35 ミリ秒から約 10 ミリ秒に短縮されました。
 
-Two things worth knowing about this pattern:
+このパターンについて、知っておくとよいことが2つあります。
 
-**Leave column layout out of the selector.** Pinning, reordering, and hiding columns change what a row renders, but those slices are usually part of your `useTable` selector already, so the parent re-renders and recreates these rows anyway. Adding them to the selection selector is redundant.
+**列のレイアウトはセレクターに含めないでください。** 列の固定、並べ替え、非表示によって行の描画内容は変わります。しかし、これらの状態はふつう `useTable` のセレクターにすでに含まれているので、親が再レンダーされ、いずれにせよ行は作り直されます。選択用のセレクターに加えても重複するだけです。
 
-**Prefer this over `React.memo`.** A memoized row component reads its cell classes through getters like `cell.getIsSelected()`, which hide their state dependency from the React Compiler. With the stable `row` object as its only visible input, the compiler can cache the row's cells and the highlight will never move, even though `React.memo` re-rendered correctly. `table.Subscribe` avoids the problem entirely because `useSelector` is a dependency the compiler recognizes. See [Use Subscribe in Nested Components](./react-compiler#use-subscribe-in-nested-components) for more on this.
+**`React.memo` よりこちらを使ってください。** メモ化した行コンポーネントは、`cell.getIsSelected()` のようなゲッターを通してセルのクラスを読みます。こうしたゲッターは、どの状態に依存しているかを React Compiler から隠してしまいます。目に見える入力が安定した `row` オブジェクトだけだと、コンパイラーは行のセルをキャッシュしてしまい、`React.memo` 自体は正しく再レンダーしていても、ハイライトがまったく動かなくなります。`table.Subscribe` なら、`useSelector` がコンパイラーの認識できる依存関係なので、この問題はそもそも起きません。詳しくは[ネストしたコンポーネントで Subscribe を使う](./react-compiler#use-subscribe-in-nested-components)を参照してください。
 
-If your table is large enough that this is not sufficient, reach for [virtualization](./virtualization) so that only visible rows exist in the DOM at all.
+それでも足りないほど大きなテーブルなら、[仮想化](./virtualization)を使って、見えている行だけが DOM に存在するようにしてください。

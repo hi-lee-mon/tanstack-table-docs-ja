@@ -1,17 +1,17 @@
 ---
-title: Global Filtering (React) Guide
+title: グローバルフィルタリング（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Column Filters](https://tanstack.com/table/latest/docs/framework/react/examples/filters)
-- [Fuzzy Search](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy)
+- [列フィルター](https://tanstack.com/table/latest/docs/framework/react/examples/filters)
+- [あいまい検索](https://tanstack.com/table/latest/docs/framework/react/examples/filters-fuzzy)
 
-### Global Filtering Setup {#global-filtering-setup}
+### グローバルフィルタリングの準備 {#global-filtering-setup}
 
-Here's how you set up your table to use global filtering features. Global filtering depends on column filtering, so add `columnFilteringFeature` before `globalFilteringFeature`. Adding the global filtering feature enables the related APIs. If you use client-side filtering, also set up `filteredRowModel` after its feature, since row model slots are type-checked.
+テーブルでグローバルフィルタリングの機能を使うための準備は次のとおりです。グローバルフィルタリングは列フィルタリングに依存するため、`globalFilteringFeature` より前に `columnFilteringFeature` を追加します。グローバルフィルタリングの機能を追加すると、関連する API が使えるようになります。クライアントサイドフィルタリングを使う場合は、機能の後に `filteredRowModel` も設定してください。行モデルのスロットは型チェックされるためです。
 
 ```tsx
 import {
@@ -39,27 +39,27 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> The `filterFns` registry above lists only the built-in filter function this table uses. Spreading the entire built-in `filterFns` registry (`filterFns: { ...filterFns }`) still works, but it puts every built-in filter function in your bundle. Register just the functions you use, or pass a function directly to the `globalFilterFn` option with no registration at all.
+> 上の `filterFns` レジストリには、このテーブルで使う組み込みのフィルター関数だけを登録しています。組み込みの `filterFns` レジストリ全体を展開する書き方（`filterFns: { ...filterFns }`）も引き続き使えますが、すべての組み込みフィルター関数がバンドルに含まれてしまいます。使う関数だけを登録するか、登録せずに関数を `globalFilterFn` オプションへ直接渡してください。
 
-## Global Filtering (React) Guide {#global-filtering-react-guide}
+## グローバルフィルタリング（React）ガイド {#global-filtering-react-guide}
 
-Filtering comes in 2 flavors: Column Filtering and Global Filtering.
+フィルタリングには、列フィルタリングとグローバルフィルタリングの2種類があります。
 
-This guide will focus on global filtering, which is a filter that is applied across all columns.
+このガイドでは、すべての列にまたがって適用されるフィルターであるグローバルフィルタリングを扱います。
 
-### Client-Side vs Server-Side Filtering {#client-side-vs-server-side-filtering}
+### クライアントサイドとサーバーサイドのフィルタリング {#client-side-vs-server-side-filtering}
 
-Filtering should operate over the same dataset as sorting and pagination. Use client-side filtering when the browser has the complete dataset; use server-side filtering when it has only a page or another subset, unless filtering just the loaded rows is intentional.
+フィルタリングは、ソートやページネーションと同じデータセットに対して行うべきです。ブラウザーがデータセット全体を持っている場合はクライアントサイドフィルタリングを使います。ブラウザーが1ページ分などの一部しか持っていない場合は、読み込み済みの行だけを意図的にフィルタリングするのでない限り、サーバーサイドフィルタリングを使います。
 
-See the [Client-Side vs Server-Side Guide](../../../guide/client-side-vs-server-side) for the full decision framework, performance factors, and guidance for combining data operations.
+判断の枠組み、パフォーマンスに影響する要素、データ操作を組み合わせるときの指針については、[クライアントサイドとサーバーサイドのガイド](../../../guide/client-side-vs-server-side)を参照してください。
 
-The client-side filtered row model also invokes the page-index auto-reset hook when global filtering inputs change. Whether the page index resets depends on the `autoResetPageIndex`, `autoResetAll`, and `manualPagination` options. If filtering is manual and this row model is omitted or bypassed, a global filter state change does not invoke that hook, so reset server-side pagination in the filter change handler when needed.
+クライアントサイドのフィルター済み行モデルは、グローバルフィルタリングの入力が変わったときに、ページ番号を自動リセットするフックも呼び出します。ページ番号が実際にリセットされるかどうかは、`autoResetPageIndex`、`autoResetAll`、`manualPagination` の各オプションで決まります。フィルタリングを手動で行い、この行モデルを省略するか迂回している場合は、グローバルフィルターの状態が変わってもこのフックは呼ばれません。必要に応じて、フィルターの変更ハンドラーの中でサーバーサイドのページネーションをリセットしてください。
 
-### Manual Server-Side Global Filtering {#manual-server-side-global-filtering}
+### 手動のサーバーサイドグローバルフィルタリング {#manual-server-side-global-filtering}
 
-If you have decided that you need to implement server-side global filtering instead of using the built-in client-side global filtering, here's how you do that.
+組み込みのクライアントサイドグローバルフィルタリングを使わず、サーバーサイドでグローバルフィルタリングを実装する必要があると判断した場合は、次のようにします。
 
-No `filteredRowModel` is needed for manual server-side global filtering. Instead, the `data` that you pass to the table should already be filtered. However, if you have added a `filteredRowModel` to the features object, you can tell the table to skip it by setting the `manualFiltering` option to `true`.
+手動のサーバーサイドグローバルフィルタリングでは、`filteredRowModel` は不要です。代わりに、テーブルに渡す `data` をあらかじめフィルタリングしておきます。ただし、features オブジェクトに `filteredRowModel` を追加している場合は、`manualFiltering` オプションを `true` にすると、テーブルにその行モデルを飛ばさせることができます。
 
 ```tsx
 import {
@@ -82,11 +82,11 @@ const table = useTable({
 })
 ```
 
-Note: When using manual global filtering, many of the options that are discussed in the rest of this guide will have no effect. When manualFiltering is set to true, the table instance will not apply any global filtering logic to the rows that are passed to it. Instead, it will assume that the rows are already filtered and will use the data that you pass to it as-is.
+注意: 手動のグローバルフィルタリングを使う場合、このガイドの以降で説明するオプションの多くは効果がありません。manualFiltering を true にすると、テーブルインスタンスは渡された行にグローバルフィルタリングの処理を一切適用しません。行はすでにフィルタリング済みであるとみなし、渡されたデータをそのまま使います。
 
-### Client-Side Global Filtering {#client-side-global-filtering}
+### クライアントサイドのグローバルフィルタリング {#client-side-global-filtering}
 
-If you are using the built-in client-side global filtering, add the `globalFilteringFeature` (along with its required `columnFilteringFeature` prerequisite) and the `filteredRowModel` factory to your features:
+組み込みのクライアントサイドグローバルフィルタリングを使う場合は、`globalFilteringFeature`（と、その前提となる `columnFilteringFeature`）および `filteredRowModel` のファクトリーを features に追加します。
 
 ```tsx
 import {
@@ -111,9 +111,9 @@ const table = useTable({
 })
 ```
 
-### Global Filter Function {#global-filter-function}
+### グローバルフィルター関数 {#global-filter-function}
 
-The `globalFilterFn` option sets the filter function used for global filtering. The filter function can be a string that references a filter function (built-in or custom) registered in the `filterFns` slot on `tableFeatures`, or a filter function passed directly.
+`globalFilterFn` オプションで、グローバルフィルタリングに使うフィルター関数を指定します。指定できるのは、`tableFeatures` の `filterFns` スロットに登録したフィルター関数（組み込みでもカスタムでもよい）を参照する文字列か、直接渡すフィルター関数です。
 
 ```tsx
 const table = useTable({
@@ -124,28 +124,28 @@ const table = useTable({
 })
 ```
 
-By default there are 12 built-in filter functions to choose from:
+組み込みのフィルター関数は、デフォルトで次の12種類から選べます。
 
-- `includesString` - Case-insensitive string inclusion
-- `includesStringSensitive` - Case-sensitive string inclusion
-- `equalsString` - Case-insensitive string equality
-- `equals` - Strict equality `===`
-- `weakEquals` - Weak equality `==`
-- `arrIncludes` - The row's array (or string) value includes at least one of the filter values
-- `arrIncludesAll` - The row's array value includes every filter value
-- `arrIncludesSome` - The row's array value includes at least one of the filter values
-- `arrHas` - The row's scalar value equals at least one of the filter values
-- `inNumberRange` - Inclusive `[min, max]` number range (endpoints normalized and swapped if reversed)
-- `between` - Exclusive min/max range (blank endpoints are open-ended)
-- `betweenInclusive` - Inclusive min/max range (blank endpoints are open-ended)
+- `includesString` - 大文字と小文字を区別せず、文字列を含むか
+- `includesStringSensitive` - 大文字と小文字を区別して、文字列を含むか
+- `equalsString` - 大文字と小文字を区別せず、文字列が等しいか
+- `equals` - 厳密等価 `===`
+- `weakEquals` - 緩い等価 `==`
+- `arrIncludes` - 行の配列（または文字列）の値が、フィルター値のうち少なくとも1つを含むか
+- `arrIncludesAll` - 行の配列の値が、すべてのフィルター値を含むか
+- `arrIncludesSome` - 行の配列の値が、フィルター値のうち少なくとも1つを含むか
+- `arrHas` - 行のスカラー値が、フィルター値のうち少なくとも1つと等しいか
+- `inNumberRange` - 両端を含む `[min, max]` の数値範囲（両端は正規化され、逆順なら入れ替えられる）
+- `between` - 両端を含まない最小値〜最大値の範囲（空の端は上限・下限なしとして扱う）
+- `betweenInclusive` - 両端を含む最小値〜最大値の範囲（空の端は上限・下限なしとして扱う）
 
-You can also define your own custom global filter function and pass it directly to the `globalFilterFn` table option, as shown [below](#custom-global-filter-function).
+[後述](#custom-global-filter-function)のとおり、独自のグローバルフィルター関数を定義して、`globalFilterFn` テーブルオプションに直接渡すこともできます。
 
-### Global Filter State {#global-filter-state}
+### グローバルフィルターの状態 {#global-filter-state}
 
-The `globalFilter` state slice holds the current global filter value, usually a search string (the slice is typed as `any` so custom global filter functions can accept other value shapes). For reactive reads that should re-render your UI, use `table.state.globalFilter`. In event handlers, you can read the current snapshot with `table.atoms.globalFilter.get()`, but this read does not subscribe the component to future changes.
+`globalFilter` の状態スライスは、現在のグローバルフィルターの値を保持します。通常は検索文字列です（カスタムのグローバルフィルター関数が別の形の値を受け取れるよう、このスライスは `any` 型になっています）。UI を再レンダーさせたいリアクティブな読み取りには `table.state.globalFilter` を使います。イベントハンドラーの中では `table.atoms.globalFilter.get()` で現在のスナップショットを読めますが、この読み取りではコンポーネントが以後の変更を購読しません。
 
-If you need access to the global filter state outside of the table, you can own the slice yourself. The recommended way in v9 is an external atom passed through the `atoms` table option. Atoms preserve fine-grained subscriptions, and the filter value can be used elsewhere (such as in a query key for server-side filtering) without forcing the component that owns the table to re-render.
+テーブルの外でグローバルフィルターの状態にアクセスしたい場合は、スライスを自分で管理できます。v9 で推奨されるのは、外部のアトムを `atoms` テーブルオプションで渡す方法です。アトムを使うと細かい粒度の購読が保たれ、テーブルを持つコンポーネントを再レンダーさせずに、フィルターの値を別の場所（たとえばサーバーサイドフィルタリング用のクエリキー）で使えます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -164,7 +164,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.globalFilter` plus `onGlobalFilterChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+あるいは、v8 スタイルの `state.globalFilter` と `onGlobalFilterChange` を組み合わせるパターンも引き続き使えます。単純な連携や v8 のコードを移行するときには便利ですが、外部のアトムほど細かい粒度にはなりません。詳しい比較は[テーブルの状態ガイド](./table-state)を参照してください。
 
 ```tsx
 const [globalFilter, setGlobalFilter] = useState<string>('')
@@ -179,9 +179,9 @@ const table = useTable({
 })
 ```
 
-### Adding global filter input to UI {#adding-global-filter-input-to-ui}
+### グローバルフィルターの入力欄を UI に追加する {#adding-global-filter-input-to-ui}
 
-TanStack table will not add a global filter input UI to your table. You should manually add it to your UI to allow users to filter the table. For example, you can add an input UI above the table to allow users to enter a search term. Read the value reactively with `table.state.globalFilter` and update it with `table.setGlobalFilter`.
+TanStack Table は、グローバルフィルターの入力欄をテーブルに追加しません。ユーザーがテーブルをフィルタリングできるように、自分で UI に追加してください。たとえば、テーブルの上に入力欄を置いて、ユーザーが検索語を入力できるようにします。値は `table.state.globalFilter` でリアクティブに読み取り、`table.setGlobalFilter` で更新します。
 
 ```tsx
 return (
@@ -195,12 +195,12 @@ return (
 )
 ```
 
-### Custom Global Filter Function {#custom-global-filter-function}
+### カスタムのグローバルフィルター関数 {#custom-global-filter-function}
 
-If you want to use a custom global filter function, you can define the function and pass it to the `globalFilterFn` option.
+カスタムのグローバルフィルター関数を使いたい場合は、関数を定義して `globalFilterFn` オプションに渡します。
 
 > [!NOTE]
-> It is often a popular idea to use fuzzy filtering functions for global filtering. This is discussed in the [Fuzzy Filtering Guide](./fuzzy-filtering).
+> グローバルフィルタリングには、あいまい検索フィルターの関数を使うのが定番です。これについては[あいまい検索フィルターのガイド](./fuzzy-filtering)で説明しています。
 
 ```tsx
 const customFilterFn = (row, columnId, filterValue) => {
@@ -214,9 +214,9 @@ const table = useTable({
 })
 ```
 
-### Initial Global Filter State {#initial-global-filter-state}
+### グローバルフィルターの初期状態 {#initial-global-filter-state}
 
-If you want to set an initial global filter state when the table is initialized, you can pass the global filter state as part of the table `initialState` option. However, if you are controlling the slice yourself, set the starting value on your external atom or React state instead.
+テーブルの初期化時にグローバルフィルターの初期状態を設定したい場合は、テーブルの `initialState` オプションの一部としてグローバルフィルターの状態を渡します。ただし、スライスを自分で制御している場合は、外部のアトムや React の state に初期値を設定してください。
 
 ```tsx
 const table = useTable({
@@ -229,13 +229,13 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> Do not use both `initialState.globalFilter` and a controlled `globalFilter` (via `atoms` or `state`) at the same time, as the controlled value will override `initialState.globalFilter`.
+> `initialState.globalFilter` と、（`atoms` や `state` による）制御された `globalFilter` を同時に使わないでください。制御された値が `initialState.globalFilter` を上書きします。
 
-### Disable Global Filtering {#disable-global-filtering}
+### グローバルフィルタリングを無効にする {#disable-global-filtering}
 
-By default, global filtering is enabled for all columns. You can disable the global filtering for all columns by using the enableGlobalFilter table option. You can also turn off both column and global filtering by setting the enableFilters table option to false.
+デフォルトでは、グローバルフィルタリングはすべての列で有効です。enableGlobalFilter テーブルオプションを使うと、すべての列でグローバルフィルタリングを無効にできます。また、enableFilters テーブルオプションを false にすると、列フィルタリングとグローバルフィルタリングの両方を無効にできます。
 
-Disabling global filtering will cause the column.getCanGlobalFilter API to return false for that column.
+グローバルフィルタリングを無効にすると、その列の column.getCanGlobalFilter API は false を返します。
 
 ```tsx
 const columns = [
@@ -255,12 +255,12 @@ const table = useTable({
 })
 ```
 
-### Global Filter APIs {#global-filter-apis}
+### グローバルフィルターの API {#global-filter-apis}
 
-There are several APIs that are useful for hooking up your global filter UI:
+グローバルフィルターの UI をつなぐときに役立つ API がいくつかあります。
 
-- `table.setGlobalFilter` - Set the global filter value. Useful for connecting a search input's `onChange` handler.
-- `table.resetGlobalFilter` - Reset the global filter value to its initial state, or clear it with `table.resetGlobalFilter(true)`.
-- `table.getGlobalFilterFn` - Returns the filter function currently used for global filtering.
-- `table.getGlobalAutoFilterFn` - Returns the default global filter function (currently `includesString`).
-- `column.getCanGlobalFilter` - Returns whether a column participates in global filtering. Useful for debugging which columns are searched.
+- `table.setGlobalFilter` - グローバルフィルターの値を設定します。検索入力欄の `onChange` ハンドラーとつなぐときに便利です。
+- `table.resetGlobalFilter` - グローバルフィルターの値を初期状態に戻します。`table.resetGlobalFilter(true)` とすると値を空にします。
+- `table.getGlobalFilterFn` - グローバルフィルタリングに現在使われているフィルター関数を返します。
+- `table.getGlobalAutoFilterFn` - デフォルトのグローバルフィルター関数（現在は `includesString`）を返します。
+- `column.getCanGlobalFilter` - 列がグローバルフィルタリングの対象になるかどうかを返します。どの列が検索対象になっているかをデバッグするときに便利です。

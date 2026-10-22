@@ -1,16 +1,16 @@
 ---
-title: Sorting (React) Guide
+title: ソート（React）ガイド
 ---
 
-## Examples {#examples}
+## サンプル {#examples}
 
-Want to skip to the implementation? Check out these React examples:
+すぐに実装を見たい場合は、次の React のサンプルを参照してください。
 
-- [Sorting](https://tanstack.com/table/latest/docs/framework/react/examples/sorting)
+- [ソート](https://tanstack.com/table/latest/docs/framework/react/examples/sorting)
 
-### Sorting Setup {#sorting-setup}
+### ソートのセットアップ {#sorting-setup}
 
-Here's how you set up your table to use sorting features. Adding the sorting feature enables the related APIs. If you use client-side sorting, also set up `sortedRowModel` after its feature, since row model slots are type-checked.
+ソート機能を使うためのテーブルのセットアップ方法を示します。ソート機能を追加すると、関連する API が使えるようになります。クライアントサイドのソートを使う場合は、機能の後に `sortedRowModel` もセットアップしてください。行モデルのスロットは型チェックされるためです。
 
 ```tsx
 import {
@@ -42,15 +42,15 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> Spreading the entire built-in registry (`sortFns: { ...sortFns }`) still works, but it puts every built-in sorting function in your bundle. Registering just the functions you use, or passing a function directly to the `sortFn` column option, is recommended. The default `sortFn: 'auto'` resolves to `alphanumeric`, `text`, or `datetime` from the registry based on the column's data type, so register the ones your columns rely on.
+> 組み込みの登録一式をまるごと展開する書き方（`sortFns: { ...sortFns }`）もまだ使えますが、すべての組み込みソート関数がバンドルに含まれてしまいます。使う関数だけを登録するか、`sortFn` 列オプションに関数を直接渡すことをおすすめします。デフォルトの `sortFn: 'auto'` は、列のデータ型に応じて登録済みの `alphanumeric`、`text`、`datetime` のいずれかに解決されるので、列が必要とする関数は登録しておいてください。
 
-## Sorting (React) Guide {#sorting-react-guide}
+## ソート（React）ガイド {#sorting-react-guide}
 
-TanStack Table provides solutions for just about any sorting use-case you might have. This guide will walk you through the various options that you can use to customize the built-in client-side sorting functionality, as well as how to opt out of client-side sorting in favor of manual server-side sorting.
+TanStack Table は、ソートに関するほぼあらゆるユースケースに対応する手段を提供しています。このガイドでは、組み込みのクライアントサイドのソート機能をカスタマイズするためのさまざまなオプションと、クライアントサイドのソートをやめて手動のサーバーサイドのソートに切り替える方法を説明します。
 
-### Sorting State {#sorting-state}
+### ソートの状態 {#sorting-state}
 
-The sorting state is defined as an array of objects with the following shape:
+ソートの状態は、次の形をしたオブジェクトの配列として定義されています。
 
 ```tsx
 type ColumnSort = {
@@ -60,11 +60,11 @@ type ColumnSort = {
 type SortingState = ColumnSort[]
 ```
 
-Since the sorting state is an array, it is possible to sort by multiple columns at once. Read more about the multi-sorting customizations down [below](#multi-sorting).
+ソートの状態は配列なので、複数の列で同時にソートできます。複数列ソートのカスタマイズについては、[後述](#multi-sorting) を参照してください。
 
-#### Accessing Sorting State {#accessing-sorting-state}
+#### ソートの状態にアクセスする {#accessing-sorting-state}
 
-For reactive reads that should re-render your UI, use `table.state.sorting` (selected by the `useTable` selector) or `table.Subscribe`. In event handlers or other non-render code, you can read the current snapshot with `table.atoms.sorting.get()`, but this read does not subscribe the component to future changes.
+UI を再レンダーさせたいリアクティブな読み取りには、`table.state.sorting`（`useTable` のセレクターで選択したもの）か `table.Subscribe` を使います。イベントハンドラーなどレンダー以外のコードでは、`table.atoms.sorting.get()` で現在のスナップショットを読み取れます。ただし、この読み取りではコンポーネントがその後の変更を購読することはありません。
 
 ```tsx
 const table = useTable({
@@ -78,11 +78,11 @@ table.state.sorting // reactive read in render
 table.atoms.sorting.get() // snapshot read in event handlers
 ```
 
-However, if you need access to the sorting state outside of the table, you can "control" the sorting state like down below.
+ただし、テーブルの外でソートの状態にアクセスする必要がある場合は、次のようにソートの状態を「制御」できます。
 
-#### Controlled Sorting State {#controlled-sorting-state}
+#### 制御されたソートの状態 {#controlled-sorting-state}
 
-If you need easy access to the sorting state in other parts of your application, you can own the sorting state slice yourself. The recommended way in v9 is an external atom passed through the `atoms` table option. Atoms preserve fine-grained subscriptions, and the sorting value can be used elsewhere (such as in a query key for server-side sorting) without forcing the component that owns the table to re-render.
+アプリケーションのほかの部分からソートの状態に簡単にアクセスしたい場合は、ソートの状態のスライスを自分で持つことができます。v9 で推奨される方法は、外部のアトムを `atoms` テーブルオプションで渡すことです。アトムなら細かい粒度の購読がそのまま保たれ、テーブルを持つコンポーネントを再レンダーさせることなく、ソートの値をほかの場所（サーバーサイドのソートのためのクエリキーなど）で使えます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -103,7 +103,7 @@ const table = useTable({
 })
 ```
 
-Alternatively, the v8-style `state.sorting` plus `onSortingChange` pattern is still supported. It can be convenient for simple integrations or when migrating v8 code, but it is less fine-grained than external atoms. See the [Table State Guide](./table-state) for a deeper comparison.
+あるいは、v8 方式の `state.sorting` と `onSortingChange` の組み合わせも引き続きサポートされています。単純な連携や v8 のコードを移行するときには便利ですが、外部のアトムほど細かい粒度にはなりません。詳しい比較は [テーブルの状態ガイド](./table-state) を参照してください。
 
 ```tsx
 const [sorting, setSorting] = useState<SortingState>([])
@@ -120,9 +120,9 @@ const table = useTable({
 })
 ```
 
-#### Initial Sorting State {#initial-sorting-state}
+#### ソートの初期状態 {#initial-sorting-state}
 
-If you do not need to control the sorting state in your own state management or scope, but you still want to set an initial sorting state, you can use the `initialState` table option instead of `state`.
+ソートの状態を自前の状態管理やスコープで制御する必要はないものの、ソートの初期状態だけは設定したい場合は、`state` の代わりに `initialState` テーブルオプションを使えます。
 
 ```tsx
 const table = useTable({
@@ -142,19 +142,19 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> Do not use both `initialState.sorting` and `state.sorting` at the same time, as the controlled `state.sorting` value will override the `initialState.sorting`.
+> `initialState.sorting` と `state.sorting` を同時に使わないでください。制御された `state.sorting` の値が `initialState.sorting` を上書きします。
 
-### Client-Side vs Server-Side Sorting {#client-side-vs-server-side-sorting}
+### クライアントサイドとサーバーサイドのソート {#client-side-vs-server-side-sorting}
 
-Sorting should operate over the same dataset as filtering and pagination. If the server returns only a page or filtered subset, client-side sorting sorts only those loaded rows, not the full dataset.
+ソートは、フィルタリングやページネーションと同じデータセットに対して行うべきです。サーバーが1ページ分やフィルター済みの一部だけを返す場合、クライアントサイドのソートは読み込まれた行だけをソートし、データセット全体はソートしません。
 
-See the [Client-Side vs Server-Side Guide](../../../guide/client-side-vs-server-side) for the full decision framework and the cases where mixing client-side and server-side operations is intentional.
+判断の枠組みの全体と、クライアントサイドとサーバーサイドの処理を意図的に混ぜるケースについては、[クライアントサイドとサーバーサイドのガイド](../../../guide/client-side-vs-server-side) を参照してください。
 
-The client-side sorted row model also invokes the page-index auto-reset hook when sorting inputs change. Whether the page index resets depends on the `autoResetPageIndex`, `autoResetAll`, and `manualPagination` options. If sorting is manual and this row model is omitted or bypassed, a sorting state change does not invoke that hook, so reset server-side pagination in the sorting change handler when needed.
+クライアントサイドのソート済み行モデルは、ソートの入力が変わったときにページ番号の自動リセットのフックも呼び出します。ページ番号が実際にリセットされるかどうかは、`autoResetPageIndex`、`autoResetAll`、`manualPagination` の各オプションによって決まります。ソートを手動で行い、この行モデルを省略または迂回している場合は、ソートの状態が変わってもこのフックは呼ばれません。必要に応じて、ソートの変更ハンドラーの中でサーバーサイドのページネーションをリセットしてください。
 
-### Manual Server-Side Sorting {#manual-server-side-sorting}
+### 手動のサーバーサイドのソート {#manual-server-side-sorting}
 
-If you plan to just use your own server-side sorting in your back-end logic, you do not need to provide a sorted row model. But if you have provided a sorted row model, but you want to disable it, you can use the `manualSorting` table option.
+バックエンドのロジックで独自のサーバーサイドのソートだけを使うつもりなら、ソート済み行モデルを渡す必要はありません。ソート済み行モデルを渡しているけれど無効にしたい場合は、`manualSorting` テーブルオプションを使えます。
 
 ```tsx
 import { useCreateAtom, useSelector } from '@tanstack/react-store'
@@ -177,14 +177,14 @@ const table = useTable({
 })
 ```
 
-Hoisting the sorting state into your own scope (with an external atom or the `state.sorting` plus `onSortingChange` pattern) is covered in the [Controlled Sorting State](#controlled-sorting-state) section above.
+ソートの状態を（外部のアトム、または `state.sorting` と `onSortingChange` の組み合わせで）自分のスコープに引き上げる方法は、前述の [制御されたソートの状態](#controlled-sorting-state) の節で説明しています。
 
 > [!NOTE]
-> When `manualSorting` is set to `true`, the table will assume that the data that you provide is already sorted, and will not apply any sorting to it.
+> `manualSorting` を `true` にすると、テーブルは渡されたデータがすでにソート済みであるとみなし、ソートを一切適用しません。
 
-### Client-Side Sorting {#client-side-sorting}
+### クライアントサイドのソート {#client-side-sorting}
 
-To implement client-side sorting, add the `rowSortingFeature` and the `sortedRowModel` factory to your features. Import `createSortedRowModel` and the individual sorting functions you use from TanStack Table:
+クライアントサイドのソートを実装するには、`rowSortingFeature` と `sortedRowModel` のファクトリーを機能に追加します。`createSortedRowModel` と、使う個々のソート関数を TanStack Table からインポートしてください。
 
 ```tsx
 import {
@@ -214,26 +214,26 @@ const table = useTable({
 })
 ```
 
-### Sorting RowModelFns {#sorting-rowmodelfns}
+### ソートの RowModelFns {#sorting-rowmodelfns}
 
-The default sorting function for all columns is inferred from the data type of the column. However, it can be useful to define the exact sorting function that you want to use for a specific column, especially if any of your data is nullable or not a standard data type.
+すべての列のデフォルトのソート関数は、列のデータ型から推論されます。ただし、特定の列で使うソート関数を正確に指定しておくと便利なこともあります。とくに、データに null になりうる値や標準的でないデータ型が含まれる場合です。
 
-You can determine a custom sorting function on a per-column basis using the `sortFn` column option.
+`sortFn` 列オプションを使えば、列ごとにカスタムのソート関数を指定できます。
 
-By default, there are 6 built-in sorting functions to choose from:
+デフォルトでは、6つの組み込みソート関数から選べます。
 
-- `alphanumeric` - Sorts by mixed alphanumeric values without case-sensitivity. Slower, but more accurate if your strings contain numbers that need to be naturally sorted.
-- `alphanumericCaseSensitive` - Sorts by mixed alphanumeric values with case-sensitivity. Slower, but more accurate if your strings contain numbers that need to be naturally sorted.
-- `text` - Sorts by text/string values without case-sensitivity. Faster, but less accurate if your strings contain numbers that need to be naturally sorted.
-- `textCaseSensitive` - Sorts by text/string values with case-sensitivity. Faster, but less accurate if your strings contain numbers that need to be naturally sorted.
-- `datetime` - Sorts by time, use this if your values are `Date` objects.
-- `basic` - Sorts using a basic/standard `a > b ? 1 : a < b ? -1 : 0` comparison. This is the fastest sorting function, but may not be the most accurate.
+- `alphanumeric` - 英数字が混在する値を、大文字と小文字を区別せずにソートします。遅いですが、文字列に自然順でソートすべき数字が含まれる場合はより正確です。
+- `alphanumericCaseSensitive` - 英数字が混在する値を、大文字と小文字を区別してソートします。遅いですが、文字列に自然順でソートすべき数字が含まれる場合はより正確です。
+- `text` - テキスト（文字列）の値を、大文字と小文字を区別せずにソートします。速いですが、文字列に自然順でソートすべき数字が含まれる場合は正確さが落ちます。
+- `textCaseSensitive` - テキスト（文字列）の値を、大文字と小文字を区別してソートします。速いですが、文字列に自然順でソートすべき数字が含まれる場合は正確さが落ちます。
+- `datetime` - 時刻でソートします。値が `Date` オブジェクトの場合に使います。
+- `basic` - 基本的な（標準の）`a > b ? 1 : a < b ? -1 : 0` という比較でソートします。もっとも高速なソート関数ですが、もっとも正確とは限りません。
 
-You can also define your own custom sorting functions, either inline as the `sortFn` column option, or by name in the sorting function registry that you pass to `createSortedRowModel`.
+独自のカスタムソート関数を定義することもできます。`sortFn` 列オプションにインラインで書くか、`createSortedRowModel` に渡すソート関数の登録先に名前付きで登録します。
 
-#### Custom Sorting Functions {#custom-sorting-functions}
+#### カスタムのソート関数 {#custom-sorting-functions}
 
-Whether you register a custom sorting function in the registry passed to `createSortedRowModel` or pass it directly as a `sortFn` column option, it should have the following signature:
+カスタムのソート関数は、`createSortedRowModel` に渡す登録先に登録する場合でも、`sortFn` 列オプションに直接渡す場合でも、次のシグネチャにする必要があります。
 
 ```tsx
 //optionally use the SortFn to infer the parameter types
@@ -247,11 +247,11 @@ const myCustomSortFn: SortFn<TFeatures, TData> = (
 ```
 
 > [!NOTE]
-> The comparison function does not need to take whether or not the column is in descending or ascending order into account. The row models will take care of that logic. `sortFn` functions only need to provide a consistent comparison.
+> 比較関数は、列が降順か昇順かを考慮する必要はありません。そのロジックは行モデルが受け持ちます。`sortFn` の関数は、一貫した比較を返しさえすれば十分です。
 
-Every sorting function receives 2 rows and a column ID and is expected to compare the two rows using the column ID to return `-1`, `0`, or `1` in ascending order. Here's a cheat sheet:
+どのソート関数も2つの行と列 ID を受け取り、列 ID を使って2つの行を比較し、昇順を基準に `-1`、`0`、`1` のいずれかを返すことが求められます。早見表は次のとおりです。
 
-| Return | Ascending Order |
+| 戻り値 | 昇順での意味 |
 | ------ | --------------- |
 | `-1`   | `a < b`         |
 | `0`    | `a === b`       |
@@ -312,17 +312,17 @@ const table = useTable({
 })
 ```
 
-> **TypeScript Note:** For `sortFn: 'myCustomSortFn'` string references to typecheck, register the function in the `sortFns` slot on `tableFeatures` (as shown above). Alternatively, skip the registry entirely by passing the function directly to the `sortFn` column option.
+> **TypeScript に関する注意:** `sortFn: 'myCustomSortFn'` のような文字列での参照を型チェックに通すには、（上の例のように）`tableFeatures` の `sortFns` スロットに関数を登録してください。あるいは、`sortFn` 列オプションに関数を直接渡せば、登録先をまったく使わずに済みます。
 
-#### Customize Sorting Function Behavior {#customize-sorting-function-behavior}
+#### ソート関数の振る舞いをカスタマイズする {#customize-sorting-function-behavior}
 
-Sorting functions support an optional "hanging" property:
+ソート関数には、オプションで関数自体に付けるプロパティを1つ指定できます。
 
-- `sortFn.resolveDataValue` - normalizes each row's value before the two sides are compared. It is honored by every sorting function built with the `constructSortFn` helper, which includes all built-in sorting functions.
+- `sortFn.resolveDataValue` - 2つの値を比較する前に、各行の値を正規化します。`constructSortFn` ヘルパーで作ったすべてのソート関数で有効で、組み込みのソート関数もすべてこれに含まれます。
 
-The `constructSortFn` helper builds a sorting function from a value-level comparator (`sort`) plus that optional resolver. Keeping the comparison in `sort` and the normalization in `resolveDataValue` means a variant of an existing sorting function only has to swap the resolver. The definition is attached to the returned function, so you can spread any sorting function built with `constructSortFn` and override only what differs.
+`constructSortFn` ヘルパーは、値どうしを比較する関数（`sort`）と、このオプションのリゾルバーからソート関数を組み立てます。比較を `sort` に、正規化を `resolveDataValue` に分けておけば、既存のソート関数の変種を作るときはリゾルバーを差し替えるだけで済みます。定義は返される関数に付いているので、`constructSortFn` で作ったソート関数ならどれでも展開して、違う部分だけを上書きできます。
 
-For example, a version of `alphanumeric` that ignores diacritics, so that "Éric Bernard" sorts next to "Eric Brandon" instead of after "Zak O'Sullivan":
+たとえば、ダイアクリティカルマーク（アクセント記号など）を無視する `alphanumeric` を作れば、「Éric Bernard」は「Zak O'Sullivan」の後ではなく「Eric Brandon」の隣に並びます。
 
 ```tsx
 const stripDiacritics = (value: string) =>
@@ -341,7 +341,7 @@ const features = tableFeatures({
 })
 ```
 
-The same pattern works when defining a new sorting function from scratch:
+新しいソート関数を一から定義するときも、同じやり方が使えます。
 
 ```tsx
 const byLastName = constructSortFn({
@@ -354,13 +354,13 @@ const byLastName = constructSortFn({
 })
 ```
 
-### Customize Sorting {#customize-sorting}
+### ソートをカスタマイズする {#customize-sorting}
 
-There are a lot of table and column options that you can use to further customize the sorting UX and behavior.
+ソートの UX や振る舞いをさらにカスタマイズするためのテーブルオプションと列オプションがたくさんあります。
 
-#### Disable Sorting {#disable-sorting}
+#### ソートを無効にする {#disable-sorting}
 
-You can disable sorting for either a specific column or the entire table using the `enableSorting` column option or table option.
+`enableSorting` 列オプションまたはテーブルオプションを使うと、特定の列またはテーブル全体でソートを無効にできます。
 
 ```tsx
 const columns = [
@@ -384,9 +384,9 @@ const table = useTable({
 })
 ```
 
-#### Sorting Direction {#sorting-direction}
+#### ソートの方向 {#sorting-direction}
 
-By default, the first sorting direction when cycling through the sorting for a column using the `toggleSorting` APIs is ascending for string columns and descending for number columns. You can change this behavior with the `sortDescFirst` column option or table option.
+`toggleSorting` 系の API で列のソートを切り替えていくとき、最初のソート方向はデフォルトで、文字列の列なら昇順、数値の列なら降順です。この振る舞いは `sortDescFirst` 列オプションまたはテーブルオプションで変えられます。
 
 ```tsx
 const columns = [
@@ -412,11 +412,11 @@ const table = useTable({
 ```
 
 > [!NOTE]
-> You may want to explicitly set the `sortDescFirst` column option on any columns that have nullable values. The table may not be able to properly determine if a column is a number or a string if it contains nullable values.
+> null になりうる値を含む列では、`sortDescFirst` 列オプションを明示的に設定したほうがよいかもしれません。列に null になりうる値が含まれていると、テーブルはその列が数値か文字列かを正しく判断できないことがあります。
 
-#### Invert Sorting {#invert-sorting}
+#### ソートを反転する {#invert-sorting}
 
-Inverting sorting is not the same as changing the default sorting direction. If `invertSorting` column option is `true` for a column, then the "desc/asc" sorting states will still cycle like normal, but the actual sorting of the rows will be inverted. This is useful for values that have an inverted best/worst scale where lower numbers are better, e.g. a ranking (1st, 2nd, 3rd) or golf-like scoring.
+ソートの反転は、デフォルトのソート方向を変えることとは違います。ある列で `invertSorting` 列オプションが `true` の場合、「desc/asc」のソートの状態は通常どおり切り替わりますが、実際の行の並びは反転します。順位（1位、2位、3位）やゴルフのスコアのように、数値が小さいほど良いという逆向きの尺度を持つ値に便利です。
 
 ```tsx
 const columns = [
@@ -429,20 +429,20 @@ const columns = [
 ]
 ```
 
-#### Sort Undefined Values {#sort-undefined-values}
+#### undefined の値のソート {#sort-undefined-values}
 
-Any undefined values will be sorted to the beginning or end of the list based on the `sortUndefined` column option or table option. You can customize this behavior for your specific use-case.
+undefined の値は、`sortUndefined` 列オプションまたはテーブルオプションに応じて、リストの先頭か末尾に並べられます。この振る舞いは、ユースケースに合わせてカスタマイズできます。
 
-If not specified, the default value for `sortUndefined` is `1`, and undefined values will be sorted with lower priority (descending), if ascending, undefined will appear on the end of the list.
+指定しない場合、`sortUndefined` のデフォルト値は `1` で、undefined の値は低い優先度（降順）でソートされます。昇順の場合、undefined はリストの末尾に来ます。
 
-- `'first'` - Undefined values will be pushed to the beginning of the list
-- `'last'` - Undefined values will be pushed to the end of the list
-- `false` - Undefined values will be passed to the sorting function like any other value with no special handling; the sorting function is responsible for handling them
-- `-1` - Undefined values will be sorted with higher priority (ascending) (if ascending, undefined will appear on the beginning of the list)
-- `1` - Undefined values will be sorted with lower priority (descending) (if ascending, undefined will appear on the end of the list)
+- `'first'` - undefined の値をリストの先頭に寄せます
+- `'last'` - undefined の値をリストの末尾に寄せます
+- `false` - undefined の値を特別扱いせず、ほかの値と同じようにソート関数に渡します。undefined の扱いはソート関数の責任になります
+- `-1` - undefined の値を高い優先度（昇順）でソートします（昇順の場合、undefined はリストの先頭に来ます）
+- `1` - undefined の値を低い優先度（降順）でソートします（昇順の場合、undefined はリストの末尾に来ます）
 
 > [!NOTE]
-> `'first'` and `'last'` options are available in v9.
+> `'first'` と `'last'` のオプションは v9 で使えます。
 
 ```tsx
 const columns = [
@@ -454,21 +454,21 @@ const columns = [
 ]
 ```
 
-#### Sorting Removal {#sorting-removal}
+#### ソートの解除 {#sorting-removal}
 
-By default, the ability to remove sorting while cycling through the sorting states for a column is enabled. You can disable this behavior using the `enableSortingRemoval` table option. This behavior is useful if you want to ensure that at least one column is always sorted.
+デフォルトでは、列のソートの状態を切り替えていく途中でソートを解除できるようになっています。この振る舞いは `enableSortingRemoval` テーブルオプションで無効にできます。常に少なくとも1つの列がソートされているようにしたい場合に便利です。
 
-The default behavior when using either the `getToggleSortingHandler` or `toggleSorting` APIs is to cycle through the sorting states like this (the first direction depends on the column's data type and the `sortDescFirst` option, as discussed [above](#sorting-direction); a string column is shown here):
+`getToggleSortingHandler` または `toggleSorting` の API を使ったときのデフォルトの振る舞いでは、ソートの状態は次のように切り替わります（最初の方向は、[前述](#sorting-direction) のとおり列のデータ型と `sortDescFirst` オプションによって決まります。ここでは文字列の列の例を示します）。
 
 `'none' -> 'asc' -> 'desc' -> 'none' -> 'asc' -> 'desc' -> ...`
 
-If you disable sorting removal, the `'none'` state is skipped after the first sort:
+ソートの解除を無効にすると、最初にソートした後は `'none'` の状態が飛ばされます。
 
 `'none' -> 'asc' -> 'desc' -> 'asc' -> 'desc' -> ...`
 
-Once a column is sorted and `enableSortingRemoval` is `false`, toggling the sorting on that column will never remove the sorting. However, if the user sorts by another column and it is not a multi-sort event, then the sorting will be removed from the previous column and just applied to the new column.
+列がいったんソートされ、`enableSortingRemoval` が `false` であれば、その列のソートを切り替えてもソートが解除されることはありません。ただし、ユーザーが別の列でソートし、それが複数列ソートのイベントでない場合は、前の列のソートは解除され、新しい列だけにソートが適用されます。
 
-> Set `enableSortingRemoval` to `false` if you want to ensure that at least one column is always sorted.
+> 常に少なくとも1つの列がソートされているようにしたい場合は、`enableSortingRemoval` を `false` にしてください。
 
 ```tsx
 const table = useTable({
@@ -479,13 +479,13 @@ const table = useTable({
 })
 ```
 
-#### Multi-Sorting {#multi-sorting}
+#### 複数列ソート {#multi-sorting}
 
-Sorting by multiple columns at once is enabled by default if using the `column.getToggleSortingHandler` API. If the user holds the `Shift` key while clicking on a column header, the table will sort by that column in addition to the columns that are already sorted. If you use the `column.toggleSorting` API, you have to manually pass in whether or not to use multi-sorting. (`column.toggleSorting(desc, multi)`).
+`column.getToggleSortingHandler` API を使っている場合、複数の列で同時にソートする機能はデフォルトで有効です。ユーザーが `Shift` キーを押しながら列のヘッダーをクリックすると、テーブルはすでにソートされている列に加えて、その列でもソートします。`column.toggleSorting` API を使う場合は、複数列ソートを使うかどうかを手動で渡す必要があります（`column.toggleSorting(desc, multi)`）。
 
-##### Disable Multi-Sorting {#disable-multi-sorting}
+##### 複数列ソートを無効にする {#disable-multi-sorting}
 
-You can disable multi-sorting for either a specific column or the entire table using the `enableMultiSort` column option or table option. Disabling multi-sorting for a specific column will replace all existing sorting with the new column's sorting.
+`enableMultiSort` 列オプションまたはテーブルオプションを使うと、特定の列またはテーブル全体で複数列ソートを無効にできます。特定の列で複数列ソートを無効にすると、その列でソートしたときに既存のソートがすべてその列のソートに置き換わります。
 
 ```tsx
 const columns = [
@@ -505,9 +505,9 @@ const table = useTable({
 })
 ```
 
-##### Customize Multi-Sorting Trigger {#customize-multi-sorting-trigger}
+##### 複数列ソートのきっかけをカスタマイズする {#customize-multi-sorting-trigger}
 
-By default, the `Shift` key is used to trigger multi-sorting. You can change this behavior with the `isMultiSortEvent` table option. You can even specify that all sorting events should trigger multi-sorting by returning `true` from the custom function.
+デフォルトでは、`Shift` キーで複数列ソートになります。この振る舞いは `isMultiSortEvent` テーブルオプションで変えられます。カスタム関数から `true` を返せば、すべてのソートイベントで複数列ソートにすることもできます。
 
 ```tsx
 const table = useTable({
@@ -520,9 +520,9 @@ const table = useTable({
 })
 ```
 
-##### Multi-Sorting Limit {#multi-sorting-limit}
+##### 複数列ソートの上限 {#multi-sorting-limit}
 
-By default, there is no limit to the number of columns that can be sorted at once. You can set a limit using the `maxMultiSortColCount` table option.
+デフォルトでは、同時にソートできる列の数に上限はありません。`maxMultiSortColCount` テーブルオプションで上限を設定できます。
 
 ```tsx
 const table = useTable({
@@ -533,9 +533,9 @@ const table = useTable({
 })
 ```
 
-##### Multi-Sorting Removal {#multi-sorting-removal}
+##### 複数列ソートの解除 {#multi-sorting-removal}
 
-By default, the ability to remove multi-sorts is enabled. You can disable this behavior using the `enableMultiRemove` table option.
+デフォルトでは、複数列ソートを解除できるようになっています。この振る舞いは `enableMultiRemove` テーブルオプションで無効にできます。
 
 ```tsx
 const table = useTable({
@@ -546,33 +546,33 @@ const table = useTable({
 })
 ```
 
-### Reset Sorting When Data Changes {#reset-sorting-when-data-changes}
+### データが変わったときにソートをリセットする {#reset-sorting-when-data-changes}
 
-Sorting state is preserved when the `data` option changes by default. Set `autoResetSorting: true` to reset sorting whenever a new data reference is processed. The reset restores `initialState.sorting`, or an empty sorting state when no initial value was provided.
+デフォルトでは、`data` オプションが変わってもソートの状態は保たれます。新しいデータの参照が処理されるたびにソートをリセットしたい場合は、`autoResetSorting: true` を設定します。リセットすると `initialState.sorting` に戻り、初期値が指定されていなければ空のソートの状態になります。
 
-This option responds only to data changes. Changing sorting, filters, or grouping does not trigger it. The global `autoResetAll` option overrides `autoResetSorting` when explicitly set.
+このオプションが反応するのはデータの変更だけです。ソート、フィルター、グループ化を変えてもリセットは起きません。グローバルな `autoResetAll` オプションを明示的に設定すると、`autoResetSorting` より優先されます。
 
-Be careful when combining this option with manual/server-side sorting: a server response normally replaces `data`, so enabling the reset can immediately clear the sorting state that requested that response.
+このオプションを手動（サーバーサイド）のソートと組み合わせるときは注意してください。サーバーのレスポンスは通常 `data` を置き換えるので、リセットを有効にすると、そのレスポンスを要求したソートの状態がすぐに消えてしまうことがあります。
 
-### Sorting APIs {#sorting-apis}
+### ソートの API {#sorting-apis}
 
-There are a lot of sorting related APIs that you can use to hook up to your UI or other logic. Here is a list of all of the sorting APIs and some of their use-cases.
+UI やほかのロジックとつなぐために使える、ソート関連の API がたくさんあります。ソートの API の一覧と、それぞれの使い道を示します。
 
-- `table.setSorting` - Set the sorting state directly.
-- `table.resetSorting` - Reset the sorting state to the initial state or clear it.
+- `table.setSorting` - ソートの状態を直接設定します。
+- `table.resetSorting` - ソートの状態を初期状態に戻すか、空にします。
 
-- `column.getCanSort` - Useful for enabling/disabling the sorting UI for a column.
-- `column.getIsSorted` - Useful for showing a visual sorting indicator for a column.
+- `column.getCanSort` - 列のソート UI を有効・無効にするのに便利です。
+- `column.getIsSorted` - 列のソート状態を視覚的に示すインジケーターを表示するのに便利です。
 
-- `column.getToggleSortingHandler` - Useful for hooking up the sorting UI for a column. Add to a sort arrow (icon button), menu item, or simply the entire column header cell. This handler will call `column.toggleSorting` with the correct parameters.
-- `column.toggleSorting` - Useful for hooking up the sorting UI for a column. If using instead of `column.getToggleSortingHandler`, you have to manually pass in whether or not to use multi-sorting. (`column.toggleSorting(desc, multi)`)
-- `column.clearSorting` - Useful for a "clear sorting" button or menu item for a specific column.
+- `column.getToggleSortingHandler` - 列のソート UI をつなぐのに便利です。ソートの矢印（アイコンボタン）やメニュー項目、あるいは列のヘッダーセル全体に付けます。このハンドラーは正しい引数で `column.toggleSorting` を呼び出します。
+- `column.toggleSorting` - 列のソート UI をつなぐのに便利です。`column.getToggleSortingHandler` の代わりに使う場合は、複数列ソートを使うかどうかを手動で渡す必要があります（`column.toggleSorting(desc, multi)`）。
+- `column.clearSorting` - 特定の列の「ソートを解除」ボタンやメニュー項目に便利です。
 
-- `column.getNextSortingOrder` - Useful for showing which direction the column will sort by next. (asc/desc/clear in a tooltip/menu item/aria-label or something)
-- `column.getFirstSortDir` - Useful for showing which direction the column will sort by first. (asc/desc in a tooltip/menu item/aria-label or something)
-- `column.getAutoSortDir` - Determines whether the first sorting direction will be ascending or descending for a column.
-- `column.getAutoSortFn` - Used internally to find the default sorting function for a column if none is specified.
-- `column.getSortFn` - Returns the exact sorting function being used for a column.
+- `column.getNextSortingOrder` - 列が次にどの方向でソートされるかを表示するのに便利です（ツールチップ、メニュー項目、aria-label などで asc/desc/解除を示す）。
+- `column.getFirstSortDir` - 列が最初にどの方向でソートされるかを表示するのに便利です（ツールチップ、メニュー項目、aria-label などで asc/desc を示す）。
+- `column.getAutoSortDir` - 列の最初のソート方向が昇順か降順かを判定します。
+- `column.getAutoSortFn` - ソート関数が指定されていない場合に、列のデフォルトのソート関数を見つけるために内部で使われます。
+- `column.getSortFn` - 列で実際に使われているソート関数を返します。
 
-- `column.getCanMultiSort` - Useful for enabling/disabling the multi-sorting UI for a column.
-- `column.getSortIndex` - Useful for showing a badge or indicator of the column's sort order in a multi-sort scenario. i.e. whether or not it is the first, second, third, etc. column to be sorted.
+- `column.getCanMultiSort` - 列の複数列ソート UI を有効・無効にするのに便利です。
+- `column.getSortIndex` - 複数列ソートのときに、その列のソート順（1番目、2番目、3番目など、何番目にソートされる列か）をバッジやインジケーターで表示するのに便利です。

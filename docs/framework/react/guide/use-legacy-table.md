@@ -1,19 +1,19 @@
 ---
-title: Using useLegacyTable for Incremental Migration
+title: useLegacyTable で段階的に移行する
 ---
 
-The `useLegacyTable` hook provides a compatibility layer that accepts the v8-style API while using v9 under the hood. This is useful for teams that need to migrate incrementally or have large codebases where a full migration isn't immediately practical.
+`useLegacyTable` フックは、内部では v9 を使いながら v8 形式の API を受け付ける互換レイヤーです。段階的に移行する必要があるチームや、コードベースが大きく、すぐには全面的な移行が難しい場合に役立ちます。
 
 > [!WARNING]
-> `useLegacyTable` is **deprecated** and intended only as a temporary migration aid. It includes all features by default, so the bundle is larger than with the tree-shakeable v9 API. Plan to migrate to `useTable` for better performance and smaller bundles.
+> `useLegacyTable` は**非推奨**であり、移行中の一時的な補助としてのみ使うことを想定しています。デフォルトですべての機能を含むため、ツリーシェイク可能な v9 の API を使う場合よりもバンドルが大きくなります。パフォーマンスの向上とバンドルの縮小のために、`useTable` への移行を計画してください。
 
-## When to Use `useLegacyTable` {#when-to-use-uselegacytable}
+## `useLegacyTable` を使う場面 {#when-to-use-uselegacytable}
 
-- You have an existing v8 codebase and need to upgrade dependencies
-- You want to migrate incrementally, one table at a time
-- You need v9 compatibility but don't have time for a full migration yet
+- 既存の v8 のコードベースがあり、依存関係をアップグレードする必要がある
+- テーブルを1つずつ、段階的に移行したい
+- v9 との互換性は必要だが、まだ全面的に移行する時間がない
 
-## Basic Usage {#basic-usage}
+## 基本的な使い方 {#basic-usage}
 
 ```tsx
 import { useState } from 'react'
@@ -127,22 +127,22 @@ function RowActions({ row }: { row: LegacyRow<Person> }) {
 }
 ```
 
-## Type Helpers {#type-helpers}
+## 型ヘルパー {#type-helpers}
 
-When using `useLegacyTable`, use these type helpers for proper TypeScript support:
+`useLegacyTable` を使うときは、TypeScript で正しく型付けするために次の型ヘルパーを使います。
 
-| Type                                | Description                                                     |
+| 型                                  | 説明                                                            |
 | ----------------------------------- | --------------------------------------------------------------- |
-| `LegacyColumnDef<TData>`            | Column definition type (equivalent to v8's `ColumnDef<TData>`)  |
-| `LegacyColumn<TData>`               | Column instance type                                            |
-| `LegacyRow<TData>`                  | Row instance type                                               |
-| `LegacyCell<TData>`                 | Cell instance type                                              |
-| `LegacyTable<TData>`                | Table instance type                                             |
-| `legacyCreateColumnHelper<TData>()` | Column helper with StockFeatures pre-bound; only requires TData |
+| `LegacyColumnDef<TData>`            | 列定義の型（v8 の `ColumnDef<TData>` に相当）                   |
+| `LegacyColumn<TData>`               | 列インスタンスの型                                              |
+| `LegacyRow<TData>`                  | 行インスタンスの型                                              |
+| `LegacyCell<TData>`                 | セルインスタンスの型                                            |
+| `LegacyTable<TData>`                | テーブルインスタンスの型                                        |
+| `legacyCreateColumnHelper<TData>()` | StockFeatures があらかじめ結び付けられた列ヘルパー。TData だけを指定すればよい |
 
-### Using `legacyCreateColumnHelper` {#using-legacycreatecolumnhelper}
+### `legacyCreateColumnHelper` を使う {#using-legacycreatecolumnhelper}
 
-Use `legacyCreateColumnHelper` instead of `createColumnHelper`. It has StockFeatures pre-bound, so you only need to specify `TData`:
+`createColumnHelper` の代わりに `legacyCreateColumnHelper` を使います。StockFeatures があらかじめ結び付けられているため、指定が必要なのは `TData` だけです。
 
 ```tsx
 import { legacyCreateColumnHelper } from '@tanstack/react-table/legacy'
@@ -156,13 +156,13 @@ const columns: LegacyColumnDef<Person>[] = [
 ]
 ```
 
-## API Differences from v8 {#api-differences-from-v8}
+## v8 との API の違い {#api-differences-from-v8}
 
-While `useLegacyTable` aims for v8 compatibility, there are a few differences:
+`useLegacyTable` は v8 との互換性を目指していますが、いくつか違いがあります。
 
-### Row Model Functions {#row-model-functions}
+### 行モデルの関数 {#row-model-functions}
 
-The `get*RowModel()` functions are imported from `@tanstack/react-table/legacy`:
+`get*RowModel()` 関数は `@tanstack/react-table/legacy` からインポートします。
 
 ```tsx
 import {
@@ -178,50 +178,50 @@ import {
 } from '@tanstack/react-table/legacy'
 ```
 
-### Sorting Function Renames {#sorting-function-renames}
+### ソート関数の名前変更 {#sorting-function-renames}
 
-Note that in v9, sorting-related APIs have been renamed. If you're using custom sorting functions in column definitions:
+v9 では、ソート関連の API の名前が変わっている点に注意してください。列定義でカスタムのソート関数を使っている場合は次のとおりです。
 
 | v8          | v9       |
 | ----------- | -------- |
 | `sortingFn` | `sortFn` |
 
-The legacy table adapter handles this internally for built-in sorting, but if you're defining custom sorting functions, be aware of the rename.
+組み込みのソートについてはレガシーテーブルのアダプターが内部で対応しますが、カスタムのソート関数を定義している場合は、この名前変更に気をつけてください。
 
-## Caveats and Limitations {#caveats-and-limitations}
+## 注意点と制限 {#caveats-and-limitations}
 
-### Bundle Size {#bundle-size}
+### バンドルサイズ {#bundle-size}
 
-`useLegacyTable` includes **all features** by default, similar to v8. This means:
+`useLegacyTable` は、v8 と同じくデフォルトで**すべての機能**を含みます。つまり、次のようになります。
 
-- No tree-shaking benefits
-- Bundle size is **much larger** than v8, since each feature has grown since v8 and you pay for all of them
-- The tree-shakeable v9 API exists so TanStack Table can add features over time without bloating everyone's bundles; only users who opt into a feature pay for it
-- If bundle size is a concern, prioritize migrating to the full v9 API
+- ツリーシェイキングの恩恵を受けられない
+- 各機能が v8 から大きくなっており、そのすべてを抱えることになるため、バンドルサイズは v8 より**かなり大きく**なる
+- v9 の API がツリーシェイク可能になっているのは、全員のバンドルを肥大化させずに TanStack Table が機能を追加していけるようにするためです。ある機能のコストを負担するのは、その機能をオプトインしたユーザーだけです
+- バンドルサイズが気になる場合は、完全な v9 の API への移行を優先してください
 
-### Deprecation {#deprecation}
+### 非推奨 {#deprecation}
 
-`useLegacyTable` is deprecated and will be removed in a future major version. It exists solely to ease migration. Plan your migration timeline accordingly.
+`useLegacyTable` は非推奨であり、将来のメジャーバージョンで削除されます。移行を楽にするためだけに存在しています。それを踏まえて移行のスケジュールを立ててください。
 
-### Full-State Subscription Only {#full-state-subscription-only}
+### 状態全体の購読のみ {#full-state-subscription-only}
 
-`useLegacyTable` always subscribes to the entire table state, so the component that creates the table re-renders on every state change, just like v8. The fine-grained rendering optimizations of v9 (narrow `useTable` selectors) are not available through the legacy hook.
+`useLegacyTable` は常にテーブルの状態全体を購読します。そのため、v8 と同じく、テーブルを作成したコンポーネントは状態が変わるたびに再レンダーされます。v9 の細かい単位での描画の最適化（範囲を絞った `useTable` のセレクター）は、レガシーのフックでは使えません。
 
-### No `createTableHook` Integration {#no-createtablehook-integration}
+### `createTableHook` とは連携できない {#no-createtablehook-integration}
 
-`useLegacyTable` cannot be used with `createTableHook`. If you want to create reusable table configurations, migrate to the full v9 API.
+`useLegacyTable` は `createTableHook` と組み合わせて使えません。再利用できるテーブル設定を作りたい場合は、完全な v9 の API に移行してください。
 
-## Migration Path {#migration-path}
+## 移行の手順 {#migration-path}
 
-Once you're ready to migrate to the full v9 API:
+完全な v9 の API に移行する準備ができたら、次の手順で進めます。
 
-1. Replace `useLegacyTable` with `useTable`
-2. Define your `features` using `tableFeatures()`
-3. Convert `get*RowModel()` options to `rowModels`
-4. Update types from `Legacy*` to the standard v9 types
+1. `useLegacyTable` を `useTable` に置き換える
+2. `tableFeatures()` を使って `features` を定義する
+3. `get*RowModel()` オプションを `rowModels` に変換する
+4. 型を `Legacy*` から標準の v9 の型に更新する
 
-See the [main migration guide](./migrating.md) for complete instructions.
+詳しい手順は[メインの移行ガイド](./migrating.md)を参照してください。
 
-## Example {#example}
+## 例 {#example}
 
-See the [Basic useLegacyTable example](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-legacy-table) for a working implementation.
+動作する実装は [Basic useLegacyTable の例](https://tanstack.com/table/latest/docs/framework/react/examples/basic-use-legacy-table)を参照してください。

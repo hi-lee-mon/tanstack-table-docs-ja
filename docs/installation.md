@@ -1,10 +1,10 @@
 ---
-title: Installation
+title: インストール
 ---
 
-Before we dig in to the API, let's get you set up!
+API を詳しく見ていく前に、まずは環境を整えましょう。
 
-Install your table adapter as a dependency using your preferred package manager:
+お好みのパッケージマネージャーで、テーブルのアダプターを依存関係としてインストールします。
 
 ::: code-group
 
@@ -27,7 +27,7 @@ bun add @tanstack/react-table
 :::
 
 
-The `@tanstack/react-table` package works with React 18 or newer.
+`@tanstack/react-table` パッケージは React 18 以降で動作します。
 
 
-Don't see your favorite framework (or favorite version of your framework) listed? You can always just use the `@tanstack/table-core` package and build your own adapter in your own codebase. Usually, only a thin wrapper is needed to manage state and rendering for your specific framework. Browse the [source code](https://github.com/TanStack/table/tree/main/packages) of all of the other adapters to see how they work.
+お使いのフレームワーク（またはそのバージョン）が一覧にありませんか？ その場合でも、`@tanstack/table-core` パッケージを使えば、自分のコードベースの中で独自のアダプターを作れます。たいていは、そのフレームワークで状態とレンダーを管理する薄いラッパーがあれば十分です。他のアダプターがどう動いているかは、それぞれの[ソースコード](https://github.com/TanStack/table/tree/main/packages)で確認できます。

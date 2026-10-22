@@ -7,17 +7,17 @@ title: flexRender
 function flexRender<TProps>(Comp, props): ReactNode | Element;
 ```
 
-Defined in: [src/FlexRender.tsx:45](https://github.com/TanStack/table/blob/main/packages/react-table/src/FlexRender.tsx#L45)
+定義元: [src/FlexRender.tsx:45](https://github.com/TanStack/table/blob/main/packages/react-table/src/FlexRender.tsx#L45)
 
-If rendering headers, cells, or footers with custom markup, use flexRender instead of `cell.getValue()` or `cell.renderValue()`.
+ヘッダー・セル・フッターを独自のマークアップでレンダーする場合は、`cell.getValue()` や `cell.renderValue()` ではなく flexRender を使ってください。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TProps {#tprops}
 
 `TProps` *extends* `object`
 
-## Parameters {#parameters}
+## パラメーター {#parameters}
 
 ### Comp {#comp}
 
@@ -27,11 +27,11 @@ If rendering headers, cells, or footers with custom markup, use flexRender inste
 
 `TProps`
 
-## Returns {#returns}
+## 戻り値 {#returns}
 
 `ReactNode` \| `Element`
 
-## Example {#example}
+## 例 {#example}
 
 ```ts
 flexRender(cell.column.columnDef.cell, cell.getContext())

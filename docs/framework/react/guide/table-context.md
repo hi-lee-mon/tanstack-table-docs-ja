@@ -1,18 +1,18 @@
 ---
-title: Table Context Guide
+title: テーブルコンテキストガイド
 ---
 
-When you register reusable components with [`createTableHook`](./composable-tables), those components read the current table, cell, or header from React context instead of from props. This guide explains how that context works, how to read it with full type-safety, and how to create an isolated context for advanced cases like nested tables.
+[`createTableHook`](./composable-tables) で再利用可能なコンポーネントを登録すると、そのコンポーネントは現在のテーブル・セル・ヘッダーを props ではなく React のコンテキストから読み取ります。このガイドでは、そのコンテキストの仕組み、完全な型安全性を保ったまま読み取る方法、そしてネストしたテーブルのような高度なケースで分離されたコンテキストを作る方法を説明します。
 
-## How The Context Is Provided {#how-the-context-is-provided}
+## コンテキストの提供のされ方 {#how-the-context-is-provided}
 
-The components returned by `useAppTable` are what put values on context:
+コンテキストに値を載せるのは、`useAppTable` が返すコンポーネントです。
 
-- `<table.AppTable>` provides the current table instance.
-- `<table.AppCell cell={cell}>` provides the current cell instance.
-- `<table.AppHeader header={header}>` and `<table.AppFooter header={footer}>` provide the current header instance.
+- `<table.AppTable>` は現在のテーブルインスタンスを提供します。
+- `<table.AppCell cell={cell}>` は現在のセルインスタンスを提供します。
+- `<table.AppHeader header={header}>` と `<table.AppFooter header={footer}>` は現在のヘッダーインスタンスを提供します。
 
-Your registered `tableComponents`, `cellComponents`, and `headerComponents` then read those instances with the matching hooks:
+登録した `tableComponents`、`cellComponents`、`headerComponents` は、対応するフックでそれらのインスタンスを読み取ります。
 
 ```tsx
 function PaginationControls() {
@@ -31,15 +31,15 @@ function SortIndicator() {
 }
 ```
 
-The instance you read back is the same one those wrappers render with, already extended with the `App*` components and your registered components. For example, inside a table component `table.PaginationControls` and `table.AppCell` are available, and inside a cell component `cell.TextCell` and `cell.FlexRender` are available.
+読み取ったインスタンスは、ラッパーが描画に使っているものと同じです。`App*` コンポーネントと登録したコンポーネントで、すでに拡張されています。たとえば、テーブルコンポーネントの中では `table.PaginationControls` や `table.AppCell` が、セルコンポーネントの中では `cell.TextCell` や `cell.FlexRender` が使えます。
 
 > [!TIP]
-> You often do not need table context to reach the table at all. Every `cell`, `header`, `row`, and `column` instance already carries a reference back to its table: `cell.table`, `header.table`, `row.table`, and `column.table`. So inside a cell or header component you can read the table straight off the instance you already have (for example `cell.table.nextPage()`) instead of calling `useTableContext()`. The instances are linked to each other too (`cell.row`, `cell.column`, `header.column`, `row.getAllCells()`), so a single instance is usually enough to navigate to whatever you need. Reach for `useTableContext()` when a component has no instance to start from, such as a standalone toolbar or pagination control.
+> テーブルにたどり着くだけなら、テーブルコンテキストは要らないことがよくあります。`cell`、`header`、`row`、`column` の各インスタンスは、自分のテーブルへの参照（`cell.table`、`header.table`、`row.table`、`column.table`）を持っているからです。そのため、セルやヘッダーのコンポーネントの中では、`useTableContext()` を呼ばなくても、手元のインスタンスから直接テーブルを読めます（例: `cell.table.nextPage()`）。インスタンス同士もつながっている（`cell.row`、`cell.column`、`header.column`、`row.getAllCells()`）ので、インスタンスが1つあれば、たいていは必要なものまでたどれます。`useTableContext()` を使うのは、単独のツールバーやページネーションのコントロールのように、起点になるインスタンスを持たないコンポーネントのときです。
 
-## Import The Hooks From Your createTableHook Result {#import-the-hooks-from-your-createtablehook-result}
+## フックは createTableHook の結果からインポートする {#import-the-hooks-from-your-createtablehook-result}
 
 > [!IMPORTANT]
-> For the best type-safety, import `useTableContext`, `useCellContext`, and `useHeaderContext` from the same module where you called `createTableHook`. Those hooks know your `TFeatures` **and** your registered component maps, so `table.PaginationControls`, `cell.TextCell`, and `header.SortIndicator` are all typed.
+> 型安全性を最大限に得るには、`useTableContext`、`useCellContext`、`useHeaderContext` を `createTableHook` を呼んだのと同じモジュールからインポートしてください。これらのフックは `TFeatures` **と** 登録したコンポーネントのマップの両方を知っているので、`table.PaginationControls`、`cell.TextCell`、`header.SortIndicator` のすべてに型が付きます。
 
 ```tsx
 // hooks/table.ts
@@ -57,11 +57,11 @@ export const {
 })
 ```
 
-## Passing Instances Through Your Own Context {#passing-instances-through-your-own-context}
+## 独自のコンテキストでインスタンスを渡す {#passing-instances-through-your-own-context}
 
-`createTableHookContexts` is also useful on its own, separately from `createTableHook`, for avoiding prop drilling. The `column`, `row`, `cell`, and `header` instances are **stable references** (the same stability TanStack Table relies on for React Compiler memoization). You can place any of them on a context and read it deep in a subtree, and because the reference does not change when table state changes, the context value stays the same and consumers will not re-render from state changes.
+`createTableHookContexts` は、`createTableHook` とは別に単独で使っても、props のバケツリレー（prop drilling）を避けるのに役立ちます。`column`、`row`、`cell`、`header` の各インスタンスは**安定した参照**です（TanStack Table が React Compiler のメモ化で頼りにしているのと同じ安定性です）。どれをコンテキストに載せても、サブツリーの深い場所で読み取れます。テーブルの状態が変わっても参照は変わらないので、コンテキストの値も同じままで、購読側のコンポーネントが状態の変化で再レンダーされることはありません。
 
-Reach for `createTableHookContexts` instead of hand-rolling `createContext`. It hands you a context plus a matching `TFeatures`-typed hook, so you do not have to retype the value or write the `useContext` guard yourself. (See [Scoped Contexts With createTableHookContexts](#scoped-contexts-with-createtablehookcontexts) below for the other use of this util, passing the contexts into `createTableHook`.)
+`createContext` を自前で書く代わりに、`createTableHookContexts` を使ってください。コンテキストと、それに対応する `TFeatures` の型付きフックをまとめて返してくれるので、値の型を書き直したり、`useContext` のガードを自分で書いたりせずに済みます（このユーティリティのもう1つの使い方である、コンテキストを `createTableHook` に渡す方法は、後述の[createTableHookContexts によるスコープ付きコンテキスト](#scoped-contexts-with-createtablehookcontexts)を参照してください）。
 
 ```tsx
 // cell-slot-context.ts
@@ -85,19 +85,19 @@ function DeeplyNestedCellUI() {
 ```
 
 > [!IMPORTANT]
-> That stability is exactly why state-dependent method reads go stale. A component that reads something like `header.column.getIsSorted()`, `cell.row.getIsSelected()`, or `cell.getValue()` off a context-provided instance will not re-render when that state changes on its own. Wrap those method reads in a `Subscribe` render callback, or render directly from a value selected with `useSelector`, so the UI has an explicit reactive dependency. See [Use Subscribe in Nested Components](./react-compiler#use-subscribe-in-nested-components).
+> 状態に依存するメソッドの読み取り結果が古くなるのは、まさにこの安定性のせいです。コンテキストから受け取ったインスタンスで `header.column.getIsSorted()`、`cell.row.getIsSelected()`、`cell.getValue()` などを読むコンポーネントは、その状態が変わっても、それだけでは再レンダーされません。こうしたメソッドの読み取りは `Subscribe` のレンダーコールバックで包むか、`useSelector` で選んだ値から直接描画して、UI にリアクティブな依存関係を明示してください。[ネストしたコンポーネントで Subscribe を使う](./react-compiler#use-subscribe-in-nested-components)を参照してください。
 
-The `table` object is the exception. `useTable` returns a fresh React-facing `table` reference whenever its selected state changes, which is intentional so that React Compiler invalidates JSX that depends on it. With the default selector that means every registered table-state change; a narrower selector only changes it for the selected updates. It is therefore **not** a stable context value. Providing the table through your own context re-renders consumers whenever the providing component re-renders with a new wrapper. If you want a stable handle to pass down, provide `table.store` or a specific atom such as `table.atoms.rowSelection` (these are stable) and read them with `Subscribe` / `useSelector`, or keep the core table in a ref.
+ただし `table` オブジェクトは例外です。`useTable` は、選択した状態が変わるたびに、React 向けの新しい `table` 参照を返します。これは、`table` に依存する JSX を React Compiler に無効化させるための意図した動作です。デフォルトのセレクターでは、登録されたテーブルの状態が変わるたびに参照が変わります。セレクターを絞れば、選んだ部分が更新されたときだけ変わります。したがって `table` は安定したコンテキストの値では**ありません**。独自のコンテキストでテーブルを提供すると、提供側のコンポーネントが新しいラッパーで再レンダーされるたびに、購読側も再レンダーされます。安定したハンドルを下へ渡したいなら、`table.store` や `table.atoms.rowSelection` のような特定のアトム（これらは安定しています）を提供して `Subscribe` / `useSelector` で読み取るか、コアのテーブルを ref に保持してください。
 
-## The Default Shared Context {#the-default-shared-context}
+## デフォルトの共有コンテキスト {#the-default-shared-context}
 
-By default you do not create or wire any context yourself. `createTableHook` connects its `AppTable`/`AppCell`/`AppHeader` providers to a shared, module-scoped context, and the hooks it returns read from that same context. Because the context lives at module scope, its identity is stable across hot module replacement during local development, so a component edit never leaves a provider and a consumer pointing at mismatched contexts.
+デフォルトでは、コンテキストを自分で作ったり接続したりする必要はありません。`createTableHook` は、自身の `AppTable`/`AppCell`/`AppHeader` プロバイダーを、モジュールスコープの共有コンテキストに接続します。返されるフックも、同じコンテキストから読み取ります。コンテキストがモジュールスコープにあるので、ローカル開発中のホットモジュールリプレースメントをまたいでも、その同一性は保たれます。そのため、コンポーネントを編集しても、プロバイダーと購読側が食い違ったコンテキストを指す状態にはなりません。
 
-Independent tables stay isolated through normal provider scoping: each `<table.AppTable>` provides its own table instance, and a consumer reads the nearest provider. Rendering two different tables side by side, or in different routes, works without any extra setup.
+独立したテーブル同士は、通常のプロバイダーのスコープによって分離されます。`<table.AppTable>` はそれぞれ自分のテーブルインスタンスを提供し、購読側は最も近いプロバイダーから読み取ります。異なるテーブルを横に並べて描画しても、別々のルートで描画しても、追加の設定なしで動きます。
 
-## Scoped Contexts With createTableHookContexts {#scoped-contexts-with-createtablehookcontexts}
+## createTableHookContexts によるスコープ付きコンテキスト {#scoped-contexts-with-createtablehookcontexts}
 
-The shared context only becomes a problem if you **nest** one table's provider inside another's and a consumer in that overlap reads the nearest (inner) provider instead of the one you intended. For that case, create an isolated context with `createTableHookContexts` and pass it into `createTableHook`:
+共有コンテキストが問題になるのは、あるテーブルのプロバイダーを別のテーブルのプロバイダーの中に**ネスト**し、その重なった部分にある購読側が、意図したプロバイダーではなく最も近い（内側の）プロバイダーから読み取ってしまう場合だけです。このケースでは、`createTableHookContexts` で分離されたコンテキストを作り、`createTableHook` に渡してください。
 
 ```tsx
 // scoped-table-context.ts (no component imports)
@@ -134,18 +134,18 @@ export const { useAppTable } = createTableHook({
 })
 ```
 
-Each call to `createTableHookContexts` returns a brand-new set of contexts, so two table setups that use their own scoped contexts can be nested without reading each other's values.
+`createTableHookContexts` は呼ぶたびに新しいコンテキスト一式を返します。そのため、それぞれ独自のスコープ付きコンテキストを使う2つのテーブル構成は、互いの値を読み取ることなくネストできます。
 
-### Which Hooks To Use With Scoped Contexts {#which-hooks-to-use-with-scoped-contexts}
+### スコープ付きコンテキストで使うフック {#which-hooks-to-use-with-scoped-contexts}
 
-`createTableHookContexts` also returns `useTableContext`/`useCellContext`/`useHeaderContext`, but they are typed with `TFeatures` only. They do not know your registered component maps, because those are defined later in `createTableHook`. So:
+`createTableHookContexts` も `useTableContext`/`useCellContext`/`useHeaderContext` を返しますが、これらは `TFeatures` だけで型付けされています。登録したコンポーネントのマップは後で `createTableHook` の中で定義されるため、それを知りません。したがって、次のようにします。
 
-- Prefer the hooks returned from your `createTableHook` call for the richest types (your `tableComponents`/`cellComponents`/`headerComponents` are typed).
-- Use the hooks from `createTableHookContexts` only when you need to read context from a module that cannot import the `createTableHook` result.
+- 最も豊かな型を得るには、`createTableHook` の呼び出しが返すフックを優先してください（`tableComponents`/`cellComponents`/`headerComponents` に型が付きます）。
+- `createTableHookContexts` のフックは、`createTableHook` の結果をインポートできないモジュールからコンテキストを読む必要があるときだけ使ってください。
 
-This mirrors TanStack Form's `createFormHookContexts`, where the context hooks are intentionally loose and the strongly typed path lives on the form/field components.
+これは TanStack Form の `createFormHookContexts` と同じ考え方です。そちらでもコンテキストのフックは意図的にゆるい型になっていて、強く型付けされた経路は form/field のコンポーネント側にあります。
 
-## When To Use This {#when-to-use-this}
+## これを使う場面 {#when-to-use-this}
 
-- Do nothing special for the common case. The default shared context handles single tables and multiple independent tables.
-- Reach for `createTableHookContexts` only when you nest different table setups and need their contexts isolated, or when you want to read context from a component-free module.
+- よくあるケースでは特別なことは何もしなくてかまいません。デフォルトの共有コンテキストが、単一のテーブルにも、互いに独立した複数のテーブルにも対応します。
+- `createTableHookContexts` を使うのは、異なるテーブル構成をネストしていてコンテキストを分離する必要があるときか、コンポーネントを含まないモジュールからコンテキストを読みたいときだけにしてください。

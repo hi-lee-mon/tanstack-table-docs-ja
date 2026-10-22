@@ -3,17 +3,17 @@ id: LegacyRowModelOptions
 title: LegacyRowModelOptions
 ---
 
-Defined in: [src/useLegacyTable.ts:208](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L208)
+定義元: [src/useLegacyTable.ts:208](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L208)
 
-Legacy v8-style row model options
+v8 スタイルのレガシーな行モデルのオプションです。
 
-## Type Parameters {#type-parameters}
+## 型パラメーター {#type-parameters}
 
 ### TData {#tdata}
 
 `TData` *extends* `RowData`
 
-## Properties {#properties}
+## プロパティ {#properties}
 
 ### ~~aggregationFns?~~ {#aggregationfns}
 
@@ -21,13 +21,13 @@ Legacy v8-style row model options
 optional aggregationFns?: AggregationFns;
 ```
 
-Defined in: [src/useLegacyTable.ts:268](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L268)
+定義元: [src/useLegacyTable.ts:268](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L268)
 
-Additional aggregation functions to apply to the table.
+テーブルに適用する追加の集計関数です。
 
-#### Deprecated {#deprecated}
+#### 非推奨 {#deprecated}
 
-Use `rowAggregationFeature` with the `aggregationFns` slot instead. Add `columnGroupingFeature` and `groupedRowModel` only when grouping rows.
+代わりに、`rowAggregationFeature` と `aggregationFns` スロットを使ってください。`columnGroupingFeature` と `groupedRowModel` は、行をグループ化する場合にだけ追加します。
 
 ***
 
@@ -37,13 +37,13 @@ Use `rowAggregationFeature` with the `aggregationFns` slot instead. Add `columnG
 optional filterFns?: FilterFns;
 ```
 
-Defined in: [src/useLegacyTable.ts:258](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L258)
+定義元: [src/useLegacyTable.ts:258](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L258)
 
-Additional filter functions to apply to the table.
+テーブルに適用する追加のフィルター関数です。
 
-#### Deprecated {#deprecated-1}
+#### 非推奨 {#deprecated-1}
 
-Use the `filteredRowModel`/`filterFns` slots on the `features` option with `createFilteredRowModel()` instead.
+代わりに、`features` オプションの `filteredRowModel`/`filterFns` スロットと `createFilteredRowModel()` を使ってください。
 
 ***
 
@@ -53,13 +53,13 @@ Use the `filteredRowModel`/`filterFns` slots on the `features` option with `crea
 optional getCoreRowModel?: RowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:213](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L213)
+定義元: [src/useLegacyTable.ts:213](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L213)
 
-Returns the core row model for the table.
+テーブルのコア行モデルを返します。
 
-#### Deprecated {#deprecated-2}
+#### 非推奨 {#deprecated-2}
 
-This option is no longer needed in v9. The core row model is always created automatically.
+このオプションは v9 では不要です。コア行モデルは常に自動で作成されます。
 
 ***
 
@@ -69,13 +69,13 @@ This option is no longer needed in v9. The core row model is always created auto
 optional getExpandedRowModel?: RowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:233](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L233)
+定義元: [src/useLegacyTable.ts:233](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L233)
 
-Returns the expanded row model for the table.
+テーブルの展開済み行モデルを返します。
 
-#### Deprecated {#deprecated-3}
+#### 非推奨 {#deprecated-3}
 
-Use the `expandedRowModel` slot on the `features` option with `createExpandedRowModel()` instead.
+代わりに、`features` オプションの `expandedRowModel` スロットと `createExpandedRowModel()` を使ってください。
 
 ***
 
@@ -85,13 +85,13 @@ Use the `expandedRowModel` slot on the `features` option with `createExpandedRow
 optional getFacetedMinMaxValues?: FacetedMinMaxValuesFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:248](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L248)
+定義元: [src/useLegacyTable.ts:248](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L248)
 
-Returns the faceted min/max values for a column.
+列のファセットの最小値と最大値を返します。
 
-#### Deprecated {#deprecated-4}
+#### 非推奨 {#deprecated-4}
 
-Use the `facetedMinMaxValues` slot on the `features` option with `createFacetedMinMaxValues()` instead.
+代わりに、`features` オプションの `facetedMinMaxValues` スロットと `createFacetedMinMaxValues()` を使ってください。
 
 ***
 
@@ -101,13 +101,13 @@ Use the `facetedMinMaxValues` slot on the `features` option with `createFacetedM
 optional getFacetedRowModel?: FacetedRowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:243](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L243)
+定義元: [src/useLegacyTable.ts:243](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L243)
 
-Returns the faceted row model for a column.
+列のファセット行モデルを返します。
 
-#### Deprecated {#deprecated-5}
+#### 非推奨 {#deprecated-5}
 
-Use the `facetedRowModel` slot on the `features` option with `createFacetedRowModel()` instead.
+代わりに、`features` オプションの `facetedRowModel` スロットと `createFacetedRowModel()` を使ってください。
 
 ***
 
@@ -117,13 +117,13 @@ Use the `facetedRowModel` slot on the `features` option with `createFacetedRowMo
 optional getFacetedUniqueValues?: FacetedUniqueValuesFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:253](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L253)
+定義元: [src/useLegacyTable.ts:253](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L253)
 
-Returns the faceted unique values for a column.
+列のファセットの一意な値を返します。
 
-#### Deprecated {#deprecated-6}
+#### 非推奨 {#deprecated-6}
 
-Use the `facetedUniqueValues` slot on the `features` option with `createFacetedUniqueValues()` instead.
+代わりに、`features` オプションの `facetedUniqueValues` スロットと `createFacetedUniqueValues()` を使ってください。
 
 ***
 
@@ -133,13 +133,13 @@ Use the `facetedUniqueValues` slot on the `features` option with `createFacetedU
 optional getFilteredRowModel?: RowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:218](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L218)
+定義元: [src/useLegacyTable.ts:218](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L218)
 
-Returns the filtered row model for the table.
+テーブルのフィルター済み行モデルを返します。
 
-#### Deprecated {#deprecated-7}
+#### 非推奨 {#deprecated-7}
 
-Use the `filteredRowModel`/`filterFns` slots on the `features` option with `createFilteredRowModel()` instead.
+代わりに、`features` オプションの `filteredRowModel`/`filterFns` スロットと `createFilteredRowModel()` を使ってください。
 
 ***
 
@@ -149,13 +149,13 @@ Use the `filteredRowModel`/`filterFns` slots on the `features` option with `crea
 optional getGroupedRowModel?: RowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:238](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L238)
+定義元: [src/useLegacyTable.ts:238](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L238)
 
-Returns the grouped row model for the table.
+テーブルのグループ化済み行モデルを返します。
 
-#### Deprecated {#deprecated-8}
+#### 非推奨 {#deprecated-8}
 
-Use `columnGroupingFeature` with the `groupedRowModel` slot and `createGroupedRowModel()` instead. Add `rowAggregationFeature` separately when grouped rows aggregate values.
+代わりに、`columnGroupingFeature` と `groupedRowModel` スロット、`createGroupedRowModel()` を使ってください。グループ化した行で値を集計する場合は、`rowAggregationFeature` を別途追加します。
 
 ***
 
@@ -165,13 +165,13 @@ Use `columnGroupingFeature` with the `groupedRowModel` slot and `createGroupedRo
 optional getPaginationRowModel?: RowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:228](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L228)
+定義元: [src/useLegacyTable.ts:228](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L228)
 
-Returns the paginated row model for the table.
+テーブルのページ分割済み行モデルを返します。
 
-#### Deprecated {#deprecated-9}
+#### 非推奨 {#deprecated-9}
 
-Use the `paginatedRowModel` slot on the `features` option with `createPaginatedRowModel()` instead.
+代わりに、`features` オプションの `paginatedRowModel` スロットと `createPaginatedRowModel()` を使ってください。
 
 ***
 
@@ -181,13 +181,13 @@ Use the `paginatedRowModel` slot on the `features` option with `createPaginatedR
 optional getSortedRowModel?: RowModelFactory<TData>;
 ```
 
-Defined in: [src/useLegacyTable.ts:223](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L223)
+定義元: [src/useLegacyTable.ts:223](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L223)
 
-Returns the sorted row model for the table.
+テーブルのソート済み行モデルを返します。
 
-#### Deprecated {#deprecated-10}
+#### 非推奨 {#deprecated-10}
 
-Use the `sortedRowModel`/`sortFns` slots on the `features` option with `createSortedRowModel()` instead.
+代わりに、`features` オプションの `sortedRowModel`/`sortFns` スロットと `createSortedRowModel()` を使ってください。
 
 ***
 
@@ -197,10 +197,10 @@ Use the `sortedRowModel`/`sortFns` slots on the `features` option with `createSo
 optional sortFns?: SortFns;
 ```
 
-Defined in: [src/useLegacyTable.ts:263](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L263)
+定義元: [src/useLegacyTable.ts:263](https://github.com/TanStack/table/blob/main/packages/react-table/src/useLegacyTable.ts#L263)
 
-Additional sort functions to apply to the table.
+テーブルに適用する追加のソート関数です。
 
-#### Deprecated {#deprecated-11}
+#### 非推奨 {#deprecated-11}
 
-Use the `sortedRowModel`/`sortFns` slots on the `features` option with `createSortedRowModel()` instead.
+代わりに、`features` オプションの `sortedRowModel`/`sortFns` スロットと `createSortedRowModel()` を使ってください。

@@ -1,30 +1,30 @@
 ---
-title: Overview
+title: 概要
 ---
 
 > [!NOTE]
-> If you are upgrading from TanStack Table v8, start with the migration guide for your framework:
+> TanStack Table v8 からアップグレードする場合は、お使いのフレームワーク向けの移行ガイドから始めてください。
 
-- [Migrating to v9](./framework/react/guide/migrating)
+- [v9 への移行](./framework/react/guide/migrating)
 
 
-TanStack Table is the best way to build your own powerful table and datagrid components with _blazingly fast_ performance, but most importantly, with **100% control over your own design and markup.**
+TanStack Table は、強力なテーブルやデータグリッドのコンポーネントを自作するための最適な手段です。_驚くほど高速_に動作しますが、何より重要なのは、**デザインとマークアップを 100% 自分で制御できる**ことです。
 
-In this new age of AI, where markup can be generated in seconds, the old value proposition of pre-built components (saving you the typing) matters less than ever. What matters now is owning and controlling the result, and that is exactly what TanStack Table gives you.
+マークアップを数秒で生成できる AI の時代になり、既製のコンポーネントが持っていた「入力の手間を省く」という従来の価値は、かつてないほど小さくなりました。いま大切なのは、出来上がるものを自分のものとして所有し、制御することです。TanStack Table が提供するのは、まさにそれです。
 
-TanStack Table might be a bit of a different table library than you are used to. It is **_NOT_** a pre-built table component, like you might find from a library like [AG Grid](https://ag-grid.com?utm_source=reacttable&utm_campaign=githubreacttable). Instead, TanStack Table is a headless UI library that gives you the power to build your own fully customizable table and datagrid components the right way with whatever JavaScript libraries, component libraries, or design systems you want. TanStack Table is the _engine_ that you can hook up to your own favorite front-end tech, no matter what you're already using or want to use.
+TanStack Table は、これまで使ってきたテーブルライブラリとは少し毛色が違うかもしれません。[AG Grid](https://ag-grid.com?utm_source=reacttable&utm_campaign=githubreacttable) のようなライブラリが提供する既製のテーブルコンポーネントでは**ありません**。TanStack Table はヘッドレス UI ライブラリです。好きな JavaScript ライブラリ、コンポーネントライブラリ、デザインシステムを使って、自由にカスタマイズできるテーブルやデータグリッドのコンポーネントを正しいやり方で自作できます。TanStack Table は、今使っている、あるいはこれから使いたいフロントエンド技術が何であれ、そこにつないで使える_エンジン_です。
 
-At its core, TanStack Table is **agnostic**. Most table data-processing and state logic is written in framework-agnostic TypeScript, and framework adapters connect that core to your favorite frameworks. Official adapters are provided for React, Preact, Octane, Vue, Solid, Svelte, Angular, Ember, Lit, and Alpine, or you can use the core directly in vanilla JavaScript via `@tanstack/table-core`.
+TanStack Table の根幹は、特定の技術に**依存しない**ことです。テーブルのデータ処理や状態のロジックの大部分は、フレームワークに依存しない TypeScript で書かれており、フレームワークアダプターがそのコアをお好みのフレームワークにつなぎます。公式アダプターは React、Preact、Octane、Vue、Solid、Svelte、Angular、Ember、Lit、Alpine 向けに用意されています。`@tanstack/table-core` を使えば、素の JavaScript からコアを直接使うこともできます。
 
-It also **does not care which CSS or component library** you use, and is compatible with anything from Tailwind, Bootstrap, Material UI, ShadCN UI, or even your own custom design system.
+また、**どの CSS やコンポーネントライブラリを使うかも問いません**。Tailwind、Bootstrap、Material UI、ShadCN UI はもちろん、独自のデザインシステムとも組み合わせられます。
 
-## What is "Headless" UI? {#what-is-headless-ui}
+## 「ヘッドレス」UI とは {#what-is-headless-ui}
 
-**Headless UI** is a term for libraries and utilities that provide the logic, state, processing, and APIs for UI elements and interactions, but **do not provide markup, styles, or pre-built implementations**. The hardest parts of building complex UIs usually revolve around state, events, side effects, and data processing. By removing those concerns from the markup and styles, your logic becomes more modular and reusable, while you keep complete control over the look and feel. When you use a headless library like TanStack Table, the complex work of data processing, state management, and business logic is handled for you, so you can focus on the higher-cardinality decisions that differ across designs and use cases.
+**ヘッドレス UI** とは、UI 要素やインタラクションのためのロジック、状態、処理、API を提供する一方で、**マークアップやスタイル、既製の実装は提供しない**ライブラリやユーティリティを指す言葉です。複雑な UI を作るときに難しいのは、たいてい状態、イベント、副作用、データ処理まわりです。これらの関心事をマークアップやスタイルから切り離すと、ロジックはモジュール化されて再利用しやすくなり、見た目や操作感は完全に自分で制御できます。TanStack Table のようなヘッドレスライブラリを使えば、データ処理、状態管理、ビジネスロジックといった複雑な作業はライブラリが引き受けてくれます。そのため、デザインやユースケースごとに異なる、より細かな判断に集中できます。
 
-> Want to dive deeper? [Read more about Headless UI](https://www.merrickchristensen.com/articles/headless-user-interface-components/).
+> もっと詳しく知りたい方は、[ヘッドレス UI についての記事](https://www.merrickchristensen.com/articles/headless-user-interface-components/)をお読みください。
 
-Here's the difference in practice. With a pre-built table component, you pass props in and style the result from the outside, limited to whatever the component's props and theme APIs allow. With TanStack Table, you create a table instance and use its state and APIs to render your own markup:
+実際にどう違うのかを見てみましょう。既製のテーブルコンポーネントでは、props を渡し、出来上がったものを外側からスタイリングします。できることは、そのコンポーネントの props やテーマ API が許す範囲に限られます。TanStack Table では、テーブルインスタンスを作成し、その状態と API を使って自分のマークアップをレンダーします。
 
 ```diff
 - {/* Pass props into a pre-built component and hope you can style it */}
@@ -53,62 +53,61 @@ Here's the difference in practice. With a pre-built table component, you pass pr
 ```
 
 
-## Features {#features}
+## 機能 {#features}
 
-TanStack Table is packed with features, but you only ever bundle the ones you use. The full v9 package is about 25 KB when minified and Brotli-compressed, but more importantly, it is **modular**! You register only the features and row models that your table actually uses, and your bundler can tree-shake away unused optional capabilities. A basic table bundles just the small core. Because features vary in size and share that core, the exact savings depend on which capabilities you register.
+TanStack Table には多くの機能が詰め込まれていますが、バンドルされるのは実際に使う機能だけです。v9 のパッケージ全体は、minify して Brotli 圧縮すると約 25 KB です。しかしそれ以上に重要なのは、**モジュール化されている**ことです。テーブルで実際に使う機能と行モデルだけを登録すれば、使わないオプションの機能はバンドラーがツリーシェイキングで取り除きます。基本的なテーブルなら、バンドルされるのは小さなコアだけです。機能ごとにサイズが異なり、どれも同じコアを共有するため、実際にどれだけ削減できるかは登録する機能によって変わります。
 
-We like to think of TanStack Table as more of a "system" for building tables than just a library, as it is one of the most customizable table libraries ever built. TanStack Table has the following built-in features, plus a custom feature (plugin) system for adding your own state and APIs.
+私たちは TanStack Table を、単なるライブラリというより、テーブルを作るための「システム」だと考えています。これまでに作られたテーブルライブラリの中でも、指折りのカスタマイズ性を持っているからです。TanStack Table には次の機能が組み込まれています。さらに、独自の状態や API を追加するためのカスタム機能（プラグイン）の仕組みもあります。
 
-- [Cell Selection](./framework/react/guide/cell-selection) - Select spreadsheet-style rectangular ranges of cells
-- [Cell Spanning](./framework/react/guide/cell-spanning) - Merge adjacent body cells across rows or columns
-- [Column Filtering](./framework/react/guide/column-filtering) - Filter rows based on search values for a column
-- [Column Grouping](./framework/react/guide/grouping) - Group rows by one or more column values
-- [Column Ordering](./framework/react/guide/column-ordering) - Dynamically change the order of columns
-- [Column Pinning](./framework/react/guide/column-pinning) - Pin (Freeze) columns to the left or right of the table
-- [Column Resizing](./framework/react/guide/column-resizing) - Let users resize columns with drag handles
-- [Column Sizing](./framework/react/guide/column-sizing) - Dynamically change the size of columns
-- [Column Visibility](./framework/react/guide/column-visibility) - Hide/show columns
-- [Faceting](./framework/react/guide/column-faceting) - List unique values or min/max values for a column or for the entire table
-- [Global Filtering](./framework/react/guide/global-filtering) - Filter rows based on search values for the entire table
-- [Row Aggregation](./framework/react/guide/aggregation) - Calculate summary values for grouped, root, or custom row sets
-- [Row Expanding](./framework/react/guide/expanding) - Expand/collapse rows (sub-rows)
-- [Row Pagination](./framework/react/guide/pagination) - Paginate rows
-- [Row Pinning](./framework/react/guide/row-pinning) - Pin (Freeze) rows to the top or bottom of the table
-- [Row Selection](./framework/react/guide/row-selection) - Select/deselect rows (checkboxes)
-- [Row Sorting](./framework/react/guide/sorting) - Sort rows by column values
+- [セル選択](./framework/react/guide/cell-selection) - スプレッドシートのように、セルを長方形の範囲で選択する
+- [セル結合](./framework/react/guide/cell-spanning) - 本体の隣り合うセルを、行方向または列方向に結合する
+- [列フィルタリング](./framework/react/guide/column-filtering) - 列ごとの検索値で行を絞り込む
+- [列のグループ化](./framework/react/guide/grouping) - 1つ以上の列の値で行をグループ化する
+- [列の並べ替え](./framework/react/guide/column-ordering) - 列の順序を動的に変更する
+- [列の固定](./framework/react/guide/column-pinning) - 列をテーブルの左端または右端に固定する
+- [列幅の変更](./framework/react/guide/column-resizing) - ユーザーがドラッグハンドルで列幅を変えられるようにする
+- [列幅](./framework/react/guide/column-sizing) - 列の幅を動的に変更する
+- [列の表示切り替え](./framework/react/guide/column-visibility) - 列を表示・非表示にする
+- [ファセット](./framework/react/guide/column-faceting) - 列またはテーブル全体について、一意な値や最小値・最大値を一覧する
+- [グローバルフィルタリング](./framework/react/guide/global-filtering) - テーブル全体に対する検索値で行を絞り込む
+- [行の集計](./framework/react/guide/aggregation) - グループ化した行、ルートの行、または任意の行の集合について集計値を計算する
+- [行の展開](./framework/react/guide/expanding) - 行（サブ行）を展開・折りたたむ
+- [行のページネーション](./framework/react/guide/pagination) - 行をページに分ける
+- [行の固定](./framework/react/guide/row-pinning) - 行をテーブルの上端または下端に固定する
+- [行選択](./framework/react/guide/row-selection) - 行を選択・選択解除する（チェックボックス）
+- [行のソート](./framework/react/guide/sorting) - 列の値で行をソートする
 
 
-## Composition {#composition}
+## 組み合わせ {#composition}
 
-Headless doesn't just mean "bring your own styles". Because you own the markup, the event handlers, and (optionally) the state, TanStack Table composes cleanly with whatever else your table needs:
+ヘッドレスとは、単に「スタイルは自分で用意する」という意味ではありません。マークアップもイベントハンドラーも、（必要なら）状態も自分のものなので、TanStack Table はテーブルに必要な他の要素ときれいに組み合わせられます。
 
-- **Your own state**: Any slice of table state (sorting, filters, pagination, etc.) can be lifted out of the table and managed however you like: in your framework's state, in a global store, or even in the URL.
-- **Your own features**: Custom features let you add your own state and APIs directly to the table instance, right alongside the built-in ones. See the Custom Features guide for your framework.
-- **Your own logic**: Anything else (fancy interactions, analytics, drag and drop, etc.) is just code you write around the table. There is no black box to fight against.
+- **自分の状態**: テーブルの状態のどの部分（ソート、フィルター、ページネーションなど）でも、テーブルの外に持ち上げて好きなように管理できます。フレームワークの状態でも、グローバルなストアでも、URL でもかまいません。
+- **自分の機能**: カスタム機能を使うと、独自の状態や API をテーブルインスタンスに直接追加できます。組み込みの機能と同じように並べて使えます。詳しくは、お使いのフレームワーク向けのカスタム機能のガイドを参照してください。
+- **自分のロジック**: それ以外のこと（凝ったインタラクション、アナリティクス、ドラッグ＆ドロップなど）は、テーブルのまわりに自分で書くコードにすぎません。相手にしなければならないブラックボックスはありません。
 
-This also makes it easy to pair TanStack Table with other TanStack libraries:
+そのため、TanStack Table は他の TanStack ライブラリとも組み合わせやすくなっています。
 
-- [TanStack Virtual](https://tanstack.com/virtual/latest) - Virtualize thousands of rows or columns without changing any table logic (see the Virtualization guide for your framework)
-- [TanStack Query](https://tanstack.com/query/latest) - Fetch and cache server-side data for manual pagination, sorting, and filtering
-- [TanStack Form](https://tanstack.com/form/latest) - Build editable cells and inline row editing with validation
-- [TanStack Pacer](https://tanstack.com/pacer/latest) - Debounce or throttle filter inputs and other rapid-fire interactions
-- [TanStack Hotkeys](https://tanstack.com/hotkeys/latest) - Add type-safe keyboard shortcuts for table navigation and actions
-- [TanStack Store](https://tanstack.com/store/latest) - Already powers table state under the hood; provide your own atoms to take full control of any state slice
+- [TanStack Virtual](https://tanstack.com/virtual/latest) - テーブルのロジックを一切変えずに、数千の行や列を仮想化する（お使いのフレームワーク向けの仮想化のガイドを参照）
+- [TanStack Query](https://tanstack.com/query/latest) - 手動のページネーション、ソート、フィルタリングのために、サーバーサイドのデータを取得してキャッシュする
+- [TanStack Form](https://tanstack.com/form/latest) - バリデーション付きで、編集できるセルや行のインライン編集を作る
+- [TanStack Pacer](https://tanstack.com/pacer/latest) - フィルターの入力など、立て続けに起こるインタラクションをデバウンスまたはスロットルする
+- [TanStack Hotkeys](https://tanstack.com/hotkeys/latest) - テーブルの移動や操作に、型安全なキーボードショートカットを追加する
+- [TanStack Store](https://tanstack.com/store/latest) - もともと内部でテーブルの状態を支えています。独自のアトムを渡せば、状態のどの部分でも完全に制御できます
 
-## Get Started {#get-started}
+## はじめる {#get-started}
 
-Ready to build something? Head to the Quick Start for your framework, then explore the runnable examples:
+さっそく作ってみませんか？ お使いのフレームワーク向けのクイックスタートに進み、実際に動くサンプルを見てみてください。
 
-- [React Quick Start](./framework/react/quick-start)
-- [Kitchen Sink example](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink) - Most of the built-in features working together in one table
+- [React クイックスタート](./framework/react/quick-start)
+- [全部入り（Kitchen Sink）のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink) - 組み込みの機能のほとんどを1つのテーブルで組み合わせたもの
 
-Using a component library? These examples pair TanStack Table with popular React component libraries, with both a basic version and an advanced (kitchen sink) version for each:
+コンポーネントライブラリを使っていますか？ 次のサンプルは、TanStack Table を人気の React コンポーネントライブラリと組み合わせたものです。それぞれ基本版と応用版（全部入り）があります。
 
-- ShadCN (Base UI): [Basic Example](https://tanstack.com/table/latest/docs/framework/react/examples/lib-shadcn-base) | [Advanced Example](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-shadcn-base)
-- ShadCN (Radix UI): [Basic Example](https://tanstack.com/table/latest/docs/framework/react/examples/lib-shadcn-radix) | [Advanced Example](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-shadcn-radix)
-- HeroUI: [Basic Example](https://tanstack.com/table/latest/docs/framework/react/examples/lib-hero-ui) | [Advanced Example](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-hero-ui)
-- React Aria: [Basic Example](https://tanstack.com/table/latest/docs/framework/react/examples/lib-react-aria) | [Advanced Example](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-react-aria)
-- Material UI: [Basic Example](https://tanstack.com/table/latest/docs/framework/react/examples/lib-material-ui) | [Advanced Example](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-material-ui)
-- Mantine: [Basic Example](https://tanstack.com/table/latest/docs/framework/react/examples/lib-mantine) | [Advanced Example](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-mantine)
-- Chakra UI: [Basic Example](https://tanstack.com/table/latest/docs/framework/react/examples/lib-chakra-ui) | [Advanced Example](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-chakra-ui)
-
+- ShadCN (Base UI): [基本のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/lib-shadcn-base) | [応用のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-shadcn-base)
+- ShadCN (Radix UI): [基本のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/lib-shadcn-radix) | [応用のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-shadcn-radix)
+- HeroUI: [基本のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/lib-hero-ui) | [応用のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-hero-ui)
+- React Aria: [基本のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/lib-react-aria) | [応用のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-react-aria)
+- Material UI: [基本のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/lib-material-ui) | [応用のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-material-ui)
+- Mantine: [基本のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/lib-mantine) | [応用のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-mantine)
+- Chakra UI: [基本のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/lib-chakra-ui) | [応用のサンプル](https://tanstack.com/table/latest/docs/framework/react/examples/kitchen-sink-chakra-ui)
