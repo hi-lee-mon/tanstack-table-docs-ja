@@ -3,44 +3,44 @@ id: Cell_FeatureMap
 title: Cell_FeatureMap
 ---
 
-Defined in: [types/Cell.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L15)
+定義元: [types/Cell.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L15)
 
-## Properties
+## プロパティ {#properties}
 
-### cellSelectionFeature
+### cellSelectionFeature {#cellselectionfeature}
 
 ```ts
 cellSelectionFeature: Cell_CellSelection;
 ```
 
-Defined in: [types/Cell.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L16)
+定義元: [types/Cell.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L16)
 
 ***
 
-### cellSpanningFeature
+### cellSpanningFeature {#cellspanningfeature}
 
 ```ts
 cellSpanningFeature: Cell_CellSpanning;
 ```
 
-Defined in: [types/Cell.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L17)
+定義元: [types/Cell.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L17)
 
 ***
 
-### columnGroupingFeature
+### columnGroupingFeature {#columngroupingfeature}
 
 ```ts
 columnGroupingFeature: Cell_ColumnGrouping;
 ```
 
-Defined in: [types/Cell.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L18)
+定義元: [types/Cell.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L18)
 
 ***
 
-### rowAggregationFeature
+### rowAggregationFeature {#rowaggregationfeature}
 
 ```ts
 rowAggregationFeature: Cell_RowAggregation;
 ```
 
-Defined in: [types/Cell.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L19)
+定義元: [types/Cell.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L19)

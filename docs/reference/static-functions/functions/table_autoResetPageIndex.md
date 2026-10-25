@@ -7,35 +7,33 @@ title: table_autoResetPageIndex
 function table_autoResetPageIndex<TFeatures, TData>(table): void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L40)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L40)
 
-Resets the page index when a page-altering change should return to page 0.
+ページの内容を変える変更でページ 0 に戻すべきときに、ページ番号をリセットします。
 
-The reset runs when `autoResetAll`, `autoResetPageIndex`, or the default
-client-side pagination behavior allows it. Manual pagination opts out unless
-the reset options explicitly opt back in.
+リセットは、`autoResetAll`、`autoResetPageIndex`、またはクライアントサイドでのページネーションの既定の動作が許可する場合に実行されます。手動のページネーションでは、リセットのオプションで明示的に有効にしない限り実行されません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_autoResetPageIndex(table)

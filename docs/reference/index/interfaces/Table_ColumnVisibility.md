@@ -3,163 +3,162 @@ id: Table_ColumnVisibility
 title: Table_ColumnVisibility
 ---
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L30)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L30)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getIsAllColumnsVisible
+### getIsAllColumnsVisible {#getisallcolumnsvisible}
 
 ```ts
 getIsAllColumnsVisible: () => boolean;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L37)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L37)
 
-Checks whether every leaf column is currently visible.
+すべての末端の列が現在表示されているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### getIsSomeColumnsVisible
+### getIsSomeColumnsVisible {#getissomecolumnsvisible}
 
 ```ts
 getIsSomeColumnsVisible: () => boolean;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L41)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L41)
 
-Checks whether at least one leaf column is currently visible.
+少なくとも1つの末端の列が現在表示されているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
 ***
 
-### getToggleAllColumnsVisibilityHandler
+### getToggleAllColumnsVisibilityHandler {#gettoggleallcolumnsvisibilityhandler}
 
 ```ts
 getToggleAllColumnsVisibilityHandler: () => (event) => void;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L45)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L45)
 
-Creates a checkbox-style handler that shows or hides all columns.
+すべての列の表示・非表示を切り替える、チェックボックス用のハンドラーを作成します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 (`event`) => `void`
 
 ***
 
-### getVisibleFlatColumns
+### getVisibleFlatColumns {#getvisibleflatcolumns}
 
 ```ts
 getVisibleFlatColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:50](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L50)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:50](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L50)
 
-Lists visible columns in flat table order, including parent columns that
-have visible descendants.
+表示中の列を、テーブルの平坦な順で並べます。表示中の子孫を持つ親の列も含みます。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getVisibleLeafColumns
+### getVisibleLeafColumns {#getvisibleleafcolumns}
 
 ```ts
 getVisibleLeafColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L54)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L54)
 
-Lists visible leaf columns in the order used for row cells and headers.
+表示中の末端の列を、行のセルとヘッダーで使う順で並べます。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### resetColumnVisibility
+### resetColumnVisibility {#resetcolumnvisibility}
 
 ```ts
 resetColumnVisibility: (defaultState?) => void;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L60)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L60)
 
-Resets `columnVisibility` to `initialState.columnVisibility`.
+`columnVisibility` を `initialState.columnVisibility` に戻します。
 
-Pass `true` to ignore initial state and reset to `{}`.
+`true` を渡すと、初期状態を無視して `{}` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 `void`
 
 ***
 
-### setColumnVisibility
+### setColumnVisibility {#setcolumnvisibility}
 
 ```ts
 setColumnVisibility: (updater) => void;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:64](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L64)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:64](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L64)
 
-Updates column visibility state with a next map or updater function.
+次のマップかアップデーター関数で、列の表示の状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`ColumnVisibilityState`](../type-aliases/ColumnVisibilityState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `void`
 
 ***
 
-### toggleAllColumnsVisible
+### toggleAllColumnsVisible {#toggleallcolumnsvisible}
 
 ```ts
 toggleAllColumnsVisible: (value?) => void;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L68)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L68)
 
-Toggles the visibility of all columns.
+すべての列の表示を切り替えます。
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### value?
+##### value? {#value}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-7}
 
 `void`

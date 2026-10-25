@@ -7,34 +7,33 @@ title: table_lastPage
 function table_lastPage<TFeatures, TData>(table): void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:377](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L377)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:377](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L377)
 
-Moves the table to the last known page.
+テーブルを、わかっている最後のページに移動します。
 
-Unknown, empty, and non-finite page counts do not have a navigable last
-page, so this does nothing for those states.
+ページ数が不明、0、有限でない場合は移動できる最後のページがないので、その場合は何もしません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_lastPage(table)

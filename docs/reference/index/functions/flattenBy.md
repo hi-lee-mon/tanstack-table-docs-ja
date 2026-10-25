@@ -7,28 +7,28 @@ title: flattenBy
 function flattenBy<TNode>(arr, getChildren): TNode[];
 ```
 
-Defined in: [utils.ts:264](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L264)
+定義元: [utils.ts:264](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L264)
 
-Flattens a tree of nodes by recursively reading child nodes.
+子ノードを再帰的に読み取り、ノードのツリーを平坦化します。
 
-The original nodes are preserved in depth-first order.
+元のノードは深さ優先の順で保持されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TNode
+### TNode {#tnode}
 
 `TNode`
 
-## Parameters
+## パラメーター {#parameters}
 
-### arr
+### arr {#arr}
 
 `TNode`[]
 
-### getChildren
+### getChildren {#getchildren}
 
 (`item`) => `TNode`[]
 
-## Returns
+## 戻り値 {#returns}
 
 `TNode`[]

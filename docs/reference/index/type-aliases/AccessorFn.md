@@ -7,33 +7,32 @@ title: AccessorFn
 type AccessorFn<TData, TValue> = (originalRow, index) => TValue;
 ```
 
-Defined in: [types/ColumnDef.ts:53](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L53)
+定義元: [types/ColumnDef.ts:53](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L53)
 
-Reads a cell value from an original row object.
+元の行オブジェクトからセルの値を読み取ります。
 
-The row index is provided for accessors that need stable position-aware
-derived values.
+位置に応じた、安定した派生値が必要なアクセサーのために、行のインデックスも渡されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](CellData.md) = [`CellData`](CellData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### originalRow
+### originalRow {#originalrow}
 
 `TData`
 
-### index
+### index {#index}
 
 `number`
 
-## Returns
+## 戻り値 {#returns}
 
 `TValue`

@@ -7,4 +7,4 @@ title: Atoms_All
 type Atoms_All = { [K in keyof TableState_All]?: ReadonlyAtom<TableState_All[K]> };
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L81)
+定義元: [core/table/coreTablesFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L81)

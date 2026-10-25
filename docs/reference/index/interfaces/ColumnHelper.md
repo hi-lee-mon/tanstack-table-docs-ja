@@ -3,55 +3,55 @@ id: ColumnHelper
 title: ColumnHelper
 ---
 
-Defined in: [helpers/columnHelper.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L13)
+定義元: [helpers/columnHelper.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L13)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### accessor
+### accessor {#accessor}
 
 ```ts
 accessor: <TAccessor, TValue>(accessor, column) => TAccessor extends AccessorFn<TData> ? AccessorFnColumnDef<TFeatures, TData, TValue> : AccessorKeyColumnDef<TFeatures, TData, TValue>;
 ```
 
-Defined in: [helpers/columnHelper.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L25)
+定義元: [helpers/columnHelper.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L25)
 
-Creates a data column definition with an accessor key or function to extract the cell value.
+セルの値を取り出すアクセサーのキーまたは関数を持つ、データ列の定義を作成します。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-1}
 
-##### TAccessor
+##### TAccessor {#taccessor}
 
 `TAccessor` *extends* `string` \| [`AccessorFn`](../type-aliases/AccessorFn.md)\<`TData`\>
 
-##### TValue
+##### TValue {#tvalue}
 
 `TValue` *extends* `unknown`
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### accessor
+##### accessor {#accessor-1}
 
 `TAccessor`
 
-##### column
+##### column {#column}
 
 `TAccessor` *extends* [`AccessorFn`](../type-aliases/AccessorFn.md)\<`TData`\> ? [`DisplayColumnDef`](../type-aliases/DisplayColumnDef.md)\<`TFeatures`, `TData`, `TValue`\> : [`IdentifiedColumnDef`](../type-aliases/IdentifiedColumnDef.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `TAccessor` *extends* [`AccessorFn`](../type-aliases/AccessorFn.md)\<`TData`\> ? [`AccessorFnColumnDef`](../type-aliases/AccessorFnColumnDef.md)\<`TFeatures`, `TData`, `TValue`\> : [`AccessorKeyColumnDef`](../type-aliases/AccessorKeyColumnDef.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Example
+#### 例 {#example}
 
 ```ts
 helper.accessor('firstName', { cell: (info) => info.getValue() })
@@ -60,34 +60,34 @@ helper.accessor((row) => row.lastName, { id: 'lastName' })
 
 ***
 
-### columns
+### columns {#columns}
 
 ```ts
 columns: <TColumns>(columns) => ColumnDef<TFeatures, TData, any>[] & [...TColumns[]];
 ```
 
-Defined in: [helpers/columnHelper.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L48)
+定義元: [helpers/columnHelper.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L48)
 
-Wraps an array of column definitions to preserve each column's individual TValue type.
-Uses variadic tuple types to infer element types before checking constraints, preventing type widening.
+列定義の配列を包み、各列の TValue の型を個別に保ちます。
+可変長タプル型を使い、制約を確かめる前に要素の型を推論することで、型が広がるのを防ぎます。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-2}
 
-##### TColumns
+##### TColumns {#tcolumns}
 
 `TColumns` *extends* readonly [`ColumnDef`](../type-aliases/ColumnDef.md)\<`TFeatures`, `TData`, `any`\>[]
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### columns
+##### columns {#columns-1}
 
 \[`...TColumns[]`\]
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`ColumnDef`](../type-aliases/ColumnDef.md)\<`TFeatures`, `TData`, `any`\>[] & \[`...TColumns[]`\]
 
-#### Example
+#### 例 {#example-1}
 
 ```ts
 helper.columns([helper.accessor('firstName', {}), helper.accessor('age', {})])
@@ -95,27 +95,27 @@ helper.columns([helper.accessor('firstName', {}), helper.accessor('age', {})])
 
 ***
 
-### display
+### display {#display}
 
 ```ts
 display: (column) => DisplayColumnDef<TFeatures, TData, unknown>;
 ```
 
-Defined in: [helpers/columnHelper.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L58)
+定義元: [helpers/columnHelper.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L58)
 
-Creates a display column definition for non-data columns like actions or row selection.
+操作ボタンや行選択のような、データを持たない表示用の列の定義を作成します。
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### column
+##### column {#column-1}
 
 [`DisplayColumnDef`](../type-aliases/DisplayColumnDef.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 [`DisplayColumnDef`](../type-aliases/DisplayColumnDef.md)\<`TFeatures`, `TData`, `unknown`\>
 
-#### Example
+#### 例 {#example-2}
 
 ```ts
 helper.display({ id: 'actions', header: 'Actions', cell: () => <button>Edit</button> })
@@ -123,27 +123,27 @@ helper.display({ id: 'actions', header: 'Actions', cell: () => <button>Edit</but
 
 ***
 
-### group
+### group {#group}
 
 ```ts
 group: (column) => GroupColumnDef<TFeatures, TData, unknown>;
 ```
 
-Defined in: [helpers/columnHelper.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L75)
+定義元: [helpers/columnHelper.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L75)
 
-Creates a group column definition that contains nested child columns.
+入れ子の子の列を持つ、グループ列の定義を作成します。
 
-#### Parameters
+#### パラメーター {#parameters-3}
 
-##### column
-
-[`GroupColumnDef`](../type-aliases/GroupColumnDef.md)\<`TFeatures`, `TData`, `unknown`\>
-
-#### Returns
+##### column {#column-2}
 
 [`GroupColumnDef`](../type-aliases/GroupColumnDef.md)\<`TFeatures`, `TData`, `unknown`\>
 
-#### Example
+#### 戻り値 {#returns-3}
+
+[`GroupColumnDef`](../type-aliases/GroupColumnDef.md)\<`TFeatures`, `TData`, `unknown`\>
+
+#### 例 {#example-3}
 
 ```ts
 helper.group({

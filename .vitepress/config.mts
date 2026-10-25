@@ -94,9 +94,9 @@ const ITEM_LABELS: Record<string, string> = {
   'Row Selection': '行選択',
   Sorting: 'ソート',
   Virtualization: '仮想化',
-  'Core API Reference': 'コア API リファレンス（英語）',
+  'Core API Reference': 'コア API リファレンス',
   'React API Reference': 'React API リファレンス',
-  'Static Functions Overview': '静的関数の概要（英語）',
+  'Static Functions Overview': '静的関数の概要',
   'Legacy API Overview': 'レガシー API の概要',
 }
 

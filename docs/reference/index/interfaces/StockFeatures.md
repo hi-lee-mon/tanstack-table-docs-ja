@@ -3,174 +3,174 @@ id: StockFeatures
 title: StockFeatures
 ---
 
-Defined in: [features/stockFeatures.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L19)
+定義元: [features/stockFeatures.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L19)
 
-## Properties
+## プロパティ {#properties}
 
-### cellSelectionFeature
+### cellSelectionFeature {#cellselectionfeature}
 
 ```ts
 cellSelectionFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L20)
+定義元: [features/stockFeatures.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L20)
 
 ***
 
-### cellSpanningFeature
+### cellSpanningFeature {#cellspanningfeature}
 
 ```ts
 cellSpanningFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L21)
+定義元: [features/stockFeatures.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L21)
 
 ***
 
-### columnFacetingFeature
+### columnFacetingFeature {#columnfacetingfeature}
 
 ```ts
 columnFacetingFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L22)
+定義元: [features/stockFeatures.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L22)
 
 ***
 
-### columnFilteringFeature
+### columnFilteringFeature {#columnfilteringfeature}
 
 ```ts
 columnFilteringFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L23)
+定義元: [features/stockFeatures.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L23)
 
 ***
 
-### columnGroupingFeature
+### columnGroupingFeature {#columngroupingfeature}
 
 ```ts
 columnGroupingFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L24)
+定義元: [features/stockFeatures.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L24)
 
 ***
 
-### columnOrderingFeature
+### columnOrderingFeature {#columnorderingfeature}
 
 ```ts
 columnOrderingFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L25)
+定義元: [features/stockFeatures.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L25)
 
 ***
 
-### columnPinningFeature
+### columnPinningFeature {#columnpinningfeature}
 
 ```ts
 columnPinningFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L26)
+定義元: [features/stockFeatures.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L26)
 
 ***
 
-### columnResizingFeature
+### columnResizingFeature {#columnresizingfeature}
 
 ```ts
 columnResizingFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L27)
+定義元: [features/stockFeatures.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L27)
 
 ***
 
-### columnSizingFeature
+### columnSizingFeature {#columnsizingfeature}
 
 ```ts
 columnSizingFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L28)
+定義元: [features/stockFeatures.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L28)
 
 ***
 
-### columnVisibilityFeature
+### columnVisibilityFeature {#columnvisibilityfeature}
 
 ```ts
 columnVisibilityFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L29)
+定義元: [features/stockFeatures.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L29)
 
 ***
 
-### globalFilteringFeature
+### globalFilteringFeature {#globalfilteringfeature}
 
 ```ts
 globalFilteringFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L30)
+定義元: [features/stockFeatures.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L30)
 
 ***
 
-### rowAggregationFeature
+### rowAggregationFeature {#rowaggregationfeature}
 
 ```ts
 rowAggregationFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L31)
+定義元: [features/stockFeatures.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L31)
 
 ***
 
-### rowExpandingFeature
+### rowExpandingFeature {#rowexpandingfeature}
 
 ```ts
 rowExpandingFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L32)
+定義元: [features/stockFeatures.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L32)
 
 ***
 
-### rowPaginationFeature
+### rowPaginationFeature {#rowpaginationfeature}
 
 ```ts
 rowPaginationFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L33)
+定義元: [features/stockFeatures.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L33)
 
 ***
 
-### rowPinningFeature
+### rowPinningFeature {#rowpinningfeature}
 
 ```ts
 rowPinningFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L34)
+定義元: [features/stockFeatures.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L34)
 
 ***
 
-### rowSelectionFeature
+### rowSelectionFeature {#rowselectionfeature}
 
 ```ts
 rowSelectionFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L35)
+定義元: [features/stockFeatures.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L35)
 
 ***
 
-### rowSortingFeature
+### rowSortingFeature {#rowsortingfeature}
 
 ```ts
 rowSortingFeature: TableFeature;
 ```
 
-Defined in: [features/stockFeatures.ts:36](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L36)
+定義元: [features/stockFeatures.ts:36](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L36)

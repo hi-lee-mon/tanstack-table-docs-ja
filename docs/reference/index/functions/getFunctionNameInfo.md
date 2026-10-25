@@ -7,40 +7,39 @@ title: getFunctionNameInfo
 function getFunctionNameInfo(staticFnName, splitBy?): object;
 ```
 
-Defined in: [utils.ts:524](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L524)
+定義元: [utils.ts:524](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L524)
 
-Assumes that a function name is in the format of `parentName_fnKey` and returns the `fnKey` and `fnName` in the format of `parentName.fnKey`.
+関数名が `parentName_fnKey` の形式であるとみなし、`fnKey` と、`parentName.fnKey` 形式の `fnName` を返します。
 
-Splits on the first separator only, so an internal API name such as
-`table__expandRows` has the `fnKey` `_expandRows`.
+最初の区切り文字でだけ分割します。そのため、`table__expandRows` のような内部 API 名の `fnKey` は `_expandRows` になります。
 
-## Parameters
+## パラメーター {#parameters}
 
-### staticFnName
+### staticFnName {#staticfnname}
 
 `string`
 
-### splitBy?
+### splitBy? {#splitby}
 
 `"."` \| `"_"`
 
-## Returns
+## 戻り値 {#returns}
 
 `object`
 
-### fnKey
+### fnKey {#fnkey}
 
 ```ts
 fnKey: string;
 ```
 
-### fnName
+### fnName {#fnname}
 
 ```ts
 fnName: string;
 ```
 
-### parentName
+### parentName {#parentname}
 
 ```ts
 parentName: string;

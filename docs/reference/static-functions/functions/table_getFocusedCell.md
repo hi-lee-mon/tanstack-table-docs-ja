@@ -9,36 +9,34 @@ function table_getFocusedCell<TFeatures, TData>(table):
   | undefined;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:728](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L728)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:728](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L728)
 
-Returns the active cell, i.e. the anchor of the most recent operation.
+アクティブなセル、つまり直近の操作のアンカーを返します。
 
-Focus is derived rather than stored: in spreadsheet semantics, dragging from
-A1 to C5 leaves the active cell at A1, so the active range's anchor already
-is the active cell.
+フォーカスは保存せずに導き出します。スプレッドシートの考え方では、A1 から C5 までドラッグしてもアクティブなセルは A1 のままなので、アクティブな範囲のアンカーがそのままアクティブなセルになります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
   \| [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `any`\>
   \| `undefined`
 
-## Example
+## 例 {#example}
 
 ```ts
 const cell = table_getFocusedCell(table)

@@ -7,6 +7,6 @@ title: columnResizingFeature
 const columnResizingFeature: TableFeature;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.ts#L19)
+定義元: [features/column-resizing/columnResizingFeature.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.ts#L19)
 
-Feature that adds column resizing state, options, and resize handlers.
+列幅の変更の状態とオプション、リサイズ用のハンドラーを追加する機能です。

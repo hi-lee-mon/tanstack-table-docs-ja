@@ -7,38 +7,37 @@ title: column_getCanGlobalFilter
 function column_getCanGlobalFilter<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.utils.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.utils.ts#L20)
+定義元: [features/global-filtering/globalFilteringFeature.utils.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.utils.ts#L20)
 
-Checks whether this accessor column participates in global filtering.
+このアクセサー列がグローバルフィルタリングの対象かどうかを判定します。
 
-The column must have an accessor and pass column-level, table-level, and
-optional `getColumnCanGlobalFilter` checks.
+列がアクセサーを持ち、列、テーブル、そして指定されていれば `getColumnCanGlobalFilter` の判定に通る必要があります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canGlobalFilter = column_getCanGlobalFilter(column)

@@ -3,80 +3,79 @@ id: Column_ColumnOrdering
 title: Column_ColumnOrdering
 ---
 
-Defined in: [features/column-ordering/columnOrderingFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L40)
+定義元: [features/column-ordering/columnOrderingFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L40)
 
-## Properties
+## プロパティ {#properties}
 
-### getIndex
+### getIndex {#getindex}
 
 ```ts
 getIndex: (position?) => number;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L47)
+定義元: [features/column-ordering/columnOrderingFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L47)
 
-Finds this column's zero-based index among visible columns.
+表示中の列の中で、この列の0始まりのインデックスを探します。
 
-Pass `'start'`, `'center'`, or `'end'` to measure within that pinned
-region instead of the full visible leaf order.
+`'start'`、`'center'`、`'end'` を渡すと、表示中の末端の列全体の並びではなく、その固定領域の中で数えます。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### position?
+##### position? {#position}
 
   \| [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `number`
 
 ***
 
-### getIsFirstColumn
+### getIsFirstColumn {#getisfirstcolumn}
 
 ```ts
 getIsFirstColumn: (position?) => boolean;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.types.ts:53](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L53)
+定義元: [features/column-ordering/columnOrderingFeature.types.ts:53](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L53)
 
-Checks whether this column is the first visible column.
+この列が表示中の最初の列かどうかを判定します。
 
-Pass a pinned region to check the first column within that region.
+固定領域を渡すと、その領域内で最初の列かどうかを判定します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### position?
+##### position? {#position-1}
 
   \| [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
 ***
 
-### getIsLastColumn
+### getIsLastColumn {#getislastcolumn}
 
 ```ts
 getIsLastColumn: (position?) => boolean;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L59)
+定義元: [features/column-ordering/columnOrderingFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L59)
 
-Checks whether this column is the last visible column.
+この列が表示中の最後の列かどうかを判定します。
 
-Pass a pinned region to check the last column within that region.
+固定領域を渡すと、その領域内で最後の列かどうかを判定します。
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### position?
+##### position? {#position-2}
 
   \| [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `boolean`

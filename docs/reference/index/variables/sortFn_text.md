@@ -7,8 +7,8 @@ title: sortFn_text
 const sortFn_text: CreatedSortFn<any, any>;
 ```
 
-Defined in: [features/row-sorting/sortFns.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/sortFns.ts#L101)
+定義元: [features/row-sorting/sortFns.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/sortFns.ts#L101)
 
-Sorts rows with the built-in text strategy.
+組み込みのテキストの方式で行をソートします。
 
-This comparator returns ascending-order results; descending order is applied by the sorting row model.
+この比較関数は昇順の結果を返します。降順は、ソート済み行モデルが適用します。

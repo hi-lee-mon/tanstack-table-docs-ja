@@ -3,54 +3,54 @@ id: HeaderContext
 title: HeaderContext
 ---
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L32)
+定義元: [core/headers/coreHeadersFeature.types.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L32)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L40)
+定義元: [core/headers/coreHeadersFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L40)
 
-An instance of a column.
+列のインスタンスです。
 
 ***
 
-### header
+### header {#header}
 
 ```ts
 header: Header<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L44)
+定義元: [core/headers/coreHeadersFeature.types.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L44)
 
-An instance of a header.
+ヘッダーのインスタンスです。
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table<TFeatures, TData>;
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L48)
+定義元: [core/headers/coreHeadersFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L48)
 
-The table instance.
+テーブルインスタンスです。

@@ -9,19 +9,15 @@ type ExtractFilterFnKeys<TFeatures> = IsAny<TFeatures> extends true ?
   | BuiltInFilterFn : TFeatures extends object ? Extract<keyof TFilterFns, string> : keyof FilterFns;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:165](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L165)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:165](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L165)
 
-Resolves the valid string names for `columnDef.filterFn` and
-`options.globalFilterFn` for a feature set.
+機能の組み合わせについて、`columnDef.filterFn` と `options.globalFilterFn` に指定できる文字列の名前を求めます。
 
-When the features object declares a `filterFns` registry
-(`tableFeatures({ ..., filterFns })`), its keys are the only valid names; a
-name is only assignable if a filter function is actually registered for it.
-Otherwise this falls back to the global declaration-merged `FilterFns`
-interface.
+features オブジェクトが `filterFns` レジストリを宣言している場合（`tableFeatures({ ..., filterFns })`）は、そのキーだけが有効な名前になります。実際にフィルター関数が登録されている名前だけを指定できます。
+そうでなければ、グローバルに宣言のマージをした `FilterFns` インターフェースが使われます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)

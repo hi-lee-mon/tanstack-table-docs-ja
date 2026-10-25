@@ -7,37 +7,35 @@ title: getDefaultColumnSizingColumnDef
 function getDefaultColumnSizingColumnDef(): object;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L47)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L47)
 
-Creates the built-in sizing defaults for column definitions.
+列定義のための、組み込みの幅の既定値を作ります。
 
-Columns default to `size: 150`, `minSize: 20`, and
-`maxSize: Number.MAX_SAFE_INTEGER` unless overridden by column definitions or
-table defaults.
+列定義やテーブルの既定値で上書きしない限り、列の既定値は `size: 150`、`minSize: 20`、`maxSize: Number.MAX_SAFE_INTEGER` です。
 
-## Returns
+## 戻り値 {#returns}
 
 `object`
 
-### maxSize
+### maxSize {#maxsize}
 
 ```ts
 maxSize: number = Number.MAX_SAFE_INTEGER;
 ```
 
-### minSize
+### minSize {#minsize}
 
 ```ts
 minSize: number = 20;
 ```
 
-### size
+### size {#size}
 
 ```ts
 size: number = 150;
 ```
 
-## Example
+## 例 {#example}
 
 ```ts
 const defaults = getDefaultColumnSizingColumnDef()

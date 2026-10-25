@@ -3,34 +3,32 @@ id: SelectCellRangeOptions
 title: SelectCellRangeOptions
 ---
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:74](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L74)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:74](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L74)
 
-## Properties
+## プロパティ {#properties}
 
-### ~~additive?~~
+### ~~additive?~~ {#additive}
 
 ```ts
 optional additive?: boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:86](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L86)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:86](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L86)
 
-Whether the range should be added alongside existing ranges rather than
-replacing them. Defaults to `false`.
+範囲を、既存の範囲を置き換えずに追加するかどうかです。既定値は `false` です。
 
-#### Deprecated
+#### 非推奨 {#deprecated}
 
-Use `mode: 'include'` instead.
+代わりに `mode: 'include'` を使ってください。
 
 ***
 
-### mode?
+### mode? {#mode}
 
 ```ts
 optional mode?: CellSelectionRangeMode;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L79)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L79)
 
-Whether to replace the selection, add the range, or subtract the range.
-Defaults to `replace`.
+選択を置き換えるか、範囲を追加するか、範囲を差し引くかを指定します。既定値は `replace` です。

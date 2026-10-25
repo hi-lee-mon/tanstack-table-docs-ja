@@ -7,38 +7,37 @@ title: column_getCanResize
 function column_getCanResize<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.utils.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L48)
+定義元: [features/column-resizing/columnResizingFeature.utils.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L48)
 
-Checks whether this column can start a resize interaction.
+この列でリサイズ操作を始められるかどうかを判定します。
 
-Both `columnDef.enableResizing` and table `enableColumnResizing` default to
-`true`.
+`columnDef.enableResizing` とテーブルの `enableColumnResizing` は、どちらも既定値が `true` です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canResize = column_getCanResize(column)

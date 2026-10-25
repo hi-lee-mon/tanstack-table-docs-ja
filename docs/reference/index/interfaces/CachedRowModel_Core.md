@@ -3,28 +3,28 @@ id: CachedRowModel_Core
 title: CachedRowModel_Core
 ---
 
-Defined in: [core/row-models/coreRowModelsFeature.types.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L20)
+定義元: [core/row-models/coreRowModelsFeature.types.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L20)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### coreRowModel
+### coreRowModel {#corerowmodel}
 
 ```ts
 coreRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [core/row-models/coreRowModelsFeature.types.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L24)
+定義元: [core/row-models/coreRowModelsFeature.types.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L24)
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>

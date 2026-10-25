@@ -3,36 +3,36 @@ id: Cell_ColumnGrouping
 title: Cell_ColumnGrouping
 ---
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L79)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L79)
 
-## Properties
+## プロパティ {#properties}
 
-### getIsGrouped
+### getIsGrouped {#getisgrouped}
 
 ```ts
 getIsGrouped: () => boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:83](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L83)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:83](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L83)
 
-Checks whether this cell represents the active grouping column.
+このセルがアクティブなグループ化の列を表しているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### getIsPlaceholder
+### getIsPlaceholder {#getisplaceholder}
 
 ```ts
 getIsPlaceholder: () => boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:87](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L87)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:87](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L87)
 
-Checks whether this cell is hidden as a grouping placeholder.
+このセルがグループ化のプレースホルダーとして隠されているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`

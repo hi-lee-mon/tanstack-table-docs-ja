@@ -7,27 +7,26 @@ title: row_getDisplayIndex
 function row_getDisplayIndex<TFeatures, TData>(row): number;
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:14](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L14)
+定義元: [core/rows/coreRowsFeature.utils.ts:14](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L14)
 
-Returns this row's zero-based position in the current pre-pagination row
-model. Rows outside that model return `-1`.
+現在のページネーション前の行モデルにおける、この行の0始まりの位置を返します。その行モデルに含まれない行は `-1` を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`

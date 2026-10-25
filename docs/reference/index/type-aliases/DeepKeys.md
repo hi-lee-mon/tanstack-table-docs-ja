@@ -9,14 +9,14 @@ type DeepKeys<T, TDepth> = TDepth["length"] extends 5 ? never : unknown extends 
   | DeepKeysPrefix<T, AllowedIndexes<T>, TDepth> : T extends any[] ? DeepKeys<T[number], [...TDepth, any]> : T extends Date ? never : T extends object ? keyof T & string | DeepKeysPrefix<T, keyof T, TDepth> : never;
 ```
 
-Defined in: [types/type-utils.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L54)
+定義元: [types/type-utils.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L54)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### T
+### T {#t}
 
 `T`
 
-### TDepth
+### TDepth {#tdepth}
 
 `TDepth` *extends* `any`[] = \[\]

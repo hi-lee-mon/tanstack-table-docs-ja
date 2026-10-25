@@ -3,14 +3,14 @@ id: TableState_RowSelection
 title: TableState_RowSelection
 ---
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L30)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L30)
 
-## Properties
+## プロパティ {#properties}
 
-### rowSelection
+### rowSelection {#rowselection}
 
 ```ts
 rowSelection: RowSelectionState;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L31)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L31)

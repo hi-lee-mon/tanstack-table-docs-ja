@@ -3,53 +3,54 @@ id: TableOptions_Rows
 title: TableOptions_Rows
 ---
 
-Defined in: [core/rows/coreRowsFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L107)
+定義元: [core/rows/coreRowsFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L107)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`TableOptions_Core`](TableOptions_Core.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getRowId?
+### getRowId? {#getrowid}
 
 ```ts
 optional getRowId?: (originalRow, index, parent?) => string;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:115](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L115)
+定義元: [core/rows/coreRowsFeature.types.ts:115](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L115)
 
-This optional function is used to derive a unique ID for any given row. If not provided the row's index is used (nested rows join together with `.` using their grandparents' index e.g. `index.index.index`). If you need to identify individual rows that are originating from any server-side operations, it's suggested you use this function to return an ID that makes sense regardless of network IO/ambiguity e.g. a userId, taskId, database ID field, etc.
+各行の一意な ID を導き出すための関数です（省略可能）。指定しない場合は行のインデックスが使われます（入れ子の行は、祖先のインデックスを `.` でつないだもの、たとえば `index.index.index` になります）。
+サーバーサイドの処理から来た個々の行を識別する必要がある場合は、この関数で、通信やあいまいさに左右されない意味のある ID（userId、taskId、データベースの ID フィールドなど）を返すことをおすすめします。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### originalRow
+##### originalRow {#originalrow}
 
 `TData`
 
-##### index
+##### index {#index}
 
 `number`
 
-##### parent?
+##### parent? {#parent}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `string`
 
-#### Example
+#### 例 {#example}
 
 ```ts
 getRowId: row => row.userId
@@ -57,31 +58,31 @@ getRowId: row => row.userId
 
 ***
 
-### getSubRows?
+### getSubRows? {#getsubrows}
 
 ```ts
 optional getSubRows?: (originalRow, index) => readonly TData[] | undefined;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L124)
+定義元: [core/rows/coreRowsFeature.types.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L124)
 
-This optional function is used to access the sub rows for any given row. If you are using nested rows, you will need to use this function to return the sub rows object (or undefined) from the row.
+各行のサブ行を取り出すための関数です（省略可能）。入れ子の行を使う場合は、この関数で行からサブ行のオブジェクト（または undefined）を返す必要があります。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### originalRow
+##### originalRow {#originalrow-1}
 
 `TData`
 
-##### index
+##### index {#index-1}
 
 `number`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 readonly `TData`[] \| `undefined`
 
-#### Example
+#### 例 {#example-1}
 
 ```ts
 getSubRows: row => row.subRows

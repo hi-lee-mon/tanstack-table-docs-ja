@@ -14,52 +14,52 @@ function constructRow<TFeatures, TData>(
 parentId?): Row<TFeatures, TData>;
 ```
 
-Defined in: [core/rows/constructRow.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/constructRow.ts#L31)
+定義元: [core/rows/constructRow.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/constructRow.ts#L31)
 
-Constructs a row instance from normalized table internals.
+正規化されたテーブルの内部データから行のインスタンスを作成します。
 
-This wires core properties, feature prototype APIs, and instance data used by table rendering and row-model operations.
+コアのプロパティ、機能のプロトタイプ API、インスタンスデータを結び付けます。これらはテーブルの描画と行モデルの処理で使われます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### id
+### id {#id}
 
 `string`
 
-### original
+### original {#original}
 
 `TData`
 
-### rowIndex
+### rowIndex {#rowindex}
 
 `number`
 
-### depth
+### depth {#depth}
 
 `number`
 
-### subRows?
+### subRows? {#subrows}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
-### parentId?
+### parentId? {#parentid}
 
 `string`
 
-## Returns
+## 戻り値 {#returns}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>

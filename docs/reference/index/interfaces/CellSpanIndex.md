@@ -3,75 +3,69 @@ id: CellSpanIndex
 title: CellSpanIndex
 ---
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L13)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L13)
 
-The table's cell span index for the rows that are currently rendered.
+現在描画されている行についての、テーブルのセル結合インデックスです。
 
-Cell APIs read this; it is exposed for devtools and for virtualizers that
-need to know where a run's anchor sits relative to the rendered window.
+Cell API がこれを読みます。Devtools や、結合の起点が描画中の範囲のどこにあるかを知る必要がある仮想化ライブラリのために公開されています。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### colSpans
+### colSpans {#colspans}
 
 ```ts
 colSpans: (Int32Array<ArrayBufferLike> | undefined)[];
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L23)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L23)
 
-Column spans per render-order row position, indexed by render-order column
-position. Holes are the common case: only rows that declared a column span
-get an array. In a stored array, the spanning cell holds its span and the
-cells it covers hold `0`; every other cell holds `1`.
+描画順の行位置ごとの列の結合数で、描画順の列位置をインデックスにしています。
+ほとんどの行は空きになります。列の結合を宣言した行だけが配列を持ちます。保存された配列では、結合するセルが結合数を、覆われるセルが `0` を持ち、それ以外のセルは `1` を持ちます。
 
 ***
 
-### columnIndexes
+### columnIndexes {#columnindexes}
 
 ```ts
 columnIndexes: Record<string, number>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L27)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L27)
 
-Render-order index for every visible column id. Hidden columns are absent.
+表示中の各列 ID に対する描画順のインデックスです。非表示の列は含まれません。
 
 ***
 
-### rows
+### rows {#rows}
 
 ```ts
 rows: readonly Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L40)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L40)
 
-The exact ordered rows this index was built from, in render order:
-top-pinned rows, then the (paginated) center rows, then bottom-pinned
-rows. Cell reads compare against this to reject stale row positions.
+このインデックスの元になった行を、描画順どおりに並べたものです。上に固定された行、（ページ分割された）中央の行、下に固定された行の順です。
+セルを読むときはこれと比べて、古くなった行位置をはじきます。
 
 ***
 
-### rowSpans
+### rowSpans {#rowspans}
 
 ```ts
 rowSpans: Record<string, Int32Array>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L34)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L34)
 
-Row spans per column id, indexed by render-order row position. Only columns
-that produced at least one run longer than one row appear here; a missing
-column means every cell in it spans exactly one row. In a stored array, the
-run's anchor row holds the run length and the rows it covers hold `0`.
+列 ID ごとの行の結合数で、描画順の行位置をインデックスにしています。
+2行以上にわたる結合が1つでもできた列だけがここに入ります。列がない場合は、その列のどのセルもちょうど1行分です。保存された配列では、結合の起点の行が結合の長さを、覆われる行が `0` を持ちます。

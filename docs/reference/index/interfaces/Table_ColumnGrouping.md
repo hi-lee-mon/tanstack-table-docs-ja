@@ -3,85 +3,84 @@ id: Table_ColumnGrouping
 title: Table_ColumnGrouping
 ---
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:118](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L118)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:118](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L118)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### \_orderGroupedColumns
+### \_orderGroupedColumns {#_ordergroupedcolumns}
 
 ```ts
 _orderGroupedColumns: (columns) => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:128](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L128)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:128](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L128)
 
 **`Internal`**
 
-Moves grouped leaf columns as `groupedColumnMode` sets. Leaf column order
-falls back to it when the column ordering feature is not registered.
+グループ化された末端の列を、`groupedColumnMode` の設定どおりに移動します。列の並べ替えの機能が登録されていない場合、末端の列の並び順はこれを使います。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### columns
+##### columns {#columns}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### resetGrouping
+### resetGrouping {#resetgrouping}
 
 ```ts
 resetGrouping: (defaultState?) => void;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:136](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L136)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:136](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L136)
 
-Resets `grouping` to `initialState.grouping`.
+`grouping` を `initialState.grouping` に戻します。
 
-Pass `true` to ignore initial state and reset to `[]`.
+`true` を渡すと、初期状態を無視して `[]` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `void`
 
 ***
 
-### setGrouping
+### setGrouping {#setgrouping}
 
 ```ts
 setGrouping: (updater) => void;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:140](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L140)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:140](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L140)
 
-Updates grouping state with a next ordered id array or updater function.
+次の順序付きの ID 配列かアップデーター関数で、グループ化の状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`GroupingState`](../type-aliases/GroupingState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `void`

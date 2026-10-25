@@ -7,6 +7,6 @@ title: rowAggregationFeature
 const rowAggregationFeature: TableFeature;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.ts#L15)
+定義元: [features/row-aggregation/rowAggregationFeature.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.ts#L15)
 
-Independent aggregation feature for grouped values and root/custom-row totals.
+グループの値と、ルートや任意の行の合計のための、独立した集計機能です。

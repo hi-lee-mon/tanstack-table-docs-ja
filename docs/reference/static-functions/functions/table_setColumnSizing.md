@@ -7,38 +7,37 @@ title: table_setColumnSizing
 function table_setColumnSizing<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:330](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L330)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:330](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L330)
 
-Routes a committed column sizing updater through the table's sizing handler.
+確定した列幅のアップデーターを、テーブルの列幅のハンドラーに通します。
 
-The updater may be a next size map or a function of the previous map,
-matching the instance `table.setColumnSizing` behavior.
+アップデーターには、次の幅のマップか、前のマップを受け取る関数を指定できます。インスタンスの `table.setColumnSizing` と同じ動作です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`ColumnSizingState`](../../index/type-aliases/ColumnSizingState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setColumnSizing(table, (old) => ({ ...old, age: 96 }))

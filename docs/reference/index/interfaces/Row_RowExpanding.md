@@ -3,90 +3,90 @@ id: Row_RowExpanding
 title: Row_RowExpanding
 ---
 
-Defined in: [features/row-expanding/rowExpandingFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L13)
+定義元: [features/row-expanding/rowExpandingFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L13)
 
-## Properties
+## プロパティ {#properties}
 
-### getCanExpand
+### getCanExpand {#getcanexpand}
 
 ```ts
 getCanExpand: () => boolean;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.types.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L17)
+定義元: [features/row-expanding/rowExpandingFeature.types.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L17)
 
-Checks whether this row can be expanded.
+この行を展開できるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### getIsAllParentsExpanded
+### getIsAllParentsExpanded {#getisallparentsexpanded}
 
 ```ts
 getIsAllParentsExpanded: () => boolean;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.types.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L21)
+定義元: [features/row-expanding/rowExpandingFeature.types.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L21)
 
-Checks whether every ancestor of this row is expanded.
+この行の祖先がすべて展開されているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
 ***
 
-### getIsExpanded
+### getIsExpanded {#getisexpanded}
 
 ```ts
 getIsExpanded: () => boolean;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L25)
+定義元: [features/row-expanding/rowExpandingFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L25)
 
-Checks whether this row is currently expanded.
+この行が現在展開されているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `boolean`
 
 ***
 
-### getToggleExpandedHandler
+### getToggleExpandedHandler {#gettoggleexpandedhandler}
 
 ```ts
 getToggleExpandedHandler: () => () => void;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L29)
+定義元: [features/row-expanding/rowExpandingFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L29)
 
-Creates a handler that toggles this row's expanded state.
+この行の展開状態を切り替えるハンドラーを作成します。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 () => `void`
 
 ***
 
-### toggleExpanded
+### toggleExpanded {#toggleexpanded}
 
 ```ts
 toggleExpanded: (expanded?) => void;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.types.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L33)
+定義元: [features/row-expanding/rowExpandingFeature.types.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L33)
 
-Toggles the expanded state (or sets it if `expanded` is provided) for the row.
+この行の展開状態を切り替えます（`expanded` を渡した場合はその値に設定します）。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### expanded?
+##### expanded? {#expanded}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `void`

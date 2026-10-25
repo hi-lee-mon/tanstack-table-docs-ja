@@ -10,50 +10,46 @@ function shouldAutoRemoveFilter<TFeatures, TData, TValue>(
    column?): boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.utils.ts:348](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L348)
+定義元: [features/column-filtering/columnFilteringFeature.utils.ts:348](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L348)
 
-Returns whether a filter value should be removed from filter state.
+フィルター値をフィルターの状態から取り除くべきかどうかを返します。
 
-`undefined` always removes: it is the universal "clear this filter"
-sentinel used by `setFilterValue(undefined)` and functional updaters. For
-any other value, a filter function's `autoRemove` hook is authoritative
-when provided, so custom filter functions can keep values (such as empty
-strings) that the default heuristic would drop. Without an `autoRemove`
-hook, empty strings are removed.
+`undefined` は常に取り除かれます。これは、`setFilterValue(undefined)` や関数のアップデーターで使う、すべてに共通の「このフィルターを解除する」という目印です。
+それ以外の値では、フィルター関数の `autoRemove` フックがあればそれが優先されます。そのため、カスタムのフィルター関数は、既定の判定なら捨てられる値（空文字列など）を残せます。`autoRemove` フックがなければ、空文字列は取り除かれます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### filterFn?
+### filterFn? {#filterfn}
 
 [`FilterFn`](../../index/interfaces/FilterFn.md)\<`TFeatures`, `TData`\>
 
-### value?
+### value? {#value}
 
 `any`
 
-### column?
+### column? {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const removeFilter = shouldAutoRemoveFilter(filterFn, value, column)

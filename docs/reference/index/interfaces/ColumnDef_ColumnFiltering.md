@@ -3,41 +3,40 @@ id: ColumnDef_ColumnFiltering
 title: ColumnDef_ColumnFiltering
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:177](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L177)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:177](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L177)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### enableColumnFilter?
+### enableColumnFilter? {#enablecolumnfilter}
 
 ```ts
 optional enableColumnFilter?: boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:187](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L187)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:187](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L187)
 
-Enables this column to participate in column-specific filtering.
+この列を、列ごとのフィルタリングの対象にします。
 
-Defaults to `true`; table-level `enableColumnFilters` and `enableFilters`
-must also allow filtering.
+既定値は `true` です。テーブル側の `enableColumnFilters` と `enableFilters` でもフィルタリングが許可されている必要があります。
 
 ***
 
-### filterFn?
+### filterFn? {#filterfn}
 
 ```ts
 optional filterFn?: FilterFnOption<TFeatures, TData>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:191](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L191)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:191](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L191)
 
-The filter function to use with this column. Can be the name of a built-in filter function or a custom filter function.
+この列で使うフィルター関数です。組み込みのフィルター関数の名前か、カスタムのフィルター関数を指定できます。

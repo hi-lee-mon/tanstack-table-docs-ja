@@ -7,6 +7,6 @@ title: coreColumnsFeature
 const coreColumnsFeature: TableFeature;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.ts#L18)
+定義元: [core/columns/coreColumnsFeature.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.ts#L18)
 
-Core feature that builds the column tree and exposes table/column APIs.
+列ツリーを組み立て、テーブルと列の API を公開するコア機能です。

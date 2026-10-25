@@ -3,17 +3,16 @@ id: TableOptions_CellSpanning
 title: TableOptions_CellSpanning
 ---
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L131)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L131)
 
-## Properties
+## プロパティ {#properties}
 
-### enableCellSpanning?
+### enableCellSpanning? {#enablecellspanning}
 
 ```ts
 optional enableCellSpanning?: boolean;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:136](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L136)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:136](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L136)
 
-Allows cells to span rows or columns. When `false` every cell reports a
-span of `1` and the span index is never built. Defaults to `true`.
+セルが行や列をまたいで結合できるようにします。`false` の場合、どのセルも結合数 `1` を返し、結合インデックスは作られません。既定値は `true` です。

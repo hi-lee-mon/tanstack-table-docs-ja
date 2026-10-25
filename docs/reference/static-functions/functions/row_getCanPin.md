@@ -7,34 +7,33 @@ title: row_getCanPin
 function row_getCanPin<TFeatures, TData>(row): boolean;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.utils.ts:214](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L214)
+定義元: [features/row-pinning/rowPinningFeature.utils.ts:214](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L214)
 
-Checks whether this row can be pinned.
+この行を固定できるかどうかを判定します。
 
-`options.enableRowPinning` may be a boolean or a row predicate; it defaults
-to `true`.
+`options.enableRowPinning` には、真偽値か行の述語関数を指定できます。既定値は `true` です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canPin = row_getCanPin(row)

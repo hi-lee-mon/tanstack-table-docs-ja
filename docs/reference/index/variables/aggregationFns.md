@@ -7,79 +7,78 @@ title: aggregationFns
 const aggregationFns: object;
 ```
 
-Defined in: [features/row-aggregation/aggregationFns.ts:387](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L387)
+定義元: [features/row-aggregation/aggregationFns.ts:387](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L387)
 
-Full built-in registry. Register individual definitions for tree-shaking.
+組み込みのレジストリ全体です。ツリーシェイキングのためには、定義を個別に登録してください。
 
-## Type Declaration
+## 型宣言 {#type-declaration}
 
-### ~~count~~
+### ~~count~~ {#count}
 
 ```ts
 count: AggregationFnDef<any, any, unknown, number> = aggregationFn_count;
 ```
 
-### ~~extent~~
+### ~~extent~~ {#extent}
 
 ```ts
 extent: AggregationFnDef<any, any, unknown, [RangeValue | undefined, RangeValue | undefined]> = aggregationFn_extent;
 ```
 
-### ~~first~~
+### ~~first~~ {#first}
 
 ```ts
 first: AggregationFnDef<any, any, unknown, unknown> = aggregationFn_first;
 ```
 
-### ~~last~~
+### ~~last~~ {#last}
 
 ```ts
 last: AggregationFnDef<any, any, unknown, unknown> = aggregationFn_last;
 ```
 
-### ~~max~~
+### ~~max~~ {#max}
 
 ```ts
 max: AggregationFnDef<any, any, unknown, RangeValue | undefined> = aggregationFn_max;
 ```
 
-### ~~mean~~
+### ~~mean~~ {#mean}
 
 ```ts
 mean: AggregationFnDef<any, any, unknown, number | undefined> = aggregationFn_mean;
 ```
 
-### ~~median~~
+### ~~median~~ {#median}
 
 ```ts
 median: AggregationFnDef<any, any, unknown, number | undefined> = aggregationFn_median;
 ```
 
-### ~~min~~
+### ~~min~~ {#min}
 
 ```ts
 min: AggregationFnDef<any, any, unknown, RangeValue | undefined> = aggregationFn_min;
 ```
 
-### ~~sum~~
+### ~~sum~~ {#sum}
 
 ```ts
 sum: AggregationFnDef<any, any, unknown, number> = aggregationFn_sum;
 ```
 
-### ~~unique~~
+### ~~unique~~ {#unique}
 
 ```ts
 unique: AggregationFnDef<any, any, unknown, unknown[]> = aggregationFn_unique;
 ```
 
-### ~~uniqueCount~~
+### ~~uniqueCount~~ {#uniquecount}
 
 ```ts
 uniqueCount: AggregationFnDef<any, any, unknown, number> = aggregationFn_uniqueCount;
 ```
 
-## Deprecated
+## 非推奨 {#deprecated}
 
-Import individual `aggregationFn_*` definitions instead for a
-smaller bundle. This registry remains available for compatibility.
+バンドルを小さくするには、代わりに `aggregationFn_*` の定義を個別に import してください。このレジストリは互換性のために残されています。

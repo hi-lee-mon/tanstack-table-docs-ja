@@ -7,33 +7,33 @@ title: row_getIsSomeSelected
 function row_getIsSomeSelected<TFeatures, TData>(row): boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.utils.ts:589](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L589)
+定義元: [features/row-selection/rowSelectionFeature.utils.ts:589](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L589)
 
-Checks whether some, but not all, selectable descendants are selected.
+選択可能な子孫が、すべてではなく一部だけ選択されているかどうかを判定します。
 
-This supports indeterminate selection UI for parent rows.
+親の行で、中間状態（indeterminate）の選択の UI を表示するために使えます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const partial = row_getIsSomeSelected(row)

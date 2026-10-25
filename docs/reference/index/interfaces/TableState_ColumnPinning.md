@@ -3,14 +3,14 @@ id: TableState_ColumnPinning
 title: TableState_ColumnPinning
 ---
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L22)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L22)
 
-## Properties
+## プロパティ {#properties}
 
-### columnPinning
+### columnPinning {#columnpinning}
 
 ```ts
 columnPinning: ColumnPinningState;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L23)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L23)

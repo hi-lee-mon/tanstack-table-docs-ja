@@ -7,33 +7,33 @@ title: table_firstPage
 function table_firstPage<TFeatures, TData>(table): void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:359](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L359)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:359](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L359)
 
-Moves the table to the first page.
+テーブルを最初のページに移動します。
 
-This is a convenience wrapper around `table_setPageIndex(table, 0)`.
+`table_setPageIndex(table, 0)` を手軽に呼ぶためのラッパーです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_firstPage(table)

@@ -7,37 +7,37 @@ title: column_getCanHide
 function column_getCanHide<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.utils.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L114)
+定義元: [features/column-visibility/columnVisibilityFeature.utils.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L114)
 
-Checks whether this column is allowed to be hidden.
+この列を非表示にできるかどうかを判定します。
 
-Both `columnDef.enableHiding` and table `enableHiding` default to `true`.
+`columnDef.enableHiding` とテーブルの `enableHiding` は、どちらも既定値が `true` です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canHide = column_getCanHide(column)

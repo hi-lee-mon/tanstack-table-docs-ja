@@ -7,6 +7,6 @@ title: coreCellsFeature
 const coreCellsFeature: TableFeature;
 ```
 
-Defined in: [core/cells/coreCellsFeature.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.ts#L12)
+定義元: [core/cells/coreCellsFeature.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.ts#L12)
 
-Core feature that adds cell value, render, and context APIs.
+セルの値、描画、コンテキストの API を追加するコア機能です。

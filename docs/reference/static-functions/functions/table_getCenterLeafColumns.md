@@ -7,33 +7,33 @@ title: table_getCenterLeafColumns
 function table_getCenterLeafColumns<TFeatures, TData>(table): Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.utils.ts:735](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L735)
+定義元: [features/column-pinning/columnPinningFeature.utils.ts:735](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L735)
 
-Resolves leaf columns that are not pinned to either logical side.
+論理的な先頭にも末尾にも固定されていない末端の列を求めます。
 
-Start- and end-pinned ids are removed from `table.getAllLeafColumns()`.
+`table.getAllLeafColumns()` から、先頭と末尾に固定された ID を取り除きます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Column`](../../index/type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const columns = table_getCenterLeafColumns(table)

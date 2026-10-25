@@ -7,16 +7,16 @@ title: Table
 type Table<TFeatures, TData> = Table_Core<TFeatures, TData> & ExtractFeatureMapTypes<TFeatures, Table_FeatureMap<TFeatures, TData>>;
 ```
 
-Defined in: [types/Table.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Table.ts#L79)
+定義元: [types/Table.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Table.ts#L79)
 
-The table object that includes both the core table functionality and the features that are enabled via the `features` table option.
+テーブルのコアの機能と、テーブルの `features` オプションで有効にした機能の両方を持つテーブルオブジェクトです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)

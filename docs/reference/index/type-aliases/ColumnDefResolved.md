@@ -7,26 +7,26 @@ title: ColumnDefResolved
 type ColumnDefResolved<TFeatures, TData, TValue> = Partial<UnionToIntersection<ColumnDef<TFeatures, TData, TValue>>> & object;
 ```
 
-Defined in: [types/ColumnDef.ts:257](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L257)
+定義元: [types/ColumnDef.ts:257](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L257)
 
-## Type Declaration
+## 型宣言 {#type-declaration}
 
-### accessorKey?
+### accessorKey? {#accessorkey}
 
 ```ts
 optional accessorKey?: string & object | keyof TData;
 ```
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](CellData.md) = [`CellData`](CellData.md)

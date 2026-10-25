@@ -3,464 +3,457 @@ id: Table_ColumnPinning
 title: Table_ColumnPinning
 ---
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:98](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L98)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:98](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L98)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### \_orderByColumnPinning
+### \_orderByColumnPinning {#_orderbycolumnpinning}
 
 ```ts
 _orderByColumnPinning: <TItem>(items, getColumnId, getItemsByColumnId?) => TItem[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L114)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L114)
 
 **`Internal`**
 
-Orders items that each belong to a leaf column, such as visible leaf
-columns or a row's visible cells: start-pinned items in pinning order, then
-unpinned items in their given order, then end-pinned items in pinning
-order. The core headers, row visible cells, and cell selection order
-through it.
+表示中の末端の列や行の表示中のセルのように、それぞれが末端の列に属する要素を並べます。並び順は、先頭に固定された要素（固定した順）、固定されていない要素（渡された順）、末尾に固定された要素（固定した順）です。
+コアのヘッダー、行の表示中のセル、セル選択は、これを通して並べられます。
 
-`getItemsByColumnId` can return an existing lookup of the same items. It
-is only read when something is pinned.
+`getItemsByColumnId` は、同じ要素の既存の検索用マップを返してもかまいません。これが読まれるのは、何かが固定されているときだけです。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-1}
 
-##### TItem
+##### TItem {#titem}
 
 `TItem`
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### items
+##### items {#items}
 
 `TItem`[]
 
-##### getColumnId
+##### getColumnId {#getcolumnid}
 
 (`item`) => `string`
 
-##### getItemsByColumnId?
+##### getItemsByColumnId? {#getitemsbycolumnid}
 
 () => `Record`\<`string`, `TItem` \| `undefined`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `TItem`[]
 
 ***
 
-### getCenterFlatHeaders
+### getCenterFlatHeaders {#getcenterflatheaders}
 
 ```ts
 getCenterFlatHeaders: () => Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L123)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L123)
 
-Builds flat center-region headers for columns that are not pinned,
-including parent headers.
+固定されていない列について、中央領域の平坦なヘッダーを作ります。親のヘッダーも含みます。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getCenterFooterGroups
+### getCenterFooterGroups {#getcenterfootergroups}
 
 ```ts
 getCenterFooterGroups: () => HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:127](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L127)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:127](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L127)
 
-Builds footer groups for the center region of unpinned columns.
+固定されていない列の中央領域について、フッターグループを作ります。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getCenterHeaderGroups
+### getCenterHeaderGroups {#getcenterheadergroups}
 
 ```ts
 getCenterHeaderGroups: () => HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L131)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L131)
 
-Builds header groups for the center region of unpinned columns.
+固定されていない列の中央領域について、ヘッダーグループを作ります。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getCenterLeafColumns
+### getCenterLeafColumns {#getcenterleafcolumns}
 
 ```ts
 getCenterLeafColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L135)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L135)
 
-Gets leaf columns that are not pinned start or end.
+先頭にも末尾にも固定されていない末端の列を取得します。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getCenterLeafHeaders
+### getCenterLeafHeaders {#getcenterleafheaders}
 
 ```ts
 getCenterLeafHeaders: () => Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L139)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L139)
 
-Builds center-region leaf headers for columns that are not pinned.
+固定されていない列について、中央領域の末端のヘッダーを作ります。
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getCenterVisibleLeafColumns
+### getCenterVisibleLeafColumns {#getcentervisibleleafcolumns}
 
 ```ts
 getCenterVisibleLeafColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:143](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L143)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:143](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L143)
 
-Lists visible leaf columns in the unpinned center region.
+固定されていない中央領域にある、表示中の末端の列を並べます。
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getEndFlatHeaders
+### getEndFlatHeaders {#getendflatheaders}
 
 ```ts
 getEndFlatHeaders: () => Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:177](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L177)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:177](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L177)
 
-Builds flat logical end-region headers for pinned columns, including parent
-headers.
+固定された列について、論理的な末尾領域の平坦なヘッダーを作ります。親のヘッダーも含みます。
 
-#### Returns
+#### 戻り値 {#returns-7}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getEndFooterGroups
+### getEndFooterGroups {#getendfootergroups}
 
 ```ts
 getEndFooterGroups: () => HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:181](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L181)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:181](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L181)
 
-Builds footer groups for logical end-pinned columns.
+論理的な末尾に固定された列について、フッターグループを作ります。
 
-#### Returns
+#### 戻り値 {#returns-8}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getEndHeaderGroups
+### getEndHeaderGroups {#getendheadergroups}
 
 ```ts
 getEndHeaderGroups: () => HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:185](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L185)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:185](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L185)
 
-Builds header groups for logical end-pinned columns.
+論理的な末尾に固定された列について、ヘッダーグループを作ります。
 
-#### Returns
+#### 戻り値 {#returns-9}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getEndLeafColumns
+### getEndLeafColumns {#getendleafcolumns}
 
 ```ts
 getEndLeafColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:189](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L189)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:189](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L189)
 
-Gets leaf columns pinned to the logical end region in pinning-state order.
+論理的な末尾領域に固定された末端の列を、固定の状態の順に取得します。
 
-#### Returns
+#### 戻り値 {#returns-10}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getEndLeafHeaders
+### getEndLeafHeaders {#getendleafheaders}
 
 ```ts
 getEndLeafHeaders: () => Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:193](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L193)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:193](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L193)
 
-Builds leaf headers for logical end-pinned columns.
+論理的な末尾に固定された列について、末端のヘッダーを作ります。
 
-#### Returns
+#### 戻り値 {#returns-11}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getEndVisibleLeafColumns
+### getEndVisibleLeafColumns {#getendvisibleleafcolumns}
 
 ```ts
 getEndVisibleLeafColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:197](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L197)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:197](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L197)
 
-Lists visible leaf columns in the logical end pinned region.
+論理的な末尾の固定領域にある、表示中の末端の列を並べます。
 
-#### Returns
+#### 戻り値 {#returns-12}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getIsSomeColumnsPinned
+### getIsSomeColumnsPinned {#getissomecolumnspinned}
 
 ```ts
 getIsSomeColumnsPinned: (position?) => boolean;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:147](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L147)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:147](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L147)
 
-Checks whether any columns are pinned, optionally limited to one side.
+固定されている列があるかどうかを判定します。片側だけに絞ることもできます。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### position?
+##### position? {#position}
 
 [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
 
-#### Returns
+#### 戻り値 {#returns-13}
 
 `boolean`
 
 ***
 
-### getPinnedLeafColumns
+### getPinnedLeafColumns {#getpinnedleafcolumns}
 
 ```ts
 getPinnedLeafColumns: (position) => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:211](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L211)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:211](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L211)
 
-Returns pinned leaf columns for the requested pinning region.
+指定した固定領域の、固定された末端の列を返します。
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### position
+##### position {#position-1}
 
   \| [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-#### Returns
+#### 戻り値 {#returns-14}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getPinnedVisibleLeafColumns
+### getPinnedVisibleLeafColumns {#getpinnedvisibleleafcolumns}
 
 ```ts
 getPinnedVisibleLeafColumns: (position) => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:217](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L217)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:217](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L217)
 
-Lists visible leaf columns for the requested pinning region.
+指定した固定領域の、表示中の末端の列を並べます。
 
-#### Parameters
+#### パラメーター {#parameters-3}
 
-##### position
+##### position {#position-2}
 
   \| [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-#### Returns
+#### 戻り値 {#returns-15}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getStartFlatHeaders
+### getStartFlatHeaders {#getstartflatheaders}
 
 ```ts
 getStartFlatHeaders: () => Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:152](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L152)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:152](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L152)
 
-Builds flat logical start-region headers for pinned columns, including parent
-headers.
+固定された列について、論理的な先頭領域の平坦なヘッダーを作ります。親のヘッダーも含みます。
 
-#### Returns
+#### 戻り値 {#returns-16}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getStartFooterGroups
+### getStartFooterGroups {#getstartfootergroups}
 
 ```ts
 getStartFooterGroups: () => HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:156](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L156)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:156](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L156)
 
-Builds footer groups for logical start-pinned columns.
+論理的な先頭に固定された列について、フッターグループを作ります。
 
-#### Returns
+#### 戻り値 {#returns-17}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getStartHeaderGroups
+### getStartHeaderGroups {#getstartheadergroups}
 
 ```ts
 getStartHeaderGroups: () => HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:160](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L160)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:160](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L160)
 
-Builds header groups for logical start-pinned columns.
+論理的な先頭に固定された列について、ヘッダーグループを作ります。
 
-#### Returns
+#### 戻り値 {#returns-18}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getStartLeafColumns
+### getStartLeafColumns {#getstartleafcolumns}
 
 ```ts
 getStartLeafColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:164](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L164)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:164](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L164)
 
-Gets leaf columns pinned to the logical start region in pinning-state order.
+論理的な先頭領域に固定された末端の列を、固定の状態の順に取得します。
 
-#### Returns
+#### 戻り値 {#returns-19}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getStartLeafHeaders
+### getStartLeafHeaders {#getstartleafheaders}
 
 ```ts
 getStartLeafHeaders: () => Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:168](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L168)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:168](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L168)
 
-Builds leaf headers for logical start-pinned columns.
+論理的な先頭に固定された列について、末端のヘッダーを作ります。
 
-#### Returns
+#### 戻り値 {#returns-20}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getStartVisibleLeafColumns
+### getStartVisibleLeafColumns {#getstartvisibleleafcolumns}
 
 ```ts
 getStartVisibleLeafColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:172](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L172)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:172](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L172)
 
-Lists visible leaf columns in the logical start pinned region.
+論理的な先頭の固定領域にある、表示中の末端の列を並べます。
 
-#### Returns
+#### 戻り値 {#returns-21}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### resetColumnPinning
+### resetColumnPinning {#resetcolumnpinning}
 
 ```ts
 resetColumnPinning: (defaultState?) => void;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:203](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L203)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:203](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L203)
 
-Resets `columnPinning` to `initialState.columnPinning`.
+`columnPinning` を `initialState.columnPinning` に戻します。
 
-Pass `true` to ignore initial state and reset to empty start/end arrays.
+`true` を渡すと、初期状態を無視して、先頭と末尾が空の配列の状態に戻します。
 
-#### Parameters
+#### パラメーター {#parameters-4}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-22}
 
 `void`
 
 ***
 
-### setColumnPinning
+### setColumnPinning {#setcolumnpinning}
 
 ```ts
 setColumnPinning: (updater) => void;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:207](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L207)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:207](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L207)
 
-Updates column pinning state with a next state or updater function.
+次の状態かアップデーター関数で、列の固定の状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-5}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`ColumnPinningState`](ColumnPinningState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-23}
 
 `void`

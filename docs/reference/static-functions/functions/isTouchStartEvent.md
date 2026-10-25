@@ -7,24 +7,23 @@ title: isTouchStartEvent
 function isTouchStartEvent(e): e is TouchEvent;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.utils.ts:431](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L431)
+定義元: [features/column-resizing/columnResizingFeature.utils.ts:431](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L431)
 
-Narrows an unknown event to a `touchstart` event.
+型のわからないイベントを、`touchstart` イベントに絞り込みます。
 
-Column resizing uses this before reading touch coordinates and installing
-touch-specific listeners.
+列幅の変更では、タッチの座標を読み、タッチ用のリスナーを登録する前にこれを使います。
 
-## Parameters
+## パラメーター {#parameters}
 
-### e
+### e {#e}
 
 `unknown`
 
-## Returns
+## 戻り値 {#returns}
 
 `e is TouchEvent`
 
-## Example
+## 例 {#example}
 
 ```ts
 const isTouch = isTouchStartEvent(event)

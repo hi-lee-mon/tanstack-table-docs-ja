@@ -3,65 +3,64 @@ id: Column_ColumnFaceting
 title: Column_ColumnFaceting
 ---
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:5](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L5)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:5](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L5)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getFacetedMinMaxValues
+### getFacetedMinMaxValues {#getfacetedminmaxvalues}
 
 ```ts
 getFacetedMinMaxValues: () => [number, number] | undefined;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L12)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L12)
 
-Computes min/max numeric facet values for this column.
+この列の、数値のファセットの最小値と最大値を計算します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 \[`number`, `number`\] \| `undefined`
 
 ***
 
-### getFacetedRowModel
+### getFacetedRowModel {#getfacetedrowmodel}
 
 ```ts
 getFacetedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L19)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L19)
 
-Computes the row model used to derive this column's facet values.
+この列のファセット値を導き出すための行モデルを計算します。
 
-Other column filters are applied, while this column's own filter is
-excluded.
+他の列のフィルターは適用し、この列自身のフィルターは除外します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getFacetedUniqueValues
+### getFacetedUniqueValues {#getfaceteduniquevalues}
 
 ```ts
 getFacetedUniqueValues: () => Map<any, number>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L23)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L23)
 
-Computes unique facet values and occurrence counts for this column.
+この列の、一意なファセット値とその出現回数を計算します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `Map`\<`any`, `number`\>

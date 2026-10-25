@@ -7,8 +7,8 @@ title: filterFn_between
 const filterFn_between: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:261](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L261)
+定義元: [features/column-filtering/filterFns.ts:261](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L261)
 
-Keeps rows whose value falls between an exclusive min/max pair.
+値が、両端を含まない最小値・最大値の組の間にある行を残します。
 
-Blank range endpoints are treated as open-ended.
+範囲の端が空の場合は、その側に制限がないものとして扱います。

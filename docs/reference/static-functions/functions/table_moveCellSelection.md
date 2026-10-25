@@ -7,38 +7,37 @@ title: table_moveCellSelection
 function table_moveCellSelection<TFeatures, TData>(table, direction): void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:1007](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1007)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:1007](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1007)
 
-Moves the selection one step in a direction, collapsing it to a single cell.
+選択を指定した方向に1つ動かし、1つのセルにまとめます。
 
-With nothing selected, this selects the first selectable cell so keyboard
-navigation has somewhere to start.
+何も選択されていない場合は、キーボード操作の起点ができるよう、最初の選択可能なセルを選択します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### direction
+### direction {#direction}
 
 [`CellSelectionDirection`](../../index/type-aliases/CellSelectionDirection.md)
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_moveCellSelection(table, 'down')

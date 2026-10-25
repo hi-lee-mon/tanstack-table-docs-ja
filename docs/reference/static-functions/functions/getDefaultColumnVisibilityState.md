@@ -7,18 +7,17 @@ title: getDefaultColumnVisibilityState
 function getDefaultColumnVisibilityState(): ColumnVisibilityState;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.utils.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L28)
+定義元: [features/column-visibility/columnVisibilityFeature.utils.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L28)
 
-Creates the default column visibility state.
+列の表示の、既定の状態を作ります。
 
-The feature default is an empty object, where missing column ids are treated
-as visible. Reset APIs use this value when `defaultState` is `true`.
+機能の既定値は空のオブジェクトで、含まれない列 ID は表示されているものとして扱います。`defaultState` が `true` のとき、リセット API はこの値を使います。
 
-## Returns
+## 戻り値 {#returns}
 
 [`ColumnVisibilityState`](../../index/type-aliases/ColumnVisibilityState.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const visibility = getDefaultColumnVisibilityState()

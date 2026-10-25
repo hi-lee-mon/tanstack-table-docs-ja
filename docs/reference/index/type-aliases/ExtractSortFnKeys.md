@@ -9,18 +9,15 @@ type ExtractSortFnKeys<TFeatures> = IsAny<TFeatures> extends true ?
   | BuiltInSortFn : TFeatures extends object ? Extract<keyof TSortFns, string> : keyof SortFns;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L106)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L106)
 
-Resolves the valid string names for `columnDef.sortFn` for a feature set.
+機能の組み合わせについて、`columnDef.sortFn` に指定できる文字列の名前を求めます。
 
-When the features object declares a `sortFns` registry
-(`tableFeatures({ ..., sortFns })`), its keys are the only valid names; a
-name is only assignable if a sorting function is actually registered for it.
-Otherwise this falls back to the global declaration-merged `SortFns`
-interface.
+features オブジェクトが `sortFns` レジストリを宣言している場合（`tableFeatures({ ..., sortFns })`）は、そのキーだけが有効な名前になります。実際にソート関数が登録されている名前だけを指定できます。
+そうでなければ、グローバルに宣言のマージをした `SortFns` インターフェースが使われます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)

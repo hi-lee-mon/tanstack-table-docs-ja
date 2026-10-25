@@ -3,46 +3,46 @@ id: Table_RowModels_Expanded
 title: Table_RowModels_Expanded
 ---
 
-Defined in: [features/row-expanding/rowExpandingFeature.types.ts:128](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L128)
+定義元: [features/row-expanding/rowExpandingFeature.types.ts:128](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L128)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getExpandedRowModel
+### getExpandedRowModel {#getexpandedrowmodel}
 
 ```ts
 getExpandedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L135)
+定義元: [features/row-expanding/rowExpandingFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L135)
 
-Resolves the row model after expanded rows have been flattened into view.
+展開された行を平坦化して表示に含めたあとの行モデルを返します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getPreExpandedRowModel
+### getPreExpandedRowModel {#getpreexpandedrowmodel}
 
 ```ts
 getPreExpandedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.types.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L139)
+定義元: [features/row-expanding/rowExpandingFeature.types.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.types.ts#L139)
 
-Reads the row model immediately before expansion.
+展開の直前の行モデルを読み取ります。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>

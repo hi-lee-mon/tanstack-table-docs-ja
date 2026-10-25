@@ -7,15 +7,14 @@ title: IsAny
 type IsAny<T> = 0 extends 1 & T ? true : false;
 ```
 
-Defined in: [types/TableFeatures.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L24)
+定義元: [types/TableFeatures.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L24)
 
-Detects whether a type is `any`.
+型が `any` かどうかを判定します。
 
-Several feature-map helpers need a separate `any` path so broad generic
-usage still exposes all known feature APIs instead of narrowing to no keys.
+機能マップのヘルパーのいくつかは、`any` 用に別の分岐を必要とします。そうしないと、広いジェネリックな使い方でキーが1つもない型に絞り込まれてしまい、既知の機能の API がすべて公開されなくなるためです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### T
+### T {#t}
 
 `T`

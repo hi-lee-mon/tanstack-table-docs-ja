@@ -7,6 +7,6 @@ title: rowSelectionFeature
 const rowSelectionFeature: TableFeature;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.ts#L37)
+定義元: [features/row-selection/rowSelectionFeature.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.ts#L37)
 
-Feature that adds row selection state and APIs for row and page selection.
+行選択の状態と、行やページ単位の選択のための API を追加する機能です。

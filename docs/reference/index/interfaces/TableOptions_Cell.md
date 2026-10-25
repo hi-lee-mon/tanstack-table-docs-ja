@@ -3,20 +3,20 @@ id: TableOptions_Cell
 title: TableOptions_Cell
 ---
 
-Defined in: [core/cells/coreCellsFeature.types.ts:63](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L63)
+定義元: [core/cells/coreCellsFeature.types.ts:63](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L63)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`TableOptions_Core`](TableOptions_Core.md)
 
-## Properties
+## プロパティ {#properties}
 
-### renderFallbackValue?
+### renderFallbackValue? {#renderfallbackvalue}
 
 ```ts
 optional renderFallbackValue?: any;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:67](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L67)
+定義元: [core/cells/coreCellsFeature.types.ts:67](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L67)
 
-Value used when the desired value is not found in the data.
+目的の値がデータに見つからないときに使う値です。

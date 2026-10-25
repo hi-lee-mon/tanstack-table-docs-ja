@@ -3,23 +3,23 @@ id: ResolvedAggregationFn
 title: ResolvedAggregationFn
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:208](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L208)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:208](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L208)
 
-A validated aggregation entry returned by `column.getAggregationFns()`.
+`column.getAggregationFns()` が返す、検証済みの集計のエントリーです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### aggregationFn
+### aggregationFn {#aggregationfn}
 
 ```ts
 aggregationFn:
@@ -27,18 +27,18 @@ aggregationFn:
   | undefined;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:213](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L213)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:213](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L213)
 
-Resolved definition, or `undefined` when configuration is invalid.
+解決済みの定義です。設定が不正な場合は `undefined` です。
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string | undefined;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:215](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L215)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:215](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L215)
 
-Key used for a multiple result; scalar inline definitions have no id.
+複数の結果で使うキーです。単一の結果のインライン定義には id がありません。

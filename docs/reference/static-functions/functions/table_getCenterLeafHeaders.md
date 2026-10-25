@@ -7,33 +7,33 @@ title: table_getCenterLeafHeaders
 function table_getCenterLeafHeaders<TFeatures, TData>(table): Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.utils.ts:660](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L660)
+定義元: [features/column-pinning/columnPinningFeature.utils.ts:660](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L660)
 
-Collects leaf headers for the center, unpinned region.
+固定されていない中央の領域について、末端のヘッダーを集めます。
 
-Parent headers are filtered out from the center flat header list.
+中央の平坦なヘッダーのリストから、親のヘッダーを取り除きます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Header`](../../index/type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const headers = table_getCenterLeafHeaders(table)

@@ -7,39 +7,37 @@ title: cell_getSelectionEdges
 function cell_getSelectionEdges<TFeatures, TData, TValue>(cell): CellSelectionEdges;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:625](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L625)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:625](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L625)
 
-Returns which sides of this cell sit on the outer boundary of the selection.
+このセルのどの辺が選択範囲の外周に接しているかを返します。
 
-A side is an edge when the neighbouring cell in that direction is not itself
-covered by a range, which is what lets a consumer draw a single outline
-around an arbitrary union of rectangles.
+その方向の隣のセルがどの範囲にも含まれていなければ、その辺は外周です。これにより、使う側は、任意の長方形を合わせた形の周りに1本の枠線を描けます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`CellSelectionEdges`](../../index/interfaces/CellSelectionEdges.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const { top, right, bottom, left } = cell_getSelectionEdges(cell)

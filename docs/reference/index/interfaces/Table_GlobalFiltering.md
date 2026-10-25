@@ -3,92 +3,92 @@ id: Table_GlobalFiltering
 title: Table_GlobalFiltering
 ---
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L69)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L69)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getGlobalAutoFilterFn
+### getGlobalAutoFilterFn {#getglobalautofilterfn}
 
 ```ts
 getGlobalAutoFilterFn: () => FilterFn<TFeatures, TData> | undefined;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L76)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L76)
 
-Currently, this function returns the built-in `includesString` filter function. In future releases, it may return more dynamic filter functions based on the nature of the data provided.
+現在、この関数は組み込みのフィルター関数 `includesString` を返します。今後のリリースでは、渡されたデータの性質に応じて、より動的なフィルター関数を返すようになるかもしれません。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`FilterFn`](FilterFn.md)\<`TFeatures`, `TData`\> \| `undefined`
 
 ***
 
-### getGlobalFilterFn
+### getGlobalFilterFn {#getglobalfilterfn}
 
 ```ts
 getGlobalFilterFn: () => FilterFn<TFeatures, TData> | undefined;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L80)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L80)
 
-Returns the filter function (either user-defined or automatic, depending on configuration) for the global filter.
+グローバルフィルターのフィルター関数を返します（設定によって、利用者が定義したものか自動で決まったもののどちらかです）。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`FilterFn`](FilterFn.md)\<`TFeatures`, `TData`\> \| `undefined`
 
 ***
 
-### resetGlobalFilter
+### resetGlobalFilter {#resetglobalfilter}
 
 ```ts
 resetGlobalFilter: (defaultState?) => void;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:86](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L86)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:86](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L86)
 
-Resets `globalFilter` to `initialState.globalFilter`.
+`globalFilter` を `initialState.globalFilter` に戻します。
 
-Pass `true` to ignore initial state and reset to `undefined`.
+`true` を渡すと、初期状態を無視して `undefined` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `void`
 
 ***
 
-### setGlobalFilter
+### setGlobalFilter {#setglobalfilter}
 
 ```ts
 setGlobalFilter: (updater) => void;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:90](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L90)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:90](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L90)
 
-Updates global filter state with a next value or updater function.
+次の値かアップデーター関数で、グローバルフィルターの状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### updater
+##### updater {#updater}
 
 `any`
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `void`

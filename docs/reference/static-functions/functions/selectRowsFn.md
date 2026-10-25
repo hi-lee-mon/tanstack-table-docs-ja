@@ -7,38 +7,37 @@ title: selectRowsFn
 function selectRowsFn<TFeatures, TData>(rowModel, table): RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.utils.ts:965](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L965)
+定義元: [features/row-selection/rowSelectionFeature.utils.ts:965](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L965)
 
-Builds a row model containing rows selected by the current row selection state.
+現在の行選択の状態で選択されている行を含む、行モデルを作ります。
 
-The result is derived from the supplied row model, so selected ids absent from
-that model are not materialized as rows.
+結果は渡された行モデルから導き出すので、選択された ID のうち、その行モデルにないものは行として作られません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### rowModel
+### rowModel {#rowmodel}
 
 [`RowModel`](../../index/interfaces/RowModel.md)\<`TFeatures`, `TData`\>
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowModel`](../../index/interfaces/RowModel.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const selectedRows = selectRowsFn(rowModel)

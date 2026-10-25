@@ -7,42 +7,39 @@ title: table_toggleAllRowsExpanded
 function table_toggleAllRowsExpanded<TFeatures, TData>(table, expanded?): void;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.utils.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L92)
+定義元: [features/row-expanding/rowExpandingFeature.utils.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L92)
 
-Expands or collapses every row.
+すべての行を展開、または折りたたみます。
 
-Passing `true` stores the special expanded-all state. Passing `false` stores
-an empty map. Omitting the value toggles based on whether all rows are
-currently expanded.
+`true` を渡すと、「すべて展開」を表す特別な状態を保存します。`false` を渡すと、空のマップを保存します。値を省略すると、すべての行が現在展開されているかどうかをもとに切り替えます。
 
-The call is a no-op (no `onExpandedChange`) when no row can expand or when
-the requested state matches the current state exactly.
+展開できる行がない場合や、要求された状態が現在の状態とまったく同じ場合は、何もしません（`onExpandedChange` も呼ばれません）。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### expanded?
+### expanded? {#expanded}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_toggleAllRowsExpanded(table)

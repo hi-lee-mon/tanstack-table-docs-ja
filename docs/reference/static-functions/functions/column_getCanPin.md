@@ -7,38 +7,37 @@ title: column_getCanPin
 function column_getCanPin<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.utils.ts:112](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L112)
+定義元: [features/column-pinning/columnPinningFeature.utils.ts:112](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L112)
 
-Checks whether this column or any of its leaf columns can be pinned.
+この列か、その末端の列のいずれかを固定できるかどうかを判定します。
 
-Column-level `enablePinning` and table `enableColumnPinning` both default to
-`true`; at least one leaf column must allow pinning.
+列の `enablePinning` とテーブルの `enableColumnPinning` は、どちらも既定値が `true` です。少なくとも1つの末端の列が固定を許可している必要があります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canPin = column_getCanPin(column)

@@ -7,18 +7,14 @@ title: constructFilterFn
 function constructFilterFn<TFeatures, TData>(def): CreatedFilterFn<TFeatures, TData>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L41)
+定義元: [features/column-filtering/filterFns.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L41)
 
-Builds a `FilterFn` from a value-level comparator plus optional resolvers.
+値レベルの比較関数と、省略可能なリゾルバーから `FilterFn` を組み立てます。
 
-The `filter` comparator receives the row's data value (already passed
-through `resolveDataValue` when one is defined) and the filter value
-(already passed through `resolveFilterValue` by the table). Keeping
-normalization in the resolvers means a variant of an existing filter
-function only has to swap the resolvers, not re-implement the comparison.
+比較関数 `filter` は、行のデータ値（`resolveDataValue` が定義されていれば、それを通した値）と、フィルター値（テーブルが `resolveFilterValue` を通した値）を受け取ります。
+正規化をリゾルバー側に置いておけば、既存のフィルター関数の派生版を作るときに、比較処理を書き直さずリゾルバーを差し替えるだけで済みます。
 
-The definition is attached to the returned function, so a variant can be
-created by spreading a built-in filter function and overriding what differs:
+定義は戻り値の関数に付いているので、組み込みのフィルター関数をスプレッドして、異なる部分だけを上書きすれば派生版を作れます。
 
 ```ts
 const normalize = (value: unknown) =>
@@ -34,26 +30,25 @@ const includesStringIgnoreDiacritics = constructFilterFn({
 })
 ```
 
-Note: the table applies `resolveFilterValue` once per filter before any rows
-are tested. When calling a filter function directly (outside of a table),
-apply it yourself: `fn(row, columnId, fn.resolveFilterValue?.(value) ?? value)`.
+注意: テーブルは、行を判定する前に、フィルターごとに `resolveFilterValue` を1回だけ適用します。
+テーブルを介さずにフィルター関数を直接呼ぶ場合は、自分で適用してください: `fn(row, columnId, fn.resolveFilterValue?.(value) ?? value)`。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md) = `any`
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-## Parameters
+## パラメーター {#parameters}
 
-### def
+### def {#def}
 
 [`FilterFnDef`](../interfaces/FilterFnDef.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`CreatedFilterFn`](../interfaces/CreatedFilterFn.md)\<`TFeatures`, `TData`\>

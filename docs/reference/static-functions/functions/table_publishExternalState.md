@@ -10,39 +10,37 @@ function table_publishExternalState<TFeatures, TData>(
    compare?): void;
 ```
 
-Defined in: [core/table/coreTablesFeature.utils.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.utils.ts#L73)
+定義元: [core/table/coreTablesFeature.utils.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.utils.ts#L73)
 
-Publishes captured controlled state after a host framework commits.
+ホストのフレームワークがコミットしたあとに、記録しておいた制御された状態を公開します。
 
-Render-phase adapters stage options without synchronizing base atoms, then
-pass the state captured by the committed render here. The commit signal also
-invalidates ownership changes when no base atom was written.
+描画フェーズのアダプターは、基底アトムを同期せずにオプションを準備し、コミットされた描画で記録した状態をここに渡します。基底アトムに何も書き込まれなかった場合も、コミットの合図によって持ち主の変更が無効になります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### state
+### state {#state}
 
   \| `Partial`\<[`TableState`](../../index/type-aliases/TableState.md)\<`TFeatures`\>\>
   \| `null`
 
-### compare?
+### compare? {#compare}
 
 (`currentState`, `externalState`) => `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`

@@ -7,34 +7,33 @@ title: table_getCoreRowModel
 function table_getCoreRowModel<TFeatures, TData>(table): RowModel<TFeatures, TData>;
 ```
 
-Defined in: [core/row-models/coreRowModelsFeature.utils.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L18)
+定義元: [core/row-models/coreRowModelsFeature.utils.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L18)
 
-Resolves the table's unmodified core row model.
+テーブルの、加工前のコア行モデルを求めます。
 
-The factory is created once per table, either from the `coreRowModel` slot on the `features` option
-or the built-in `createCoreRowModel()`, then reused for later calls.
+ファクトリーはテーブルごとに1回だけ、`features` オプションの `coreRowModel` スロットか、組み込みの `createCoreRowModel()` から作られ、以降の呼び出しで使い回されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowModel`](../../index/interfaces/RowModel.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const coreRows = table_getCoreRowModel(table)

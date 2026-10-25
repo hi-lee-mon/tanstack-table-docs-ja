@@ -9,40 +9,38 @@ function column_getFilterFn<TFeatures, TData, TValue>(column):
   | undefined;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.utils.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L109)
+定義元: [features/column-filtering/columnFilteringFeature.utils.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L109)
 
-Resolves the filter function configured for a column.
+列に設定されたフィルター関数を解決します。
 
-Function-valued `columnDef.filterFn` is returned directly, `'auto'` delegates
-to `column_getAutoFilterFn`, and string values are looked up in the table's
-filter function registry.
+`columnDef.filterFn` が関数ならそのまま返し、`'auto'` なら `column_getAutoFilterFn` に任せ、文字列ならテーブルのフィルター関数のレジストリから探します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
   \| [`FilterFn`](../../index/interfaces/FilterFn.md)\<`TFeatures`, `TData`\>
   \| `undefined`
 
-## Example
+## 例 {#example}
 
 ```ts
 const filterFn = column_getFilterFn(column)

@@ -7,18 +7,17 @@ title: getDefaultCellSelectionState
 function getDefaultCellSelectionState(): CellSelectionState;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L45)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L45)
 
-Creates the default cell selection state.
+セル選択の既定の状態を作ります。
 
-The feature default is an empty selection. Reset APIs use this value when
-`defaultState` is `true`.
+機能の既定値は空の選択です。`defaultState` が `true` のとき、リセット API はこの値を使います。
 
-## Returns
+## 戻り値 {#returns}
 
 [`CellSelectionState`](../../index/type-aliases/CellSelectionState.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const selection = getDefaultCellSelectionState()

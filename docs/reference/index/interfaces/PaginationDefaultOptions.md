@@ -3,14 +3,14 @@ id: PaginationDefaultOptions
 title: PaginationDefaultOptions
 ---
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L43)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L43)
 
-## Properties
+## プロパティ {#properties}
 
-### onPaginationChange
+### onPaginationChange {#onpaginationchange}
 
 ```ts
 onPaginationChange: OnChangeFn<PaginationState>;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L44)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L44)

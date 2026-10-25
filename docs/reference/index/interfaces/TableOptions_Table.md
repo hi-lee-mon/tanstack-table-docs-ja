@@ -3,163 +3,153 @@ id: TableOptions_Table
 title: TableOptions_Table
 ---
 
-Defined in: [core/table/coreTablesFeature.types.ts:88](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L88)
+定義元: [core/table/coreTablesFeature.types.ts:88](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L88)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`TableOptions_Core`](TableOptions_Core.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### atoms?
+### atoms? {#atoms}
 
 ```ts
 readonly optional atoms?: Partial<{ [K in string | number | symbol]: Atom<ExtractFeatureMapTypes<TFeatures, TableState_FeatureMap>[K]> }>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L109)
+定義元: [core/table/coreTablesFeature.types.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L109)
 
-Optionally, provide your own external writable atoms for individual state slices.
-When an atom is provided for a given slice, it takes precedence over `options.state[key]`
-and the internal base atom for that slice. Feature state update APIs write through
-the corresponding atom updater, so external atoms are the preferred v9 ownership
-model for app-managed table state slices.
+状態スライスごとに、外部の書き込み可能なアトムを渡せます（省略可能）。
+あるスライスにアトムを渡すと、そのスライスでは `options.state[key]` と内部の基底アトムよりも優先されます。
+機能の状態を更新する API は対応するアトムのアップデーターを通して書き込むので、アプリで管理するテーブルの状態スライスには、v9 では外部のアトムで持つ形がおすすめです。
 
 ***
 
-### autoResetAll?
+### autoResetAll? {#autoresetall}
 
 ```ts
 readonly optional autoResetAll?: boolean;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L113)
+定義元: [core/table/coreTablesFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L113)
 
-Set this option to override any of the `autoReset...` feature options.
+このオプションを指定すると、機能ごとの `autoReset...` オプションをすべて上書きします。
 
 ***
 
-### data
+### data {#data}
 
 ```ts
 readonly data: readonly TData[];
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:117](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L117)
+定義元: [core/table/coreTablesFeature.types.ts:117](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L117)
 
-The data for the table to display. When the `data` option changes reference, the table will reprocess the data.
+テーブルに表示するデータです。`data` オプションの参照が変わると、テーブルはデータを処理し直します。
 
 ***
 
-### features
+### features {#features}
 
 ```ts
 readonly features: TFeatures & ValidateFeatureSlots<TFeatures>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L101)
+定義元: [core/table/coreTablesFeature.types.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L101)
 
-The feature modules registered on this table instance.
+このテーブルインスタンスに登録された機能モジュールです。
 
-Feature registration controls which state slices, options, and prototype
-APIs are available. This object also carries the table's row model
-factories (`sortedRowModel`, `filteredRowModel`, etc.), row model function
-registries (`sortFns`, `filterFns`, `aggregationFns`), and type-only meta
-slots (`tableMeta`, `columnMeta`).
+機能の登録によって、どの状態スライス、オプション、プロトタイプの API が使えるかが決まります。
+このオブジェクトには、テーブルの行モデルのファクトリー（`sortedRowModel`、`filteredRowModel` など）、行モデル関数のレジストリ（`sortFns`、`filterFns`、`aggregationFns`）、型専用の meta のスロット（`tableMeta`、`columnMeta`）も入ります。
 
 ***
 
-### initialState?
+### initialState? {#initialstate}
 
 ```ts
 readonly optional initialState?: Partial<ExtractFeatureMapTypes<TFeatures, TableState_FeatureMap>>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L131)
+定義元: [core/table/coreTablesFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L131)
 
-Optionally provide starting values for registered table state slices.
-Feature reset APIs use this value by default, and many reset APIs accept
-`true` to reset to that feature's blank/default state instead. Changing this
-object later does not reset table state, so it does not need to be stable.
+登録されたテーブルの状態スライスの初期値を渡せます（省略可能）。
+機能のリセット API は既定でこの値を使います。多くのリセット API は `true` を受け付け、その場合は代わりに機能の空の状態（既定の状態）に戻します。
+あとでこのオブジェクトを変えてもテーブルの状態はリセットされないので、参照を安定させておく必要はありません。
 
 ***
 
-### key?
+### key? {#key}
 
 ```ts
 readonly optional key?: string;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L124)
+定義元: [core/table/coreTablesFeature.types.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L124)
 
-Optional key used to identify this table instance.
+このテーブルインスタンスを識別するためのキーです（省略可能）。
 
-This is used by TanStack Table Devtools to register and select tables. It is
-not required unless the table is passed to devtools.
+TanStack Table Devtools がテーブルを登録・選択するために使います。テーブルを Devtools に渡さないなら不要です。
 
 ***
 
-### mergeOptions?
+### mergeOptions? {#mergeoptions}
 
 ```ts
 readonly optional mergeOptions?: (defaultOptions, options) => TableOptions<TFeatures, TData>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L135)
+定義元: [core/table/coreTablesFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L135)
 
-This option is used to optionally implement the merging of table options.
+テーブルのオプションのマージ方法を、必要に応じて自分で実装するためのオプションです。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultOptions
+##### defaultOptions {#defaultoptions}
 
 [`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>
 
-##### options
+##### options {#options}
 
 `Partial`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### meta?
+### meta? {#meta}
 
 ```ts
 readonly optional meta?: ExtractTableMeta<TFeatures, TData>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:145](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L145)
+定義元: [core/table/coreTablesFeature.types.ts:145](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L145)
 
-You can pass any object to `options.meta` and access it anywhere the `table` is available via `table.options.meta`.
+`options.meta` には任意のオブジェクトを渡せます。渡したオブジェクトには、`table` が使えるところならどこからでも `table.options.meta` でアクセスできます。
 
-Declare its type per-table via the `tableMeta` type-only slot on the
-`features` option, or globally via declaration merging on `TableMeta`.
+型は、`features` オプションの型専用スロット `tableMeta` でテーブルごとに宣言するか、`TableMeta` への宣言のマージでグローバルに宣言してください。
 
 ***
 
-### state?
+### state? {#state}
 
 ```ts
 readonly optional state?: Partial<ExtractFeatureMapTypes<TFeatures, TableState_FeatureMap>>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:153](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L153)
+定義元: [core/table/coreTablesFeature.types.ts:153](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L153)
 
-Optionally provide externally managed values for individual state slices.
+状態スライスごとに、外部で管理する値を渡せます（省略可能）。
 
-Pair each slice with its matching `on[State]Change` callback so table state
-updates can be persisted outside the table. External atoms take precedence
-over this option when both are provided for the same slice.
+各スライスは、対応する `on[State]Change` コールバックと組み合わせてください。そうすれば、テーブルの状態の更新をテーブルの外に保存できます。同じスライスにこのオプションと外部のアトムの両方を渡した場合は、外部のアトムが優先されます。

@@ -7,13 +7,10 @@ title: BaseAtoms_All
 type BaseAtoms_All = { [K in keyof TableState_All]?: Atom<Exclude<TableState_All[K], undefined>> };
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:78](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L78)
+定義元: [core/table/coreTablesFeature.types.ts:78](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L78)
 
-Internal "all features" flat variants of the atom types. `Table_Internal`
-uses these so feature code (written generically over `TFeatures`) can access
-any slice atom (e.g. `table.atoms.columnPinning`) without TypeScript
-narrowing away slices that aren't in the current `TFeatures` union.
+アトムの型の、内部用の「全機能」入り平坦版です。`Table_Internal` はこれを使います。
+そのため、（`TFeatures` についてジェネリックに書かれた）機能のコードは、どのスライスのアトム（`table.atoms.columnPinning` など）にもアクセスできます。現在の `TFeatures` のユニオンにないスライスが、TypeScript の型の絞り込みで消されることはありません。
 
-Keys are optional: feature code can read atoms from slices it doesn't own,
-but those slices may not be registered on the current table. Consumers must
-use optional chaining (`table.atoms.columnPinning?.get() ?? default`).
+キーは省略可能です。機能のコードは自分が持たないスライスのアトムも読めますが、そのスライスが現在のテーブルに登録されているとは限りません。
+使う側はオプショナルチェーン（`table.atoms.columnPinning?.get() ?? default`）を使う必要があります。

@@ -3,106 +3,106 @@ id: Table_Columns
 title: Table_Columns
 ---
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L76)
+定義元: [core/columns/coreColumnsFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L76)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`Table_Core`](Table_Core.md)
 - [`Table_Internal`](Table_Internal.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getAllColumns
+### getAllColumns {#getallcolumns}
 
 ```ts
 getAllColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:91](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L91)
+定義元: [core/columns/coreColumnsFeature.types.ts:91](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L91)
 
-Normalizes `options.columns` into the table's nested column hierarchy.
+`options.columns` を、テーブルの入れ子の列の階層に正規化します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getAllFlatColumns
+### getAllFlatColumns {#getallflatcolumns}
 
 ```ts
 getAllFlatColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:95](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L95)
+定義元: [core/columns/coreColumnsFeature.types.ts:95](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L95)
 
-Flattens the nested column hierarchy, including parent/group columns.
+入れ子の列の階層を平坦化します。親の列（グループ列）も含みます。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getAllFlatColumnsById
+### getAllFlatColumnsById {#getallflatcolumnsbyid}
 
 ```ts
 getAllFlatColumnsById: () => Record<string, Column<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:83](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L83)
+定義元: [core/columns/coreColumnsFeature.types.ts:83](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L83)
 
-Returns a map of all flat columns by their ID.
+平坦化したすべての列を、ID で引けるマップにして返します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `Record`\<`string`, [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>\>
 
 ***
 
-### getAllLeafColumns
+### getAllLeafColumns {#getallleafcolumns}
 
 ```ts
 getAllLeafColumns: () => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:99](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L99)
+定義元: [core/columns/coreColumnsFeature.types.ts:99](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L99)
 
-Collects all terminal leaf columns, excluding parent/group columns.
+すべての末端の列を集めます。親の列（グループ列）は含みません。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getAllLeafColumnsById
+### getAllLeafColumnsById {#getallleafcolumnsbyid}
 
 ```ts
 getAllLeafColumnsById: () => Record<string, Column<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:103](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L103)
+定義元: [core/columns/coreColumnsFeature.types.ts:103](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L103)
 
-Returns a map of all leaf-node columns by their ID. This does not include parent columns.
+末端のノードにあたるすべての列を、ID で引けるマップにして返します。親の列は含みません。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `Record`\<`string`, [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>\>
 
 ***
 
-### getColumn
+### getColumn {#getcolumn}
 
 ```ts
 getColumn: (columnId) =>
@@ -110,33 +110,33 @@ getColumn: (columnId) =>
   | undefined;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L107)
+定義元: [core/columns/coreColumnsFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L107)
 
-Returns a single column by its ID.
+ID を指定して列を1つ返します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### columnId
+##### columnId {#columnid}
 
 `string`
 
-#### Returns
+#### 戻り値 {#returns-5}
 
   \| [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>
   \| `undefined`
 
 ***
 
-### getDefaultColumnDef
+### getDefaultColumnDef {#getdefaultcolumndef}
 
 ```ts
 getDefaultColumnDef: () => Partial<ColumnDef<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:87](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L87)
+定義元: [core/columns/coreColumnsFeature.types.ts:87](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L87)
 
-Resolves built-in, feature-level, and user-defined default column options.
+組み込み、機能、利用者がそれぞれ定義した列の既定のオプションを解決します。
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `Partial`\<[`ColumnDef`](../type-aliases/ColumnDef.md)\<`TFeatures`, `TData`, `unknown`\>\>

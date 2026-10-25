@@ -7,34 +7,33 @@ title: table_getExpandedRowModel
 function table_getExpandedRowModel<TFeatures, TData>(table): RowModel<TFeatures, TData>;
 ```
 
-Defined in: [core/row-models/coreRowModelsFeature.utils.ts:194](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L194)
+定義元: [core/row-models/coreRowModelsFeature.utils.ts:194](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L194)
 
-Resolves the row model after expanded rows have been flattened into view.
+展開された行を平坦化して表示に含めたあとの行モデルを返します。
 
-When `manualExpanding` is enabled, or no expanded row-model factory was
-registered, this returns the pre-expanded row model unchanged.
+`manualExpanding` が有効な場合や、展開済み行モデルのファクトリーが登録されていない場合は、展開前の行モデルをそのまま返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowModel`](../../index/interfaces/RowModel.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const expandedRows = table_getExpandedRowModel(table)

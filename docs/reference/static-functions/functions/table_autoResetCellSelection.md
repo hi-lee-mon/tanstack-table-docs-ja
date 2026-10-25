@@ -7,39 +7,36 @@ title: table_autoResetCellSelection
 function table_autoResetCellSelection<TFeatures, TData>(table): void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:110](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L110)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:110](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L110)
 
-Schedules a cell selection reset after `data` changes.
+`data` が変わったあとに、セル選択のリセットを予約します。
 
-Ranges are stored as row and column ids, so without this a data swap would
-leave a selection pointing at rows that no longer exist, or silently
-re-select cells whenever new data reuses ids. The reset runs when
-`autoResetAll` or `autoResetCellSelection` allows it, defaulting to on.
+範囲は行 ID と列 ID で保存されます。そのため、これがないと、データを差し替えたときに選択がもう存在しない行を指したままになったり、新しいデータが同じ ID を使うたびに気づかないうちにセルが選択し直されたりします。
+リセットは `autoResetAll` か `autoResetCellSelection` が許可する場合に実行され、既定では有効です。
 
-Resetting to `initialState.cellSelection` rather than to empty means the
-first row-model computation is a no-op, matching `table_autoResetExpanded`.
+空ではなく `initialState.cellSelection` に戻すので、最初の行モデルの計算では何も起きません。`table_autoResetExpanded` と同じ動作です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_autoResetCellSelection(table)

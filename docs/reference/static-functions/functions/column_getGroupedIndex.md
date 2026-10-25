@@ -7,37 +7,37 @@ title: column_getGroupedIndex
 function column_getGroupedIndex<TFeatures, TData, TValue>(column): number;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.utils.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L106)
+定義元: [features/column-grouping/columnGroupingFeature.utils.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L106)
 
-Finds this column's position in the ordered grouping state.
+順序付きのグループ化の状態の中で、この列の位置を探します。
 
-The result is `-1` when the column is not grouped.
+列がグループ化されていなければ、結果は `-1` です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const index = column_getGroupedIndex(column)

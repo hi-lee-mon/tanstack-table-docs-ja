@@ -7,40 +7,38 @@ title: table_setSorting
 function table_setSorting<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.utils.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L43)
+定義元: [features/row-sorting/rowSortingFeature.utils.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L43)
 
-Routes a sorting updater through the table's sorting change handler.
+ソートのアップデーターを、テーブルのソートの変更ハンドラーに通します。
 
-The updater may be a next `SortingState` array or a function of the previous
-sorting state, matching the instance `table.setSorting` behavior. State
-owners receive an equality-guarded updater so structurally equal sorting
-values preserve the owner's existing reference.
+アップデーターには、次の `SortingState` 配列か、前のソートの状態を受け取る関数を指定できます。インスタンスの `table.setSorting` と同じ動作です。
+状態の持ち主には等価判定で保護されたアップデーターが渡されるので、構造上等しいソートの値なら、持ち主の既存の参照が保たれます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`SortingState`](../../index/type-aliases/SortingState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setSorting(table, (old) => [...old, { id: 'age', desc: true }])

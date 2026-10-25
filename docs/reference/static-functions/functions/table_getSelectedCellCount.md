@@ -7,34 +7,34 @@ title: table_getSelectedCellCount
 function table_getSelectedCellCount<TFeatures, TData>(table): number;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:1232](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1232)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:1232](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1232)
 
-Returns the number of selected cells.
+選択されているセルの数を返します。
 
-Uses rectangle arithmetic over the normalized, disjoint positive regions.
-A per-cell `enableCellSelection` predicate requires enumeration.
+正規化された、互いに重ならない、除外を差し引いた領域に対して、長方形の計算を行います。
+セルごとの `enableCellSelection` 述語関数がある場合は、1つずつ数える必要があります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const count = table_getSelectedCellCount(table)

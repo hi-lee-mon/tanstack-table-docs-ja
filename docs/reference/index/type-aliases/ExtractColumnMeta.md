@@ -7,25 +7,23 @@ title: ExtractColumnMeta
 type ExtractColumnMeta<TFeatures, TData, TValue> = IsAny<TFeatures> extends true ? ColumnMeta<TFeatures, TData, TValue> : TFeatures extends object ? TMeta : ColumnMeta<TFeatures, TData, TValue>;
 ```
 
-Defined in: [types/ColumnDef.ts:36](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L36)
+定義元: [types/ColumnDef.ts:36](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L36)
 
-Resolves the type of `columnDef.meta` for a feature set.
+機能の組み合わせについて、`columnDef.meta` の型を求めます。
 
-When the features object declares a `columnMeta` type-only slot
-(`tableFeatures({ ..., columnMeta: {} as MyColumnMeta })`), that type wins.
-Otherwise this falls back to the global declaration-merged `ColumnMeta`
-interface.
+features オブジェクトが型専用スロット `columnMeta` を宣言している場合（`tableFeatures({ ..., columnMeta: {} as MyColumnMeta })`）は、その型が使われます。
+そうでなければ、グローバルに宣言のマージをした `ColumnMeta` インターフェースが使われます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](CellData.md) = [`CellData`](CellData.md)

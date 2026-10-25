@@ -9,35 +9,34 @@ function row_getParentRow<TFeatures, TData>(row):
   | undefined;
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:184](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L184)
+定義元: [core/rows/coreRowsFeature.utils.ts:184](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L184)
 
-Looks up this row's direct parent, if it has one.
+この行に直接の親があれば、それを探します。
 
-Parent lookup prefers the core row model for structural parents, then falls
-back to the pre-pagination row model for generated parent rows.
+親を探すときは、構造上の親についてはコア行モデルを先に見て、生成された親の行についてはページネーション前の行モデルを見ます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
   \| [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
   \| `undefined`
 
-## Example
+## 例 {#example}
 
 ```ts
 const parent = row_getParentRow(row)

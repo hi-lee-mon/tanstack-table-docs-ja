@@ -7,43 +7,42 @@ title: column_getIndex
 function column_getIndex<TFeatures, TData, TValue>(column, position?): number;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.utils.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L81)
+定義元: [features/column-ordering/columnOrderingFeature.utils.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L81)
 
-Finds this column's index within a visible pinning region.
+表示中の固定領域の中で、この列のインデックスを探します。
 
-Pass `'start'`, `'center'`, or `'end'` to search that region; omit the
-position to search the full visible leaf column list.
+`'start'`、`'center'`、`'end'` を渡すとその領域の中を探します。位置を省略すると、表示中の末端の列全体を探します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### position?
+### position? {#position}
 
   \| [`ColumnPinningPosition`](../../index/type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const index = column_getIndex(column, 'center')

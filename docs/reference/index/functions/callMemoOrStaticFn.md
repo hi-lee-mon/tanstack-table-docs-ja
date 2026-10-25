@@ -11,42 +11,42 @@ function callMemoOrStaticFn<TObject, TArgs, TReturn>(
    args): TReturn;
 ```
 
-Defined in: [utils.ts:630](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L630)
+定義元: [utils.ts:630](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L630)
 
-Looks to run the memoized function with the builder pattern on the object if it exists, otherwise fall back to the static method passed in.
+オブジェクトにメモ化された関数があれば、ビルダーパターンでそれを実行します。なければ、渡された静的メソッドを使います。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TObject
+### TObject {#tobject}
 
 `TObject` *extends* `Record`\<`string`, `any`\>
 
-### TArgs
+### TArgs {#targs}
 
 `TArgs` *extends* `any`[]
 
-### TReturn
+### TReturn {#treturn}
 
 `TReturn`
 
-## Parameters
+## パラメーター {#parameters}
 
-### obj
+### obj {#obj}
 
 `TObject`
 
-### fnKey
+### fnKey {#fnkey}
 
 `string`
 
-### staticFn
+### staticFn {#staticfn}
 
 (`obj`, ...`args`) => `TReturn`
 
-### args
+### args {#args}
 
 ...`TArgs`
 
-## Returns
+## 戻り値 {#returns}
 
 `TReturn`

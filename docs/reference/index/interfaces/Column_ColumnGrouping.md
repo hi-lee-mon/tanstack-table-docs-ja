@@ -3,84 +3,84 @@ id: Column_ColumnGrouping
 title: Column_ColumnGrouping
 ---
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:36](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L36)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:36](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L36)
 
-## Properties
+## プロパティ {#properties}
 
-### getCanGroup
+### getCanGroup {#getcangroup}
 
 ```ts
 getCanGroup: () => boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L40)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L40)
 
-Checks whether this column can currently be grouped.
+この列が現在グループ化できるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### getGroupedIndex
+### getGroupedIndex {#getgroupedindex}
 
 ```ts
 getGroupedIndex: () => number;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L44)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L44)
 
-Finds this column's position in the ordered grouping state.
+順序付きのグループ化の状態の中で、この列の位置を探します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `number`
 
 ***
 
-### getIsGrouped
+### getIsGrouped {#getisgrouped}
 
 ```ts
 getIsGrouped: () => boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L48)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L48)
 
-Checks whether this column id is present in grouping state.
+この列 ID がグループ化の状態に含まれているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `boolean`
 
 ***
 
-### getToggleGroupingHandler
+### getToggleGroupingHandler {#gettogglegroupinghandler}
 
 ```ts
 getToggleGroupingHandler: () => () => void;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:52](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L52)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:52](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L52)
 
-Returns a function that toggles the grouping state of the column. This is useful for passing to the `onClick` prop of a button.
+列のグループ化の状態を切り替える関数を返します。ボタンの `onClick` プロパティに渡すのに便利です。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 () => `void`
 
 ***
 
-### toggleGrouping
+### toggleGrouping {#togglegrouping}
 
 ```ts
 toggleGrouping: () => void;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L56)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L56)
 
-Toggles the grouping state of the column.
+列のグループ化の状態を切り替えます。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `void`

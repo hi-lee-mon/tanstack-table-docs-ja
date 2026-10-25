@@ -3,26 +3,26 @@ id: RowModelFns_RowAggregation
 title: RowModelFns_RowAggregation
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L81)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L81)
 
-Aggregation-definition registry carried by a table feature set.
+テーブルの機能の組み合わせが持つ、集計定義のレジストリです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### aggregationFns
+### aggregationFns {#aggregationfns}
 
 ```ts
 aggregationFns: Record<string, AggregationFnDef<TFeatures, TData, any, any>>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L85)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L85)

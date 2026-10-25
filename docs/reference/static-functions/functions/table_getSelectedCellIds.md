@@ -7,34 +7,33 @@ title: table_getSelectedCellIds
 function table_getSelectedCellIds<TFeatures, TData>(table): string[];
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:1174](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1174)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:1174](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1174)
 
-Returns the ids of all selected cells, in row-major order.
+選択されているすべてのセルの ID を、行優先の順で返します。
 
-Cells covered by overlapping ranges are returned once, at their first
-occurrence.
+重なった範囲に含まれるセルは、最初に出てきた位置で1回だけ返されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `string`[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const ids = table_getSelectedCellIds(table)

@@ -7,21 +7,19 @@ title: ExtractFeatureMapTypes
 type ExtractFeatureMapTypes<TFeatures, TFeatureMap> = IsAny<TFeatures> extends true ? UnionToIntersection<TFeatureMap[keyof TFeatureMap]> : UnionToIntersectionOrEmpty<TFeatureMap[Extract<keyof TFeatures, keyof TFeatureMap>]>;
 ```
 
-Defined in: [types/TableFeatures.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L43)
+定義元: [types/TableFeatures.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L43)
 
-Extracts the API/types contributed by the features present in `TFeatures`.
+`TFeatures` に含まれる機能が提供する API や型を取り出します。
 
-`TFeatureMap` maps feature keys to the types they contribute. When
-`TFeatures` is `any`, all feature-map entries are included to preserve the
-permissive behavior expected by broad table types. Otherwise, only entries
-whose keys are present in `TFeatures` are intersected together.
+`TFeatureMap` は、機能のキーを、その機能が提供する型に対応付けます。
+`TFeatures` が `any` の場合は、広いテーブルの型で期待される制限の緩い動作を保つため、機能マップのエントリーをすべて含めます。そうでなければ、`TFeatures` にキーがあるエントリーだけを交差型で組み合わせます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TFeatureMap
+### TFeatureMap {#tfeaturemap}
 
 `TFeatureMap` *extends* `object`

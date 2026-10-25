@@ -7,44 +7,44 @@ title: makeStateUpdater
 function makeStateUpdater<TFeatures, K>(key, instance): (updater) => void;
 ```
 
-Defined in: [utils.ts:97](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L97)
+定義元: [utils.ts:97](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L97)
 
-Creates a table state updater for a single state slice.
+1つの状態スライス用に、テーブルの状態のアップデーターを作成します。
 
-The updater writes through the table base atom for the slice and supports both value and functional updater forms.
+このアップデーターはスライスに対応するテーブルの基底アトムに書き込み、値と関数の両方の形のアップデーターに対応します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### K
+### K {#k}
 
 `K` *extends* `string` \| `number` \| `symbol` \| `string` & `object`
 
-## Parameters
+## パラメーター {#parameters}
 
-### key
+### key {#key}
 
 `K`
 
-### instance
+### instance {#instance}
 
-#### baseAtoms
+#### baseAtoms {#baseatoms}
 
 `object`
 
-#### options
+#### options {#options}
 
 \{
   `atoms?`: `object`;
 \}
 
-#### options.atoms?
+#### options.atoms? {#optionsatoms}
 
 `object`
 
-## Returns
+## 戻り値 {#returns}
 
 (`updater`) => `void`

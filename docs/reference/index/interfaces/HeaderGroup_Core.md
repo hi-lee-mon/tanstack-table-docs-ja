@@ -3,64 +3,64 @@ id: HeaderGroup_Core
 title: HeaderGroup_Core
 ---
 
-Defined in: [types/HeaderGroup.ts:5](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/HeaderGroup.ts#L5)
+定義元: [types/HeaderGroup.ts:5](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/HeaderGroup.ts#L5)
 
-## Extends
+## 継承元 {#extends}
 
 - [`HeaderGroup_Header`](HeaderGroup_Header.md)\<`TFeatures`, `TData`\>
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`HeaderGroup`](HeaderGroup.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### depth
+### depth {#depth}
 
 ```ts
 depth: number;
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:134](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L134)
+定義元: [core/headers/coreHeadersFeature.types.ts:134](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L134)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from}
 
 [`HeaderGroup_Header`](HeaderGroup_Header.md).[`depth`](HeaderGroup_Header.md#depth)
 
 ***
 
-### headers
+### headers {#headers}
 
 ```ts
 headers: Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L135)
+定義元: [core/headers/coreHeadersFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L135)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-1}
 
 [`HeaderGroup_Header`](HeaderGroup_Header.md).[`headers`](HeaderGroup_Header.md#headers)
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:136](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L136)
+定義元: [core/headers/coreHeadersFeature.types.ts:136](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L136)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-2}
 
 [`HeaderGroup_Header`](HeaderGroup_Header.md).[`id`](HeaderGroup_Header.md#id)

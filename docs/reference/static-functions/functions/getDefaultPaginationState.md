@@ -7,18 +7,17 @@ title: getDefaultPaginationState
 function getDefaultPaginationState(): PaginationState;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L21)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L21)
 
-Creates the default pagination state used by the pagination feature.
+ページネーションの機能で使う、ページネーションの既定の状態を作ります。
 
-The feature default starts at the first page with a page size of 10. Reset
-APIs use this value when `defaultState` is `true`.
+機能の既定値は、最初のページから始まり、ページサイズは 10 です。`defaultState` が `true` のとき、リセット API はこの値を使います。
 
-## Returns
+## 戻り値 {#returns}
 
 [`PaginationState`](../../index/interfaces/PaginationState.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const pagination = getDefaultPaginationState()

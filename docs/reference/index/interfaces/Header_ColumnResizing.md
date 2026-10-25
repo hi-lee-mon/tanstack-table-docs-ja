@@ -3,28 +3,28 @@ id: Header_ColumnResizing
 title: Header_ColumnResizing
 ---
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L79)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L79)
 
-## Properties
+## プロパティ {#properties}
 
-### getResizeHandler
+### getResizeHandler {#getresizehandler}
 
 ```ts
 getResizeHandler: (context?) => (event) => void;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L85)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L85)
 
-Creates the `onMouseDown`/`onTouchStart` handler for a resize handle.
+リサイズ用のつまみに付ける `onMouseDown` / `onTouchStart` のハンドラーを作成します。
 
-Dragging and release listeners are installed and cleaned up automatically.
+ドラッグ中と離したときのリスナーは、自動で登録・解除されます。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### context?
+##### context? {#context}
 
 `Document`
 
-#### Returns
+#### 戻り値 {#returns}
 
 (`event`) => `void`

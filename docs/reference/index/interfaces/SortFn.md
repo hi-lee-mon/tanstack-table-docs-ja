@@ -3,15 +3,15 @@ id: SortFn
 title: SortFn
 ---
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L34)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L34)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
@@ -22,36 +22,34 @@ SortFn(
    columnId): number;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L38)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L38)
 
-## Parameters
+## パラメーター {#parameters}
 
-### rowA
-
-[`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
-
-### rowB
+### rowA {#rowa}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-### columnId
+### rowB {#rowb}
+
+[`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
+
+### columnId {#columnid}
 
 `string`
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Properties
+## プロパティ {#properties}
 
-### resolveDataValue?
+### resolveDataValue? {#resolvedatavalue}
 
 ```ts
 optional resolveDataValue?: TransformDataValueFn;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L48)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L48)
 
-Normalizes each row's value before the two sides are compared. Only
-honored by sorting functions built with `constructSortFn` (including all
-built-in sorting functions).
+2つの値を比べる前に、各行の値を正規化します。`constructSortFn` で作ったソート関数（組み込みのソート関数をすべて含みます）でだけ使われます。

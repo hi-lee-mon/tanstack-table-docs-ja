@@ -7,9 +7,8 @@ title: filterFn_weakEquals
 const filterFn_weakEquals: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L89)
+定義元: [features/column-filtering/filterFns.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L89)
 
-Keeps rows whose column value is loosely equal to the filter value.
+列の値がフィルター値とゆるく等しい行を残します。
 
-Uses JavaScript `==` comparison and auto-removes empty filter values. This is
-useful for matching string input against numeric row values.
+JavaScript の `==` で比較し、空のフィルター値は自動で取り除きます。文字列の入力を数値の行の値と照らし合わせたい場合に便利です。

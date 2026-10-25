@@ -3,98 +3,96 @@ id: Table_ColumnOrdering
 title: Table_ColumnOrdering
 ---
 
-Defined in: [features/column-ordering/columnOrderingFeature.types.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L66)
+定義元: [features/column-ordering/columnOrderingFeature.types.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L66)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getColumnIndexes
+### getColumnIndexes {#getcolumnindexes}
 
 ```ts
 getColumnIndexes: () => ColumnIndexes;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L76)
+定義元: [features/column-ordering/columnOrderingFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L76)
 
-Builds column-id to index records for each visible pinning region.
+表示中の固定領域ごとに、列 ID からインデックスへのレコードを作ります。
 
-This is the memoized source that `column.getIndex` reads from; most apps
-will not need to call it directly.
+これは `column.getIndex` が読む、メモ化された元データです。ほとんどのアプリでは直接呼ぶ必要はありません。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`ColumnIndexes`](ColumnIndexes.md)
 
 ***
 
-### getOrderColumnsFn
+### getOrderColumnsFn {#getordercolumnsfn}
 
 ```ts
 getOrderColumnsFn: () => (columns) => Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.types.ts:83](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L83)
+定義元: [features/column-ordering/columnOrderingFeature.types.ts:83](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L83)
 
-Returns a function that orders leaf columns by `columnOrder`, after moving
-grouped columns as `groupedColumnMode` sets.
+グループ化された列を `groupedColumnMode` の設定どおりに移動したうえで、末端の列を `columnOrder` の順に並べる関数を返します。
 
-Leaf column order reads it; most apps will not need to call it directly.
+末端の列の並び順がこれを読みます。ほとんどのアプリでは直接呼ぶ必要はありません。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 (`columns`) => [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### resetColumnOrder
+### resetColumnOrder {#resetcolumnorder}
 
 ```ts
 resetColumnOrder: (defaultState?) => void;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.types.ts:91](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L91)
+定義元: [features/column-ordering/columnOrderingFeature.types.ts:91](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L91)
 
-Resets `columnOrder` to `initialState.columnOrder`.
+`columnOrder` を `initialState.columnOrder` に戻します。
 
-Pass `true` to ignore initial state and reset to `[]`.
+`true` を渡すと、初期状態を無視して `[]` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `void`
 
 ***
 
-### setColumnOrder
+### setColumnOrder {#setcolumnorder}
 
 ```ts
 setColumnOrder: (updater) => void;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.types.ts:95](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L95)
+定義元: [features/column-ordering/columnOrderingFeature.types.ts:95](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.types.ts#L95)
 
-Updates column order state with a next ordered id array or updater function.
+次の順序付きの ID 配列かアップデーター関数で、列の並び順の状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`ColumnOrderState`](../type-aliases/ColumnOrderState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `void`

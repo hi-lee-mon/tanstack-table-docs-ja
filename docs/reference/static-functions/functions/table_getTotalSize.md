@@ -7,33 +7,33 @@ title: table_getTotalSize
 function table_getTotalSize<TFeatures, TData>(table): number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:393](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L393)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:393](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L393)
 
-Sums the rendered size of the full table header row.
+テーブルのヘッダー行全体の、描画時の幅を合計します。
 
-This includes start, center, and end columns in the main header group.
+主となるヘッダーグループの、先頭・中央・末尾の列をすべて含みます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const width = table_getTotalSize(table)

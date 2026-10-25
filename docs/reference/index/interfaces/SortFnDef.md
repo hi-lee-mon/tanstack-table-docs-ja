@@ -3,70 +3,68 @@ id: SortFnDef
 title: SortFnDef
 ---
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L58)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L58)
 
-The definition object accepted by `constructSortFn`.
+`constructSortFn` が受け取る定義オブジェクトです。
 
-`sort` is a value-level comparator: it receives both rows' (resolved) data
-values instead of the whole rows, so normalization concerns stay in
-`resolveDataValue`.
+`sort` は値レベルの比較関数です。行全体ではなく、2つの行の（解決済みの）データ値を受け取ります。そのため、正規化の処理は `resolveDataValue` に分けておけます。
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`CreatedSortFn`](CreatedSortFn.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### resolveDataValue?
+### resolveDataValue? {#resolvedatavalue}
 
 ```ts
 optional resolveDataValue?: TransformDataValueFn;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L69)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L69)
 
 ***
 
-### sort
+### sort {#sort}
 
 ```ts
 sort: (dataValueA, dataValueB, rowA, rowB, columnId) => number;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L62)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L62)
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### dataValueA
-
-`any`
-
-##### dataValueB
+##### dataValueA {#datavaluea}
 
 `any`
 
-##### rowA
+##### dataValueB {#datavalueb}
+
+`any`
+
+##### rowA {#rowa}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-##### rowB
+##### rowB {#rowb}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-##### columnId
+##### columnId {#columnid}
 
 `string`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `number`

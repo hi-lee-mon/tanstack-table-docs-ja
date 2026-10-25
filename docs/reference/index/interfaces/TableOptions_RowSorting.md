@@ -3,141 +3,138 @@ id: TableOptions_RowSorting
 title: TableOptions_RowSorting
 ---
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:216](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L216)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:216](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L216)
 
-## Properties
+## プロパティ {#properties}
 
-### autoResetSorting?
+### autoResetSorting? {#autoresetsorting}
 
 ```ts
 optional autoResetSorting?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:223](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L223)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:223](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L223)
 
-Resets sorting to its initial state when the `data` option changes.
+`data` オプションが変わったときに、ソートを初期状態に戻します。
 
-This is disabled by default. `autoResetAll` overrides this option when it
-is explicitly set.
+既定では無効です。`autoResetAll` を明示的に設定した場合は、そちらがこのオプションより優先されます。
 
 ***
 
-### enableMultiRemove?
+### enableMultiRemove? {#enablemultiremove}
 
 ```ts
 optional enableMultiRemove?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:227](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L227)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:227](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L227)
 
-Allows multi-sort toggles to remove a column from sorting state.
+複数列ソートの切り替えで、列をソートの状態から取り除けるようにします。
 
 ***
 
-### enableMultiSort?
+### enableMultiSort? {#enablemultisort}
 
 ```ts
 optional enableMultiSort?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:231](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L231)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:231](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L231)
 
-Enables/Disables multi-sorting for the table.
+テーブルの複数列ソートを有効または無効にします。
 
 ***
 
-### enableSorting?
+### enableSorting? {#enablesorting}
 
 ```ts
 optional enableSorting?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:235](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L235)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:235](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L235)
 
-Enables/Disables sorting for the table.
+テーブルのソートを有効または無効にします。
 
 ***
 
-### enableSortingRemoval?
+### enableSortingRemoval? {#enablesortingremoval}
 
 ```ts
 optional enableSortingRemoval?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:241](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L241)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:241](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L241)
 
-Enables/Disables the ability to remove sorting for the table.
-- If `true` then changing sort order will cycle like: 'none' -> 'desc' -> 'asc' -> 'none' -> ...
-- If `false` then changing sort order will cycle like: 'none' -> 'desc' -> 'asc' -> 'desc' -> 'asc' -> ...
+テーブルでソートを外せるかどうかを有効または無効にします。
+- `true` の場合、ソート順は 'none' -> 'desc' -> 'asc' -> 'none' -> ... の順に切り替わります
+- `false` の場合、ソート順は 'none' -> 'desc' -> 'asc' -> 'desc' -> 'asc' -> ... の順に切り替わります
 
 ***
 
-### isMultiSortEvent?
+### isMultiSortEvent? {#ismultisortevent}
 
 ```ts
 optional isMultiSortEvent?: (e) => boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:245](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L245)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:245](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L245)
 
-Pass a custom function that will be used to determine if a multi-sort event should be triggered. It is passed the event from the sort toggle handler and should return `true` if the event should trigger a multi-sort.
+複数列ソートのイベントを起こすかどうかを判定するカスタム関数を渡します。関数にはソートの切り替えハンドラーのイベントが渡されます。複数列ソートにするべきイベントなら `true` を返してください。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### e
+##### e {#e}
 
 `unknown`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### manualSorting?
+### manualSorting? {#manualsorting}
 
 ```ts
 optional manualSorting?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:249](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L249)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:249](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L249)
 
-Enables manual sorting for the table. If this is `true`, you will be expected to sort your data before it is passed to the table. This is useful if you are doing server-side sorting.
+テーブルの手動のソートを有効にします。`true` の場合、テーブルに渡す前にデータを自分でソートしておく必要があります。サーバーサイドでソートする場合に便利です。
 
 ***
 
-### maxMultiSortColCount?
+### maxMultiSortColCount? {#maxmultisortcolcount}
 
 ```ts
 optional maxMultiSortColCount?: number;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:253](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L253)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:253](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L253)
 
-Set a maximum number of columns that can be multi-sorted.
+複数列ソートできる列の最大数を指定します。
 
 ***
 
-### onSortingChange?
+### onSortingChange? {#onsortingchange}
 
 ```ts
 optional onSortingChange?: OnChangeFn<SortingState>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:259](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L259)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:259](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L259)
 
-Called with an updater when sorting state changes. Pair this with
-`state.sorting` when using external state; external atoms can own the slice
-without this callback.
+ソートの状態が変わったときに、アップデーターを渡して呼び出されます。外部の状態を使う場合は `state.sorting` と組み合わせてください。外部のアトムなら、このコールバックなしでスライスを持てます。
 
 ***
 
-### sortDescFirst?
+### sortDescFirst? {#sortdescfirst}
 
 ```ts
 optional sortDescFirst?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:263](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L263)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:263](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L263)
 
-If `true`, all sorts will default to descending as their first toggle state.
+`true` の場合、どのソートも最初の切り替えで降順になります。

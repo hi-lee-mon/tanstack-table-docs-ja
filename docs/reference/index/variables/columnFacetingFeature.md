@@ -7,12 +7,9 @@ title: columnFacetingFeature
 const columnFacetingFeature: TableFeature;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.ts#L21)
+定義元: [features/column-faceting/columnFacetingFeature.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.ts#L21)
 
-Feature that derives faceted row models, unique values, and min/max values for filters.
+フィルター向けに、ファセット行モデル、一意な値、最小値・最大値を導き出す機能です。
 
-These APIs are deliberately not memoized at this layer: the stock
-`createFaceted*` factories memoize internally (like every other stock row
-model), and an extra memo layer here would freeze custom factories whose
-data changes independently of the faceted row model. Custom factories own
-their memoization.
+これらの API は、この層ではあえてメモ化していません。標準の `createFaceted*` ファクトリーは（他の標準の行モデルと同じく）内部でメモ化しています。ここでさらにメモ化すると、ファセット行モデルとは別にデータが変わるカスタムのファクトリーの結果が固まってしまいます。
+カスタムのファクトリーは、メモ化を自分で行います。

@@ -7,18 +7,17 @@ title: getDefaultColumnResizingState
 function getDefaultColumnResizingState(): columnResizingState;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.utils.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L26)
+定義元: [features/column-resizing/columnResizingFeature.utils.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L26)
 
-Creates the default transient column resizing state.
+一時的な列幅の変更の、既定の状態を作ります。
 
-The feature default represents no active drag interaction. Reset APIs use
-this value when `defaultState` is `true`.
+機能の既定値は、ドラッグ操作をしていない状態を表します。`defaultState` が `true` のとき、リセット API はこの値を使います。
 
-## Returns
+## 戻り値 {#returns}
 
 [`columnResizingState`](../../index/interfaces/columnResizingState.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const resizeInfo = getDefaultColumnResizingState()

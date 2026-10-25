@@ -3,19 +3,18 @@ id: ColumnDef_ColumnPinning
 title: ColumnDef_ColumnPinning
 ---
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:50](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L50)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:50](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L50)
 
-## Properties
+## プロパティ {#properties}
 
-### enablePinning?
+### enablePinning? {#enablepinning}
 
 ```ts
 optional enablePinning?: boolean;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L57)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L57)
 
-Allows this column's leaf columns to be pinned.
+この列の末端の列を固定できるようにします。
 
-Defaults to `true`; table-level `enableColumnPinning` must also allow
-pinning.
+既定値は `true` です。テーブル側の `enableColumnPinning` でも固定が許可されている必要があります。

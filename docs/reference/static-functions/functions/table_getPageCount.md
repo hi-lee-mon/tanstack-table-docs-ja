@@ -7,34 +7,33 @@ title: table_getPageCount
 function table_getPageCount<TFeatures, TData>(table): number;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:401](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L401)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:401](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L401)
 
-Resolves the number of pages for the current pagination state.
+現在のページネーションの状態でのページ数を求めます。
 
-`options.pageCount` wins for manual pagination. Otherwise the value is
-calculated from `table_getRowCount(table)` and the current `pageSize`.
+手動のページネーションでは `options.pageCount` が優先されます。そうでなければ、`table_getRowCount(table)` と現在の `pageSize` から計算します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const pages = table_getPageCount(table)

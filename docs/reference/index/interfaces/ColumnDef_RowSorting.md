@@ -3,98 +3,98 @@ id: ColumnDef_RowSorting
 title: ColumnDef_RowSorting
 ---
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:118](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L118)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:118](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L118)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### enableMultiSort?
+### enableMultiSort? {#enablemultisort}
 
 ```ts
 optional enableMultiSort?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:125](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L125)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:125](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L125)
 
-Enables/Disables multi-sorting for this column.
+この列の複数列ソートを有効または無効にします。
 
 ***
 
-### enableSorting?
+### enableSorting? {#enablesorting}
 
 ```ts
 optional enableSorting?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:129](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L129)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:129](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L129)
 
-Enables/Disables sorting for this column.
+この列のソートを有効または無効にします。
 
 ***
 
-### invertSorting?
+### invertSorting? {#invertsorting}
 
 ```ts
 optional invertSorting?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:133](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L133)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:133](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L133)
 
-Inverts the order of the sorting for this column. This is useful for values that have an inverted best/worst scale where lower numbers are better, e.g. a ranking (1st, 2nd, 3rd) or golf-like scoring
+この列のソート順を反転させます。順位（1位、2位、3位）やゴルフのスコアのように、数が小さいほど良いという逆向きの尺度を持つ値に便利です。
 
 ***
 
-### sortDescFirst?
+### sortDescFirst? {#sortdescfirst}
 
 ```ts
 optional sortDescFirst?: boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:137](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L137)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:137](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L137)
 
-Set to `true` for sorting toggles on this column to start in the descending direction.
+`true` にすると、この列でソートを切り替えたときに降順から始まります。
 
 ***
 
-### sortFn?
+### sortFn? {#sortfn}
 
 ```ts
 optional sortFn?: SortFnOption<TFeatures, TData>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:143](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L143)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:143](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L143)
 
-The sorting function to use with this column.
-- A `string` referencing a built-in sorting function
-- A custom sorting function
+この列で使うソート関数です。
+- 組み込みのソート関数を指す `string`
+- カスタムのソート関数
 
 ***
 
-### sortUndefined?
+### sortUndefined? {#sortundefined}
 
 ```ts
 optional sortUndefined?: false | 1 | -1 | "first" | "last";
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:157](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L157)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:157](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L157)
 
-The priority of undefined values when sorting this column.
+この列をソートするときの undefined の値の優先度です。
 - `false`
-  - Undefined values will be passed to the sorting function like any other value with no special handling; the sorting function is responsible for handling them
+  - undefined の値は、特別な扱いをせず他の値と同じようにソート関数へ渡されます。扱いはソート関数に任されます
 - `-1`
-  - Undefined values will be sorted with higher priority (ascending) (if ascending, undefined will appear on the beginning of the list)
+  - undefined の値を高い優先度（昇順）でソートします（昇順なら undefined はリストの先頭に来ます）
 - `1`
-  - Undefined values will be sorted with lower priority (descending) (if ascending, undefined will appear on the end of the list)
+  - undefined の値を低い優先度（降順）でソートします（昇順なら undefined はリストの末尾に来ます）
 - `'first'`
-  - Undefined values will be pushed to the beginning of the list regardless of sort direction
+  - ソートの向きに関係なく、undefined の値をリストの先頭に置きます
 - `'last'`
-  - Undefined values will be pushed to the end of the list regardless of sort direction
+  - ソートの向きに関係なく、undefined の値をリストの末尾に置きます

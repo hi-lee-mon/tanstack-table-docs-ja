@@ -3,86 +3,86 @@ id: CachedRowModel_Faceted
 title: CachedRowModel_Faceted
 ---
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:50](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L50)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:50](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L50)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### facetedMinMaxValues?
+### facetedMinMaxValues? {#facetedminmaxvalues}
 
 ```ts
 optional facetedMinMaxValues?: Record<string, () => [number, number] | undefined>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L55)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L55)
 
 ***
 
-### facetedRowModels?
+### facetedRowModels? {#facetedrowmodels}
 
 ```ts
 optional facetedRowModels?: Record<string, () => RowModel<TFeatures, TData>>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L54)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L54)
 
 ***
 
-### facetedUniqueValues?
+### facetedUniqueValues? {#faceteduniquevalues}
 
 ```ts
 optional facetedUniqueValues?: Record<string, () => Map<any, number>>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L56)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L56)
 
 ***
 
-### globalFacetedMinMaxValues?
+### globalFacetedMinMaxValues? {#globalfacetedminmaxvalues}
 
 ```ts
 optional globalFacetedMinMaxValues?: () => [number, number] | undefined;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L58)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L58)
 
-#### Returns
+#### 戻り値 {#returns}
 
 \[`number`, `number`\] \| `undefined`
 
 ***
 
-### globalFacetedRowModel?
+### globalFacetedRowModel? {#globalfacetedrowmodel}
 
 ```ts
 optional globalFacetedRowModel?: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L57)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L57)
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### globalFacetedUniqueValues?
+### globalFacetedUniqueValues? {#globalfaceteduniquevalues}
 
 ```ts
 optional globalFacetedUniqueValues?: () => Map<any, number>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L59)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L59)
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `Map`\<`any`, `number`\>

@@ -7,39 +7,37 @@ title: table_setPagination
 function table_setPagination<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L72)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L72)
 
-Routes a pagination updater through the table's pagination change handler.
+ページネーションのアップデーターを、テーブルのページネーションの変更ハンドラーに通します。
 
-The updater may be a next state object or a function of the previous
-`PaginationState`; controlled state and external atoms observe the same
-updater path as the instance API.
+アップデーターには、次の状態オブジェクトか、前の `PaginationState` を受け取る関数を指定できます。制御された状態と外部のアトムも、インスタンスの API と同じアップデーターの経路を通ります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`PaginationState`](../../index/interfaces/PaginationState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setPagination(table, (old) => old)

@@ -3,28 +3,28 @@ id: CachedRowModel_Paginated
 title: CachedRowModel_Paginated
 ---
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:148](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L148)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:148](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L148)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### paginatedRowModel
+### paginatedRowModel {#paginatedrowmodel}
 
 ```ts
 paginatedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:152](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L152)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:152](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L152)
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>

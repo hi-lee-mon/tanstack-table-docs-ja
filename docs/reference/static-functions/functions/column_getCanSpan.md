@@ -7,38 +7,37 @@ title: column_getCanSpan
 function column_getCanSpan<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.utils.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L126)
+定義元: [features/cell-spanning/cellSpanningFeature.utils.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L126)
 
-Checks whether this column takes part in cell spanning.
+この列がセル結合の対象かどうかを判定します。
 
-A column def opting out with `enableCellSpanning: false` wins over the table
-option, matching how the other per-column enable flags resolve.
+列定義で `enableCellSpanning: false` にして対象から外した場合は、テーブルのオプションより優先されます。他の列ごとの有効化フラグと同じ決まり方です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column`](../../index/type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canSpan = column_getCanSpan(column)

@@ -7,39 +7,37 @@ title: table_setColumnFilters
 function table_setColumnFilters<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.utils.ts:283](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L283)
+定義元: [features/column-filtering/columnFilteringFeature.utils.ts:283](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L283)
 
-Routes a column filter updater through the table's filter change handler.
+列フィルターのアップデーターを、テーブルのフィルターの変更ハンドラーに通します。
 
-The resolved filters are cleaned before they are emitted: filters for known
-columns are removed when their filter function says the value should be
-auto-removed.
+解決したフィルターは、通知する前に片付けられます。既知の列のフィルターは、フィルター関数がその値を自動で取り除くべきと判断した場合に取り除かれます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`ColumnFiltersState`](../../index/type-aliases/ColumnFiltersState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setColumnFilters(table, (old) => old.filter((filter) => filter.id !== 'age'))

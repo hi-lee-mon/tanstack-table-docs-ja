@@ -3,46 +3,46 @@ id: Table_RowModels_Sorted
 title: Table_RowModels_Sorted
 ---
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:290](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L290)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:290](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L290)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getPreSortedRowModel
+### getPreSortedRowModel {#getpresortedrowmodel}
 
 ```ts
 getPreSortedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:297](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L297)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:297](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L297)
 
-Reads the row model immediately before sorting.
+ソートの直前の行モデルを読み取ります。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getSortedRowModel
+### getSortedRowModel {#getsortedrowmodel}
 
 ```ts
 getSortedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:301](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L301)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:301](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L301)
 
-Resolves the row model after sorting has been applied.
+ソートを適用したあとの行モデルを返します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>

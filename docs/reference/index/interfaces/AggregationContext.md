@@ -3,135 +3,132 @@ id: AggregationContext
 title: AggregationContext
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L15)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L15)
 
-Values and table objects available while one aggregation is evaluated.
+1つの集計を評価する間に使える値とテーブルのオブジェクトです。
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`AggregationMergeContext`](AggregationMergeContext.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` = `unknown`
 
-## Properties
+## プロパティ {#properties}
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L21)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L21)
 
-The column whose values are being aggregated.
+値を集計している列です。
 
 ***
 
-### columnId
+### columnId {#columnid}
 
 ```ts
 columnId: string;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L23)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L23)
 
-Convenience alias for `column.id`.
+`column.id` の別名です。
 
 ***
 
-### getValue
+### getValue {#getvalue}
 
 ```ts
 getValue: (row) => TValue;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L33)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L33)
 
-Reads this column's value from one of `rows`.
+`rows` のうち1行から、この列の値を読み取ります。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### row
+##### row {#row}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `TValue`
 
 ***
 
-### groupingRow?
+### groupingRow? {#groupingrow}
 
 ```ts
 optional groupingRow?: Row<TFeatures, TData>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L39)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L39)
 
-The synthetic grouped row receiving this result. This property is omitted
-for root or caller-supplied-row aggregation. Its `depth` identifies the
-grouping level when grouped aggregation needs that distinction.
+この結果を受け取る、合成されたグループ行です。ルートでの集計や、呼び出し側が行を渡した集計では、このプロパティはありません。
+グループ化した集計でグループの階層を区別したいときは、この行の `depth` で判別できます。
 
 ***
 
-### maxDepth
+### maxDepth {#maxdepth}
 
 ```ts
 maxDepth: number;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L25)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L25)
 
-Maximum relative sub-row depth used to select `rows`.
+`rows` を選ぶときに使う、サブ行の相対的な深さの最大値です。
 
 ***
 
-### rows
+### rows {#rows}
 
 ```ts
 rows: readonly Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L44)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L44)
 
-Unique rows selected at `maxDepth`. Branches that end before `maxDepth`
-contribute their deepest available row.
+`maxDepth` で選ばれた一意な行です。`maxDepth` より手前で終わる枝からは、その枝でいちばん深い行が入ります。
 
 ***
 
-### subRows?
+### subRows? {#subrows}
 
 ```ts
 optional subRows?: readonly Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L31)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L31)
 
-Immediate sub-rows for grouped aggregation. This property is omitted
-for root or caller-supplied-row aggregation. At a terminal grouping level
-these are the direct data rows; at a nested level they are sub-row groups.
+グループ化した集計での、直下のサブ行です。ルートでの集計や、呼び出し側が行を渡した集計では、このプロパティはありません。
+末端のグループ階層ではデータの行そのもの、入れ子の階層ではサブ行のグループになります。
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table<TFeatures, TData>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:46](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L46)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:46](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L46)
 
-The table that owns the column and rows.
+列と行を持つテーブルです。

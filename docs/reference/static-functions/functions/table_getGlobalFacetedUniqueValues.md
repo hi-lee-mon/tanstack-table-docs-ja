@@ -7,34 +7,33 @@ title: table_getGlobalFacetedUniqueValues
 function table_getGlobalFacetedUniqueValues<TFeatures, TData>(table): Map<any, number>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.utils.ts:176](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.utils.ts#L176)
+定義元: [features/column-faceting/columnFacetingFeature.utils.ts:176](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.utils.ts#L176)
 
-Computes unique values and occurrence counts for the global filter context.
+グローバルフィルターについて、一意な値とその出現回数を計算します。
 
-The global context is requested with the internal `__global__` column id. If
-no factory is registered, an empty `Map` is returned.
+グローバルの対象は、内部の列 ID `__global__` で要求します。ファクトリーが登録されていなければ、空の `Map` を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `Map`\<`any`, `number`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const values = table_getGlobalFacetedUniqueValues(table)

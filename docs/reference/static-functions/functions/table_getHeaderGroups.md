@@ -7,34 +7,33 @@ title: table_getHeaderGroups
 function table_getHeaderGroups<TFeatures, TData>(table): HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.utils.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L80)
+定義元: [core/headers/coreHeadersFeature.utils.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L80)
 
-Builds visible header groups for the current column tree.
+現在の列ツリーについて、表示するヘッダーグループを作ります。
 
-Column visibility and pinning are applied before groups are built. When no
-columns are pinned, the fast path skips pin partitioning.
+グループを作る前に、列の表示と固定を適用します。固定された列がなければ、固定の区分けを省いた速い経路を通ります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`HeaderGroup`](../../index/interfaces/HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const headerGroups = table_getHeaderGroups(table)

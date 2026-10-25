@@ -7,38 +7,37 @@ title: header_getSize
 function header_getSize<TFeatures, TData, TValue>(header): number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:280](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L280)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:280](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L280)
 
-Computes a header's rendered size from its leaf headers.
+末端のヘッダーから、ヘッダーの描画時の幅を計算します。
 
-Group headers sum the sizes of all descendant leaf columns. Leaf headers use
-their column's current size.
+グループヘッダーは、子孫のすべての末端の列の幅を合計します。末端のヘッダーは、その列の現在の幅を使います。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### header
+### header {#header}
 
 [`Header`](../../index/type-aliases/Header.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const width = header_getSize(header)

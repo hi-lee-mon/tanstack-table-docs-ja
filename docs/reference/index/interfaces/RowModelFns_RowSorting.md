@@ -3,24 +3,24 @@ id: RowModelFns_RowSorting
 title: RowModelFns_RowSorting
 ---
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L25)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L25)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### sortFns
+### sortFns {#sortfns}
 
 ```ts
 sortFns: Record<string, SortFn<TFeatures, TData>>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L29)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L29)

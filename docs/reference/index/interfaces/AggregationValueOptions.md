@@ -3,40 +3,40 @@ id: AggregationValueOptions
 title: AggregationValueOptions
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:272](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L272)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:272](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L272)
 
-Options for a caller-requested column aggregation value.
+呼び出し側が列の集計値を要求するときのオプションです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### maxDepth?
+### maxDepth? {#maxdepth}
 
 ```ts
 optional maxDepth?: number;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:277](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L277)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:277](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L277)
 
-Overrides the column's `maxAggregationDepth` for this request.
+この要求に限り、列の `maxAggregationDepth` を上書きします。
 
 ***
 
-### rows?
+### rows? {#rows}
 
 ```ts
 optional rows?: readonly Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:279](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L279)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:279](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L279)
 
-Rows to aggregate instead of the default pre-grouped row model.
+既定のグループ化前の行モデルの代わりに集計する行です。

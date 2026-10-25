@@ -7,34 +7,33 @@ title: table_getAllColumns
 function table_getAllColumns<TFeatures, TData>(table): Column<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/columns/coreColumnsFeature.utils.ts:151](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L151)
+定義元: [core/columns/coreColumnsFeature.utils.ts:151](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L151)
 
-Normalizes `options.columns` into the table's nested column tree.
+`options.columns` を、テーブルの入れ子の列ツリーに正規化します。
 
-Each column definition is constructed with its parent and depth, and group
-column children are recursively constructed.
+各列定義は親と深さを付けて作られ、グループ列の子は再帰的に作られます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Column`](../../index/type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const columns = table_getAllColumns(table)

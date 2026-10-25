@@ -7,35 +7,35 @@ title: isRowSelected
 function isRowSelected<TFeatures, TData>(row, rowSelection): boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.utils.ts:996](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L996)
+定義元: [features/row-selection/rowSelectionFeature.utils.ts:996](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L996)
 
-Returns whether a row id is selected in the current row selection state.
+現在の行選択の状態で、行 ID が選択されているかどうかを返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-### rowSelection
+### rowSelection {#rowselection}
 
 [`RowSelectionState`](../../index/type-aliases/RowSelectionState.md)
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const selected = isRowSelected(row)

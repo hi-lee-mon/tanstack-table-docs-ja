@@ -3,24 +3,24 @@ id: AggregationValueResult
 title: AggregationValueResult
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:323](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L323)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:323](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L323)
 
-Marks an aggregation-value override as handled.
+集計値の上書きを処理済みとして示します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TResult
+### TResult {#tresult}
 
 `TResult` = `unknown`
 
-## Properties
+## プロパティ {#properties}
 
-### value
+### value {#value}
 
 ```ts
 value: TResult;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:325](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L325)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:325](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L325)
 
-The supplied value. `undefined` is still a handled result.
+渡された値です。`undefined` でも処理済みの結果として扱われます。

@@ -3,42 +3,42 @@ id: Header_ColumnSizing
 title: Header_ColumnSizing
 ---
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:138](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L138)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:138](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L138)
 
-## Properties
+## プロパティ {#properties}
 
-### getSize
+### getSize {#getsize}
 
 ```ts
 getSize: () => number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:142](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L142)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:142](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L142)
 
-Computes this header's rendered size from its leaf columns.
+末端の列から、このヘッダーの描画時の幅を計算します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `number`
 
 ***
 
-### getStart
+### getStart {#getstart}
 
 ```ts
 getStart: (position?) => number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:146](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L146)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:146](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L146)
 
-Returns the offset measurement along the row-axis (usually the x-axis for standard tables) for the header. This is effectively a sum of the offset measurements of all preceding headers.
+ヘッダーの、行方向の軸（ふつうのテーブルでは多くの場合 x 軸）に沿ったオフセットを返します。実質的には、前にあるすべてのヘッダーのオフセットの合計です。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### position?
+##### position? {#position}
 
 [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `number`

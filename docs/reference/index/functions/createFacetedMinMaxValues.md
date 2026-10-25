@@ -7,22 +7,22 @@ title: createFacetedMinMaxValues
 function createFacetedMinMaxValues<TFeatures, TData>(): (table, columnId) => () => [number, number] | undefined;
 ```
 
-Defined in: [features/column-faceting/createFacetedMinMaxValues.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/createFacetedMinMaxValues.ts#L17)
+定義元: [features/column-faceting/createFacetedMinMaxValues.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/createFacetedMinMaxValues.ts#L17)
 
-Creates a memoized faceted min max values helper for faceted filtering.
+ファセットによるフィルタリング向けに、メモ化されたファセットの最小値・最大値ヘルパーを作成します。
 
-The returned function derives facet data from the table row model and relevant filter state so filter UIs can display available values.
+返される関数は、テーブルの行モデルと関係するフィルターの状態からファセットのデータを導き出します。これにより、フィルターの UI で選択可能な値を表示できます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-## Returns
+## 戻り値 {#returns}
 
 (`table`, `columnId`) => () => \[`number`, `number`\] \| `undefined`

@@ -7,34 +7,33 @@ title: table_getAllLeafColumnsById
 function table_getAllLeafColumnsById<TFeatures, TData>(table): Record<string, Column<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.utils.ts:240](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L240)
+定義元: [core/columns/coreColumnsFeature.utils.ts:240](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L240)
 
-Builds an id lookup for terminal leaf columns only.
+末端の列だけについて、ID で引けるマップを作ります。
 
-Parent/group columns are excluded, making this lookup appropriate for row
-cells and feature state keyed by data columns.
+親の列（グループ列）を含まないので、行のセルや、データ列をキーにした機能の状態で使うのに向いています。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `Record`\<`string`, [`Column`](../../index/type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const leavesById = table_getAllLeafColumnsById(table)

@@ -7,33 +7,33 @@ title: row_getIsAllParentsExpanded
 function row_getIsAllParentsExpanded<TFeatures, TData>(row): boolean;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.utils.ts:403](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L403)
+定義元: [features/row-expanding/rowExpandingFeature.utils.ts:403](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L403)
 
-Checks whether every ancestor of this row is expanded.
+この行の祖先がすべて展開されているかどうかを判定します。
 
-The current row is not considered; only its parent chain is walked.
+現在の行は対象にせず、親をさかのぼる連なりだけをたどります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const parentsExpanded = row_getIsAllParentsExpanded(row)

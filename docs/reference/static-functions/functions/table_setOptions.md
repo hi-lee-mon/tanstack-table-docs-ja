@@ -10,44 +10,43 @@ function table_setOptions<TFeatures, TData>(
    options?): void;
 ```
 
-Defined in: [core/table/coreTablesFeature.utils.ts:201](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.utils.ts#L201)
+定義元: [core/table/coreTablesFeature.utils.ts:201](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.utils.ts#L201)
 
-Updates the table options object.
+テーブルのオプションのオブジェクトを更新します。
 
-The updater receives the current resolved options and the merged result is
-immediately assigned to the table instance.
+アップデーターは現在の解決済みのオプションを受け取り、マージした結果はすぐにテーブルインスタンスに割り当てられます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`TableOptions`](../../index/type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>\>
 
-### options?
+### options? {#options}
 
-#### syncExternalState?
+#### syncExternalState? {#syncexternalstate}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setOptions(table, (old) => old)

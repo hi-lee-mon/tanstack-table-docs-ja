@@ -7,43 +7,40 @@ title: row_toggleExpanded
 function row_toggleExpanded<TFeatures, TData>(row, expanded?): void;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.utils.ts:289](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L289)
+定義元: [features/row-expanding/rowExpandingFeature.utils.ts:289](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L289)
 
-Expands or collapses this row.
+この行を展開、または折りたたみます。
 
-Omitting `expanded` toggles the row. If the current state is expanded-all,
-the function first materializes that state into a row-id map (containing
-only expandable row ids) before applying the row-specific change.
+`expanded` を省略すると、行を切り替えます。現在の状態が「すべて展開」の場合、行ごとの変更を適用する前に、まずその状態を行 ID のマップ（展開できる行の ID だけを含みます）に展開します。
 
-The call is a no-op (no `onExpandedChange`) when the requested state matches
-the current state, or when expanding a row that cannot expand. Collapsing is
-always allowed so stale expanded ids can be cleaned up.
+要求された状態が現在の状態と同じ場合や、展開できない行を展開しようとした場合は、何もしません（`onExpandedChange` も呼ばれません）。
+古くなった展開済みの ID を片付けられるよう、折りたたみは常に許可されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-### expanded?
+### expanded? {#expanded}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 row_toggleExpanded(row)

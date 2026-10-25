@@ -3,69 +3,68 @@ id: AggregationFnDef
 title: AggregationFnDef
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:63](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L63)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:63](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L63)
 
-A context-based aggregation definition and optional grouped-result merge.
+コンテキストベースの集計定義と、省略可能なグループ結果のマージ処理です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md) = `any`
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` = `unknown`
 
-### TResult
+### TResult {#tresult}
 
 `TResult` = `unknown`
 
-## Properties
+## プロパティ {#properties}
 
-### aggregate
+### aggregate {#aggregate}
 
 ```ts
 aggregate: (context) => TResult;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:70](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L70)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:70](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L70)
 
-Computes a result directly from the selected `rows`.
+選ばれた `rows` から直接、結果を計算します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### context
+##### context {#context}
 
 [`AggregationContext`](AggregationContext.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `TResult`
 
 ***
 
-### merge?
+### merge? {#merge}
 
 ```ts
 optional merge?: (context) => TResult;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L75)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L75)
 
-Combines already-computed immediate sub-row results. When omitted,
-nested grouping falls back to `aggregate` over the group's selected rows.
+計算済みの直下のサブ行の結果を組み合わせます。省略した場合、入れ子のグループ化では、グループで選ばれた行に対して `aggregate` を実行します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### context
+##### context {#context-1}
 
 [`AggregationMergeContext`](AggregationMergeContext.md)\<`TFeatures`, `TData`, `TValue`, `TResult`\>
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `TResult`

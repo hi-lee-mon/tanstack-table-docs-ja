@@ -3,52 +3,51 @@ id: ColumnDef_RowAggregation
 title: ColumnDef_RowAggregation
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:219](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L219)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:219](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L219)
 
-Column-definition options installed by `rowAggregationFeature`.
+`rowAggregationFeature` が追加する列定義のオプションです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### aggregatedCell?
+### aggregatedCell? {#aggregatedcell}
 
 ```ts
 optional aggregatedCell?: ColumnDefTemplate<ReturnType<Cell<TFeatures, TData, TValue>["getContext"]>>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:225](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L225)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:225](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L225)
 
-Renderer used for a grouped row's aggregated cell.
+グループ行の集計済みセルを描画するレンダラーです。
 
 ***
 
-### aggregationFn?
+### aggregationFn? {#aggregationfn}
 
 ```ts
 optional aggregationFn?: AggregationFnOption<TFeatures, TData, TValue>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:232](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L232)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:232](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L232)
 
-One aggregation reference for a scalar result, or an array for a keyed
-result object. Inline definitions in an array require an explicit `id`.
+単一の結果にするなら集計の参照を1つ、キー付きの結果オブジェクトにするなら配列を指定します。配列に入れるインラインの定義には、明示的な `id` が必要です。
 
 ***
 
-### getAggregationValue?
+### getAggregationValue? {#getaggregationvalue}
 
 ```ts
 optional getAggregationValue?: (context) =>
@@ -56,33 +55,31 @@ optional getAggregationValue?: (context) =>
   | undefined;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:244](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L244)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:244](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L244)
 
-Optionally supplies a precomputed aggregation value for this column.
-Return `{ value }` to handle the request, including `{ value: undefined }`;
-return `undefined` to use the local aggregation fallback.
+この列について、あらかじめ計算した集計値を渡せます（省略可能）。
+`{ value }` を返すと要求を処理済みにします（`{ value: undefined }` も含みます）。`undefined` を返すと、ローカルの集計にフォールバックします。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### context
+##### context {#context}
 
 [`AggregationValueContext`](AggregationValueContext.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
   \| [`AggregationValueResult`](AggregationValueResult.md)\<`unknown`\>
   \| `undefined`
 
 ***
 
-### maxAggregationDepth?
+### maxAggregationDepth? {#maxaggregationdepth}
 
 ```ts
 optional maxAggregationDepth?: number;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:238](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L238)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:238](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L238)
 
-Maximum relative sub-row depth used for grouped aggregation and cached
-default totals. `0` selects the supplied root rows, `1` their direct
-sub-rows, and so on. Defaults to `0`.
+グループ化した集計とキャッシュされる既定の合計で使う、サブ行の相対的な深さの最大値です。
+`0` は渡されたルートの行、`1` はその直下のサブ行を選び、以降も同様です。既定値は `0` です。

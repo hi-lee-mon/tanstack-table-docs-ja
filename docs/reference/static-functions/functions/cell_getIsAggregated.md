@@ -7,30 +7,30 @@ title: cell_getIsAggregated
 function cell_getIsAggregated<TFeatures, TData, TValue>(cell): boolean;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.utils.ts:478](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L478)
+定義元: [features/row-aggregation/rowAggregationFeature.utils.ts:478](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L478)
 
-Implements `cell.getIsAggregated()` for synthetic grouped rows.
+合成されたグループ行について、`cell.getIsAggregated()` を実装します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`

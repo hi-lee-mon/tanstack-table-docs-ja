@@ -7,6 +7,6 @@ title: columnOrderingFeature
 const columnOrderingFeature: TableFeature;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.ts#L21)
+定義元: [features/column-ordering/columnOrderingFeature.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.ts#L21)
 
-Feature that adds column ordering state and APIs for ordering leaf columns.
+列の並び順の状態と、末端の列を並べ替える API を追加する機能です。

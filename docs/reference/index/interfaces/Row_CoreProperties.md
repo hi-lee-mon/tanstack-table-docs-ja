@@ -3,162 +3,160 @@ id: Row_CoreProperties
 title: Row_CoreProperties
 ---
 
-Defined in: [core/rows/coreRowsFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L8)
+定義元: [core/rows/coreRowsFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L8)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`Row_Row`](Row_Row.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### \_cellsCache?
+### \_cellsCache? {#_cellscache}
 
 ```ts
 optional _cellsCache?: WeakMap<Column<TFeatures, TData, unknown>, Cell<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L12)
+定義元: [core/rows/coreRowsFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L12)
 
 ***
 
-### \_displayIndexCache
+### \_displayIndexCache {#_displayindexcache}
 
 ```ts
 _displayIndexCache: number;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L25)
+定義元: [core/rows/coreRowsFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L25)
 
 **`Internal`**
 
-Internal cache used while resolving the current display order.
+現在の表示順を求める間に使う内部のキャッシュです。
 
-This value may be stale until display order is recomputed. Use
-`row.getDisplayIndex()` instead; it refreshes and validates the cached
-position before returning it.
+この値は、表示順が再計算されるまで古いままのことがあります。代わりに `row.getDisplayIndex()` を使ってください。こちらは、キャッシュされた位置を更新・検証してから返します。
 
 ***
 
-### \_uniqueValuesCache
+### \_uniqueValuesCache {#_uniquevaluescache}
 
 ```ts
 _uniqueValuesCache: Record<string, unknown>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L26)
+定義元: [core/rows/coreRowsFeature.types.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L26)
 
 ***
 
-### \_valuesCache
+### \_valuesCache {#_valuescache}
 
 ```ts
 _valuesCache: Record<string, unknown>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L27)
+定義元: [core/rows/coreRowsFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L27)
 
 ***
 
-### depth
+### depth {#depth}
 
 ```ts
 depth: number;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L31)
+定義元: [core/rows/coreRowsFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L31)
 
-The depth of the row (if nested or grouped) relative to the root row array.
+ルートの行の配列から数えた、行の深さです（入れ子やグループ化されている場合）。
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L35)
+定義元: [core/rows/coreRowsFeature.types.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L35)
 
-The resolved unique identifier for the row resolved via the `options.getRowId` option. Defaults to the row's index (or relative index if it is a subRow).
+`options.getRowId` オプションで決まる、行の一意な識別子です。既定では行のインデックス（サブ行なら親の中での相対的なインデックス）です。
 
 ***
 
-### index
+### index {#index}
 
 ```ts
 index: number;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L39)
+定義元: [core/rows/coreRowsFeature.types.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L39)
 
-The index of the row within its parent array (or the root data array).
+親の配列（またはルートのデータ配列）の中での行のインデックスです。
 
 ***
 
-### original
+### original {#original}
 
 ```ts
 original: TData;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L43)
+定義元: [core/rows/coreRowsFeature.types.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L43)
 
-The original row object provided to the table. If the row is a grouped row, the original row object will be the first original in the group.
+テーブルに渡された元の行オブジェクトです。グループ行の場合は、グループ内の最初の元の行オブジェクトになります。
 
 ***
 
-### originalSubRows?
+### originalSubRows? {#originalsubrows}
 
 ```ts
 optional originalSubRows?: readonly TData[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L47)
+定義元: [core/rows/coreRowsFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L47)
 
-An array of the original subRows as returned by the `options.getSubRows` option.
+`options.getSubRows` オプションが返した、元のサブ行の配列です。
 
 ***
 
-### parentId?
+### parentId? {#parentid}
 
 ```ts
 optional parentId?: string;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:51](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L51)
+定義元: [core/rows/coreRowsFeature.types.ts:51](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L51)
 
-If nested, this row's parent row id.
+入れ子になっている場合、この行の親の行 ID です。
 
 ***
 
-### subRows
+### subRows {#subrows}
 
 ```ts
 subRows: Row<TFeatures, TData>[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L55)
+定義元: [core/rows/coreRowsFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L55)
 
-An array of subRows for the row as returned and created by the `options.getSubRows` option.
+`options.getSubRows` オプションが返した値から作られた、この行のサブ行の配列です。
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table_Internal<TFeatures, TData>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L59)
+定義元: [core/rows/coreRowsFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L59)
 
-Reference to the parent table instance.
+親のテーブルインスタンスへの参照です。

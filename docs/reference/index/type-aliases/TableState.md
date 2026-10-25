@@ -7,15 +7,14 @@ title: TableState
 type TableState<TFeatures> = ExtractFeatureMapTypes<TFeatures, TableState_FeatureMap>;
 ```
 
-Defined in: [types/TableState.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L40)
+定義元: [types/TableState.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L40)
 
-Complete table state for a specific feature set.
+特定の機能の組み合わせについての、テーブルの状態全体です。
 
-State slices are included only when their feature is present in `TFeatures`,
-then custom feature/plugin state is mixed in.
+状態スライスは、その機能が `TFeatures` にある場合にだけ含まれます。そのうえで、カスタム機能やプラグインの状態が加わります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)

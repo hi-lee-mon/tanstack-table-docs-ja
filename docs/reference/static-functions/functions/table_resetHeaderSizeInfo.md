@@ -7,39 +7,37 @@ title: table_resetHeaderSizeInfo
 function table_resetHeaderSizeInfo<TFeatures, TData>(table, defaultState?): void;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.utils.ts:371](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L371)
+定義元: [features/column-resizing/columnResizingFeature.utils.ts:371](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L371)
 
-Resets `columnResizing` to the configured initial state or feature default.
+`columnResizing` を、設定した初期状態か機能の既定値に戻します。
 
-With no argument, the reset clones `table.initialState.columnResizing` when
-it exists. Passing `true` ignores initial state and resets to the no-drag
-default state.
+引数なしの場合、`table.initialState.columnResizing` があればそれを複製して戻します。`true` を渡すと、初期状態を無視して、ドラッグしていない既定の状態に戻します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### defaultState?
+### defaultState? {#defaultstate}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_resetHeaderSizeInfo(table)

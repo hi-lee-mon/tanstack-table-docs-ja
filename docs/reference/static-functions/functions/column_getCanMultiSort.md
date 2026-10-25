@@ -7,38 +7,37 @@ title: column_getCanMultiSort
 function column_getCanMultiSort<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.utils.ts:447](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L447)
+定義元: [features/row-sorting/rowSortingFeature.utils.ts:447](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L447)
 
-Checks whether this column can be added to a multi-sort state.
+この列を複数列ソートの状態に加えられるかどうかを判定します。
 
-Column-level `enableMultiSort` wins over table-level `enableMultiSort`; if
-neither is set, accessor columns can multi-sort by default.
+列の `enableMultiSort` はテーブルの `enableMultiSort` より優先されます。どちらも指定されていなければ、アクセサー列は既定で複数列ソートできます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canMultiSort = column_getCanMultiSort(column)

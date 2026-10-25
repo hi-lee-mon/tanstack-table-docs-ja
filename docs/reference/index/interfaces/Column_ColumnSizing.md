@@ -3,89 +3,86 @@ id: Column_ColumnSizing
 title: Column_ColumnSizing
 ---
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:112](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L112)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:112](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L112)
 
-## Properties
+## プロパティ {#properties}
 
-### getAfter
+### getAfter {#getafter}
 
 ```ts
 getAfter: (position?) => number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:119](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L119)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:119](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L119)
 
-Measures the offset from this column's end edge to the end of its region.
+この列の末尾の端から、その領域の末尾までのオフセットを測ります。
 
-Pass a pinned region to measure within that logical region. The value is
-the sum of visible leaf column sizes after this column.
+固定領域を渡すと、その論理的な領域内で測ります。値は、この列より後ろにある表示中の末端の列の幅の合計です。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### position?
+##### position? {#position}
 
   \| [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `number`
 
 ***
 
-### getSize
+### getSize {#getsize}
 
 ```ts
 getSize: () => number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L123)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L123)
 
-Resolves the column's current size after state and min/max constraints.
+状態と最小値・最大値の制約を反映した、列の現在の幅を求めます。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `number`
 
 ***
 
-### getStart
+### getStart {#getstart}
 
 ```ts
 getStart: (position?) => number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L131)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L131)
 
-Measures the offset from the start of this column's region to its start
-edge.
+この列が属する領域の先頭から、この列の先頭の端までのオフセットを測ります。
 
-Pass a pinned region to measure within that logical region. The value is
-the sum of visible leaf column sizes before this column.
+固定領域を渡すと、その論理的な領域内で測ります。値は、この列より前にある表示中の末端の列の幅の合計です。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### position?
+##### position? {#position-1}
 
   \| [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `number`
 
 ***
 
-### resetSize
+### resetSize {#resetsize}
 
 ```ts
 resetSize: () => void;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L135)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L135)
 
-Resets the column to its initial size.
+列を初期の幅に戻します。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `void`

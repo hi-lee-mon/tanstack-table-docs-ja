@@ -3,46 +3,46 @@ id: Table_RowModels_Filtered
 title: Table_RowModels_Filtered
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:294](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L294)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:294](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L294)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getFilteredRowModel
+### getFilteredRowModel {#getfilteredrowmodel}
 
 ```ts
 getFilteredRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:301](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L301)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:301](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L301)
 
-Resolves the row model after column and global filters have been applied.
+列フィルターとグローバルフィルターを適用したあとの行モデルを返します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getPreFilteredRowModel
+### getPreFilteredRowModel {#getprefilteredrowmodel}
 
 ```ts
 getPreFilteredRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:305](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L305)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:305](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L305)
 
-Reads the row model immediately before filtering.
+フィルタリングの直前の行モデルを読み取ります。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>

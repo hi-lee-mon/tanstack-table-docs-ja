@@ -7,21 +7,19 @@ title: skipFirstRun
 function skipFirstRun(fn): () => void;
 ```
 
-Defined in: [utils.ts:350](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L350)
+定義元: [utils.ts:350](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L350)
 
-Wraps a callback so that its first invocation is skipped.
+コールバックを包み、最初の呼び出しだけを読み飛ばすようにします。
 
-Row-model `onAfterUpdate` hooks schedule auto-resets when their inputs
-change. The initial computation of a row model is not a change, so state
-resets must not fire for it — otherwise merely reading a row model on mount
-would wipe initial or controlled state.
+行モデルの `onAfterUpdate` フックは、入力が変わったときに自動リセットを予約します。
+行モデルの最初の計算は変更ではないので、そこで状態のリセットを起こしてはいけません。起こすと、マウント時に行モデルを読んだだけで初期状態や制御された状態が消えてしまいます。
 
-## Parameters
+## パラメーター {#parameters}
 
-### fn
+### fn {#fn}
 
 () => `void`
 
-## Returns
+## 戻り値 {#returns}
 
 () => `void`

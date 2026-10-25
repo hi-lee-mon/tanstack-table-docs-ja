@@ -10,44 +10,43 @@ function table_toggleAllPageRowsSelected<TFeatures, TData>(
    opts?): void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.utils.ts:164](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L164)
+定義元: [features/row-selection/rowSelectionFeature.utils.ts:164](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L164)
 
-Selects or deselects every selectable row on the current page.
+現在のページにある選択可能な行を、すべて選択または選択解除します。
 
-Omitting `value` toggles based on `table_getIsAllPageRowsSelected(table)`.
-Child rows are included when sub-row selection allows it.
+`value` を省略すると、`table_getIsAllPageRowsSelected(table)` の結果をもとに切り替えます。サブ行の選択が許可されていれば、子の行も含めます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### value?
+### value? {#value}
 
 `boolean`
 
-### opts?
+### opts? {#opts}
 
-#### deselectAll?
+#### deselectAll? {#deselectall}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_toggleAllPageRowsSelected(table)

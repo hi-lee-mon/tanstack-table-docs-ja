@@ -7,35 +7,33 @@ title: table_getDefaultColumnDef
 function table_getDefaultColumnDef<TFeatures, TData>(table): Partial<ColumnDef<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.utils.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L76)
+定義元: [core/columns/coreColumnsFeature.utils.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L76)
 
-Merges built-in, feature, and user default column definitions.
+組み込み、機能、利用者の列定義の既定値をマージします。
 
-Built-in defaults provide a header and fallback cell renderer, feature
-defaults can add feature-specific column options, and
-`options.defaultColumn` wins last.
+組み込みの既定値はヘッダーと代わりのセルのレンダラーを提供し、機能の既定値は機能ごとの列オプションを追加できます。最後に `options.defaultColumn` が優先されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `Partial`\<[`ColumnDef`](../../index/type-aliases/ColumnDef.md)\<`TFeatures`, `TData`, `unknown`\>\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const defaultColumn = table_getDefaultColumnDef(table)

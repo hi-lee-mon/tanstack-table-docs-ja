@@ -7,31 +7,31 @@ title: normalizeAggregationRows
 function normalizeAggregationRows<TFeatures, TData>(rows, maxDepth?): Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.utils.ts:108](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L108)
+定義元: [features/row-aggregation/rowAggregationFeature.utils.ts:108](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L108)
 
-Selects unique rows at a maximum relative depth in encounter order.
-Branches that end before the requested depth contribute their deepest row.
+相対的な深さの最大値までの一意な行を、出てきた順に選びます。
+指定した深さより手前で終わる枝からは、その枝でいちばん深い行が入ります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### rows
+### rows {#rows}
 
 readonly [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
-### maxDepth?
+### maxDepth? {#maxdepth}
 
 `number` = `0`
 
-## Returns
+## 戻り値 {#returns}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>[]

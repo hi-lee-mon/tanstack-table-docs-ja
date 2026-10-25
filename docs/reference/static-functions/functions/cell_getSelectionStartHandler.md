@@ -7,44 +7,42 @@ title: cell_getSelectionStartHandler
 function cell_getSelectionStartHandler<TFeatures, TData, TValue>(cell, _contextDocument?): (e) => void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:1379](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1379)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:1379](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1379)
 
-Creates a handler that begins a selection at this cell.
+このセルから選択を始めるハンドラーを作成します。
 
-Follows `header_getResizeHandler`: the enable check is resolved once outside
-the returned closure and guarded again inside it, the document is injectable
-for SSR and cross-document rendering, and the document-level `mouseup`
-listener is attached here so a drag released outside the table still ends.
+`header_getResizeHandler` と同じ作りです。有効かどうかの判定は返すクロージャーの外で1回だけ行い、クロージャーの中でもう一度確かめます。SSR や別の document への描画のために document を差し替えられます。
+また、テーブルの外でドラッグを離しても終わるよう、document レベルの `mouseup` リスナーはここで登録します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### \_contextDocument?
+### \_contextDocument? {#_contextdocument}
 
 `Document`
 
-## Returns
+## 戻り値 {#returns}
 
 (`e`) => `void`
 
-## Example
+## 例 {#example}
 
 ```tsx
 <td onMouseDown={cell.getSelectionStartHandler()} />

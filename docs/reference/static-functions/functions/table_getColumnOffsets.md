@@ -7,35 +7,33 @@ title: table_getColumnOffsets
 function table_getColumnOffsets<TFeatures, TData>(table): ColumnOffsetsByPosition;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L126)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L126)
 
-Builds start and after offset maps for every visible leaf column, computed
-once per pinning region plus the full visible list.
+表示中のすべての末端の列について、先頭からと後ろからのオフセットのマップを作ります。固定領域ごとと、表示中の全列について1回ずつ計算します。
 
-A single table-level memo of this result backs all `column.getStart()` and
-`column.getAfter()` calls with O(1) lookups.
+この結果をテーブル単位で1つメモ化しておくことで、すべての `column.getStart()` と `column.getAfter()` の呼び出しが O(1) で引けます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`ColumnOffsetsByPosition`](../../index/interfaces/ColumnOffsetsByPosition.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const offsets = table_getColumnOffsets(table)

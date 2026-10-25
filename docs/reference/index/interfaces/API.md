@@ -3,54 +3,54 @@ id: API
 title: API
 ---
 
-Defined in: [utils.ts:508](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L508)
+定義元: [utils.ts:508](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L508)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### _TDeps
+### _TDeps {#_tdeps}
 
 `_TDeps` *extends* `ReadonlyArray`\<`any`\>
 
-### _TDepArgs
+### _TDepArgs {#_tdepargs}
 
 `_TDepArgs`
 
-## Properties
+## プロパティ {#properties}
 
-### fn
+### fn {#fn}
 
 ```ts
 fn: (...args) => any;
 ```
 
-Defined in: [utils.ts:509](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L509)
+定義元: [utils.ts:509](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L509)
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### args
+##### args {#args}
 
 ...`any`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `any`
 
 ***
 
-### memoDeps?
+### memoDeps? {#memodeps}
 
 ```ts
 optional memoDeps?: (depArgs?) => any[] | undefined;
 ```
 
-Defined in: [utils.ts:510](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L510)
+定義元: [utils.ts:510](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L510)
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### depArgs?
+##### depArgs? {#depargs}
 
 `any`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `any`[] \| `undefined`

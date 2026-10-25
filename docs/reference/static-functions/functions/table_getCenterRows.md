@@ -7,34 +7,33 @@ title: table_getCenterRows
 function table_getCenterRows<TFeatures, TData>(table): Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.utils.ts:189](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L189)
+定義元: [features/row-pinning/rowPinningFeature.utils.ts:189](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L189)
 
-Resolves rows that are not pinned to top or bottom.
+上部にも下部にも固定されていない行を求めます。
 
-The current row model is filtered by `state.rowPinning.top` and
-`state.rowPinning.bottom`.
+現在の行モデルを、`state.rowPinning.top` と `state.rowPinning.bottom` で絞り込みます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const rows = table_getCenterRows(table)

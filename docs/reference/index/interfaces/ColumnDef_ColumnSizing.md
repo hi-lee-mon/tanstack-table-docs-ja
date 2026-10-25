@@ -3,40 +3,40 @@ id: ColumnDef_ColumnSizing
 title: ColumnDef_ColumnSizing
 ---
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:97](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L97)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:97](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L97)
 
-## Properties
+## プロパティ {#properties}
 
-### maxSize?
+### maxSize? {#maxsize}
 
 ```ts
 optional maxSize?: number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L101)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L101)
 
-Upper bound used when resolving this column's size.
+この列の幅を決めるときに使う上限です。
 
 ***
 
-### minSize?
+### minSize? {#minsize}
 
 ```ts
 optional minSize?: number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:105](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L105)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:105](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L105)
 
-Lower bound used when resolving this column's size.
+この列の幅を決めるときに使う下限です。
 
 ***
 
-### size?
+### size? {#size}
 
 ```ts
 optional size?: number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L109)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L109)
 
-Initial size used before column sizing state overrides it.
+列幅の状態で上書きされるまで使われる初期の幅です。

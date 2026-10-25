@@ -3,85 +3,83 @@ id: Table_Headers
 title: Table_Headers
 ---
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L8)
+定義元: [core/headers/coreHeadersFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L8)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`Table_Core`](Table_Core.md)
 - [`Table_Internal`](Table_Internal.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getFlatHeaders
+### getFlatHeaders {#getflatheaders}
 
 ```ts
 getFlatHeaders: () => Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L25)
+定義元: [core/headers/coreHeadersFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L25)
 
-Flattens every header from every header group, including parent and
-placeholder headers.
+すべてのヘッダーグループにあるヘッダーを、すべて平坦化します。親のヘッダーとプレースホルダーのヘッダーも含みます。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
 ***
 
-### getFooterGroups
+### getFooterGroups {#getfootergroups}
 
 ```ts
 getFooterGroups: () => HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L20)
+定義元: [core/headers/coreHeadersFeature.types.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L20)
 
-Builds footer groups by reversing the current header group order.
+現在のヘッダーグループの順を逆にして、フッターグループを作ります。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getHeaderGroups
+### getHeaderGroups {#getheadergroups}
 
 ```ts
 getHeaderGroups: () => HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L16)
+定義元: [core/headers/coreHeadersFeature.types.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L16)
 
-Builds the visible header groups for the current column tree, visibility,
-and pinning state.
+現在の列ツリー、表示の状態、固定の状態から、表示するヘッダーグループを作ります。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getLeafHeaders
+### getLeafHeaders {#getleafheaders}
 
 ```ts
 getLeafHeaders: () => Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L29)
+定義元: [core/headers/coreHeadersFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L29)
 
-Collects only leaf headers, excluding parent/group headers.
+末端のヘッダーだけを集めます。親のヘッダー（グループヘッダー）は含みません。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]

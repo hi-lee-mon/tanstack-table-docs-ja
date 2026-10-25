@@ -11,50 +11,50 @@ function assignPrototypeAPIs<TFeatures, TData, TDeps, TDepArgs>(
    apis): void;
 ```
 
-Defined in: [utils.ts:584](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L584)
+定義元: [utils.ts:584](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L584)
 
-Assigns API methods to a prototype object for memory-efficient method sharing.
-All instances created with this prototype will share the same method references.
+メモリ効率よくメソッドを共有するため、API メソッドをプロトタイプオブジェクトに割り当てます。
+このプロトタイプから作られたインスタンスは、すべて同じメソッド参照を共有します。
 
-For memoized methods, the memo state is lazily created and stored on each instance.
-This provides the best of both worlds: shared method code + per-instance caching.
+メモ化されたメソッドでは、メモの状態を必要になった時点で作成し、インスタンスごとに保持します。
+これにより、メソッドのコードは共有しつつ、キャッシュはインスタンスごとに持てます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TDeps
+### TDeps {#tdeps}
 
 `TDeps` *extends* readonly `any`[]
 
-### TDepArgs
+### TDepArgs {#tdepargs}
 
 `TDepArgs`
 
-## Parameters
+## パラメーター {#parameters}
 
-### feature
+### feature {#feature}
 
 keyof `TFeatures` & `string`
 
-### prototype
+### prototype {#prototype}
 
 `Record`\<`string`, `any`\>
 
-### table
+### table {#table}
 
 [`Table_Internal`](../interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### apis
+### apis {#apis}
 
 [`PrototypeAPIObject`](../type-aliases/PrototypeAPIObject.md)\<`TDeps`, [`NoInfer`](../type-aliases/NoInfer.md)\<`TDepArgs`\>\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`

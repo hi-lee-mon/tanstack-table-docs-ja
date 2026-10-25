@@ -7,38 +7,37 @@ title: row_getValue
 function row_getValue<TFeatures, TData>(row, columnId): unknown;
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:63](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L63)
+定義元: [core/rows/coreRowsFeature.utils.ts:63](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L63)
 
-Reads and caches this row's value for a column.
+列について、この行の値を読み取り、キャッシュします。
 
-The value is produced by the column accessor. Missing columns or display
-columns without an accessor return `undefined`.
+値は列のアクセサーが作ります。列がない場合や、アクセサーを持たない表示用の列の場合は `undefined` を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-### columnId
+### columnId {#columnid}
 
 `string`
 
-## Returns
+## 戻り値 {#returns}
 
 `unknown`
 
-## Example
+## 例 {#example}
 
 ```ts
 const firstName = row_getValue(row, 'firstName')

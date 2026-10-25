@@ -7,20 +7,18 @@ title: TableOptions
 type TableOptions<TFeatures, TData> = TableOptions_Core<TFeatures, TData> & ExtractFeatureMapTypes<TFeatures, TableOptions_FeatureMap<TFeatures, TData>> & DebugOptions<TFeatures>;
 ```
 
-Defined in: [types/TableOptions.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L131)
+定義元: [types/TableOptions.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L131)
 
-Complete table options for a specific feature set.
+特定の機能の組み合わせについての、テーブルのオプション全体です。
 
-Feature options are included only when their feature is present in
-`TFeatures`, then custom feature/plugin options and debug options are mixed
-in.
+機能のオプションは、その機能が `TFeatures` にある場合にだけ含まれます。そのうえで、カスタム機能やプラグインのオプションと、デバッグ用のオプションが加わります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)

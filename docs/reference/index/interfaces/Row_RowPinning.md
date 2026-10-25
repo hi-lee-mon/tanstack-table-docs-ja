@@ -3,82 +3,82 @@ id: Row_RowPinning
 title: Row_RowPinning
 ---
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L42)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L42)
 
-## Properties
+## プロパティ {#properties}
 
-### getCanPin
+### getCanPin {#getcanpin}
 
 ```ts
 getCanPin: () => boolean;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:46](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L46)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:46](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L46)
 
-Checks whether this row can be pinned.
+この行を固定できるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### getIsPinned
+### getIsPinned {#getispinned}
 
 ```ts
 getIsPinned: () => RowPinningPosition;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:50](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L50)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:50](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L50)
 
-Returns the pinned position of the row. (`'top'`, `'bottom'` or `false`)
+行の固定位置を返します（`'top'`、`'bottom'`、`false` のいずれか）。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`RowPinningPosition`](../type-aliases/RowPinningPosition.md)
 
 ***
 
-### getPinnedIndex
+### getPinnedIndex {#getpinnedindex}
 
 ```ts
 getPinnedIndex: () => number;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L54)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L54)
 
-Returns the numeric pinned index of the row within a pinned row group.
+固定された行グループの中での、行の固定位置のインデックス（数値）を返します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `number`
 
 ***
 
-### pin
+### pin {#pin}
 
 ```ts
 pin: (position, includeLeafRows?, includeParentRows?) => void;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L58)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L58)
 
-Pins a row to the `'top'` or `'bottom'`, or unpins the row to the center if `false` is passed.
+行を `'top'` または `'bottom'` に固定します。`false` を渡すと固定を解除し、中央に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### position
+##### position {#position}
 
 [`RowPinningPosition`](../type-aliases/RowPinningPosition.md)
 
-##### includeLeafRows?
+##### includeLeafRows? {#includeleafrows}
 
 `boolean`
 
-##### includeParentRows?
+##### includeParentRows? {#includeparentrows}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `void`

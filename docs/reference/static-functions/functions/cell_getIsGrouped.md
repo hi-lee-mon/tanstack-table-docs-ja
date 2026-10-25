@@ -7,37 +7,37 @@ title: cell_getIsGrouped
 function cell_getIsGrouped<TFeatures, TData, TValue>(cell): boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.utils.ts:243](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L243)
+定義元: [features/column-grouping/columnGroupingFeature.utils.ts:243](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L243)
 
-Checks whether this cell represents the grouped column for a grouped row.
+このセルがグループ行でグループ化の基準になった列を表しているかどうかを判定します。
 
-This is the cell that usually renders the grouped value and expansion control.
+ふつうは、このセルがグループの値と展開の操作部品を描画します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const isGroupedCell = cell_getIsGrouped(cell)

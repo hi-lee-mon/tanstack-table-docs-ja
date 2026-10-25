@@ -7,37 +7,37 @@ title: column_getToggleGroupingHandler
 function column_getToggleGroupingHandler<TFeatures, TData, TValue>(column): () => void;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.utils.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L124)
+定義元: [features/column-grouping/columnGroupingFeature.utils.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L124)
 
-Creates a header/control handler that toggles grouping for this column.
+この列のグループ化を切り替える、ヘッダーや操作部品向けのハンドラーを作成します。
 
-The handler is a no-op when `column_getCanGroup(column)` is false.
+`column_getCanGroup(column)` が false の場合、ハンドラーは何もしません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 () => `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 const onClick = column_getToggleGroupingHandler(column)

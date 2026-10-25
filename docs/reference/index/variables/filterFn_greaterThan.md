@@ -7,9 +7,8 @@ title: filterFn_greaterThan
 const filterFn_greaterThan: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:215](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L215)
+定義元: [features/column-filtering/filterFns.ts:215](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L215)
 
-Keeps rows whose value is greater than the filter value.
+値がフィルター値より大きい行を残します。
 
-Numeric values are compared numerically when both sides can be coerced to
-numbers; otherwise normalized strings are compared.
+両方の値を数値に変換できる場合は数値として比べます。そうでなければ、正規化した文字列どうしで比べます。

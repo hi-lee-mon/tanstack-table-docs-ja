@@ -7,54 +7,54 @@ title: DebugOptions
 type DebugOptions<TFeatures> = object & DebugKeysFor<CoreFeatures & TFeatures>;
 ```
 
-Defined in: [types/TableOptions.ts:52](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L52)
+定義元: [types/TableOptions.ts:52](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L52)
 
-## Type Declaration
+## 型宣言 {#type-declaration}
 
-### debugAll?
+### debugAll? {#debugall}
 
 ```ts
 optional debugAll?: boolean;
 ```
 
-### debugCache?
+### debugCache? {#debugcache}
 
 ```ts
 optional debugCache?: boolean;
 ```
 
-### debugCells?
+### debugCells? {#debugcells}
 
 ```ts
 optional debugCells?: boolean;
 ```
 
-### debugColumns?
+### debugColumns? {#debugcolumns}
 
 ```ts
 optional debugColumns?: boolean;
 ```
 
-### debugHeaders?
+### debugHeaders? {#debugheaders}
 
 ```ts
 optional debugHeaders?: boolean;
 ```
 
-### debugRows?
+### debugRows? {#debugrows}
 
 ```ts
 optional debugRows?: boolean;
 ```
 
-### debugTable?
+### debugTable? {#debugtable}
 
 ```ts
 optional debugTable?: boolean;
 ```
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)

@@ -13,30 +13,29 @@ function table_getFilteredSelectedRowModel<TFeatures, TData>(table):
 };
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.utils.ts:272](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L272)
+定義元: [features/row-selection/rowSelectionFeature.utils.ts:272](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L272)
 
-Builds a row model containing selected rows from the filtered row model.
+フィルター済み行モデルから、選択された行を含む行モデルを作ります。
 
-If no row ids are selected, an empty row model is returned without walking
-the rows.
+選択されている行 ID がなければ、行をたどらずに空の行モデルを返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
   \| [`RowModel`](../../index/interfaces/RowModel.md)\<`TFeatures`, `TData`\>
   \| \{
@@ -45,7 +44,7 @@ the rows.
   `rowsById`: `Record`\<`string`, `unknown`\>;
 \}
 
-## Example
+## 例 {#example}
 
 ```ts
 const selectedRows = table_getFilteredSelectedRowModel(table)

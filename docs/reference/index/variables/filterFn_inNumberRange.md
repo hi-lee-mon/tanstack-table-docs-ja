@@ -7,11 +7,8 @@ title: filterFn_inNumberRange
 const filterFn_inNumberRange: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:290](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L290)
+定義元: [features/column-filtering/filterFns.ts:290](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L290)
 
-Keeps rows whose numeric value is inside an inclusive `[min, max]` range.
+数値の値が、両端を含む `[min, max]` の範囲内にある行を残します。
 
-Filter values are normalized so blank endpoints become open-ended and
-reversed endpoints are swapped. Only real numbers can fall inside the
-range: non-numeric row values (`null`, `undefined`, strings, booleans)
-never match.
+フィルター値は正規化され、空の端は制限なしとして扱い、逆順の端は入れ替えます。範囲内に入るのは本当の数値だけで、数値でない行の値（`null`、`undefined`、文字列、真偽値）は一致しません。

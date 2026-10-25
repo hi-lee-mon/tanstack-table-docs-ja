@@ -7,52 +7,50 @@ title: aggregateColumnValue
 function aggregateColumnValue<TFeatures, TData>(args): unknown;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.utils.ts:336](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L336)
+定義元: [features/row-aggregation/rowAggregationFeature.utils.ts:336](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L336)
 
-Executes every configured aggregation over a depth-selected row frontier.
+深さで選んだ行の最前線に対して、設定されたすべての集計を実行します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### args
+### args {#args}
 
-#### column
+#### column {#column}
 
 [`Column`](../../index/type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>
 
-#### groupingRow?
+#### groupingRow? {#groupingrow}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-#### maxDepth?
+#### maxDepth? {#maxdepth}
 
 `number`
 
-#### rows
+#### rows {#rows}
 
 readonly [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
-#### subRows?
+#### subRows? {#subrows}
 
 readonly [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
-#### uniqueRows?
+#### uniqueRows? {#uniquerows}
 
 `boolean`
 
-Marks `rows` as distinct nodes of a single row tree (rows the table's own
-row models produced), enabling frontier selection without the
-duplicate-id guard. Caller-supplied row arrays must omit this.
+`rows` が1つの行ツリーの別々のノード（テーブル自身の行モデルが作った行）であることを示します。これにより、ID の重複を防ぐ確認を省いて最前線を選べます。呼び出し側が渡す行の配列では、これを指定しないでください。
 
-## Returns
+## 戻り値 {#returns}
 
 `unknown`

@@ -9,36 +9,34 @@ function table_getGlobalFilterFn<TFeatures, TData>(table):
   | undefined;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.utils.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.utils.ts#L61)
+定義元: [features/global-filtering/globalFilteringFeature.utils.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.utils.ts#L61)
 
-Resolves the filter function used for global filtering.
+グローバルフィルタリングで使うフィルター関数を解決します。
 
-Function-valued `options.globalFilterFn` is returned directly, `'auto'`
-delegates to `table_getGlobalAutoFilterFn`, and string values are looked up in
-the table's filter function registry.
+`options.globalFilterFn` が関数ならそのまま返し、`'auto'` なら `table_getGlobalAutoFilterFn` に任せ、文字列ならテーブルのフィルター関数のレジストリから探します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
   \| [`FilterFn`](../../index/interfaces/FilterFn.md)\<`TFeatures`, `TData`\>
   \| `undefined`
 
-## Example
+## 例 {#example}
 
 ```ts
 const filterFn = table_getGlobalFilterFn(table)

@@ -7,35 +7,34 @@ title: constructAggregationFn
 function constructAggregationFn<TFeatures, TData, TValue, TResult>(definition): AggregationFnDef<TFeatures, TData, TValue, TResult>;
 ```
 
-Defined in: [features/row-aggregation/aggregationFns.ts:10](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L10)
+定義元: [features/row-aggregation/aggregationFns.ts:10](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L10)
 
-Creates a typed context-based aggregation definition for a column or
-aggregation-function registry.
+列または集計関数のレジストリ向けに、型付きのコンテキストベースの集計定義を作成します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md) = `any`
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` = `unknown`
 
-### TResult
+### TResult {#tresult}
 
 `TResult` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### definition
+### definition {#definition}
 
 [`AggregationFnDef`](../interfaces/AggregationFnDef.md)\<`TFeatures`, `TData`, `TValue`, `TResult`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`AggregationFnDef`](../interfaces/AggregationFnDef.md)\<`TFeatures`, `TData`, `TValue`, `TResult`\>

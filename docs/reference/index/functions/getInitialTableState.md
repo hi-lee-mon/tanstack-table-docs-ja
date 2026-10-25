@@ -7,29 +7,29 @@ title: getInitialTableState
 function getInitialTableState<TFeatures>(features, initialState?): TableState<TFeatures>;
 ```
 
-Defined in: [core/table/constructTable.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/constructTable.ts#L18)
+定義元: [core/table/constructTable.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/constructTable.ts#L18)
 
-Builds the initial table state from registered features and user initial state.
+登録された機能と利用者が指定した初期状態から、テーブルの初期状態を組み立てます。
 
-Each feature contributes its default state before user-provided `initialState` values are merged in.
+各機能が既定の状態を提供し、そのあとで利用者が指定した `initialState` の値がマージされます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### features
+### features {#features}
 
 `TFeatures`
 
-### initialState?
+### initialState? {#initialstate}
 
   \| `Partial`\<[`TableState`](../type-aliases/TableState.md)\<`TFeatures`\>\>
   \| `undefined`
 
-## Returns
+## 戻り値 {#returns}
 
 [`TableState`](../type-aliases/TableState.md)\<`TFeatures`\>

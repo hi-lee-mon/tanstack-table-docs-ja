@@ -3,38 +3,38 @@ id: Row_ColumnFiltering
 title: Row_ColumnFiltering
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:231](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L231)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:231](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L231)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### _TData
+### _TData {#_tdata}
 
 `_TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### columnFilters
+### columnFilters {#columnfilters}
 
 ```ts
 columnFilters: Record<string, boolean>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:238](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L238)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:238](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L238)
 
-The column filters map for the row. This object tracks whether a row is passing/failing specific filters by their column ID.
+行の列フィルターのマップです。このオブジェクトは、行が各フィルターに通ったかどうかを列 ID ごとに記録します。
 
 ***
 
-### columnFiltersMeta
+### columnFiltersMeta {#columnfiltersmeta}
 
 ```ts
 columnFiltersMeta: Record<string, ExtractFilterMeta<TFeatures>>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:242](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L242)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:242](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L242)
 
-The column filters meta map for the row. This object tracks any filter meta for a row as optionally provided during the filtering process.
+行の列フィルターのメタデータのマップです。このオブジェクトは、フィルタリングの処理中に任意で渡された、行のフィルターのメタデータを記録します。

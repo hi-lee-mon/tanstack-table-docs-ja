@@ -7,38 +7,37 @@ title: column_getPinnedIndex
 function column_getPinnedIndex<TFeatures, TData, TValue>(column): number;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.utils.ts:179](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L179)
+定義元: [features/column-pinning/columnPinningFeature.utils.ts:179](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L179)
 
-Finds this column's index within its pinned region.
+固定領域の中で、この列のインデックスを探します。
 
-Unpinned columns return `0`; pinned columns return their position in
-`state.columnPinning.start` or `state.columnPinning.end`.
+固定されていない列は `0` を返します。固定された列は、`state.columnPinning.start` または `state.columnPinning.end` の中での位置を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const index = column_getPinnedIndex(column)

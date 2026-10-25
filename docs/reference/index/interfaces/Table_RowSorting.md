@@ -3,80 +3,78 @@ id: Table_RowSorting
 title: Table_RowSorting
 ---
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:266](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L266)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:266](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L266)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### _TFeatures
+### _TFeatures {#_tfeatures}
 
 `_TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### _TData
+### _TData {#_tdata}
 
 `_TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### autoResetSorting
+### autoResetSorting {#autoresetsorting}
 
 ```ts
 autoResetSorting: () => void;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:277](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L277)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:277](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L277)
 
-Resets sorting after the table data changes when explicitly enabled.
+明示的に有効にした場合、テーブルのデータが変わったあとにソートをリセットします。
 
-Honors `autoResetAll` and `autoResetSorting`; sorting is preserved by
-default. Called by the core row model; you rarely need to invoke it
-yourself.
+`autoResetAll` と `autoResetSorting` に従います。既定ではソートは保たれます。コア行モデルから呼ばれるので、自分で呼ぶ必要はほとんどありません。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `void`
 
 ***
 
-### resetSorting
+### resetSorting {#resetsorting}
 
 ```ts
 resetSorting: (defaultState?) => void;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:283](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L283)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:283](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L283)
 
-Resets `sorting` to `initialState.sorting`.
+`sorting` を `initialState.sorting` に戻します。
 
-Pass `true` to ignore initial state and reset to `[]`.
+`true` を渡すと、初期状態を無視して `[]` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `void`
 
 ***
 
-### setSorting
+### setSorting {#setsorting}
 
 ```ts
 setSorting: (updater) => void;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:287](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L287)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:287](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L287)
 
-Updates sorting state with a next ordered array or updater function.
+次の順序付きの配列かアップデーター関数で、ソートの状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`SortingState`](../type-aliases/SortingState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `void`

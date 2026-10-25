@@ -7,38 +7,37 @@ title: column_getSize
 function column_getSize<TFeatures, TData, TValue>(column): number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L66)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L66)
 
-Resolves a column's current pixel size.
+列の現在の幅（ピクセル）を求めます。
 
-Committed `state.columnSizing[column.id]` wins over `columnDef.size`, then the
-built-in default size. The result is clamped between min and max size.
+確定した `state.columnSizing[column.id]`、`columnDef.size`、組み込みの既定の幅の順に優先されます。結果は最小幅と最大幅の間に収められます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const width = column_getSize(column)

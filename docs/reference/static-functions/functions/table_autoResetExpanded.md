@@ -7,35 +7,33 @@ title: table_autoResetExpanded
 function table_autoResetExpanded<TFeatures, TData>(table): void;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.utils.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L38)
+定義元: [features/row-expanding/rowExpandingFeature.utils.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L38)
 
-Schedules an expanded-state reset after row-structure changes.
+行の構造が変わったあとに、展開状態のリセットを予約します。
 
-The reset runs when `autoResetAll`, `autoResetExpanded`, or the default
-client-side expanding behavior allows it. Manual expanding opts out unless
-the reset options explicitly opt back in.
+リセットは、`autoResetAll`、`autoResetExpanded`、またはクライアントサイドでの展開の既定の動作が許可する場合に実行されます。手動の展開では、リセットのオプションで明示的に有効にしない限り実行されません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_autoResetExpanded(table)

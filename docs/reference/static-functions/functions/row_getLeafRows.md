@@ -7,33 +7,33 @@ title: row_getLeafRows
 function row_getLeafRows<TFeatures, TData>(row): Row<TFeatures, TData>[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:148](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L148)
+定義元: [core/rows/coreRowsFeature.utils.ts:148](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L148)
 
-Flattens this row's descendant tree into leaf rows.
+この行の子孫のツリーを、末端の行に平坦化します。
 
-The row itself is not included; only nested `subRows` are walked.
+行自身は含まず、入れ子の `subRows` だけをたどります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const descendants = row_getLeafRows(row)

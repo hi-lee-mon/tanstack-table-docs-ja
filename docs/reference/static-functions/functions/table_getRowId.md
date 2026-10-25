@@ -11,46 +11,45 @@ function table_getRowId<TFeatures, TData>(
    parent?): string;
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:295](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L295)
+定義元: [core/rows/coreRowsFeature.utils.ts:295](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L295)
 
-Resolves the stable id for a row.
+行の、変わらない ID を求めます。
 
-`options.getRowId` wins when provided. Otherwise root rows use their index
-and child rows append their index to the parent id, such as `0.2`.
+`options.getRowId` を渡した場合は、そちらが優先されます。そうでなければ、ルートの行はインデックスを使い、子の行は親の ID に自分のインデックスを付け足します（`0.2` など）。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### originalRow
+### originalRow {#originalrow}
 
 `TData`
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### index
+### index {#index}
 
 `number`
 
-### parent?
+### parent? {#parent}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `string`
 
-## Example
+## 例 {#example}
 
 ```ts
 const id = table_getRowId(originalRow, table, index, parentRow)

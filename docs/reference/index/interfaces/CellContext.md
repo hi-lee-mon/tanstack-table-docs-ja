@@ -3,78 +3,78 @@ id: CellContext
 title: CellContext
 ---
 
-Defined in: [core/cells/coreCellsFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L8)
+定義元: [core/cells/coreCellsFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L8)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### cell
+### cell {#cell}
 
 ```ts
 cell: Cell<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L13)
+定義元: [core/cells/coreCellsFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L13)
 
 ***
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:14](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L14)
+定義元: [core/cells/coreCellsFeature.types.ts:14](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L14)
 
 ***
 
-### getValue
+### getValue {#getvalue}
 
 ```ts
 getValue: Getter<TValue>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L15)
+定義元: [core/cells/coreCellsFeature.types.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L15)
 
 ***
 
-### renderValue
+### renderValue {#rendervalue}
 
 ```ts
 renderValue: Getter<TValue | null>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L16)
+定義元: [core/cells/coreCellsFeature.types.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L16)
 
 ***
 
-### row
+### row {#row}
 
 ```ts
 row: Row<TFeatures, TData>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L17)
+定義元: [core/cells/coreCellsFeature.types.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L17)
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table<TFeatures, TData>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L18)
+定義元: [core/cells/coreCellsFeature.types.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L18)

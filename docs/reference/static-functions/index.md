@@ -3,7 +3,7 @@ id: static-functions
 title: static-functions
 ---
 
-## Functions
+## 関数 {#functions}
 
 - [aggregateColumnValue](functions/aggregateColumnValue.md)
 - [cell\_getCanSelect](functions/cell_getCanSelect.md)

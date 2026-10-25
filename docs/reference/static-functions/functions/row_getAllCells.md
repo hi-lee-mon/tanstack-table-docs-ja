@@ -7,34 +7,33 @@ title: row_getAllCells
 function row_getAllCells<TFeatures, TData>(row): Cell<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:235](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L235)
+定義元: [core/rows/coreRowsFeature.utils.ts:235](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L235)
 
-Constructs one cell for each leaf column in this row.
+この行の末端の列ごとに、セルを1つずつ作ります。
 
-The result follows `table.getAllLeafColumns()` order and includes hidden
-columns; visibility-specific APIs filter this list later.
+結果は `table.getAllLeafColumns()` の順で、非表示の列も含みます。表示に関係する API が、あとでこのリストを絞り込みます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const cells = row_getAllCells(row)

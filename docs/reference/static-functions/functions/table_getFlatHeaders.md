@@ -7,34 +7,33 @@ title: table_getFlatHeaders
 function table_getFlatHeaders<TFeatures, TData>(table): Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.utils.ts:127](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L127)
+定義元: [core/headers/coreHeadersFeature.utils.ts:127](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L127)
 
-Flattens every header from every header group into one array.
+すべてのヘッダーグループのヘッダーを、1つの配列に平坦化します。
 
-The result includes parent headers and placeholder headers, in header-group
-order from top to bottom.
+結果には親のヘッダーとプレースホルダーのヘッダーも含まれ、ヘッダーグループの上から下への順に並びます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Header`](../../index/type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const flatHeaders = table_getFlatHeaders(table)

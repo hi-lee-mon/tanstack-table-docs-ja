@@ -10,43 +10,43 @@ function assignTableAPIs<TFeatures, TData, TDeps, TDepArgs>(
    apis): void;
 ```
 
-Defined in: [utils.ts:542](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L542)
+定義元: [utils.ts:542](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L542)
 
-Assigns Table API methods directly to the table instance.
-Unlike row/cell/column/header, the table is a singleton so methods are assigned directly.
+Table API のメソッドをテーブルインスタンスに直接割り当てます。
+row / cell / column / header と違い、テーブルは1つしかないため、メソッドを直接割り当てます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TDeps
+### TDeps {#tdeps}
 
 `TDeps` *extends* readonly `any`[]
 
-### TDepArgs
+### TDepArgs {#tdepargs}
 
 `TDepArgs`
 
-## Parameters
+## パラメーター {#parameters}
 
-### feature
+### feature {#feature}
 
 keyof `TFeatures` & `string`
 
-### table
+### table {#table}
 
 [`Table_Internal`](../interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### apis
+### apis {#apis}
 
 [`APIObject`](../type-aliases/APIObject.md)\<`TDeps`, [`NoInfer`](../type-aliases/NoInfer.md)\<`TDepArgs`\>\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`

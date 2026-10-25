@@ -7,38 +7,37 @@ title: column_getIsFiltered
 function column_getIsFiltered<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.utils.ts:173](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L173)
+定義元: [features/column-filtering/columnFilteringFeature.utils.ts:173](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L173)
 
-Checks whether this column currently has an entry in `state.columnFilters`.
+この列が現在 `state.columnFilters` にエントリーを持つかどうかを判定します。
 
-This only reflects filter state presence; it does not indicate whether the
-filter removes any rows.
+これはフィルターの状態があるかどうかを示すだけで、フィルターが実際に行を除いているかどうかは示しません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const isFiltered = column_getIsFiltered(column)

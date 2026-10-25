@@ -7,8 +7,8 @@ title: filterFn_greaterThanOrEqualTo
 const filterFn_greaterThanOrEqualTo: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:226](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L226)
+定義元: [features/column-filtering/filterFns.ts:226](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L226)
 
-Keeps rows whose value is greater than or equal to the filter value.
+値がフィルター値以上の行を残します。
 
-Delegates to the built-in greater-than and strict-equality comparisons.
+組み込みの「より大きい」と「厳密に等しい」の比較に処理を任せます。

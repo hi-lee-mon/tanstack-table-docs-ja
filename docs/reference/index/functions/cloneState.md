@@ -7,24 +7,24 @@ title: cloneState
 function cloneState<T>(value): T;
 ```
 
-Defined in: [utils.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L22)
+定義元: [utils.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L22)
 
-Clones table state values while preserving non-plain objects.
+プレーンでないオブジェクトはそのまま残し、テーブルの状態の値を複製します。
 
-Plain objects and arrays are copied recursively so state updates can avoid mutating existing references.
+プレーンなオブジェクトと配列は再帰的にコピーされるため、状態の更新で既存の参照を書き換えずに済みます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### T
-
-`T`
-
-## Parameters
-
-### value
+### T {#t}
 
 `T`
 
-## Returns
+## パラメーター {#parameters}
+
+### value {#value}
+
+`T`
+
+## 戻り値 {#returns}
 
 `T`

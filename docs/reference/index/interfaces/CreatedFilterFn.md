@@ -3,26 +3,23 @@ id: CreatedFilterFn
 title: CreatedFilterFn
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L126)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L126)
 
-The shape returned by `constructFilterFn`: a `FilterFn` with its definition
-attached, so variants can be built by spreading it into another
-`constructFilterFn` call.
+`constructFilterFn` が返す形です。定義が付いた `FilterFn` なので、これを別の `constructFilterFn` の呼び出しにスプレッドして派生版を作れます。
 
-The call signature is generic so a created filter function can be used with
-any table's rows, regardless of the feature set it was defined against.
+呼び出しシグネチャはジェネリックです。そのため、作成したフィルター関数は、定義したときの機能の組み合わせに関係なく、どのテーブルの行にも使えます。
 
-## Extends
+## 継承元 {#extends}
 
 - [`FilterFnDef`](FilterFnDef.md)\<`TFeatures`, `TData`\>
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
@@ -34,145 +31,142 @@ CreatedFilterFn<TRowFeatures, TRowData>(
    addMeta?): boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:130](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L130)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:130](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L130)
 
-The shape returned by `constructFilterFn`: a `FilterFn` with its definition
-attached, so variants can be built by spreading it into another
-`constructFilterFn` call.
+`constructFilterFn` が返す形です。定義が付いた `FilterFn` なので、これを別の `constructFilterFn` の呼び出しにスプレッドして派生版を作れます。
 
-The call signature is generic so a created filter function can be used with
-any table's rows, regardless of the feature set it was defined against.
+呼び出しシグネチャはジェネリックです。そのため、作成したフィルター関数は、定義したときの機能の組み合わせに関係なく、どのテーブルの行にも使えます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters-1}
 
-### TRowFeatures
+### TRowFeatures {#trowfeatures}
 
 `TRowFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TRowData
+### TRowData {#trowdata}
 
 `TRowData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../type-aliases/Row.md)\<`TRowFeatures`, `TRowData`\>
 
-### columnId
+### columnId {#columnid}
 
 `string`
 
-### filterValue
+### filterValue {#filtervalue}
 
 `any`
 
-### addMeta?
+### addMeta? {#addmeta}
 
 (`meta`) => `void`
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Properties
+## プロパティ {#properties}
 
-### autoRemove?
+### autoRemove? {#autoremove}
 
 ```ts
 optional autoRemove?: (filterValue) => boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L113)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L113)
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### filterValue
+##### filterValue {#filtervalue-1}
 
 `any`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from}
 
 [`FilterFnDef`](FilterFnDef.md).[`autoRemove`](FilterFnDef.md#autoremove)
 
 ***
 
-### filter
+### filter {#filter}
 
 ```ts
 filter: (dataValue, filterValue, row, columnId, addMeta?) => boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L106)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L106)
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### dataValue
-
-`any`
-
-##### filterValue
+##### dataValue {#datavalue}
 
 `any`
 
-##### row
+##### filterValue {#filtervalue-2}
+
+`any`
+
+##### row {#row-1}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-##### columnId
+##### columnId {#columnid-1}
 
 `string`
 
-##### addMeta?
+##### addMeta? {#addmeta-1}
 
 (`meta`) => `void`
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `boolean`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-1}
 
 [`FilterFnDef`](FilterFnDef.md).[`filter`](FilterFnDef.md#filter)
 
 ***
 
-### resolveDataValue?
+### resolveDataValue? {#resolvedatavalue}
 
 ```ts
 optional resolveDataValue?: TransformDataValueFn;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:115](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L115)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:115](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L115)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-2}
 
 [`FilterFnDef`](FilterFnDef.md).[`resolveDataValue`](FilterFnDef.md#resolvedatavalue)
 
 ***
 
-### resolveFilterValue?
+### resolveFilterValue? {#resolvefiltervalue}
 
 ```ts
 optional resolveFilterValue?: (filterValue) => any;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L114)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L114)
 
-#### Parameters
+#### パラメーター {#parameters-3}
 
-##### filterValue
-
-`any`
-
-#### Returns
+##### filterValue {#filtervalue-3}
 
 `any`
 
-#### Inherited from
+#### 戻り値 {#returns-3}
+
+`any`
+
+#### 継承元のメンバー {#inherited-from-3}
 
 [`FilterFnDef`](FilterFnDef.md).[`resolveFilterValue`](FilterFnDef.md#resolvefiltervalue)

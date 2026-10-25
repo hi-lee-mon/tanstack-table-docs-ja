@@ -104,6 +104,8 @@ React API リファレンス（`docs/framework/react/reference/**`）に出て�
 | Example / Examples | 例 |
 | Remarks | 備考 |
 | Extends / Extended by | 継承元 / 継承先 |
+| Inherited from | 継承元のメンバー |
+| Overrides | 上書き元 |
 | Functions / Interfaces / Type Aliases / Variables | 関数 / インターフェース / 型エイリアス / 変数 |
 | See | 参照 |
 | Modules | モジュール |

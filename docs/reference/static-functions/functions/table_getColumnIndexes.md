@@ -7,34 +7,33 @@ title: table_getColumnIndexes
 function table_getColumnIndexes<TFeatures, TData>(table): ColumnIndexes;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.utils.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L45)
+定義元: [features/column-ordering/columnOrderingFeature.utils.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L45)
 
-Builds column-id to index records for each visible pinning region.
+表示中の固定領域ごとに、列 ID からインデックスへのレコードを作ります。
 
-All four regions are built in one pass so a single memo entry serves every
-`column_getIndex` lookup without per-column scans.
+4つの領域を1回の走査でまとめて作るので、列ごとに走査しなくても、1つのメモのエントリーですべての `column_getIndex` の検索をまかなえます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`ColumnIndexes`](../../index/interfaces/ColumnIndexes.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const indexes = table_getColumnIndexes(table)

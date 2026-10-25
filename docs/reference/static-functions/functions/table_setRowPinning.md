@@ -7,38 +7,37 @@ title: table_setRowPinning
 function table_setRowPinning<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.utils.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L43)
+定義元: [features/row-pinning/rowPinningFeature.utils.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L43)
 
-Routes a row pinning updater through the table's row-pinning change handler.
+行の固定のアップデーターを、テーブルの行の固定の変更ハンドラーに通します。
 
-The updater may be a next `{ top, bottom }` state or a function of the
-previous state, matching the instance `table.setRowPinning` behavior.
+アップデーターには、次の `{ top, bottom }` の状態か、前の状態を受け取る関数を指定できます。インスタンスの `table.setRowPinning` と同じ動作です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`RowPinningState`](../../index/interfaces/RowPinningState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setRowPinning(table, (old) => ({ ...old, top: [rowId] }))

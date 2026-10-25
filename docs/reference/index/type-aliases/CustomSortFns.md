@@ -7,14 +7,14 @@ title: CustomSortFns
 type CustomSortFns<TFeatures, TData> = Record<string, SortFn<TFeatures, TData>>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L92)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L92)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)

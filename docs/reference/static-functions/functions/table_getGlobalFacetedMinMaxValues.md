@@ -7,34 +7,33 @@ title: table_getGlobalFacetedMinMaxValues
 function table_getGlobalFacetedMinMaxValues<TFeatures, TData>(table): [number, number] | undefined;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.utils.ts:125](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.utils.ts#L125)
+定義元: [features/column-faceting/columnFacetingFeature.utils.ts:125](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.utils.ts#L125)
 
-Computes min and max numeric facet values for the global filter context.
+グローバルフィルターについて、数値のファセットの最小値と最大値を計算します。
 
-The global context is requested with the internal `__global__` column id. If
-no factory is registered, the result is `undefined`.
+グローバルの対象は、内部の列 ID `__global__` で要求します。ファクトリーが登録されていなければ、結果は `undefined` です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 \[`number`, `number`\] \| `undefined`
 
-## Example
+## 例 {#example}
 
 ```ts
 const range = table_getGlobalFacetedMinMaxValues(table)

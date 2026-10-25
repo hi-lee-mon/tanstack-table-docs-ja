@@ -7,47 +7,44 @@ title: column_getStart
 function column_getStart<TFeatures, TData, TValue>(column, position?): number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:181](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L181)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:181](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L181)
 
-Computes the offset from the start edge of a pinning region to this column.
+固定領域の先頭の端から、この列までのオフセットを計算します。
 
-The value is the sum of all previous visible leaf column sizes in the
-requested `'start'`, `'center'`, or `'end'` region.
+値は、指定した `'start'`、`'center'`、`'end'` の領域で前にある、表示中のすべての末端の列の幅の合計です。
 
-`start` and `end` are logical positions. In LTR languages/layouts, `start`
-usually corresponds to left and `end` to right. In RTL languages/layouts,
-`start` usually corresponds to right and `end` to left.
+`start` と `end` は論理的な位置です。LTR の言語やレイアウトでは、ふつう `start` は左、`end` は右にあたります。RTL の言語やレイアウトでは、ふつう `start` は右、`end` は左にあたります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### position?
+### position? {#position}
 
   \| [`ColumnPinningPosition`](../../index/type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const startOffset = column_getStart(column, 'start')

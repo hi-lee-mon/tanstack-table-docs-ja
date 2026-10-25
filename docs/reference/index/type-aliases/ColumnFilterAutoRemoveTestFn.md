@@ -7,32 +7,32 @@ title: ColumnFilterAutoRemoveTestFn
 type ColumnFilterAutoRemoveTestFn<TFeatures, TData, TValue> = (value, column?) => boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:144](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L144)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:144](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L144)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](CellData.md) = [`CellData`](CellData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### value
+### value {#value}
 
 `any`
 
-### column?
+### column? {#column}
 
 [`Column`](Column.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`

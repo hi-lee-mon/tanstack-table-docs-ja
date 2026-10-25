@@ -7,41 +7,36 @@ title: table_getCellSelectionMergeBounds
 function table_getCellSelectionMergeBounds<TFeatures, TData>(table): CellSelectionBounds[];
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:231](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L231)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:231](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L231)
 
-Resolves the merged-cell rectangles of the rendered rows into selection's
-own index space.
+描画中の行に含まれる結合セルの長方形を、選択自身のインデックスの座標に変換します。
 
-The span index positions rows by their paginated render order while
-selection positions them by pre-paginated display order, so each merge is
-mapped through `row.getDisplayIndex()`. A merge whose rows do not map to a
-contiguous display range is skipped defensively; it then behaves like
-unmerged cells instead of corrupting the geometry.
+結合インデックスはページ分割後の描画順で行の位置を決め、選択はページ分割前の表示順で行の位置を決めます。そのため、各結合は `row.getDisplayIndex()` を通して変換されます。
+行が連続した表示範囲に対応しない結合は、念のため読み飛ばします。その場合は、形を壊さずに、結合していないセルと同じように振る舞います。
 
-Returns an empty array when `cellSpanningFeature` is not registered, which
-keeps every selection code path identical to the span-unaware behavior.
+`cellSpanningFeature` が登録されていなければ空の配列を返します。これにより、選択の処理はどの経路でも、結合を考えない場合とまったく同じになります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`CellSelectionBounds`](../../index/interfaces/CellSelectionBounds.md)[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const merges = table_getCellSelectionMergeBounds(table)

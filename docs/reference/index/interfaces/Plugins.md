@@ -3,20 +3,18 @@ id: Plugins
 title: Plugins
 ---
 
-Defined in: [types/TableFeatures.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L60)
+定義元: [types/TableFeatures.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L60)
 
-Declaration-merge target for custom table features.
+カスタムのテーブル機能のための、宣言のマージの対象です。
 
-Add custom feature keys here so `TableFeatures` can accept them in the
-`features` option and use the same feature-map extraction system as built-in
-features.
+ここにカスタム機能のキーを追加すると、`TableFeatures` が `features` オプションでそれを受け付け、組み込みの機能と同じ機能マップの抽出の仕組みを使えます。
 
-## Properties
+## プロパティ {#properties}
 
-### workerRowModelsFeature
+### workerRowModelsFeature {#workerrowmodelsfeature}
 
 ```ts
 workerRowModelsFeature: TableFeature;
 ```
 
-Defined in: [worker/createTableWorker.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/worker/createTableWorker.ts#L24)
+定義元: [worker/createTableWorker.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/worker/createTableWorker.ts#L24)

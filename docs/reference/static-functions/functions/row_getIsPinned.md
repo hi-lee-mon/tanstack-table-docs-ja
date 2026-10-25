@@ -7,34 +7,33 @@ title: row_getIsPinned
 function row_getIsPinned<TFeatures, TData>(row): RowPinningPosition;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.utils.ts:236](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L236)
+定義元: [features/row-pinning/rowPinningFeature.utils.ts:236](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L236)
 
-Reads this row's current pinning region.
+この行の現在の固定領域を読み取ります。
 
-Rows listed in `state.rowPinning.top` return `'top'`, rows listed in
-`bottom` return `'bottom'`, and unpinned rows return `false`.
+`state.rowPinning.top` にある行は `'top'`、`bottom` にある行は `'bottom'`、固定されていない行は `false` を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowPinningPosition`](../../index/type-aliases/RowPinningPosition.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const position = row_getIsPinned(row)

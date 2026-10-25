@@ -7,42 +7,41 @@ title: column_getNextSortingOrder
 function column_getNextSortingOrder<TFeatures, TData, TValue>(column, multi?): false | "asc" | "desc";
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.utils.ts:391](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L391)
+定義元: [features/row-sorting/rowSortingFeature.utils.ts:391](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L391)
 
-Resolves the next sort order for this column's toggle cycle.
+この列の切り替えの流れで、次のソート順を求めます。
 
-The cycle starts with the first sort direction, flips between `asc` and
-`desc`, and can return `false` when sorting removal is enabled.
+流れは最初のソートの向きから始まり、`asc` と `desc` を行き来します。ソートを外すことが有効なら `false` を返すこともあります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### multi?
+### multi? {#multi}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `false` \| `"asc"` \| `"desc"`
 
-## Example
+## 例 {#example}
 
 ```ts
 const nextOrder = column_getNextSortingOrder(column)

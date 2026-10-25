@@ -3,50 +3,50 @@ id: Table_ColumnFiltering
 title: Table_ColumnFiltering
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:281](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L281)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:281](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L281)
 
-## Properties
+## プロパティ {#properties}
 
-### resetColumnFilters
+### resetColumnFilters {#resetcolumnfilters}
 
 ```ts
 resetColumnFilters: (defaultState?) => void;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:287](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L287)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:287](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L287)
 
-Resets `columnFilters` to `initialState.columnFilters`.
+`columnFilters` を `initialState.columnFilters` に戻します。
 
-Pass `true` to ignore initial state and reset to `[]`.
+`true` を渡すと、初期状態を無視して `[]` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `void`
 
 ***
 
-### setColumnFilters
+### setColumnFilters {#setcolumnfilters}
 
 ```ts
 setColumnFilters: (updater) => void;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:291](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L291)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:291](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L291)
 
-Updates column filter state with a next array or updater function.
+次の配列かアップデーター関数で、列フィルターの状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`ColumnFiltersState`](../type-aliases/ColumnFiltersState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `void`

@@ -7,38 +7,37 @@ title: table_resetPageSize
 function table_resetPageSize<TFeatures, TData>(table, defaultState?): void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:175](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L175)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:175](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L175)
 
-Resets only `pagination.pageSize`.
+`pagination.pageSize` だけをリセットします。
 
-With no argument, the reset uses `table.initialState.pagination?.pageSize`
-or `10`. Passing `true` always resets the page size to `10`.
+引数なしの場合、`table.initialState.pagination?.pageSize` か `10` を使います。`true` を渡すと、常にページサイズを `10` に戻します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### defaultState?
+### defaultState? {#defaultstate}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_resetPageSize(table)

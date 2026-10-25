@@ -7,38 +7,37 @@ title: table_setGrouping
 function table_setGrouping<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.utils.ts:148](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L148)
+定義元: [features/column-grouping/columnGroupingFeature.utils.ts:148](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L148)
 
-Routes a grouping updater through the table's grouping change handler.
+グループ化のアップデーターを、テーブルのグループ化の変更ハンドラーに通します。
 
-The updater may be a next `GroupingState` array or a function of the previous
-grouping state, matching the instance `table.setGrouping` behavior.
+アップデーターには、次の `GroupingState` 配列か、前のグループ化の状態を受け取る関数を指定できます。インスタンスの `table.setGrouping` と同じ動作です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`GroupingState`](../../index/type-aliases/GroupingState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setGrouping(table, (old) => [...old, 'status'])

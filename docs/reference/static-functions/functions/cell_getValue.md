@@ -7,38 +7,37 @@ title: cell_getValue
 function cell_getValue<TFeatures, TData, TValue>(cell): TValue;
 ```
 
-Defined in: [core/cells/coreCellsFeature.utils.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.utils.ts#L16)
+定義元: [core/cells/coreCellsFeature.utils.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.utils.ts#L16)
 
-Reads this cell's accessor value from its owning row and column.
+このセルが属する行と列から、セルのアクセサーの値を読み取ります。
 
-This is the standalone implementation behind `cell.getValue()`, useful when
-importing static APIs instead of calling methods from the cell prototype.
+これは `cell.getValue()` の裏にある単独の実装です。セルのプロトタイプのメソッドを呼ぶ代わりに、静的な API を import して使う場合に便利です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `TValue`
 
-## Example
+## 例 {#example}
 
 ```ts
 const value = cell_getValue(cell)

@@ -3,58 +3,56 @@ id: ColumnOffsetsByPosition
 title: ColumnOffsetsByPosition
 ---
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L23)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L23)
 
-## Properties
+## プロパティ {#properties}
 
-### all
+### all {#all}
 
 ```ts
 all: ColumnOffsets;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L27)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L27)
 
-Offsets across all visible leaf columns, ignoring pinning regions.
+固定領域を考えずに、表示中のすべての末端の列で計算したオフセットです。
 
 ***
 
-### center
+### center {#center}
 
 ```ts
 center: ColumnOffsets;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L31)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L31)
 
-Offsets within the center (unpinned) region.
+中央（固定されていない）領域内でのオフセットです。
 
 ***
 
-### end
+### end {#end}
 
 ```ts
 end: ColumnOffsets;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L45)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L45)
 
-Offsets within the logical end pinned region.
+論理的な末尾の固定領域内でのオフセットです。
 
-In LTR languages/layouts, end usually corresponds to right. In RTL
-languages/layouts, end usually corresponds to left.
+LTR の言語やレイアウトでは、末尾はふつう右にあたります。RTL の言語やレイアウトでは、末尾はふつう左にあたります。
 
 ***
 
-### start
+### start {#start}
 
 ```ts
 start: ColumnOffsets;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L38)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L38)
 
-Offsets within the logical start pinned region.
+論理的な先頭の固定領域内でのオフセットです。
 
-In LTR languages/layouts, start usually corresponds to left. In RTL
-languages/layouts, start usually corresponds to right.
+LTR の言語やレイアウトでは、先頭はふつう左にあたります。RTL の言語やレイアウトでは、先頭はふつう右にあたります。

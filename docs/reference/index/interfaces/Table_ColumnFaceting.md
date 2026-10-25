@@ -3,62 +3,62 @@ id: Table_ColumnFaceting
 title: Table_ColumnFaceting
 ---
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L62)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L62)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getGlobalFacetedMinMaxValues
+### getGlobalFacetedMinMaxValues {#getglobalfacetedminmaxvalues}
 
 ```ts
 getGlobalFacetedMinMaxValues: () => [number, number] | undefined;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L69)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L69)
 
-Returns the min and max values for the global filter.
+グローバルフィルターの最小値と最大値を返します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 \[`number`, `number`\] \| `undefined`
 
 ***
 
-### getGlobalFacetedRowModel
+### getGlobalFacetedRowModel {#getglobalfacetedrowmodel}
 
 ```ts
 getGlobalFacetedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L73)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L73)
 
-Computes the row model used to derive global facet values.
+グローバルなファセット値を導き出すための行モデルを計算します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getGlobalFacetedUniqueValues
+### getGlobalFacetedUniqueValues {#getglobalfaceteduniquevalues}
 
 ```ts
 getGlobalFacetedUniqueValues: () => Map<any, number>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.types.ts:77](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L77)
+定義元: [features/column-faceting/columnFacetingFeature.types.ts:77](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.types.ts#L77)
 
-Returns the faceted unique values for the global filter.
+グローバルフィルターの、ファセットの一意な値を返します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `Map`\<`any`, `number`\>

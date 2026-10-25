@@ -7,11 +7,8 @@ title: cellSpanningFeature
 const cellSpanningFeature: TableFeature;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.ts#L18)
+定義元: [features/cell-spanning/cellSpanningFeature.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.ts#L18)
 
-Feature that merges adjacent cells that share a value into row-spanning
-cells, and lets a column def declare column-spanning cells per row.
+同じ値を持つ隣り合うセルを、行をまたいで結合したセルにまとめる機能です。列定義で、行ごとに列をまたいで結合するセルを宣言することもできます。
 
-Stateless: spans are always derived from the rows that are currently
-rendered, so there is nothing to persist and nothing to configure beyond the
-column defs.
+状態を持ちません。結合は常に現在描画されている行から導き出されるので、保存するものはなく、列定義以外に設定するものもありません。

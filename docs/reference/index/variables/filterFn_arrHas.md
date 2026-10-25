@@ -7,6 +7,6 @@ title: filterFn_arrHas
 const filterFn_arrHas: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:369](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L369)
+定義元: [features/column-filtering/filterFns.ts:369](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L369)
 
-Keeps rows whose scalar column value equals at least one filter value.
+列のスカラー値が、フィルター値の少なくとも1つと等しい行を残します。

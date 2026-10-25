@@ -7,128 +7,123 @@ title: filterFns
 const filterFns: object;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:447](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L447)
+定義元: [features/column-filtering/filterFns.ts:447](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L447)
 
-The built-in filter function registry.
+組み込みのフィルター関数のレジストリです。
 
-Registering this full object opts out of tree-shaking: every built-in
-filter function ends up in your bundle. Prefer importing the `filterFn_*`
-functions you actually use and registering just those in the `filterFns`
-slot, or passing them directly to the `filterFn` column option.
+このオブジェクト全体を登録すると、ツリーシェイキングが効かなくなり、組み込みのフィルター関数がすべてバンドルに含まれます。
+実際に使う `filterFn_*` 関数を import してそれだけを `filterFns` スロットに登録するか、列オプションの `filterFn` に直接渡すことをおすすめします。
 
-## Type Declaration
+## 型宣言 {#type-declaration}
 
-### ~~arrHas~~
+### ~~arrHas~~ {#arrhas}
 
 ```ts
 arrHas: CreatedFilterFn<any, any> = filterFn_arrHas;
 ```
 
-### ~~arrIncludes~~
+### ~~arrIncludes~~ {#arrincludes}
 
 ```ts
 arrIncludes: CreatedFilterFn<any, any> = filterFn_arrIncludes;
 ```
 
-### ~~arrIncludesAll~~
+### ~~arrIncludesAll~~ {#arrincludesall}
 
 ```ts
 arrIncludesAll: CreatedFilterFn<any, any> = filterFn_arrIncludesAll;
 ```
 
-### ~~arrIncludesSome~~
+### ~~arrIncludesSome~~ {#arrincludessome}
 
 ```ts
 arrIncludesSome: CreatedFilterFn<any, any> = filterFn_arrIncludesSome;
 ```
 
-### ~~between~~
+### ~~between~~ {#between}
 
 ```ts
 between: CreatedFilterFn<any, any> = filterFn_between;
 ```
 
-### ~~betweenInclusive~~
+### ~~betweenInclusive~~ {#betweeninclusive}
 
 ```ts
 betweenInclusive: CreatedFilterFn<any, any> = filterFn_betweenInclusive;
 ```
 
-### ~~empty~~
+### ~~empty~~ {#empty}
 
 ```ts
 empty: CreatedFilterFn<any, any> = filterFn_empty;
 ```
 
-### ~~endsWith~~
+### ~~endsWith~~ {#endswith}
 
 ```ts
 endsWith: CreatedFilterFn<any, any> = filterFn_endsWith;
 ```
 
-### ~~equals~~
+### ~~equals~~ {#equals}
 
 ```ts
 equals: CreatedFilterFn<any, any> = filterFn_equals;
 ```
 
-### ~~equalsString~~
+### ~~equalsString~~ {#equalsstring}
 
 ```ts
 equalsString: CreatedFilterFn<any, any> = filterFn_equalsString;
 ```
 
-### ~~equalsStringSensitive~~
+### ~~equalsStringSensitive~~ {#equalsstringsensitive}
 
 ```ts
 equalsStringSensitive: CreatedFilterFn<any, any> = filterFn_equalsStringSensitive;
 ```
 
-### ~~includesString~~
+### ~~includesString~~ {#includesstring}
 
 ```ts
 includesString: CreatedFilterFn<any, any> = filterFn_includesString;
 ```
 
-### ~~includesStringSensitive~~
+### ~~includesStringSensitive~~ {#includesstringsensitive}
 
 ```ts
 includesStringSensitive: CreatedFilterFn<any, any> = filterFn_includesStringSensitive;
 ```
 
-### ~~inDateRange~~
+### ~~inDateRange~~ {#indaterange}
 
 ```ts
 inDateRange: CreatedFilterFn<any, any> = filterFn_inDateRange;
 ```
 
-### ~~inNumberRange~~
+### ~~inNumberRange~~ {#innumberrange}
 
 ```ts
 inNumberRange: CreatedFilterFn<any, any> = filterFn_inNumberRange;
 ```
 
-### ~~notEmpty~~
+### ~~notEmpty~~ {#notempty}
 
 ```ts
 notEmpty: CreatedFilterFn<any, any> = filterFn_notEmpty;
 ```
 
-### ~~startsWith~~
+### ~~startsWith~~ {#startswith}
 
 ```ts
 startsWith: CreatedFilterFn<any, any> = filterFn_startsWith;
 ```
 
-### ~~weakEquals~~
+### ~~weakEquals~~ {#weakequals}
 
 ```ts
 weakEquals: CreatedFilterFn<any, any> = filterFn_weakEquals;
 ```
 
-## Deprecated
+## 非推奨 {#deprecated}
 
-Import individual `filterFn_*` functions instead for a smaller
-bundle. This export still works and is not going away in v9, but built-in
-name resolution (including `filterFn: 'auto'`) only finds functions you
-register yourself.
+バンドルを小さくするには、代わりに `filterFn_*` 関数を個別に import してください。このエクスポートは今も動き、v9 でなくなる予定もありません。ただし、組み込みの名前の解決（`filterFn: 'auto'` を含みます）で見つかるのは、自分で登録した関数だけです。

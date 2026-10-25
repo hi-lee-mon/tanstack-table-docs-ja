@@ -7,17 +7,15 @@ title: ExtractFilterMeta
 type ExtractFilterMeta<TFeatures> = IsAny<TFeatures> extends true ? FilterMeta : TFeatures extends object ? TFilterMeta : FilterMeta;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L24)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L24)
 
-Resolves the type of the filter meta attached to rows for a feature set.
+機能の組み合わせについて、行に付けるフィルターのメタデータの型を求めます。
 
-When the features object declares a `filterMeta` type-only slot
-(`tableFeatures({ ..., filterMeta: {} as MyFilterMeta })`), that type wins.
-Otherwise this falls back to the global declaration-merged `FilterMeta`
-interface.
+features オブジェクトが型専用スロット `filterMeta` を宣言している場合（`tableFeatures({ ..., filterMeta: {} as MyFilterMeta })`）は、その型が使われます。
+そうでなければ、グローバルに宣言のマージをした `FilterMeta` インターフェースが使われます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)

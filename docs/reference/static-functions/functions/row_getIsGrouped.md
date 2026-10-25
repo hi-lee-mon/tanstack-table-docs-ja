@@ -7,33 +7,33 @@ title: row_getIsGrouped
 function row_getIsGrouped<TFeatures, TData>(row): boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.utils.ts:187](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L187)
+定義元: [features/column-grouping/columnGroupingFeature.utils.ts:187](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L187)
 
-Checks whether this row was created as a grouped row.
+この行がグループ行として作られたかどうかを判定します。
 
-Grouped rows carry a `groupingColumnId`; ordinary leaf rows do not.
+グループ行は `groupingColumnId` を持ちます。ふつうの末端の行は持ちません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row_Core`](../../index/interfaces/Row_Core.md)\<`TFeatures`, `TData`\> & [`ExtractFeatureMapTypes`](../../index/type-aliases/ExtractFeatureMapTypes.md)\<`TFeatures`, [`Row_FeatureMap`](../../index/interfaces/Row_FeatureMap.md)\<`TFeatures`, `TData`\>\> & `Partial`\<[`Row_ColumnGrouping`](../../index/interfaces/Row_ColumnGrouping.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const isGrouped = row_getIsGrouped(row)

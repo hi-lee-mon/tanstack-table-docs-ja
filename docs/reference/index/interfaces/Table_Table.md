@@ -3,488 +3,480 @@ id: Table_Table
 title: Table_Table
 ---
 
-Defined in: [core/table/coreTablesFeature.types.ts:250](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L250)
+定義元: [core/table/coreTablesFeature.types.ts:250](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L250)
 
-## Extends
+## 継承元 {#extends}
 
 - [`Table_CoreProperties`](Table_CoreProperties.md)\<`TFeatures`, `TData`\>
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`Table_Core`](Table_Core.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### \_cellInstanceInitFns
+### \_cellInstanceInitFns {#_cellinstanceinitfns}
 
 ```ts
 _cellInstanceInitFns: <TFeatures, TData, TValue>(cell) => void[];
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:167](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L167)
+定義元: [core/table/coreTablesFeature.types.ts:167](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L167)
 
-Cache of the `initCellInstanceData` functions for features that define one.
+`initCellInstanceData` 関数を定義している機能について、その関数のキャッシュです。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-1}
 
-##### TFeatures
+##### TFeatures {#tfeatures-1}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-1}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-##### TValue
+##### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### cell
+##### cell {#cell}
 
 [`Cell`](../type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `void`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_cellInstanceInitFns`](Table_CoreProperties.md#_cellinstanceinitfns)
 
 ***
 
-### \_cellPrototype?
+### \_cellPrototype? {#_cellprototype}
 
 ```ts
 optional _cellPrototype?: object;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:171](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L171)
+定義元: [core/table/coreTablesFeature.types.ts:171](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L171)
 
-Prototype cache for Cell objects - shared by all cells in this table
+Cell オブジェクトのプロトタイプのキャッシュです。このテーブルのすべてのセルで共有されます。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-1}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_cellPrototype`](Table_CoreProperties.md#_cellprototype)
 
 ***
 
-### \_columnInstanceInitFns
+### \_columnInstanceInitFns {#_columninstanceinitfns}
 
 ```ts
 _columnInstanceInitFns: <TFeatures, TData, TValue>(column) => void[];
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:175](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L175)
+定義元: [core/table/coreTablesFeature.types.ts:175](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L175)
 
-Cache of the `initColumnInstanceData` functions for features that define one.
+`initColumnInstanceData` 関数を定義している機能について、その関数のキャッシュです。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-2}
 
-##### TFeatures
+##### TFeatures {#tfeatures-2}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-2}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-##### TValue
+##### TValue {#tvalue-1}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### column
+##### column {#column}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `void`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-2}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_columnInstanceInitFns`](Table_CoreProperties.md#_columninstanceinitfns)
 
 ***
 
-### \_columnPrototype?
+### \_columnPrototype? {#_columnprototype}
 
 ```ts
 optional _columnPrototype?: object;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:181](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L181)
+定義元: [core/table/coreTablesFeature.types.ts:181](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L181)
 
-Prototype cache for Column objects - shared by all columns in this table
+Column オブジェクトのプロトタイプのキャッシュです。このテーブルのすべての列で共有されます。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-3}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_columnPrototype`](Table_CoreProperties.md#_columnprototype)
 
 ***
 
-### \_features
+### \_features {#_features}
 
 ```ts
 readonly _features: Partial<CoreFeatures> & TFeatures;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:185](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L185)
+定義元: [core/table/coreTablesFeature.types.ts:185](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L185)
 
-The features that are enabled for the table.
+テーブルで有効になっている機能です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-4}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_features`](Table_CoreProperties.md#_features)
 
 ***
 
-### \_headerGroupInstanceInitFns
+### \_headerGroupInstanceInitFns {#_headergroupinstanceinitfns}
 
 ```ts
 _headerGroupInstanceInitFns: <TFeatures, TData>(headerGroup) => void[];
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:189](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L189)
+定義元: [core/table/coreTablesFeature.types.ts:189](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L189)
 
-Cache of the `initHeaderGroupInstanceData` functions for features that define one.
+`initHeaderGroupInstanceData` 関数を定義している機能について、その関数のキャッシュです。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-3}
 
-##### TFeatures
+##### TFeatures {#tfeatures-3}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-3}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### headerGroup
+##### headerGroup {#headergroup}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `void`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-5}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_headerGroupInstanceInitFns`](Table_CoreProperties.md#_headergroupinstanceinitfns)
 
 ***
 
-### \_headerInstanceInitFns
+### \_headerInstanceInitFns {#_headerinstanceinitfns}
 
 ```ts
 _headerInstanceInitFns: <TFeatures, TData, TValue>(header) => void[];
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:195](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L195)
+定義元: [core/table/coreTablesFeature.types.ts:195](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L195)
 
-Cache of the `initHeaderInstanceData` functions for features that define one.
+`initHeaderInstanceData` 関数を定義している機能について、その関数のキャッシュです。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-4}
 
-##### TFeatures
+##### TFeatures {#tfeatures-4}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-4}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-##### TValue
+##### TValue {#tvalue-2}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Parameters
+#### パラメーター {#parameters-3}
 
-##### header
+##### header {#header}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `void`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-6}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_headerInstanceInitFns`](Table_CoreProperties.md#_headerinstanceinitfns)
 
 ***
 
-### \_headerPrototype?
+### \_headerPrototype? {#_headerprototype}
 
 ```ts
 optional _headerPrototype?: object;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:201](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L201)
+定義元: [core/table/coreTablesFeature.types.ts:201](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L201)
 
-Prototype cache for Header objects - shared by all headers in this table
+Header オブジェクトのプロトタイプのキャッシュです。このテーブルのすべてのヘッダーで共有されます。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-7}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_headerPrototype`](Table_CoreProperties.md#_headerprototype)
 
 ***
 
-### \_reactivity
+### \_reactivity {#_reactivity}
 
 ```ts
 readonly _reactivity: TableReactivityBindings;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:163](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L163)
+定義元: [core/table/coreTablesFeature.types.ts:163](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L163)
 
-Table reactivity bindings for interacting with TanStack Store.
+TanStack Store とやり取りするための、テーブルのリアクティビティのバインディングです。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-8}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_reactivity`](Table_CoreProperties.md#_reactivity)
 
 ***
 
-### \_rowInstanceInitFns
+### \_rowInstanceInitFns {#_rowinstanceinitfns}
 
 ```ts
 _rowInstanceInitFns: <TFeatures, TData>(row) => void[];
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:217](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L217)
+定義元: [core/table/coreTablesFeature.types.ts:217](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L217)
 
-Cache of the `initRowInstanceData` functions for features that define one.
+`initRowInstanceData` 関数を定義している機能について、その関数のキャッシュです。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-5}
 
-##### TFeatures
+##### TFeatures {#tfeatures-5}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-5}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-4}
 
-##### row
+##### row {#row}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `void`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-9}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_rowInstanceInitFns`](Table_CoreProperties.md#_rowinstanceinitfns)
 
 ***
 
-### \_rowModelFns
+### \_rowModelFns {#_rowmodelfns}
 
 ```ts
 readonly _rowModelFns: RowModelFns<TFeatures, TData>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:205](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L205)
+定義元: [core/table/coreTablesFeature.types.ts:205](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L205)
 
-The row model processing functions that are used to process the data by features.
+機能がデータを処理するために使う、行モデルの処理関数です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-10}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_rowModelFns`](Table_CoreProperties.md#_rowmodelfns)
 
 ***
 
-### \_rowModels
+### \_rowModels {#_rowmodels}
 
 ```ts
 readonly _rowModels: CachedRowModels<TFeatures, TData>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:209](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L209)
+定義元: [core/table/coreTablesFeature.types.ts:209](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L209)
 
-The row models that are enabled for the table.
+テーブルで有効になっている行モデルです。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-11}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_rowModels`](Table_CoreProperties.md#_rowmodels)
 
 ***
 
-### \_rowPrototype?
+### \_rowPrototype? {#_rowprototype}
 
 ```ts
 optional _rowPrototype?: object;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:213](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L213)
+定義元: [core/table/coreTablesFeature.types.ts:213](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L213)
 
-Prototype cache for Row objects - shared by all rows in this table
+Row オブジェクトのプロトタイプのキャッシュです。このテーブルのすべての行で共有されます。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-12}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`_rowPrototype`](Table_CoreProperties.md#_rowprototype)
 
 ***
 
-### atoms
+### atoms {#atoms}
 
 ```ts
 readonly atoms: Atoms<TFeatures>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:223](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L223)
+定義元: [core/table/coreTablesFeature.types.ts:223](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L223)
 
-The readonly derived atoms for each `TableState` slice. Each derives from
-its corresponding `baseAtom` plus, optionally, a per-slice external atom or
-external state value (precedence: external atom > external state > base atom).
+`TableState` の各スライスに対応する、読み取り専用の派生アトムです。それぞれ、対応する `baseAtom` と、スライスごとの外部のアトムまたは外部の状態の値（指定されていれば）から導き出されます（優先順位: 外部のアトム > 外部の状態 > 基底アトム）。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-13}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`atoms`](Table_CoreProperties.md#atoms)
 
 ***
 
-### baseAtoms
+### baseAtoms {#baseatoms}
 
 ```ts
 readonly baseAtoms: BaseAtoms<TFeatures>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:228](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L228)
+定義元: [core/table/coreTablesFeature.types.ts:228](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L228)
 
-The internal writable atoms for each `TableState` slice. This is the library's
-single write surface — all state mutations from features land here.
+`TableState` の各スライスに対応する、内部の書き込み可能なアトムです。これはライブラリで唯一の書き込み先で、機能による状態の変更はすべてここに届きます。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-14}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`baseAtoms`](Table_CoreProperties.md#baseatoms)
 
 ***
 
-### initialState
+### initialState {#initialstate}
 
 ```ts
 readonly initialState: ExtractFeatureMapTypes<TFeatures>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:232](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L232)
+定義元: [core/table/coreTablesFeature.types.ts:232](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L232)
 
-This is the resolved initial state of the table.
+テーブルの、解決済みの初期状態です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-15}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`initialState`](Table_CoreProperties.md#initialstate)
 
 ***
 
-### options
+### options {#options}
 
 ```ts
 readonly options: TableOptions<TFeatures, TData>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:236](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L236)
+定義元: [core/table/coreTablesFeature.types.ts:236](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L236)
 
-A read-only reference to the table's current options.
+テーブルの現在のオプションへの、読み取り専用の参照です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-16}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`options`](Table_CoreProperties.md#options)
 
 ***
 
-### optionsStore?
+### optionsStore? {#optionsstore}
 
 ```ts
 readonly optional optionsStore?: Atom<TableOptions<TFeatures, TData>>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:242](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L242)
+定義元: [core/table/coreTablesFeature.types.ts:242](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L242)
 
-Writable atom for table options. Only created when `createOptionsStore` is
-true on the active core reactivity bindings. Adapters that opt out keep
-options as plain resolved data instead of backing them with an atom.
+テーブルのオプションの書き込み可能なアトムです。有効なコアのリアクティビティのバインディングで `createOptionsStore` が true の場合にだけ作られます。
+これを使わないアダプターは、オプションをアトムで持たず、解決済みのただのデータとして持ちます。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-17}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`optionsStore`](Table_CoreProperties.md#optionsstore)
 
 ***
 
-### reset
+### reset {#reset}
 
 ```ts
 reset: () => void;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:262](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L262)
+定義元: [core/table/coreTablesFeature.types.ts:262](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L262)
 
-Resets the table's internal base atoms to `table.initialState`.
+テーブルの内部の基底アトムを `table.initialState` に戻します。
 
-Prefer feature-specific reset APIs, such as `resetPagination`, when a state
-slice may be owned by an external atom or needs that feature's blank/default
-reset behavior. After resetting internal atoms, this also invokes feature
-reset hooks for mutable, transient table-instance data.
+状態スライスを外部のアトムが持っている可能性がある場合や、その機能の空の状態（既定の状態）に戻す動作が必要な場合は、`resetPagination` のような機能ごとのリセット API を使ってください。
+内部のアトムをリセットしたあと、変更可能で一時的なテーブルインスタンスのデータについて、機能のリセット用フックも呼び出します。
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 `void`
 
 ***
 
-### setOptions
+### setOptions {#setoptions}
 
 ```ts
 setOptions: (newOptions) => void;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:267](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L267)
+定義元: [core/table/coreTablesFeature.types.ts:267](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L267)
 
-Updates the table options by applying a value or updater to the current
-resolved options and then merging them through `options.mergeOptions`.
+現在の解決済みのオプションに値かアップデーターを適用し、それを `options.mergeOptions` でマージして、テーブルのオプションを更新します。
 
-#### Parameters
+#### パラメーター {#parameters-5}
 
-##### newOptions
+##### newOptions {#newoptions}
 
 [`Updater`](../type-aliases/Updater.md)\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>\>
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `void`
 
 ***
 
-### store
+### store {#store}
 
 ```ts
 readonly store: ReadonlyStore<ExtractFeatureMapTypes<TFeatures, TableState_FeatureMap>>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:247](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L247)
+定義元: [core/table/coreTablesFeature.types.ts:247](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L247)
 
-The readonly flat store for the table state. Derives from `table.atoms`
-only; never reads external state directly.
+テーブルの状態の、読み取り専用の平坦なストアです。`table.atoms` だけから導き出され、外部の状態を直接読むことはありません。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-18}
 
 [`Table_CoreProperties`](Table_CoreProperties.md).[`store`](Table_CoreProperties.md#store)

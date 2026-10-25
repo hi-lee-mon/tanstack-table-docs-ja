@@ -3,154 +3,154 @@ id: TableState_FeatureMap
 title: TableState_FeatureMap
 ---
 
-Defined in: [types/TableState.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L17)
+定義元: [types/TableState.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L17)
 
-## Properties
+## プロパティ {#properties}
 
-### cellSelectionFeature
+### cellSelectionFeature {#cellselectionfeature}
 
 ```ts
 cellSelectionFeature: TableState_CellSelection;
 ```
 
-Defined in: [types/TableState.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L18)
+定義元: [types/TableState.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L18)
 
 ***
 
-### columnFilteringFeature
+### columnFilteringFeature {#columnfilteringfeature}
 
 ```ts
 columnFilteringFeature: TableState_ColumnFiltering;
 ```
 
-Defined in: [types/TableState.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L19)
+定義元: [types/TableState.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L19)
 
 ***
 
-### columnGroupingFeature
+### columnGroupingFeature {#columngroupingfeature}
 
 ```ts
 columnGroupingFeature: TableState_ColumnGrouping;
 ```
 
-Defined in: [types/TableState.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L20)
+定義元: [types/TableState.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L20)
 
 ***
 
-### columnOrderingFeature
+### columnOrderingFeature {#columnorderingfeature}
 
 ```ts
 columnOrderingFeature: TableState_ColumnOrdering;
 ```
 
-Defined in: [types/TableState.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L21)
+定義元: [types/TableState.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L21)
 
 ***
 
-### columnPinningFeature
+### columnPinningFeature {#columnpinningfeature}
 
 ```ts
 columnPinningFeature: TableState_ColumnPinning;
 ```
 
-Defined in: [types/TableState.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L22)
+定義元: [types/TableState.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L22)
 
 ***
 
-### columnResizingFeature
+### columnResizingFeature {#columnresizingfeature}
 
 ```ts
 columnResizingFeature: TableState_ColumnResizing;
 ```
 
-Defined in: [types/TableState.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L23)
+定義元: [types/TableState.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L23)
 
 ***
 
-### columnSizingFeature
+### columnSizingFeature {#columnsizingfeature}
 
 ```ts
 columnSizingFeature: TableState_ColumnSizing;
 ```
 
-Defined in: [types/TableState.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L24)
+定義元: [types/TableState.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L24)
 
 ***
 
-### columnVisibilityFeature
+### columnVisibilityFeature {#columnvisibilityfeature}
 
 ```ts
 columnVisibilityFeature: TableState_ColumnVisibility;
 ```
 
-Defined in: [types/TableState.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L25)
+定義元: [types/TableState.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L25)
 
 ***
 
-### globalFilteringFeature
+### globalFilteringFeature {#globalfilteringfeature}
 
 ```ts
 globalFilteringFeature: TableState_GlobalFiltering;
 ```
 
-Defined in: [types/TableState.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L26)
+定義元: [types/TableState.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L26)
 
 ***
 
-### rowExpandingFeature
+### rowExpandingFeature {#rowexpandingfeature}
 
 ```ts
 rowExpandingFeature: TableState_RowExpanding;
 ```
 
-Defined in: [types/TableState.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L27)
+定義元: [types/TableState.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L27)
 
 ***
 
-### rowPaginationFeature
+### rowPaginationFeature {#rowpaginationfeature}
 
 ```ts
 rowPaginationFeature: TableState_RowPagination;
 ```
 
-Defined in: [types/TableState.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L28)
+定義元: [types/TableState.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L28)
 
 ***
 
-### rowPinningFeature
+### rowPinningFeature {#rowpinningfeature}
 
 ```ts
 rowPinningFeature: TableState_RowPinning;
 ```
 
-Defined in: [types/TableState.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L29)
+定義元: [types/TableState.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L29)
 
 ***
 
-### rowSelectionFeature
+### rowSelectionFeature {#rowselectionfeature}
 
 ```ts
 rowSelectionFeature: TableState_RowSelection;
 ```
 
-Defined in: [types/TableState.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L30)
+定義元: [types/TableState.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L30)
 
 ***
 
-### rowSortingFeature
+### rowSortingFeature {#rowsortingfeature}
 
 ```ts
 rowSortingFeature: TableState_RowSorting;
 ```
 
-Defined in: [types/TableState.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L31)
+定義元: [types/TableState.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableState.ts#L31)
 
 ***
 
-### workerRowModelsFeature
+### workerRowModelsFeature {#workerrowmodelsfeature}
 
 ```ts
 workerRowModelsFeature: TableState_WorkerRowModels;
 ```
 
-Defined in: [worker/createTableWorker.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/worker/createTableWorker.ts#L29)
+定義元: [worker/createTableWorker.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/worker/createTableWorker.ts#L29)

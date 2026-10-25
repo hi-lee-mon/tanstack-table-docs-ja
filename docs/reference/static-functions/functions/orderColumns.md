@@ -7,39 +7,38 @@ title: orderColumns
 function orderColumns<TFeatures, TData>(table, leafColumns): Column_Internal<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.utils.ts:259](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L259)
+定義元: [features/column-ordering/columnOrderingFeature.utils.ts:259](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L259)
 
-Applies grouped-column placement rules to an already ordered leaf-column list.
+並び順が決まった末端の列のリストに、グループ化された列の配置の決まりを適用します。
 
-`groupedColumnMode: 'remove'` drops grouped columns from the list.
-`groupedColumnMode: 'reorder'` moves grouped columns to the front in grouping
-state order.
+`groupedColumnMode: 'remove'` は、グループ化された列をリストから取り除きます。
+`groupedColumnMode: 'reorder'` は、グループ化された列をグループ化の状態の順で先頭に移します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### leafColumns
+### leafColumns {#leafcolumns}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-## Returns
+## 戻り値 {#returns}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const orderedColumns = orderColumns(table, leafColumns)

@@ -3,69 +3,67 @@ id: Column_RowAggregation
 title: Column_RowAggregation
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:250](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L250)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:250](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L250)
 
-Column instance APIs installed by `rowAggregationFeature`.
+`rowAggregationFeature` が追加する列のインスタンス API です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getAggregationFns
+### getAggregationFns {#getaggregationfns}
 
 ```ts
 getAggregationFns: () => readonly ResolvedAggregationFn<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:255](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L255)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:255](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L255)
 
-Resolves the configured scalar or multiple aggregation definitions.
+設定された、単一または複数の集計定義を解決します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 readonly [`ResolvedAggregationFn`](ResolvedAggregationFn.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getAggregationValue
+### getAggregationValue {#getaggregationvalue}
 
 ```ts
 getAggregationValue: <TResult>(options?) => TResult;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:263](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L263)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:263](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L263)
 
-Aggregates this column over the default pre-grouped row model, or over a
-caller-provided array of rows. `options.maxDepth` overrides the column's
-`maxAggregationDepth`. Explicit-row calls are intentionally not cached.
+既定のグループ化前の行モデル、または呼び出し側が渡した行の配列に対して、この列を集計します。`options.maxDepth` は列の `maxAggregationDepth` を上書きします。行を明示的に渡した呼び出しは、意図的にキャッシュしません。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-1}
 
-##### TResult
+##### TResult {#tresult}
 
 `TResult` = [`ColumnAggregationValue`](../type-aliases/ColumnAggregationValue.md)\<`TFeatures`\>
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### options?
+##### options? {#options}
 
 [`AggregationValueOptions`](AggregationValueOptions.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `TResult`
 
 ***
 
-### getAutoAggregationFn
+### getAutoAggregationFn {#getautoaggregationfn}
 
 ```ts
 getAutoAggregationFn: () =>
@@ -73,11 +71,11 @@ getAutoAggregationFn: () =>
   | undefined;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:267](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L267)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:267](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L267)
 
-Infers `sum` for a numeric first row and `extent` for a Date first row.
+最初の行が数値なら `sum` を、Date なら `extent` を推論します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
   \| [`AggregationFnDef`](AggregationFnDef.md)\<`TFeatures`, `TData`, `any`, `any`\>
   \| `undefined`

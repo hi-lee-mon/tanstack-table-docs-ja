@@ -7,24 +7,24 @@ title: StateSliceEqualityFn
 type StateSliceEqualityFn<T> = (current, next) => boolean;
 ```
 
-Defined in: [utils.ts:200](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L200)
+定義元: [utils.ts:200](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L200)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### T
-
-`T`
-
-## Parameters
-
-### current
+### T {#t}
 
 `T`
 
-### next
+## パラメーター {#parameters}
+
+### current {#current}
 
 `T`
 
-## Returns
+### next {#next}
+
+`T`
+
+## 戻り値 {#returns}
 
 `boolean`

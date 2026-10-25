@@ -7,18 +7,17 @@ title: getDefaultColumnFiltersState
 function getDefaultColumnFiltersState(): ColumnFiltersState;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.utils.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L27)
+定義元: [features/column-filtering/columnFilteringFeature.utils.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L27)
 
-Creates the default column filter state.
+列フィルターの既定の状態を作ります。
 
-The feature default is an empty array, meaning no column filters are active.
-Reset APIs use this value when `defaultState` is `true`.
+機能の既定値は空の配列で、有効な列フィルターがない状態を表します。`defaultState` が `true` のとき、リセット API はこの値を使います。
 
-## Returns
+## 戻り値 {#returns}
 
 [`ColumnFiltersState`](../../index/type-aliases/ColumnFiltersState.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const filters = getDefaultColumnFiltersState()

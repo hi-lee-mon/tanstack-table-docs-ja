@@ -7,8 +7,8 @@ title: sortFn_alphanumericCaseSensitive
 const sortFn_alphanumericCaseSensitive: CreatedSortFn<any, any>;
 ```
 
-Defined in: [features/row-sorting/sortFns.ts:86](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/sortFns.ts#L86)
+定義元: [features/row-sorting/sortFns.ts:86](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/sortFns.ts#L86)
 
-Sorts rows with the built-in alphanumeric case sensitive strategy.
+組み込みの、大文字と小文字を区別する英数字の方式で行をソートします。
 
-This comparator returns ascending-order results; descending order is applied by the sorting row model.
+この比較関数は昇順の結果を返します。降順は、ソート済み行モデルが適用します。

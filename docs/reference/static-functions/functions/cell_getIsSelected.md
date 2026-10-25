@@ -7,39 +7,37 @@ title: cell_getIsSelected
 function cell_getIsSelected<TFeatures, TData, TValue>(cell): boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:557](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L557)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:557](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L557)
 
-Checks whether this cell falls inside the final positive selection.
+このセルが最終的な選択（除外を差し引いた結果）の中にあるかどうかを判定します。
 
-Deliberately not memoized. Registering this through `assignPrototypeAPIs`
-with `memoDeps` would allocate a memo closure and dependency array per cell,
-which costs more than the handful of integer comparisons it would save.
+あえてメモ化していません。`memoDeps` を付けて `assignPrototypeAPIs` で登録すると、セルごとにメモのクロージャーと依存関係の配列が作られ、省ける数回の整数の比較よりもコストがかかるためです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const isSelected = cell_getIsSelected(cell)

@@ -7,6 +7,6 @@ title: filterFn_arrIncludesAll
 const filterFn_arrIncludesAll: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:403](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L403)
+定義元: [features/column-filtering/filterFns.ts:403](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L403)
 
-Keeps rows whose array column value includes every filter value.
+列の配列の値が、すべてのフィルター値を含む行を残します。

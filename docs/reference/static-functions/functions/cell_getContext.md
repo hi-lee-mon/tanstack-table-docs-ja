@@ -7,82 +7,81 @@ title: cell_getContext
 function cell_getContext<TFeatures, TData, TValue>(cell): object;
 ```
 
-Defined in: [core/cells/coreCellsFeature.utils.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.utils.ts#L54)
+定義元: [core/cells/coreCellsFeature.utils.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.utils.ts#L54)
 
-Builds the render context passed to a column's `cell` template.
+列の `cell` テンプレートに渡す描画コンテキストを作ります。
 
-The returned object includes stable references to the table, row, column, and
-cell, plus bound `getValue` and `renderValue` helpers for render functions.
+返されるオブジェクトには、テーブル・行・列・セルへの安定した参照と、描画関数のために結び付けた `getValue` と `renderValue` のヘルパーが含まれます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `object`
 
-### cell
+### cell {#cell-1}
 
 ```ts
 cell: Cell<TFeatures, TData, TValue>;
 ```
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue> = cell.column;
 ```
 
-### getValue
+### getValue {#getvalue}
 
 ```ts
 getValue: () => NoInfer<TValue>;
 ```
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`NoInfer`](../../index/type-aliases/NoInfer.md)\<`TValue`\>
 
-### renderValue
+### renderValue {#rendervalue}
 
 ```ts
 renderValue: () => NoInfer<TValue | null>;
 ```
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 [`NoInfer`](../../index/type-aliases/NoInfer.md)\<`TValue` \| `null`\>
 
-### row
+### row {#row}
 
 ```ts
 row: Row<TFeatures, TData> = cell.row;
 ```
 
-### table
+### table {#table}
 
 ```ts
 table: Table_Internal<TFeatures, TData> = cell.table;
 ```
 
-## Example
+## 例 {#example}
 
 ```ts
 const context = cell_getContext(cell)

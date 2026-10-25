@@ -7,28 +7,28 @@ title: constructTable
 function constructTable<TFeatures, TData>(tableOptions): Table<TFeatures, TData>;
 ```
 
-Defined in: [core/table/constructTable.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/constructTable.ts#L33)
+定義元: [core/table/constructTable.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/constructTable.ts#L33)
 
-Constructs a table instance from normalized table internals.
+正規化されたテーブルの内部データからテーブルのインスタンスを作成します。
 
-This wires core properties, feature prototype APIs, and instance data used by table rendering and row-model operations.
+コアのプロパティ、機能のプロトタイプ API、インスタンスデータを結び付けます。これらはテーブルの描画と行モデルの処理で使われます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### tableOptions
+### tableOptions {#tableoptions}
 
 [`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Table`](../type-aliases/Table.md)\<`TFeatures`, `TData`\>

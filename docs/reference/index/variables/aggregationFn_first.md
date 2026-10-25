@@ -7,6 +7,6 @@ title: aggregationFn_first
 const aggregationFn_first: AggregationFnDef<any, any, unknown, unknown>;
 ```
 
-Defined in: [features/row-aggregation/aggregationFns.ts:356](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L356)
+定義元: [features/row-aggregation/aggregationFns.ts:356](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L356)
 
-Returns the first row's value, including a nullish value.
+最初の行の値を返します。null や undefined の値でもそのまま返します。

@@ -3,335 +3,328 @@ id: Table_RowPagination
 title: Table_RowPagination
 ---
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L47)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L47)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### _TFeatures
+### _TFeatures {#_tfeatures}
 
 `_TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### _TData
+### _TData {#_tdata}
 
 `_TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### autoResetPageIndex
+### autoResetPageIndex {#autoresetpageindex}
 
 ```ts
 autoResetPageIndex: () => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L58)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L58)
 
-Resets the page index to `0` after page-altering changes such as new
-data, filtering, sorting, or grouping.
+新しいデータ、フィルタリング、ソート、グループ化のような、ページの内容を変える変更があったあとに、ページ番号を `0` に戻します。
 
-Honors `autoResetAll`, `autoResetPageIndex`, and `manualPagination`.
-Called by the row models; you rarely need to invoke it yourself.
+`autoResetAll`、`autoResetPageIndex`、`manualPagination` に従います。行モデルから呼ばれるので、自分で呼ぶ必要はほとんどありません。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `void`
 
 ***
 
-### firstPage
+### firstPage {#firstpage}
 
 ```ts
 firstPage: () => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:97](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L97)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:97](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L97)
 
-Sets the page index to `0`.
+ページ番号を `0` にします。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `void`
 
 ***
 
-### getCanLastPage
+### getCanLastPage {#getcanlastpage}
 
 ```ts
 getCanLastPage: () => boolean;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L66)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L66)
 
-Checks whether a known, finite last page exists after the current page.
+現在のページより後ろに、わかっている有限の最後のページがあるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `boolean`
 
 ***
 
-### getCanNextPage
+### getCanNextPage {#getcannextpage}
 
 ```ts
 getCanNextPage: () => boolean;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L62)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L62)
 
-Checks whether the current page index can move forward.
+現在のページ番号を先に進められるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `boolean`
 
 ***
 
-### getCanPreviousPage
+### getCanPreviousPage {#getcanpreviouspage}
 
 ```ts
 getCanPreviousPage: () => boolean;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:70](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L70)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:70](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L70)
 
-Checks whether the current page index can move backward.
+現在のページ番号を前に戻せるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `boolean`
 
 ***
 
-### getPageCount
+### getPageCount {#getpagecount}
 
 ```ts
 getPageCount: () => number;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L75)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L75)
 
-Resolves the current page count from `options.pageCount` or row count and
-page size.
+`options.pageCount`、または行数とページサイズから、現在のページ数を求めます。
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 `number`
 
 ***
 
-### getPageOptions
+### getPageOptions {#getpageoptions}
 
 ```ts
 getPageOptions: () => number[];
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L85)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L85)
 
-Builds zero-based page indexes for the current page count.
+現在のページ数について、0始まりのページ番号の配列を作ります。
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `number`[]
 
 ***
 
-### getRowCount
+### getRowCount {#getrowcount}
 
 ```ts
 getRowCount: () => number;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L81)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L81)
 
-Resolves the row count used for pagination math.
+ページネーションの計算に使う行数を求めます。
 
-`options.rowCount` wins; otherwise the pre-paginated row model is counted.
+`options.rowCount` が優先されます。指定がなければ、ページ分割前の行モデルの行を数えます。
 
-#### Returns
+#### 戻り値 {#returns-7}
 
 `number`
 
 ***
 
-### lastPage
+### lastPage {#lastpage}
 
 ```ts
 lastPage: () => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L102)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L102)
 
-Sets the page index to the last known page. Does nothing when the page
-count is unknown, empty, or non-finite.
+ページ番号を、わかっている最後のページにします。ページ数が不明、0、有限でない場合は何もしません。
 
-#### Returns
+#### 戻り値 {#returns-8}
 
 `void`
 
 ***
 
-### nextPage
+### nextPage {#nextpage}
 
 ```ts
 nextPage: () => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L89)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L89)
 
-Increments the page index by one, if possible.
+可能なら、ページ番号を1つ増やします。
 
-#### Returns
+#### 戻り値 {#returns-9}
 
 `void`
 
 ***
 
-### previousPage
+### previousPage {#previouspage}
 
 ```ts
 previousPage: () => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:93](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L93)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:93](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L93)
 
-Decrements the page index by one, if possible.
+可能なら、ページ番号を1つ減らします。
 
-#### Returns
+#### 戻り値 {#returns-10}
 
 `void`
 
 ***
 
-### resetPageIndex
+### resetPageIndex {#resetpageindex}
 
 ```ts
 resetPageIndex: (defaultState?) => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L107)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L107)
 
-Resets `pagination.pageIndex` to initial state, or to `0` when
-`defaultState` is `true`.
+`pagination.pageIndex` を初期状態に戻します。`defaultState` が `true` の場合は `0` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-11}
 
 `void`
 
 ***
 
-### resetPageSize
+### resetPageSize {#resetpagesize}
 
 ```ts
 resetPageSize: (defaultState?) => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:112](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L112)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:112](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L112)
 
-Resets `pagination.pageSize` to initial state, or to `10` when
-`defaultState` is `true`.
+`pagination.pageSize` を初期状態に戻します。`defaultState` が `true` の場合は `10` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### defaultState?
+##### defaultState? {#defaultstate-1}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-12}
 
 `void`
 
 ***
 
-### resetPagination
+### resetPagination {#resetpagination}
 
 ```ts
 resetPagination: (defaultState?) => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:119](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L119)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:119](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L119)
 
-Resets `pagination` to `initialState.pagination`.
+`pagination` を `initialState.pagination` に戻します。
 
-Pass `true` to ignore initial state and reset to
-`{ pageIndex: 0, pageSize: 10 }`.
+`true` を渡すと、初期状態を無視して `{ pageIndex: 0, pageSize: 10 }` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### defaultState?
+##### defaultState? {#defaultstate-2}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-13}
 
 `void`
 
 ***
 
-### setPageIndex
+### setPageIndex {#setpageindex}
 
 ```ts
 setPageIndex: (updater) => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L123)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L123)
 
-Updates `pagination.pageIndex` using a value or updater.
+値かアップデーターで `pagination.pageIndex` を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-3}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<`number`\>
 
-#### Returns
+#### 戻り値 {#returns-14}
 
 `void`
 
 ***
 
-### setPageSize
+### setPageSize {#setpagesize}
 
 ```ts
 setPageSize: (updater) => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:127](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L127)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:127](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L127)
 
-Updates `pagination.pageSize` using a value or updater.
+値かアップデーターで `pagination.pageSize` を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-4}
 
-##### updater
+##### updater {#updater-1}
 
 [`Updater`](../type-aliases/Updater.md)\<`number`\>
 
-#### Returns
+#### 戻り値 {#returns-15}
 
 `void`
 
 ***
 
-### setPagination
+### setPagination {#setpagination}
 
 ```ts
 setPagination: (updater) => void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L131)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L131)
 
-Updates pagination state with a next state or updater function.
+次の状態かアップデーター関数で、ページネーションの状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-5}
 
-##### updater
+##### updater {#updater-2}
 
 [`Updater`](../type-aliases/Updater.md)\<[`PaginationState`](PaginationState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-16}
 
 `void`

@@ -7,31 +7,28 @@ title: table_getRowsInDisplayOrder
 function table_getRowsInDisplayOrder<TFeatures, TData>(table): Row<TFeatures, TData>[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L32)
+定義元: [core/rows/coreRowsFeature.utils.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L32)
 
-Returns the rows in the current display order after assigning their
-zero-based display indexes.
+0始まりの表示インデックスを割り当てたうえで、現在の表示順で行を返します。
 
-When expanded rows bypass pagination, expanded descendants are inserted into
-the returned order even though they are absent from the pre-pagination row
-model.
+展開された行がページネーションを素通りする場合は、ページネーション前の行モデルに含まれていなくても、展開された子孫が返す順に挿入されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>[]

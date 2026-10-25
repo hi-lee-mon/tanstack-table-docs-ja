@@ -7,35 +7,33 @@ title: table_getFilteredRowModel
 function table_getFilteredRowModel<TFeatures, TData>(table): RowModel<TFeatures, TData>;
 ```
 
-Defined in: [core/row-models/coreRowModelsFeature.utils.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L61)
+定義元: [core/row-models/coreRowModelsFeature.utils.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L61)
 
-Resolves the row model after column and global filtering.
+列フィルタリングとグローバルフィルタリングのあとの行モデルを求めます。
 
-When `manualFiltering` is enabled, or no filtered row-model factory was
-registered, this returns the pre-filtered row model because filtering is
-expected to happen outside the table.
+`manualFiltering` が有効な場合や、フィルター済み行モデルのファクトリーが登録されていない場合は、フィルタリング前の行モデルを返します。フィルタリングはテーブルの外で行われるものとみなすためです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowModel`](../../index/interfaces/RowModel.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const filteredRows = table_getFilteredRowModel(table)

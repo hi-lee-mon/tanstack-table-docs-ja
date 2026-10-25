@@ -10,24 +10,24 @@ type AggregationFnRef<TFeatures, TData, TValue, TResult> =
 | AggregationFnDef<TFeatures, TData, TValue, TResult>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:103](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L103)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:103](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L103)
 
-A registered name, automatic inference, or inline aggregation definition.
+登録された名前、自動推論、インラインの集計定義のいずれかです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` = `unknown`
 
-### TResult
+### TResult {#tresult}
 
 `TResult` = `unknown`

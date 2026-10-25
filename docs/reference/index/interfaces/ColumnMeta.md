@@ -3,18 +3,18 @@ id: ColumnMeta
 title: ColumnMeta
 ---
 
-Defined in: [types/ColumnDef.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L22)
+定義元: [types/ColumnDef.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L22)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)

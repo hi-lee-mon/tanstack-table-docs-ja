@@ -3,153 +3,141 @@ id: TableOptions_CellSelection
 title: TableOptions_CellSelection
 ---
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L89)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L89)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### autoResetCellSelection?
+### autoResetCellSelection? {#autoresetcellselection}
 
 ```ts
 optional autoResetCellSelection?: boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L102)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L102)
 
-Resets cell selection to `initialState.cellSelection` whenever `data`
-changes. Defaults to `true`.
+`data` が変わるたびに、セル選択を `initialState.cellSelection` に戻します。既定値は `true` です。
 
-Ranges are stored as row and column ids, so new data would otherwise leave
-a selection pointing at rows that no longer exist, or silently re-select
-cells if the new data happens to reuse ids. Set to `false` to keep ranges
-across data changes, and note `autoResetAll` overrides this.
+範囲は行 ID と列 ID で保存されます。そのため、リセットしないと、新しいデータになったときに選択がもう存在しない行を指したままになったり、新しいデータがたまたま同じ ID を使っていると気づかないうちにセルが選択し直されたりします。
+データが変わっても範囲を残したい場合は `false` にしてください。なお、`autoResetAll` はこの設定より優先されます。
 
 ***
 
-### enableCellRangeSelection?
+### enableCellRangeSelection? {#enablecellrangeselection}
 
 ```ts
 optional enableCellRangeSelection?: boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L107)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L107)
 
-Enables inclusive cell range selection through shift-click and drag.
-Defaults to `true`.
+Shift キーを押しながらのクリックやドラッグで、両端を含むセルの範囲を選択できるようにします。既定値は `true` です。
 
 ***
 
-### enableCellSelection?
+### enableCellSelection? {#enablecellselection}
 
 ```ts
 optional enableCellSelection?: boolean | ((cell) => boolean);
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L114)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L114)
 
-Allows cells to be selected.
+セルを選択できるようにします。
 
-Provide a predicate to decide per cell. A column def may also opt out with
-its own `enableCellSelection: false`. Defaults to `true`.
+述語関数を渡すと、セルごとに判定できます。列定義側でも `enableCellSelection: false` で対象から外せます。既定値は `true` です。
 
 ***
 
-### enableCellSelectionDrag?
+### enableCellSelectionDrag? {#enablecellselectiondrag}
 
 ```ts
 optional enableCellSelectionDrag?: boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:119](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L119)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:119](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L119)
 
-Enables extending a selection by dragging across cells. Defaults to `true`.
+セルの上をドラッグして選択を広げられるようにします。既定値は `true` です。
 
 ***
 
-### enableMultiCellRangeSelection?
+### enableMultiCellRangeSelection? {#enablemulticellrangeselection}
 
 ```ts
 optional enableMultiCellRangeSelection?: boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L123)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L123)
 
-Allows modifier interactions to add or subtract ranges. Defaults to `true`.
+修飾キーを使った操作で範囲を追加・差し引きできるようにします。既定値は `true` です。
 
 ***
 
-### isCellRangeSelectionEvent?
+### isCellRangeSelectionEvent? {#iscellrangeselectionevent}
 
 ```ts
 optional isCellRangeSelectionEvent?: (event) => boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L131)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L131)
 
-Determines whether a selection-start event should extend the active range
-instead of replacing the selection.
+選択を始めるイベントで、選択を置き換えるのではなく、アクティブな範囲を広げるかどうかを決めます。
 
-By default, events with `shiftKey` directly on the event or on
-`event.nativeEvent` are treated as range-selection events.
+既定では、イベント自体または `event.nativeEvent` に `shiftKey` があるイベントを、範囲選択のイベントとして扱います。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### event
+##### event {#event}
 
 `unknown`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### isMultiCellRangeSelectionEvent?
+### isMultiCellRangeSelectionEvent? {#ismulticellrangeselectionevent}
 
 ```ts
 optional isMultiCellRangeSelectionEvent?: (event) => boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L139)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L139)
 
-Determines whether a selection-start event should add or subtract a new
-rectangle. The operation depends on whether the starting cell is selected.
+選択を始めるイベントで、新しい長方形を追加するか差し引くかを決めます。どちらになるかは、開始したセルが選択されているかどうかで決まります。
 
-By default, events with `ctrlKey` or `metaKey` directly on the event or on
-`event.nativeEvent` are treated as multi-range events.
+既定では、イベント自体または `event.nativeEvent` に `ctrlKey` か `metaKey` があるイベントを、複数範囲のイベントとして扱います。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### event
+##### event {#event-1}
 
 `unknown`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
 ***
 
-### onCellSelectionChange?
+### onCellSelectionChange? {#oncellselectionchange}
 
 ```ts
 optional onCellSelectionChange?: OnChangeFn<CellSelectionState>;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:148](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L148)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:148](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L148)
 
-Called with an updater when cell selection state changes. Pair this with
-`state.cellSelection` when using external state; external atoms can own the
-slice without this callback.
+セル選択の状態が変わったときに、アップデーターを渡して呼び出されます。外部の状態を使う場合は `state.cellSelection` と組み合わせてください。外部のアトムなら、このコールバックなしでスライスを持てます。
 
-A drag emits one change per cell crossed. Subscribe to
-`table.atoms.cellSelection` for finer-grained reads when that matters.
+ドラッグでは、通過したセルごとに変更が1回ずつ発生します。それが問題になる場合は、`table.atoms.cellSelection` を購読して、より細かい単位で読み取ってください。

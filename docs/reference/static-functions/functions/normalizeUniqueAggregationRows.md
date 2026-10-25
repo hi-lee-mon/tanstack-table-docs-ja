@@ -7,34 +7,31 @@ title: normalizeUniqueAggregationRows
 function normalizeUniqueAggregationRows<TFeatures, TData>(rows, maxDepth?): readonly Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.utils.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L139)
+定義元: [features/row-aggregation/rowAggregationFeature.utils.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L139)
 
-Frontier selection for rows that are distinct nodes of a single row tree —
-the row models the table builds itself. Skips `normalizeAggregationRows`'
-duplicate-id guard (disjoint subtrees cannot revisit a row) and returns
-`rows` unchanged when no row descends, so the default `maxDepth: 0` case
-costs nothing per aggregation.
+1つの行ツリーの別々のノードである行（テーブル自身が作る行モデル）のための、最前線の選び方です。
+`normalizeAggregationRows` の ID の重複を防ぐ確認を省き（重ならない部分木で同じ行を2回たどることはないため）、子孫を持つ行がなければ `rows` をそのまま返します。そのため、既定の `maxDepth: 0` の場合は、集計ごとのコストがかかりません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### rows
+### rows {#rows}
 
 readonly [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
-### maxDepth?
+### maxDepth? {#maxdepth}
 
 `number` = `0`
 
-## Returns
+## 戻り値 {#returns}
 
 readonly [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>[]

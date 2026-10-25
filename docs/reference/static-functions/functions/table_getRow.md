@@ -10,42 +10,41 @@ function table_getRow<TFeatures, TData>(
 searchAll?): Row<TFeatures, TData>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:321](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L321)
+定義元: [core/rows/coreRowsFeature.utils.ts:321](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L321)
 
-Looks up a row by id from the current or full row model.
+現在の行モデルか全体の行モデルから、ID で行を探します。
 
-By default this searches `table.getRowModel()`. Passing `searchAll` searches
-the pre-pagination model first, then falls back to the core model.
+既定では `table.getRowModel()` を探します。`searchAll` を渡すと、まずページネーション前の行モデルを探し、見つからなければコア行モデルを探します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### rowId
+### rowId {#rowid}
 
 `string`
 
-### searchAll?
+### searchAll? {#searchall}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const row = table_getRow(table, rowId, true)

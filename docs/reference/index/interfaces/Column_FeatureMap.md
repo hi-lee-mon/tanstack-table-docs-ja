@@ -3,124 +3,124 @@ id: Column_FeatureMap
 title: Column_FeatureMap
 ---
 
-Defined in: [types/Column.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L24)
+定義元: [types/Column.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L24)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### columnFacetingFeature
+### columnFacetingFeature {#columnfacetingfeature}
 
 ```ts
 columnFacetingFeature: Column_ColumnFaceting<TFeatures, TData>;
 ```
 
-Defined in: [types/Column.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L29)
+定義元: [types/Column.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L29)
 
 ***
 
-### columnFilteringFeature
+### columnFilteringFeature {#columnfilteringfeature}
 
 ```ts
 columnFilteringFeature: Column_ColumnFiltering<TFeatures, TData>;
 ```
 
-Defined in: [types/Column.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L30)
+定義元: [types/Column.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L30)
 
 ***
 
-### columnGroupingFeature
+### columnGroupingFeature {#columngroupingfeature}
 
 ```ts
 columnGroupingFeature: Column_ColumnGrouping;
 ```
 
-Defined in: [types/Column.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L31)
+定義元: [types/Column.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L31)
 
 ***
 
-### columnOrderingFeature
+### columnOrderingFeature {#columnorderingfeature}
 
 ```ts
 columnOrderingFeature: Column_ColumnOrdering;
 ```
 
-Defined in: [types/Column.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L32)
+定義元: [types/Column.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L32)
 
 ***
 
-### columnPinningFeature
+### columnPinningFeature {#columnpinningfeature}
 
 ```ts
 columnPinningFeature: Column_ColumnPinning;
 ```
 
-Defined in: [types/Column.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L33)
+定義元: [types/Column.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L33)
 
 ***
 
-### columnResizingFeature
+### columnResizingFeature {#columnresizingfeature}
 
 ```ts
 columnResizingFeature: Column_ColumnResizing;
 ```
 
-Defined in: [types/Column.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L34)
+定義元: [types/Column.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L34)
 
 ***
 
-### columnSizingFeature
+### columnSizingFeature {#columnsizingfeature}
 
 ```ts
 columnSizingFeature: Column_ColumnSizing;
 ```
 
-Defined in: [types/Column.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L35)
+定義元: [types/Column.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L35)
 
 ***
 
-### columnVisibilityFeature
+### columnVisibilityFeature {#columnvisibilityfeature}
 
 ```ts
 columnVisibilityFeature: Column_ColumnVisibility;
 ```
 
-Defined in: [types/Column.ts:36](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L36)
+定義元: [types/Column.ts:36](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L36)
 
 ***
 
-### globalFilteringFeature
+### globalFilteringFeature {#globalfilteringfeature}
 
 ```ts
 globalFilteringFeature: Column_GlobalFiltering;
 ```
 
-Defined in: [types/Column.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L37)
+定義元: [types/Column.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L37)
 
 ***
 
-### rowAggregationFeature
+### rowAggregationFeature {#rowaggregationfeature}
 
 ```ts
 rowAggregationFeature: Column_RowAggregation<TFeatures, TData>;
 ```
 
-Defined in: [types/Column.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L28)
+定義元: [types/Column.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L28)
 
 ***
 
-### rowSortingFeature
+### rowSortingFeature {#rowsortingfeature}
 
 ```ts
 rowSortingFeature: Column_RowSorting<TFeatures, TData>;
 ```
 
-Defined in: [types/Column.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L38)
+定義元: [types/Column.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Column.ts#L38)

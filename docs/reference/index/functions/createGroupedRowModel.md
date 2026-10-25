@@ -7,25 +7,24 @@ title: createGroupedRowModel
 function createGroupedRowModel<TFeatures, TData>(): (table) => () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/column-grouping/createGroupedRowModel.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/createGroupedRowModel.ts#L26)
+定義元: [features/column-grouping/createGroupedRowModel.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/createGroupedRowModel.ts#L26)
 
-Creates a memoized grouped row model factory.
+メモ化されたグループ化済み行モデルのファクトリーを作成します。
 
-The factory reads the relevant table state atoms and options, then returns a row model function used by the table row-model pipeline.
+ファクトリーは関係するテーブルの状態のアトムとオプションを読み取り、テーブルの行モデルのパイプラインで使う行モデル関数を返します。
 
-When rowAggregationFeature is also registered, grouped rows use its shared
-executor for non-group values. Grouping remains useful without aggregation.
+rowAggregationFeature も登録されている場合、グループ化された行は、グループ以外の値の計算にその共有の実行器を使います。集計がなくてもグループ化は使えます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-## Returns
+## 戻り値 {#returns}
 
 (`table`) => () => [`RowModel`](../interfaces/RowModel.md)\<`TFeatures`, `TData`\>

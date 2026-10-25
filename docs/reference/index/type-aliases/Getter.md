@@ -7,20 +7,20 @@ title: Getter
 type Getter<TValue> = <TTValue>() => NoInfer<TTValue>;
 ```
 
-Defined in: [types/type-utils.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L89)
+定義元: [types/type-utils.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L89)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TValue
+### TValue {#tvalue}
 
 `TValue`
 
-## Type Parameters
+## 型パラメーター {#type-parameters-1}
 
-### TTValue
+### TTValue {#ttvalue}
 
 `TTValue` = `TValue`
 
-## Returns
+## 戻り値 {#returns}
 
 [`NoInfer`](NoInfer.md)\<`TTValue`\>

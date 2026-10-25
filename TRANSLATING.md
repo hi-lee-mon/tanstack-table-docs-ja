@@ -10,7 +10,7 @@
 | `docs/*.md`（概要・インストールなど） | 翻訳する |
 | `docs/guide/**` | 翻訳する（フレームワーク共通のコアガイド） |
 | `docs/framework/react/**` | 翻訳する（React 向けガイド・クイックスタート・React API リファレンス） |
-| `docs/reference/**` | **翻訳しない**（コア API リファレンス。TypeDoc の自動生成で約700ファイルあるため英語のまま収録） |
+| `docs/reference/**` | 翻訳する（コア API リファレンス。TypeDoc の自動生成。決定の経緯は `docs/adr/20261025-1600-translate-core-reference.md`） |
 
 ## 原文の下ごしらえ（翻訳前に機械的に済ませてあるもの）
 
@@ -37,7 +37,7 @@
    - リンクの href は変えない（`[テキスト](../guide/foo)` のテキストだけを訳す）
    - 画像 `![alt](src)` の alt は訳してよいが、src は変えない
    - HTML タグはそのまま残し、タグの間の文章だけを訳す
-5. TypeDoc 生成ページ（`docs/framework/react/reference/**`）
+5. TypeDoc 生成ページ（`docs/framework/react/reference/**` と `docs/reference/**`）
    - 定型の見出しは用語集の「TypeDoc の定型句」に従って訳す
    - `Defined in: [...](...)` は `定義元: [...](...)` にする（リンク部分は変えない）
    - 型シグネチャ・型名・プロパティ名は訳さない

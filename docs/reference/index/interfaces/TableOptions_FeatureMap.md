@@ -3,174 +3,174 @@ id: TableOptions_FeatureMap
 title: TableOptions_FeatureMap
 ---
 
-Defined in: [types/TableOptions.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L62)
+定義元: [types/TableOptions.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L62)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### cellSelectionFeature
+### cellSelectionFeature {#cellselectionfeature}
 
 ```ts
 cellSelectionFeature: TableOptions_CellSelection<TFeatures, TData>;
 ```
 
-Defined in: [types/TableOptions.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L66)
+定義元: [types/TableOptions.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L66)
 
 ***
 
-### cellSpanningFeature
+### cellSpanningFeature {#cellspanningfeature}
 
 ```ts
 cellSpanningFeature: TableOptions_CellSpanning;
 ```
 
-Defined in: [types/TableOptions.ts:67](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L67)
+定義元: [types/TableOptions.ts:67](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L67)
 
 ***
 
-### columnFilteringFeature
+### columnFilteringFeature {#columnfilteringfeature}
 
 ```ts
 columnFilteringFeature: TableOptions_ColumnFiltering<TFeatures, TData>;
 ```
 
-Defined in: [types/TableOptions.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L68)
+定義元: [types/TableOptions.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L68)
 
 ***
 
-### columnGroupingFeature
+### columnGroupingFeature {#columngroupingfeature}
 
 ```ts
 columnGroupingFeature: TableOptions_ColumnGrouping;
 ```
 
-Defined in: [types/TableOptions.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L69)
+定義元: [types/TableOptions.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L69)
 
 ***
 
-### columnOrderingFeature
+### columnOrderingFeature {#columnorderingfeature}
 
 ```ts
 columnOrderingFeature: TableOptions_ColumnOrdering;
 ```
 
-Defined in: [types/TableOptions.ts:70](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L70)
+定義元: [types/TableOptions.ts:70](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L70)
 
 ***
 
-### columnPinningFeature
+### columnPinningFeature {#columnpinningfeature}
 
 ```ts
 columnPinningFeature: TableOptions_ColumnPinning;
 ```
 
-Defined in: [types/TableOptions.ts:71](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L71)
+定義元: [types/TableOptions.ts:71](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L71)
 
 ***
 
-### columnResizingFeature
+### columnResizingFeature {#columnresizingfeature}
 
 ```ts
 columnResizingFeature: TableOptions_ColumnResizing;
 ```
 
-Defined in: [types/TableOptions.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L72)
+定義元: [types/TableOptions.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L72)
 
 ***
 
-### columnSizingFeature
+### columnSizingFeature {#columnsizingfeature}
 
 ```ts
 columnSizingFeature: TableOptions_ColumnSizing;
 ```
 
-Defined in: [types/TableOptions.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L73)
+定義元: [types/TableOptions.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L73)
 
 ***
 
-### columnVisibilityFeature
+### columnVisibilityFeature {#columnvisibilityfeature}
 
 ```ts
 columnVisibilityFeature: TableOptions_ColumnVisibility;
 ```
 
-Defined in: [types/TableOptions.ts:74](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L74)
+定義元: [types/TableOptions.ts:74](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L74)
 
 ***
 
-### globalFilteringFeature
+### globalFilteringFeature {#globalfilteringfeature}
 
 ```ts
 globalFilteringFeature: TableOptions_GlobalFiltering<TFeatures, TData>;
 ```
 
-Defined in: [types/TableOptions.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L75)
+定義元: [types/TableOptions.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L75)
 
 ***
 
-### rowAggregationFeature
+### rowAggregationFeature {#rowaggregationfeature}
 
 ```ts
 rowAggregationFeature: TableOptions_RowAggregation;
 ```
 
-Defined in: [types/TableOptions.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L76)
+定義元: [types/TableOptions.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L76)
 
 ***
 
-### rowExpandingFeature
+### rowExpandingFeature {#rowexpandingfeature}
 
 ```ts
 rowExpandingFeature: TableOptions_RowExpanding<TFeatures, TData>;
 ```
 
-Defined in: [types/TableOptions.ts:77](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L77)
+定義元: [types/TableOptions.ts:77](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L77)
 
 ***
 
-### rowPaginationFeature
+### rowPaginationFeature {#rowpaginationfeature}
 
 ```ts
 rowPaginationFeature: TableOptions_RowPagination;
 ```
 
-Defined in: [types/TableOptions.ts:78](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L78)
+定義元: [types/TableOptions.ts:78](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L78)
 
 ***
 
-### rowPinningFeature
+### rowPinningFeature {#rowpinningfeature}
 
 ```ts
 rowPinningFeature: TableOptions_RowPinning<TFeatures, TData>;
 ```
 
-Defined in: [types/TableOptions.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L79)
+定義元: [types/TableOptions.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L79)
 
 ***
 
-### rowSelectionFeature
+### rowSelectionFeature {#rowselectionfeature}
 
 ```ts
 rowSelectionFeature: TableOptions_RowSelection<TFeatures, TData>;
 ```
 
-Defined in: [types/TableOptions.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L80)
+定義元: [types/TableOptions.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L80)
 
 ***
 
-### rowSortingFeature
+### rowSortingFeature {#rowsortingfeature}
 
 ```ts
 rowSortingFeature: TableOptions_RowSorting;
 ```
 
-Defined in: [types/TableOptions.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L81)
+定義元: [types/TableOptions.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L81)

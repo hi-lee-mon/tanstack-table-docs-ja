@@ -3,70 +3,70 @@ id: Cell_CoreProperties
 title: Cell_CoreProperties
 ---
 
-Defined in: [core/cells/coreCellsFeature.types.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L21)
+定義元: [core/cells/coreCellsFeature.types.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L21)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`Cell_Cell`](Cell_Cell.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L29)
+定義元: [core/cells/coreCellsFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L29)
 
-The associated Column object for the cell.
+セルに対応する Column オブジェクトです。
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L33)
+定義元: [core/cells/coreCellsFeature.types.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L33)
 
-The unique ID for the cell across the entire table.
+テーブル全体で一意なセルの ID です。
 
 ***
 
-### row
+### row {#row}
 
 ```ts
 row: Row<TFeatures, TData>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L37)
+定義元: [core/cells/coreCellsFeature.types.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L37)
 
-The associated Row object for the cell.
+セルに対応する Row オブジェクトです。
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table_Internal<TFeatures, TData>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L41)
+定義元: [core/cells/coreCellsFeature.types.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L41)
 
-Reference to the parent table instance.
+親のテーブルインスタンスへの参照です。

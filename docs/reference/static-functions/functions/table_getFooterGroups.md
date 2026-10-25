@@ -7,34 +7,33 @@ title: table_getFooterGroups
 function table_getFooterGroups<TFeatures, TData>(table): HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.utils.ts:108](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L108)
+定義元: [core/headers/coreHeadersFeature.utils.ts:108](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L108)
 
-Builds footer groups by reversing the current header groups.
+現在のヘッダーグループを逆順にして、フッターグループを作ります。
 
-Footer rendering uses the same header objects and grouping structure, but
-renders them from leaf level back toward the root.
+フッターの描画では、同じヘッダーオブジェクトとグループの構造を使いますが、末端の階層からルートに向かって描画します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`HeaderGroup`](../../index/interfaces/HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const footerGroups = table_getFooterGroups(table)

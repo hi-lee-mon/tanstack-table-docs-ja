@@ -3,92 +3,92 @@ id: TableOptions_ColumnFiltering
 title: TableOptions_ColumnFiltering
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:245](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L245)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:245](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L245)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### _TFeatures
+### _TFeatures {#_tfeatures}
 
 `_TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### _TData
+### _TData {#_tdata}
 
 `_TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### enableColumnFilters?
+### enableColumnFilters? {#enablecolumnfilters}
 
 ```ts
 optional enableColumnFilters?: boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:252](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L252)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:252](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L252)
 
-Enables column-specific filtering for all columns that also allow it.
+列ごとのフィルタリングを、それを許可しているすべての列で有効にします。
 
 ***
 
-### enableFilters?
+### enableFilters? {#enablefilters}
 
 ```ts
 optional enableFilters?: boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:258](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L258)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:258](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L258)
 
-Enables all filtering features for the table.
+テーブルのすべてのフィルタリング機能を有効にします。
 
-Set this to `false` to disable both column filtering and global filtering.
+`false` にすると、列フィルタリングとグローバルフィルタリングの両方が無効になります。
 
 ***
 
-### filterFromLeafRows?
+### filterFromLeafRows? {#filterfromleafrows}
 
 ```ts
 optional filterFromLeafRows?: boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:262](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L262)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:262](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L262)
 
-By default, filtering is done from parent rows down (so if a parent row is filtered out, all of its children will be filtered out as well). Setting this option to `true` will cause filtering to be done from leaf rows up (which means parent rows will be included so long as one of their child or grand-child rows is also included).
+既定では、フィルタリングは親の行から下に向かって行われます（そのため、親の行がフィルターで除かれると、その子もすべて除かれます）。
+このオプションを `true` にすると、フィルタリングは末端の行から上に向かって行われます（つまり、子や孫の行が1つでも残れば、その親の行も残ります）。
 
 ***
 
-### manualFiltering?
+### manualFiltering? {#manualfiltering}
 
 ```ts
 optional manualFiltering?: boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:266](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L266)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:266](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L266)
 
-Disables the `getFilteredRowModel` from being used to filter data. This may be useful if your table needs to dynamically support both client-side and server-side filtering.
+データのフィルタリングに `getFilteredRowModel` を使わないようにします。テーブルで、クライアントサイドとサーバーサイドのフィルタリングの両方を動的に切り替えたい場合に便利です。
 
 ***
 
-### maxLeafRowFilterDepth?
+### maxLeafRowFilterDepth? {#maxleafrowfilterdepth}
 
 ```ts
 optional maxLeafRowFilterDepth?: number;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:272](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L272)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:272](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L272)
 
-By default, filtering is done for all rows (max depth of 100), no matter if they are root level parent rows or the child leaf rows of a parent row. Setting this option to `0` will cause filtering to only be applied to the root level parent rows, with all sub-rows remaining unfiltered. Similarly, setting this option to `1` will cause filtering to only be applied to child leaf rows 1 level deep, and so on.
+既定では、ルート階層の親の行か、親の行の子である末端の行かに関係なく、すべての行（最大の深さ 100）がフィルタリングされます。
+このオプションを `0` にすると、フィルタリングはルート階層の親の行にだけ適用され、サブ行はすべてフィルタリングされずに残ります。同じように、`1` にすると1階層下の子の行まで適用され、以降も同様です。
 
-This is useful for situations where you want a row's entire child hierarchy to be visible regardless of the applied filter.
+適用されたフィルターに関係なく、行の子の階層全体を表示したい場合に便利です。
 
 ***
 
-### onColumnFiltersChange?
+### onColumnFiltersChange? {#oncolumnfilterschange}
 
 ```ts
 optional onColumnFiltersChange?: OnChangeFn<ColumnFiltersState>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:278](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L278)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:278](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L278)
 
-Called with an updater when column filter state changes. Pair this with
-`state.columnFilters` when using external state; external atoms can own the
-slice without this callback.
+列フィルターの状態が変わったときに、アップデーターを渡して呼び出されます。外部の状態を使う場合は `state.columnFilters` と組み合わせてください。外部のアトムなら、このコールバックなしでスライスを持てます。

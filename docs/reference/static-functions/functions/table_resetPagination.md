@@ -7,39 +7,37 @@ title: table_resetPagination
 function table_resetPagination<TFeatures, TData>(table, defaultState?): void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L92)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L92)
 
-Resets `pagination` to the configured initial state or feature default.
+`pagination` を、設定した初期状態か機能の既定値に戻します。
 
-With no argument, the reset clones `table.initialState.pagination` when it
-exists. Passing `true` ignores initial state and resets to
-`{ pageIndex: 0, pageSize: 10 }`.
+引数なしの場合、`table.initialState.pagination` があればそれを複製して戻します。`true` を渡すと、初期状態を無視して `{ pageIndex: 0, pageSize: 10 }` に戻します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### defaultState?
+### defaultState? {#defaultstate}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_resetPagination(table)

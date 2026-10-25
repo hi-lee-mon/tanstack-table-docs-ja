@@ -7,7 +7,6 @@ title: aggregationFn_max
 const aggregationFn_max: AggregationFnDef<any, any, unknown, RangeValue | undefined>;
 ```
 
-Defined in: [features/row-aggregation/aggregationFns.ts:130](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L130)
+定義元: [features/row-aggregation/aggregationFns.ts:130](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L130)
 
-Finds the maximum numeric or Date value from the selected rows. Invalid value
-types are ignored; `NaN` preserves the legacy numeric seeding behavior.
+選ばれた行から、数値または Date の最大値を求めます。無効な型の値は無視します。`NaN` は、従来の数値の初期値の動作を保ちます。

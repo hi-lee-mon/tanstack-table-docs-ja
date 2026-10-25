@@ -9,31 +9,31 @@ function column_getAutoAggregationFn<TFeatures, TData, TValue>(column):
   | undefined;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.utils.ts:183](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L183)
+定義元: [features/row-aggregation/rowAggregationFeature.utils.ts:183](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L183)
 
-Resolves the `sum` or `extent` definition inferred from the first core row.
+最初のコア行から推論した `sum` または `extent` の定義を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
   \| [`AggregationFnDef`](../../index/interfaces/AggregationFnDef.md)\<`TFeatures`, `TData`, `any`, `any`\>
   \| `undefined`

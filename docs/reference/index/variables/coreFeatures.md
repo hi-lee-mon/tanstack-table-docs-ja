@@ -7,8 +7,8 @@ title: coreFeatures
 const coreFeatures: CoreFeatures;
 ```
 
-Defined in: [core/coreFeatures.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/coreFeatures.ts#L24)
+定義元: [core/coreFeatures.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/coreFeatures.ts#L24)
 
-The built-in core feature set required by every table.
+すべてのテーブルで必要な、組み込みのコア機能の組み合わせです。
 
-These features provide table, column, row, header, cell, and core row-model behavior before optional feature plugins are added.
+これらの機能は、省略可能な機能プラグインを追加する前の、テーブル・列・行・ヘッダー・セル・コア行モデルの動作を提供します。

@@ -7,35 +7,35 @@ title: table_setCellSelection
 function table_setCellSelection<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L57)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L57)
 
-Routes a cell selection updater through the table's selection change handler.
+セル選択のアップデーターを、テーブルの選択の変更ハンドラーに通します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`CellSelectionState`](../../index/type-aliases/CellSelectionState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setCellSelection(table, (old) => old.slice(0, -1))

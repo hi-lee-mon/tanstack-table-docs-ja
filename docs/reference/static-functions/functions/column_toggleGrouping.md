@@ -7,38 +7,37 @@ title: column_toggleGrouping
 function column_toggleGrouping<TFeatures, TData, TValue>(column): void;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.utils.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L39)
+定義元: [features/column-grouping/columnGroupingFeature.utils.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L39)
 
-Adds or removes this column id from the grouping state.
+この列 ID をグループ化の状態に追加、または状態から削除します。
 
-Existing grouped columns keep their order. A column already present in
-`state.grouping` is removed; otherwise it is appended.
+既存のグループ化された列は順序を保ちます。すでに `state.grouping` にある列は削除され、なければ末尾に追加されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 column_toggleGrouping(column)

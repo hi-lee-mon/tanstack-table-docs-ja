@@ -3,46 +3,46 @@ id: TableOptions_Columns
 title: TableOptions_Columns
 ---
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L61)
+定義元: [core/columns/coreColumnsFeature.types.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L61)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`TableOptions_Core`](TableOptions_Core.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### columns
+### columns {#columns}
 
 ```ts
 columns: readonly ColumnDef<TFeatures, TData, TValue>[];
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L69)
+定義元: [core/columns/coreColumnsFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L69)
 
-The array of column defs to use for the table.
+テーブルで使う列定義の配列です。
 
 ***
 
-### defaultColumn?
+### defaultColumn? {#defaultcolumn}
 
 ```ts
 optional defaultColumn?: Partial<ColumnDef<TFeatures, TData, TValue>>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L73)
+定義元: [core/columns/coreColumnsFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L73)
 
-Default column options to use for all column defs supplied to the table.
+テーブルに渡すすべての列定義に適用する、列の既定のオプションです。

@@ -7,9 +7,8 @@ title: filterFn_equalsString
 const filterFn_equalsString: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:130](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L130)
+定義元: [features/column-filtering/filterFns.ts:130](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L130)
 
-Keeps rows whose stringified column value equals the filter text.
+文字列にした列の値が、フィルターのテキストと等しい行を残します。
 
-Both values are lowercased before comparison, and empty filter values are
-auto-removed.
+どちらの値も比較の前に小文字に変換され、空のフィルター値は自動で取り除かれます。

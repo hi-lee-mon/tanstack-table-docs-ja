@@ -10,39 +10,39 @@ function table_selectCellRange<TFeatures, TData>(
    opts?): void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:776](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L776)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:776](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L776)
 
-Selects a rectangle using replace, include, or exclude semantics.
+replace、include、exclude のいずれかの意味で、長方形を選択します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### range
+### range {#range}
 
 [`CellSelectionRange`](../../index/interfaces/CellSelectionRange.md)
 
-### opts?
+### opts? {#opts}
 
 [`SelectCellRangeOptions`](../../index/interfaces/SelectCellRangeOptions.md)
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_selectCellRange(table, range, { mode: 'exclude' })

@@ -7,38 +7,37 @@ title: table_setColumnPinning
 function table_setColumnPinning<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.utils.ts:295](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L295)
+定義元: [features/column-pinning/columnPinningFeature.utils.ts:295](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L295)
 
-Routes a column pinning updater through the table's pinning change handler.
+列の固定のアップデーターを、テーブルの固定の変更ハンドラーに通します。
 
-The updater may be a next `{ start, end }` state or a function of the
-previous state, matching the instance `table.setColumnPinning` behavior.
+アップデーターには、次の `{ start, end }` の状態か、前の状態を受け取る関数を指定できます。インスタンスの `table.setColumnPinning` と同じ動作です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`ColumnPinningState`](../../index/interfaces/ColumnPinningState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setColumnPinning(table, (old) => ({ ...old, start: ['select'] }))

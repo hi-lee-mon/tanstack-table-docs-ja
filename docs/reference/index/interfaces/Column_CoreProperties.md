@@ -3,109 +3,109 @@ id: Column_CoreProperties
 title: Column_CoreProperties
 ---
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:7](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L7)
+定義元: [core/columns/coreColumnsFeature.types.ts:7](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L7)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`Column_Column`](Column_Column.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### accessorFn?
+### accessorFn? {#accessorfn}
 
 ```ts
 optional accessorFn?: AccessorFn<TData, TValue>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L15)
+定義元: [core/columns/coreColumnsFeature.types.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L15)
 
-The resolved accessor function to use when extracting the value for the column from each row. Will only be defined if the column def has a valid accessor key or function defined.
+各行からこの列の値を取り出すときに使う、解決済みのアクセサー関数です。列定義に有効なアクセサーのキーまたは関数がある場合にだけ定義されます。
 
 ***
 
-### columnDef
+### columnDef {#columndef}
 
 ```ts
 columnDef: ColumnDef<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L19)
+定義元: [core/columns/coreColumnsFeature.types.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L19)
 
-The original column def used to create the column.
+列を作るときに使われた元の列定義です。
 
 ***
 
-### columns
+### columns {#columns}
 
 ```ts
 columns: Column<TFeatures, TData, TValue>[];
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L23)
+定義元: [core/columns/coreColumnsFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L23)
 
-The child column (if the column is a group column). Will be an empty array if the column is not a group column.
+子の列です（グループ列の場合）。グループ列でなければ空の配列です。
 
 ***
 
-### depth
+### depth {#depth}
 
 ```ts
 depth: number;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L27)
+定義元: [core/columns/coreColumnsFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L27)
 
-The depth of the column (if grouped) relative to the root column def array.
+ルートの列定義の配列から数えた、列の深さです（グループ化されている場合）。
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L34)
+定義元: [core/columns/coreColumnsFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L34)
 
-The resolved unique identifier for the column resolved in this priority:
-   - A manual `id` property from the column def
-   - The accessor key from the column def
-   - The header string from the column def
+列の一意な識別子です。次の優先順で決まります:
+   - 列定義で手動で指定した `id` プロパティ
+   - 列定義のアクセサーのキー
+   - 列定義のヘッダー文字列
 
 ***
 
-### parent?
+### parent? {#parent}
 
 ```ts
 optional parent?: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L38)
+定義元: [core/columns/coreColumnsFeature.types.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L38)
 
-The parent column for this column. Will be undefined if this is a root column.
+この列の親の列です。ルートの列なら undefined です。
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table_Internal<TFeatures, TData>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L42)
+定義元: [core/columns/coreColumnsFeature.types.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L42)
 
-Reference to the parent table instance.
+親のテーブルインスタンスへの参照です。

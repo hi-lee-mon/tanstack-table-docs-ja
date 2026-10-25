@@ -3,75 +3,74 @@ id: Column_ColumnPinning
 title: Column_ColumnPinning
 ---
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L60)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L60)
 
-## Properties
+## プロパティ {#properties}
 
-### getCanPin
+### getCanPin {#getcanpin}
 
 ```ts
 getCanPin: () => boolean;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:64](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L64)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:64](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L64)
 
-Checks whether this column or any of its leaves can be pinned.
+この列か、その末端の列のいずれかを固定できるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### getIsPinned
+### getIsPinned {#getispinned}
 
 ```ts
 getIsPinned: () => ColumnPinningPosition;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L68)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L68)
 
-Reads the column's logical pinned position: `'start'`, `'end'`, or `false`.
+列の論理的な固定位置を読み取ります: `'start'`、`'end'`、`false` のいずれかです。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
 
 ***
 
-### getPinnedIndex
+### getPinnedIndex {#getpinnedindex}
 
 ```ts
 getPinnedIndex: () => number;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L72)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L72)
 
-Finds this column's index within its pinned region.
+固定領域の中で、この列のインデックスを探します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `number`
 
 ***
 
-### pin
+### pin {#pin}
 
 ```ts
 pin: (position) => void;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.types.ts:77](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L77)
+定義元: [features/column-pinning/columnPinningFeature.types.ts:77](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.types.ts#L77)
 
-Pins this column's leaf columns to logical start or end, or unpins them
-when `false` is passed.
+この列の末端の列を論理的な先頭または末尾に固定します。`false` を渡すと固定を解除します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### position
+##### position {#position}
 
 [`ColumnPinningPosition`](../type-aliases/ColumnPinningPosition.md)
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `void`

@@ -7,38 +7,37 @@ title: cell_renderValue
 function cell_renderValue<TFeatures, TData, TValue>(cell): any;
 ```
 
-Defined in: [core/cells/coreCellsFeature.utils.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.utils.ts#L35)
+定義元: [core/cells/coreCellsFeature.utils.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.utils.ts#L35)
 
-Reads the value that should be rendered for this cell.
+このセルに描画する値を読み取ります。
 
-Nullish accessor values are replaced with `table.options.renderFallbackValue`,
-matching the behavior of `cell.renderValue()`.
+アクセサーの値が null や undefined の場合は `table.options.renderFallbackValue` に置き換えます。`cell.renderValue()` と同じ動作です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `any`
 
-## Example
+## 例 {#example}
 
 ```ts
 const rendered = cell_renderValue(cell)

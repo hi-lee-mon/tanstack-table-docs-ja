@@ -7,42 +7,39 @@ title: cell_getRowSpan
 function cell_getRowSpan<TFeatures, TData, TValue>(cell): number;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.utils.ts:366](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L366)
+定義元: [features/cell-spanning/cellSpanningFeature.utils.ts:366](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L366)
 
-Returns how many rows this cell spans.
+このセルが結合する行の数を返します。
 
-`1` when it does not span, and `0` when a spanning cell above it covers it,
-matching the `header.rowSpan` convention where `0` means "skip this cell".
+結合しない場合は `1`、上にある結合セルに覆われている場合は `0` です。`0` が「このセルを描画しない」を意味する `header.rowSpan` の決まりと同じです。
 
-Deliberately not memoized: a per-cell memo would allocate a closure and a
-dependency array for every cell, costing more than the two lookups this
-performs against the table-level span index.
+あえてメモ化していません。セルごとにメモ化すると、すべてのセルでクロージャーと依存関係の配列が作られ、テーブル単位の結合インデックスを2回引くだけの処理よりもコストがかかるためです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const rowSpan = cell_getRowSpan(cell)

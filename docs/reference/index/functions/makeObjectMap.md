@@ -7,19 +7,18 @@ title: makeObjectMap
 function makeObjectMap<TValue>(): Record<string, TValue>;
 ```
 
-Defined in: [utils.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L81)
+定義元: [utils.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L81)
 
-Creates an object intended only for string-keyed dictionary lookups.
+文字列キーの辞書として引くためだけのオブジェクトを作成します。
 
-The null prototype keeps user-controlled ids such as `__proto__` and
-`hasOwnProperty` as plain data keys.
+null プロトタイプにしているので、`__proto__` や `hasOwnProperty` のような利用者が決める ID も、ただのデータのキーとして扱われます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` = `unknown`
 
-## Returns
+## 戻り値 {#returns}
 
 `Record`\<`string`, `TValue`\>

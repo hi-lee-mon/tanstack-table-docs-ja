@@ -7,38 +7,37 @@ title: row_getUniqueValues
 function row_getUniqueValues<TFeatures, TData>(row, columnId): unknown;
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:93](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L93)
+定義元: [core/rows/coreRowsFeature.utils.ts:93](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L93)
 
-Reads and caches the values used by faceting/grouping for a column.
+列について、ファセットやグループ化に使う値を読み取り、キャッシュします。
 
-If the column defines `getUniqueValues`, that result is used. Otherwise the
-row's accessor value is wrapped in a single-item array.
+列が `getUniqueValues` を定義していれば、その結果を使います。そうでなければ、行のアクセサーの値を要素1つの配列に包みます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-### columnId
+### columnId {#columnid}
 
 `string`
 
-## Returns
+## 戻り値 {#returns}
 
 `unknown`
 
-## Example
+## 例 {#example}
 
 ```ts
 const values = row_getUniqueValues(row, 'tags')

@@ -3,49 +3,48 @@ id: CellSelectionBounds
 title: CellSelectionBounds
 ---
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:53](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L53)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:53](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L53)
 
-A range resolved into inclusive display-order indexes.
+表示順のインデックス（両端を含む）に解決された範囲です。
 
-Ranges whose corners no longer resolve are omitted rather than clamped, so a
-range with a filtered-out corner contributes nothing while remaining in state.
+角が解決できなくなった範囲は、端に寄せずに除外されます。そのため、角がフィルターで除かれた範囲は、状態には残りますが選択には何も加えません。
 
-## Properties
+## プロパティ {#properties}
 
-### maxColumnIndex
+### maxColumnIndex {#maxcolumnindex}
 
 ```ts
 maxColumnIndex: number;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L54)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L54)
 
 ***
 
-### maxRowIndex
+### maxRowIndex {#maxrowindex}
 
 ```ts
 maxRowIndex: number;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L55)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L55)
 
 ***
 
-### minColumnIndex
+### minColumnIndex {#mincolumnindex}
 
 ```ts
 minColumnIndex: number;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L56)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L56)
 
 ***
 
-### minRowIndex
+### minRowIndex {#minrowindex}
 
 ```ts
 minRowIndex: number;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L57)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L57)

@@ -7,18 +7,18 @@ title: Header
 type Header<TFeatures, TData, TValue> = Header_Core<TFeatures, TData, TValue> & ExtractFeatureMapTypes<TFeatures, Header_FeatureMap>;
 ```
 
-Defined in: [types/Header.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Header.ts#L18)
+定義元: [types/Header.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Header.ts#L18)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](CellData.md) = [`CellData`](CellData.md)

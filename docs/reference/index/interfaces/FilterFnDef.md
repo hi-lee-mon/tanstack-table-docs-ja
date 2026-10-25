@@ -3,110 +3,108 @@ id: FilterFnDef
 title: FilterFnDef
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L102)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L102)
 
-The definition object accepted by `constructFilterFn`.
+`constructFilterFn` が受け取る定義オブジェクトです。
 
-`filter` is a value-level comparator: it receives the row's (resolved) data
-value and the (resolved) filter value instead of the whole row, so
-normalization concerns stay in `resolveDataValue`/`resolveFilterValue`.
+`filter` は値レベルの比較関数です。行全体ではなく、行の（解決済みの）データ値と（解決済みの）フィルター値を受け取ります。そのため、正規化の処理は `resolveDataValue` / `resolveFilterValue` に分けておけます。
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`CreatedFilterFn`](CreatedFilterFn.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### autoRemove?
+### autoRemove? {#autoremove}
 
 ```ts
 optional autoRemove?: (filterValue) => boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L113)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L113)
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### filterValue
+##### filterValue {#filtervalue}
 
 `any`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### filter
+### filter {#filter}
 
 ```ts
 filter: (dataValue, filterValue, row, columnId, addMeta?) => boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L106)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L106)
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### dataValue
-
-`any`
-
-##### filterValue
+##### dataValue {#datavalue}
 
 `any`
 
-##### row
+##### filterValue {#filtervalue-1}
+
+`any`
+
+##### row {#row}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-##### columnId
+##### columnId {#columnid}
 
 `string`
 
-##### addMeta?
+##### addMeta? {#addmeta}
 
 (`meta`) => `void`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
 ***
 
-### resolveDataValue?
+### resolveDataValue? {#resolvedatavalue}
 
 ```ts
 optional resolveDataValue?: TransformDataValueFn;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:115](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L115)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:115](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L115)
 
 ***
 
-### resolveFilterValue?
+### resolveFilterValue? {#resolvefiltervalue}
 
 ```ts
 optional resolveFilterValue?: (filterValue) => any;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L114)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L114)
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### filterValue
+##### filterValue {#filtervalue-2}
 
 `any`
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `any`

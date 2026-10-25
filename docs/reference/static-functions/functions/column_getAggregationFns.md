@@ -7,30 +7,30 @@ title: column_getAggregationFns
 function column_getAggregationFns<TFeatures, TData, TValue>(column): readonly ResolvedAggregationFn<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.utils.ts:225](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L225)
+定義元: [features/row-aggregation/rowAggregationFeature.utils.ts:225](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L225)
 
-Resolves and validates a column's scalar or multiple aggregation option.
+列の単一または複数の集計オプションを解決し、検証します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 readonly [`ResolvedAggregationFn`](../../index/interfaces/ResolvedAggregationFn.md)\<`TFeatures`, `TData`\>[]

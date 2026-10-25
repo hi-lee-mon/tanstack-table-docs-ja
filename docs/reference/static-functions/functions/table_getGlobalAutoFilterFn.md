@@ -7,18 +7,17 @@ title: table_getGlobalAutoFilterFn
 function table_getGlobalAutoFilterFn(): CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.utils.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.utils.ts#L45)
+定義元: [features/global-filtering/globalFilteringFeature.utils.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.utils.ts#L45)
 
-Provides the built-in automatic global filter function.
+組み込みの、自動で決まるグローバルフィルターの関数を返します。
 
-Global filtering defaults to `includesString`, which gives search-box style
-matching across globally filterable columns.
+グローバルフィルタリングの既定は `includesString` です。これにより、グローバルフィルタリングできる列を対象に、検索ボックスのような照合ができます。
 
-## Returns
+## 戻り値 {#returns}
 
 [`CreatedFilterFn`](../../index/interfaces/CreatedFilterFn.md)\<`any`, `any`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const filterFn = table_getGlobalAutoFilterFn()

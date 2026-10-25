@@ -7,31 +7,28 @@ title: createColumnHelper
 function createColumnHelper<TFeatures, TData>(): ColumnHelper<TFeatures, TData>;
 ```
 
-Defined in: [helpers/columnHelper.ts:99](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L99)
+定義元: [helpers/columnHelper.ts:99](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/columnHelper.ts#L99)
 
-Creates helper functions for authoring column definitions with stronger value
-inference.
+値の型推論を強めた列定義を書くためのヘルパー関数を作成します。
 
-`accessor` infers `TValue` from an accessor key or accessor function,
-`display` creates non-data columns, `group` creates parent columns, and
-`columns` preserves tuple-level value types for arrays. At runtime these
-helpers only return column definition objects.
+`accessor` はアクセサーのキーまたはアクセサー関数から `TValue` を推論し、`display` はデータを持たない列を、`group` は親の列を作成します。`columns` は配列に対してタプル単位の値の型を保ちます。
+実行時には、これらのヘルパーは列定義のオブジェクトを返すだけです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Returns
+## 戻り値 {#returns}
 
 [`ColumnHelper`](../interfaces/ColumnHelper.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```tsx
 const helper = createColumnHelper<typeof features, Person>() // features is the result of `tableFeatures({})` helper

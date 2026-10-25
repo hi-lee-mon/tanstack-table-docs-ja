@@ -10,51 +10,46 @@ function table_syncExternalStateToBaseAtoms<TFeatures, TData>(
    compare?): void;
 ```
 
-Defined in: [core/table/coreTablesFeature.utils.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.utils.ts#L28)
+定義元: [core/table/coreTablesFeature.utils.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.utils.ts#L28)
 
-Synchronizes externally controlled state slices into the table's base atoms.
+外部で制御された状態スライスを、テーブルの基底アトムに同期します。
 
-This keeps `options.state` values mirrored in the atom graph so derived
-atoms, stores, and table APIs read a consistent snapshot.
+`options.state` の値をアトムのグラフに写しておくことで、派生アトム、ストア、テーブルの API が一貫したスナップショットを読めるようにします。
 
-Adapters that update options during their host's render phase pass the
-state snapshot captured by the committed render as `capturedState` — the
-shared options object may already hold values from a newer render that
-never commits. Pass `null` to publish nothing (a captured "no controlled
-state"); omitting the argument reads the current `table.options.state`
-instead. An optional `compare` suppresses semantically unchanged slice
-writes; the default remains reference equality.
+ホストの描画フェーズでオプションを更新するアダプターは、コミットされた描画で記録した状態のスナップショットを `capturedState` として渡します。共有のオプションのオブジェクトには、コミットされずに終わる新しい描画の値がすでに入っている可能性があるためです。
+`null` を渡すと何も公開しません（「制御された状態がない」ことを記録したものとして扱います）。引数を省略すると、代わりに現在の `table.options.state` を読みます。
+省略可能な `compare` を渡すと、意味の上で変わっていないスライスの書き込みを抑えられます。既定は参照の等価性のままです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### capturedState?
+### capturedState? {#capturedstate}
 
   \| `Partial`\<[`TableState`](../../index/type-aliases/TableState.md)\<`TFeatures`\>\>
   \| `null`
 
-### compare?
+### compare? {#compare}
 
 (`currentState`, `externalState`) => `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_syncExternalStateToBaseAtoms(table)

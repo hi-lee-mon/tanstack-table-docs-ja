@@ -7,18 +7,17 @@ title: getDefaultGroupingState
 function getDefaultGroupingState(): GroupingState;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.utils.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L24)
+定義元: [features/column-grouping/columnGroupingFeature.utils.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L24)
 
-Creates the default grouping state.
+グループ化の既定の状態を作ります。
 
-The feature default is an empty array, meaning no columns are grouped. Reset
-APIs use this value when `defaultState` is `true`.
+機能の既定値は空の配列で、グループ化されている列がない状態を表します。`defaultState` が `true` のとき、リセット API はこの値を使います。
 
-## Returns
+## 戻り値 {#returns}
 
 [`GroupingState`](../../index/type-aliases/GroupingState.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const grouping = getDefaultGroupingState()

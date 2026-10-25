@@ -3,7 +3,7 @@ id: index
 title: index
 ---
 
-## Interfaces
+## インターフェース {#interfaces}
 
 - [AggregationContext](interfaces/AggregationContext.md)
 - [AggregationFnDef](interfaces/AggregationFnDef.md)
@@ -205,7 +205,7 @@ title: index
 - [TableState\_RowSorting](interfaces/TableState_RowSorting.md)
 - [ToggleSelectedOptions](interfaces/ToggleSelectedOptions.md)
 
-## Type Aliases
+## 型エイリアス {#type-aliases}
 
 - [AccessorColumnDef](type-aliases/AccessorColumnDef.md)
 - [AccessorFn](type-aliases/AccessorFn.md)
@@ -305,7 +305,7 @@ title: index
 - [ValidateFeatureSlots](type-aliases/ValidateFeatureSlots.md)
 - [VisibilityDefaultOptions](type-aliases/VisibilityDefaultOptions.md)
 
-## Variables
+## 変数 {#variables}
 
 - [aggregationFn\_count](variables/aggregationFn_count.md)
 - [aggregationFn\_extent](variables/aggregationFn_extent.md)
@@ -376,7 +376,7 @@ title: index
 - [~~sortFns~~](variables/sortFns.md)
 - [stockFeatures](variables/stockFeatures.md)
 
-## Functions
+## 関数 {#functions}
 
 - [assignPrototypeAPIs](functions/assignPrototypeAPIs.md)
 - [assignTableAPIs](functions/assignTableAPIs.md)

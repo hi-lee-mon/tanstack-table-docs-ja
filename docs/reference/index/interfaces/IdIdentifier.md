@@ -3,42 +3,42 @@ id: IdIdentifier
 title: IdIdentifier
 ---
 
-Defined in: [types/ColumnDef.ts:84](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L84)
+定義元: [types/ColumnDef.ts:84](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L84)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### header?
+### header? {#header}
 
 ```ts
 optional header?: ColumnDefTemplate<HeaderContext<TFeatures, TData, TValue>>;
 ```
 
-Defined in: [types/ColumnDef.ts:96](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L96)
+定義元: [types/ColumnDef.ts:96](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L96)
 
-Header text or template used to render this column's header.
+この列のヘッダーを描画するためのヘッダーのテキストまたはテンプレートです。
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [types/ColumnDef.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L92)
+定義元: [types/ColumnDef.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L92)
 
-Explicit stable column id.
+明示的に指定する、変わらない列 ID です。

@@ -7,38 +7,37 @@ title: header_getStart
 function header_getStart<TFeatures, TData, TValue>(header): number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:299](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L299)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:299](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L299)
 
-Computes a header's offset from the start of its header group.
+ヘッダーグループの先頭から、ヘッダーまでのオフセットを計算します。
 
-The offset is the previous sibling header's start plus size, or `0` for the
-first header in the group.
+オフセットは、1つ前の兄弟ヘッダーの開始位置にその幅を足したものです。グループの最初のヘッダーなら `0` です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### header
+### header {#header}
 
 [`Header`](../../index/type-aliases/Header.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const offset = header_getStart(header)

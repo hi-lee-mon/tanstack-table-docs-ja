@@ -7,8 +7,8 @@ title: filterFn_lessThan
 const filterFn_lessThan: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:237](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L237)
+定義元: [features/column-filtering/filterFns.ts:237](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L237)
 
-Keeps rows whose value is less than the filter value.
+値がフィルター値より小さい行を残します。
 
-This is implemented as the inverse of greater-than-or-equal comparison.
+「以上」の比較を反転させて実装しています。

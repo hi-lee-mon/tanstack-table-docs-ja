@@ -10,58 +10,58 @@ function constructHeader<TFeatures, TData, TValue>(
 options): Header<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/headers/constructHeader.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/constructHeader.ts#L31)
+定義元: [core/headers/constructHeader.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/constructHeader.ts#L31)
 
-Constructs a header instance from normalized table internals.
+正規化されたテーブルの内部データからヘッダーのインスタンスを作成します。
 
-This wires core properties, feature prototype APIs, and instance data used by table rendering and row-model operations.
+コアのプロパティ、機能のプロトタイプ API、インスタンスデータを結び付けます。これらはテーブルの描画と行モデルの処理で使われます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### column
+### column {#column}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### options
+### options {#options}
 
-#### depth
+#### depth {#depth}
 
 `number`
 
-#### id?
+#### id? {#id}
 
 `string`
 
-#### index
+#### index {#index}
 
 `number`
 
-#### isPlaceholder?
+#### isPlaceholder? {#isplaceholder}
 
 `boolean`
 
-#### placeholderId?
+#### placeholderId? {#placeholderid}
 
 `string`
 
-## Returns
+## 戻り値 {#returns}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `TValue`\>

@@ -3,33 +3,33 @@ id: RowModelFns_All
 title: RowModelFns_All
 ---
 
-Defined in: [types/RowModelFns.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L25)
+定義元: [types/RowModelFns.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L25)
 
-## Extends
+## 継承元 {#extends}
 
 - `Partial`\<[`RowModelFns_ColumnFiltering`](RowModelFns_ColumnFiltering.md)\<`TFeatures`, `TData`\> & [`RowModelFns_RowAggregation`](RowModelFns_RowAggregation.md)\<`TFeatures`, `TData`\> & [`RowModelFns_RowSorting`](RowModelFns_RowSorting.md)\<`TFeatures`, `TData`\>\>
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### aggregationFns?
+### aggregationFns? {#aggregationfns}
 
 ```ts
 optional aggregationFns?: Record<string, AggregationFnDef<TFeatures, TData, any, any>>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L85)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L85)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from}
 
 ```ts
 Partial.aggregationFns
@@ -37,15 +37,15 @@ Partial.aggregationFns
 
 ***
 
-### filterFns?
+### filterFns? {#filterfns}
 
 ```ts
 optional filterFns?: Record<string, FilterFn<TFeatures, TData>>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L57)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L57)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-1}
 
 ```ts
 Partial.filterFns
@@ -53,15 +53,15 @@ Partial.filterFns
 
 ***
 
-### sortFns?
+### sortFns? {#sortfns}
 
 ```ts
 optional sortFns?: Record<string, SortFn<TFeatures, TData>>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L29)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L29)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-2}
 
 ```ts
 Partial.sortFns

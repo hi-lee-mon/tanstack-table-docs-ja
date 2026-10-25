@@ -3,50 +3,50 @@ id: ColSpanContext
 title: ColSpanContext
 ---
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L68)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L68)
 
-Context passed to a `spanColumns` resolver for each rendered row.
+描画される行ごとに、`spanColumns` のリゾルバーへ渡されるコンテキストです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L73)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L73)
 
 ***
 
-### row
+### row {#row}
 
 ```ts
 row: Row<TFeatures, TData>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:74](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L74)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:74](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L74)
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table<TFeatures, TData>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L75)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:75](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L75)

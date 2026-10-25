@@ -7,37 +7,37 @@ title: column_getFilterValue
 function column_getFilterValue<TFeatures, TData, TValue>(column): unknown;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.utils.ts:191](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L191)
+定義元: [features/column-filtering/columnFilteringFeature.utils.ts:191](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L191)
 
-Reads this column's current filter value from `state.columnFilters`.
+`state.columnFilters` から、この列の現在のフィルター値を読み取ります。
 
-Missing filter entries return `undefined`.
+フィルターのエントリーがなければ `undefined` を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `unknown`
 
-## Example
+## 例 {#example}
 
 ```ts
 const value = column_getFilterValue(column)

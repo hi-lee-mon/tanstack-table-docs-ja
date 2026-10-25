@@ -7,34 +7,33 @@ title: table_getPreFilteredRowModel
 function table_getPreFilteredRowModel<TFeatures, TData>(table): RowModel<TFeatures, TData>;
 ```
 
-Defined in: [core/row-models/coreRowModelsFeature.utils.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L42)
+定義元: [core/row-models/coreRowModelsFeature.utils.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L42)
 
-Reads the row model immediately before column/global filtering.
+列フィルタリングとグローバルフィルタリングの直前の行モデルを読み取ります。
 
-Filtering is the first derived row-model stage, so this currently aliases
-`table.getCoreRowModel()`.
+フィルタリングは行モデルを導き出す最初の段階なので、現在これは `table.getCoreRowModel()` の別名です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowModel`](../../index/interfaces/RowModel.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const rowsBeforeFiltering = table_getPreFilteredRowModel(table)

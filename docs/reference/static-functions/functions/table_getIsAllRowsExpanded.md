@@ -7,36 +7,34 @@ title: table_getIsAllRowsExpanded
 function table_getIsAllRowsExpanded<TFeatures, TData>(table): boolean;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.utils.ts:207](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L207)
+定義元: [features/row-expanding/rowExpandingFeature.utils.ts:207](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L207)
 
-Checks whether every expandable row in the current row model is expanded.
+現在の行モデルの展開できる行が、すべて展開されているかどうかを判定します。
 
-The special expanded-all value `true` returns true immediately. Empty
-expanded state returns false. Rows that cannot expand are ignored, so a
-materialized expanded-all map (which only contains expandable row ids)
-still counts as all rows expanded.
+「すべて展開」を表す特別な値 `true` なら、すぐに true を返します。展開状態が空なら false を返します。
+展開できない行は無視するので、「すべて展開」を行 ID のマップに展開したもの（展開できる行の ID だけを含みます）でも、すべての行が展開されているとみなします。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const allExpanded = table_getIsAllRowsExpanded(table)

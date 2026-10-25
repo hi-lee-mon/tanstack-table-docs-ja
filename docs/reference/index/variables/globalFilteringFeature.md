@@ -7,6 +7,6 @@ title: globalFilteringFeature
 const globalFilteringFeature: TableFeature;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.ts#L18)
+定義元: [features/global-filtering/globalFilteringFeature.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.ts#L18)
 
-Feature that adds global filtering state, defaults, and global filter APIs.
+グローバルフィルタリングの状態と既定値、グローバルフィルターの API を追加する機能です。

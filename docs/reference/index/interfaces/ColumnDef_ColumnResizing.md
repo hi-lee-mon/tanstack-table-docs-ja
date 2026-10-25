@@ -3,16 +3,16 @@ id: ColumnDef_ColumnResizing
 title: ColumnDef_ColumnResizing
 ---
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L61)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L61)
 
-## Properties
+## プロパティ {#properties}
 
-### enableResizing?
+### enableResizing? {#enableresizing}
 
 ```ts
 optional enableResizing?: boolean;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:65](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L65)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:65](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L65)
 
-Enables or disables column resizing for the column.
+この列の列幅の変更を有効または無効にします。

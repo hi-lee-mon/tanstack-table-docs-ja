@@ -3,224 +3,222 @@ id: Column_RowSorting
 title: Column_RowSorting
 ---
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:160](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L160)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:160](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L160)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### clearSorting
+### clearSorting {#clearsorting}
 
 ```ts
 clearSorting: () => void;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:167](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L167)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:167](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L167)
 
-Removes this column from the table's sorting state
+この列をテーブルのソートの状態から取り除きます。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `void`
 
 ***
 
-### getAutoSortDir
+### getAutoSortDir {#getautosortdir}
 
 ```ts
 getAutoSortDir: () => SortDirection;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:171](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L171)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:171](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L171)
 
-Returns a sort direction automatically inferred based on the columns values.
+列の値から自動で推論したソートの向きを返します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`SortDirection`](../type-aliases/SortDirection.md)
 
 ***
 
-### getAutoSortFn
+### getAutoSortFn {#getautosortfn}
 
 ```ts
 getAutoSortFn: () => SortFn<TFeatures, TData>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:175](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L175)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:175](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L175)
 
-Returns a sorting function automatically inferred based on the columns values.
+列の値から自動で推論したソート関数を返します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 [`SortFn`](SortFn.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getCanMultiSort
+### getCanMultiSort {#getcanmultisort}
 
 ```ts
 getCanMultiSort: () => boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:179](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L179)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:179](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L179)
 
-Returns whether this column can be multi-sorted.
+この列を複数列ソートできるかどうかを返します。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `boolean`
 
 ***
 
-### getCanSort
+### getCanSort {#getcansort}
 
 ```ts
 getCanSort: () => boolean;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:183](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L183)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:183](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L183)
 
-Returns whether this column can be sorted.
+この列をソートできるかどうかを返します。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `boolean`
 
 ***
 
-### getFirstSortDir
+### getFirstSortDir {#getfirstsortdir}
 
 ```ts
 getFirstSortDir: () => SortDirection;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:187](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L187)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:187](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L187)
 
-Returns the first direction that should be used when sorting this column.
+この列をソートするときに最初に使う向きを返します。
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 [`SortDirection`](../type-aliases/SortDirection.md)
 
 ***
 
-### getIsSorted
+### getIsSorted {#getissorted}
 
 ```ts
 getIsSorted: () => false | SortDirection;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:191](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L191)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:191](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L191)
 
-Reads this column's current sort direction, or `false` when unsorted.
+この列の現在のソートの向きを読み取ります。ソートされていなければ `false` です。
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `false` \| [`SortDirection`](../type-aliases/SortDirection.md)
 
 ***
 
-### getNextSortingOrder
+### getNextSortingOrder {#getnextsortingorder}
 
 ```ts
 getNextSortingOrder: (multi?) => false | SortDirection;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:197](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L197)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:197](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L197)
 
-Returns the next sorting order. Pass `multi` to resolve the order for a
-multi-sort toggle, where `enableMultiRemove` governs whether the cycle can
-remove the sort.
+次のソート順を返します。`multi` を渡すと、複数列ソートの切り替えでの順を返します。このとき、切り替えの流れでソートを外せるかどうかは `enableMultiRemove` で決まります。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### multi?
+##### multi? {#multi}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-7}
 
 `false` \| [`SortDirection`](../type-aliases/SortDirection.md)
 
 ***
 
-### getSortFn
+### getSortFn {#getsortfn}
 
 ```ts
 getSortFn: () => SortFn<TFeatures, TData>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:205](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L205)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:205](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L205)
 
-Returns the resolved sorting function to be used for this column
+この列で使う、解決済みのソート関数を返します。
 
-#### Returns
+#### 戻り値 {#returns-8}
 
 [`SortFn`](SortFn.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getSortIndex
+### getSortIndex {#getsortindex}
 
 ```ts
 getSortIndex: () => number;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:201](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L201)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:201](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L201)
 
-Finds this column's position in the ordered sorting state.
+順序付きのソートの状態の中で、この列の位置を探します。
 
-#### Returns
+#### 戻り値 {#returns-9}
 
 `number`
 
 ***
 
-### getToggleSortingHandler
+### getToggleSortingHandler {#gettogglesortinghandler}
 
 ```ts
 getToggleSortingHandler: () => ((event) => void) | undefined;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:209](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L209)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:209](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L209)
 
-Creates a header/control handler that toggles this column's sorting state.
+この列のソートの状態を切り替える、ヘッダーや操作部品向けのハンドラーを作成します。
 
-#### Returns
+#### 戻り値 {#returns-10}
 
 ((`event`) => `void`) \| `undefined`
 
 ***
 
-### toggleSorting
+### toggleSorting {#togglesorting}
 
 ```ts
 toggleSorting: (desc?, isMulti?) => void;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:213](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L213)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:213](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L213)
 
-Toggles this column's sorting state. If `desc` is provided, it will force the sort direction to that value. If `isMulti` is provided, it will additively multi-sort the column (or toggle it if it is already sorted).
+この列のソートの状態を切り替えます。`desc` を渡すと、ソートの向きをその値に固定します。`isMulti` を渡すと、この列を複数列ソートに追加します（すでにソートされていれば切り替えます）。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### desc?
-
-`boolean`
-
-##### isMulti?
+##### desc? {#desc}
 
 `boolean`
 
-#### Returns
+##### isMulti? {#ismulti}
+
+`boolean`
+
+#### 戻り値 {#returns-11}
 
 `void`

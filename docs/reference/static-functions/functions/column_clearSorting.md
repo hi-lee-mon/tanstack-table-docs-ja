@@ -7,37 +7,37 @@ title: column_clearSorting
 function column_clearSorting<TFeatures, TData, TValue>(column): void;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.utils.ts:512](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L512)
+定義元: [features/row-sorting/rowSortingFeature.utils.ts:512](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L512)
 
-Removes this column from the sorting state.
+この列をソートの状態から取り除きます。
 
-Other sorted columns are preserved, including their relative order.
+他のソートされた列は、互いの順序も含めて保たれます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 column_clearSorting(column)

@@ -3,46 +3,46 @@ id: Table_RowModels_Core
 title: Table_RowModels_Core
 ---
 
-Defined in: [core/row-models/coreRowModelsFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L27)
+定義元: [core/row-models/coreRowModelsFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L27)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getCoreRowModel
+### getCoreRowModel {#getcorerowmodel}
 
 ```ts
 getCoreRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [core/row-models/coreRowModelsFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L34)
+定義元: [core/row-models/coreRowModelsFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L34)
 
-Returns the core row model before any processing has been applied.
+何の処理も適用する前の、コア行モデルを返します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getRowModel
+### getRowModel {#getrowmodel}
 
 ```ts
 getRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [core/row-models/coreRowModelsFeature.types.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L38)
+定義元: [core/row-models/coreRowModelsFeature.types.ts:38](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.types.ts#L38)
 
-Returns the final model after all processing from other used features has been applied. This is the row model that is most commonly used for rendering.
+使っている他の機能の処理をすべて適用したあとの、最終的な行モデルを返します。描画にいちばんよく使う行モデルです。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>

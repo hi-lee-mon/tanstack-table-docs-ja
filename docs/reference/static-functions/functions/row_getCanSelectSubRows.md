@@ -7,34 +7,33 @@ title: row_getCanSelectSubRows
 function row_getCanSelectSubRows<TFeatures, TData>(row): boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.utils.ts:647](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L647)
+定義元: [features/row-selection/rowSelectionFeature.utils.ts:647](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L647)
 
-Checks whether selecting this row should also select its subRows.
+この行を選択したときに、そのサブ行も選択するかどうかを判定します。
 
-`options.enableSubRowSelection` may be a boolean or a row predicate; it
-defaults to `true`.
+`options.enableSubRowSelection` には、真偽値か行の述語関数を指定できます。既定値は `true` です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canSelectChildren = row_getCanSelectSubRows(row)

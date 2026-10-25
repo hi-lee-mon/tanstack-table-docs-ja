@@ -3,311 +3,310 @@ id: Table_RowSelection
 title: Table_RowSelection
 ---
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:129](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L129)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:129](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L129)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### \_lastSelectedRowId
+### \_lastSelectedRowId {#_lastselectedrowid}
 
 ```ts
 _lastSelectedRowId: string | null;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:138](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L138)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:138](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L138)
 
 **`Internal`**
 
-The most recent row interacted with through the row selection handler.
+行選択のハンドラーで直近に操作された行です。
 
 ***
 
-### getFilteredSelectedRowModel
+### getFilteredSelectedRowModel {#getfilteredselectedrowmodel}
 
 ```ts
 getFilteredSelectedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:142](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L142)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:142](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L142)
 
-Builds a selected-row model from rows after filtering.
+フィルタリング後の行から、選択された行の行モデルを作ります。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getGroupedSelectedRowModel
+### getGroupedSelectedRowModel {#getgroupedselectedrowmodel}
 
 ```ts
 getGroupedSelectedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:146](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L146)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:146](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L146)
 
-Builds a selected-row model from rows after grouping.
+グループ化後の行から、選択された行の行モデルを作ります。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getIsAllPageRowsSelected
+### getIsAllPageRowsSelected {#getisallpagerowsselected}
 
 ```ts
 getIsAllPageRowsSelected: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:155](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L155)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:155](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L155)
 
-Checks whether every selectable row on the current page is selected.
-Sub-rows whose ancestors block sub-row selection are ignored.
+現在のページにある選択可能な行が、すべて選択されているかどうかを判定します。
+祖先がサブ行の選択を禁止しているサブ行は無視します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `boolean`
 
 ***
 
-### getIsAllRowsSelected
+### getIsAllRowsSelected {#getisallrowsselected}
 
 ```ts
 getIsAllRowsSelected: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:160](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L160)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:160](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L160)
 
-Checks whether every selectable filtered row is selected.
-Sub-rows whose ancestors block sub-row selection are ignored.
+フィルタリング後の選択可能な行が、すべて選択されているかどうかを判定します。
+祖先がサブ行の選択を禁止しているサブ行は無視します。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `boolean`
 
 ***
 
-### getIsSomePageRowsSelected
+### getIsSomePageRowsSelected {#getissomepagerowsselected}
 
 ```ts
 getIsSomePageRowsSelected: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:164](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L164)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:164](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L164)
 
-Checks whether at least one selectable row on the current page is selected.
+現在のページにある選択可能な行が、少なくとも1つ選択されているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `boolean`
 
 ***
 
-### getIsSomeRowsSelected
+### getIsSomeRowsSelected {#getissomerowsselected}
 
 ```ts
 getIsSomeRowsSelected: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:168](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L168)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:168](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L168)
 
-Checks whether at least one row id is selected.
+選択されている行 ID が少なくとも1つあるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 `boolean`
 
 ***
 
-### getPreSelectedRowModel
+### getPreSelectedRowModel {#getpreselectedrowmodel}
 
 ```ts
 getPreSelectedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:172](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L172)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:172](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L172)
 
-Returns the core row model of all rows before row selection has been applied.
+行選択を適用する前の、すべての行のコア行モデルを返します。
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getSelectedRowIds
+### getSelectedRowIds {#getselectedrowids}
 
 ```ts
 getSelectedRowIds: () => string[];
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:150](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L150)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:150](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L150)
 
-Returns the ids of all selected rows.
+選択されているすべての行の ID を返します。
 
-#### Returns
+#### 戻り値 {#returns-7}
 
 `string`[]
 
 ***
 
-### getSelectedRowModel
+### getSelectedRowModel {#getselectedrowmodel}
 
 ```ts
 getSelectedRowModel: () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:176](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L176)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:176](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L176)
 
-Builds a selected-row model from the core row model.
+コア行モデルから、選択された行の行モデルを作ります。
 
-#### Returns
+#### 戻り値 {#returns-8}
 
 [`RowModel`](RowModel.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getToggleAllPageRowsSelectedHandler
+### getToggleAllPageRowsSelectedHandler {#gettoggleallpagerowsselectedhandler}
 
 ```ts
 getToggleAllPageRowsSelectedHandler: () => (event) => void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:180](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L180)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:180](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L180)
 
-Creates a checkbox-style handler that toggles all current-page rows.
+現在のページのすべての行を切り替える、チェックボックス用のハンドラーを作成します。
 
-#### Returns
+#### 戻り値 {#returns-9}
 
 (`event`) => `void`
 
 ***
 
-### getToggleAllRowsSelectedHandler
+### getToggleAllRowsSelectedHandler {#gettoggleallrowsselectedhandler}
 
 ```ts
 getToggleAllRowsSelectedHandler: () => (event) => void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:184](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L184)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:184](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L184)
 
-Creates a checkbox-style handler that toggles all selectable rows.
+選択可能なすべての行を切り替える、チェックボックス用のハンドラーを作成します。
 
-#### Returns
+#### 戻り値 {#returns-10}
 
 (`event`) => `void`
 
 ***
 
-### resetRowSelection
+### resetRowSelection {#resetrowselection}
 
 ```ts
 resetRowSelection: (defaultState?) => void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:190](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L190)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:190](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L190)
 
-Resets `rowSelection` to `initialState.rowSelection`.
+`rowSelection` を `initialState.rowSelection` に戻します。
 
-Pass `true` to ignore initial state and reset to `{}`.
+`true` を渡すと、初期状態を無視して `{}` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-11}
 
 `void`
 
 ***
 
-### setRowSelection
+### setRowSelection {#setrowselection}
 
 ```ts
 setRowSelection: (updater) => void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:194](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L194)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:194](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L194)
 
-Updates row selection state with a next map or updater function.
+次のマップかアップデーター関数で、行選択の状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`RowSelectionState`](../type-aliases/RowSelectionState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-12}
 
 `void`
 
 ***
 
-### toggleAllPageRowsSelected
+### toggleAllPageRowsSelected {#toggleallpagerowsselected}
 
 ```ts
 toggleAllPageRowsSelected: (value?, opts?) => void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:198](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L198)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:198](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L198)
 
-Selects/deselects all rows on the current page.
+現在のページのすべての行を選択または選択解除します。
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### value?
-
-`boolean`
-
-##### opts?
-
-###### deselectAll?
+##### value? {#value}
 
 `boolean`
 
-#### Returns
+##### opts? {#opts}
+
+###### deselectAll? {#deselectall}
+
+`boolean`
+
+#### 戻り値 {#returns-13}
 
 `void`
 
 ***
 
-### toggleAllRowsSelected
+### toggleAllRowsSelected {#toggleallrowsselected}
 
 ```ts
 toggleAllRowsSelected: (value?, opts?) => void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:208](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L208)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:208](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L208)
 
-Selects/deselects all rows in the table.
+テーブルのすべての行を選択または選択解除します。
 
-Deselecting keeps rows that cannot be selected in the selection map unless
-`opts.deselectAll` is `true`.
+選択解除しても、選択できない行は選択のマップに残ります。`opts.deselectAll` が `true` の場合は残りません。
 
-#### Parameters
+#### パラメーター {#parameters-3}
 
-##### value?
-
-`boolean`
-
-##### opts?
-
-###### deselectAll?
+##### value? {#value-1}
 
 `boolean`
 
-#### Returns
+##### opts? {#opts-1}
+
+###### deselectAll? {#deselectall-1}
+
+`boolean`
+
+#### 戻り値 {#returns-14}
 
 `void`

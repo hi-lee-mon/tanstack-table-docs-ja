@@ -7,14 +7,14 @@ title: Row
 type Row<TFeatures, TData> = Row_Core<TFeatures, TData> & ExtractFeatureMapTypes<TFeatures, Row_FeatureMap<TFeatures, TData>>;
 ```
 
-Defined in: [types/Row.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L32)
+定義元: [types/Row.ts:32](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L32)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)

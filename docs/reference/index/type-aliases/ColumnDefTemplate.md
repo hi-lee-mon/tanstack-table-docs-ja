@@ -7,15 +7,14 @@ title: ColumnDefTemplate
 type ColumnDefTemplate<TProps> = string | ((props) => any);
 ```
 
-Defined in: [types/ColumnDef.ts:64](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L64)
+定義元: [types/ColumnDef.ts:64](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L64)
 
-A renderable column template value.
+描画できる列のテンプレートの値です。
 
-Strings render directly; functions receive the relevant cell/header context
-and can return framework-specific render output.
+文字列はそのまま描画されます。関数は、関係するセルやヘッダーのコンテキストを受け取り、フレームワーク固有の描画結果を返せます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TProps
+### TProps {#tprops}
 
 `TProps` *extends* `object`

@@ -7,18 +7,17 @@ title: getDefaultRowPinningState
 function getDefaultRowPinningState(): RowPinningState;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.utils.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L25)
+定義元: [features/row-pinning/rowPinningFeature.utils.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L25)
 
-Creates the default row pinning state.
+行の固定の既定の状態を作ります。
 
-Both pinning regions start empty. Reset APIs use this value when
-`defaultState` is `true`.
+どちらの固定領域も空から始まります。`defaultState` が `true` のとき、リセット API はこの値を使います。
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowPinningState`](../../index/interfaces/RowPinningState.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const pinning = getDefaultRowPinningState()

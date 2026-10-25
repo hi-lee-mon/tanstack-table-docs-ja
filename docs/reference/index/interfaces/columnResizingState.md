@@ -3,64 +3,64 @@ id: columnResizingState
 title: columnResizingState
 ---
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:7](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L7)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:7](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L7)
 
-## Properties
+## プロパティ {#properties}
 
-### columnSizingStart
+### columnSizingStart {#columnsizingstart}
 
 ```ts
 columnSizingStart: [string, number][];
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L8)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L8)
 
 ***
 
-### deltaOffset
+### deltaOffset {#deltaoffset}
 
 ```ts
 deltaOffset: number | null;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:9](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L9)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:9](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L9)
 
 ***
 
-### deltaPercentage
+### deltaPercentage {#deltapercentage}
 
 ```ts
 deltaPercentage: number | null;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:10](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L10)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:10](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L10)
 
 ***
 
-### isResizingColumn
+### isResizingColumn {#isresizingcolumn}
 
 ```ts
 isResizingColumn: string | false;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:11](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L11)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:11](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L11)
 
 ***
 
-### startOffset
+### startOffset {#startoffset}
 
 ```ts
 startOffset: number | null;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L12)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L12)
 
 ***
 
-### startSize
+### startSize {#startsize}
 
 ```ts
 startSize: number | null;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L13)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L13)

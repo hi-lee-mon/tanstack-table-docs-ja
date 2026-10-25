@@ -7,14 +7,14 @@ title: RowModelFns
 type RowModelFns<TFeatures, TData> = Partial<ExtractFeatureMapTypes<TFeatures, RowModelFns_FeatureMap<TFeatures, TData>>>;
 ```
 
-Defined in: [types/RowModelFns.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L18)
+定義元: [types/RowModelFns.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L18)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)

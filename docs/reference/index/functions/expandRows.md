@@ -7,28 +7,28 @@ title: expandRows
 function expandRows<TFeatures, TData>(rowModel): RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-expanding/createExpandedRowModel.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/createExpandedRowModel.ts#L62)
+定義元: [features/row-expanding/createExpandedRowModel.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/createExpandedRowModel.ts#L62)
 
-Expands a row model according to the current expanded row state.
+現在の展開状態に従って行モデルを展開します。
 
-Expanded sub-rows are inserted into the flattened row order while preserving the original row hierarchy.
+展開されたサブ行は、元の行の階層を保ったまま、平坦化された行の並びに挿入されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-## Parameters
+## パラメーター {#parameters}
 
-### rowModel
+### rowModel {#rowmodel}
 
 [`RowModel`](../interfaces/RowModel.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowModel`](../interfaces/RowModel.md)\<`TFeatures`, `TData`\>

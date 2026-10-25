@@ -7,38 +7,37 @@ title: column_resetSize
 function column_resetSize<TFeatures, TData, TValue>(column): void;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:235](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L235)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:235](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L235)
 
-Removes this column's committed size override.
+この列の、確定した幅の上書きを取り除きます。
 
-After reset, the column resolves size from `columnDef.size` or built-in
-defaults again.
+リセットしたあとは、列の幅は再び `columnDef.size` か組み込みの既定値から決まります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 column_resetSize(column)

@@ -3,24 +3,24 @@ id: ColumnFilter
 title: ColumnFilter
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L39)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L39)
 
-## Properties
+## プロパティ {#properties}
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L40)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L40)
 
 ***
 
-### value
+### value {#value}
 
 ```ts
 value: unknown;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L41)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L41)

@@ -7,34 +7,33 @@ title: table_getLeafHeaders
 function table_getLeafHeaders<TFeatures, TData>(table): Header<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.utils.ts:153](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L153)
+定義元: [core/headers/coreHeadersFeature.utils.ts:153](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L153)
 
-Collects only the leaf headers from the current header tree.
+現在のヘッダーのツリーから、末端のヘッダーだけを集めます。
 
-Parent/group headers are skipped, making the result suitable for rendering
-one header per visible leaf column.
+親のヘッダー（グループヘッダー）は読み飛ばすので、表示中の末端の列ごとに1つのヘッダーを描画するのに向いています。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Header`](../../index/type-aliases/Header.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const leafHeaders = table_getLeafHeaders(table)

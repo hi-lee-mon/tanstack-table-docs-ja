@@ -7,31 +7,31 @@ title: table_selectAllCells
 function table_selectAllCells<TFeatures, TData>(table): void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:826](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L826)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:826](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L826)
 
-Selects every selectable cell in the table as one range.
+テーブル内の選択できるすべてのセルを、1つの範囲として選択します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_selectAllCells(table)

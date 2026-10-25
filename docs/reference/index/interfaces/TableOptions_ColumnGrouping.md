@@ -3,54 +3,53 @@ id: TableOptions_ColumnGrouping
 title: TableOptions_ColumnGrouping
 ---
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:95](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L95)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:95](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L95)
 
-## Properties
+## プロパティ {#properties}
 
-### enableGrouping?
+### enableGrouping? {#enablegrouping}
 
 ```ts
 optional enableGrouping?: boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:99](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L99)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:99](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L99)
 
-Allows columns to be grouped for this table.
+このテーブルで列をグループ化できるようにします。
 
 ***
 
-### groupedColumnMode?
+### groupedColumnMode? {#groupedcolumnmode}
 
 ```ts
 optional groupedColumnMode?: false | "reorder" | "remove";
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:103](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L103)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:103](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L103)
 
-Grouping columns are automatically reordered by default to the start of the columns list. If you would rather remove them or leave them as-is, set the appropriate mode here.
+既定では、グループ化した列は自動で列の並びの先頭に移されます。取り除きたい場合やそのままにしておきたい場合は、ここで該当するモードを指定してください。
 
 ***
 
-### manualGrouping?
+### manualGrouping? {#manualgrouping}
 
 ```ts
 optional manualGrouping?: boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L107)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:107](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L107)
 
-Enables manual grouping. If this option is set to `true`, the table will not automatically group rows using `getGroupedRowModel()` and instead will expect you to manually group the rows before passing them to the table. This is useful if you are doing server-side grouping and aggregation.
+手動のグループ化を有効にします。このオプションを `true` にすると、テーブルは `getGroupedRowModel()` で行を自動でグループ化せず、テーブルに渡す前に行を自分でグループ化しておくことを前提にします。
+サーバーサイドでグループ化と集計をする場合に便利です。
 
 ***
 
-### onGroupingChange?
+### onGroupingChange? {#ongroupingchange}
 
 ```ts
 optional onGroupingChange?: OnChangeFn<GroupingState>;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L113)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L113)
 
-Called with an updater when grouping state changes. Pair this with
-`state.grouping` when using external state; external atoms can own the
-slice without this callback.
+グループ化の状態が変わったときに、アップデーターを渡して呼び出されます。外部の状態を使う場合は `state.grouping` と組み合わせてください。外部のアトムなら、このコールバックなしでスライスを持てます。

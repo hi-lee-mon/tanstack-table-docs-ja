@@ -7,19 +7,18 @@ title: TransformDataValueFn
 type TransformDataValueFn = (dataValue) => any;
 ```
 
-Defined in: [types/type-utils.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L15)
+定義元: [types/type-utils.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L15)
 
-Normalizes a row's value before a filter or sort comparator sees it.
+フィルターやソートの比較関数に渡る前に、行の値を正規化します。
 
-Attach as `resolveDataValue` on filter/sort functions built with
-`constructFilterFn`/`constructSortFn` (e.g. to lowercase or strip diacritics).
+`constructFilterFn` / `constructSortFn` で作ったフィルター関数やソート関数に、`resolveDataValue` として付けてください（小文字にする、発音区別符号を取り除く、など）。
 
-## Parameters
+## パラメーター {#parameters}
 
-### dataValue
+### dataValue {#datavalue}
 
 `any`
 
-## Returns
+## 戻り値 {#returns}
 
 `any`

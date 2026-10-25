@@ -3,65 +3,61 @@ id: CellSelectionRange
 title: CellSelectionRange
 ---
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L19)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L19)
 
-A single rectangular cell selection, stored as its two defining corners.
+1つの長方形のセル選択です。範囲を決める2つの角で保存されます。
 
-The `anchor` corner stays put while the `focus` corner moves during a
-shift-extend or a drag, so the pair carries strictly more information than a
-normalized min/max rectangle would. Corners are stored as flat row and column
-ids rather than nested objects or a packed `rowId_columnId` key, because
-`getRowId` is user-supplied and may return ids containing any separator.
+Shift キーでの拡張やドラッグの間、`anchor` 側の角は動かず、`focus` 側の角が動きます。そのため、この2つの組は、正規化した最小・最大の長方形よりも多くの情報を持ちます。
+角は、入れ子のオブジェクトや `rowId_columnId` のように連結したキーではなく、平坦な行 ID と列 ID で保存します。`getRowId` は利用者が指定するもので、どんな区切り文字を含む ID でも返しうるからです。
 
-## Properties
+## プロパティ {#properties}
 
-### anchorColumnId
+### anchorColumnId {#anchorcolumnid}
 
 ```ts
 anchorColumnId: string;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L20)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L20)
 
 ***
 
-### anchorRowId
+### anchorRowId {#anchorrowid}
 
 ```ts
 anchorRowId: string;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L21)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:21](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L21)
 
 ***
 
-### focusColumnId
+### focusColumnId {#focuscolumnid}
 
 ```ts
 focusColumnId: string;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L22)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L22)
 
 ***
 
-### focusRowId
+### focusRowId {#focusrowid}
 
 ```ts
 focusRowId: string;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L23)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L23)
 
 ***
 
-### operation?
+### operation? {#operation}
 
 ```ts
 optional operation?: CellSelectionRangeOperation;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L28)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L28)
 
-How this range changes the selection produced by the ranges before it.
-Defaults to `include`.
+前にある範囲が作った選択を、この範囲がどう変えるかを表します。既定値は `include` です。

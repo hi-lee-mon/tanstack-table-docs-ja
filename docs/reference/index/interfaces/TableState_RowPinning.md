@@ -3,14 +3,14 @@ id: TableState_RowPinning
 title: TableState_RowPinning
 ---
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L12)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L12)
 
-## Properties
+## プロパティ {#properties}
 
-### rowPinning
+### rowPinning {#rowpinning}
 
 ```ts
 rowPinning: RowPinningState;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L13)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L13)

@@ -3,429 +3,425 @@ id: Row_Core
 title: Row_Core
 ---
 
-Defined in: [types/Row.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L13)
+定義元: [types/Row.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L13)
 
-## Extends
+## 継承元 {#extends}
 
 - [`Row_Row`](Row_Row.md)\<`TFeatures`, `TData`\>
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### \_cellsCache?
+### \_cellsCache? {#_cellscache}
 
 ```ts
 optional _cellsCache?: WeakMap<Column<TFeatures, TData, unknown>, Cell<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L12)
+定義元: [core/rows/coreRowsFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L12)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from}
 
 [`Row_Row`](Row_Row.md).[`_cellsCache`](Row_Row.md#_cellscache)
 
 ***
 
-### \_displayIndexCache
+### \_displayIndexCache {#_displayindexcache}
 
 ```ts
 _displayIndexCache: number;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L25)
+定義元: [core/rows/coreRowsFeature.types.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L25)
 
 **`Internal`**
 
-Internal cache used while resolving the current display order.
+現在の表示順を求める間に使う内部のキャッシュです。
 
-This value may be stale until display order is recomputed. Use
-`row.getDisplayIndex()` instead; it refreshes and validates the cached
-position before returning it.
+この値は、表示順が再計算されるまで古いままのことがあります。代わりに `row.getDisplayIndex()` を使ってください。こちらは、キャッシュされた位置を更新・検証してから返します。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-1}
 
 [`Row_Row`](Row_Row.md).[`_displayIndexCache`](Row_Row.md#_displayindexcache)
 
 ***
 
-### \_uniqueValuesCache
+### \_uniqueValuesCache {#_uniquevaluescache}
 
 ```ts
 _uniqueValuesCache: Record<string, unknown>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L26)
+定義元: [core/rows/coreRowsFeature.types.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L26)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-2}
 
 [`Row_Row`](Row_Row.md).[`_uniqueValuesCache`](Row_Row.md#_uniquevaluescache)
 
 ***
 
-### \_valuesCache
+### \_valuesCache {#_valuescache}
 
 ```ts
 _valuesCache: Record<string, unknown>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L27)
+定義元: [core/rows/coreRowsFeature.types.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L27)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-3}
 
 [`Row_Row`](Row_Row.md).[`_valuesCache`](Row_Row.md#_valuescache)
 
 ***
 
-### depth
+### depth {#depth}
 
 ```ts
 depth: number;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L31)
+定義元: [core/rows/coreRowsFeature.types.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L31)
 
-The depth of the row (if nested or grouped) relative to the root row array.
+ルートの行の配列から数えた、行の深さです（入れ子やグループ化されている場合）。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-4}
 
 [`Row_Row`](Row_Row.md).[`depth`](Row_Row.md#depth)
 
 ***
 
-### getAllCells
+### getAllCells {#getallcells}
 
 ```ts
 getAllCells: () => Cell<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L80)
+定義元: [core/rows/coreRowsFeature.types.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L80)
 
-Builds one cell for each leaf column, including cells for hidden columns.
+末端の列ごとにセルを1つずつ作ります。非表示の列のセルも作ります。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`Cell`](../type-aliases/Cell.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-5}
 
 [`Row_Row`](Row_Row.md).[`getAllCells`](Row_Row.md#getallcells)
 
 ***
 
-### getAllCellsByColumnId
+### getAllCellsByColumnId {#getallcellsbycolumnid}
 
 ```ts
 getAllCellsByColumnId: () => Record<string, Cell<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L76)
+定義元: [core/rows/coreRowsFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L76)
 
-Builds a lookup of this row's cells keyed by leaf column id.
+この行のセルを、末端の列 ID をキーにして引けるようにします。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `Record`\<`string`, [`Cell`](../type-aliases/Cell.md)\<`TFeatures`, `TData`, `unknown`\>\>
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-6}
 
 [`Row_Row`](Row_Row.md).[`getAllCellsByColumnId`](Row_Row.md#getallcellsbycolumnid)
 
 ***
 
-### getDisplayIndex
+### getDisplayIndex {#getdisplayindex}
 
 ```ts
 getDisplayIndex: () => number;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L72)
+定義元: [core/rows/coreRowsFeature.types.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L72)
 
-Returns the zero-based index of the row in the current display order
-before pagination, or `-1` if the row is not in that model. Use this for
-display row-number columns instead of `row.index` or the internal
-`_displayIndexCache` field.
+ページネーション前の現在の表示順における行の0始まりのインデックスを返します。行がその行モデルに含まれなければ `-1` を返します。
+行番号を表示する列には、`row.index` や内部の `_displayIndexCache` フィールドではなく、これを使ってください。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `number`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-7}
 
 [`Row_Row`](Row_Row.md).[`getDisplayIndex`](Row_Row.md#getdisplayindex)
 
 ***
 
-### getLeafRows
+### getLeafRows {#getleafrows}
 
 ```ts
 getLeafRows: () => Row<TFeatures, TData>[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:84](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L84)
+定義元: [core/rows/coreRowsFeature.types.ts:84](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L84)
 
-Returns the leaf rows for the row, not including any parent rows.
+この行の末端の行を返します。親の行は含みません。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-8}
 
 [`Row_Row`](Row_Row.md).[`getLeafRows`](Row_Row.md#getleafrows)
 
 ***
 
-### getParentRow
+### getParentRow {#getparentrow}
 
 ```ts
 getParentRow: () => Row<TFeatures, TData> | undefined;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:88](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L88)
+定義元: [core/rows/coreRowsFeature.types.ts:88](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L88)
 
-Returns the parent row for the row, if it exists.
+この行の親の行があれば返します。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\> \| `undefined`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-9}
 
 [`Row_Row`](Row_Row.md).[`getParentRow`](Row_Row.md#getparentrow)
 
 ***
 
-### getParentRows
+### getParentRows {#getparentrows}
 
 ```ts
 getParentRows: () => Row<TFeatures, TData>[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L92)
+定義元: [core/rows/coreRowsFeature.types.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L92)
 
-Returns the parent rows for the row, all the way up to a root row.
+この行の親の行を、ルートの行までさかのぼってすべて返します。
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-10}
 
 [`Row_Row`](Row_Row.md).[`getParentRows`](Row_Row.md#getparentrows)
 
 ***
 
-### getUniqueValues
+### getUniqueValues {#getuniquevalues}
 
 ```ts
 getUniqueValues: <TValue>(columnId) => TValue[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:96](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L96)
+定義元: [core/rows/coreRowsFeature.types.ts:96](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L96)
 
-Reads the values this row contributes to faceting/grouping for a column.
+列について、この行がファセットやグループ化に提供する値を読み取ります。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-1}
 
-##### TValue
+##### TValue {#tvalue}
 
 `TValue`
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### columnId
+##### columnId {#columnid}
 
 `string`
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `TValue`[]
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-11}
 
 [`Row_Row`](Row_Row.md).[`getUniqueValues`](Row_Row.md#getuniquevalues)
 
 ***
 
-### getValue
+### getValue {#getvalue}
 
 ```ts
 getValue: <TValue>(columnId) => TValue;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:100](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L100)
+定義元: [core/rows/coreRowsFeature.types.ts:100](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L100)
 
-Reads this row's accessor value for a column id and caches the result.
+列 ID について、この行のアクセサーの値を読み取り、結果をキャッシュします。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-2}
 
-##### TValue
+##### TValue {#tvalue-1}
 
 `TValue`
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### columnId
+##### columnId {#columnid-1}
 
 `string`
 
-#### Returns
+#### 戻り値 {#returns-7}
 
 `TValue`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-12}
 
 [`Row_Row`](Row_Row.md).[`getValue`](Row_Row.md#getvalue)
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L35)
+定義元: [core/rows/coreRowsFeature.types.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L35)
 
-The resolved unique identifier for the row resolved via the `options.getRowId` option. Defaults to the row's index (or relative index if it is a subRow).
+`options.getRowId` オプションで決まる、行の一意な識別子です。既定では行のインデックス（サブ行なら親の中での相対的なインデックス）です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-13}
 
 [`Row_Row`](Row_Row.md).[`id`](Row_Row.md#id)
 
 ***
 
-### index
+### index {#index}
 
 ```ts
 index: number;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L39)
+定義元: [core/rows/coreRowsFeature.types.ts:39](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L39)
 
-The index of the row within its parent array (or the root data array).
+親の配列（またはルートのデータ配列）の中での行のインデックスです。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-14}
 
 [`Row_Row`](Row_Row.md).[`index`](Row_Row.md#index)
 
 ***
 
-### original
+### original {#original}
 
 ```ts
 original: TData;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L43)
+定義元: [core/rows/coreRowsFeature.types.ts:43](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L43)
 
-The original row object provided to the table. If the row is a grouped row, the original row object will be the first original in the group.
+テーブルに渡された元の行オブジェクトです。グループ行の場合は、グループ内の最初の元の行オブジェクトになります。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-15}
 
 [`Row_Row`](Row_Row.md).[`original`](Row_Row.md#original)
 
 ***
 
-### originalSubRows?
+### originalSubRows? {#originalsubrows}
 
 ```ts
 optional originalSubRows?: readonly TData[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L47)
+定義元: [core/rows/coreRowsFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L47)
 
-An array of the original subRows as returned by the `options.getSubRows` option.
+`options.getSubRows` オプションが返した、元のサブ行の配列です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-16}
 
 [`Row_Row`](Row_Row.md).[`originalSubRows`](Row_Row.md#originalsubrows)
 
 ***
 
-### parentId?
+### parentId? {#parentid}
 
 ```ts
 optional parentId?: string;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:51](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L51)
+定義元: [core/rows/coreRowsFeature.types.ts:51](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L51)
 
-If nested, this row's parent row id.
+入れ子になっている場合、この行の親の行 ID です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-17}
 
 [`Row_Row`](Row_Row.md).[`parentId`](Row_Row.md#parentid)
 
 ***
 
-### renderValue
+### renderValue {#rendervalue}
 
 ```ts
 renderValue: <TValue>(columnId) => TValue;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:104](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L104)
+定義元: [core/rows/coreRowsFeature.types.ts:104](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L104)
 
-Renders the value for the row in a given columnId the same as `getValue`, but will return the `renderFallbackValue` if no value is found.
+`getValue` と同じように、指定した columnId でのこの行の値を描画しますが、値が見つからない場合は `renderFallbackValue` を返します。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-3}
 
-##### TValue
+##### TValue {#tvalue-2}
 
 `TValue`
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### columnId
+##### columnId {#columnid-2}
 
 `string`
 
-#### Returns
+#### 戻り値 {#returns-8}
 
 `TValue`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-18}
 
 [`Row_Row`](Row_Row.md).[`renderValue`](Row_Row.md#rendervalue)
 
 ***
 
-### subRows
+### subRows {#subrows}
 
 ```ts
 subRows: Row<TFeatures, TData>[];
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L55)
+定義元: [core/rows/coreRowsFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L55)
 
-An array of subRows for the row as returned and created by the `options.getSubRows` option.
+`options.getSubRows` オプションが返した値から作られた、この行のサブ行の配列です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-19}
 
 [`Row_Row`](Row_Row.md).[`subRows`](Row_Row.md#subrows)
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table_Internal<TFeatures, TData>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L59)
+定義元: [core/rows/coreRowsFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L59)
 
-Reference to the parent table instance.
+親のテーブルインスタンスへの参照です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-20}
 
 [`Row_Row`](Row_Row.md).[`table`](Row_Row.md#table)

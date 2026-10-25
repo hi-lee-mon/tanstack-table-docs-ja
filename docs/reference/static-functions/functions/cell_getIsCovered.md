@@ -7,38 +7,37 @@ title: cell_getIsCovered
 function cell_getIsCovered<TFeatures, TData, TValue>(cell): boolean;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.utils.ts:425](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L425)
+定義元: [features/cell-spanning/cellSpanningFeature.utils.ts:425](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L425)
 
-Checks whether another cell's span covers this cell.
+他のセルの結合がこのセルを覆っているかどうかを判定します。
 
-Covered cells must not be rendered; the cell that covers them carries the
-content and the span attributes.
+覆われたセルは描画してはいけません。内容と結合の属性は、覆っている側のセルが持ちます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const isCovered = cell_getIsCovered(cell)

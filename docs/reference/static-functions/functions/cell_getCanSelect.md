@@ -7,38 +7,37 @@ title: cell_getCanSelect
 function cell_getCanSelect<TFeatures, TData, TValue>(cell): boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:483](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L483)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:483](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L483)
 
-Checks whether this cell can currently be selected.
+このセルが現在選択できるかどうかを判定します。
 
-A column def opting out with `enableCellSelection: false` wins over the table
-option, matching how the other per-column enable flags resolve.
+列定義で `enableCellSelection: false` にして対象から外した場合は、テーブルのオプションより優先されます。他の列ごとの有効化フラグと同じ決まり方です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canSelect = cell_getCanSelect(cell)

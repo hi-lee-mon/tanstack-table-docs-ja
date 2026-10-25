@@ -7,38 +7,37 @@ title: column_getCanGroup
 function column_getCanGroup<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.utils.ts:65](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L65)
+定義元: [features/column-grouping/columnGroupingFeature.utils.ts:65](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L65)
 
-Checks whether this column can be used for grouping.
+この列をグループ化に使えるかどうかを判定します。
 
-Grouping must be enabled at the column and table level, and the column must
-either have an accessor or provide `getGroupingValue`.
+列とテーブルの両方でグループ化が有効で、かつ列がアクセサーを持つか `getGroupingValue` を渡している必要があります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canGroup = column_getCanGroup(column)

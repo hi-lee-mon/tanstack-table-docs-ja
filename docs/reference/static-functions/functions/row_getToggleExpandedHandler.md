@@ -7,33 +7,33 @@ title: row_getToggleExpandedHandler
 function row_getToggleExpandedHandler<TFeatures, TData>(row): () => void;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.utils.ts:428](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L428)
+定義元: [features/row-expanding/rowExpandingFeature.utils.ts:428](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L428)
 
-Creates a row control handler that toggles this row's expanded state.
+この行の展開状態を切り替える、行の操作部品向けのハンドラーを作成します。
 
-The handler is a no-op when the row cannot expand.
+行が展開できない場合、ハンドラーは何もしません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 () => `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 const onClick = row_getToggleExpandedHandler(row)

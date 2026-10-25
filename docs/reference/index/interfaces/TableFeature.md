@@ -3,591 +3,553 @@ id: TableFeature
 title: TableFeature
 ---
 
-Defined in: [types/TableFeatures.ts:319](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L319)
+定義元: [types/TableFeatures.ts:319](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L319)
 
-Lifecycle hooks and defaults contributed by a table feature.
+テーブルの機能が提供する、ライフサイクルのフックと既定値です。
 
-Feature objects are registered in the table's `features` option. They can
-contribute default state/options, default column definitions, table APIs,
-shared prototype APIs for rows/columns/headers/cells, and per-instance data
-for tables, columns, rows, headers, header groups, and cells.
+機能のオブジェクトは、テーブルの `features` オプションに登録します。
+機能が提供できるのは、既定の状態とオプション、既定の列定義、テーブルの API、行・列・ヘッダー・セルで共有するプロトタイプの API、そしてテーブル・列・行・ヘッダー・ヘッダーグループ・セルのインスタンスごとのデータです。
 
-## Properties
+## プロパティ {#properties}
 
-### assignCellPrototype?
+### assignCellPrototype? {#assigncellprototype}
 
 ```ts
 optional assignCellPrototype?: <TFeatures, TData>(prototype, table) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:328](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L328)
+定義元: [types/TableFeatures.ts:328](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L328)
 
-Adds feature methods to the shared cell prototype for a table.
+テーブルで共有するセルのプロトタイプに、機能のメソッドを追加します。
 
-This runs lazily the first time a cell is constructed for a table. Methods
-assigned here are shared by every cell instance created by that table, so
-this hook should be used for APIs and memoized methods rather than
-per-cell mutable data.
+これは、テーブルで最初にセルを作るときに遅延して実行されます。ここで割り当てたメソッドは、そのテーブルが作るすべてのセルのインスタンスで共有されます。
+そのため、このフックは API やメモ化したメソッドのために使い、セルごとに変わるデータには使わないでください。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters}
 
-##### TFeatures
+##### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### prototype
+##### prototype {#prototype}
 
 `Record`\<`string`, `any`\>
 
-##### table
+##### table {#table}
 
 [`Table_Internal`](Table_Internal.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `void`
 
 ***
 
-### assignColumnPrototype?
+### assignColumnPrototype? {#assigncolumnprototype}
 
 ```ts
 optional assignColumnPrototype?: <TFeatures, TData>(prototype, table) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:343](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L343)
+定義元: [types/TableFeatures.ts:343](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L343)
 
-Adds feature methods to the shared column prototype for a table.
+テーブルで共有する列のプロトタイプに、機能のメソッドを追加します。
 
-This runs lazily the first time a column is constructed for a table.
-Methods assigned here are shared by every column instance created by that
-table, so this hook should be used for APIs and memoized methods rather
-than per-column mutable data.
+これは、テーブルで最初に列を作るときに遅延して実行されます。ここで割り当てたメソッドは、そのテーブルが作るすべての列のインスタンスで共有されます。
+そのため、このフックは API やメモ化したメソッドのために使い、列ごとに変わるデータには使わないでください。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-1}
 
-##### TFeatures
+##### TFeatures {#tfeatures-1}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-1}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### prototype
+##### prototype {#prototype-1}
 
 `Record`\<`string`, `any`\>
 
-##### table
+##### table {#table-1}
 
 [`Table_Internal`](Table_Internal.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `void`
 
 ***
 
-### assignHeaderPrototype?
+### assignHeaderPrototype? {#assignheaderprototype}
 
 ```ts
 optional assignHeaderPrototype?: <TFeatures, TData>(prototype, table) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:358](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L358)
+定義元: [types/TableFeatures.ts:358](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L358)
 
-Adds feature methods to the shared header prototype for a table.
+テーブルで共有するヘッダーのプロトタイプに、機能のメソッドを追加します。
 
-This runs lazily the first time a header is constructed for a table.
-Methods assigned here are shared by every header instance created by that
-table, so this hook should be used for APIs and memoized methods rather
-than per-header mutable data.
+これは、テーブルで最初にヘッダーを作るときに遅延して実行されます。ここで割り当てたメソッドは、そのテーブルが作るすべてのヘッダーのインスタンスで共有されます。
+そのため、このフックは API やメモ化したメソッドのために使い、ヘッダーごとに変わるデータには使わないでください。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-2}
 
-##### TFeatures
+##### TFeatures {#tfeatures-2}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-2}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### prototype
+##### prototype {#prototype-2}
 
 `Record`\<`string`, `any`\>
 
-##### table
+##### table {#table-2}
 
 [`Table_Internal`](Table_Internal.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `void`
 
 ***
 
-### assignRowPrototype?
+### assignRowPrototype? {#assignrowprototype}
 
 ```ts
 optional assignRowPrototype?: <TFeatures, TData>(prototype, table) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:373](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L373)
+定義元: [types/TableFeatures.ts:373](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L373)
 
-Adds feature methods to the shared row prototype for a table.
+テーブルで共有する行のプロトタイプに、機能のメソッドを追加します。
 
-This runs lazily the first time a row is constructed for a table. Methods
-assigned here are shared by every row instance created by that table, so
-this hook should be used for APIs and memoized methods rather than per-row
-mutable data.
+これは、テーブルで最初に行を作るときに遅延して実行されます。ここで割り当てたメソッドは、そのテーブルが作るすべての行のインスタンスで共有されます。
+そのため、このフックは API やメモ化したメソッドのために使い、行ごとに変わるデータには使わないでください。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-3}
 
-##### TFeatures
+##### TFeatures {#tfeatures-3}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-3}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-3}
 
-##### prototype
+##### prototype {#prototype-3}
 
 `Record`\<`string`, `any`\>
 
-##### table
+##### table {#table-3}
 
 [`Table_Internal`](Table_Internal.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `void`
 
 ***
 
-### constructTableAPIs?
+### constructTableAPIs? {#constructtableapis}
 
 ```ts
 optional constructTableAPIs?: <TFeatures, TData>(table) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:386](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L386)
+定義元: [types/TableFeatures.ts:386](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L386)
 
-Adds feature APIs directly to the table instance.
+機能の API をテーブルインスタンスに直接追加します。
 
-The table is a singleton, unlike rows, columns, headers, and cells, so
-table APIs are assigned directly instead of through a shared prototype.
-This hook is exclusively for assigning table methods. It runs after
-options, state atoms, and the store have been created and after every
-feature's `initTableInstanceData` hook has completed.
+テーブルは、行・列・ヘッダー・セルと違って1つしかないため、テーブルの API は共有のプロトタイプを通さず直接割り当てます。
+このフックは、テーブルのメソッドを割り当てるためだけに使います。オプション、状態のアトム、ストアが作られ、すべての機能の `initTableInstanceData` フックが終わったあとに実行されます。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-4}
 
-##### TFeatures
+##### TFeatures {#tfeatures-4}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-4}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-4}
 
-##### table
+##### table {#table-4}
 
 [`Table_Internal`](Table_Internal.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `void`
 
 ***
 
-### getDefaultColumnDef?
+### getDefaultColumnDef? {#getdefaultcolumndef}
 
 ```ts
 optional getDefaultColumnDef?: <TFeatures, TData, TValue>() => ColumnDefBase_All<TFeatures, TData, TValue>;
 ```
 
-Defined in: [types/TableFeatures.ts:396](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L396)
+定義元: [types/TableFeatures.ts:396](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L396)
 
-Returns default column definition options contributed by this feature.
+この機能が提供する、列定義の既定のオプションを返します。
 
-These defaults are merged into the table's default column definition before
-`options.defaultColumn` and before each user-supplied column definition is
-resolved, so users can override values supplied here.
+これらの既定値は、`options.defaultColumn` と、利用者が渡した各列定義が解決される前に、テーブルの既定の列定義にマージされます。そのため、利用者はここで渡された値を上書きできます。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-5}
 
-##### TFeatures
+##### TFeatures {#tfeatures-5}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-5}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-##### TValue
+##### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 [`ColumnDefBase_All`](../type-aliases/ColumnDefBase_All.md)\<`TFeatures`, `TData`, `TValue`\>
 
 ***
 
-### getDefaultTableOptions?
+### getDefaultTableOptions? {#getdefaulttableoptions}
 
 ```ts
 optional getDefaultTableOptions?: <TFeatures, TData>(table) => Partial<TableOptions_All<TFeatures, TData>>;
 ```
 
-Defined in: [types/TableFeatures.ts:409](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L409)
+定義元: [types/TableFeatures.ts:409](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L409)
 
-Returns default table options contributed by this feature.
+この機能が提供する、テーブルの既定のオプションを返します。
 
-This runs while table options are being resolved. Use it for option
-defaults such as feature enablement flags and default state-updater
-callbacks. User-supplied table options take precedence over values returned
-here.
+これは、テーブルのオプションを解決している間に実行されます。機能を有効にするフラグや、状態を更新する既定のコールバックのような、オプションの既定値に使ってください。
+利用者が渡したテーブルのオプションは、ここで返した値より優先されます。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-6}
 
-##### TFeatures
+##### TFeatures {#tfeatures-6}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-6}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-5}
 
-##### table
+##### table {#table-5}
 
 [`Table_Internal`](Table_Internal.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `Partial`\<[`TableOptions_All`](../type-aliases/TableOptions_All.md)\<`TFeatures`, `TData`\>\>
 
 ***
 
-### getInitialState?
+### getInitialState? {#getinitialstate}
 
 ```ts
 optional getInitialState?: (initialState) => TableState_All;
 ```
 
-Defined in: [types/TableFeatures.ts:423](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L423)
+定義元: [types/TableFeatures.ts:423](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L423)
 
-Returns this feature's initial table state.
+この機能の、テーブルの初期状態を返します。
 
-The incoming `initialState` contains state accumulated from earlier
-features and user-provided initial state. Return a complete state object
-for this feature, preserving `initialState` so user-provided values can
-override feature defaults.
+受け取る `initialState` には、先に処理された機能と、利用者が渡した初期状態から積み上げた状態が入っています。
+この機能の完全な状態オブジェクトを返してください。利用者が渡した値で機能の既定値を上書きできるよう、`initialState` は保ったままにしてください。
 
-#### Parameters
+#### パラメーター {#parameters-6}
 
-##### initialState
+##### initialState {#initialstate}
 
 `Partial`\<[`TableState_All`](TableState_All.md)\>
 
-#### Returns
+#### 戻り値 {#returns-7}
 
 [`TableState_All`](TableState_All.md)
 
 ***
 
-### initCellInstanceData?
+### initCellInstanceData? {#initcellinstancedata}
 
 ```ts
 optional initCellInstanceData?: <TFeatures, TData, TValue>(cell) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:452](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L452)
+定義元: [types/TableFeatures.ts:452](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L452)
 
-Initializes instance-specific data on each cell.
+各セルにインスタンスごとのデータを初期化します。
 
-This runs for every constructed cell after core cell fields such as `id`,
-`column`, and `row` have been assigned. Cells are constructed lazily on
-first access per row/column pair and cached, so this runs once per cell
-instance. Use this for per-cell mutable data, caches, or annotations.
-Shared methods should be assigned via `assignCellPrototype` instead.
+これは、`id`、`column`、`row` のようなセルのコアのフィールドが割り当てられたあとに、作られたすべてのセルについて実行されます。
+セルは行と列の組ごとに最初にアクセスされたときに遅延して作られ、キャッシュされるので、これはセルのインスタンスごとに1回実行されます。
+セルごとに変わるデータ、キャッシュ、注釈に使ってください。共有するメソッドは、代わりに `assignCellPrototype` で割り当ててください。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-7}
 
-##### TFeatures
+##### TFeatures {#tfeatures-7}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-7}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-##### TValue
+##### TValue {#tvalue-1}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Parameters
+#### パラメーター {#parameters-7}
 
-##### cell
+##### cell {#cell}
 
 [`Cell`](../type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns-8}
 
 `void`
 
 ***
 
-### initColumnInstanceData?
+### initColumnInstanceData? {#initcolumninstancedata}
 
 ```ts
 optional initColumnInstanceData?: <TFeatures, TData, TValue>(column) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:467](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L467)
+定義元: [types/TableFeatures.ts:467](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L467)
 
-Initializes instance-specific data on each column.
+各列にインスタンスごとのデータを初期化します。
 
-This runs for every constructed column after core column fields such as
-`id`, `depth`, `parent`, `columnDef`, and `columns` have been assigned.
-Use this for per-column mutable data, caches, or annotations. Shared
-methods should be assigned via `assignColumnPrototype` instead.
+これは、`id`、`depth`、`parent`、`columnDef`、`columns` のような列のコアのフィールドが割り当てられたあとに、作られたすべての列について実行されます。
+列ごとに変わるデータ、キャッシュ、注釈に使ってください。共有するメソッドは、代わりに `assignColumnPrototype` で割り当ててください。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-8}
 
-##### TFeatures
+##### TFeatures {#tfeatures-8}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-8}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-##### TValue
+##### TValue {#tvalue-2}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Parameters
+#### パラメーター {#parameters-8}
 
-##### column
+##### column {#column}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns-9}
 
 `void`
 
 ***
 
-### initHeaderGroupInstanceData?
+### initHeaderGroupInstanceData? {#initheadergroupinstancedata}
 
 ```ts
 optional initHeaderGroupInstanceData?: <TFeatures, TData>(headerGroup) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:483](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L483)
+定義元: [types/TableFeatures.ts:483](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L483)
 
-Initializes instance-specific data on each header group.
+各ヘッダーグループにインスタンスごとのデータを初期化します。
 
-This runs for every constructed header group after `depth`, `id`, and the
-fully populated `headers` array have been assigned. Header groups have no
-shared prototype, so this is their only per-instance extension point.
-Header groups are reconstructed whenever they recompute (e.g. column
-visibility, order, or pinning changes), so this reruns on every rebuild.
+これは、`depth`、`id`、中身がそろった `headers` 配列が割り当てられたあとに、作られたすべてのヘッダーグループについて実行されます。
+ヘッダーグループには共有のプロトタイプがないので、インスタンスごとに拡張できるのはここだけです。
+ヘッダーグループは再計算のたびに（列の表示、並び順、固定が変わったときなど）作り直されるので、これも作り直すたびに再実行されます。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-9}
 
-##### TFeatures
+##### TFeatures {#tfeatures-9}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-9}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-9}
 
-##### headerGroup
+##### headerGroup {#headergroup}
 
 [`HeaderGroup`](HeaderGroup.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-10}
 
 `void`
 
 ***
 
-### initHeaderInstanceData?
+### initHeaderInstanceData? {#initheaderinstancedata}
 
 ```ts
 optional initHeaderInstanceData?: <TFeatures, TData, TValue>(header) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:500](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L500)
+定義元: [types/TableFeatures.ts:500](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L500)
 
-Initializes instance-specific data on each header.
+各ヘッダーにインスタンスごとのデータを初期化します。
 
-This runs for every constructed header after core header fields such as
-`id`, `column`, `depth`, `index`, and `isPlaceholder` have been assigned,
-but before `subHeaders` are populated and before `headerGroup` is linked.
-Headers are reconstructed on every header group rebuild, so this reruns
-on every rebuild. Use this for per-header mutable data, caches, or
-annotations. Shared methods should be assigned via `assignHeaderPrototype`
-instead.
+これは、`id`、`column`、`depth`、`index`、`isPlaceholder` のようなヘッダーのコアのフィールドが割り当てられたあと、`subHeaders` が埋められて `headerGroup` が結び付けられる前に、作られたすべてのヘッダーについて実行されます。
+ヘッダーはヘッダーグループを作り直すたびに作り直されるので、これも作り直すたびに再実行されます。
+ヘッダーごとに変わるデータ、キャッシュ、注釈に使ってください。共有するメソッドは、代わりに `assignHeaderPrototype` で割り当ててください。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-10}
 
-##### TFeatures
+##### TFeatures {#tfeatures-10}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-10}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-##### TValue
+##### TValue {#tvalue-3}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Parameters
+#### パラメーター {#parameters-10}
 
-##### header
+##### header {#header}
 
 [`Header`](../type-aliases/Header.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns-11}
 
 `void`
 
 ***
 
-### initRowInstanceData?
+### initRowInstanceData? {#initrowinstancedata}
 
 ```ts
 optional initRowInstanceData?: <TFeatures, TData>(row) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:515](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L515)
+定義元: [types/TableFeatures.ts:515](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L515)
 
-Initializes instance-specific data on each row.
+各行にインスタンスごとのデータを初期化します。
 
-This runs for every constructed row after core row fields such as `id`,
-`index`, `depth`, `original`, `parentId`, and `subRows` have been assigned.
-Use this for per-row mutable data, caches, or annotations. Shared methods
-should be assigned via `assignRowPrototype` instead.
+これは、`id`、`index`、`depth`、`original`、`parentId`、`subRows` のような行のコアのフィールドが割り当てられたあとに、作られたすべての行について実行されます。
+行ごとに変わるデータ、キャッシュ、注釈に使ってください。共有するメソッドは、代わりに `assignRowPrototype` で割り当ててください。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-11}
 
-##### TFeatures
+##### TFeatures {#tfeatures-11}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-11}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-11}
 
-##### row
+##### row {#row}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-12}
 
 `void`
 
 ***
 
-### initTableInstanceData?
+### initTableInstanceData? {#inittableinstancedata}
 
 ```ts
 optional initTableInstanceData?: <TFeatures, TData>(table) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:437](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L437)
+定義元: [types/TableFeatures.ts:437](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L437)
 
-Initializes mutable, non-reactive data owned by this feature on the table
-instance.
+この機能が持つ、変更可能でリアクティブでないデータを、テーブルインスタンスに初期化します。
 
-This runs once during table construction after options, state atoms, and
-the store are available. Features are processed in a single pass in
-registration order, with each feature's instance data initialized just
-before its own `constructTableAPIs` hook, so this hook may rely on data
-and APIs of features registered earlier. Use `constructTableAPIs`
-exclusively for assigning table methods. Table resets do not rerun this
-hook; use `resetTableInstanceData` to clear transient instance data
-instead.
+これは、オプション、状態のアトム、ストアが使えるようになったあと、テーブルを作る間に1回だけ実行されます。
+機能は登録順に1回で処理され、各機能のインスタンスデータは、その機能の `constructTableAPIs` フックの直前に初期化されます。そのため、このフックでは先に登録された機能のデータと API を当てにできます。
+テーブルのメソッドの割り当てには、`constructTableAPIs` だけを使ってください。テーブルをリセットしてもこのフックは再実行されません。一時的なインスタンスデータを消すには、代わりに `resetTableInstanceData` を使ってください。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-12}
 
-##### TFeatures
+##### TFeatures {#tfeatures-12}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-12}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-12}
 
-##### table
+##### table {#table-6}
 
 [`Table_Internal`](Table_Internal.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-13}
 
 `void`
 
 ***
 
-### resetTableInstanceData?
+### resetTableInstanceData? {#resettableinstancedata}
 
 ```ts
 optional resetTableInstanceData?: <TFeatures, TData>(table) => void;
 ```
 
-Defined in: [types/TableFeatures.ts:528](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L528)
+定義元: [types/TableFeatures.ts:528](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L528)
 
-Resets mutable, non-reactive table-instance data owned by this feature.
+この機能が持つ、変更可能でリアクティブでないテーブルインスタンスのデータをリセットします。
 
-This runs after internally owned state atoms have been restored to
-`table.initialState` by `table.reset()`. It is intended for transient
-feature data, not table state slices or externally controlled state.
+これは、`table.reset()` によって内部で持つ状態のアトムが `table.initialState` に戻されたあとに実行されます。
+一時的な機能のデータのためのもので、テーブルの状態スライスや外部で制御された状態のためのものではありません。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-13}
 
-##### TFeatures
+##### TFeatures {#tfeatures-13}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-13}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-#### Parameters
+#### パラメーター {#parameters-13}
 
-##### table
+##### table {#table-7}
 
 [`Table_Internal`](Table_Internal.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns-14}
 
 `void`

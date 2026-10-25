@@ -3,178 +3,176 @@ id: FeatureSlotPrereqs
 title: FeatureSlotPrereqs
 ---
 
-Defined in: [types/TableFeatures.ts:94](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L94)
+定義元: [types/TableFeatures.ts:94](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L94)
 
-Maps each row model and fn registry slot to the feature(s) that must be
-registered alongside it in the same features object.
+各行モデルと関数レジストリのスロットを、同じ features オブジェクトに一緒に登録しなければならない機能に対応付けます。
 
-Custom features can declaration-merge their own slot prerequisites into this
-interface to get the same validation from `tableFeatures()`.
+カスタム機能は、宣言のマージでこのインターフェースに自分のスロットの前提条件を追加できます。そうすると、`tableFeatures()` で同じ検証を受けられます。
 
-## Properties
+## プロパティ {#properties}
 
-### aggregationFns
+### aggregationFns {#aggregationfns}
 
 ```ts
 aggregationFns: "rowAggregationFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:98](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L98)
+定義元: [types/TableFeatures.ts:98](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L98)
 
-Named aggregation functions require the independent aggregation feature.
+名前付きの集計関数には、独立した集計機能が必要です。
 
 ***
 
-### columnResizingFeature
+### columnResizingFeature {#columnresizingfeature}
 
 ```ts
 columnResizingFeature: "columnSizingFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L102)
+定義元: [types/TableFeatures.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L102)
 
-Column resizing builds on the column sizing state and APIs.
+列幅の変更は、列幅の状態と API の上に成り立っています。
 
 ***
 
-### expandedRowModel
+### expandedRowModel {#expandedrowmodel}
 
 ```ts
 expandedRowModel: "rowExpandingFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L106)
+定義元: [types/TableFeatures.ts:106](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L106)
 
-Expanded row-model factories require row expanding APIs and state.
+展開済み行モデルのファクトリーには、行の展開の API と状態が必要です。
 
 ***
 
-### facetedMinMaxValues
+### facetedMinMaxValues {#facetedminmaxvalues}
 
 ```ts
 facetedMinMaxValues: "columnFacetingFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:110](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L110)
+定義元: [types/TableFeatures.ts:110](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L110)
 
-Faceted min/max factories require column faceting APIs.
+ファセットの最小値・最大値のファクトリーには、列のファセットの API が必要です。
 
 ***
 
-### facetedRowModel
+### facetedRowModel {#facetedrowmodel}
 
 ```ts
 facetedRowModel: "columnFacetingFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L114)
+定義元: [types/TableFeatures.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L114)
 
-Faceted row-model factories require column faceting APIs.
+ファセット行モデルのファクトリーには、列のファセットの API が必要です。
 
 ***
 
-### facetedUniqueValues
+### facetedUniqueValues {#faceteduniquevalues}
 
 ```ts
 facetedUniqueValues: "columnFacetingFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:118](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L118)
+定義元: [types/TableFeatures.ts:118](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L118)
 
-Faceted unique-value factories require column faceting APIs.
+ファセットの一意な値のファクトリーには、列のファセットの API が必要です。
 
 ***
 
-### filteredRowModel
+### filteredRowModel {#filteredrowmodel}
 
 ```ts
 filteredRowModel: "columnFilteringFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:122](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L122)
+定義元: [types/TableFeatures.ts:122](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L122)
 
-Filtered row-model factories require column filtering APIs and state.
+フィルター済み行モデルのファクトリーには、列フィルタリングの API と状態が必要です。
 
 ***
 
-### filterFns
+### filterFns {#filterfns}
 
 ```ts
 filterFns: "columnFilteringFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L126)
+定義元: [types/TableFeatures.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L126)
 
-Named filter functions are only meaningful when column filtering is enabled.
+名前付きのフィルター関数は、列フィルタリングが有効なときにだけ意味を持ちます。
 
 ***
 
-### filterMeta
+### filterMeta {#filtermeta}
 
 ```ts
 filterMeta: "columnFilteringFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:130](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L130)
+定義元: [types/TableFeatures.ts:130](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L130)
 
-Filter metadata types are only read and written by filtering features.
+フィルターのメタデータの型を読み書きするのは、フィルタリングの機能だけです。
 
 ***
 
-### globalFilteringFeature
+### globalFilteringFeature {#globalfilteringfeature}
 
 ```ts
 globalFilteringFeature: "columnFilteringFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:134](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L134)
+定義元: [types/TableFeatures.ts:134](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L134)
 
-Global filtering builds on column filtering state and filter functions.
+グローバルフィルタリングは、列フィルタリングの状態とフィルター関数の上に成り立っています。
 
 ***
 
-### groupedRowModel
+### groupedRowModel {#groupedrowmodel}
 
 ```ts
 groupedRowModel: "columnGroupingFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:138](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L138)
+定義元: [types/TableFeatures.ts:138](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L138)
 
-Grouped row-model factories require column grouping APIs and state.
+グループ化済み行モデルのファクトリーには、列のグループ化の API と状態が必要です。
 
 ***
 
-### paginatedRowModel
+### paginatedRowModel {#paginatedrowmodel}
 
 ```ts
 paginatedRowModel: "rowPaginationFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:142](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L142)
+定義元: [types/TableFeatures.ts:142](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L142)
 
-Paginated row-model factories require row pagination APIs and state.
+ページ分割済み行モデルのファクトリーには、行のページネーションの API と状態が必要です。
 
 ***
 
-### sortedRowModel
+### sortedRowModel {#sortedrowmodel}
 
 ```ts
 sortedRowModel: "rowSortingFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:146](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L146)
+定義元: [types/TableFeatures.ts:146](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L146)
 
-Sorted row-model factories require row sorting APIs and state.
+ソート済み行モデルのファクトリーには、行のソートの API と状態が必要です。
 
 ***
 
-### sortFns
+### sortFns {#sortfns}
 
 ```ts
 sortFns: "rowSortingFeature";
 ```
 
-Defined in: [types/TableFeatures.ts:150](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L150)
+定義元: [types/TableFeatures.ts:150](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableFeatures.ts#L150)
 
-Named sorting functions are only meaningful when row sorting is enabled.
+名前付きのソート関数は、行のソートが有効なときにだけ意味を持ちます。

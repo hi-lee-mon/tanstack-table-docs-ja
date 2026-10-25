@@ -7,20 +7,20 @@ title: OnChangeFn
 type OnChangeFn<T> = (updaterOrValue) => void;
 ```
 
-Defined in: [types/type-utils.ts:3](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L3)
+定義元: [types/type-utils.ts:3](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L3)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### T
+### T {#t}
 
 `T`
 
-## Parameters
+## パラメーター {#parameters}
 
-### updaterOrValue
+### updaterOrValue {#updaterorvalue}
 
 [`Updater`](Updater.md)\<`T`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`

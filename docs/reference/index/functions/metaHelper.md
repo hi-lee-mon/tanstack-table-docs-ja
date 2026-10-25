@@ -7,30 +7,25 @@ title: metaHelper
 function metaHelper<TMeta>(): TMeta;
 ```
 
-Defined in: [helpers/metaHelper.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/metaHelper.ts#L22)
+定義元: [helpers/metaHelper.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/metaHelper.ts#L22)
 
-A helper for declaring the `tableMeta`/`columnMeta` type-only slots in the
-`features` option without a type assertion.
+`features` オプションの型専用スロット `tableMeta` / `columnMeta` を、型アサーションなしで宣言するためのヘルパーです。
 
-Equivalent to `{} as TMeta`, but reads as type-only at the call site and
-avoids `@typescript-eslint/no-unnecessary-type-assertion` false positives
-when the meta type has only optional properties (where an auto-fix removing
-the assertion would silently degrade the inferred meta type to `{}`).
+`{} as TMeta` と同じ意味ですが、呼び出し側で型専用であることが読み取れます。また、meta の型が省略可能なプロパティだけを持つ場合に起きる `@typescript-eslint/no-unnecessary-type-assertion` の誤検知を避けられます（この場合、自動修正でアサーションが消されると、推論される meta の型が気づかないうちに `{}` に落ちてしまいます）。
 
-The returned value is a phantom — it is ignored and stripped from the
-table's registered features at runtime; only its type is used.
+戻り値は実体のない値で、実行時には無視され、テーブルに登録された機能から取り除かれます。使われるのは型だけです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TMeta
+### TMeta {#tmeta}
 
 `TMeta` *extends* `object`
 
-## Returns
+## 戻り値 {#returns}
 
 `TMeta`
 
-## Example
+## 例 {#example}
 
 ```
 import { metaHelper, tableFeatures, rowSortingFeature } from '@tanstack/react-table'

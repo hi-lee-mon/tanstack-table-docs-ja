@@ -3,30 +3,28 @@ id: TableOptions_ColumnVisibility
 title: TableOptions_ColumnVisibility
 ---
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L12)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:12](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L12)
 
-## Properties
+## プロパティ {#properties}
 
-### enableHiding?
+### enableHiding? {#enablehiding}
 
 ```ts
 optional enableHiding?: boolean;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L16)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L16)
 
-Whether to enable column hiding. Defaults to `true`.
+列を非表示にできるようにするかどうかです。既定値は `true` です。
 
 ***
 
-### onColumnVisibilityChange?
+### onColumnVisibilityChange? {#oncolumnvisibilitychange}
 
 ```ts
 optional onColumnVisibilityChange?: OnChangeFn<ColumnVisibilityState>;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L22)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L22)
 
-Called with an updater when column visibility state changes. Pair this with
-`state.columnVisibility` when using external state; external atoms can own
-the slice without this callback.
+列の表示の状態が変わったときに、アップデーターを渡して呼び出されます。外部の状態を使う場合は `state.columnVisibility` と組み合わせてください。外部のアトムなら、このコールバックなしでスライスを持てます。

@@ -3,48 +3,48 @@ id: AggregationFnDescriptor
 title: AggregationFnDescriptor
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L114)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:114](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L114)
 
-Gives an aggregation reference a stable key in a multiple result.
+複数の結果を返す集計で、集計の参照に安定したキーを付けます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` = `unknown`
 
-### TResult
+### TResult {#tresult}
 
 `TResult` = `unknown`
 
-## Properties
+## プロパティ {#properties}
 
-### aggregationFn
+### aggregationFn {#aggregationfn}
 
 ```ts
 aggregationFn: AggregationFnRef<TFeatures, TData, TValue, TResult>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:121](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L121)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:121](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L121)
 
-The named, automatic, or inline definition to execute.
+実行する定義です。名前付き、自動、インラインのいずれかです。
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L123)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:123](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L123)
 
-Stable key used in the object returned by a multiple aggregation.
+複数の結果を返す集計が返すオブジェクトで使う、安定したキーです。

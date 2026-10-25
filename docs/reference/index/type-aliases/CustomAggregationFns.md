@@ -7,16 +7,16 @@ title: CustomAggregationFns
 type CustomAggregationFns<TFeatures, TData> = Record<string, AggregationFnDef<TFeatures, TData, any, any>>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L89)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L89)
 
-Named context-based aggregation definitions registered on a feature set.
+機能の組み合わせに登録された、名前付きのコンテキストベースの集計定義です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)

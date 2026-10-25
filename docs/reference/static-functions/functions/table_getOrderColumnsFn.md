@@ -7,34 +7,33 @@ title: table_getOrderColumnsFn
 function table_getOrderColumnsFn<TFeatures, TData>(table): (columns) => Column_Internal<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.utils.ts:200](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L200)
+定義元: [features/column-ordering/columnOrderingFeature.utils.ts:200](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L200)
 
-Creates the ordering function used to arrange leaf columns.
+末端の列を並べるための、並び順の関数を作ります。
 
-The returned function applies `state.columnOrder`, preserves unspecified
-columns in their original order, then delegates to grouping rules.
+返される関数は `state.columnOrder` を適用し、指定されていない列は元の順を保ちます。そのあと、グループ化の決まりに処理を任せます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 (`columns`) => [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `unknown`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const orderColumnsForTable = table_getOrderColumnsFn(table)

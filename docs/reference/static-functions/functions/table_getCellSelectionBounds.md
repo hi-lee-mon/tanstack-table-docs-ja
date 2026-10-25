@@ -7,38 +7,34 @@ title: table_getCellSelectionBounds
 function table_getCellSelectionBounds<TFeatures, TData>(table): CellSelectionBounds[];
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:382](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L382)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:382](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L382)
 
-Resolves ordered range operations into disjoint, positive display-order
-index rectangles.
+順序付きの範囲の操作を、互いに重ならない、除外を差し引いた表示順インデックスの長方形に解決します。
 
-This is the single cache every per-cell read goes through, so index lookups
-happen once per invalidation rather than once per cell. A range whose corners
-no longer resolve, for example because its anchor row was filtered out, is
-omitted rather than clamped, so it contributes nothing while remaining in
-state and returns intact when the filter clears.
+これは、セルごとの読み取りがすべて通る唯一のキャッシュです。そのため、インデックスを引くのはセルごとではなく、無効化のたびに1回だけで済みます。
+角が解決できなくなった範囲（アンカーの行がフィルターで除かれた場合など）は、端に寄せずに除外されます。そのため、状態には残ったまま選択には何も加えず、フィルターを解除すると元どおりに戻ります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`CellSelectionBounds`](../../index/interfaces/CellSelectionBounds.md)[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const bounds = table_getCellSelectionBounds(table)

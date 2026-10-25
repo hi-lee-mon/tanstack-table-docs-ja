@@ -3,56 +3,52 @@ id: TableOptions_ColumnResizing
 title: TableOptions_ColumnResizing
 ---
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L20)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L20)
 
-## Properties
+## プロパティ {#properties}
 
-### columnResizeDirection?
+### columnResizeDirection? {#columnresizedirection}
 
 ```ts
 optional columnResizeDirection?: ColumnResizeDirection;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L34)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L34)
 
-Sets the resize direction used to calculate drag offsets. Defaults to `ltr`.
+ドラッグの移動量を計算するときに使うリサイズの向きを指定します。既定値は `ltr` です。
 
 ***
 
-### columnResizeMode?
+### columnResizeMode? {#columnresizemode}
 
 ```ts
 optional columnResizeMode?: ColumnResizeMode;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L26)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L26)
 
-Determines when committed `columnSizing` values are updated. `onChange`
-commits sizes while the resize handle is dragged; `onEnd` commits when the
-resize interaction finishes.
+確定した `columnSizing` の値をいつ更新するかを決めます。`onChange` はリサイズ用のつまみをドラッグしている間に幅を確定し、`onEnd` はリサイズ操作が終わったときに確定します。
 
 ***
 
-### enableColumnResizing?
+### enableColumnResizing? {#enablecolumnresizing}
 
 ```ts
 optional enableColumnResizing?: boolean;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L30)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L30)
 
-Enables or disables column resizing for the whole table.
+テーブル全体で、列幅の変更を有効または無効にします。
 
 ***
 
-### onColumnResizingChange?
+### onColumnResizingChange? {#oncolumnresizingchange}
 
 ```ts
 optional onColumnResizingChange?: OnChangeFn<columnResizingState>;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L40)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L40)
 
-Called with an updater when the transient `columnResizing` state changes.
-Pair this with `state.columnResizing` when using external state; external
-atoms can own the slice without this callback.
+一時的な `columnResizing` の状態が変わったときに、アップデーターを渡して呼び出されます。外部の状態を使う場合は `state.columnResizing` と組み合わせてください。外部のアトムなら、このコールバックなしでスライスを持てます。

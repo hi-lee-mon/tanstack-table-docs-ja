@@ -7,33 +7,33 @@ title: table_getIsSomeColumnsVisible
 function table_getIsSomeColumnsVisible<TFeatures, TData>(table): boolean;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.utils.ts:362](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L362)
+定義元: [features/column-visibility/columnVisibilityFeature.utils.ts:362](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L362)
 
-Checks whether at least one leaf column is currently visible.
+少なくとも1つの末端の列が現在表示されているかどうかを判定します。
 
-This is useful for tri-state "show all columns" controls.
+「すべての列を表示」のような3状態の操作部品に便利です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const someVisible = table_getIsSomeColumnsVisible(table)

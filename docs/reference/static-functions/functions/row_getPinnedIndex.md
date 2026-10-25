@@ -7,33 +7,33 @@ title: row_getPinnedIndex
 function row_getPinnedIndex<TFeatures, TData>(row): number;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.utils.ts:260](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L260)
+定義元: [features/row-pinning/rowPinningFeature.utils.ts:260](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L260)
 
-Finds this row's visible index within its pinned region.
+固定領域の中で、この行の表示上のインデックスを探します。
 
-Unpinned rows return `-1`.
+固定されていない行は `-1` を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const index = row_getPinnedIndex(row)

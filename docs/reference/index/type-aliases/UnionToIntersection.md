@@ -7,10 +7,10 @@ title: UnionToIntersection
 type UnionToIntersection<T> = T extends any ? (x) => any : never extends (x) => any ? R : never;
 ```
 
-Defined in: [types/type-utils.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L22)
+定義元: [types/type-utils.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/type-utils.ts#L22)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### T
+### T {#t}
 
 `T`

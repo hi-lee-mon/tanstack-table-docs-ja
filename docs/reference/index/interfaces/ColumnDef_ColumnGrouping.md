@@ -3,61 +3,60 @@ id: ColumnDef_ColumnGrouping
 title: ColumnDef_ColumnGrouping
 ---
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L13)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L13)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### enableGrouping?
+### enableGrouping? {#enablegrouping}
 
 ```ts
 optional enableGrouping?: boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L22)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L22)
 
-Allows this column to be added to grouping state.
+この列をグループ化の状態に加えられるようにします。
 
-Defaults to `true`; table-level `enableGrouping` must also allow grouping.
+既定値は `true` です。テーブル側の `enableGrouping` でもグループ化が許可されている必要があります。
 
 ***
 
-### getGroupingValue?
+### getGroupingValue? {#getgroupingvalue}
 
 ```ts
 optional getGroupingValue?: (originalRow, index, row) => any;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L29)
+定義元: [features/column-grouping/columnGroupingFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.types.ts#L29)
 
-Returns the value used to group rows for this column.
+この列で行をグループ化するときに使う値を返します。
 
-When omitted, grouping uses the value derived from this column's
-`accessorKey` or `accessorFn`.
+省略した場合、グループ化には、この列の `accessorKey` または `accessorFn` から得た値を使います。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### originalRow
+##### originalRow {#originalrow}
 
 `TData`
 
-##### index
+##### index {#index}
 
 `number`
 
-##### row
+##### row {#row}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `any`

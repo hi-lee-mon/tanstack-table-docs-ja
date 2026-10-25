@@ -7,33 +7,33 @@ title: table_getIsSomeRowsExpanded
 function table_getIsSomeRowsExpanded<TFeatures, TData>(table): boolean;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.utils.ts:186](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L186)
+定義元: [features/row-expanding/rowExpandingFeature.utils.ts:186](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L186)
 
-Checks whether any row is expanded.
+展開されている行があるかどうかを判定します。
 
-The special expanded-all value `true` counts as some rows expanded.
+「すべて展開」を表す特別な値 `true` も、展開されている行があるとみなします。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const someExpanded = table_getIsSomeRowsExpanded(table)

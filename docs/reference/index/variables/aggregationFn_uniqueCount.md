@@ -7,6 +7,6 @@ title: aggregationFn_uniqueCount
 const aggregationFn_uniqueCount: AggregationFnDef<any, any, unknown, number>;
 ```
 
-Defined in: [features/row-aggregation/aggregationFns.ts:321](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L321)
+定義元: [features/row-aggregation/aggregationFns.ts:321](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L321)
 
-Counts distinct row values using JavaScript `Set` semantics.
+JavaScript の `Set` の意味で、重複しない行の値を数えます。

@@ -7,44 +7,42 @@ title: column_toggleVisibility
 function column_toggleVisibility<TFeatures, TData, TValue>(column, visible?): void;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.utils.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L45)
+定義元: [features/column-visibility/columnVisibilityFeature.utils.ts:45](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L45)
 
-Updates this column's visibility when hiding is allowed.
+非表示が許可されている場合に、この列の表示の状態を更新します。
 
-Passing `visible` stores that value. Omitting it flips the column's current
-visibility state. Group columns update their hideable leaf columns because
-visibility state is keyed by leaf column ids. Columns that cannot hide stay
-unchanged.
+`visible` を渡すと、その値を保存します。省略すると、列の現在の表示の状態を反転させます。
+表示の状態は末端の列 ID をキーにしているので、グループ列は非表示にできる末端の列を更新します。非表示にできない列は変わりません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### visible?
+### visible? {#visible}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 column_toggleVisibility(column)

@@ -7,32 +7,32 @@ title: memo
 function memo<TDeps, TDepArgs, TResult>(__namedParameters): (depArgs?) => TResult;
 ```
 
-Defined in: [utils.ts:299](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L299)
+定義元: [utils.ts:299](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L299)
 
-Creates a dependency-tracked memoized function for table internals.
+テーブルの内部処理向けに、依存関係を追跡するメモ化関数を作成します。
 
-The memo recomputes only when its dependency tuple changes and can emit debug timing information.
+メモは依存関係のタプルが変わったときだけ再計算され、デバッグ用の計測情報を出力できます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TDeps
+### TDeps {#tdeps}
 
 `TDeps` *extends* readonly `any`[]
 
-### TDepArgs
+### TDepArgs {#tdepargs}
 
 `TDepArgs`
 
-### TResult
+### TResult {#tresult}
 
 `TResult`
 
-## Parameters
+## パラメーター {#parameters}
 
-### \_\_namedParameters
+### \_\_namedParameters {#namedparameters}
 
 `MemoOptions`\<`TDeps`, `TDepArgs`, `TResult`\>
 
-## Returns
+## 戻り値 {#returns}
 
 (`depArgs?`) => `TResult`

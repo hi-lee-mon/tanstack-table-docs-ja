@@ -7,37 +7,37 @@ title: column_getSortIndex
 function column_getSortIndex<TFeatures, TData, TValue>(column): number;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.utils.ts:491](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L491)
+定義元: [features/row-sorting/rowSortingFeature.utils.ts:491](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L491)
 
-Finds this column's position in the ordered `state.sorting` array.
+順序付きの `state.sorting` 配列の中で、この列の位置を探します。
 
-The result is `-1` when the column is not sorted.
+列がソートされていなければ、結果は `-1` です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const index = column_getSortIndex(column)

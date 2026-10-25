@@ -9,20 +9,20 @@ type AggregationFnOption<TFeatures, TData, TValue> =
 | ReadonlyArray<AggregationFnListItem<TFeatures, TData, TValue>>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:137](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L137)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:137](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L137)
 
-A scalar aggregation reference or a list that produces a keyed object.
+単一の集計の参照か、キー付きのオブジェクトを作るリストです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` = `unknown`

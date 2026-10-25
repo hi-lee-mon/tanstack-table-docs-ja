@@ -3,326 +3,316 @@ id: TableOptions_Core
 title: TableOptions_Core
 ---
 
-Defined in: [types/TableOptions.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L33)
+定義元: [types/TableOptions.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/TableOptions.ts#L33)
 
-Core options that are always available on a table, before optional feature
-options are mixed in.
+省略可能な機能のオプションが加わる前の、テーブルで常に使えるコアのオプションです。
 
-## Extends
+## 継承元 {#extends}
 
 - [`TableOptions_Table`](TableOptions_Table.md)\<`TFeatures`, `TData`\>.[`TableOptions_Cell`](TableOptions_Cell.md).[`TableOptions_Columns`](TableOptions_Columns.md)\<`TFeatures`, `TData`\>.[`TableOptions_Rows`](TableOptions_Rows.md)\<`TFeatures`, `TData`\>
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### atoms?
+### atoms? {#atoms}
 
 ```ts
 readonly optional atoms?: Partial<{ [K in string | number | symbol]: Atom<ExtractFeatureMapTypes<TFeatures, TableState_FeatureMap>[K]> }>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L109)
+定義元: [core/table/coreTablesFeature.types.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L109)
 
-Optionally, provide your own external writable atoms for individual state slices.
-When an atom is provided for a given slice, it takes precedence over `options.state[key]`
-and the internal base atom for that slice. Feature state update APIs write through
-the corresponding atom updater, so external atoms are the preferred v9 ownership
-model for app-managed table state slices.
+状態スライスごとに、外部の書き込み可能なアトムを渡せます（省略可能）。
+あるスライスにアトムを渡すと、そのスライスでは `options.state[key]` と内部の基底アトムよりも優先されます。
+機能の状態を更新する API は対応するアトムのアップデーターを通して書き込むので、アプリで管理するテーブルの状態スライスには、v9 では外部のアトムで持つ形がおすすめです。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from}
 
 [`TableOptions_Table`](TableOptions_Table.md).[`atoms`](TableOptions_Table.md#atoms)
 
 ***
 
-### autoResetAll?
+### autoResetAll? {#autoresetall}
 
 ```ts
 readonly optional autoResetAll?: boolean;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L113)
+定義元: [core/table/coreTablesFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L113)
 
-Set this option to override any of the `autoReset...` feature options.
+このオプションを指定すると、機能ごとの `autoReset...` オプションをすべて上書きします。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-1}
 
 [`TableOptions_Table`](TableOptions_Table.md).[`autoResetAll`](TableOptions_Table.md#autoresetall)
 
 ***
 
-### columns
+### columns {#columns}
 
 ```ts
 columns: readonly ColumnDef<TFeatures, TData, unknown>[];
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L69)
+定義元: [core/columns/coreColumnsFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L69)
 
-The array of column defs to use for the table.
+テーブルで使う列定義の配列です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-2}
 
 [`TableOptions_Columns`](TableOptions_Columns.md).[`columns`](TableOptions_Columns.md#columns)
 
 ***
 
-### data
+### data {#data}
 
 ```ts
 readonly data: readonly TData[];
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:117](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L117)
+定義元: [core/table/coreTablesFeature.types.ts:117](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L117)
 
-The data for the table to display. When the `data` option changes reference, the table will reprocess the data.
+テーブルに表示するデータです。`data` オプションの参照が変わると、テーブルはデータを処理し直します。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-3}
 
 [`TableOptions_Table`](TableOptions_Table.md).[`data`](TableOptions_Table.md#data)
 
 ***
 
-### defaultColumn?
+### defaultColumn? {#defaultcolumn}
 
 ```ts
 optional defaultColumn?: Partial<ColumnDef<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L73)
+定義元: [core/columns/coreColumnsFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.types.ts#L73)
 
-Default column options to use for all column defs supplied to the table.
+テーブルに渡すすべての列定義に適用する、列の既定のオプションです。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-4}
 
 [`TableOptions_Columns`](TableOptions_Columns.md).[`defaultColumn`](TableOptions_Columns.md#defaultcolumn)
 
 ***
 
-### features
+### features {#features}
 
 ```ts
 readonly features: TFeatures & ValidateFeatureSlots<TFeatures>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L101)
+定義元: [core/table/coreTablesFeature.types.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L101)
 
-The feature modules registered on this table instance.
+このテーブルインスタンスに登録された機能モジュールです。
 
-Feature registration controls which state slices, options, and prototype
-APIs are available. This object also carries the table's row model
-factories (`sortedRowModel`, `filteredRowModel`, etc.), row model function
-registries (`sortFns`, `filterFns`, `aggregationFns`), and type-only meta
-slots (`tableMeta`, `columnMeta`).
+機能の登録によって、どの状態スライス、オプション、プロトタイプの API が使えるかが決まります。
+このオブジェクトには、テーブルの行モデルのファクトリー（`sortedRowModel`、`filteredRowModel` など）、行モデル関数のレジストリ（`sortFns`、`filterFns`、`aggregationFns`）、型専用の meta のスロット（`tableMeta`、`columnMeta`）も入ります。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-5}
 
 [`TableOptions_Table`](TableOptions_Table.md).[`features`](TableOptions_Table.md#features)
 
 ***
 
-### getRowId?
+### getRowId? {#getrowid}
 
 ```ts
 optional getRowId?: (originalRow, index, parent?) => string;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:115](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L115)
+定義元: [core/rows/coreRowsFeature.types.ts:115](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L115)
 
-This optional function is used to derive a unique ID for any given row. If not provided the row's index is used (nested rows join together with `.` using their grandparents' index e.g. `index.index.index`). If you need to identify individual rows that are originating from any server-side operations, it's suggested you use this function to return an ID that makes sense regardless of network IO/ambiguity e.g. a userId, taskId, database ID field, etc.
+各行の一意な ID を導き出すための関数です（省略可能）。指定しない場合は行のインデックスが使われます（入れ子の行は、祖先のインデックスを `.` でつないだもの、たとえば `index.index.index` になります）。
+サーバーサイドの処理から来た個々の行を識別する必要がある場合は、この関数で、通信やあいまいさに左右されない意味のある ID（userId、taskId、データベースの ID フィールドなど）を返すことをおすすめします。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### originalRow
+##### originalRow {#originalrow}
 
 `TData`
 
-##### index
+##### index {#index}
 
 `number`
 
-##### parent?
+##### parent? {#parent}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `string`
 
-#### Example
+#### 例 {#example}
 
 ```ts
 getRowId: row => row.userId
 ```
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-6}
 
 [`TableOptions_Rows`](TableOptions_Rows.md).[`getRowId`](TableOptions_Rows.md#getrowid)
 
 ***
 
-### getSubRows?
+### getSubRows? {#getsubrows}
 
 ```ts
 optional getSubRows?: (originalRow, index) => readonly TData[] | undefined;
 ```
 
-Defined in: [core/rows/coreRowsFeature.types.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L124)
+定義元: [core/rows/coreRowsFeature.types.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.types.ts#L124)
 
-This optional function is used to access the sub rows for any given row. If you are using nested rows, you will need to use this function to return the sub rows object (or undefined) from the row.
+各行のサブ行を取り出すための関数です（省略可能）。入れ子の行を使う場合は、この関数で行からサブ行のオブジェクト（または undefined）を返す必要があります。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### originalRow
+##### originalRow {#originalrow-1}
 
 `TData`
 
-##### index
+##### index {#index-1}
 
 `number`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 readonly `TData`[] \| `undefined`
 
-#### Example
+#### 例 {#example-1}
 
 ```ts
 getSubRows: row => row.subRows
 ```
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-7}
 
 [`TableOptions_Rows`](TableOptions_Rows.md).[`getSubRows`](TableOptions_Rows.md#getsubrows)
 
 ***
 
-### initialState?
+### initialState? {#initialstate}
 
 ```ts
 readonly optional initialState?: Partial<ExtractFeatureMapTypes<TFeatures, TableState_FeatureMap>>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L131)
+定義元: [core/table/coreTablesFeature.types.ts:131](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L131)
 
-Optionally provide starting values for registered table state slices.
-Feature reset APIs use this value by default, and many reset APIs accept
-`true` to reset to that feature's blank/default state instead. Changing this
-object later does not reset table state, so it does not need to be stable.
+登録されたテーブルの状態スライスの初期値を渡せます（省略可能）。
+機能のリセット API は既定でこの値を使います。多くのリセット API は `true` を受け付け、その場合は代わりに機能の空の状態（既定の状態）に戻します。
+あとでこのオブジェクトを変えてもテーブルの状態はリセットされないので、参照を安定させておく必要はありません。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-8}
 
 [`TableOptions_Table`](TableOptions_Table.md).[`initialState`](TableOptions_Table.md#initialstate)
 
 ***
 
-### key?
+### key? {#key}
 
 ```ts
 readonly optional key?: string;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L124)
+定義元: [core/table/coreTablesFeature.types.ts:124](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L124)
 
-Optional key used to identify this table instance.
+このテーブルインスタンスを識別するためのキーです（省略可能）。
 
-This is used by TanStack Table Devtools to register and select tables. It is
-not required unless the table is passed to devtools.
+TanStack Table Devtools がテーブルを登録・選択するために使います。テーブルを Devtools に渡さないなら不要です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-9}
 
 [`TableOptions_Table`](TableOptions_Table.md).[`key`](TableOptions_Table.md#key)
 
 ***
 
-### mergeOptions?
+### mergeOptions? {#mergeoptions}
 
 ```ts
 readonly optional mergeOptions?: (defaultOptions, options) => TableOptions<TFeatures, TData>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L135)
+定義元: [core/table/coreTablesFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L135)
 
-This option is used to optionally implement the merging of table options.
+テーブルのオプションのマージ方法を、必要に応じて自分で実装するためのオプションです。
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### defaultOptions
+##### defaultOptions {#defaultoptions}
 
 [`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>
 
-##### options
+##### options {#options}
 
 `Partial`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>\>
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 [`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-10}
 
 [`TableOptions_Table`](TableOptions_Table.md).[`mergeOptions`](TableOptions_Table.md#mergeoptions)
 
 ***
 
-### meta?
+### meta? {#meta}
 
 ```ts
 readonly optional meta?: ExtractTableMeta<TFeatures, TData>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:145](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L145)
+定義元: [core/table/coreTablesFeature.types.ts:145](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L145)
 
-You can pass any object to `options.meta` and access it anywhere the `table` is available via `table.options.meta`.
+`options.meta` には任意のオブジェクトを渡せます。渡したオブジェクトには、`table` が使えるところならどこからでも `table.options.meta` でアクセスできます。
 
-Declare its type per-table via the `tableMeta` type-only slot on the
-`features` option, or globally via declaration merging on `TableMeta`.
+型は、`features` オプションの型専用スロット `tableMeta` でテーブルごとに宣言するか、`TableMeta` への宣言のマージでグローバルに宣言してください。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-11}
 
 [`TableOptions_Table`](TableOptions_Table.md).[`meta`](TableOptions_Table.md#meta)
 
 ***
 
-### renderFallbackValue?
+### renderFallbackValue? {#renderfallbackvalue}
 
 ```ts
 optional renderFallbackValue?: any;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:67](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L67)
+定義元: [core/cells/coreCellsFeature.types.ts:67](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L67)
 
-Value used when the desired value is not found in the data.
+目的の値がデータに見つからないときに使う値です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-12}
 
 [`TableOptions_Cell`](TableOptions_Cell.md).[`renderFallbackValue`](TableOptions_Cell.md#renderfallbackvalue)
 
 ***
 
-### state?
+### state? {#state}
 
 ```ts
 readonly optional state?: Partial<ExtractFeatureMapTypes<TFeatures, TableState_FeatureMap>>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:153](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L153)
+定義元: [core/table/coreTablesFeature.types.ts:153](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L153)
 
-Optionally provide externally managed values for individual state slices.
+状態スライスごとに、外部で管理する値を渡せます（省略可能）。
 
-Pair each slice with its matching `on[State]Change` callback so table state
-updates can be persisted outside the table. External atoms take precedence
-over this option when both are provided for the same slice.
+各スライスは、対応する `on[State]Change` コールバックと組み合わせてください。そうすれば、テーブルの状態の更新をテーブルの外に保存できます。同じスライスにこのオプションと外部のアトムの両方を渡した場合は、外部のアトムが優先されます。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-13}
 
 [`TableOptions_Table`](TableOptions_Table.md).[`state`](TableOptions_Table.md#state)

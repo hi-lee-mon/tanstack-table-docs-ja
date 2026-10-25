@@ -7,35 +7,33 @@ title: table_reset
 function table_reset<TFeatures, TData>(table): void;
 ```
 
-Defined in: [core/table/coreTablesFeature.utils.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.utils.ts#L102)
+定義元: [core/table/coreTablesFeature.utils.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.utils.ts#L102)
 
-Resets all internal table base atoms to `table.initialState`, then clears
-transient instance data through registered feature reset hooks.
+テーブルの内部の基底アトムをすべて `table.initialState` に戻し、そのあと、登録された機能のリセット用フックを通して一時的なインスタンスデータを消します。
 
-This resets internally owned state slices in a single reactivity batch. Use
-feature-specific reset APIs when a slice may be externally owned.
+内部で持つ状態スライスを、1回のリアクティビティのバッチでリセットします。スライスを外部が持っている可能性がある場合は、機能ごとのリセット API を使ってください。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_reset(table)

@@ -7,38 +7,37 @@ title: table_resetCellSelection
 function table_resetCellSelection<TFeatures, TData>(table, defaultState?): void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L80)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L80)
 
-Resets `cellSelection` to the configured initial state or feature default.
+`cellSelection` を、設定した初期状態か機能の既定値に戻します。
 
-With no argument, the reset clones `table.initialState.cellSelection` when it
-exists. Passing `true` ignores initial state and resets to an empty selection.
+引数なしの場合、`table.initialState.cellSelection` があればそれを複製して戻します。`true` を渡すと、初期状態を無視して空の選択に戻します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### defaultState?
+### defaultState? {#defaultstate}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_resetCellSelection(table, true)

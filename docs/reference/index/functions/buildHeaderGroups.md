@@ -11,44 +11,44 @@ function buildHeaderGroups<TFeatures, TData, TValue>(
    headerFamily?): HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [core/headers/buildHeaderGroups.ts:227](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/buildHeaderGroups.ts#L227)
+定義元: [core/headers/buildHeaderGroups.ts:227](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/buildHeaderGroups.ts#L227)
 
-Builds the nested header group structure for a table.
+テーブルの入れ子になったヘッダーグループの構造を組み立てます。
 
-The result accounts for visible leaf columns, pinned column groups, and placeholder headers needed to render multi-level headers.
+結果には、表示中の末端の列、固定された列グループ、多段ヘッダーの描画に必要なプレースホルダーのヘッダーが反映されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### allColumns
-
-[`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>[]
-
-### columnsToGroup
+### allColumns {#allcolumns}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>[]
 
-### table
+### columnsToGroup {#columnstogroup}
+
+[`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>[]
+
+### table {#table}
 
 [`Table_Internal`](../interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### headerFamily?
+### headerFamily? {#headerfamily}
 
 `"start"` \| `"end"` \| `"center"`
 
-## Returns
+## 戻り値 {#returns}
 
 [`HeaderGroup`](../interfaces/HeaderGroup.md)\<`TFeatures`, `TData`\>[]

@@ -3,64 +3,56 @@ id: Cell_CellSpanning
 title: Cell_CellSpanning
 ---
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L139)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:139](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L139)
 
-## Properties
+## プロパティ {#properties}
 
-### getColSpan
+### getColSpan {#getcolspan}
 
 ```ts
 getColSpan: () => number;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:147](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L147)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:147](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L147)
 
-Number of columns this cell spans when rendered. `1` when it does not
-span, and `0` when another cell's column span covers it.
+描画時にこのセルが結合する列の数です。結合しない場合は `1`、他のセルの列の結合に覆われている場合は `0` です。
 
-Never render a `0` as a `colSpan` attribute; skip the cell instead. See
-`getIsCovered`.
+`0` を `colSpan` 属性として描画しないでください。代わりにそのセルを描画しないでください。`getIsCovered` を参照してください。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `number`
 
 ***
 
-### getIsCovered
+### getIsCovered {#getiscovered}
 
 ```ts
 getIsCovered: () => boolean;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:153](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L153)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:153](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L153)
 
-Whether another cell's span covers this cell. Skip rendering covered
-cells; the cell that covers them carries the content and the span
-attributes.
+他のセルの結合がこのセルを覆っているかどうかです。覆われたセルは描画しないでください。内容と結合の属性は、覆っている側のセルが持ちます。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
 ***
 
-### getRowSpan
+### getRowSpan {#getrowspan}
 
 ```ts
 getRowSpan: () => number;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:163](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L163)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:163](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L163)
 
-Number of rows this cell spans when rendered. `1` when it does not span,
-and `0` when a spanning cell above it covers it, matching the
-`header.rowSpan` convention.
+描画時にこのセルが結合する行の数です。結合しない場合は `1`、上にある結合セルに覆われている場合は `0` です。`header.rowSpan` と同じ決まりです。
 
-Never render a `0` as a `rowSpan` attribute: in HTML, `rowspan="0"` means
-"span to the end of the row group", which merges the cell down the entire
-table section. Skip the cell instead. See `getIsCovered`.
+`0` を `rowSpan` 属性として描画しないでください。HTML では `rowspan="0"` は「行グループの最後まで結合する」という意味になり、テーブルのセクション全体にわたってセルが下へ結合されてしまいます。代わりにそのセルを描画しないでください。`getIsCovered` を参照してください。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `number`

@@ -3,15 +3,15 @@ id: FilterFn
 title: FilterFn
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L60)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L60)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
@@ -23,73 +23,66 @@ FilterFn(
    addMeta?): boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:64](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L64)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:64](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L64)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-### columnId
+### columnId {#columnid}
 
 `string`
 
-### filterValue
+### filterValue {#filtervalue}
 
 `any`
 
-### addMeta?
+### addMeta? {#addmeta}
 
 (`meta`) => `void`
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Properties
+## プロパティ {#properties}
 
-### autoRemove?
+### autoRemove? {#autoremove}
 
 ```ts
 optional autoRemove?: ColumnFilterAutoRemoveTestFn<TFeatures, TData, unknown>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L79)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:79](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L79)
 
-Removes the filter from `state.columnFilters` when the filter value fails
-this test (e.g. empty strings for text filters).
+フィルター値がこの判定に通らないとき（テキストフィルターでの空文字列など）、`state.columnFilters` からフィルターを取り除きます。
 
-When provided, this test is authoritative: values it keeps stay in filter
-state even when they are empty strings, which the default heuristic would
-otherwise remove. An `undefined` filter value always clears the filter
-regardless.
+指定した場合は、この判定が優先されます。この判定で残すとした値は、既定の判定なら取り除かれる空文字列であっても、フィルターの状態に残ります。ただし、フィルター値が `undefined` の場合は、常にフィルターが解除されます。
 
 ***
 
-### resolveDataValue?
+### resolveDataValue? {#resolvedatavalue}
 
 ```ts
 optional resolveDataValue?: TransformDataValueFn;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L92)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:92](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L92)
 
-Normalizes each row's value before it is compared against the filter
-value. Only honored by filter functions built with `constructFilterFn`
-(including all built-in filter functions).
+フィルター値と比べる前に、各行の値を正規化します。`constructFilterFn` で作ったフィルター関数（組み込みのフィルター関数をすべて含みます）でだけ使われます。
 
 ***
 
-### resolveFilterValue?
+### resolveFilterValue? {#resolvefiltervalue}
 
 ```ts
 optional resolveFilterValue?: TransformFilterValueFn<TFeatures, TData, unknown>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:86](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L86)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:86](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L86)
 
-Normalizes the filter value before filtering runs.
+フィルタリングを実行する前に、フィルター値を正規化します。
 
-The table applies this once per filter (not per row) and passes the
-resolved value to the filter function as `filterValue`.
+テーブルはこれをフィルターごとに1回だけ（行ごとではなく）適用し、解決した値を `filterValue` としてフィルター関数に渡します。

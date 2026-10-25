@@ -7,38 +7,37 @@ title: table_setPageSize
 function table_setPageSize<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:198](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L198)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:198](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L198)
 
-Updates `pagination.pageSize` while preserving the current top row.
+現在の先頭の行を保ったまま、`pagination.pageSize` を更新します。
 
-The new size is clamped to at least `1`, and `pageIndex` is recalculated so
-the row that was previously at the top of the page remains in view.
+新しいサイズは最小でも `1` に収められます。また、それまでページの先頭にあった行が表示に残るよう、`pageIndex` を計算し直します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<`number`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setPageSize(table, (old) => old)

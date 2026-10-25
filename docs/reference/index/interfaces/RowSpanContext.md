@@ -3,95 +3,93 @@ id: RowSpanContext
 title: RowSpanContext
 ---
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:51](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L51)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:51](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L51)
 
-Context passed to a `spanRows` predicate for each candidate row.
+候補の行ごとに `spanRows` の述語関数へ渡されるコンテキストです。
 
-The run is anchored: `anchorRow` is the row whose cell will render the
-merged content, and every later row in the run is tested against it, which
-keeps runs transitive by construction. `previousRow` is provided for
-predicates that want a step-wise comparison instead.
+結合には起点があります。`anchorRow` は結合した内容を描画するセルを持つ行で、結合に含まれる後続の行はどれもこの行と比べられます。こうすることで、結合は構造上つねに推移的になります。
+1行ずつ順に比べたい述語関数のために、`previousRow` も渡されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### anchorRow
+### anchorRow {#anchorrow}
 
 ```ts
 anchorRow: Row<TFeatures, TData>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L56)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L56)
 
 ***
 
-### anchorValue
+### anchorValue {#anchorvalue}
 
 ```ts
 anchorValue: TValue;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L57)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L57)
 
 ***
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L58)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L58)
 
 ***
 
-### previousRow
+### previousRow {#previousrow}
 
 ```ts
 previousRow: Row<TFeatures, TData>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L59)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:59](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L59)
 
 ***
 
-### row
+### row {#row}
 
 ```ts
 row: Row<TFeatures, TData>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L60)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L60)
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table<TFeatures, TData>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L61)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:61](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L61)
 
 ***
 
-### value
+### value {#value}
 
 ```ts
 value: TValue;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L62)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L62)

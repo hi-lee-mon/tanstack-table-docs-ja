@@ -7,16 +7,16 @@ title: AggregationResult
 type AggregationResult<TOption, TFeatures> = TOption extends ReadonlyArray<infer TEntry> ? { [TKey in AggregationEntryId<TEntry>]: AggregationResultOfRef<AggregationEntryDefinition<Extract<TEntry, TKey | { id: TKey }>>, TFeatures> } : AggregationResultOfRef<TOption, TFeatures>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:184](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L184)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:184](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L184)
 
-Infers the scalar or keyed result produced by an aggregation option.
+集計オプションが返す、単一またはキー付きの結果の型を推論します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TOption
+### TOption {#toption}
 
 `TOption`
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md) = `any`

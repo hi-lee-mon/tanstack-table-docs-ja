@@ -7,41 +7,38 @@ title: column_getAutoSortDir
 function column_getAutoSortDir<TFeatures, TData, TValue>(column): "asc" | "desc";
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.utils.ts:183](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L183)
+定義元: [features/row-sorting/rowSortingFeature.utils.ts:183](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L183)
 
-Chooses the default first sort direction from sampled filtered row values.
+フィルタリング後の行から抜き出した値をもとに、既定の最初のソートの向きを選びます。
 
-The first non-nullish value among the sampled rows decides: string columns
-start ascending so alphabetical order is natural; other value types (or
-columns with no non-nullish sample) start descending. Sampling past leading
-nullish values keeps the toggle cycle stable when sorting or a data swap
-moves an empty value into the first row.
+抜き出した行の中で、最初の null でも undefined でもない値で決まります。文字列の列は、アルファベット順が自然になるよう昇順から始まります。それ以外の型の値（または null や undefined でない値が見つからない列）は降順から始まります。
+先頭の null や undefined の値を飛ばして抜き出すので、ソートやデータの差し替えで空の値が最初の行に来ても、切り替えの流れは変わりません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `"asc"` \| `"desc"`
 
-## Example
+## 例 {#example}
 
 ```ts
 const direction = column_getAutoSortDir(column)

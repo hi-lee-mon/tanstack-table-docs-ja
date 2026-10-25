@@ -7,21 +7,19 @@ title: ExtractTableMeta
 type ExtractTableMeta<TFeatures, TData> = IsAny<TFeatures> extends true ? TableMeta<TFeatures, TData> : TFeatures extends object ? TMeta : TableMeta<TFeatures, TData>;
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L30)
+定義元: [core/table/coreTablesFeature.types.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L30)
 
-Resolves the type of `options.meta` for a feature set.
+機能の組み合わせについて、`options.meta` の型を求めます。
 
-When the features object declares a `tableMeta` type-only slot
-(`tableFeatures({ ..., tableMeta: {} as MyTableMeta })`), that type wins.
-Otherwise this falls back to the global declaration-merged `TableMeta`
-interface.
+features オブジェクトが型専用スロット `tableMeta` を宣言している場合（`tableFeatures({ ..., tableMeta: {} as MyTableMeta })`）は、その型が使われます。
+そうでなければ、グローバルに宣言のマージをした `TableMeta` インターフェースが使われます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)

@@ -3,111 +3,105 @@ id: TableOptions_RowSelection
 title: TableOptions_RowSelection
 ---
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L34)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:34](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L34)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### enableMultiRowSelection?
+### enableMultiRowSelection? {#enablemultirowselection}
 
 ```ts
 optional enableMultiRowSelection?: boolean | ((row) => boolean);
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L48)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L48)
 
-Allows rows to be selected alongside other rows.
+行を他の行と一緒に選択できるようにします。
 
-Provide a predicate to decide per row. Defaults to `true`.
+述語関数を渡すと、行ごとに判定できます。既定値は `true` です。
 
 ***
 
-### enableRowRangeSelection?
+### enableRowRangeSelection? {#enablerowrangeselection}
 
 ```ts
 optional enableRowRangeSelection?: boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L42)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L42)
 
-Enables inclusive row range selection through
-`row.getToggleSelectedHandler()`. Defaults to `true`.
+`row.getToggleSelectedHandler()` を通して、両端を含む行の範囲を選択できるようにします。既定値は `true` です。
 
 ***
 
-### enableRowSelection?
+### enableRowSelection? {#enablerowselection}
 
 ```ts
 optional enableRowSelection?: boolean | ((row) => boolean);
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L54)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L54)
 
-Allows rows to be selected.
+行を選択できるようにします。
 
-Provide a predicate to decide per row. Defaults to `true`.
+述語関数を渡すと、行ごとに判定できます。既定値は `true` です。
 
 ***
 
-### enableSubRowSelection?
+### enableSubRowSelection? {#enablesubrowselection}
 
 ```ts
 optional enableSubRowSelection?: boolean | ((row) => boolean);
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L62)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L62)
 
-Controls whether selecting a parent row also selects its subRows.
+親の行を選択したときに、そのサブ行も選択するかどうかを制御します。
 
-Provide a predicate to decide per row. This is most useful with expanding or
-grouping features and defaults to `true`. Select-all and the all-selected
-getters also skip descendants of parents that block sub-row selection.
+述語関数を渡すと、行ごとに判定できます。展開やグループ化の機能と組み合わせるときに特に便利で、既定値は `true` です。
+全選択と、すべて選択されているかを返す getter も、サブ行の選択を禁止している親の子孫は対象から外します。
 
 ***
 
-### isRowRangeSelectionEvent?
+### isRowRangeSelectionEvent? {#isrowrangeselectionevent}
 
 ```ts
 optional isRowRangeSelectionEvent?: (event) => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:70](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L70)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:70](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L70)
 
-Determines whether a row-selection handler event should select or
-deselect the inclusive range from the most recent handler interaction.
+行選択のハンドラーのイベントで、直近のハンドラー操作から数えた両端を含む範囲を、選択するか選択解除するかを決めます。
 
-By default, events with `shiftKey` directly on the event or on
-`event.nativeEvent` are treated as range-selection events.
+既定では、イベント自体または `event.nativeEvent` に `shiftKey` があるイベントを、範囲選択のイベントとして扱います。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### event
+##### event {#event}
 
 `unknown`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### onRowSelectionChange?
+### onRowSelectionChange? {#onrowselectionchange}
 
 ```ts
 optional onRowSelectionChange?: OnChangeFn<RowSelectionState>;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L76)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L76)
 
-Called with an updater when row selection state changes. Pair this with
-`state.rowSelection` when using external state; external atoms can own the
-slice without this callback.
+行選択の状態が変わったときに、アップデーターを渡して呼び出されます。外部の状態を使う場合は `state.rowSelection` と組み合わせてください。外部のアトムなら、このコールバックなしでスライスを持てます。

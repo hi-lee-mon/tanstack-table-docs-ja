@@ -7,38 +7,37 @@ title: column_getCanFilter
 function column_getCanFilter<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.utils.ts:149](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L149)
+定義元: [features/column-filtering/columnFilteringFeature.utils.ts:149](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.utils.ts#L149)
 
-Checks whether column filtering is enabled for this accessor column.
+このアクセサー列で列フィルタリングが有効かどうかを判定します。
 
-The column must have an accessor and filtering must be enabled by the column
-definition, `enableColumnFilters`, and the table-wide `enableFilters` option.
+列がアクセサーを持ち、列定義、`enableColumnFilters`、テーブル全体の `enableFilters` オプションのすべてでフィルタリングが有効になっている必要があります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canFilter = column_getCanFilter(column)

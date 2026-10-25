@@ -7,34 +7,33 @@ title: table_getRowModel
 function table_getRowModel<TFeatures, TData>(table): RowModel<TFeatures, TData>;
 ```
 
-Defined in: [core/row-models/coreRowModelsFeature.utils.ts:267](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L267)
+定義元: [core/row-models/coreRowModelsFeature.utils.ts:267](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L267)
 
-Resolves the final row model consumed by renderers.
+レンダラーが使う、最終的な行モデルを求めます。
 
-This is the end of the built-in row-model pipeline: core -> filtering ->
-grouping -> sorting -> expanding -> pagination.
+これは組み込みの行モデルのパイプラインの終わりです: コア -> フィルタリング -> グループ化 -> ソート -> 展開 -> ページネーション。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowModel`](../../index/interfaces/RowModel.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const visibleRows = table_getRowModel(table)

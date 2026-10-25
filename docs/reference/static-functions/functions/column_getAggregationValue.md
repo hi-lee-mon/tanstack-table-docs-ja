@@ -7,34 +7,34 @@ title: column_getAggregationValue
 function column_getAggregationValue<TFeatures, TData, TValue>(column, options?): ColumnAggregationValue<TFeatures>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.utils.ts:415](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L415)
+定義元: [features/row-aggregation/rowAggregationFeature.utils.ts:415](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.utils.ts#L415)
 
-Implements `column.getAggregationValue(options?)` and its default cache.
+`column.getAggregationValue(options?)` と、その既定のキャッシュを実装します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### options?
+### options? {#options}
 
 [`AggregationValueOptions`](../../index/interfaces/AggregationValueOptions.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`ColumnAggregationValue`](../../index/type-aliases/ColumnAggregationValue.md)\<`TFeatures`\>

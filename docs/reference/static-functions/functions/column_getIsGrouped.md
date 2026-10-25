@@ -7,38 +7,37 @@ title: column_getIsGrouped
 function column_getIsGrouped<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/column-grouping/columnGroupingFeature.utils.ts:88](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L88)
+定義元: [features/column-grouping/columnGroupingFeature.utils.ts:88](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-grouping/columnGroupingFeature.utils.ts#L88)
 
-Checks whether this column id is present in `state.grouping`.
+この列 ID が `state.grouping` に含まれているかどうかを判定します。
 
-The result only reflects grouping state, not whether the grouped row model has
-been calculated yet.
+結果はグループ化の状態を示すだけで、グループ化済み行モデルがもう計算されたかどうかは示しません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const isGrouped = column_getIsGrouped(column)

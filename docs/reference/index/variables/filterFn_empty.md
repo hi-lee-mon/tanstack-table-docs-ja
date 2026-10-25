@@ -7,10 +7,8 @@ title: filterFn_empty
 const filterFn_empty: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:190](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L190)
+定義元: [features/column-filtering/filterFns.ts:190](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L190)
 
-Keeps rows whose column value is empty.
+列の値が空の行を残します。
 
-A value is empty when it is nullish or stringifies to whitespace only. The
-filter value acts as an on/off flag: `false` and blank values are
-auto-removed.
+値は、null や undefined のとき、または文字列にすると空白だけになるときに空とみなします。フィルター値はオン・オフのフラグとして働き、`false` と空の値は自動で取り除かれます。

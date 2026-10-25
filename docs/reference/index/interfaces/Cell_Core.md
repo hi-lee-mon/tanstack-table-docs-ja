@@ -3,138 +3,138 @@ id: Cell_Core
 title: Cell_Core
 ---
 
-Defined in: [types/Cell.ts:9](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L9)
+定義元: [types/Cell.ts:9](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Cell.ts#L9)
 
-## Extends
+## 継承元 {#extends}
 
 - [`Cell_Cell`](Cell_Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L29)
+定義元: [core/cells/coreCellsFeature.types.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L29)
 
-The associated Column object for the cell.
+セルに対応する Column オブジェクトです。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from}
 
 [`Cell_Cell`](Cell_Cell.md).[`column`](Cell_Cell.md#column)
 
 ***
 
-### getContext
+### getContext {#getcontext}
 
 ```ts
 getContext: () => CellContext<TFeatures, TData, TValue>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:52](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L52)
+定義元: [core/cells/coreCellsFeature.types.ts:52](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L52)
 
-Returns the rendering context (or props) for cell-based components like cells and aggregated cells. Use these props with your framework's `flexRender` utility to render these using the template of your choice:
+セルや集計済みセルのような、セルを基にしたコンポーネントのための描画コンテキスト（props）を返します。この props をフレームワークの `flexRender` ユーティリティに渡すと、好きなテンプレートで描画できます:
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`CellContext`](CellContext.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-1}
 
 [`Cell_Cell`](Cell_Cell.md).[`getContext`](Cell_Cell.md#getcontext)
 
 ***
 
-### getValue
+### getValue {#getvalue}
 
 ```ts
 getValue: Getter<TValue>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L56)
+定義元: [core/cells/coreCellsFeature.types.ts:56](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L56)
 
-Returns the value for the cell, accessed via the associated column's accessor key or accessor function.
+セルの値を返します。値は、対応する列のアクセサーのキーまたはアクセサー関数で取り出されます。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-2}
 
 [`Cell_Cell`](Cell_Cell.md).[`getValue`](Cell_Cell.md#getvalue)
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L33)
+定義元: [core/cells/coreCellsFeature.types.ts:33](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L33)
 
-The unique ID for the cell across the entire table.
+テーブル全体で一意なセルの ID です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-3}
 
 [`Cell_Cell`](Cell_Cell.md).[`id`](Cell_Cell.md#id)
 
 ***
 
-### renderValue
+### renderValue {#rendervalue}
 
 ```ts
 renderValue: Getter<TValue | null>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L60)
+定義元: [core/cells/coreCellsFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L60)
 
-Renders the value for a cell the same as `getValue`, but will return the `renderFallbackValue` if no value is found.
+`getValue` と同じようにセルの値を描画しますが、値が見つからない場合は `renderFallbackValue` を返します。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-4}
 
 [`Cell_Cell`](Cell_Cell.md).[`renderValue`](Cell_Cell.md#rendervalue)
 
 ***
 
-### row
+### row {#row}
 
 ```ts
 row: Row<TFeatures, TData>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L37)
+定義元: [core/cells/coreCellsFeature.types.ts:37](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L37)
 
-The associated Row object for the cell.
+セルに対応する Row オブジェクトです。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-5}
 
 [`Cell_Cell`](Cell_Cell.md).[`row`](Cell_Cell.md#row)
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table_Internal<TFeatures, TData>;
 ```
 
-Defined in: [core/cells/coreCellsFeature.types.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L41)
+定義元: [core/cells/coreCellsFeature.types.ts:41](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/cells/coreCellsFeature.types.ts#L41)
 
-Reference to the parent table instance.
+親のテーブルインスタンスへの参照です。
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-6}
 
 [`Cell_Cell`](Cell_Cell.md).[`table`](Cell_Cell.md#table)

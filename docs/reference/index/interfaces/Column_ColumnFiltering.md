@@ -3,135 +3,134 @@ id: Column_ColumnFiltering
 title: Column_ColumnFiltering
 ---
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:194](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L194)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:194](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L194)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getAutoFilterFn
+### getAutoFilterFn {#getautofilterfn}
 
 ```ts
 getAutoFilterFn: () => FilterFn<TFeatures, TData>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:201](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L201)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:201](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L201)
 
-Returns an automatically calculated filter function for the column based off of the columns first known value.
+列で最初に見つかった値をもとに、自動で決めたフィルター関数を返します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`FilterFn`](FilterFn.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getCanFilter
+### getCanFilter {#getcanfilter}
 
 ```ts
 getCanFilter: () => boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:205](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L205)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:205](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L205)
 
-Checks whether this accessor column can currently be column-filtered.
+このアクセサー列で、列フィルタリングが現在できるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
 ***
 
-### getFilterFn
+### getFilterFn {#getfilterfn}
 
 ```ts
 getFilterFn: () => FilterFn<TFeatures, TData>;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:209](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L209)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:209](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L209)
 
-Returns the filter function (either user-defined or automatic, depending on configuration) for the columnId specified.
+指定した columnId のフィルター関数を返します（設定によって、利用者が定義したものか自動で決まったもののどちらかです）。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 [`FilterFn`](FilterFn.md)\<`TFeatures`, `TData`\>
 
 ***
 
-### getFilterIndex
+### getFilterIndex {#getfilterindex}
 
 ```ts
 getFilterIndex: () => number;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:213](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L213)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:213](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L213)
 
-Returns the index (including `-1`) of the column filter in the table's `state.columnFilters` array.
+テーブルの `state.columnFilters` 配列における、この列のフィルターのインデックスを返します（`-1` もありえます）。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `number`
 
 ***
 
-### getFilterValue
+### getFilterValue {#getfiltervalue}
 
 ```ts
 getFilterValue: () => unknown;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:217](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L217)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:217](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L217)
 
-Reads this column's current value from `state.columnFilters`.
+`state.columnFilters` から、この列の現在の値を読み取ります。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `unknown`
 
 ***
 
-### getIsFiltered
+### getIsFiltered {#getisfiltered}
 
 ```ts
 getIsFiltered: () => boolean;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:221](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L221)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:221](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L221)
 
-Checks whether this column has an active entry in `state.columnFilters`.
+この列が `state.columnFilters` に有効なエントリーを持つかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 `boolean`
 
 ***
 
-### setFilterValue
+### setFilterValue {#setfiltervalue}
 
 ```ts
 setFilterValue: (updater) => void;
 ```
 
-Defined in: [features/column-filtering/columnFilteringFeature.types.ts:228](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L228)
+定義元: [features/column-filtering/columnFilteringFeature.types.ts:228](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/columnFilteringFeature.types.ts#L228)
 
-Adds, updates, or removes this column's filter value.
+この列のフィルター値を追加、更新、または削除します。
 
-Updater functions receive the previous filter value. Values that satisfy
-the filter function's `autoRemove` rule are removed from filter state.
+アップデーター関数は前のフィルター値を受け取ります。フィルター関数の `autoRemove` の条件を満たす値は、フィルターの状態から削除されます。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### updater
+##### updater {#updater}
 
 `any`
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `void`

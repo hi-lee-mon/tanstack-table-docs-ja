@@ -3,14 +3,14 @@ id: TableState_RowPagination
 title: TableState_RowPagination
 ---
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:14](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L14)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:14](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L14)
 
-## Properties
+## プロパティ {#properties}
 
-### pagination
+### pagination {#pagination}
 
 ```ts
 pagination: PaginationState;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.types.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L15)
+定義元: [features/row-pagination/rowPaginationFeature.types.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.types.ts#L15)

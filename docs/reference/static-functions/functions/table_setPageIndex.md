@@ -7,38 +7,37 @@ title: table_setPageIndex
 function table_setPageIndex<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:117](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L117)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:117](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L117)
 
-Updates `pagination.pageIndex` and clamps it to the known page range.
+`pagination.pageIndex` を更新し、わかっているページの範囲に収めます。
 
-Unknown page counts (`undefined` or `-1`) allow any non-negative page index.
-Known page counts clamp the index between `0` and `pageCount - 1`.
+ページ数が不明（`undefined` か `-1`）なら、0以上のどのページ番号でも指定できます。ページ数がわかっていれば、インデックスを `0` から `pageCount - 1` の間に収めます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<`number`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setPageIndex(table, (old) => old)

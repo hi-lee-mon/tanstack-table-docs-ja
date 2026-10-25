@@ -7,7 +7,6 @@ title: aggregationFn_sum
 const aggregationFn_sum: AggregationFnDef<any, any, unknown, number>;
 ```
 
-Defined in: [features/row-aggregation/aggregationFns.ts:52](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L52)
+定義元: [features/row-aggregation/aggregationFns.ts:52](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L52)
 
-Sums numeric selected-row values. Non-number values contribute zero. As in
-the previous API, `NaN` is a number and therefore propagates through the sum.
+選ばれた行の数値の値を合計します。数値でない値は 0 として扱います。以前の API と同じく、`NaN` は数値なので、合計にもそのまま伝わります。

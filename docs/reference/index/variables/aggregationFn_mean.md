@@ -7,7 +7,6 @@ title: aggregationFn_mean
 const aggregationFn_mean: AggregationFnDef<any, any, unknown, number | undefined>;
 ```
 
-Defined in: [features/row-aggregation/aggregationFns.ts:253](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L253)
+定義元: [features/row-aggregation/aggregationFns.ts:253](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/aggregationFns.ts#L253)
 
-Averages number and number-like row values. Nullish and non-numeric values
-are ignored; other values retain the legacy unary-plus coercion behavior.
+数値と数値に変換できる行の値を平均します。null や undefined の値と数値でない値は無視します。それ以外の値には、従来どおり単項プラスによる型変換を行います。

@@ -7,34 +7,33 @@ title: table_getGroupedRowModel
 function table_getGroupedRowModel<TFeatures, TData>(table): RowModel<TFeatures, TData>;
 ```
 
-Defined in: [core/row-models/coreRowModelsFeature.utils.ts:105](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L105)
+定義元: [core/row-models/coreRowModelsFeature.utils.ts:105](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/row-models/coreRowModelsFeature.utils.ts#L105)
 
-Resolves the row model after grouping has produced grouped rows.
+グループ化でグループ行ができたあとの行モデルを求めます。
 
-When `manualGrouping` is enabled, or no grouped row-model factory was
-registered, this returns the pre-grouped row model unchanged.
+`manualGrouping` が有効な場合や、グループ化済み行モデルのファクトリーが登録されていない場合は、グループ化前の行モデルをそのまま返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`RowModel`](../../index/interfaces/RowModel.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const groupedRows = table_getGroupedRowModel(table)

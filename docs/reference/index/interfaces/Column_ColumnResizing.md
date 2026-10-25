@@ -3,36 +3,36 @@ id: Column_ColumnResizing
 title: Column_ColumnResizing
 ---
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L68)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:68](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L68)
 
-## Properties
+## プロパティ {#properties}
 
-### getCanResize
+### getCanResize {#getcanresize}
 
 ```ts
 getCanResize: () => boolean;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L72)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L72)
 
-Checks whether this column can start a resize interaction.
+この列でリサイズ操作を始められるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### getIsResizing
+### getIsResizing {#getisresizing}
 
 ```ts
 getIsResizing: () => boolean;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L76)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L76)
 
-Checks whether this column is the active resize target.
+この列が現在リサイズ中の対象かどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`

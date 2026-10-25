@@ -3,94 +3,94 @@ id: Row_FeatureMap
 title: Row_FeatureMap
 ---
 
-Defined in: [types/Row.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L18)
+定義元: [types/Row.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L18)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### columnFilteringFeature
+### columnFilteringFeature {#columnfilteringfeature}
 
 ```ts
 columnFilteringFeature: Row_ColumnFiltering<TFeatures, TData>;
 ```
 
-Defined in: [types/Row.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L23)
+定義元: [types/Row.ts:23](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L23)
 
 ***
 
-### columnGroupingFeature
+### columnGroupingFeature {#columngroupingfeature}
 
 ```ts
 columnGroupingFeature: Row_ColumnGrouping;
 ```
 
-Defined in: [types/Row.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L24)
+定義元: [types/Row.ts:24](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L24)
 
 ***
 
-### columnPinningFeature
+### columnPinningFeature {#columnpinningfeature}
 
 ```ts
 columnPinningFeature: Row_ColumnPinning<TFeatures, TData>;
 ```
 
-Defined in: [types/Row.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L25)
+定義元: [types/Row.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L25)
 
 ***
 
-### columnVisibilityFeature
+### columnVisibilityFeature {#columnvisibilityfeature}
 
 ```ts
 columnVisibilityFeature: Row_ColumnVisibility<TFeatures, TData>;
 ```
 
-Defined in: [types/Row.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L26)
+定義元: [types/Row.ts:26](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L26)
 
 ***
 
-### rowAggregationFeature
+### rowAggregationFeature {#rowaggregationfeature}
 
 ```ts
 rowAggregationFeature: Row_RowAggregation;
 ```
 
-Defined in: [types/Row.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L22)
+定義元: [types/Row.ts:22](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L22)
 
 ***
 
-### rowExpandingFeature
+### rowExpandingFeature {#rowexpandingfeature}
 
 ```ts
 rowExpandingFeature: Row_RowExpanding;
 ```
 
-Defined in: [types/Row.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L27)
+定義元: [types/Row.ts:27](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L27)
 
 ***
 
-### rowPinningFeature
+### rowPinningFeature {#rowpinningfeature}
 
 ```ts
 rowPinningFeature: Row_RowPinning;
 ```
 
-Defined in: [types/Row.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L28)
+定義元: [types/Row.ts:28](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L28)
 
 ***
 
-### rowSelectionFeature
+### rowSelectionFeature {#rowselectionfeature}
 
 ```ts
 rowSelectionFeature: Row_RowSelection;
 ```
 
-Defined in: [types/Row.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L29)
+定義元: [types/Row.ts:29](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/Row.ts#L29)

@@ -3,18 +3,16 @@ id: TableOptions_ColumnSizing
 title: TableOptions_ColumnSizing
 ---
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L48)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L48)
 
-## Properties
+## プロパティ {#properties}
 
-### onColumnSizingChange?
+### onColumnSizingChange? {#oncolumnsizingchange}
 
 ```ts
 optional onColumnSizingChange?: OnChangeFn<ColumnSizingState>;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L54)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L54)
 
-Called with an updater when committed column sizing state changes. Pair
-this with `state.columnSizing` when using external state; external atoms
-can own the slice without this callback.
+確定した列幅の状態が変わったときに、アップデーターを渡して呼び出されます。外部の状態を使う場合は `state.columnSizing` と組み合わせてください。外部のアトムなら、このコールバックなしでスライスを持てます。

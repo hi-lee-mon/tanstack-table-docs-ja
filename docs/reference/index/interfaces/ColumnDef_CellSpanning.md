@@ -3,54 +3,49 @@ id: ColumnDef_CellSpanning
 title: ColumnDef_CellSpanning
 ---
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:78](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L78)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:78](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L78)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### enableCellSpanning?
+### enableCellSpanning? {#enablecellspanning}
 
 ```ts
 optional enableCellSpanning?: boolean;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:87](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L87)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:87](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L87)
 
-Turns this column off for cell spanning even when the table allows it.
-Defaults to `true`.
+テーブルがセル結合を許可していても、この列ではセル結合を無効にします。既定値は `true` です。
 
 ***
 
-### spanColumns?
+### spanColumns? {#spancolumns}
 
 ```ts
 optional spanColumns?: number | ((context) => number);
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L102)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:102](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L102)
 
-Makes this column's cell span the given number of columns per row,
-starting at itself and counted in the order columns actually render.
+この列のセルを、行ごとに指定した数の列にわたって結合します。結合は自分の列から始まり、実際に描画される列の順で数えます。
 
-Return `1` or less for no span. Larger values are clamped to the end of
-the cell's pinned region, so a span can never cross the start-pinned,
-center, or end-pinned boundary; pass `Infinity` for "the rest of my
-region". Hidden columns are not counted.
+`1` 以下を返すと結合しません。大きすぎる値は、そのセルが属する固定領域の端までに切り詰められるので、結合が先頭固定・中央・末尾固定の境界をまたぐことはありません。「自分の領域の残りすべて」にしたい場合は `Infinity` を渡してください。非表示の列は数えません。
 
-#### Example
+#### 例 {#example}
 
 ```ts
 { accessorKey: 'label', spanColumns: ({ row }) => row.original.isSummary ? Infinity : 1 }
@@ -58,32 +53,25 @@ region". Hidden columns are not counted.
 
 ***
 
-### spanRows?
+### spanRows? {#spanrows}
 
 ```ts
 optional spanRows?: boolean | ((context) => boolean);
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:127](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L127)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:127](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L127)
 
-Merges adjacent rows in this column into a single vertically spanning
-cell.
+この列で隣り合う行を、縦に結合した1つのセルにまとめます。
 
-`true` merges rows whose values for this column are the same value
-(`Object.is`). Nullish values never merge under the default comparison.
+`true` を指定すると、この列の値が同じ（`Object.is`）行どうしを結合します。既定の比較では、null や undefined の値は結合されません。
 
-A predicate replaces the comparison entirely and decides whether `row`
-joins the run anchored at `anchorRow`; it may merge nullish values. It is
-called once per candidate row each time the span index rebuilds, and each
-call allocates one context object, so keep it cheap.
+述語関数を渡すと比較処理を丸ごと置き換え、`row` を `anchorRow` から始まる結合に加えるかどうかを決めます。null や undefined の値を結合してもかまいません。
+この関数は、結合インデックスを作り直すたびに候補の行ごとに1回呼ばれ、呼び出しごとにコンテキストのオブジェクトを1つ作ります。処理は軽くしてください。
 
-Spans are always recomputed from the rows that are actually rendered, so
-sorting, filtering, and paging only change which rows are adjacent. Runs
-never cross a page boundary, a pinned-row section boundary, a change of
-position in the row tree, or a grouped row. Ignored while this column is
-grouped.
+結合は常に実際に描画される行から計算し直されるので、ソート・フィルタリング・ページ送りで変わるのは、どの行が隣り合うかだけです。
+結合は、ページの境界、固定された行のセクションの境界、行ツリー内での位置の変化、グループ行をまたぎません。この列がグループ化されている間は無視されます。
 
-#### Example
+#### 例 {#example-1}
 
 ```ts
 { accessorKey: 'department', spanRows: true }

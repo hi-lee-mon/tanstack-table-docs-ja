@@ -3,92 +3,90 @@ id: TableOptions_GlobalFiltering
 title: TableOptions_GlobalFiltering
 ---
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L35)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:35](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L35)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### enableGlobalFilter?
+### enableGlobalFilter? {#enableglobalfilter}
 
 ```ts
 optional enableGlobalFilter?: boolean;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L42)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:42](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L42)
 
-Enables global filtering across columns that allow it.
+許可している列を対象に、グローバルフィルタリングを有効にします。
 
 ***
 
-### getColumnCanGlobalFilter?
+### getColumnCanGlobalFilter? {#getcolumncanglobalfilter}
 
 ```ts
 optional getColumnCanGlobalFilter?: <TFeatures, TData, TValue>(column) => boolean;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L47)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:47](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L47)
 
-If provided, this function will be called with the column and should return `true` or `false` to indicate whether this column should be used for global filtering.
-This is useful if the column can contain data that is not `string` or `number` (i.e. `undefined`).
+指定すると、この関数が列を引数にして呼ばれます。その列をグローバルフィルタリングに使うかどうかを `true` か `false` で返してください。
+列に `string` や `number` 以外のデータ（`undefined` など）が入りうる場合に便利です。
 
-#### Type Parameters
+#### 型パラメーター {#type-parameters-1}
 
-##### TFeatures
+##### TFeatures {#tfeatures-1}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-##### TData
+##### TData {#tdata-1}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-##### TValue
+##### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### column
+##### column {#column}
 
 [`Column`](../type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### globalFilterFn?
+### globalFilterFn? {#globalfilterfn}
 
 ```ts
 optional globalFilterFn?: FilterFnOption<TFeatures, TData>;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L60)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:60](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L60)
 
-The filter function to use for global filtering.
-- A `string` referencing a built-in filter function
-- A `string` that references a custom filter functions provided via the `tableOptions.filterFns` option
-- A custom filter function
+グローバルフィルタリングに使うフィルター関数です。
+- 組み込みのフィルター関数を指す `string`
+- `tableOptions.filterFns` オプションで渡したカスタムのフィルター関数を指す `string`
+- カスタムのフィルター関数
 
 ***
 
-### onGlobalFilterChange?
+### onGlobalFilterChange? {#onglobalfilterchange}
 
 ```ts
 optional onGlobalFilterChange?: OnChangeFn<any>;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.types.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L66)
+定義元: [features/global-filtering/globalFilteringFeature.types.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.types.ts#L66)
 
-Called with an updater when global filter state changes. Pair this with
-`state.globalFilter` when using external state; external atoms can own the
-slice without this callback.
+グローバルフィルターの状態が変わったときに、アップデーターを渡して呼び出されます。外部の状態を使う場合は `state.globalFilter` と組み合わせてください。外部のアトムなら、このコールバックなしでスライスを持てます。

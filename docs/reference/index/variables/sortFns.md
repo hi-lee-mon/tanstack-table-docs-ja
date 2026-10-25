@@ -7,56 +7,51 @@ title: sortFns
 const sortFns: object;
 ```
 
-Defined in: [features/row-sorting/sortFns.ts:361](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/sortFns.ts#L361)
+定義元: [features/row-sorting/sortFns.ts:361](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/sortFns.ts#L361)
 
-The built-in sorting function registry.
+組み込みのソート関数のレジストリです。
 
-Registering this full object opts out of tree-shaking: every built-in
-sorting function ends up in your bundle. Prefer importing the `sortFn_*`
-functions you actually use and registering just those in the `sortFns`
-slot, or passing them directly to the `sortFn` column option.
+このオブジェクト全体を登録すると、ツリーシェイキングが効かなくなり、組み込みのソート関数がすべてバンドルに含まれます。
+実際に使う `sortFn_*` 関数を import してそれだけを `sortFns` スロットに登録するか、列オプションの `sortFn` に直接渡すことをおすすめします。
 
-## Type Declaration
+## 型宣言 {#type-declaration}
 
-### ~~alphanumeric~~
+### ~~alphanumeric~~ {#alphanumeric}
 
 ```ts
 alphanumeric: CreatedSortFn<any, any> = sortFn_alphanumeric;
 ```
 
-### ~~alphanumericCaseSensitive~~
+### ~~alphanumericCaseSensitive~~ {#alphanumericcasesensitive}
 
 ```ts
 alphanumericCaseSensitive: CreatedSortFn<any, any> = sortFn_alphanumericCaseSensitive;
 ```
 
-### ~~basic~~
+### ~~basic~~ {#basic}
 
 ```ts
 basic: CreatedSortFn<any, any> = sortFn_basic;
 ```
 
-### ~~datetime~~
+### ~~datetime~~ {#datetime}
 
 ```ts
 datetime: CreatedSortFn<any, any> = sortFn_datetime;
 ```
 
-### ~~text~~
+### ~~text~~ {#text}
 
 ```ts
 text: CreatedSortFn<any, any> = sortFn_text;
 ```
 
-### ~~textCaseSensitive~~
+### ~~textCaseSensitive~~ {#textcasesensitive}
 
 ```ts
 textCaseSensitive: CreatedSortFn<any, any> = sortFn_textCaseSensitive;
 ```
 
-## Deprecated
+## 非推奨 {#deprecated}
 
-Import individual `sortFn_*` functions instead for a smaller
-bundle. This export still works and is not going away in v9, but built-in
-name resolution (including `sortFn: 'auto'`) only finds functions you
-register yourself.
+バンドルを小さくするには、代わりに `sortFn_*` 関数を個別に import してください。このエクスポートは今も動き、v9 でなくなる予定もありません。ただし、組み込みの名前の解決（`sortFn: 'auto'` を含みます）で見つかるのは、自分で登録した関数だけです。

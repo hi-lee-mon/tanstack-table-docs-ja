@@ -7,38 +7,37 @@ title: column_getFirstSortDir
 function column_getFirstSortDir<TFeatures, TData, TValue>(column): "asc" | "desc";
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.utils.ts:368](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L368)
+定義元: [features/row-sorting/rowSortingFeature.utils.ts:368](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L368)
 
-Resolves the first direction used when this column begins sorting.
+この列のソートを始めるときに最初に使う向きを決めます。
 
-Column-level `sortDescFirst` wins, then table-level `sortDescFirst`, then the
-auto direction inferred from sampled values.
+列の `sortDescFirst`、テーブルの `sortDescFirst`、抜き出した値から推論した自動の向きの順に優先されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `"asc"` \| `"desc"`
 
-## Example
+## 例 {#example}
 
 ```ts
 const firstDirection = column_getFirstSortDir(column)

@@ -7,38 +7,37 @@ title: table_getIsSomeColumnsPinned
 function table_getIsSomeColumnsPinned<TFeatures, TData>(table, position?): boolean;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.utils.ts:343](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L343)
+定義元: [features/column-pinning/columnPinningFeature.utils.ts:343](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L343)
 
-Checks whether any columns are pinned.
+固定されている列があるかどうかを判定します。
 
-Omit `position` to check both sides, or pass `'start'`/`'end'` to inspect a
-single pinning region.
+`position` を省略すると両側を判定し、`'start'` / `'end'` を渡すと1つの固定領域だけを調べます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### position?
+### position? {#position}
 
 [`ColumnPinningPosition`](../../index/type-aliases/ColumnPinningPosition.md)
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const hasPinnedColumns = table_getIsSomeColumnsPinned(table)

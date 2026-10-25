@@ -3,30 +3,30 @@ id: Table_CellSpanning
 title: Table_CellSpanning
 ---
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:166](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L166)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:166](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L166)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getCellSpanIndex
+### getCellSpanIndex {#getcellspanindex}
 
 ```ts
 getCellSpanIndex: () => CellSpanIndex<TFeatures, TData>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.types.ts:173](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L173)
+定義元: [features/cell-spanning/cellSpanningFeature.types.ts:173](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.types.ts#L173)
 
-The memoized span index for the rows that are currently rendered.
+現在描画されている行についての、メモ化された結合インデックスです。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`CellSpanIndex`](CellSpanIndex.md)\<`TFeatures`, `TData`\>

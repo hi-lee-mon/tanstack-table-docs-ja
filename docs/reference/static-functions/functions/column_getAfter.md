@@ -7,43 +7,42 @@ title: column_getAfter
 function column_getAfter<TFeatures, TData, TValue>(column, position?): number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:208](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L208)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:208](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L208)
 
-Computes the offset from the end edge of a pinning region after this column.
+この列の後ろから、固定領域の末尾の端までのオフセットを計算します。
 
-The value is the sum of all following visible leaf column sizes in the
-requested region.
+値は、指定した領域で後ろに続く、表示中のすべての末端の列の幅の合計です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### position?
+### position? {#position}
 
   \| [`ColumnPinningPosition`](../../index/type-aliases/ColumnPinningPosition.md)
   \| `"center"`
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const endOffset = column_getAfter(column, 'end')

@@ -7,14 +7,14 @@ title: PrototypeAPIObject
 type PrototypeAPIObject<TDeps, TDepArgs> = Record<string, PrototypeAPI<TDeps, TDepArgs>>;
 ```
 
-Defined in: [utils.ts:572](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L572)
+定義元: [utils.ts:572](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L572)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TDeps
+### TDeps {#tdeps}
 
 `TDeps` *extends* `ReadonlyArray`\<`any`\>
 
-### TDepArgs
+### TDepArgs {#tdepargs}
 
 `TDepArgs`

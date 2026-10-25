@@ -3,138 +3,129 @@ id: Cell_CellSelection
 title: Cell_CellSelection
 ---
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:158](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L158)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:158](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L158)
 
-## Properties
+## プロパティ {#properties}
 
-### getCanSelect
+### getCanSelect {#getcanselect}
 
 ```ts
 getCanSelect: () => boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:162](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L162)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:162](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L162)
 
-Checks whether this cell can currently be selected.
+このセルが現在選択できるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### getIsFocused
+### getIsFocused {#getisfocused}
 
 ```ts
 getIsFocused: () => boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:167](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L167)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:167](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L167)
 
-Checks whether this cell is the active cell, i.e. the anchor of the most
-recent range.
+このセルがアクティブなセル、つまり直近の範囲のアンカーかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
 ***
 
-### getIsSelected
+### getIsSelected {#getisselected}
 
 ```ts
 getIsSelected: () => boolean;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:171](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L171)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:171](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L171)
 
-Checks whether this cell falls inside the final positive selection.
+このセルが最終的な選択（除外を差し引いた結果）の中にあるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `boolean`
 
 ***
 
-### getSelectionEdges
+### getSelectionEdges {#getselectionedges}
 
 ```ts
 getSelectionEdges: () => CellSelectionEdges;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:179](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L179)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:179](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L179)
 
-Returns which sides of this cell sit on the outer boundary of the
-selection, for rendering a spreadsheet-style outline without each cell
-inspecting its neighbours.
+このセルのどの辺が選択範囲の外周に接しているかを返します。各セルが隣のセルを調べなくても、スプレッドシートのような枠線を描画できます。
 
-All sides are `false` when the cell is not selected.
+セルが選択されていない場合は、どの辺も `false` です。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 [`CellSelectionEdges`](CellSelectionEdges.md)
 
 ***
 
-### getSelectionExtendHandler
+### getSelectionExtendHandler {#getselectionextendhandler}
 
 ```ts
 getSelectionExtendHandler: () => (event) => void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:187](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L187)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:187](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L187)
 
-Creates a handler that extends the active range to this cell while a drag
-is in progress. Bind it to `mouseenter`.
+ドラッグ中に、アクティブな範囲をこのセルまで広げるハンドラーを作成します。`mouseenter` に結び付けてください。
 
-The handler no-ops unless a drag is open, and skips redundant writes when
-the active range already focuses this cell.
+このハンドラーは、ドラッグ中でなければ何もしません。また、アクティブな範囲がすでにこのセルにフォーカスしている場合は、余計な書き込みを省きます。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 (`event`) => `void`
 
 ***
 
-### getSelectionStartHandler
+### getSelectionStartHandler {#getselectionstarthandler}
 
 ```ts
 getSelectionStartHandler: (contextDocument?) => (event) => void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:198](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L198)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:198](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L198)
 
-Creates a handler that begins a selection at this cell. Bind it to
-`mousedown`.
+このセルから選択を始めるハンドラーを作成します。`mousedown` に結び付けてください。
 
-Pass the original mouse event, or a framework event whose `nativeEvent` is
-that event, so modifier keys can be detected. The handler attaches its own
-document-level `mouseup` listener so a drag released outside the table
-still ends correctly; pass `contextDocument` when the table renders into
-another document, such as an iframe or popout window.
+修飾キーを検出できるよう、元のマウスイベントか、`nativeEvent` にそのイベントを持つフレームワークのイベントを渡してください。
+ハンドラーは document レベルの `mouseup` リスナーを自分で登録するので、テーブルの外でドラッグを離しても正しく終わります。iframe やポップアウトウィンドウのように別の document にテーブルを描画する場合は、`contextDocument` を渡してください。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### contextDocument?
+##### contextDocument? {#contextdocument}
 
 `Document`
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 (`event`) => `void`
 
 ***
 
-### getTabIndex
+### getTabIndex {#gettabindex}
 
 ```ts
 getTabIndex: () => number;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.types.ts:204](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L204)
+定義元: [features/cell-selection/cellSelectionFeature.types.ts:204](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.types.ts#L204)
 
-Returns `0` for the focused cell and `-1` otherwise, for roving tabindex.
+ローヴィング tabindex のために、フォーカスされたセルでは `0`、それ以外では `-1` を返します。
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `number`

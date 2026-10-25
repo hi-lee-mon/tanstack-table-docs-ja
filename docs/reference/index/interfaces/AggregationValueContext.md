@@ -3,68 +3,68 @@ id: AggregationValueContext
 title: AggregationValueContext
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:307](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L307)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:307](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L307)
 
-Values passed to a column-level aggregation-value provider.
+列レベルの集計値プロバイダーに渡される値です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:313](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L313)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:313](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L313)
 
-The column whose value was requested.
+値が要求された列です。
 
 ***
 
-### maxDepth
+### maxDepth {#maxdepth}
 
 ```ts
 maxDepth: number;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:315](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L315)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:315](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L315)
 
-Maximum relative sub-row depth used for the request.
+この要求で使う、サブ行の相対的な深さの最大値です。
 
 ***
 
-### rows?
+### rows? {#rows}
 
 ```ts
 optional rows?: readonly Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:317](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L317)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:317](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L317)
 
-Caller-provided rows, or `undefined` for the default row model.
+呼び出し側が渡した行です。既定の行モデルを使う場合は `undefined` です。
 
 ***
 
-### table
+### table {#table}
 
 ```ts
 table: Table<TFeatures, TData>;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:319](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L319)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:319](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L319)
 
-The table that owns the column.
+列を持つテーブルです。

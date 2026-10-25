@@ -7,33 +7,33 @@ title: row_getAllCellsByColumnId
 function row_getAllCellsByColumnId<TFeatures, TData>(row): Record<string, Cell<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:271](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L271)
+定義元: [core/rows/coreRowsFeature.utils.ts:271](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L271)
 
-Builds a lookup map of this row's cells keyed by column id.
+この行のセルを、列 ID をキーにして引けるマップにします。
 
-This is the static implementation behind `row.getAllCellsByColumnId()`.
+これは `row.getAllCellsByColumnId()` の裏にある静的な実装です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `Record`\<`string`, [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `unknown`\>\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const cellsById = row_getAllCellsByColumnId(row)

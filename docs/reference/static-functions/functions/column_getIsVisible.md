@@ -7,39 +7,37 @@ title: column_getIsVisible
 function column_getIsVisible<TFeatures, TData, TValue>(column): boolean;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.utils.ts:82](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L82)
+定義元: [features/column-visibility/columnVisibilityFeature.utils.ts:82](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.utils.ts#L82)
 
-Checks whether this column is visible.
+この列が表示されているかどうかを判定します。
 
-Leaf columns read `state.columnVisibility[column.id]`, where missing entries
-default to visible. Parent columns are visible when at least one child column
-is visible.
+末端の列は `state.columnVisibility[column.id]` を読み、エントリーがなければ表示されているものとして扱います。親の列は、子の列が少なくとも1つ表示されていれば表示されているものとします。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const visible = column_getIsVisible(column)

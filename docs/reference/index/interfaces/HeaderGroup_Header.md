@@ -3,52 +3,52 @@ id: HeaderGroup_Header
 title: HeaderGroup_Header
 ---
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:129](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L129)
+定義元: [core/headers/coreHeadersFeature.types.ts:129](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L129)
 
-## Extended by
+## 継承先 {#extended-by}
 
 - [`HeaderGroup_Core`](HeaderGroup_Core.md)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](../type-aliases/CellData.md) = [`CellData`](../type-aliases/CellData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### depth
+### depth {#depth}
 
 ```ts
 depth: number;
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:134](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L134)
+定義元: [core/headers/coreHeadersFeature.types.ts:134](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L134)
 
 ***
 
-### headers
+### headers {#headers}
 
 ```ts
 headers: Header<TFeatures, TData, TValue>[];
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L135)
+定義元: [core/headers/coreHeadersFeature.types.ts:135](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L135)
 
 ***
 
-### id
+### id {#id}
 
 ```ts
 id: string;
 ```
 
-Defined in: [core/headers/coreHeadersFeature.types.ts:136](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L136)
+定義元: [core/headers/coreHeadersFeature.types.ts:136](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.types.ts#L136)

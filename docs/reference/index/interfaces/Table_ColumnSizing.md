@@ -3,132 +3,130 @@ id: Table_ColumnSizing
 title: Table_ColumnSizing
 ---
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L62)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L62)
 
-## Properties
+## プロパティ {#properties}
 
-### getCenterTotalSize
+### getCenterTotalSize {#getcentertotalsize}
 
 ```ts
 getCenterTotalSize: () => number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L66)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:66](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L66)
 
-Sums the current sizes of visible center-region leaf columns.
+中央領域にある表示中の末端の列の、現在の幅を合計します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `number`
 
 ***
 
-### getColumnOffsets
+### getColumnOffsets {#getcolumnoffsets}
 
 ```ts
 getColumnOffsets: () => ColumnOffsetsByPosition;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L73)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:73](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L73)
 
-Returns memoized column offset maps (start and after offsets keyed by
-column id) for each pinning region plus the full visible leaf column list.
+メモ化された列のオフセットのマップ（列 ID をキーにした、先頭からと後ろからのオフセット）を、固定領域ごとと、表示中の末端の列全体について返します。
 
-Backs `column.getStart()` and `column.getAfter()` with O(1) lookups.
+`column.getStart()` と `column.getAfter()` が O(1) で引けるのは、これのおかげです。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`ColumnOffsetsByPosition`](ColumnOffsetsByPosition.md)
 
 ***
 
-### getEndTotalSize
+### getEndTotalSize {#getendtotalsize}
 
 ```ts
 getEndTotalSize: () => number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L81)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L81)
 
-Sums the current sizes of visible logical end-pinned leaf columns.
+論理的な末尾に固定された、表示中の末端の列の現在の幅を合計します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `number`
 
 ***
 
-### getStartTotalSize
+### getStartTotalSize {#getstarttotalsize}
 
 ```ts
 getStartTotalSize: () => number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:77](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L77)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:77](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L77)
 
-Sums the current sizes of visible logical start-pinned leaf columns.
+論理的な先頭に固定された、表示中の末端の列の現在の幅を合計します。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `number`
 
 ***
 
-### getTotalSize
+### getTotalSize {#gettotalsize}
 
 ```ts
 getTotalSize: () => number;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L85)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L85)
 
-Sums the current sizes of all visible leaf columns.
+表示中のすべての末端の列の、現在の幅を合計します。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `number`
 
 ***
 
-### resetColumnSizing
+### resetColumnSizing {#resetcolumnsizing}
 
 ```ts
 resetColumnSizing: (defaultState?) => void;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:90](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L90)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:90](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L90)
 
-Resets column sizing to `initialState.columnSizing`. Pass `true` to reset
-to the feature default of `{}`.
+列幅を `initialState.columnSizing` に戻します。`true` を渡すと、機能の既定値 `{}` に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 `void`
 
 ***
 
-### setColumnSizing
+### setColumnSizing {#setcolumnsizing}
 
 ```ts
 setColumnSizing: (updater) => void;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.types.ts:94](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L94)
+定義元: [features/column-sizing/columnSizingFeature.types.ts:94](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.types.ts#L94)
 
-Updates committed column sizing state with a next map or updater function.
+次のマップかアップデーター関数で、確定した列幅の状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`ColumnSizingState`](../type-aliases/ColumnSizingState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 `void`

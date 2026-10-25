@@ -7,34 +7,33 @@ title: table_getIsAllPageRowsSelected
 function table_getIsAllPageRowsSelected<TFeatures, TData>(table): boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.utils.ts:398](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L398)
+定義元: [features/row-selection/rowSelectionFeature.utils.ts:398](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L398)
 
-Checks whether every selectable row on the current page is selected.
+現在のページにある選択可能な行が、すべて選択されているかどうかを判定します。
 
-Non-selectable rows are ignored for this calculation, as are sub-rows whose
-ancestors block descent via `enableSubRowSelection`.
+この計算では、選択できない行と、祖先が `enableSubRowSelection` で子孫への連鎖を禁止しているサブ行を無視します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const allPageRowsSelected = table_getIsAllPageRowsSelected(table)

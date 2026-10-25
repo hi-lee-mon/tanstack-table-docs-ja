@@ -7,4 +7,4 @@ title: BuiltInFilterFn
 type BuiltInFilterFn = keyof typeof filterFns;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:468](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L468)
+定義元: [features/column-filtering/filterFns.ts:468](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L468)

@@ -11,46 +11,45 @@ function row_pin<TFeatures, TData>(
    includeParentRows?): void;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.utils.ts:287](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L287)
+定義元: [features/row-pinning/rowPinningFeature.utils.ts:287](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.utils.ts#L287)
 
-Pins or unpins a row.
+行を固定、または固定を解除します。
 
-Optional flags let callers include parent rows or leaf rows when updating
-the row pinning state.
+省略可能なフラグを使うと、行の固定の状態を更新するときに、親の行や末端の行も含められます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-### position
+### position {#position}
 
 [`RowPinningPosition`](../../index/type-aliases/RowPinningPosition.md)
 
-### includeLeafRows?
+### includeLeafRows? {#includeleafrows}
 
 `boolean`
 
-### includeParentRows?
+### includeParentRows? {#includeparentrows}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 row_pin(row, 'top')

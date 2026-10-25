@@ -3,14 +3,14 @@ id: TableState_ColumnVisibility
 title: TableState_ColumnVisibility
 ---
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L8)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:8](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L8)
 
-## Properties
+## プロパティ {#properties}
 
-### columnVisibility
+### columnVisibility {#columnvisibility}
 
 ```ts
 columnVisibility: ColumnVisibilityState;
 ```
 
-Defined in: [features/column-visibility/columnVisibilityFeature.types.ts:9](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L9)
+定義元: [features/column-visibility/columnVisibilityFeature.types.ts:9](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-visibility/columnVisibilityFeature.types.ts#L9)

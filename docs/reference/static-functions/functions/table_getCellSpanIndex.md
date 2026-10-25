@@ -7,35 +7,33 @@ title: table_getCellSpanIndex
 function table_getCellSpanIndex<TFeatures, TData>(table): CellSpanIndex<TFeatures, TData>;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.utils.ts:152](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L152)
+定義元: [features/cell-spanning/cellSpanningFeature.utils.ts:152](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L152)
 
-Builds the table's cell span index for the rows that are currently rendered.
+現在描画されている行について、テーブルのセル結合インデックスを作ります。
 
-Spans are always derived from scratch from the final row model, so sorting,
-filtering, pagination, expansion, and row pinning only change adjacency and
-the index follows. Nothing is persisted and there is nothing to configure.
+結合は常に最終的な行モデルから一から導き出されるので、ソート、フィルタリング、ページネーション、展開、行の固定で変わるのは隣り合う関係だけで、インデックスはそれに従います。保存するものも、設定するものもありません。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`CellSpanIndex`](../../index/interfaces/CellSpanIndex.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const spanIndex = table_getCellSpanIndex(table)

@@ -7,22 +7,22 @@ title: createFacetedUniqueValues
 function createFacetedUniqueValues<TFeatures, TData>(): (table, columnId) => () => Map<any, number>;
 ```
 
-Defined in: [features/column-faceting/createFacetedUniqueValues.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/createFacetedUniqueValues.ts#L17)
+定義元: [features/column-faceting/createFacetedUniqueValues.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/createFacetedUniqueValues.ts#L17)
 
-Creates a memoized faceted unique values helper for faceted filtering.
+ファセットによるフィルタリング向けに、メモ化されたファセットの一意な値のヘルパーを作成します。
 
-The returned function derives facet data from the table row model and relevant filter state so filter UIs can display available values.
+返される関数は、テーブルの行モデルと関係するフィルターの状態からファセットのデータを導き出します。これにより、フィルターの UI で選択可能な値を表示できます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-## Returns
+## 戻り値 {#returns}
 
 (`table`, `columnId`) => () => `Map`\<`any`, `number`\>

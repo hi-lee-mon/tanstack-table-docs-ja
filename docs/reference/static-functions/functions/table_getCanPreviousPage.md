@@ -7,34 +7,33 @@ title: table_getCanPreviousPage
 function table_getCanPreviousPage<TFeatures, TData>(table): boolean;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:251](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L251)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:251](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L251)
 
-Checks whether the current page index can move backward.
+現在のページ番号を前に戻せるかどうかを判定します。
 
-The first page is page index `0`, so only positive page indexes can navigate
-to a previous page.
+最初のページはページ番号 `0` なので、前のページに移動できるのは、ページ番号が正の場合だけです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canGoBack = table_getCanPreviousPage(table)

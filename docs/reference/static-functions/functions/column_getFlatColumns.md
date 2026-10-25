@@ -7,38 +7,37 @@ title: column_getFlatColumns
 function column_getFlatColumns<TFeatures, TData, TValue>(column): Column<TFeatures, TData, TValue>[];
 ```
 
-Defined in: [core/columns/coreColumnsFeature.utils.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L25)
+定義元: [core/columns/coreColumnsFeature.utils.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L25)
 
-Flattens this column and every descendant column into a single array.
+この列と、その子孫の列すべてを1つの配列に平坦化します。
 
-Group columns appear before their child columns, which matches the normalized
-column hierarchy produced during table construction.
+グループ列は、その子の列より前に来ます。これは、テーブルを作るときに作られる正規化された列の階層と同じ順です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column`](../../index/type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`Column`](../../index/type-aliases/Column.md)\<`TFeatures`, `TData`, `TValue`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const flatColumns = column_getFlatColumns(column)

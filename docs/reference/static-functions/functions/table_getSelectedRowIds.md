@@ -7,31 +7,31 @@ title: table_getSelectedRowIds
 function table_getSelectedRowIds<TFeatures, TData>(table): string[];
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.utils.ts:339](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L339)
+定義元: [features/row-selection/rowSelectionFeature.utils.ts:339](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L339)
 
-Returns the ids of all selected rows.
+選択されているすべての行の ID を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `string`[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const selectedRowIds = table_getSelectedRowIds(table)

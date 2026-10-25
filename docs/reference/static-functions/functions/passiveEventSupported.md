@@ -7,18 +7,17 @@ title: passiveEventSupported
 function passiveEventSupported(): boolean;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.utils.ts:397](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L397)
+定義元: [features/column-resizing/columnResizingFeature.utils.ts:397](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.utils.ts#L397)
 
-Detects whether the current environment supports passive event listeners.
+現在の環境がパッシブなイベントリスナーに対応しているかどうかを判定します。
 
-Column resizing uses this to register pointer and touch listeners with
-`passive: false` only when the environment understands passive options.
+列幅の変更ではこれを使い、環境がパッシブのオプションを理解する場合にだけ、`passive: false` を付けてポインターやタッチのリスナーを登録します。
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canUsePassiveListeners = passiveEventSupported()

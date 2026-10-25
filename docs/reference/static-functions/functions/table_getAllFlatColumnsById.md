@@ -7,34 +7,33 @@ title: table_getAllFlatColumnsById
 function table_getAllFlatColumnsById<TFeatures, TData>(table): Record<string, Column<TFeatures, TData, unknown>>;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.utils.ts:191](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L191)
+定義元: [core/columns/coreColumnsFeature.utils.ts:191](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L191)
 
-Builds an id lookup for every flat column in the table.
+テーブルの平坦化したすべての列について、ID で引けるマップを作ります。
 
-Group columns and leaf columns are included. Later columns with the same id
-replace earlier entries.
+グループ列と末端の列を含みます。同じ ID の列があれば、後ろの列が前のエントリーを置き換えます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `Record`\<`string`, [`Column`](../../index/type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const columnsById = table_getAllFlatColumnsById(table)

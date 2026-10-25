@@ -3,50 +3,50 @@ id: Table_ColumnResizing
 title: Table_ColumnResizing
 ---
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L48)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:48](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L48)
 
-## Properties
+## プロパティ {#properties}
 
-### resetHeaderSizeInfo
+### resetHeaderSizeInfo {#resetheadersizeinfo}
 
 ```ts
 resetHeaderSizeInfo: (defaultState?) => void;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L54)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L54)
 
-Resets `columnResizing` to `initialState.columnResizing`.
+`columnResizing` を `initialState.columnResizing` に戻します。
 
-Pass `true` to ignore initial state and reset to the no-drag default state.
+`true` を渡すと、初期状態を無視して、ドラッグしていない既定の状態に戻します。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `void`
 
 ***
 
-### setColumnResizing
+### setColumnResizing {#setcolumnresizing}
 
 ```ts
 setColumnResizing: (updater) => void;
 ```
 
-Defined in: [features/column-resizing/columnResizingFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L58)
+定義元: [features/column-resizing/columnResizingFeature.types.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-resizing/columnResizingFeature.types.ts#L58)
 
-Updates transient resize interaction state with a next state or updater function.
+次の状態かアップデーター関数で、一時的なリサイズ操作の状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`columnResizingState`](columnResizingState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `void`

@@ -10,18 +10,18 @@ type ColumnDef<TFeatures, TData, TValue> =
 | AccessorColumnDef<TFeatures, TData, TValue>;
 ```
 
-Defined in: [types/ColumnDef.ts:248](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L248)
+定義元: [types/ColumnDef.ts:248](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/ColumnDef.ts#L248)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* [`CellData`](CellData.md) = [`CellData`](CellData.md)

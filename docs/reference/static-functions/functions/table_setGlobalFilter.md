@@ -7,38 +7,37 @@ title: table_setGlobalFilter
 function table_setGlobalFilter<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/global-filtering/globalFilteringFeature.utils.ts:99](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.utils.ts#L99)
+定義元: [features/global-filtering/globalFilteringFeature.utils.ts:99](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/global-filtering/globalFilteringFeature.utils.ts#L99)
 
-Routes a global filter updater through the table's global filter handler.
+グローバルフィルターのアップデーターを、テーブルのグローバルフィルターのハンドラーに通します。
 
-The updater may be a next value or a function of the previous value, matching
-the instance `table.setGlobalFilter` behavior.
+アップデーターには、次の値か、前の値を受け取る関数を指定できます。インスタンスの `table.setGlobalFilter` と同じ動作です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 `any`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setGlobalFilter(table, 'search text')

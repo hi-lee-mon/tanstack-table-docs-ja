@@ -10,47 +10,45 @@ function column_toggleSorting<TFeatures, TData, TValue>(
    multi?): void;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.utils.ts:254](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L254)
+定義元: [features/row-sorting/rowSortingFeature.utils.ts:254](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L254)
 
-Applies the next sorting state for this column.
+この列について、次のソートの状態を適用します。
 
-The toggle can add, replace, flip, or remove this column's sort entry. Multi
-sorting respects `enableMultiSort`, `enableMultiRemove`,
-`maxMultiSortColCount`, and the `multi` argument.
+切り替えによって、この列のソートのエントリーが追加、置き換え、反転、削除のいずれかになります。複数列ソートは、`enableMultiSort`、`enableMultiRemove`、`maxMultiSortColCount`、引数の `multi` に従います。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### desc?
+### desc? {#desc}
 
 `boolean`
 
-### multi?
+### multi? {#multi}
 
 `boolean`
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 column_toggleSorting(column, undefined, true)

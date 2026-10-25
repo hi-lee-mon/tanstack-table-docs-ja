@@ -7,39 +7,37 @@ title: column_getAutoSortFn
 function column_getAutoSortFn<TFeatures, TData, TValue>(column): SortFn<TFeatures, TData>;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.utils.ts:110](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L110)
+定義元: [features/row-sorting/rowSortingFeature.utils.ts:110](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.utils.ts#L110)
 
-Chooses a built-in sorting function from sampled filtered row values.
+フィルタリング後の行から抜き出した値をもとに、組み込みのソート関数を選びます。
 
-Date-like values use `datetime`, mixed text/numeric strings use
-`alphanumeric`, plain strings use `text`, and unknown values fall back to
-`basic`.
+日付のような値には `datetime`、テキストと数値が混ざった文字列には `alphanumeric`、ふつうの文字列には `text` を使い、不明な値には `basic` を使います。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`SortFn`](../../index/interfaces/SortFn.md)\<`TFeatures`, `TData`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const sortFn = column_getAutoSortFn(column)

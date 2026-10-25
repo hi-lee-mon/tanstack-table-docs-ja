@@ -7,35 +7,35 @@ title: cell_getTabIndex
 function cell_getTabIndex<TFeatures, TData, TValue>(cell): number;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:605](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L605)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:605](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L605)
 
-Returns `0` for the focused cell and `-1` otherwise, for roving tabindex.
+ローヴィング tabindex のために、フォーカスされたセルでは `0`、それ以外では `-1` を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const tabIndex = cell_getTabIndex(cell)

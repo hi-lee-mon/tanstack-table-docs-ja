@@ -7,35 +7,35 @@ title: table_extendCellSelection
 function table_extendCellSelection<TFeatures, TData>(table, direction): void;
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:1044](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1044)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:1044](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1044)
 
-Extends the active range one step in a direction, keeping its anchor fixed.
+アンカーを固定したまま、アクティブな範囲を指定した方向に1つ広げます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### direction
+### direction {#direction}
 
 [`CellSelectionDirection`](../../index/type-aliases/CellSelectionDirection.md)
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_extendCellSelection(table, 'right')

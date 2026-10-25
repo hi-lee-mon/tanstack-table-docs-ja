@@ -7,22 +7,22 @@ title: createPaginatedRowModel
 function createPaginatedRowModel<TFeatures, TData>(): (table) => () => RowModel<TFeatures, TData>;
 ```
 
-Defined in: [features/row-pagination/createPaginatedRowModel.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/createPaginatedRowModel.ts#L15)
+定義元: [features/row-pagination/createPaginatedRowModel.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/createPaginatedRowModel.ts#L15)
 
-Creates a memoized paginated row model factory.
+メモ化されたページ分割済み行モデルのファクトリーを作成します。
 
-The factory reads the relevant table state atoms and options, then returns a row model function used by the table row-model pipeline.
+ファクトリーは関係するテーブルの状態のアトムとオプションを読み取り、テーブルの行モデルのパイプラインで使う行モデル関数を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-## Returns
+## 戻り値 {#returns}
 
 (`table`) => () => [`RowModel`](../interfaces/RowModel.md)\<`TFeatures`, `TData`\>

@@ -7,38 +7,37 @@ title: table_setRowSelection
 function table_setRowSelection<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.utils.ts:46](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L46)
+定義元: [features/row-selection/rowSelectionFeature.utils.ts:46](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.utils.ts#L46)
 
-Routes a row selection updater through the table's selection change handler.
+行選択のアップデーターを、テーブルの選択の変更ハンドラーに通します。
 
-The updater may be a next selection map or a function of the previous map,
-matching the instance `table.setRowSelection` behavior.
+アップデーターには、次の選択のマップか、前のマップを受け取る関数を指定できます。インスタンスの `table.setRowSelection` と同じ動作です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`RowSelectionState`](../../index/type-aliases/RowSelectionState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setRowSelection(table, (old) => ({ ...old, [rowId]: true }))

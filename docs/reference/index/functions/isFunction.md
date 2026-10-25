@@ -7,22 +7,22 @@ title: isFunction
 function isFunction<T>(d): d is T;
 ```
 
-Defined in: [utils.ts:255](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L255)
+定義元: [utils.ts:255](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L255)
 
-Returns whether a value is a function.
+値が関数かどうかを返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### T
+### T {#t}
 
 `T` *extends* `AnyFunction`
 
-## Parameters
+## パラメーター {#parameters}
 
-### d
+### d {#d}
 
 `any`
 
-## Returns
+## 戻り値 {#returns}
 
 `d is T`

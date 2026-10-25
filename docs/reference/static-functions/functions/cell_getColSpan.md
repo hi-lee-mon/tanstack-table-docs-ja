@@ -7,38 +7,37 @@ title: cell_getColSpan
 function cell_getColSpan<TFeatures, TData, TValue>(cell): number;
 ```
 
-Defined in: [features/cell-spanning/cellSpanningFeature.utils.ts:395](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L395)
+定義元: [features/cell-spanning/cellSpanningFeature.utils.ts:395](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-spanning/cellSpanningFeature.utils.ts#L395)
 
-Returns how many columns this cell spans.
+このセルが結合する列の数を返します。
 
-`1` when it does not span, and `0` when another cell's column span covers
-it.
+結合しない場合は `1`、他のセルの列の結合に覆われている場合は `0` です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### cell
+### cell {#cell}
 
 [`Cell`](../../index/type-aliases/Cell.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Example
+## 例 {#example}
 
 ```ts
 const colSpan = cell_getColSpan(cell)

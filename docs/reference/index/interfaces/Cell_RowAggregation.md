@@ -3,22 +3,22 @@ id: Cell_RowAggregation
 title: Cell_RowAggregation
 ---
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:283](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L283)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:283](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L283)
 
-Cell instance APIs installed by `rowAggregationFeature`.
+`rowAggregationFeature` が追加する、セルのインスタンス API です。
 
-## Properties
+## プロパティ {#properties}
 
-### getIsAggregated
+### getIsAggregated {#getisaggregated}
 
 ```ts
 getIsAggregated: () => boolean;
 ```
 
-Defined in: [features/row-aggregation/rowAggregationFeature.types.ts:285](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L285)
+定義元: [features/row-aggregation/rowAggregationFeature.types.ts:285](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-aggregation/rowAggregationFeature.types.ts#L285)
 
-Whether this cell displays an aggregate on a synthetic grouped row.
+このセルが合成されたグループ行で集計値を表示しているかどうかです。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`

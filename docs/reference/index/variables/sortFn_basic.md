@@ -7,8 +7,8 @@ title: sortFn_basic
 const sortFn_basic: CreatedSortFn<any, any>;
 ```
 
-Defined in: [features/row-sorting/sortFns.ts:137](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/sortFns.ts#L137)
+定義元: [features/row-sorting/sortFns.ts:137](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/sortFns.ts#L137)
 
-Sorts rows with the built-in basic strategy.
+組み込みの基本の方式で行をソートします。
 
-This comparator returns ascending-order results; descending order is applied by the sorting row model.
+この比較関数は昇順の結果を返します。降順は、ソート済み行モデルが適用します。

@@ -7,40 +7,37 @@ title: tableFeatures
 function tableFeatures<TFeatures>(features): TFeatures;
 ```
 
-Defined in: [helpers/tableFeatures.ts:46](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableFeatures.ts#L46)
+定義元: [helpers/tableFeatures.ts:46](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableFeatures.ts#L46)
 
-A helper function to help define the features that are to be imported and applied to a table instance.
-Use this utility to make it easier to have the correct type inference for the features that are being imported.
-**Note:** It is recommended to use this utility statically outside of a component.
+テーブルインスタンスに import して適用する機能を定義するためのヘルパー関数です。
+このユーティリティを使うと、import する機能の型が正しく推論されやすくなります。
+**注意:** このユーティリティは、コンポーネントの外で静的に使うことをおすすめします。
 
-Alongside feature modules, this object carries everything else that is
-statically stitched into the table:
+このオブジェクトには、機能モジュールのほかに、テーブルへ静的に組み込むものがすべて入ります:
 
-- Row model factories (`sortedRowModel`, `filteredRowModel`, etc.)
-- Row model function registries (`sortFns`, `filterFns`, `aggregationFns`),
-  whose keys become the valid string values for `sortFn`, `filterFn`,
-  `globalFilterFn`, and `aggregationFn` with full inference
-- Type-only `tableMeta`/`columnMeta` slots for declaring per-table meta types
-  instead of using global declaration merging. The values are phantom
-  (ignored and stripped at runtime); only their types are used.
+- 行モデルのファクトリー（`sortedRowModel`、`filteredRowModel` など）
+- 行モデル関数のレジストリ（`sortFns`、`filterFns`、`aggregationFns`）。
+  ここに登録したキーが、`sortFn`、`filterFn`、`globalFilterFn`、`aggregationFn` に指定できる文字列になり、型も完全に推論されます
+- テーブルごとの meta の型を宣言するための型専用スロット `tableMeta` / `columnMeta`。
+  グローバルな宣言のマージを使わずに済みます。値は実体がなく（実行時には無視され、取り除かれます）、使われるのは型だけです。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### features
+### features {#features}
 
 `TFeatures` & [`ValidateFeatureSlots`](../type-aliases/ValidateFeatureSlots.md)\<`TFeatures`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `TFeatures`
 
-## Example
+## 例 {#example}
 
 ```
 import {

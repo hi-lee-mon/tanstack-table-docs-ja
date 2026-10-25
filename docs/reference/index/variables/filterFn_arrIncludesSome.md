@@ -7,6 +7,6 @@ title: filterFn_arrIncludesSome
 const filterFn_arrIncludesSome: CreatedFilterFn<any, any>;
 ```
 
-Defined in: [features/column-filtering/filterFns.ts:419](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L419)
+定義元: [features/column-filtering/filterFns.ts:419](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-filtering/filterFns.ts#L419)
 
-Keeps rows whose array column value includes at least one filter value.
+列の配列の値が、フィルター値の少なくとも1つを含む行を残します。

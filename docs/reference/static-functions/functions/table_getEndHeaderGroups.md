@@ -7,34 +7,33 @@ title: table_getEndHeaderGroups
 function table_getEndHeaderGroups<TFeatures, TData>(table): HeaderGroup<TFeatures, TData>[];
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.utils.ts:399](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L399)
+定義元: [features/column-pinning/columnPinningFeature.utils.ts:399](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L399)
 
-Builds header groups for visible columns pinned to the end region.
+末尾の領域に固定された表示中の列について、ヘッダーグループを作ります。
 
-The leaf columns are read in `state.columnPinning.end` order and then
-passed through the same header-group builder as the unpinned table.
+末端の列は `state.columnPinning.end` の順で読み取られ、固定されていないテーブルと同じヘッダーグループの組み立て処理に渡されます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`HeaderGroup`](../../index/interfaces/HeaderGroup.md)\<`TFeatures`, `TData`\>[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const headerGroups = table_getEndHeaderGroups(table)

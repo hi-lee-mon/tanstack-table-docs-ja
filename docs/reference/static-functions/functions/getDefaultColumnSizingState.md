@@ -7,18 +7,17 @@ title: getDefaultColumnSizingState
 function getDefaultColumnSizingState(): ColumnSizingState;
 ```
 
-Defined in: [features/column-sizing/columnSizingFeature.utils.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L31)
+定義元: [features/column-sizing/columnSizingFeature.utils.ts:31](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-sizing/columnSizingFeature.utils.ts#L31)
 
-Creates the default committed column sizing state.
+確定した列幅の、既定の状態を作ります。
 
-The feature default is an empty map, so columns fall back to their column def
-size or the built-in sizing defaults.
+機能の既定値は空のマップです。そのため、列の幅は列定義の幅か、組み込みの幅の既定値になります。
 
-## Returns
+## 戻り値 {#returns}
 
 [`ColumnSizingState`](../../index/type-aliases/ColumnSizingState.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const sizing = getDefaultColumnSizingState()

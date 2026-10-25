@@ -11,7 +11,7 @@
 | `docs/overview.md` ほか | 概要・インストール・Devtools・エージェントスキル | 日本語 |
 | [`docs/guide/`](docs/guide/) | コアガイド（列定義・行モデル・テーブルインスタンスなど14本） | 日本語 |
 | [`docs/framework/react/`](docs/framework/react/) | React 向けクイックスタート・ガイド27本・React API リファレンス | 日本語 |
-| [`docs/reference/`](docs/reference/) | コア API リファレンス（TypeDoc の自動生成。約700ファイル） | 英語のまま |
+| [`docs/reference/`](docs/reference/) | コア API リファレンス（TypeDoc の自動生成。約700ファイル） | 日本語 |
 
 出典は [TanStack/table](https://github.com/TanStack/table) `main` ブランチの `docs/` です。翻訳対象のコミットはサイトのフッターに表示しています。
 

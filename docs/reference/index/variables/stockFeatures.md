@@ -7,8 +7,8 @@ title: stockFeatures
 const stockFeatures: StockFeatures;
 ```
 
-Defined in: [features/stockFeatures.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L44)
+定義元: [features/stockFeatures.ts:44](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/stockFeatures.ts#L44)
 
-The complete set of stock optional table features.
+省略可能な標準のテーブル機能を、すべてまとめたものです。
 
-Use individual feature exports for tree-shaking, or this aggregate when a table should include every built-in feature.
+ツリーシェイキングのためには機能を個別にエクスポートしたものを使ってください。テーブルに組み込みの機能をすべて入れたい場合は、このまとめを使ってください。

@@ -3,62 +3,62 @@ id: PrototypeAPI
 title: PrototypeAPI
 ---
 
-Defined in: [utils.ts:567](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L567)
+定義元: [utils.ts:567](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L567)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### _TDeps
+### _TDeps {#_tdeps}
 
 `_TDeps` *extends* `ReadonlyArray`\<`any`\>
 
-### _TDepArgs
+### _TDepArgs {#_tdepargs}
 
 `_TDepArgs`
 
-## Properties
+## プロパティ {#properties}
 
-### fn
+### fn {#fn}
 
 ```ts
 fn: (self, ...args) => any;
 ```
 
-Defined in: [utils.ts:568](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L568)
+定義元: [utils.ts:568](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L568)
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### self
+##### self {#self}
 
 `any`
 
-##### args
+##### args {#args}
 
 ...`any`
 
-#### Returns
+#### 戻り値 {#returns}
 
 `any`
 
 ***
 
-### memoDeps?
+### memoDeps? {#memodeps}
 
 ```ts
 optional memoDeps?: (self, depArgs?) => any[] | undefined;
 ```
 
-Defined in: [utils.ts:569](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L569)
+定義元: [utils.ts:569](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L569)
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### self
-
-`any`
-
-##### depArgs?
+##### self {#self-1}
 
 `any`
 
-#### Returns
+##### depArgs? {#depargs}
+
+`any`
+
+#### 戻り値 {#returns-1}
 
 `any`[] \| `undefined`

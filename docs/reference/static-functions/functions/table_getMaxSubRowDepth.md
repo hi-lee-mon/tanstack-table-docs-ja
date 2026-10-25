@@ -7,27 +7,27 @@ title: table_getMaxSubRowDepth
 function table_getMaxSubRowDepth<TFeatures, TData>(table): number;
 ```
 
-Defined in: [core/rows/coreRowsFeature.utils.ts:159](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L159)
+定義元: [core/rows/coreRowsFeature.utils.ts:159](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/rows/coreRowsFeature.utils.ts#L159)
 
-Returns the deepest structural row depth in the core row model.
-Root rows are depth `0`, their direct sub-rows are depth `1`, and so on.
+コア行モデルで、構造上いちばん深い行の深さを返します。
+ルートの行は深さ `0`、その直下のサブ行は深さ `1` で、以降も同様です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `number`

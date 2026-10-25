@@ -7,36 +7,36 @@ title: tableMemo
 function tableMemo<TFeatures, TDeps, TDepArgs, TResult>(__namedParameters): (depArgs?) => TResult;
 ```
 
-Defined in: [utils.ts:387](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L387)
+定義元: [utils.ts:387](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L387)
 
-Creates a table-aware memoized function.
+テーブル向けのメモ化関数を作成します。
 
-This wraps `memo` with table debug options and feature metadata so row models and derived APIs can share consistent diagnostics.
+`memo` をテーブルのデバッグオプションと機能のメタデータで包みます。これにより、行モデルや派生 API が同じ形式の診断情報を共有できます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-### TDeps
+### TDeps {#tdeps}
 
 `TDeps` *extends* readonly `any`[]
 
-### TDepArgs
+### TDepArgs {#tdepargs}
 
 `TDepArgs`
 
-### TResult
+### TResult {#tresult}
 
 `TResult`
 
-## Parameters
+## パラメーター {#parameters}
 
-### \_\_namedParameters
+### \_\_namedParameters {#namedparameters}
 
 `TableMemoOptions`\<`TFeatures`, `TDeps`, `TDepArgs`, `TResult`\>
 
-## Returns
+## 戻り値 {#returns}
 
 (`depArgs?`) => `TResult`

@@ -3,151 +3,149 @@ id: Row_RowSelection
 title: Row_RowSelection
 ---
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L89)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:89](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L89)
 
-## Properties
+## プロパティ {#properties}
 
-### getCanMultiSelect
+### getCanMultiSelect {#getcanmultiselect}
 
 ```ts
 getCanMultiSelect: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:93](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L93)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:93](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L93)
 
-Checks whether this row can be selected alongside other rows.
+この行を他の行と一緒に選択できるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 `boolean`
 
 ***
 
-### getCanSelect
+### getCanSelect {#getcanselect}
 
 ```ts
 getCanSelect: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:97](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L97)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:97](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L97)
 
-Checks whether this row can currently be selected.
+この行が現在選択できるかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `boolean`
 
 ***
 
-### getCanSelectSubRows
+### getCanSelectSubRows {#getcanselectsubrows}
 
 ```ts
 getCanSelectSubRows: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L101)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:101](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L101)
 
-Checks whether selecting this row should also select its subRows.
+この行を選択したときに、そのサブ行も選択するかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `boolean`
 
 ***
 
-### getIsAllSubRowsSelected
+### getIsAllSubRowsSelected {#getisallsubrowsselected}
 
 ```ts
 getIsAllSubRowsSelected: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:105](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L105)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:105](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L105)
 
-Checks whether all selectable descendants are selected.
+選択可能な子孫がすべて選択されているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 `boolean`
 
 ***
 
-### getIsSelected
+### getIsSelected {#getisselected}
 
 ```ts
 getIsSelected: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L109)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:109](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L109)
 
-Checks whether this row id is selected.
+この行 ID が選択されているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `boolean`
 
 ***
 
-### getIsSomeSelected
+### getIsSomeSelected {#getissomeselected}
 
 ```ts
 getIsSomeSelected: () => boolean;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L113)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:113](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L113)
 
-Checks whether some selectable descendants are selected.
+選択可能な子孫の一部が選択されているかどうかを判定します。
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 `boolean`
 
 ***
 
-### getToggleSelectedHandler
+### getToggleSelectedHandler {#gettoggleselectedhandler}
 
 ```ts
 getToggleSelectedHandler: (opts?) => (event) => void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:120](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L120)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:120](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L120)
 
-Creates a checkbox-style handler that toggles this row's selected state.
-Pass the original checkbox click event, or a framework event whose
-`nativeEvent` is that click, so Shift range selection can detect the
-modifier key.
+この行の選択状態を切り替える、チェックボックス用のハンドラーを作成します。
+Shift キーでの範囲選択で修飾キーを検出できるよう、元のチェックボックスのクリックイベントか、`nativeEvent` にそのクリックを持つフレームワークのイベントを渡してください。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### opts?
+##### opts? {#opts}
 
 [`ToggleSelectedOptions`](ToggleSelectedOptions.md)
 
-#### Returns
+#### 戻り値 {#returns-6}
 
 (`event`) => `void`
 
 ***
 
-### toggleSelected
+### toggleSelected {#toggleselected}
 
 ```ts
 toggleSelected: (value?, opts?) => void;
 ```
 
-Defined in: [features/row-selection/rowSelectionFeature.types.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L126)
+定義元: [features/row-selection/rowSelectionFeature.types.ts:126](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-selection/rowSelectionFeature.types.ts#L126)
 
-Selects/deselects the row.
+行を選択または選択解除します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### value?
+##### value? {#value}
 
 `boolean`
 
-##### opts?
+##### opts? {#opts-1}
 
 [`ToggleSelectedOptions`](ToggleSelectedOptions.md)
 
-#### Returns
+#### 戻り値 {#returns-7}
 
 `void`

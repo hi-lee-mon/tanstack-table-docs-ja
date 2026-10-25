@@ -7,18 +7,17 @@ title: getDefaultColumnOrderState
 function getDefaultColumnOrderState(): ColumnOrderState;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.utils.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L30)
+定義元: [features/column-ordering/columnOrderingFeature.utils.ts:30](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L30)
 
-Creates the default column order state.
+列の並び順の既定の状態を作ります。
 
-The feature default is an empty array, meaning leaf columns keep their natural
-definition order. Reset APIs use this value when `defaultState` is `true`.
+機能の既定値は空の配列で、末端の列が定義どおりの順を保つことを表します。`defaultState` が `true` のとき、リセット API はこの値を使います。
 
-## Returns
+## 戻り値 {#returns}
 
 [`ColumnOrderState`](../../index/type-aliases/ColumnOrderState.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const order = getDefaultColumnOrderState()

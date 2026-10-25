@@ -3,252 +3,248 @@ id: tableOptions
 title: tableOptions
 ---
 
-Runtime implementation for `tableOptions`.
+`tableOptions` の実行時の実装です。
 
-The helper returns the same object it receives; all value comes from the
-overloads preserving table option inference at compile time.
+このヘルパーは受け取ったオブジェクトをそのまま返します。価値はすべてオーバーロード側にあり、コンパイル時にテーブルのオプションの型推論を保ちます。
 
-## Call Signature
+## 呼び出しシグネチャ {#call-signature}
 
 ```ts
 function tableOptions<TFeatures, TData>(options): Omit<TableOptions<TFeatures, TData>, "columns" | "features"> & object;
 ```
 
-Defined in: [helpers/tableOptions.ts:11](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L11)
+定義元: [helpers/tableOptions.ts:11](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L11)
 
-Preserves table option inference when reusable options omit `columns`.
+再利用するオプションが `columns` を省略していても、テーブルのオプションの型推論を保ちます。
 
-This is useful for composing shared options that will receive columns later
-from a framework adapter or table factory.
+あとからフレームワークのアダプターやテーブルのファクトリーで列を受け取る、共有のオプションを組み立てるときに便利です。
 
-### Type Parameters
+### 型パラメーター {#type-parameters}
 
-#### TFeatures
+#### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-#### TData
+#### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### Parameters
+### パラメーター {#parameters}
 
-#### options
+#### options {#options}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"columns"`\> & `object`
 
-### Returns
+### 戻り値 {#returns}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"columns"` \| `"features"`\> & `object`
 
-## Call Signature
+## 呼び出しシグネチャ {#call-signature-1}
 
 ```ts
 function tableOptions<TFeatures, TData>(options): Omit<TableOptions<TFeatures, TData>, "data" | "features"> & object;
 ```
 
-Defined in: [helpers/tableOptions.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L25)
+定義元: [helpers/tableOptions.ts:25](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L25)
 
-Preserves table option inference when reusable options omit `data`.
+再利用するオプションが `data` を省略していても、テーブルのオプションの型推論を保ちます。
 
-### Type Parameters
+### 型パラメーター {#type-parameters-1}
 
-#### TFeatures
+#### TFeatures {#tfeatures-1}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-#### TData
+#### TData {#tdata-1}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### Parameters
+### パラメーター {#parameters-1}
 
-#### options
+#### options {#options-1}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"data"`\> & `object`
 
-### Returns
+### 戻り値 {#returns-1}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"data"` \| `"features"`\> & `object`
 
-## Call Signature
+## 呼び出しシグネチャ {#call-signature-2}
 
 ```ts
 function tableOptions<TFeatures, TData>(options): Omit<TableOptions<TFeatures, TData>, "data" | "columns" | "features"> & object;
 ```
 
-Defined in: [helpers/tableOptions.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L40)
+定義元: [helpers/tableOptions.ts:40](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L40)
 
-Preserves table option inference when reusable options omit both `data` and
-`columns`.
+再利用するオプションが `data` と `columns` の両方を省略していても、テーブルのオプションの型推論を保ちます。
 
-### Type Parameters
+### 型パラメーター {#type-parameters-2}
 
-#### TFeatures
+#### TFeatures {#tfeatures-2}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-#### TData
+#### TData {#tdata-2}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### Parameters
+### パラメーター {#parameters-2}
 
-#### options
+#### options {#options-2}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"data"` \| `"columns"`\> & `object`
 
-### Returns
+### 戻り値 {#returns-2}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"data"` \| `"columns"` \| `"features"`\> & `object`
 
-## Call Signature
+## 呼び出しシグネチャ {#call-signature-3}
 
 ```ts
 function tableOptions<TFeatures, TData>(options): TableOptions<TFeatures, TData>;
 ```
 
-Defined in: [helpers/tableOptions.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L54)
+定義元: [helpers/tableOptions.ts:54](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L54)
 
-Preserves inference for a fully specified table options object.
+すべて指定されたテーブルのオプションのオブジェクトについて、型推論を保ちます。
 
-### Type Parameters
+### 型パラメーター {#type-parameters-3}
 
-#### TFeatures
+#### TFeatures {#tfeatures-3}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-#### TData
+#### TData {#tdata-3}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### Parameters
+### パラメーター {#parameters-3}
 
-#### options
-
-[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>
-
-### Returns
+#### options {#options-3}
 
 [`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>
 
-## Call Signature
+### 戻り値 {#returns-3}
+
+[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>
+
+## 呼び出しシグネチャ {#call-signature-4}
 
 ```ts
 function tableOptions<TFeatures, TData>(options): Omit<TableOptions<TFeatures, TData>, "features">;
 ```
 
-Defined in: [helpers/tableOptions.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L62)
+定義元: [helpers/tableOptions.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L62)
 
-Preserves inference when a wrapper supplies `features`.
+ラッパーが `features` を渡す場合にも型推論を保ちます。
 
-### Type Parameters
+### 型パラメーター {#type-parameters-4}
 
-#### TFeatures
+#### TFeatures {#tfeatures-4}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-#### TData
+#### TData {#tdata-4}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### Parameters
+### パラメーター {#parameters-4}
 
-#### options
-
-`Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"features"`\>
-
-### Returns
+#### options {#options-4}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"features"`\>
 
-## Call Signature
+### 戻り値 {#returns-4}
+
+`Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"features"`\>
+
+## 呼び出しシグネチャ {#call-signature-5}
 
 ```ts
 function tableOptions<TFeatures, TData>(options): Omit<TableOptions<TFeatures, TData>, "data" | "features">;
 ```
 
-Defined in: [helpers/tableOptions.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L72)
+定義元: [helpers/tableOptions.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L72)
 
-Preserves inference when a wrapper supplies both `data` and `features`.
+ラッパーが `data` と `features` の両方を渡す場合にも型推論を保ちます。
 
-### Type Parameters
+### 型パラメーター {#type-parameters-5}
 
-#### TFeatures
+#### TFeatures {#tfeatures-5}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-#### TData
+#### TData {#tdata-5}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### Parameters
+### パラメーター {#parameters-5}
 
-#### options
-
-`Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"data"` \| `"features"`\>
-
-### Returns
+#### options {#options-5}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"data"` \| `"features"`\>
 
-## Call Signature
+### 戻り値 {#returns-5}
+
+`Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"data"` \| `"features"`\>
+
+## 呼び出しシグネチャ {#call-signature-6}
 
 ```ts
 function tableOptions<TFeatures, TData>(options): Omit<TableOptions<TFeatures, TData>, "columns" | "features">;
 ```
 
-Defined in: [helpers/tableOptions.ts:82](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L82)
+定義元: [helpers/tableOptions.ts:82](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L82)
 
-Preserves inference when a wrapper supplies both `columns` and `features`.
+ラッパーが `columns` と `features` の両方を渡す場合にも型推論を保ちます。
 
-### Type Parameters
+### 型パラメーター {#type-parameters-6}
 
-#### TFeatures
+#### TFeatures {#tfeatures-6}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-#### TData
+#### TData {#tdata-6}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### Parameters
+### パラメーター {#parameters-6}
 
-#### options
-
-`Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"columns"` \| `"features"`\>
-
-### Returns
+#### options {#options-6}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"columns"` \| `"features"`\>
 
-## Call Signature
+### 戻り値 {#returns-6}
+
+`Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"columns"` \| `"features"`\>
+
+## 呼び出しシグネチャ {#call-signature-7}
 
 ```ts
 function tableOptions<TFeatures, TData>(options): Omit<TableOptions<TFeatures, TData>, "data" | "columns" | "features">;
 ```
 
-Defined in: [helpers/tableOptions.ts:93](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L93)
+定義元: [helpers/tableOptions.ts:93](https://github.com/TanStack/table/blob/main/packages/table-core/src/helpers/tableOptions.ts#L93)
 
-Preserves inference when a wrapper supplies `data`, `columns`, and
-`features`.
+ラッパーが `data`、`columns`、`features` を渡す場合にも型推論を保ちます。
 
-### Type Parameters
+### 型パラメーター {#type-parameters-7}
 
-#### TFeatures
+#### TFeatures {#tfeatures-7}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)
 
-#### TData
+#### TData {#tdata-7}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md) = `any`
 
-### Parameters
+### パラメーター {#parameters-7}
 
-#### options
+#### options {#options-7}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"data"` \| `"columns"` \| `"features"`\>
 
-### Returns
+### 戻り値 {#returns-7}
 
 `Omit`\<[`TableOptions`](../type-aliases/TableOptions.md)\<`TFeatures`, `TData`\>, `"data"` \| `"columns"` \| `"features"`\>

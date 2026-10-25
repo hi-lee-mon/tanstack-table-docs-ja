@@ -9,39 +9,38 @@ function table_getColumn<TFeatures, TData>(table, columnId):
   | undefined;
 ```
 
-Defined in: [core/columns/coreColumnsFeature.utils.ts:266](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L266)
+定義元: [core/columns/coreColumnsFeature.utils.ts:266](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/columns/coreColumnsFeature.utils.ts#L266)
 
-Looks up a column by id from the flat column map.
+平坦化した列のマップから、ID で列を探します。
 
-The lookup can return group columns or leaf columns. In development, a
-missing id logs a warning to help catch stale column references.
+グループ列と末端の列のどちらも返りえます。開発環境では、ID が見つからないと警告を出し、古くなった列の参照に気づけるようにします。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### columnId
+### columnId {#columnid}
 
 `string`
 
-## Returns
+## 戻り値 {#returns}
 
   \| [`Column`](../../index/type-aliases/Column.md)\<`TFeatures`, `TData`, `unknown`\>
   \| `undefined`
 
-## Example
+## 例 {#example}
 
 ```ts
 const column = table_getColumn(table, 'firstName')

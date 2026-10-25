@@ -3,130 +3,130 @@ id: Table_RowPinning
 title: Table_RowPinning
 ---
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:65](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L65)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:65](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L65)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### getBottomRows
+### getBottomRows {#getbottomrows}
 
 ```ts
 getBottomRows: () => Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L72)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:72](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L72)
 
-Gets rows pinned to the bottom region.
+下部の領域に固定された行を取得します。
 
-#### Returns
+#### 戻り値 {#returns}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getCenterRows
+### getCenterRows {#getcenterrows}
 
 ```ts
 getCenterRows: () => Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L76)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:76](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L76)
 
-Gets rows that are not pinned to the top or bottom region.
+上部にも下部にも固定されていない行を取得します。
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### getIsSomeRowsPinned
+### getIsSomeRowsPinned {#getissomerowspinned}
 
 ```ts
 getIsSomeRowsPinned: (position?) => boolean;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L80)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:80](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L80)
 
-Checks whether any rows are pinned, optionally limited to one region.
+固定されている行があるかどうかを判定します。1つの領域だけに絞ることもできます。
 
-#### Parameters
+#### パラメーター {#parameters}
 
-##### position?
+##### position? {#position}
 
 [`RowPinningPosition`](../type-aliases/RowPinningPosition.md)
 
-#### Returns
+#### 戻り値 {#returns-2}
 
 `boolean`
 
 ***
 
-### getTopRows
+### getTopRows {#gettoprows}
 
 ```ts
 getTopRows: () => Row<TFeatures, TData>[];
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:84](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L84)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:84](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L84)
 
-Gets rows pinned to the top region.
+上部の領域に固定された行を取得します。
 
-#### Returns
+#### 戻り値 {#returns-3}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>[]
 
 ***
 
-### resetRowPinning
+### resetRowPinning {#resetrowpinning}
 
 ```ts
 resetRowPinning: (defaultState?) => void;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:90](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L90)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:90](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L90)
 
-Resets `rowPinning` to `initialState.rowPinning`.
+`rowPinning` を `initialState.rowPinning` に戻します。
 
-Pass `true` to ignore initial state and reset to empty top/bottom arrays.
+`true` を渡すと、初期状態を無視して、上部と下部が空の配列の状態に戻します。
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### defaultState?
+##### defaultState? {#defaultstate}
 
 `boolean`
 
-#### Returns
+#### 戻り値 {#returns-4}
 
 `void`
 
 ***
 
-### setRowPinning
+### setRowPinning {#setrowpinning}
 
 ```ts
 setRowPinning: (updater) => void;
 ```
 
-Defined in: [features/row-pinning/rowPinningFeature.types.ts:94](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L94)
+定義元: [features/row-pinning/rowPinningFeature.types.ts:94](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pinning/rowPinningFeature.types.ts#L94)
 
-Updates row pinning state with a next state or updater function.
+次の状態かアップデーター関数で、行の固定の状態を更新します。
 
-#### Parameters
+#### パラメーター {#parameters-2}
 
-##### updater
+##### updater {#updater}
 
 [`Updater`](../type-aliases/Updater.md)\<[`RowPinningState`](RowPinningState.md)\>
 
-#### Returns
+#### 戻り値 {#returns-5}
 
 `void`

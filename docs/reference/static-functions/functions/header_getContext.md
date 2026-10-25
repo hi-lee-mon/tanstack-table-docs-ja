@@ -7,55 +7,55 @@ title: header_getContext
 function header_getContext<TFeatures, TData, TValue>(header): object;
 ```
 
-Defined in: [core/headers/coreHeadersFeature.utils.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L57)
+定義元: [core/headers/coreHeadersFeature.utils.ts:57](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/headers/coreHeadersFeature.utils.ts#L57)
 
-Builds the render context passed to a column's `header` or `footer` template.
+列の `header` または `footer` テンプレートに渡す描画コンテキストを作ります。
 
-The context contains the header, its column, and the owning table instance.
+コンテキストには、ヘッダー、その列、それを持つテーブルインスタンスが入ります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue`
 
-## Parameters
+## パラメーター {#parameters}
 
-### header
+### header {#header}
 
 [`Header`](../../index/type-aliases/Header.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `object`
 
-### column
+### column {#column}
 
 ```ts
 column: Column<TFeatures, TData, TValue> = header.column;
 ```
 
-### header
+### header {#header-1}
 
 ```ts
 header: Header<TFeatures, TData, TValue>;
 ```
 
-### table
+### table {#table}
 
 ```ts
 table: Table_Internal<TFeatures, TData> = header.column.table;
 ```
 
-## Example
+## 例 {#example}
 
 ```ts
 const context = header_getContext(header)

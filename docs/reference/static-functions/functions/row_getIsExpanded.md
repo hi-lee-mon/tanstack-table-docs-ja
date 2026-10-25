@@ -7,34 +7,33 @@ title: row_getIsExpanded
 function row_getIsExpanded<TFeatures, TData>(row): boolean;
 ```
 
-Defined in: [features/row-expanding/rowExpandingFeature.utils.ts:348](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L348)
+定義元: [features/row-expanding/rowExpandingFeature.utils.ts:348](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-expanding/rowExpandingFeature.utils.ts#L348)
 
-Checks whether this row is expanded.
+この行が展開されているかどうかを判定します。
 
-`options.getIsRowExpanded` can override state-derived behavior. Otherwise
-the row is expanded when expanded state is `true` or contains this row id.
+`options.getIsRowExpanded` で、状態から導き出す動作を上書きできます。そうでなければ、展開状態が `true` か、この行 ID を含む場合に展開されているとみなします。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### row
+### row {#row}
 
 [`Row`](../../index/type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const expanded = row_getIsExpanded(row)

@@ -7,38 +7,37 @@ title: table_setColumnOrder
 function table_setColumnOrder<TFeatures, TData>(table, updater): void;
 ```
 
-Defined in: [features/column-ordering/columnOrderingFeature.utils.ts:160](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L160)
+定義元: [features/column-ordering/columnOrderingFeature.utils.ts:160](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-ordering/columnOrderingFeature.utils.ts#L160)
 
-Routes a column order updater through the table's column-order change handler.
+列の並び順のアップデーターを、テーブルの列の並び順の変更ハンドラーに通します。
 
-The updater may be a next ordered id array or a function of the previous
-array, matching the instance `table.setColumnOrder` behavior.
+アップデーターには、次の順序付きの ID 配列か、前の配列を受け取る関数を指定できます。インスタンスの `table.setColumnOrder` と同じ動作です。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-### updater
+### updater {#updater}
 
 [`Updater`](../../index/type-aliases/Updater.md)\<[`ColumnOrderState`](../../index/type-aliases/ColumnOrderState.md)\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_setColumnOrder(table, ['firstName', 'lastName', 'age'])

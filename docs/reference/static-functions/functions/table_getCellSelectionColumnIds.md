@@ -7,31 +7,31 @@ title: table_getCellSelectionColumnIds
 function table_getCellSelectionColumnIds<TFeatures, TData>(table): string[];
 ```
 
-Defined in: [features/cell-selection/cellSelectionFeature.utils.ts:1329](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1329)
+定義元: [features/cell-selection/cellSelectionFeature.utils.ts:1329](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/cell-selection/cellSelectionFeature.utils.ts#L1329)
 
-Returns the ids of all columns intersected by the selection.
+選択範囲と交わるすべての列の ID を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `string`[]
 
-## Example
+## 例 {#example}
 
 ```ts
 const columnIds = table_getCellSelectionColumnIds(table)

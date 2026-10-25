@@ -3,44 +3,44 @@ id: RowModelFns_FeatureMap
 title: RowModelFns_FeatureMap
 ---
 
-Defined in: [types/RowModelFns.ts:9](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L9)
+定義元: [types/RowModelFns.ts:9](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L9)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### columnFilteringFeature
+### columnFilteringFeature {#columnfilteringfeature}
 
 ```ts
 columnFilteringFeature: RowModelFns_ColumnFiltering<TFeatures, TData>;
 ```
 
-Defined in: [types/RowModelFns.ts:14](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L14)
+定義元: [types/RowModelFns.ts:14](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L14)
 
 ***
 
-### rowAggregationFeature
+### rowAggregationFeature {#rowaggregationfeature}
 
 ```ts
 rowAggregationFeature: RowModelFns_RowAggregation<TFeatures, TData>;
 ```
 
-Defined in: [types/RowModelFns.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L13)
+定義元: [types/RowModelFns.ts:13](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L13)
 
 ***
 
-### rowSortingFeature
+### rowSortingFeature {#rowsortingfeature}
 
 ```ts
 rowSortingFeature: RowModelFns_RowSorting<TFeatures, TData>;
 ```
 
-Defined in: [types/RowModelFns.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L15)
+定義元: [types/RowModelFns.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModelFns.ts#L15)

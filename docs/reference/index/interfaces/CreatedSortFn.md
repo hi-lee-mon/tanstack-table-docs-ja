@@ -3,27 +3,23 @@ id: CreatedSortFn
 title: CreatedSortFn
 ---
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L81)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:81](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L81)
 
-The shape returned by `constructSortFn`: a `SortFn` with its definition
-attached, so variants can be built by spreading it into another
-`constructSortFn` call.
+`constructSortFn` が返す形です。定義が付いた `SortFn` なので、これを別の `constructSortFn` の呼び出しにスプレッドして派生版を作れます。
 
-The call signature is generic so a created sorting function can be used
-with any table's rows, regardless of the feature set it was defined
-against.
+呼び出しシグネチャはジェネリックです。そのため、作成したソート関数は、定義したときの機能の組み合わせに関係なく、どのテーブルの行にも使えます。
 
-## Extends
+## 継承元 {#extends}
 
 - [`SortFnDef`](SortFnDef.md)\<`TFeatures`, `TData`\>
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
@@ -34,94 +30,90 @@ CreatedSortFn<TRowFeatures, TRowData>(
    columnId): number;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L85)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L85)
 
-The shape returned by `constructSortFn`: a `SortFn` with its definition
-attached, so variants can be built by spreading it into another
-`constructSortFn` call.
+`constructSortFn` が返す形です。定義が付いた `SortFn` なので、これを別の `constructSortFn` の呼び出しにスプレッドして派生版を作れます。
 
-The call signature is generic so a created sorting function can be used
-with any table's rows, regardless of the feature set it was defined
-against.
+呼び出しシグネチャはジェネリックです。そのため、作成したソート関数は、定義したときの機能の組み合わせに関係なく、どのテーブルの行にも使えます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters-1}
 
-### TRowFeatures
+### TRowFeatures {#trowfeatures}
 
 `TRowFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TRowData
+### TRowData {#trowdata}
 
 `TRowData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### rowA
-
-[`Row`](../type-aliases/Row.md)\<`TRowFeatures`, `TRowData`\>
-
-### rowB
+### rowA {#rowa}
 
 [`Row`](../type-aliases/Row.md)\<`TRowFeatures`, `TRowData`\>
 
-### columnId
+### rowB {#rowb}
+
+[`Row`](../type-aliases/Row.md)\<`TRowFeatures`, `TRowData`\>
+
+### columnId {#columnid}
 
 `string`
 
-## Returns
+## 戻り値 {#returns}
 
 `number`
 
-## Properties
+## プロパティ {#properties}
 
-### resolveDataValue?
+### resolveDataValue? {#resolvedatavalue}
 
 ```ts
 optional resolveDataValue?: TransformDataValueFn;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L69)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:69](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L69)
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from}
 
 [`SortFnDef`](SortFnDef.md).[`resolveDataValue`](SortFnDef.md#resolvedatavalue)
 
 ***
 
-### sort
+### sort {#sort}
 
 ```ts
 sort: (dataValueA, dataValueB, rowA, rowB, columnId) => number;
 ```
 
-Defined in: [features/row-sorting/rowSortingFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L62)
+定義元: [features/row-sorting/rowSortingFeature.types.ts:62](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-sorting/rowSortingFeature.types.ts#L62)
 
-#### Parameters
+#### パラメーター {#parameters-1}
 
-##### dataValueA
-
-`any`
-
-##### dataValueB
+##### dataValueA {#datavaluea}
 
 `any`
 
-##### rowA
+##### dataValueB {#datavalueb}
+
+`any`
+
+##### rowA {#rowa-1}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-##### rowB
+##### rowB {#rowb-1}
 
 [`Row`](../type-aliases/Row.md)\<`TFeatures`, `TData`\>
 
-##### columnId
+##### columnId {#columnid-1}
 
 `string`
 
-#### Returns
+#### 戻り値 {#returns-1}
 
 `number`
 
-#### Inherited from
+#### 継承元のメンバー {#inherited-from-1}
 
 [`SortFnDef`](SortFnDef.md).[`sort`](SortFnDef.md#sort)

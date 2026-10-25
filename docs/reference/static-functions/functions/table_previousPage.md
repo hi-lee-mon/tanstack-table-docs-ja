@@ -7,34 +7,33 @@ title: table_previousPage
 function table_previousPage<TFeatures, TData>(table): void;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:322](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L322)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:322](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L322)
 
-Moves the table to the previous page.
+テーブルを前のページに移動します。
 
-This delegates to `table_setPageIndex` so pagination state ownership and
-updater semantics remain consistent.
+ページネーションの状態の持ち主とアップデーターの意味を一貫させるため、`table_setPageIndex` に処理を任せます。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `void`
 
-## Example
+## 例 {#example}
 
 ```ts
 table_previousPage(table)

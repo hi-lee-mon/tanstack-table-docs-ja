@@ -7,32 +7,30 @@ title: copyInstancePropertiesWithoutMemos
 function copyInstancePropertiesWithoutMemos<TTarget, TSource>(target, source): TTarget & TSource;
 ```
 
-Defined in: [utils.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L58)
+定義元: [utils.ts:58](https://github.com/TanStack/table/blob/main/packages/table-core/src/utils.ts#L58)
 
-Copies prototype-instance own properties without carrying over lazy memo
-closures or the per-row cell cache, both of which are bound to the source
-instance (cached cells reference the source row).
+プロトタイプインスタンスの自身のプロパティをコピーします。遅延作成されるメモのクロージャーと行ごとのセルのキャッシュは引き継ぎません。どちらもコピー元のインスタンスに結び付いているためです（キャッシュされたセルはコピー元の行を参照しています）。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TTarget
+### TTarget {#ttarget}
 
 `TTarget` *extends* `Record`\<`string`, `any`\>
 
-### TSource
+### TSource {#tsource}
 
 `TSource` *extends* `Record`\<`string`, `any`\>
 
-## Parameters
+## パラメーター {#parameters}
 
-### target
+### target {#target}
 
 `TTarget`
 
-### source
+### source {#source}
 
 `TSource`
 
-## Returns
+## 戻り値 {#returns}
 
 `TTarget` & `TSource`

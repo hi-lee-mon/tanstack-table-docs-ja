@@ -7,16 +7,14 @@ title: Atoms
 type Atoms<TFeatures> = { [K in keyof TableState<TFeatures>]-?: ReadonlyAtom<TableState<TFeatures>[K]> };
 ```
 
-Defined in: [core/table/coreTablesFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L55)
+定義元: [core/table/coreTablesFeature.types.ts:55](https://github.com/TanStack/table/blob/main/packages/table-core/src/core/table/coreTablesFeature.types.ts#L55)
 
-A map of readonly derived atoms, one per `TableState` slice. Each derives
-from its corresponding `baseAtom` plus, optionally, a per-slice external
-atom or external state value.
+`TableState` のスライスごとに1つある、読み取り専用の派生アトムのマップです。それぞれ、対応する `baseAtom` と、スライスごとの外部のアトムまたは外部の状態の値（指定されていれば）から導き出されます。
 
-Precedence: `options.atoms[key]` > `options.state[key]` > `baseAtoms[key]`.
+優先順位: `options.atoms[key]` > `options.state[key]` > `baseAtoms[key]`。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../interfaces/TableFeatures.md)

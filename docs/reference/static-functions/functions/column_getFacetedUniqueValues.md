@@ -7,42 +7,41 @@ title: column_getFacetedUniqueValues
 function column_getFacetedUniqueValues<TFeatures, TData, TValue>(column, table): Map<any, number>;
 ```
 
-Defined in: [features/column-faceting/columnFacetingFeature.utils.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.utils.ts#L85)
+定義元: [features/column-faceting/columnFacetingFeature.utils.ts:85](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-faceting/columnFacetingFeature.utils.ts#L85)
 
-Computes unique facet values and their occurrence counts for one column.
+1つの列について、ファセットの一意な値とその出現回数を計算します。
 
-The configured `facetedUniqueValues` row-model factory owns the calculation.
-If no factory is registered, an empty `Map` is returned.
+計算は、設定された行モデルのファクトリー `facetedUniqueValues` が担います。ファクトリーが登録されていなければ、空の `Map` を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `Map`\<`any`, `number`\>
 
-## Example
+## 例 {#example}
 
 ```ts
 const values = column_getFacetedUniqueValues(column, table)

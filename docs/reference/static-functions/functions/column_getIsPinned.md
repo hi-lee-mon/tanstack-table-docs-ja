@@ -7,42 +7,39 @@ title: column_getIsPinned
 function column_getIsPinned<TFeatures, TData, TValue>(column): ColumnPinningPosition;
 ```
 
-Defined in: [features/column-pinning/columnPinningFeature.utils.ts:143](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L143)
+定義元: [features/column-pinning/columnPinningFeature.utils.ts:143](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/column-pinning/columnPinningFeature.utils.ts#L143)
 
-Reads this column's current pinning region.
+この列の現在の固定領域を読み取ります。
 
-Group columns report `'start'` or `'end'` when any leaf column is pinned in
-that region. Unpinned columns return `false`.
+グループ列は、その領域に固定された末端の列があれば `'start'` または `'end'` を返します。固定されていない列は `false` を返します。
 
-`start` and `end` are logical positions. In LTR languages/layouts, `start`
-usually corresponds to left and `end` to right. In RTL languages/layouts,
-`start` usually corresponds to right and `end` to left.
+`start` と `end` は論理的な位置です。LTR の言語やレイアウトでは、ふつう `start` は左、`end` は右にあたります。RTL の言語やレイアウトでは、ふつう `start` は右、`end` は左にあたります。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-### TValue
+### TValue {#tvalue}
 
 `TValue` *extends* `unknown` = `unknown`
 
-## Parameters
+## パラメーター {#parameters}
 
-### column
+### column {#column}
 
 [`Column_Internal`](../../index/interfaces/Column_Internal.md)\<`TFeatures`, `TData`, `TValue`\>
 
-## Returns
+## 戻り値 {#returns}
 
 [`ColumnPinningPosition`](../../index/type-aliases/ColumnPinningPosition.md)
 
-## Example
+## 例 {#example}
 
 ```ts
 const position = column_getIsPinned(column)

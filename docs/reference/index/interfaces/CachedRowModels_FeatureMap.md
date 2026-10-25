@@ -3,74 +3,74 @@ id: CachedRowModels_FeatureMap
 title: CachedRowModels_FeatureMap
 ---
 
-Defined in: [types/RowModel.ts:11](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L11)
+定義元: [types/RowModel.ts:11](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L11)
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../type-aliases/RowData.md)
 
-## Properties
+## プロパティ {#properties}
 
-### columnFacetingFeature
+### columnFacetingFeature {#columnfacetingfeature}
 
 ```ts
 columnFacetingFeature: CachedRowModel_Faceted<TFeatures, TData>;
 ```
 
-Defined in: [types/RowModel.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L15)
+定義元: [types/RowModel.ts:15](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L15)
 
 ***
 
-### columnFilteringFeature
+### columnFilteringFeature {#columnfilteringfeature}
 
 ```ts
 columnFilteringFeature: CachedRowModel_Filtered<TFeatures, TData>;
 ```
 
-Defined in: [types/RowModel.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L16)
+定義元: [types/RowModel.ts:16](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L16)
 
 ***
 
-### columnGroupingFeature
+### columnGroupingFeature {#columngroupingfeature}
 
 ```ts
 columnGroupingFeature: CachedRowModel_Grouped<TFeatures, TData>;
 ```
 
-Defined in: [types/RowModel.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L18)
+定義元: [types/RowModel.ts:18](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L18)
 
 ***
 
-### rowExpandingFeature
+### rowExpandingFeature {#rowexpandingfeature}
 
 ```ts
 rowExpandingFeature: CachedRowModel_Expanded<TFeatures, TData>;
 ```
 
-Defined in: [types/RowModel.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L17)
+定義元: [types/RowModel.ts:17](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L17)
 
 ***
 
-### rowPaginationFeature
+### rowPaginationFeature {#rowpaginationfeature}
 
 ```ts
 rowPaginationFeature: CachedRowModel_Paginated<TFeatures, TData>;
 ```
 
-Defined in: [types/RowModel.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L19)
+定義元: [types/RowModel.ts:19](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L19)
 
 ***
 
-### rowSortingFeature
+### rowSortingFeature {#rowsortingfeature}
 
 ```ts
 rowSortingFeature: CachedRowModel_Sorted<TFeatures, TData>;
 ```
 
-Defined in: [types/RowModel.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L20)
+定義元: [types/RowModel.ts:20](https://github.com/TanStack/table/blob/main/packages/table-core/src/types/RowModel.ts#L20)

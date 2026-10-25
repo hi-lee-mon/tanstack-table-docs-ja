@@ -7,34 +7,33 @@ title: table_getCanNextPage
 function table_getCanNextPage<TFeatures, TData>(table): boolean;
 ```
 
-Defined in: [features/row-pagination/rowPaginationFeature.utils.ts:269](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L269)
+定義元: [features/row-pagination/rowPaginationFeature.utils.ts:269](https://github.com/TanStack/table/blob/main/packages/table-core/src/features/row-pagination/rowPaginationFeature.utils.ts#L269)
 
-Checks whether the current page index can move forward.
+現在のページ番号を先に進められるかどうかを判定します。
 
-A `pageCount` of `-1` means the caller does not know the total page count, so
-this returns `true`. A page count of `0` returns `false`.
+`pageCount` が `-1` なのは、呼び出し側が総ページ数を知らないことを意味するので、`true` を返します。ページ数が `0` なら `false` を返します。
 
-## Type Parameters
+## 型パラメーター {#type-parameters}
 
-### TFeatures
+### TFeatures {#tfeatures}
 
 `TFeatures` *extends* [`TableFeatures`](../../index/interfaces/TableFeatures.md)
 
-### TData
+### TData {#tdata}
 
 `TData` *extends* [`RowData`](../../index/type-aliases/RowData.md)
 
-## Parameters
+## パラメーター {#parameters}
 
-### table
+### table {#table}
 
 [`Table_Internal`](../../index/interfaces/Table_Internal.md)\<`TFeatures`, `TData`\>
 
-## Returns
+## 戻り値 {#returns}
 
 `boolean`
 
-## Example
+## 例 {#example}
 
 ```ts
 const canGoForward = table_getCanNextPage(table)
